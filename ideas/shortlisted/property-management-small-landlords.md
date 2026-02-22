@@ -1,73 +1,73 @@
-# Property Management for Small Landlords (1-50 Units)
+# Property Management for Small Landlords (LandlordPad)
 
-**Score: 85/105 — Tier 1 — Verdict: BUILD**
+**Score: 95/105** | **Verdict: BUILD** | **Priority: #2**
 
-> "All-in-one landlord tool: rent collection, leases, maintenance, tax reports for 1-50 unit portfolios. $79 LTD."
+> Updated 2026-02-22 with additional competitor analysis data. Score increased from 85 to 95 based on deeper market validation (91% of landlords own ≤10 units, 40%+ still on spreadsheets, Stessa acquisition uncertainty affecting 350K+ users).
 
----
+## Concept
+All-in-one tool for self-managing landlords with 1-20 units. Online rent collection (ACH + card), digital lease signing, tenant screening, maintenance request portal (with photo upload), expense tracking with receipt OCR, and year-end Schedule E tax report. Designed for the person who manages their own properties, not a PM company.
 
-## Scoring Breakdown
+## Scoring
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | AppFolio, Buildium, Stessa (acquired by Roofstock), Avail (acquired by Realtor.com), TurboTenant all validate. 10M+ individual landlords in US. Constant r/landlord and BiggerPockets discussions. |
-| Competitor Weakness | 4/5 | 2x | 8 | AppFolio/Buildium too expensive and built for PM companies. Avail/TenantCloud free but "feel abandoned." Stessa is financial tracking only. Gap between "free but broken" and "enterprise expensive" is wide. |
-| LTD Viability | 5/5 | 2x | 10 | $79-149 LTD is very profitable. Core features (rent collection via Stripe/Plaid, lease storage, maintenance tickets) have low per-user infrastructure costs. Landlords are famously cost-conscious -- LTD is perfect. |
-| No Free Tier | 3/5 | 1x | 3 | Avail, TenantCloud, Stessa all have free tiers, creating free-tier expectation. Need to differentiate clearly or offer limited free tier with paid LTD upgrade. |
-| Channel Access | 5/5 | 2x | 10 | r/landlord (65K+), r/realestateinvesting (500K+), BiggerPockets (2M+ members). Facebook landlord groups. Local REIA meetups. This audience is online, engaged, and actively discussing software. |
-| Content Potential | 5/5 | 1x | 5 | Massive SEO: "landlord software", "rent collection app", "property management software for small landlords", "Buildium alternative", "landlord accounting software". Comparison and educational content opportunities are enormous. |
-| AppSumo Fit | 5/5 | 2x | 10 | Real estate investors are deal-savvy, tool-hungry, and many are on AppSumo. BiggerPockets community cross-pollinates with AppSumo audience. This would be a top AppSumo performer. |
-| Review Potential | 4/5 | 1x | 4 | Landlords are vocal about tools they use (see BiggerPockets reviews, G2 reviews for Buildium/AppFolio). If the tool saves them hassle, they will review. |
-| MRR Path | 4/5 | 3x | 12 | LTD for base (up to 10 units), MRR for scaling (11+ units, tenant screening at $25/screen, payment processing fees, premium features like AI maintenance triage). Per-unit pricing above LTD threshold. |
-| Build Feasibility | 4/5 | 2x | 8 | MVP (rent collection + lease storage + maintenance tickets + basic accounting) in 4-5 weeks. Stripe/Plaid for payments, file storage for leases, simple ticketing. Well-understood domain. |
-| Boring Business Bonus | 4/5 | 2x | 8 | Property management is unglamorous professional services. Not as boring as plumbing, but solidly unsexy. |
-| **TOTAL** | | | **85/105** | |
+| Market Validation | 5/5 | 3x | 15 | 10.6M landlords in US, 91% own ≤10 units. $3.6-5.9B market → $12-17B by 2033. Multiple paying competitors validate demand. |
+| Competitor Weakness | 5/5 | 2x | 10 | AppFolio $298/mo min + 50-unit floor. Buildium hidden price hikes ($375→$400 without notice). Avail has NO mobile app. RentRedi: $6,750 in rent diverted without authorization. Stessa acquired by Roofstock (uncertain future for 350K+ users). 40%+ still on spreadsheets. |
+| LTD Viability | 5/5 | 2x | 10 | $79-149 LTD, very low marginal cost. Landlords save $500+/property at tax time. DoorLoop validated LTD on AppSumo. |
+| No Free Tier | 3/5 | 1x | 3 | Several free options: Innago (4.9 G2, completely free), TurboTenant, Baselane (banking-tied), Stessa. Free competition is real but quality gap exists. |
+| Channel Access | 5/5 | 2x | 10 | BiggerPockets 2M+ members, r/realestateinvesting 500K+, r/landlord 65K+, r/PropertyManagement 50K+. REIAs, local investor meetups. |
+| Content Potential | 5/5 | 1x | 5 | "landlord software", "rent collection app", "Buildium alternative", "Stessa alternative". Massive search volume. |
+| AppSumo Fit | 5/5 | 2x | 10 | Real estate investors ARE the AppSumo audience — deal-savvy, tool-hungry. DoorLoop proved the category. |
+| Review Potential | 4/5 | 1x | 4 | Landlords actively share tools in BiggerPockets and Reddit. Strong word-of-mouth culture. |
+| MRR Path | 4/5 | 3x | 12 | LTD for core → MRR for tenant screening ($25/screen), premium reporting, multi-property analytics, bank feeds. |
+| Build Feasibility | 4/5 | 2x | 8 | 3-4 week MVP: Stripe/Plaid for rent collection + lease storage + maintenance tickets + expense tracking. Well-scoped. |
+| Boring Business Bonus | 4/5 | 2x | 8 | Unglamorous professional service. Landlording is not sexy but not blue-collar trades-level boring. |
 
----
+## Target Market
+Self-managing landlords with 1-20 units (91% of all US landlords), house hackers, small real estate investors, accidental landlords. The 3.5-4M landlords still using spreadsheets/paper are the primary greenfield market.
+
+## Key Differentiators
+1. Flat pricing per portfolio, not per unit — no hidden fees
+2. Built for landlords, not property management companies
+3. Tax-ready — generates Schedule E data, exports to TurboTax/CPA
+4. Mobile-first (like RentRedi but more polished + Stessa-quality financial reporting)
+5. Human support, not chatbots (differentiator vs Avail/Buildium)
+
+## LTD Pricing
+- **Tier 1**: $79 (up to 10 units)
+- **Tier 2**: $149 (up to 50 units, unlimited)
+
+## Distribution Channels
+- BiggerPockets forums (2M+ members), BP podcast sponsorship
+- r/realestateinvesting (500K+), r/landlord (65K+), r/PropertyManagement (50K+), r/RealEstate
+- Facebook: Landlord & Property Management groups, Small Landlord Network
+- Local REIAs (Real Estate Investor Associations)
+- AppSumo launch (DoorLoop proved this category works)
+- Content: target "Stessa alternative" (350K+ users with uncertain Roofstock future)
 
 ## Next Steps
-
-1. Validate with 10 small landlords (cold outreach on r/landlord, BiggerPockets)
-2. Build MVP focused on: rent collection (ACH) + digital lease signing + maintenance request portal + expense tracking
-3. Partner with BiggerPockets for content/distribution
-4. Plan AppSumo launch -- this category will perform well
+1. Build MVP: rent collection (ACH + card) + lease storage + maintenance portal + expense tracking + Schedule E report
+2. Beta test with 10 landlords from BiggerPockets
+3. AppSumo launch at $79/$149 tiers
+4. Content strategy targeting "Stessa alternative" and "Buildium alternative for small landlords"
 
 ## Risks
-
-1. **Free-tier pressure**: Avail, TenantCloud, TurboTenant free tiers create price sensitivity -- need clear value-add over free options
-2. **Payment compliance**: Rent collection requires ACH regulations compliance, handling tenant disputes
-3. **Newer entrants**: DoorLoop and RentRedi are targeting similar space -- must differentiate on UX and pricing
+1. **Free competitors**: Innago, TurboTenant undercut on price (mitigate: compete on quality, features, and reliability)
+2. **Payment processing liability**: Rent collection requires trust and ACH compliance (mitigate: use established Stripe/Plaid rails)
+3. **Real estate cyclicality**: Downturn could slow adoption
+4. **RentRedi payment security precedent**: Users wary after $6,750 diversion incident — must emphasize security
 
 ## Key Source Links
-
-- https://news.ycombinator.com/item?id=47075124 (Micasa -- 621 pts, 197 comments)
-- https://www.reddit.com/r/landlord/
 - https://www.reddit.com/r/realestateinvesting/
 - https://www.biggerpockets.com/forums/52
-- https://www.g2.com/products/buildium/reviews
-
-## Product Concept
-
-**Working name**: "LandlordPad"
-
-**Core MVP features**:
-- Online rent collection (ACH + card via Stripe/Plaid)
-- Digital lease signing and storage
-- Tenant screening integration
-- Maintenance request portal with photo upload
-- Expense tracking per property
-- Year-end Schedule E tax report generation
-
-**Key differentiators**:
-1. Flat pricing per portfolio, not per unit
-2. Built for landlords, not property management companies
-3. Tax-ready -- generates Schedule E data and exports to TurboTax/CPA
-4. Maintenance requests with AI-powered severity assessment and vendor suggestions
-
-**LTD price point**: $79 (up to 10 units) / $149 (up to 50 units, unlimited)
-
-**Target channels**: r/landlord (65K+ members), r/realestateinvesting (500K+ members), BiggerPockets forums (2M+ members), Facebook groups (Landlord & Tenant Rights groups, Real Estate Investor groups), local REIA meetups, BiggerPockets podcast sponsorship
+- https://www.stessa.com/blog/small-landlord-software/
+- https://www.doorloop.com/blog/small-landlord-property-management-software
+- https://ipropertymanagement.com/research/landlord-statistics
+- https://www.baselane.com/resources/15-best-landlord-software-platforms
+- https://www.landlordcart.com/best-property-management-software-for-small-landlords/
+- https://www.trustpilot.com/review/rentredi.com
+- https://www.capterra.com/p/47428/Buildium-Property-Management-Software/reviews/
 
 ---
 
-*Shortlisted: 2026-02-21 | Score: 85/105 | Verdict: BUILD*
+*Shortlisted: 2026-02-21 (85/105) | Updated: 2026-02-22 (95/105) | Verdict: BUILD*
