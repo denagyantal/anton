@@ -1,54 +1,49 @@
-# Cleaning Service Management (CleanSlate)
+# Cleaning Service Management — Score: 100/105
 
-**Score: 88/105** | **Verdict: BUILD** | **Priority: #5**
+**Evaluation Date**: 2026-02-23
+**Verdict**: BUILD
+**Tier**: 1 (Strong Opportunity)
 
 ## Concept
-Cleaning-specific business management platform. Visual recurring schedule (handles skip weeks/holidays), customizable per-room checklists with photo verification, one-tap clock-in that auto-generates invoices, online booking with real-time availability, client portal with cleaning history and before/after photos. Ultra-simple cleaner app for non-tech-savvy staff.
+All-in-one platform for residential and commercial cleaning businesses: recurring schedule engine with skip-week/holiday handling, per-room checklists with photo verification, cleaner clock-in that auto-generates invoices, online booking with real-time availability, client portal, two-way SMS, route optimization, and payroll sync. Ultra-simple cleaner-facing mobile app.
 
 ## Scoring
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 4/5 | 3x | 12 | ZenMaid, BookingKoala, Swept, MaidCentral exist. $2-4.5B market → $8-11B by 2033. Only 43% use end-to-end software. |
-| Competitor Weakness | 5/5 | 2x | 10 | ZenMaid: no 2-way SMS, 2.3 stars Trustpilot. BookingKoala: hostile COO. MaidCentral: $450/mo. Jobber real cost $300-400/mo. 45% juggle 5-7 apps. |
-| LTD Viability | 4/5 | 2x | 8 | $69-149 LTD. Replaces $300+/mo Jobber real cost. |
-| No Free Tier | 4/5 | 1x | 4 | Limited free options for cleaning-specific tools. |
-| Channel Access | 4/5 | 2x | 8 | r/CleaningBusiness 35K+, FB groups 100K+, r/EntrepreneurRideAlong, ISSA. |
-| Content Potential | 4/5 | 1x | 4 | "cleaning business software", "ZenMaid alternative". |
-| AppSumo Fit | 4/5 | 2x | 8 | Price-sensitive audience. $149 LTD vs $300+/mo = irresistible. |
-| Review Potential | 4/5 | 1x | 4 | Cleaning biz owners active in communities. |
-| MRR Path | 4/5 | 3x | 12 | LTD core → MRR for payroll sync, SMS, route optimization, team management. |
-| Build Feasibility | 4/5 | 2x | 8 | 3-5 week MVP. Cleaning-specific but not technically complex. |
-| Boring Business Bonus | 5/5 | 2x | 10 | Deeply boring — cleaning services. Blue-collar, underserved. |
-
-## Target Market
-Residential cleaning companies with 1-15 cleaners, maid services, house cleaning solopreneurs. Also: Airbnb turnover cleaning companies (sub-niche entry point).
-
-## Key Differentiators
-1. Ultra-simple cleaner app — "Uber-simple" for non-tech-savvy staff
-2. Recurring schedule engine built for cleaning (skip weeks, holiday rules, biweekly patterns)
-3. Photo verification — cleaners snap before/after photos per room
-4. Flat pricing — no per-cleaner fees. "Doesn't punish you for growing"
-5. Built-in two-way SMS (ZenMaid can't do this)
-
-## LTD Pricing
-- **Tier 1**: $69 (up to 5 cleaners)
-- **Tier 2**: $149 (unlimited cleaners, payroll sync, route optimization)
+| Market Validation | 5/5 | 3x | 15 | ZenMaid, BookingKoala, Swept, MaidCentral all have paying customers. $90B cleaning industry. |
+| Competitor Weakness | 5/5 | 2x | 10 | ZenMaid no 2-way SMS. BookingKoala COO hostile to users. MaidCentral $450/mo. Jobber $300-400/mo real cost. |
+| LTD Viability | 5/5 | 2x | 10 | $69-129 LTD profitable. Low infra costs. |
+| No Free Tier | 4/5 | 1x | 4 | Most cleaning tools are paid. Maidily at $25/mo sets low floor. |
+| Channel Access | 5/5 | 2x | 10 | r/CleaningBusiness (35K+), r/EntrepreneurRideAlong, FB groups (50K+ members). |
+| Content Potential | 5/5 | 1x | 5 | High-volume keywords: "cleaning business software", "ZenMaid alternative." |
+| AppSumo Fit | 5/5 | 2x | 10 | Cleaning owners are price-sensitive deal seekers. Perfect AppSumo demographic. |
+| Review Potential | 4/5 | 1x | 4 | Active online community will share tools that save time. |
+| MRR Path | 4/5 | 3x | 12 | Per-cleaner pricing, route optimization, Airbnb integration as premium. |
+| Build Feasibility | 5/5 | 2x | 10 | Scheduling + checklists + invoicing in 3-5 weeks. |
+| Boring Business Bonus | 5/5 | 2x | 10 | Deeply boring — cleaning, janitorial. |
 
 ## Next Steps
-1. Build MVP: visual recurring schedule + per-room checklists + photo verification + one-tap invoicing + ultra-simple cleaner app
-2. Consider Airbnb turnover cleaning as focused entry point (integrate with Airbnb/VRBO calendars)
-3. Launch on AppSumo + seed in r/CleaningBusiness and FB groups simultaneously
+1. Pick sub-niche for v1: residential maid service OR Airbnb turnover cleaning
+2. Build MVP: recurring schedule + per-room checklists + clock-in/auto-invoice + client portal
+3. Recruit 5 beta users from r/CleaningBusiness or FB groups
+4. AppSumo launch at $69-129 LTD + FB group marketing blitz
 
 ## Risks
-1. ZenMaid has established community (ZenMaid Magazine)
-2. Cleaners are non-technical — onboarding must be extremely simple
-3. Payroll integration (Gusto/QBO sync) adds complexity
+1. Fragmented market with many small competitors — must differentiate sharply (photo verification, ultra-simple cleaner app)
+2. Cleaning staff tech literacy — cleaner app must be dead simple
+3. Airbnb turnover requires calendar API integrations
 
 ## Key Source Links
-- https://www.zenmaid.com/magazine/the-best-cleaning-business-software-in-2026/
-- https://www.reddit.com/r/CleaningBusiness/
-- https://buildbite.com/insights/cleaning-business-software
-- https://www.capterra.com/p/189582/Maid-Central/reviews/
-- https://myquoteiq.com/best-apps-for-home-cleaning-business/
-- https://www.getonecrew.com/post/jobber-prices
+- [ZenMaid - Best Cleaning Business Software 2026](https://www.zenmaid.com/magazine/the-best-cleaning-business-software-in-2026/)
+- [r/CleaningBusiness](https://www.reddit.com/r/CleaningBusiness/)
+- [Capterra - Maid Service Software](https://www.capterra.com/maid-service-software/)
+- [BookingKoala Reviews - Trustpilot](https://www.trustpilot.com/review/www.bookingkoala.com)
+- [Jobber Real Cost - OneCrew](https://www.getonecrew.com/post/jobber-prices)
+
+## LTD Pricing
+- Tier 1: $69 (up to 5 cleaners)
+- Tier 2: $129 (unlimited cleaners, all features)
+
+## Target Channels
+r/CleaningBusiness, r/EntrepreneurRideAlong, r/sweatystartup, Facebook (Cleaning Business Owners 50K+, Maid Service Millionaires 20K+), ZenMaid Magazine, ISSA, TikTok/YouTube cleaning business influencers

@@ -1,43 +1,27 @@
-# AI-Powered Job Costing & Profitability for Trades
+# AI Job Costing for Trades — Score: 81/105
 
-**Score: 80/105** | **Verdict: EXPLORE FURTHER** | **Priority: #18**
+**Evaluation Date**: 2026-02-23
+**Verdict**: EXPLORE FURTHER (better as FSM feature)
+**Tier**: 1 (Strong Opportunity)
 
 ## Concept
-Simple, mobile-first job costing for 1-20 person trades businesses. Create job → track hours (GPS clock in/out) → photograph material receipts (AI extracts and categorizes) → real-time job profitability. Monthly dashboard: most/least profitable job types.
+Simple, mobile-first job costing for 1-20 person trades businesses. Create job → track hours (GPS clock in/out) → photograph material receipts (AI OCR) → real-time job profitability. "This job was estimated at $3,200, actual cost was $2,100, profit margin 34%." Monthly dashboard of most/least profitable job types.
 
-## Scoring
+## Scoring Summary
+Market Validation: 3/5 (3x=9) | Competitor Weakness: 4/5 (2x=8) | LTD Viability: 4/5 (2x=8) | No Free Tier: 4/5 (1x=4) | Channel Access: 4/5 (2x=8) | Content: 4/5 (1x=4) | AppSumo: 3/5 (2x=6) | Reviews: 4/5 (1x=4) | MRR Path: 4/5 (3x=12) | Build: 4/5 (2x=8) | Boring Bonus: 5/5 (2x=10)
 
-| Criterion | Score | Weight | Weighted | Notes |
-|-----------|-------|--------|----------|-------|
-| Market Validation | 3/5 | 3x | 9 | Knowify $149-599/mo, Foundation Software (enterprise). Few purpose-built SMB tools. |
-| Competitor Weakness | 4/5 | 2x | 8 | Expensive, enterprise-focused. No simple mobile option. QBO poor at job costing. |
-| LTD Viability | 4/5 | 2x | 8 | $89-119 LTD. "Stop taking unprofitable jobs" is compelling ROI. |
-| No Free Tier | 4/5 | 1x | 4 | No free job costing tools. |
-| Channel Access | 4/5 | 2x | 8 | Same trade channels. |
-| Content Potential | 4/5 | 1x | 4 | "job costing software for contractors", "is my business profitable". |
-| AppSumo Fit | 4/5 | 2x | 8 | Compelling ROI pitch. |
-| Review Potential | 4/5 | 1x | 4 | "I realized 30% of my jobs were unprofitable" = powerful reviews. |
-| MRR Path | 3/5 | 3x | 9 | Could be a feature not standalone. |
-| Build Feasibility | 4/5 | 2x | 8 | 3-4 weeks. Time tracking + receipt OCR + job costing math. |
-| Boring Business Bonus | 5/5 | 2x | 10 | Accounting meets trades. Peak boring. |
-
-## Key Insight
-Best positioned as a module within the FSM (TradeFlow) platform rather than standalone. Consider building as a free "profitability calculator" lead magnet first.
-
-## LTD Pricing
-- **Tier 1**: $89 (up to 10 active jobs, 5 users)
-- **Tier 2**: $119 (unlimited jobs/users, AI receipt scanning, advanced reports)
+## Next Steps
+1. Consider as feature of FSM rather than standalone
+2. MVP: job creation + time tracking + receipt OCR + profitability dashboard
+3. "Stop taking unprofitable jobs" — compelling ROI pitch
 
 ## Risks
-1. May not stand alone — better as FSM feature
-2. AI receipt categorization accuracy must be very high
-3. Trades owners may not want to see true profitability
+- May be too narrow standalone
+- Receipt OCR accuracy varies
+- Trades owners may resist tracking
 
 ## Key Source Links
-- https://www.knowify.com
-- https://www.reddit.com/r/HVAC/
-- https://www.reddit.com/r/Construction/
+- [Knowify](https://www.knowify.com) | [r/HVAC](https://www.reddit.com/r/HVAC/) | [r/Construction](https://www.reddit.com/r/Construction/)
 
----
-
-*Shortlisted: 2026-02-22 | Score: 80/105 | Verdict: EXPLORE FURTHER*
+## LTD Pricing
+- Tier 1: $89 (solo/small team) | Tier 2: $119 (team, reporting, integrations)

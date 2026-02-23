@@ -1,38 +1,27 @@
-# Equipment & Maintenance Tracking for Trades
+# Equipment & Maintenance Tracking — Score: 77/105
 
-**Score: 78/105** | **Verdict: EXPLORE FURTHER** | **Priority: #22**
+**Evaluation Date**: 2026-02-23
+**Verdict**: EXPLORE FURTHER (better as FSM feature)
+**Tier**: 1 (Strong Opportunity)
 
 ## Concept
-Track equipment maintenance schedules, warranty expiration, service history, and replacement planning for trades with expensive equipment (HVAC units, plumbing tools, construction equipment). Prevent costly breakdowns. Maintain compliance (EPA, OSHA).
+Equipment lifecycle management for trades: maintenance reminders, service logs, warranty tracking, compliance cert expiration alerts. Per-equipment tracking. "Preventing one $40K HVAC unit breakdown pays for the tool."
 
-## Scoring
+## Scoring Summary
+Market Validation: 3/5 (3x=9) | Competitor Weakness: 3/5 (2x=6) | LTD Viability: 5/5 (2x=10) | No Free Tier: 3/5 (1x=3) | Channel Access: 4/5 (2x=8) | Content: 3/5 (1x=3) | AppSumo: 3/5 (2x=6) | Reviews: 3/5 (1x=3) | MRR Path: 3/5 (3x=9) | Build: 5/5 (2x=10) | Boring Bonus: 5/5 (2x=10)
 
-| Criterion | Score | Weight | Weighted | Notes |
-|-----------|-------|--------|----------|-------|
-| Market Validation | 3/5 | 3x | 9 | HN Micasa (621 pts) validates. Few purpose-built tools. |
-| Competitor Weakness | 4/5 | 2x | 8 | Almost no SMB competition. |
-| LTD Viability | 4/5 | 2x | 8 | $79-99 LTD. Prevent one breakdown = pays for itself. |
-| No Free Tier | 4/5 | 1x | 4 | No free options. |
-| Channel Access | 4/5 | 2x | 8 | Trade channels. |
-| Content Potential | 3/5 | 1x | 3 | Niche keywords. |
-| AppSumo Fit | 3/5 | 2x | 6 | Niche but compelling ROI. |
-| Review Potential | 3/5 | 1x | 3 | Reactive value. |
-| MRR Path | 3/5 | 3x | 9 | May be a feature, not standalone. |
-| Build Feasibility | 5/5 | 2x | 10 | 2-3 weeks. Simple tracker. |
-| Boring Business Bonus | 5/5 | 2x | 10 | Peak boring. |
-
-## Key Insight
-Best as a module within FSM (TradeFlow) or Property Management (LandlordPad) rather than standalone product. Standalone revenue potential is uncertain.
+## Next Steps
+1. Better as add-on module within FSM product
+2. Standalone: target construction companies with expensive equipment
+3. "Preventing one breakdown pays for the tool"
 
 ## Risks
-1. May not work as standalone product
-2. Low urgency until equipment actually breaks
-3. Competes with simple spreadsheets and calendar reminders
+- May be too narrow standalone
+- Free/generic trackers exist
+- Reactive market (adopt after a costly breakdown)
 
 ## Key Source Links
-- https://news.ycombinator.com/item?id=47075124
-- https://www.reddit.com/r/HVAC/
+- [Show HN: Micasa — 621 pts](https://news.ycombinator.com/item?id=47075124) | [Fleetio](https://www.fleetio.com)
 
----
-
-*Shortlisted: 2026-02-22 | Score: 78/105 | Verdict: EXPLORE FURTHER*
+## LTD Pricing
+- Tier 1: $79 (up to 20 assets) | Tier 2: $99 (unlimited, compliance alerts)

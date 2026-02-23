@@ -1,54 +1,44 @@
-# AI Receptionist for Local Service Businesses
+# AI Receptionist for Local Businesses — Score: 86/105
 
-**Score: 85/105** | **Verdict: BUILD** | **Priority: #8**
+**Evaluation Date**: 2026-02-23
+**Verdict**: EXPLORE FURTHER
+**Tier**: 1 (Strong Opportunity)
 
 ## Concept
-Industry-specific AI phone agent pre-trained on trade terminology and workflows. Answers calls 24/7, triages emergency vs routine, books appointments, captures lead info, texts back with booking links. Start with one trade (plumbing) and expand. $49-79/mo instead of $300+/mo human services.
+Industry-specific AI receptionist pre-trained on trade vocabulary and workflows. Plumbing AI knows "my pipe burst" is emergency vs. "quote for bathroom remodel" is routine. Answers 24/7, triages calls, books into calendar, texts summary to owner. Replaces $240-750/mo human answering services at $49-79/mo.
 
 ## Scoring
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 4/5 | 3x | 12 | Smith.ai $240-750/mo, Ruby $235-640/mo. Netic raised $43M, 50K+ jobs booked. 60-80% of calls missed. |
-| Competitor Weakness | 4/5 | 2x | 8 | Human services $200-500/mo. Generic AI not trade-specific. Netic targets large operators. |
-| LTD Viability | 3/5 | 2x | 6 | Ongoing API costs. "$199 LTD + $0.10/call" or "$149 setup + $19/mo usage." |
-| No Free Tier | 4/5 | 1x | 4 | No free answering services. |
-| Channel Access | 4/5 | 2x | 8 | Same trade channels plus dental, legal, salon. "Never miss a call" resonates universally. |
-| Content Potential | 4/5 | 1x | 4 | "AI answering service for plumbers", "virtual receptionist small business". |
-| AppSumo Fit | 4/5 | 2x | 8 | High perceived value. Usage-limited LTD can work. |
-| Review Potential | 4/5 | 1x | 4 | Measurable ROI (missed calls → booked jobs) drives reviews. |
-| MRR Path | 5/5 | 3x | 15 | Usage-based pricing is natural recurring. Per-minute or per-call. |
-| Build Feasibility | 4/5 | 2x | 8 | 2-4 week MVP. Twilio/Vapi + LLM APIs + calendar integration. |
-| Boring Business Bonus | 4/5 | 2x | 8 | Serves deeply boring businesses. Product itself is tech-adjacent. |
-
-## Target Market
-Solo plumbers, HVAC techs, electricians, dental offices, law firms, auto repair shops, salons — any local business that misses calls. Start with plumbing as beachhead.
-
-## Key Differentiators
-1. Trade-specific training (knows "my pipe burst" is emergency vs "quote for bathroom remodel" is routine)
-2. $49-79/mo vs $300+/mo human services
-3. 24/7 coverage including weekends and holidays
-4. Spanish/English bilingual capability
-5. Seamless handoff to human for complex calls
-
-## LTD Pricing
-- **Tier 1**: $199 (100 calls/month included, one trade, calendar integration)
-- **Tier 2**: $399 (300 calls/month, multi-trade, CRM integration, custom scripts)
+| Market Validation | 4/5 | 3x | 12 | Smith.ai ($240-750/mo), Ruby ($235-640/mo). Netic raised $43M. |
+| Competitor Weakness | 4/5 | 2x | 8 | Expensive. Generic, not trade-trained. Netic targets $20M+ revenue. |
+| LTD Viability | 3/5 | 2x | 6 | Ongoing API costs. Need "$199 LTD for X calls/mo" with limits. |
+| No Free Tier | 4/5 | 1x | 4 | Always paid. |
+| Channel Access | 5/5 | 2x | 10 | Every trade subreddit discusses missed calls. |
+| Content Potential | 4/5 | 1x | 4 | "AI answering service for plumbers." |
+| AppSumo Fit | 3/5 | 2x | 6 | Usage costs limit model. |
+| Review Potential | 5/5 | 1x | 5 | "Never miss a call" is measurable. |
+| MRR Path | 5/5 | 3x | 15 | Per-call/per-minute is natural recurring. |
+| Build Feasibility | 4/5 | 2x | 8 | Twilio + LLM + calendar API in 2-4 weeks. |
+| Boring Business Bonus | 4/5 | 2x | 8 | Serves boring trades but AI is tech-adjacent. |
 
 ## Next Steps
-1. MVP: AI phone agent for plumbing — answers calls, triages, books appointments, captures leads
-2. Use Vapi/Bland.ai for voice + custom prompts trained on plumbing terminology
-3. Test with 5-10 plumbing businesses
-4. Expand to HVAC, dental, legal after validation
+1. Validate unit economics per call/minute
+2. Build for ONE trade first (plumbing)
+3. MVP: answer, triage, book, text summary
+4. Test with 5 plumbing businesses
 
 ## Risks
-1. API costs eat margins (mitigate: usage caps, per-call pricing for MRR)
-2. Voice quality not perfect yet (mitigate: human handoff for complex calls)
-3. Netic and well-funded competitors could dominate (mitigate: focus on solo operators they ignore)
+1. LLM + telephony costs may kill LTD margins
+2. Bad AI experience costs the business a customer
+3. Netic ($43M funded) could expand downmarket
 
 ## Key Source Links
-- https://answeringagent.com/blog/top-6-ai-receptionist-services-for-small-businesses
-- https://www.inc.com/chloe-aiello/this-startup-gives-ai-superpowers-to-hvac-plumbing-and-roofing-companies/91266172
-- https://techfundingnews.com/netic-ai-raises-23m-for-plumbers-roofers-home-services/
-- https://www.smith.ai
-- https://www.myaifrontdesk.com/
+- [Smith.ai](https://www.smith.ai)
+- [Netic AI](https://www.netic.ai/)
+- [Inc - Netic](https://www.inc.com/chloe-aiello/this-startup-gives-ai-superpowers-to-hvac-plumbing-and-roofing-companies/91266172)
+
+## LTD Pricing
+- Tier 1: $199 (100 calls/mo, one trade)
+- Tier 2: $399 (300 calls/mo, custom training)

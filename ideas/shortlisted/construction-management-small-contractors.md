@@ -1,46 +1,42 @@
-# Construction Management for Small Contractors
+# Construction Management for Small Contractors — Score: 83/105
 
-**Score: 85/105** | **Verdict: EXPLORE FURTHER** | **Priority: #10**
+**Evaluation Date**: 2026-02-23
+**Verdict**: EXPLORE FURTHER
+**Tier**: 1 (Strong Opportunity)
 
 ## Concept
-Simplified project management for 1-10 person construction companies. Estimating, daily logs, photo documentation, scheduling, invoicing. Not a scaled-down Procore — purpose-built for the small contractor who currently uses OneNote, Google Docs, and spreadsheets.
+Simplified project management for 1-10 person construction companies. Estimating, scheduling, photo documentation, client communication, and invoicing. Not a scaled-down Procore — purpose-built for the contractor whose current "system" is OneNote + Google Docs + spreadsheets.
 
 ## Scoring
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | Procore, Buildertrend, CoConstruct all have paying users. $16.62B market by 2030. 3.7M construction businesses. |
-| Competitor Weakness | 4/5 | 2x | 8 | Procore $375+/mo. Top answer: "ONE NOTE can be configured into a MONSTER" — hacking non-purpose-built tools. |
-| LTD Viability | 4/5 | 2x | 8 | $99-149 LTD. Contractors prefer to "own" tools. |
-| No Free Tier | 4/5 | 1x | 4 | Limited free options. |
-| Channel Access | 4/5 | 2x | 8 | r/Construction, r/Contractor, r/ConstructionManagers, FB groups, trade shows. |
-| Content Potential | 4/5 | 1x | 4 | "construction management software small business", "Procore alternative". |
-| AppSumo Fit | 3/5 | 2x | 6 | Contractors less on AppSumo but would buy LTDs via industry channels. |
-| Review Potential | 4/5 | 1x | 4 | Contractors review tools on Capterra and forums. |
-| MRR Path | 4/5 | 3x | 12 | LTD core → MRR for permit tracking, subcontractor management, reporting. |
-| Build Feasibility | 3/5 | 2x | 6 | Construction PM is complex. 6-8 week MVP even for simplified version. |
-| Boring Business Bonus | 5/5 | 2x | 10 | Deeply boring — construction management. |
-
-## Target Market
-Small GCs, subcontractors, specialty trades (concrete, framing, painting), remodelers with 1-10 employees.
-
-## LTD Pricing
-- **Tier 1**: $99 (estimating, daily logs, photo docs, invoicing)
-- **Tier 2**: $149 (+ permit tracking, scheduling, subcontractor management)
+| Market Validation | 5/5 | 3x | 15 | Procore ($375+/mo), Buildertrend ($199+/mo). $16.62B market by 2030. |
+| Competitor Weakness | 4/5 | 2x | 8 | All enterprise-priced. OneNote is top "tool" for small contractors. |
+| LTD Viability | 3/5 | 2x | 6 | $99-149 LTD thin for complex product. |
+| No Free Tier | 4/5 | 1x | 4 | PM tools are paid. |
+| Channel Access | 4/5 | 2x | 8 | r/ConstructionManagers (40+ comments), r/Contractor. |
+| Content Potential | 4/5 | 1x | 4 | "construction management small business." |
+| AppSumo Fit | 3/5 | 2x | 6 | Contractors less on AppSumo. |
+| Review Potential | 4/5 | 1x | 4 | Will review if it replaces their chaos. |
+| MRR Path | 4/5 | 3x | 12 | Project pricing, sub management, permits. |
+| Build Feasibility | 3/5 | 2x | 6 | Estimating + scheduling + photos + invoicing — complex. |
+| Boring Business Bonus | 5/5 | 2x | 10 | Small construction — deeply boring. |
 
 ## Next Steps
-1. Focus MVP on "quote to invoice" workflow: estimating + daily logs + photos + invoicing
-2. Skip full project management for v1
-3. Test demand with landing page in r/Contractor
-4. Consider partnership with Buildbite or Planera
+1. Validate: can we build competitive MVP in 4-6 weeks?
+2. Focus: estimate → schedule → document → invoice pipeline
+3. Talk to 5 small contractors
 
 ## Risks
-1. Full construction PM is very complex (mitigate: narrow scope)
-2. Procore/Buildertrend could launch lite tiers
-3. Each sub-trade has different workflows
+1. Complex product vs. well-funded incumbents
+2. Construction projects vary enormously
+3. Many contractors are technophobic
 
 ## Key Source Links
-- https://www.reddit.com/r/ConstructionManagers/comments/1hnjay5/
-- https://www.reddit.com/r/Construction/comments/wi1byb/
-- https://buildbite.com/insights/construction-project-management-software-for-small-businesses
-- https://www.planera.io/post/best-construction-management-software
+- [r/ConstructionManagers](https://www.reddit.com/r/ConstructionManagers/)
+- [Buildbite - Construction PM](https://buildbite.com/insights/construction-project-management-software-for-small-businesses)
+
+## LTD Pricing
+- Tier 1: $99 (solo contractor)
+- Tier 2: $149 (team, subcontractor management)

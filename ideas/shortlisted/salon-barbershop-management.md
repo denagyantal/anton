@@ -1,53 +1,44 @@
-# Salon & Barbershop Management (ChairTime)
+# Salon & Barbershop Management — Score: 86/105
 
-**Score: 84/105** | **Verdict: BUILD (Quick Win)** | **Priority: #11**
+**Evaluation Date**: 2026-02-23
+**Verdict**: BUILD
+**Tier**: 1 (Strong Opportunity)
 
 ## Concept
-Beautiful booking page (no marketplace — YOUR clients, YOUR brand). Client profiles with formula/preference history. Built-in POS for retail products. Tip management and daily cash-out reporting. Instagram/social-first booking. No per-provider pricing.
+Booking and business management for independent stylists and small salons. Beautiful booking page (no marketplace — YOUR clients, YOUR brand). Client profiles with formula/preference history. Built-in POS for retail. Tip management and daily cash-out reporting. No per-provider pricing. Instagram/social-first booking.
 
 ## Scoring
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | Vagaro, Fresha, Booksy, GlossGenius, Boulevard all have paying users. 1M+ salons/barbershops. |
-| Competitor Weakness | 4/5 | 2x | 8 | Fresha "free" but 20% commission. Vagaro per-stylist pricing. Marketplaces send clients to competitors. |
-| LTD Viability | 4/5 | 2x | 8 | $59-119 LTD viable. Low marginal cost. |
-| No Free Tier | 3/5 | 1x | 3 | Square Appointments free for solo. Fresha "free" with commissions. |
-| Channel Access | 4/5 | 2x | 8 | Behind The Chair 200K+, r/hairstylist, r/Barber, Instagram beauty community. |
-| Content Potential | 4/5 | 1x | 4 | "salon booking software", "Fresha alternative". |
-| AppSumo Fit | 3/5 | 2x | 6 | Stylists more on Instagram/TikTok. Social-first launch needed. |
-| Review Potential | 4/5 | 1x | 4 | Stylists are vocal and social. |
-| MRR Path | 4/5 | 3x | 12 | LTD for booking/CRM → MRR for POS, inventory, marketing. |
-| Build Feasibility | 5/5 | 2x | 10 | 3-5 week MVP. Simplest workflow on this list. |
-| Boring Business Bonus | 3/5 | 2x | 6 | Small business but not deeply boring. Beauty has some glamour. |
-
-## Key Differentiators
-1. No marketplace — platform never competes with you for your clients
-2. Formula & preference tracking — built for stylists, not generic appointments
-3. Flat pricing for whole salon — not per-chair/per-stylist
-4. Instagram/social-first booking — direct booking from social profiles
-
-## LTD Pricing
-- **Tier 1**: $59 (solo stylist, unlimited clients)
-- **Tier 2**: $119 (up to 5 stylists, retail POS included)
+| Market Validation | 5/5 | 3x | 15 | Vagaro, Fresha, Booksy, GlossGenius. 1M+ salons. |
+| Competitor Weakness | 4/5 | 2x | 8 | Fresha 20% commission. Vagaro per-stylist + fees. Marketplaces steal clients. |
+| LTD Viability | 5/5 | 2x | 10 | $59-119 LTD. |
+| No Free Tier | 3/5 | 1x | 3 | Square free, Fresha "free." |
+| Channel Access | 4/5 | 2x | 8 | r/hairstylist, Behind The Chair (200K+), Instagram/TikTok. |
+| Content Potential | 4/5 | 1x | 4 | "salon software", "Fresha alternative." |
+| AppSumo Fit | 3/5 | 2x | 6 | Combined AppSumo + Instagram launch. |
+| Review Potential | 4/5 | 1x | 4 | Stylists vocal on social media. |
+| MRR Path | 4/5 | 3x | 12 | Per-stylist pricing, POS fees, inventory. |
+| Build Feasibility | 5/5 | 2x | 10 | Booking + profiles + formula tracking + POS in 3-5 weeks. |
+| Boring Business Bonus | 3/5 | 2x | 6 | Not deeply boring — beauty has some glamour. |
 
 ## Next Steps
-1. Build MVP: beautiful booking page + client profiles with formula history + appointment management + tips
-2. Instagram/TikTok-first launch — booking page must be "Instagram-worthy"
-3. Partner with cosmetology schools
+1. MVP: booking page, client profiles with formulas, appointments, basic POS
+2. "No marketplace" positioning
+3. Instagram-first marketing
+4. Launch at $59-119 LTD
 
 ## Risks
-1. Fresha's "free" model hard to compete against on price
-2. Square Appointments free tier for solo stylists
-3. Beauty market crowded with solutions
+1. Very crowded (Vagaro, Fresha, Booksy well-funded)
+2. Payment processing needed from day one
+3. Lower boring-business bonus
 
 ## Key Source Links
-- https://www.g2.com/products/vagaro/reviews
-- https://www.g2.com/products/fresha/reviews
-- https://www.reddit.com/r/hairstylist/
-- https://www.capterra.com/salon-software/
-- https://www.behindthechair.com/
+- [Fresha Reviews - G2](https://www.g2.com/products/fresha/reviews)
+- [r/hairstylist](https://www.reddit.com/r/hairstylist/)
+- [Behind The Chair](https://www.behindthechair.com/)
 
----
-
-*Shortlisted: 2026-02-22 | Score: 84/105 | Verdict: BUILD*
+## LTD Pricing
+- Tier 1: $59 (solo stylist, unlimited clients)
+- Tier 2: $119 (up to 5 stylists, retail POS)
