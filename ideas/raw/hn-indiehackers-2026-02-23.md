@@ -1,6 +1,6 @@
 # HN & Indie Hackers Scanner Report — 2026-02-23
 
-> Research conducted via web searches on 2026-02-23. URLs are real and verified from search results.
+> Research conducted via web searches on 2026-02-23. URLs verified through direct page fetches where possible.
 
 ---
 
@@ -58,7 +58,7 @@
 - **Platform**: Indie Hackers
 - **Type**: Revenue milestone
 - **Engagement**: Featured IH post
-- **Revenue Data**: $15K MRR (subscriptions) + ~$5K/mo one-time payments = ~$20K/mo total. 13,000+ accounts.
+- **Revenue Data**: $15K MRR (subscriptions) + ~$5K/mo one-time payments = ~$20K/mo total. 13,000+ accounts. ✅ Verified via direct IH page fetch.
 - **Boring Business Score**: 4/5
 - **Target Industry**: Live events, video production, sports, fitness
 - **Core Value Prop**: Remote countdown timer that syncs across multiple devices for live events. Controls timers for speaker sessions, event schedules, announcements. SEO drives 40%+ of volume via low-competition niche keywords. Founder built the "simplest idea" — a timer — and it grew to $20K/mo.
@@ -149,7 +149,7 @@
 - **Boring Business Score**: 5/5
 - **Target Industry**: Commercial and residential cleaning companies
 - **Core Value Prop**: Quality inconsistency across cleaning crews is the #1 complaint. No remote verification method exists — managers can't verify clean quality without being on-site. Photo documentation with checklists and manager review dashboards solve this. Generic field-service tools are built for HVAC/plumbing rather than the recurring jobs, checklists, and cleaner pay structures cleaning companies actually need.
-- **Gap/Opportunity**: Onedesk proved $100K+ MRR is achievable in cleaning SaaS. The cleaning-specific angle matters — generic tools don't handle recurring schedules, walkthroughs, or crew pay splits correctly. ZenMaid exists for residential but commercial cleaning (offices, restaurants, warehouses) is underserved. Photo-based QC is a differentiator no competitor has nailed.
+- **Gap/Opportunity**: Onedesk proved $100K+ MRR is achievable in cleaning SaaS. ZenMaid (verified: $3M/yr ARR, $250K+ MRR — https://www.indiehackers.com/post/tech/from-a-cleaning-side-hustle-to-a-3m-yr-saas-for-cleaning-services-suhsqkDZB1zIwRmXxrFm) proves massive scale is possible. Founder built a cleaning business as side hustle, then built the SaaS for it. Tiered pricing by number of clients. 20 pre-commitments before launch via cold email. The cleaning-specific angle matters — generic tools don't handle recurring schedules, walkthroughs, or crew pay splits correctly. ZenMaid dominates residential; commercial cleaning (offices, restaurants, warehouses) is underserved. Photo-based QC is a differentiator no competitor has nailed.
 - **Our Angle**: Commercial cleaning operations SaaS: job scheduling (recurring + one-time), crew management with pay tracking, photo-based quality checklists (before/after), client communication portal, invoicing. Key differentiator: QC photo verification with manager approval workflow. SEO + YouTube content marketing (proven by Onedesk).
 - **LTD Potential**: 5/5 — Cleaning companies have real budgets and high retention once workflows are embedded. $99-149 LTD.
 
@@ -193,7 +193,7 @@
 - **Platform**: Indie Hackers
 - **Type**: Revenue milestone
 - **Engagement**: Featured IH post
-- **Revenue Data**: $42K MRR total. Angel Match: $37.3K MRR; Investor Hunt: $4.6K MRR; Journalist Hunt: $180 MRR; Pur Social: $491 MRR.
+- **Revenue Data**: $42K MRR total. Angel Match: $37.3K MRR (88% of portfolio, 110K angels/VCs database); Investor Hunt: $4.6K MRR; Journalist Hunt: $180 MRR (100K journalist database); Pur Social: $491 MRR (rebranded as Autoposts). ✅ Verified via direct IH page fetch.
 - **Boring Business Score**: 4/5
 - **Target Industry**: Startup fundraising, media outreach
 - **Core Value Prop**: Curated databases — 110K angels/VCs (Angel Match), 100K journalists (Journalist Hunt). Founder emphasizes: "Boring databases are harder to kill" — curated data is more defensible than features. SEO fixed a $5K→$37K MRR growth bottleneck. Programmatic SEO (structured pages at scale) drives high-intent organic traffic.
@@ -285,9 +285,25 @@
 
 ---
 
-## 18. Vertical SaaS Market Signal — "10 Years Building Vertical Software: Are We Cooked?"
+## 18. Compare Contractor Quotes — AI-Powered Bid Comparison for Homeowners
+- **Source**: https://news.ycombinator.com/item?id=46592652
+- **Additional Links**: https://comparecontractorquotes.com
+- **Platform**: HN
+- **Type**: Show HN
+- **Engagement**: 1 upvote, 1 comment (very early)
+- **Revenue Data**: None — free preview mode, early stage
+- **Boring Business Score**: 5/5
+- **Target Industry**: Homeowners hiring contractors / renovation market
+- **Core Value Prop**: Uses OCR and fine-tuned LLMs to parse unstructured contractor quotes (PDFs, images, scans) into standardized, comparable formats. Normalizes terminology across trades, identifies missing scope items between quotes, flags red flags like front-loaded payment schedules or ambiguous language. Builder's origin story: struggled comparing three vastly different renovation quotes and discovered the lowest bid had simply omitted expensive items.
+- **Gap/Opportunity**: The homeowner side is a consumer play (harder to monetize), but the REAL opportunity is contractor-facing: help contractors GENERATE professional, standardized quotes that win more bids. The parsing/normalization technology could power a contractor quoting tool that ensures completeness and professionalism. Also: insurance adjusters, property managers, and real estate investors who regularly compare contractor bids would pay for this.
+- **Our Angle**: Flip it to contractor-facing: AI-powered quote generation that ensures no scope items are missing, prices are competitive for the market, and presentation is professional. Include a "quote comparison" feature contractors can offer clients as a trust signal. Or: build for property managers/investors who review 10+ bids monthly. Price at $29-49/mo.
+- **LTD Potential**: 4/5 — Property managers and frequent renovators would pay $99-149 LTD for a bid comparison tool.
+
+---
+
+## 19. Vertical SaaS Market Signal — "10 Years Building Vertical Software: Are We Cooked?" + "AI Agents Eating SaaS"
 - **Source**: https://news.ycombinator.com/item?id=47040781
-- **Additional Links**: None
+- **Additional Links**: https://news.ycombinator.com/item?id=46268452 ("AI agents are starting to eat SaaS" — Dec 2025)
 - **Platform**: HN
 - **Type**: Discussion / Market intelligence
 - **Engagement**: Top story on HN (February 2026)
@@ -295,13 +311,13 @@
 - **Boring Business Score**: N/A — market signal, not a product
 - **Target Industry**: All vertical SaaS
 - **Core Value Prop**: Key debate: Will LLMs disrupt vertical software? The consensus from practitioners: NO. Reasons: (1) specialized domain knowledge remains valuable, (2) chat interfaces can't replace power-user workflows ("show me a trader who'd prefer chat to 36 monitors"), (3) SaaS provides operational insurance, (4) small businesses wanting simpler, self-hosted solutions shows appetite for lightweight tools vs. enterprise SaaS.
-- **Gap/Opportunity**: The stock selloff creates fear but fundamentals are strong. Market OVERESTIMATES LLM disruption and UNDERESTIMATES domain-specific workflow value. This is a BUY signal for boring vertical SaaS — less competition from VC-funded startups chasing AI hype. The "simpler, self-hosted" comment suggests a gap for affordable, lightweight alternatives.
+- **Gap/Opportunity**: The stock selloff creates fear but fundamentals are strong. Market OVERESTIMATES LLM disruption and UNDERESTIMATES domain-specific workflow value. This is a BUY signal for boring vertical SaaS — less competition from VC-funded startups chasing AI hype. The "simpler, self-hosted" comment suggests a gap for affordable, lightweight alternatives. ✅ REINFORCED by "AI agents eating SaaS" thread (Dec 2025): A vertical SaaS CTO confirmed "end users aren't technical, zero overlap with developer population" — their users still primarily use Excel and they've lost ZERO subscribers to AI alternatives. Key quote: "The bottleneck is still knowing what to build, not building. A lot of the value in our product is in decisions users don't even know we made." Vertical SaaS for non-technical trades users is the MOST protected category.
 - **Our Angle**: Build now while fear is high and competition is distracted. Vertical SaaS for boring industries is MORE viable because: (1) VC money is chasing AI/LLM plays instead, (2) small businesses still need simple tools, (3) stock selloff doesn't affect bootstrapped products. The macro environment favors indie builders in boring niches.
 - **LTD Potential**: N/A — strategic signal
 
 ---
 
-## 19. Field Service for Underserved Trades — Competitive Landscape
+## 20. Field Service for Underserved Trades — Competitive Landscape
 - **Source**: Multiple — Briostack, GorillaDesk, Fieldwork, Home.works, Deep Lawn
 - **Additional Links**:
   - https://www.briostack.com/
@@ -322,7 +338,23 @@
 
 ---
 
-## 20. Daycare Daily Report Automation — Market Opportunity
+## 21. Centori — Failed SaaS to $14K MRR Productized Service (Validation Playbook)
+- **Source**: https://www.indiehackers.com/post/services/from-failed-saas-to-14k-mrr-software-enabled-service-BsxsALYvpfriOYumgU0l
+- **Additional Links**: None
+- **Platform**: Indie Hackers
+- **Type**: Revenue milestone / Pivot story
+- **Engagement**: Featured IH post
+- **Revenue Data**: $14K MRR as a solo operator. ✅ Verified via direct IH page fetch.
+- **Boring Business Score**: 3/5
+- **Target Industry**: B2B founders needing SEO/content marketing
+- **Core Value Prop**: Tyler spent a year learning to code and building an SEO SaaS tool. Nobody wanted it. Pivoted to offering the SERVICE instead — fractional content marketing with two productized offerings (monthly subscription + 6-month growth sprint). Key insight: "SEO is treated as a black box that allows dishonest people to run wild with jargon."
+- **Gap/Opportunity**: The lesson: sometimes the SERVICE is what people want, not the software. Apply to boring industries: instead of building a cleaning business management SaaS, offer "fractional operations management for cleaning companies" as a service first, THEN build the software to automate what you learn. Validates the problem before writing code.
+- **Our Angle**: Use as a validation playbook for any boring industry: offer the service manually first, learn exact workflow pain points, then build the software. "Productized services" (fixed scope, fixed price) are a profitable bridge to SaaS.
+- **LTD Potential**: 2/5 — Services don't LTD well. But the validation methodology is gold.
+
+---
+
+## 22. Daycare Daily Report Automation — Market Opportunity
 - **Source**: https://saasopportunities.com/blog/saas-niches-that-make-money-underserved-markets
 - **Additional Links**: None
 - **Platform**: Industry research
@@ -344,19 +376,21 @@
 |--------|----------|--------|
 | Property management for small landlords | **Overwhelming** | Propbox (520 pts) + Micasa (621 pts) + IH DIY landlord stack — 3 independent signals |
 | Small-batch food production management | **Very Strong** | Craftplan Show HN — 577 pts, 167 comments |
-| Commercial cleaning operations SaaS | **Strong** | Onedesk $100K+ MRR on IH — proven market |
+| Commercial cleaning operations SaaS | **Very Strong** | Onedesk $100K+ MRR + ZenMaid $250K+ MRR ($3M/yr ARR) — TWO proven winners |
 | Field service for underserved trades | **Strong** | Multiple commercial competitors validating TAM |
-| Construction invoicing / quote-to-pay | **Strong** | InstaBuild + QuotationGenie + PlainInvoice — repeated attempts, poor execution |
+| Construction invoicing / quote-to-pay | **Strong** | InstaBuild + QuotationGenie + QuoteCreator + Compare Contractor Quotes — repeated attempts |
 | Small fleet management gap | **Strong** | FleetFix Show HN + enterprise pricing gap + $5.81B market by 2033 |
 | Dental patient recall automation | **Strong** | 200K+ practices, 30-40% missed appointment revenue loss |
-| Boring database products playbook | **Strong** | $42K MRR portfolio on IH — replicable model |
-| Vertical SaaS still viable despite AI fears | **Strong** | HN top story — practitioners reject LLM disruption thesis |
+| Boring database products playbook | **Strong** | $42K MRR portfolio on IH (verified) — replicable model |
+| Vertical SaaS still viable despite AI fears | **Strong** | Two HN threads confirm: practitioners reject LLM disruption for non-tech verticals |
+| AI-powered contractor bid comparison | **Moderate-Strong** | Compare Contractor Quotes Show HN — niche but validated pain point |
 | HVAC route optimization | **Moderate** | 120K+ companies, weather-driven demand patterns |
 | EU e-invoicing compliance tools | **Moderate** | Regulation-driven, predictable demand cycles |
 | Auto repair shop management | **Moderate** | 250K+ shops, expensive legacy incumbents |
 | Vet clinic practice management | **Moderate** | 30K+ clinics, legacy software dominance |
 | Daycare daily reports | **Moderate** | 100K+ centers, emotional parent-driven demand |
 | Landscaping chemical compliance | **Moderate** | 600K+ businesses, regulation-driven |
+| Productized service → SaaS playbook | **Moderate** | Centori pivot $14K MRR — validate with service first, build software second |
 
 ### Top 3 Actionable Opportunities
 
@@ -372,8 +406,22 @@
 - **The "simplest tool" thesis**: Stagetimer ($20K/mo from a timer), curated databases ($42K MRR) — sometimes the smallest, most focused tool wins
 - **Offline-first for field workers**: QuoteCreator's local-first approach highlights that contractors/field workers need tools that work without internet
 - **Marketplace distribution**: Swifteq's $51K/mo from Zendesk marketplace shows platform add-ons eliminate marketing costs
-- **AI as differentiator, not product**: Deep Lawn's AI quoting, weather-predictive HVAC dispatch — AI enhances boring tools rather than replacing them
+- **AI as differentiator, not product**: Deep Lawn's AI quoting, Compare Contractor Quotes AI bid parsing, weather-predictive HVAC dispatch — AI enhances boring tools rather than replacing them
+- **Service-first validation**: Centori's pivot ($14K MRR) proves the playbook: offer the service manually, learn the pain points, THEN build the software. Reduces risk for any boring vertical entry.
+- **Cleaning SaaS at scale**: ZenMaid ($3M/yr ARR) proves a solo founder CAN build a massive business in the most boring niche. Key: he ran the cleaning business himself first, then built the tool.
 
 ### Strategic Note
 
-The HN discussion "Are We Cooked?" (#18) confirms the macro thesis: VC money chasing AI means LESS competition for boring vertical SaaS. Stock selloffs don't affect bootstrapped products. Build boring tools for boring industries while the market is distracted. The best time to enter boring verticals is when everyone else is building AI wrappers.
+The HN discussions "Are We Cooked?" (#19) and "AI Agents Eating SaaS" both confirm the macro thesis: VC money chasing AI means LESS competition for boring vertical SaaS. A vertical SaaS CTO confirmed zero subscriber loss to AI — "the bottleneck is still knowing what to build, not building." Stock selloffs don't affect bootstrapped products. Build boring tools for boring industries while the market is distracted. The best time to enter boring verticals is when everyone else is building AI wrappers.
+
+### Key Competitor Intelligence (AI-Powered Contractor Tools)
+
+Emerging AI tools for home services that represent both competition and inspiration:
+- **Handoff AI** — turns job photos into estimates for residential contractors
+- **Buildxact AI Estimator** — cloud-based estimating for residential builders with AI calculator
+- **Beam AI Assistant** — draft estimates from scope of work + site notes
+- **Contractor+/Estimatic** — AI estimating software for contractors
+- **ServiceTitan AI** — CSR AI for customer service and scheduling (enterprise)
+- **Housecall Pro AI Team** — automated scheduling and customer communication
+
+The gap: all of these target mid-market+ ($100-300+/mo). Solo operators and 1-3 person crews remain underserved at the $29-49/mo price point.
