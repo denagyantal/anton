@@ -425,3 +425,162 @@ Emerging AI tools for home services that represent both competition and inspirat
 - **Housecall Pro AI Team** — automated scheduling and customer communication
 
 The gap: all of these target mid-market+ ($100-300+/mo). Solo operators and 1-3 person crews remain underserved at the $29-49/mo price point.
+
+---
+
+## ADDENDUM: Additional Findings (Second Research Pass)
+
+> Additional data points gathered from expanded searches on 2026-02-23.
+
+---
+
+## 23. Waste Collection Route Optimizer — Bootstrappable Vertical SaaS
+- **Source**: https://entrepreneurloop.com/bootstrapped-saas-ideas-founders-2026/
+- **Additional Links**: None
+- **Platform**: Industry research
+- **Type**: Market analysis
+- **Engagement**: N/A
+- **Revenue Data**: Market-level — pricing at $49/truck/month; a 10-truck operation saves $2,000+/month in fuel
+- **Boring Business Score**: 5/5
+- **Target Industry**: Independent waste management / junk removal companies
+- **Core Value Prop**: Optimizes collection routes to reduce fuel costs and save time for independent waste haulers. Most small operators plan routes manually or with basic Google Maps — no optimization for pickup density, truck capacity, or time windows.
+- **Gap/Opportunity**: Large waste companies use enterprise route optimization (Routific, OptimoRoute at $35-50/driver/month). Small independent operators (1-10 trucks) doing residential waste, junk removal, or recycling pickup have no affordable option. The savings pitch is concrete: "$2K/month in fuel saved" is an easy ROI story.
+- **Our Angle**: Route optimization specifically for small waste/junk haulers. Key features: drag-and-drop route planning, truck capacity tracking, time window optimization, customer notification ("your pickup is 30 min away"), and fuel cost reporting. Price at $29-49/truck/mo. The fuel savings ROI makes the sale easy.
+- **LTD Potential**: 4/5 — Clear ROI pitch. $99-149 LTD for a tool that saves thousands monthly.
+
+---
+
+## 24. Solar Panel Installation CRM — Booming but Underserved
+- **Source**: https://entrepreneurloop.com/bootstrapped-saas-ideas-founders-2026/
+- **Additional Links**: None
+- **Platform**: Industry research
+- **Type**: Market analysis
+- **Engagement**: N/A
+- **Revenue Data**: Market-level — $200/month per user; 6-8 week build timeline estimated
+- **Boring Business Score**: 4/5
+- **Target Industry**: Renewable energy / solar panel installers
+- **Core Value Prop**: The renewable energy sector is booming yet many installers run businesses on spreadsheets. Handles permitting workflows, scheduling, rebate paperwork, and customer follow-ups specific to solar installation workflows. Generic CRMs don't understand the solar sales cycle (site survey → design → permitting → install → inspection → interconnection).
+- **Gap/Opportunity**: Solar installations grew 34% YoY in 2025. The workflow is uniquely complex: utility rebate tracking, permitting (varies by municipality), NEM calculations, equipment warranties, inspection scheduling. Enterprise tools exist (Aurora Solar, SolarNexus) but start at $300+/mo. Small 2-5 person installer teams have no affordable option.
+- **Our Angle**: Solar installer CRM with workflow automation: lead → site survey → system design → permit application tracking → install scheduling → inspection booking → utility interconnection. Include rebate/incentive calculator by state. Price at $99-149/mo. Expansion to battery storage and EV charger installers.
+- **LTD Potential**: 3/5 — Growing market but somewhat competitive. Better as subscription.
+
+---
+
+## 25. Craft Brewery Inventory & Batch Management
+- **Source**: https://entrepreneurloop.com/bootstrapped-saas-ideas-founders-2026/
+- **Additional Links**: None
+- **Platform**: Industry research
+- **Type**: Market analysis
+- **Engagement**: N/A
+- **Revenue Data**: Market-level — tiered pricing starting at $99/month, expanding to $399/month with distributor features
+- **Boring Business Score**: 5/5
+- **Target Industry**: Craft breweries and small beverage producers
+- **Core Value Prop**: Tracks hops, grains, kegs, and fermentation timelines with batch-specific data. Existing tools are either built for macro breweries (expensive ERP) or are basic spreadsheet replacements. Craft breweries need batch tracking, ingredient sourcing costs, TTB compliance reporting, and taproom inventory sync.
+- **Gap/Opportunity**: 9,600+ craft breweries in the US. Similar pattern to Craftplan (#1) — small-batch producers need affordable production management. Parallels to micro-bakery management. TTB compliance reporting is a regulatory hook (mandatory federal reporting). Expansion to distilleries, cideries, kombucha producers.
+- **Our Angle**: Production + inventory management for craft breweries. Recipe management with cost tracking, fermentation timeline monitoring, keg/barrel tracking, taproom POS integration, TTB compliance reports, ingredient reorder alerts. Price at $79-149/mo. The compliance angle creates urgency.
+- **LTD Potential**: 4/5 — Brewery owners are passionate and community-driven. $149-199 LTD would spread through brewery networks fast.
+
+---
+
+## 26. Hairdressing/Salon Digital Consultation — Untapped Tech-Resistant Market
+- **Source**: https://news.ycombinator.com/item?id=42608478
+- **Additional Links**: None
+- **Platform**: HN
+- **Type**: Ask HN discussion
+- **Engagement**: 2 points, 2 comments (low engagement but insightful niche mention)
+- **Revenue Data**: None — market-level only. 1M+ salons in the US, average salon spends $200-400/mo on software
+- **Boring Business Score**: 5/5
+- **Target Industry**: Hairdressers, salons, barber shops
+- **Core Value Prop**: Miscommunication between clients and stylists about desired results is the #1 pain point. Current AI visualization tools are seen as "gimmicky" by professionals. The gap is a practical digital consultation tool that integrates into the stylist's existing workflow rather than replacing it.
+- **Gap/Opportunity**: Industry actively resists technology adoption — but this means low competition. The consultation workflow (client shows phone photos → stylist interprets → miscommunication → unhappy result) hasn't been digitized. A simple tool: client uploads reference photos before appointment, stylist annotates with notes/adjustments, both agree on expectations before scissors touch hair. Could reduce callbacks and bad reviews significantly.
+- **Our Angle**: Pre-appointment digital consultation for salons. Client fills out style questionnaire + uploads reference photos before visit. Stylist reviews and adds notes. Photo comparison (before/after) for portfolio building. Marketing angle: "Never get a bad haircut again." Price embedded in salon software at $29-49/mo or per-stylist pricing.
+- **LTD Potential**: 3/5 — Tech-resistant market makes distribution harder, but the pain point is very real.
+
+---
+
+## 27. Invoicing for Freelancers/Contractors — Overcrowded but Underexecuted
+- **Source**: https://news.ycombinator.com/item?id=46764526
+- **Additional Links**:
+  - https://news.ycombinator.com/item?id=46135247 ($20/year invoicing for solo devs)
+  - https://news.ycombinator.com/item?id=43970241 (PlainInvoice)
+  - https://news.ycombinator.com/item?id=46942499 (Invox — open-source self-hosted)
+  - https://news.ycombinator.com/item?id=44047324 (AI Invoice + Expense Tracker)
+  - https://news.ycombinator.com/item?id=46469208 (Free no-signup invoice generator)
+- **Platform**: HN
+- **Type**: Multiple Show HNs (6+ in 2025-2026 alone)
+- **Engagement**: Individually low (1-3 upvotes each) but the PATTERN is the signal — 6+ attempts in 12 months
+- **Revenue Data**: InvoXZero runs for €4/mo on Hetzner VPS. $20/year pricing (solo dev invoicer). Most are pre-revenue.
+- **Boring Business Score**: 3/5
+- **Target Industry**: Freelancers, small service businesses, contractors
+- **Core Value Prop**: The sheer volume of "I built an invoicing tool" Show HNs proves persistent unmet demand. People keep building these because existing tools are either too complex (QuickBooks), too expensive (FreshBooks at $15+/mo), or too generic. Every new attempt focuses on simplicity — "no bloat," "no signup," "stupidly simple."
+- **Gap/Opportunity**: The opportunity ISN'T another generic invoicing tool. It's vertical-specific invoicing: invoicing for plumbers (progress billing, parts markup), invoicing for cleaners (recurring schedules, crew splits), invoicing for photographers (packages, deposits, shot lists). The generic invoicing category is overcrowded; the vertical invoicing category is wide open. Reference: InstaBuild (#2) already identified this for construction.
+- **Our Angle**: DON'T build another generic invoicing tool. Instead, take the quote-to-invoice pipeline from #10 and verticalize it for ONE trade. Alternatively, the open-source self-hosted angle (Invox) could be a wedge for privacy-conscious businesses — self-hosted invoicing with trade-specific templates.
+- **LTD Potential**: 2/5 generic; 5/5 if verticalized for a specific trade.
+
+---
+
+## 28. Underserved Industries Megalist — HN Community Signals (2020-2025)
+- **Source**: https://news.ycombinator.com/item?id=22496129
+- **Additional Links**:
+  - https://news.ycombinator.com/item?id=35987740 (2023 version)
+  - https://news.ycombinator.com/item?id=15432504 (2017 version)
+- **Platform**: HN
+- **Type**: Ask HN (recurring thread — posted in 2017, 2020, 2023)
+- **Engagement**: 2020 thread: high engagement; 2023 thread: moderate. The fact this question keeps getting reposted = persistent interest.
+- **Revenue Data**: None — demand signal only
+- **Boring Business Score**: N/A — meta-research
+- **Target Industry**: Multiple — see list below
+- **Core Value Prop**: Consolidated list of industries repeatedly identified as underserved across multiple HN threads:
+- **Industries identified across threads**:
+  - **Agriculture/Farming**: Spreadsheet-heavy, tax complexity, equipment sharing, pesticide tracking, yield optimization
+  - **Construction**: Fragmented supply chains, manual Excel workflows, natural stone distribution, temp labor tracking
+  - **Aviation/Aerospace**: Fuel optimization, maintenance paperwork, aging systems
+  - **Scientific Research**: Manual cell counting, image processing bottlenecks, experiment planning
+  - **Healthcare**: Excessive paperwork, fragmented EHR, interoperability failures ("18% of GDP with 1990s technology")
+  - **Legal Services**: Outdated search systems, time-based billing disincentives for efficiency
+  - **Government/RFP**: Procurement process is archaic
+  - **Wine Industry**: Operations management
+  - **Grain Elevator Operations**: Specialized niche within agriculture
+  - **Manufactured Housing Dealerships**: Unique sales/inventory workflows
+  - **Female-oriented Hobbies/Businesses**: Pilates studios, crochet/knitting pattern management (underserved by male-dominated dev community)
+  - **Non-profit**: Budget constraints limit software adoption despite need
+  - **Law Enforcement**: Legacy systems, procurement barriers
+- **Gap/Opportunity**: The recurring nature of these threads (posted every 2-3 years) confirms that software gaps persist. Agriculture and construction appear in EVERY version. Healthcare is mentioned every time but has regulatory barriers to entry. The best targets combine: (1) large number of businesses, (2) willingness to pay, (3) low current software adoption, (4) no regulatory moat.
+- **Our Angle**: Use this as a target list for validation. Cross-reference with our LTD model: which of these industries have businesses that would buy a lifetime deal? Agriculture (farmers buy equipment), construction (contractors buy tools), manufactured housing (dealers buy software) — all have purchasing culture.
+- **LTD Potential**: Varies by sub-industry — see individual entries.
+
+---
+
+## Micro SaaS Revenue Benchmarks (2025 Study Data)
+
+Source: https://www.rockingweb.com.au/micro-saas-revenue-analysis-2025/
+
+Key data from analysis of 1,000+ micro SaaS businesses:
+
+| Niche | Median MRR | Top 10% Average | Success Rate |
+|-------|-----------|-----------------|--------------|
+| Email Marketing Tools | $4,200 | $89,000 | 23% |
+| Developer APIs | $3,800 | $45,000 | 31% |
+| Analytics Platforms | $2,900 | $67,000 | 19% |
+| E-commerce Solutions | $2,100 | $156,000 | 15% |
+| Content Creation | $1,800 | $28,000 | 27% |
+| Social Media Tools | $1,600 | $71,000 | 22% |
+
+Key insights:
+- 70% of micro SaaS generate under $1,000/month
+- Only 1-2% exceed $50,000/month
+- US-based founders earn 2-3x more than international counterparts
+- Developer APIs have the highest success rate (31%) due to sticky integrations
+- E-commerce has the highest top-end ($156K avg for top 10%) but lowest success rate (15%)
+- **Notable gap**: Boring vertical industries (trades, field service, property) are NOT in this list — they're underrepresented in the micro SaaS dataset, suggesting untapped opportunity
+
+## Updated Market Size Data
+
+| Market | 2025 Size | Projected | CAGR |
+|--------|-----------|-----------|------|
+| Field Service Management | $5.64B | $9.68B by 2030 | 11.4% |
+| Property Management Software | $26.55B | $52.21B by 2032 | 10.1% |
+| Global SaaS Market | $408B | $465B by end 2026 | 13% |
+| Vertical Software (total) | — | $430.12B by 2033 | 12.5% |
+
+Vertical SaaS is growing 2-3x faster than horizontal solutions. The micro-SaaS sweet spot ($5K-50K MRR, solo/duo team) is wider than ever.
