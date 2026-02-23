@@ -251,16 +251,67 @@
 
 ---
 
+## 16. Onedesk — Cleaning SaaS + Ecommerce ($100K+ MRR)
+- **Source**: https://www.indiehackers.com/post/2020-in-review-0-to-100k-mrr-for-our-cleaning-saas-ecommerce-d53de6dde5
+- **Additional Links**: None
+- **Platform**: Indie Hackers
+- **Type**: Revenue milestone
+- **Engagement**: Featured IH post
+- **Revenue Data**: $100K+ MRR within 10 months of launch (March 2020 → December 2020). Combines SaaS subscriptions + ecommerce cleaning equipment sales.
+- **Boring Business Score**: 5/5
+- **Target Industry**: Commercial cleaning — office buildings, retail stores, restaurants, warehouses, daycares, clinics ($100B+ market)
+- **Core Value Prop**: Dual offering: (1) SaaS platform for office managers to self-manage cleaning services via mobile walkthroughs, messaging, invoicing, scheduling; (2) ecommerce for cleaning equipment (electrostatic sprayers). COVID accelerated demand for disinfection services.
+- **Gap/Opportunity**: Founder's key insight: "distribution is everything." Initial Google Ads had zero ROI. Pivoted to SEO — pitched reporters on disinfection expertise, got mentioned in Reader's Digest and major publications, created YouTube product review content. The vertical integration (service SaaS + equipment ecommerce) creates multiple revenue streams. The cleaning industry remains massive and underdigitized — most cleaning companies still use paper and phone calls.
+- **Our Angle**: SaaS for cleaning company operations: job scheduling, crew management, quality checklists (mobile walkthroughs), client communication, invoicing. Target commercial cleaning companies (not residential). Add supply ordering/tracking as upsell. The combo of service management + supply chain is powerful and sticky. SEO + YouTube content marketing is the proven growth channel.
+- **LTD Potential**: 4/5 — Commercial cleaning companies have real budgets and high retention once workflows are embedded.
+
+---
+
+## 17. Propbox — Property Management (520 HN Points)
+- **Source**: https://bestofshowhn.com/search?q=saas (ranked #2 with 520 points)
+- **Additional Links**: https://propbox.co
+- **Platform**: HN
+- **Type**: Show HN
+- **Engagement**: 520 upvotes — extremely high for a property management tool
+- **Revenue Data**: None disclosed
+- **Boring Business Score**: 5/5
+- **Target Industry**: Property management
+- **Core Value Prop**: Property management tool launched by a 77-year-old entrepreneur. Details sparse from listing alone, but the 520 upvotes make it one of the top-performing SaaS Show HNs of the period.
+- **Gap/Opportunity**: This is the THIRD strong signal for property management this week (alongside Micasa at 621 pts and the IH DIY landlord stack). Three independent data points all pointing to the same gap: property management for smaller operators is deeply underserved. The 520 points for Propbox validates that HN readers — many of whom are landlords or property investors — resonate strongly with this problem.
+- **Our Angle**: Same thesis as #9 — reinforced. The cumulative signal across Propbox (520 pts), Micasa (621 pts), and the IH DIY landlord is now overwhelming. Property management for 1-20 unit landlords is arguably the strongest opportunity in this entire report.
+- **LTD Potential**: 5/5
+
+---
+
+## 18. Vertical SaaS Market Signal — "10 Years Building Vertical Software: Are We Cooked?"
+- **Source**: https://news.ycombinator.com/item?id=47040781
+- **Additional Links**:
+  - https://x.com/nicbstme/status/2023501562480644501
+- **Platform**: HN
+- **Type**: Discussion / Market intelligence
+- **Engagement**: Top story on HN (February 2026)
+- **Revenue Data**: Market-level — S&P Software & Services Index fell 20% YTD; FactSet dropped from $20B peak to under $8B; vertical SaaS valuations at 12x+ vs 5.2x for horizontal
+- **Boring Business Score**: N/A — market signal, not a product
+- **Target Industry**: All vertical SaaS
+- **Core Value Prop**: Key debate: Will LLMs disrupt vertical software by commoditizing specialized UIs and data moats? The consensus from practitioners: NO, because (1) specialized domain knowledge remains valuable, (2) chat interfaces can't replace power-user workflows ("show me a trader who'd prefer chat to 36 monitors"), (3) SaaS provides operational insurance (responsibility shifts to vendors), (4) small businesses selling "lamps or furniture or trumpets" find modern SaaS makes things harder — appetite for simpler, self-hosted solutions.
+- **Gap/Opportunity**: The stock selloff is creating fear but the fundamentals of vertical SaaS remain strong. Key insight: the market OVERESTIMATES LLM disruption of specialized tools and UNDERESTIMATES the value of domain-specific workflows. This is a BUY signal for building boring vertical software — less competition from well-funded startups who are chasing AI hype instead. Also: the comment about small businesses wanting simpler, self-hosted solutions suggests a gap for lightweight, affordable tools vs. enterprise-grade SaaS.
+- **Our Angle**: Build now while fear is high and competition is distracted by AI hype. Vertical SaaS for boring industries is MORE viable, not less, because: (1) VC money is chasing AI/LLM plays instead of boring verticals, (2) small businesses still need simple tools, (3) the stock selloff doesn't affect bootstrapped indie products. The "simpler, self-hosted" comment also suggests a market for affordable, lightweight alternatives to overbuilt enterprise tools.
+- **LTD Potential**: N/A — strategic signal
+
+---
+
 ## Summary of Key Signals (2026-02-23)
 
 | Signal | Strength | Source |
 |--------|----------|--------|
+| Property management for small landlords | **Overwhelming** | Propbox (520 pts) + Micasa (621 pts) + IH DIY landlord stack — 3 independent signals |
 | Small-batch food production management | **Very Strong** | Craftplan Show HN — 577 pts, 167 comments |
-| Property management for small landlords | **Very Strong** | IH rental portfolio post + Micasa (621 pts from 2/21) |
+| Commercial cleaning operations SaaS | **Strong** | Onedesk $100K+ MRR on IH — proven market |
 | Field service for underserved trades | **Strong** | Multiple commercial competitors validating TAM |
 | Small fleet management gap | **Strong** | FleetFix Show HN + enterprise pricing gap |
 | Quote-to-invoice pipeline for trades | **Strong** | Multiple HN Show HN attempts, poor execution |
 | Boring database products as business model | **Strong** | $42K MRR portfolio on IH |
+| Vertical SaaS still viable despite AI fears | **Strong** | HN top story — practitioners reject LLM disruption thesis |
 | EU e-invoicing compliance tools | **Moderate** | XRechnung converter, regulation-driven demand |
 | Auto repair shop management | **Moderate** | Otto marketplace + industry gap |
 | Vet clinic practice management | **Moderate** | Tracker AI + legacy software gap |
@@ -268,8 +319,12 @@
 
 ### Top 3 Actionable Opportunities
 
-1. **Small-Batch Food Production SaaS** — Craftplan's 577 points is extraordinary engagement for a niche tool. An open-source project with no commercial ambitions. A commercial SaaS targeting micro-bakeries, cottage food businesses, small caterers, and artisan food producers could own this category. The market is massive (700K+ cottage food businesses in the US alone), completely underserved, and has high willingness to pay.
+1. **Simple Property Management for Small Landlords (1-20 units)** — NOW THE #1 SIGNAL. Three independent validations this week: Propbox (520 HN pts), Micasa (621 HN pts from 2/21), and an IH poster who literally built a DIY Zapier stack because nothing exists. The property management software market is projected at $5.12B by 2031. The gap between enterprise tools (AppFolio/Buildium at $1+/unit/mo for 50+ units) and spreadsheets is massive. A simple, affordable tool for 1-20 unit landlords ($29-49/mo flat) would own this segment.
 
-2. **Simple Property Management for Small Landlords (1-20 units)** — Reinforced by both IH and HN this week. The IH poster literally built a DIY Zapier stack because nothing exists at the right price point. Combined with Micasa's 621-point validation, this is the strongest cross-platform signal.
+2. **Small-Batch Food Production SaaS** — Craftplan's 577 points is extraordinary engagement for a niche tool. An open-source project with no commercial ambitions. A commercial SaaS targeting micro-bakeries, cottage food businesses, small caterers, and artisan food producers could own this category. The market is massive (700K+ cottage food businesses in the US alone), completely underserved, and has high willingness to pay.
 
-3. **Trade-Specific Quote-to-Invoice Tool** — Multiple builders keep trying (QuotationGenie, PlainInvoice, Invoice Dragon) and failing at execution. The demand is proven but nobody has built the polished, vertical-specific version yet. A quoting + invoicing + contracts tool built specifically for one trade (plumbers, or electricians, or landscapers) with industry templates would win.
+3. **Commercial Cleaning Operations SaaS** — Validated by Onedesk hitting $100K+ MRR within 10 months. The $100B+ commercial cleaning market is still largely paper-and-phone. A SaaS combining job scheduling, crew management, quality checklists, client communication, and invoicing — targeted at commercial cleaning companies — has a proven playbook. The SEO + YouTube content strategy is replicable.
+
+### Strategic Note
+
+The HN discussion "10 Years Building Vertical Software: Are We Cooked?" (#18) is a critical macro signal. Despite stock market fears about LLM disruption, practitioners overwhelmingly believe vertical software remains defensible. The selloff is creating LESS competition from VC-funded startups (who are chasing AI plays), making this the ideal time to build boring vertical SaaS tools. Build now while the market is distracted.
