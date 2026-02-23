@@ -1,6 +1,6 @@
 # Competitor Analysis Report — 2026-02-23
 
-Four boring-business categories deep-dived: **Field Service Management**, **Auto Shop / Repair Management**, **Cleaning Service Management**, and **Property Management (Small Landlords)**. Every category features legacy incumbents charging enterprise prices to small operators, widespread complaints about contracts/hidden fees, and massive underserved segments still using spreadsheets and paper.
+Five boring-business categories deep-dived: **Field Service Management**, **Auto Shop / Repair Management**, **Cleaning Service Management**, **Property Management (Small Landlords)**, and **Dental Practice Management**. Every category features legacy incumbents charging enterprise prices to small operators, widespread complaints about contracts/hidden fees, and massive underserved segments still using spreadsheets, paper, or outdated software.
 
 ---
 
@@ -277,6 +277,68 @@ The global property management software market was **$3.58-3.81B in 2025**, proj
 
 ---
 
+## Dental Practice Management: Solo/Small Practice Dentists Drowning in Legacy Software Costs
+
+### Market Landscape
+
+The US dental software market is dominated by legacy incumbents — **Dentrix** (Henry Schein) and **Eaglesoft** (Patterson Dental) — that together control the majority of practices. More than half of US dentists say **shrinking reimbursements are their biggest concern** heading into 2026, with ~15% of claims getting denied and 10-15% of appointments ending in no-shows. Solo/small practices (1-3 chairs) are being squeezed between declining insurance payouts and rising software costs that were designed for multi-location groups.
+
+| Competitor | Price | Strengths | Weaknesses |
+|-----------|-------|-----------|------------|
+| **Dentrix** (Henry Schein) | Quote-based; estimated $300-500+/mo per location; add-on modules extra | Most widely used; feature-rich; strong clinical tools; comprehensive reporting | **32% more expensive than category average** (G2); steep learning curve; server-based (not cloud-native); expensive upgrades; lock-in via proprietary data format |
+| **Eaglesoft** (Patterson Dental) | Quote-based; scales with patient count, doctors, staff, data stored | Reliable; solid insurance management; long track record | **Dated interface** with slow innovation; expensive for small practices; upfront cost + maintenance fees + training charges; on-premise only |
+| **Open Dental** | $179/mo first 12 months → $129/mo after; open-source | **41% less expensive** than average; open-source; highly customizable; strong community; dentist-created | Requires technical expertise; complex setup; steep learning curve for customization; support quality varies |
+| **Curve Dental** | $200/mo (1 dentist); startup practice pricing available | Cloud-native; modern UI; simplified workflow; good for cloud-first practices | Limited for multi-location; fewer integrations than Dentrix; higher than Open Dental |
+| **Denticon** (Planet DDS) | $200/mo | Cloud-based; strong multi-location support; good reporting | Geared toward DSOs/groups; can feel heavyweight for solo practices |
+| **CareStack** | $698/mo/user | All-in-one with billing, scheduling, charting, analytics, patient engagement | **Extremely expensive** — prohibitive for solo practitioners; enterprise-focused |
+| **Adit** | Custom pricing; bundled communication + PMS | Modern patient communication (VoIP, texting, reminders); centralized dashboard | Newer entrant; relies on integration with existing PMS; limited standalone PMS features |
+| **MOGO** | Cloud-based; predictable monthly pricing (not published) | Simple cloud option; good for smaller teams; predictable costs | Limited feature depth; fewer integrations; less established |
+| **tab32** | Subscription-based (not published) | Cloud-native; AI-powered; modern architecture; good analytics | Smaller market share; less community/ecosystem support |
+
+### Top Customer Complaints (from reviews)
+
+1. **Dentrix is prohibitively expensive and locks you in** — Henry Schein's quote-based pricing means solo practices overpay relative to usage. Proprietary data format makes switching extremely difficult. Expensive annual upgrade fees for features that should be patches. — [Pact-One Blog](https://www.pact-one.com/2024/09/top-practice-management-software-for-dental-practices/), [SoftwareAdvice Dental Reviews](https://www.softwareadvice.com/dental/)
+
+2. **Eaglesoft interface is stuck in the 2000s** — "Slower innovation and a more dated interface" is the consensus complaint. Patterson Dental has not kept pace with modern UX expectations. Mobile access is limited or nonexistent. — [SelectHub Comparison](https://www.selecthub.com/dental-practice-management-software/open-dental-vs-eaglesoft/), [Remote Dental Billers Comparison](https://remotedentalbillers.com/comparing-dental-practice-management-software-open-dental-eaglesoft-dentrix-curve-dentrix-ascend-and-more)
+
+3. **Hidden fees across the industry** — "Common pitfalls include hidden fees, poor support, clunky workflows." Training, implementation, data migration, and module add-ons inflate total cost well beyond advertised pricing. — [CertifyHealth Blog](https://www.certifyhealth.com/blog/top-10-dental-practice-management-software-2026/), [Titan Web Agency Reviews](https://blog.titanwebagency.com/dental-management-software-reviews)
+
+4. **Open Dental requires technical expertise many dentists lack** — While affordable, "dentists who have the extra time to invest in learning the complexities of the system can enjoy the benefits." Solo practitioners don't have IT staff or time to customize. — [CDT Pros Review](https://cdtprofessionals.com/blog/open-dental-pros-cons-amp-best-alternatives-2025), [SoftwareAdvice Open Dental](https://www.softwareadvice.com/dental/open-dental-profile/)
+
+5. **No-show and claims management is manual busywork** — 10-15% no-show rates and 15% claim denials cost practices thousands, yet most PMS software provides only basic reminders with no intelligent re-engagement, predictive scheduling, or automated denial follow-ups. — [Cherry Blog](https://withcherry.com/blog/dental-practice-management-software), [RevUp Dental](https://revupdental.com/best-dental-practice-management-systems/)
+
+### Identified Gap
+
+- **What's missing**: A modern, cloud-native, affordable ($99-149/mo) dental PMS for solo and 2-3 chair practices that includes scheduling, charting, insurance billing, patient communication (texting/reminders), and AI-powered no-show prediction + claims management — without requiring technical expertise to set up or customize.
+- **Who needs it**: Solo dentists and 2-3 chair practices (the majority of ~200K US dental practices). They're trapped between $300-500+/mo legacy systems (Dentrix/Eaglesoft) that are outdated and the technical complexity of Open Dental.
+- **Why competitors don't do it**: Dentrix/Eaglesoft are owned by dental supply distributors (Henry Schein/Patterson) who profit from bundling hardware+software+supplies. Open Dental's open-source model requires technical users. Cloud-native players (Curve, CareStack) are pricing for groups/DSOs, not solo practices.
+- **Current workaround**: Many solo practices stick with aging Dentrix/Eaglesoft installations they've "already paid for," running unsupported versions to avoid upgrade costs. Some use paper charts alongside outdated software. Newer practices default to Open Dental but struggle with configuration.
+
+### Our Opportunity
+
+- **Product concept**: Cloud-native, zero-config dental PMS for 1-3 chair practices. Includes scheduling, basic charting, insurance billing with automated claim follow-ups, patient texting/reminders, AI-powered no-show prediction, and built-in payment processing. Template-based setup (general dentistry, pediatric, ortho) instead of manual configuration.
+- **Key differentiator**: (1) $99-129/mo all-inclusive — sits between Open Dental's complexity and Dentrix's cost, (2) AI-powered claims denial management and no-show prediction at small practice pricing, (3) zero-config setup with practice-type templates, (4) cloud-native with mobile access from day one, (5) open data export — no vendor lock-in.
+- **LTD price point**: $149 (replaces $300-500+/mo for Dentrix/Eaglesoft or the headache of self-managing Open Dental)
+- **Target channels**: r/dentistry, r/DentalSchool, Dentaltown forums, dental Facebook groups, state dental association newsletters, dental school alumni networks, ADA (American Dental Association) events
+- **AppSumo potential**: Maybe — dental practices are less typical AppSumo buyers, but the price savings are dramatic. Better suited for direct outreach through dental associations and Dentaltown forums. Could work as a "founding member" launch on AppSumo with dental-specific messaging.
+
+### Source Links
+- [CertifyHealth - Top 10 Dental PMS 2026](https://www.certifyhealth.com/blog/top-10-dental-practice-management-software-2026/)
+- [RevUp Dental - 10 Best Dental PMS 2026](https://revupdental.com/best-dental-practice-management-systems/)
+- [Titan Web Agency - Dental Software Reviews 2026](https://blog.titanwebagency.com/dental-management-software-reviews)
+- [Cherry Blog - Best Dental Software 2026](https://withcherry.com/blog/dental-practice-management-software)
+- [SoftwareAdvice - Dental Software Reviews](https://www.softwareadvice.com/dental/)
+- [SelectHub - Open Dental vs Eaglesoft](https://www.selecthub.com/dental-practice-management-software/open-dental-vs-eaglesoft/)
+- [Remote Dental Billers - Software Comparison](https://remotedentalbillers.com/comparing-dental-practice-management-software-open-dental-eaglesoft-dentrix-curve-dentrix-ascend-and-more)
+- [CDT Pros - Open Dental Review 2025](https://cdtprofessionals.com/blog/open-dental-pros-cons-amp-best-alternatives-2025)
+- [Pact-One - Top PMS for Dental 2024](https://www.pact-one.com/2024/09/top-practice-management-software-for-dental-practices/)
+- [Kwikly - Top 10 Most Common Dental Software 2025](https://www.joinkwikly.com/blog/top-10-most-common-dental-software-solutions-for-2025)
+- [G2 - Dental Practice Management Software](https://www.g2.com/categories/dental-practice-management/enterprise)
+- [SoftwareAdvice - Open Dental Reviews](https://www.softwareadvice.com/dental/open-dental-profile/)
+- [Dentaltown - Top 17 Dental PMS 2024](https://www.dentaltown.com/blog/post/20773/top-17-dental-practice-management-software-of-2024-reviews-pricing-features)
+
+---
+
 ## Cross-Category Patterns & Strategic Takeaways
 
 ### Universal Themes Across All Four Categories
@@ -301,5 +363,6 @@ The global property management software market was **$3.58-3.81B in 2025**, proj
 | 2 | **Property Management** | $3.8B+ | Very clear ($15-25/mo) | Low | $59 LTD | AI-powered all-in-one for 1-20 units |
 | 3 | **Auto Shop Management** | Large (303K US shops) | Clear ($49-99/mo) | Low-Medium | $99 LTD | Affordable shop mgmt + mobile mechanic mode |
 | 4 | **Cleaning Service Mgmt** | $2.0B+ | Clear (2-5 person) | Medium | $79 LTD | Flat-rate cleaning tool with bilingual support |
+| 5 | **Dental Practice Mgmt** | Large (200K+ US practices) | Clear ($99-149/mo) | Medium | $149 LTD | Zero-config cloud PMS for solo/small practices |
 
-All four categories show the same structural pattern: incumbents moved upmarket, small operators were left behind, and the gap is wide open for a transparent, affordable, mobile-first challenger.
+All five categories show the same structural pattern: incumbents moved upmarket, small operators were left behind, and the gap is wide open for a transparent, affordable, mobile-first challenger.
