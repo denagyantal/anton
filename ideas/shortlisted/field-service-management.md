@@ -1,56 +1,37 @@
-# Field Service Management for Small Trades — Score: 100/105
+# Field Service Management for Solo/Micro Trades
 
-**Tier**: 1 (Strong Opportunity)
+**Score**: 102/105
 **Verdict**: BUILD
-**Evaluation Date**: 2026-02-24
+**LTD Price**: $79
 
-## Summary
-Ultra-simple, mobile-first FSM app for solo/micro trade operators (HVAC, plumbing, electrical). Scheduling, dispatching, invoicing, payments, QuickBooks sync, and simple job costing. Works offline. Setup in minutes, not weeks. AI-powered automation. The "Anti-ServiceTitan" for 1-5 person shops.
+## One-Line Pitch
+The anti-ServiceTitan: dead-simple quote>schedule>invoice>get-paid for 1-5 person trades shops.
 
-## Scoring
-| Criterion | Score | Weight | Weighted |
-|-----------|-------|--------|----------|
-| Market Validation | 5/5 | 3x | 15 |
-| Competitor Weakness | 5/5 | 2x | 10 |
-| LTD Viability | 5/5 | 2x | 10 |
-| No Free Tier | 5/5 | 1x | 5 |
-| Channel Access | 5/5 | 2x | 10 |
-| Content Potential | 5/5 | 1x | 5 |
-| AppSumo Fit | 5/5 | 2x | 10 |
-| Review Potential | 5/5 | 1x | 5 |
-| MRR Path | 4/5 | 3x | 12 |
-| Build Feasibility | 5/5 | 2x | 10 |
-| Boring Business Bonus | 5/5 | 2x | 10 |
-| **Total** | | | **100/105** |
-
-## Market Data
-- **Market Size**: $5.64B global FSM market (2025) → $9.68B by 2030
-- **Target Segment**: 3M+ trade businesses in the US, majority with <5 employees
-- **Pricing**: $29-49/mo flat. LTD at $79
-- **Revenue Potential**: >$10K MRR achievable within 12 months
+## Market
+- $5.49B FSM market
+- 3.5M home service businesses in the US, 94% small
 
 ## Key Differentiators
-1. $29-49/mo flat (no per-user or add-on creep)
-2. Offline-first architecture with Android parity
-3. Built-in financial tracking (eliminates QuickBooks dependency)
-4. No contracts ever
-5. AI scheduling (suggest next job by proximity)
-6. Vertical-specific templates for HVAC, plumbing, electrical
+- No per-user fees
+- Offline-capable
+- Mobile-first
+- Flat-rate pricing
+- Reliable QuickBooks sync
 
-## Next Steps
-1. Pick primary trade vertical (HVAC vs plumbing vs electrical) for V1 templates
-2. Build mobile-first MVP: scheduling, invoicing, payments, customer CRM
-3. Pre-launch on r/HVAC and trade Facebook groups
-4. Prepare AppSumo LTD at $79
+## Target Channels
+- r/HVAC, r/Plumbing, r/electricians
+- HVAC-Talk
+- Trade Facebook groups
+- AppSumo
 
-## Risks
-1. Feature expectations from ServiceTitan defectors may be too high
-2. Offline-first architecture is technically complex
-3. Jobber/HCP may cut prices in response
+## Top 3 Risks
+1. Jobber/HCP could launch stripped-down tiers targeting micro shops
+2. QuickBooks integration complexity and ongoing API maintenance
+3. Trade-specific pricebook data needed for each vertical
 
 ## Key Source Links
-- [ServiceTitan PissedConsumer (1.8/5)](https://servicetitan.pissedconsumer.com/review.html)
-- [ServiceTitan BBB Complaints ($39K cancellation)](https://www.bbb.org/us/ca/glendale/profile/digital-marketing/servicetitan-inc-1216-1290182/complaints)
-- [FieldCamp: ServiceTitan Alternatives 2026](https://fieldcamp.ai/alternatives/servicetitan/)
-- [OneCrew: ServiceTitan Reviews](https://www.getonecrew.com/post/servicetitan-reviews)
-- [MarketsandMarkets: FSM Market $9.17B by 2030](https://www.marketsandmarkets.com/PressReleases/field-service-management.asp)
+- [ServiceTitan BBB Complaints](https://www.bbb.org/us/ca/glendale/profile/digital-marketing/servicetitan-inc-1216-1290182/complaints)
+- [Jobber Pricing 2026](https://myquoteiq.com/jobber-pricing-breakdown-2026/)
+- [HCP Trustpilot Reviews](https://www.trustpilot.com/review/housecallpro.com)
+- [FSM Market Report](https://www.gminsights.com/industry-analysis/field-service-management-market)
+- [FieldFuze ServiceTitan Alternative](https://toricentlabs.com/blog/servicetitan-alternative.html)

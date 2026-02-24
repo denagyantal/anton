@@ -1,49 +1,36 @@
-# Property Management for Small Landlords (1-20 Units) — Score: 98/105
+# Property Management for Small Landlords
 
-**Evaluation Date**: 2026-02-23
+**Score**: 91/105
 **Verdict**: BUILD
-**Tier**: 1 (Strong Opportunity)
+**LTD Price**: $99
 
-## Concept
-All-in-one landlord tool for self-managing landlords: rent collection (ACH + card via Plaid), digital lease signing, tenant screening, maintenance request portal with photo upload, expense tracking with receipt OCR, and Schedule E-ready tax reporting. Designed for landlords with a day job, not property management companies. Mobile-first, 15-minute onboarding.
+## One-Line Pitch
+One unified tool for the 5-20 unit self-managing landlord: rent collection + Schedule E automation + maintenance + leases for $99 one-time.
 
-## Scoring
+## Market
+- $5.88B market
+- 9.7M landlords, 80% self-manage, 40%+ still on spreadsheets
 
-| Criterion | Score | Weight | Weighted | Notes |
-|-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | AppFolio, Buildium, Stessa (350K+ users), RentRedi. 10.6M landlords, $6.4B market. |
-| Competitor Weakness | 5/5 | 2x | 10 | AppFolio $298/mo min. Buildium hidden prices. Avail no mobile app. RentRedi security breach. 40%+ on spreadsheets. |
-| LTD Viability | 5/5 | 2x | 10 | $79-149 LTD. Low cost to serve. |
-| No Free Tier | 3/5 | 1x | 3 | Avail, TurboTenant, Innago offer free tiers. |
-| Channel Access | 5/5 | 2x | 10 | r/realestateinvesting (500K+), BiggerPockets (2M+), r/landlord (65K+). |
-| Content Potential | 5/5 | 1x | 5 | "landlord software", "Buildium alternative" — high volume. |
-| AppSumo Fit | 5/5 | 2x | 10 | Real estate investors are deal-savvy. DoorLoop launched on AppSumo. |
-| Review Potential | 4/5 | 1x | 4 | Active in investment communities. |
-| MRR Path | 5/5 | 3x | 15 | Per-unit pricing, tenant screening fees, premium features. |
-| Build Feasibility | 4/5 | 2x | 8 | Rent collection + leases + maintenance + expenses in 4-6 weeks. |
-| Boring Business Bonus | 4/5 | 2x | 8 | Property management — unglamorous professional. |
-
-## Next Steps
-1. MVP: rent collection (Plaid ACH), lease storage, maintenance portal, expense tracking, Schedule E export
-2. Position for "landlords with a day job" — manage from phone, 15-minute setup
-3. Recruit beta users on BiggerPockets and r/realestateinvesting
-4. Time AppSumo for Sept-Oct (tax season prep)
-
-## Risks
-1. Free alternatives set expectations — must clearly justify paid
-2. Rent collection transaction costs eat LTD margins
-3. Stessa's 350K users could create competitive pressure if Roofstock stabilizes
-
-## Key Source Links
-- [r/realestateinvesting](https://www.reddit.com/r/realestateinvesting/)
-- [BiggerPockets Forums](https://www.biggerpockets.com/forums/52)
-- [Stessa - Small Landlord Software](https://www.stessa.com/blog/small-landlord-software/)
-- [DoorLoop - PM for Small Landlords](https://www.doorloop.com/blog/small-landlord-property-management-software)
-- [iPropertyManagement - Landlord Stats](https://ipropertymanagement.com/research/landlord-statistics)
-
-## LTD Pricing
-- Tier 1: $79 (up to 10 units)
-- Tier 2: $149 (up to 50 units, unlimited, premium features)
+## Key Differentiators
+- Flat-rate unlimited units (not per-unit pricing)
+- Schedule E tax automation
+- Transparent pricing with zero hidden fees
+- Mobile-first with reliable app
+- AI maintenance triage
 
 ## Target Channels
-r/realestateinvesting, r/landlord, BiggerPockets, Facebook landlord groups, local REIAs, real estate investor meetups
+- BiggerPockets forums
+- r/landlord, r/realestateinvesting
+- REIA chapters
+- AppSumo
+
+## Top 3 Risks
+1. Crowded market with free tools (Avail, TurboTenant, Innago)
+2. Payment processing reliability and transaction cost margins
+3. State-specific legal compliance for leases and notices
+
+## Key Source Links
+- [BiggerPockets PM Software](https://www.biggerpockets.com/forums/899/topics/1114176-best-property-management-software)
+- [RentRedi Trustpilot](https://www.trustpilot.com/review/rentredi.com)
+- [DoorLoop BBB Complaints](https://www.bbb.org/us/fl/hollywood/profile/project-management-software/doorloop-inc-0633-90612238/complaints)
+- [Landlord Statistics](https://ipropertymanagement.com/research/landlord-statistics)

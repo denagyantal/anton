@@ -1,29 +1,50 @@
-# Veterinary Practice Management — Score: 77/105
+# Veterinary Practice Communication & Recall — Score: 79/105
 
-**Evaluation Date**: 2026-02-23
-**Verdict**: EXPLORE FURTHER (high reward but high complexity)
-**Tier**: 1 (Strong Opportunity)
+**Evaluation Date**: 2026-02-24
+**Verdict**: EXPLORE FURTHER
 
-## Concept
-Cloud-native vet PMS for small clinics (1-3 vets): patient records, scheduling, client communication (two-way SMS), multi-vendor lab integration, inventory with expiration tracking, invoicing/payments, prescription management. Lab-vendor-agnostic (not locked to IDEXX). Works on any device, no server. $99-159/mo flat.
+## One-Line Pitch
 
-**Alternative**: "Weave for vet clinics" — communication layer only (text reminders, vaccination alerts, online booking) at $79-99 LTD. Much faster to build.
+Lightweight communication add-on for any vet PMS: vaccine recall, appointment reminders, and review requests for $79-99 one-time.
 
-## Scoring Summary
-Market Validation: 5/5 (3x=15) | Competitor Weakness: 5/5 (2x=10) | LTD Viability: 2/5 (2x=4) | No Free Tier: 5/5 (1x=5) | Channel Access: 3/5 (2x=6) | Content: 4/5 (1x=4) | AppSumo: 1/5 (2x=2) | Reviews: 4/5 (1x=4) | MRR Path: 5/5 (3x=15) | Build: 2/5 (2x=4) | Boring Bonus: 4/5 (2x=8)
+## LTD Price
 
-## Next Steps
-1. Communication-layer approach is faster: text reminders, vaccination alerts, booking
-2. Full PIMS is 6-12 month build — not aligned with 4-6 week timeline
-3. Validate communication tool with 5 vet clinics
+$79-99
 
-## Risks
-- Medical record compliance is complex
-- IDEXX lab integration dependency
-- Highest build complexity of any idea
+## Market
+
+- 32K+ vet practices in the US
+- Pet care industry valued at $150B+
+- Average appointment value $200-500
+- 10-15% no-show rate
+
+## Key Differentiators
+
+- Communication layer only (not a PMS replacement)
+- 2-way SMS messaging
+- Vaccine recall campaigns
+- Prescription refill alerts
+- Pet-specific templates ("Buddy is due for his rabies booster!")
+- Works with any existing PMS
+
+## Target Channels
+
+- r/veterinary (100K+ members)
+- r/VetTech
+- Vet industry conferences
+
+## Top 3 Risks
+
+1. PMS vendors could build native communication features into their platforms
+2. Weave is well-funded and expanding into veterinary
+3. Small addressable market (32K practices limits upside)
+
+## Verdict
+
+EXPLORE FURTHER -- The communication-layer approach is fast to build and avoids the complexity of a full PMS. Validate with 5 vet clinics before committing.
 
 ## Key Source Links
-- [NectarVet - Cornerstone Pricing](https://www.nectarvet.com/post/cornerstone-vet-software-pricing-reviews) | [r/veterinary](https://www.reddit.com/r/veterinary/) | [Capterra - Cornerstone](https://www.capterra.com/p/99976/Cornerstone-Practice-Management/reviews/)
 
-## LTD Pricing (communication layer)
-- Tier 1: $79 (single practice, reminders + booking) | Tier 2: $149 (+ prescription alerts, client portal)
+- [Shepherd Vet AI Guide](https://www.shepherd.vet/blog/8-best-ai-powered-veterinary-practice-management-software-platforms-2026-comparison-guide/)
+- [IDEXX Software Comparison](https://software.idexx.com/top-veterinary-software-solutions-a-2025-comparison-guide)
+- [DVM360 Software](https://www.dvm360.com/view/veterinary-practice-management-software-options)

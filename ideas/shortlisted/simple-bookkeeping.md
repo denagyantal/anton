@@ -1,23 +1,51 @@
-# Simple Bookkeeping / QBO Alternative — Score: 75/105
+# Small Business Bookkeeping Simplifier — Score: 75/105
 
-**Tier**: 1 (Strong Opportunity)
-**Verdict**: EXPLORE FURTHER
 **Evaluation Date**: 2026-02-24
+**Verdict**: EXPLORE FURTHER (high risk, high reward)
 
-## Summary
-AI-first bookkeeping for non-accountants: connect bank feeds, AI auto-categorizes transactions, plain-English dashboard ("You made $12,400 this month"), one-click tax-ready reports. No accounting jargon. Think "Mint for business." $79-99 LTD.
+## One-Line Pitch
 
-## Market Data
-- **Target**: QBO has 7M+ subscribers. Prices up 125% since 2017. 33M+ small businesses
-- **Key Pain**: "Simple tasks take too many steps" in QBO. Many still use spreadsheets
-- **Competitors**: Xero ($15-78/mo), Wave (free), FreshBooks ($19-60/mo)
+AI-first bookkeeping for non-accountants: connect your bank, auto-categorize everything, plain-English dashboard for $79-99 one-time.
 
-## Risks
-- Wave is free — hard to compete
-- Xero is good and growing
-- Bank connection (Plaid) costs may erode LTD margins
-- Better verticalized: "QuickBooks for plumbers" > generic QBO alternative
+## LTD Price
+
+$79-99 (bank connection may need small monthly fee)
+
+## Market
+
+- QBO has 7M+ subscribers
+- 33M+ small businesses in the US
+- QBO prices up 125% since 2017
+- "QuickBooks alternative" search volume growing
+
+## Key Differentiators
+
+- Zero accounting knowledge required
+- AI auto-categorization of transactions
+- Plain-English dashboard ("You made $12,400 this month")
+- One-click tax-ready reports
+- No chart of accounts setup needed
+- Receipt photo capture
+
+## Target Channels
+
+- r/smallbusiness
+- r/accounting
+- r/Bookkeeping
+- AppSumo
+
+## Top 3 Risks
+
+1. Competing with free (Wave) and dominant (QBO) is extremely difficult
+2. Bank integration costs (Plaid) and reliability can erode LTD margins
+3. Regulatory requirements for financial software add compliance burden
+
+## Verdict
+
+EXPLORE FURTHER (high risk, high reward) -- Massive market with real frustration, but competing against free and dominant players is the hardest fight. Best angle may be vertical-specific ("QuickBooks for plumbers") rather than generic.
 
 ## Key Source Links
-- [1800Accountant: Best QuickBooks Alternatives](https://1800accountant.com/blog/best-quickbooks-alternativ)
-- [NerdWallet: QBO Alternatives](https://www.nerdwallet.com/best/small-business/quickbooks-online-alternatives)
+
+- [QBO Alternatives 1800Accountant](https://1800accountant.com/blog/best-quickbooks-alternativ)
+- [QBO Alternatives NerdWallet](https://www.nerdwallet.com/best/small-business/quickbooks-online-alternatives)
+- [Why SMBs Still Use Spreadsheets](https://enabled.substack.com/p/why-small-businesses-still-use-spreadsheets)

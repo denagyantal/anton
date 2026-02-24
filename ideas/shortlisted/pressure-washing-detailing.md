@@ -1,48 +1,49 @@
-# Pressure Washing & Auto Detailing Booking + CRM — Score: 89/105
+# Pressure Washing & Auto Detailing Booking + CRM
 
-**Tier**: 1 (Strong Opportunity)
-**Verdict**: BUILD
+**Score**: 83/105
+**Verdict**: BUILD (fast, focused, niche)
 **Evaluation Date**: 2026-02-24
 
-## Summary
+## One-Line Pitch
 
-Mobile-first booking + CRM for property services: instant quote calculator (sqft/vehicle size), online booking with service packages, before/after photo documentation, recurring service scheduling with seasonal upsell prompts, invoicing with card-on-file. GPS-stamped job completion for proof of service.
+Mobile-first booking + CRM for pressure washing and auto detailing: sqft-based quoting, before/after photos, invoicing for $59-79 one-time.
 
-## Scoring
+## LTD Price
 
-| Criterion | Score | Weight | Weighted |
-|-----------|-------|--------|----------|
-| Market Validation | 5/5 | 3x | 15 |
-| Competitor Weakness | 5/5 | 2x | 10 |
-| LTD Viability | 4/5 | 2x | 8 |
-| No Free Tier | 4/5 | 1x | 4 |
-| Channel Access | 5/5 | 2x | 10 |
-| Content Potential | 4/5 | 1x | 4 |
-| AppSumo Fit | 4/5 | 2x | 8 |
-| Review Potential | 4/5 | 1x | 4 |
-| MRR Path | 4/5 | 3x | 12 |
-| Build Feasibility | 5/5 | 2x | 10 |
-| Boring Business Bonus | 5/5 | 2x | 10 |
-| **Total** | | | **89/105** (rounding from weighted calc) |
+$59-79
 
-## Market Data
+## Market
 
-- **Market Size**: Pressure washing $2.3B+. Auto detailing $15B+. Both growing rapidly
-- **Target Segment**: Solo pressure washing operators, mobile auto detailers
-- **Pricing**: $19-39/mo or $59-79 LTD
-- **Community**: r/pressurewashing 100K+, r/AutoDetailing 500K+
+- Pressure washing: $2.3B+
+- Auto detailing: $15B+
+- r/pressurewashing: 100K+ members
+- r/AutoDetailing: 500K+ members
 
-## Key Differentiator
+## Key Differentiators
 
-Zero purpose-built tools exist for pressure washing or auto detailing workflows (sqft-based pricing, before/after photos, recurring property services).
+- Sqft-based instant quoting
+- Before/after photo documentation with auto-delivery to client
+- GPS-stamped job completion
+- Recurring service scheduling
+- Package-based pricing
 
-## Next Steps
+## Target Channels
 
-1. Build mobile-first MVP: instant quote calculator, booking, before/after photos, invoicing
-2. Target r/pressurewashing and r/sweatystartup
-3. LTD at $59-79
+- r/pressurewashing (100K+)
+- r/AutoDetailing (500K+)
+- r/sweatystartup
+
+## Top 3 Risks
+
+1. Niche may be too small for $10K+ MRR
+2. Generic FSM tools "good enough" for some operators
+3. Low switching cost if larger platforms add similar features
+
+## Verdict
+
+BUILD -- fast, focused, niche. Clear pain points with no purpose-built tools. Strong Reddit communities for organic distribution.
 
 ## Key Source Links
 
 - [QuoteIQ: Pressure Washing CRM](https://myquoteiq.com/pressure-washing-crm-business-software/)
-- [Jobber: Pressure Washing Statistics](https://www.getjobber.com/academy/pressure-washing/pressure-washing-industry-statistics/)
+- [Jobber: Pressure Washing Industry Statistics](https://www.getjobber.com/academy/pressure-washing/pressure-washing-industry-statistics/)

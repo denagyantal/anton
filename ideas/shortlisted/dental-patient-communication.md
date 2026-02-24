@@ -1,18 +1,49 @@
-# Dental Practice Patient Communication — Score: 87/105
+# Dental/Healthcare Practice Patient Communication — Score: 76/105
 
-**Tier**: 1 (Strong Opportunity)
-**Verdict**: BUILD
 **Evaluation Date**: 2026-02-24
+**Verdict**: EXPLORE FURTHER
 
-## Summary
-Lightweight recall add-on for dental PMS: automated multi-channel reminders, no-show rebooking, waitlist management, post-visit review collection. Integrates with Dentrix/Eaglesoft/Open Dental. Not a PMS replacement — a communication layer. $79-99 LTD vs Weave at $300+/mo.
+## One-Line Pitch
 
-## Market Data
-- **Market Size**: $2.9B dental PM software → $6.7B by 2035. 200K+ practices
-- **Key Stat**: 10-15% no-show rate costs $40K+/year per single-dentist practice
-- **Pricing**: $79-99 LTD per practice
+Automated recall campaigns, appointment confirmations, and review requests for dental practices -- a communication layer on top of Dentrix/Eaglesoft for $199-399 one-time.
+
+## LTD Price
+
+$199-399
+
+## Market
+
+- $2.9B dental software market
+- AI in dental: $459M growing to $3.26B by 2034 (21.78% CAGR)
+- Weave charges $300+/mo for similar functionality
+
+## Key Differentiators
+
+- Communication layer only (not a PMS replacement)
+- Automated recall campaigns
+- Post-procedure follow-ups
+- AI insurance verification
+- Review requests after appointments
+- Integrates with existing PMS (Dentrix, Eaglesoft, Open Dental)
+
+## Target Channels
+
+- Dentaltown forums
+- Dental association events
+- Dental conferences
+
+## Top 3 Risks
+
+1. HIPAA compliance adds significant complexity and liability
+2. Weave is well-funded and aggressive in this space
+3. Longer healthcare sales cycles slow down customer acquisition
+
+## Verdict
+
+EXPLORE FURTHER -- Strong market with clear pain (no-show rates, manual recall) and expensive incumbents. HIPAA is the main hurdle to manage carefully.
 
 ## Key Source Links
-- [SaaS Opportunities: Dental Recall](https://saasopportunities.com/blog/saas-niches-that-make-money-underserved-markets)
-- [RevUpDental: Best Dental PMS 2026](https://revupdental.com/best-dental-practice-management-systems/)
-- [AI in Dental Market $3.26B by 2034](https://www.towardshealthcare.com/insights/ai-in-dental-market-sizing)
+
+- [CertifyHealth Dental Software 2026](https://www.certifyhealth.com/blog/top-10-dental-practice-management-software-2026/)
+- [Adit Dental Software 2026](https://adit.com/top-10-dental-software-in-2026)
+- [Open Dental](https://www.opendental.com/)
