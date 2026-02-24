@@ -5,6 +5,7 @@
 1. Auto Shop / Repair Management
 2. Cleaning Service Management
 3. Property Management (Small Landlords)
+4. Field Service Management (HVAC / Plumbing / Electrical -- Small Trades)
 
 ---
 
@@ -290,3 +291,98 @@ The cleaning service software market is valued at approximately $1.8-2.0 billion
 - [REI Hub - Rental Property Accounting Software for Small Landlords](https://www.reihub.net/resources/rental-property-accounting-software-small-landlords/)
 - [AppSumo - RENTBase Lite PM Software](https://appsumo.com/products/rentbase-lite-property-management-software/)
 - [MrLandlord Forum Discussion](https://www.mrlandlord.com/landlordforum/display.php?id=14649206)
+
+---
+
+## Field Service Management (HVAC / Plumbing / Electrical): Enterprise Software at Enterprise Prices Leaves 500K+ Small Trades Businesses Behind
+
+### Market Landscape
+
+The field service management (FSM) software market is massive -- projected at $7.3B+ globally by 2028, growing at ~11% CAGR. But the market is deeply stratified: enterprise tools like ServiceTitan, Salesforce Field Service, and Dynamics 365 dominate on revenue while budget-friendly tools fight for the long tail of 1-10 technician operations. The critical gap is at 1-5 technicians, where businesses are too big for paper/spreadsheets but too small and budget-constrained for the major platforms.
+
+| Competitor | Price (Monthly) | Strengths | Weaknesses |
+|-----------|----------------|-----------|------------|
+| **ServiceTitan** | $245-$398/technician/mo; $5K-$50K+ implementation fee | Market leader; comprehensive all-in-one platform; excellent for 20+ tech operations; strong dispatch, marketing, pricebook tools | Explicitly "not optimized for companies with 3 or fewer technicians"; $50K+ annual cost; 12-month minimum contract; 6-12 month implementation timeline; "absolutely the worst customer service" (BBB); too complex for small shops |
+| **Housecall Pro** | $59/mo (solo); $149/mo (5 users); $329/mo+ (larger teams + add-ons) | User-friendly; quick setup; good for 1-100 employees; drag-and-drop scheduling; 50+ industries supported | Cost creep from paid add-ons (#1 complaint); critical features break without warning; mobile app bugs/crashes; calendar sync issues with Google; chat-only support (no phone); employee location tracking lags; FTC $2.2M settlement for spamming |
+| **Jobber** | $25/mo (solo); $109/mo (5 users); $349/mo (15+ users); +$29/extra user | Cheapest entry point; strong CRM/client management; excellent QuickBooks integration; intuitive UI; good documentation | Per-user pricing gets expensive fast; GPS/routing is confusing; QuickBooks sync can be unreliable; booking confirmations locked behind higher tiers; overwhelming feature set for simple trades |
+| **FieldPulse** | ~$99-$199/mo (custom pricing) | Supports HVAC, plumbing, electrical, appliance repair; no hidden fees; customizable workflows | Less well-known; smaller user base; limited reviews compared to top 3; pricing not transparent |
+| **ServiceM8** | Free-$349/mo (flat rate, unlimited users) | Truly flat-rate pricing; unlimited users on all paid plans; great mobile interface; integrates with QuickBooks/Xero; good for 1-15 employee teams | Australia-based (support timezone issues for US users); not trades-specific (generic FSM); limited marketing/proposal tools |
+| **Connecteam** | Free (up to 10 users); $29-$99/mo (paid tiers) | Free tier for small teams; scheduling, payroll, analytics; strong team communication; mobile-first | Not purpose-built for field service trades; lacks dispatch optimization; no customer-facing booking portal; more of a team management tool than FSM |
+| **Workiz** | Free (20 jobs/mo limit); $65-$295/mo + $46-54/extra user | AI-powered scheduling; built-in phone system (VoIP); smart automated messaging; good for locksmiths, HVAC, plumbing | Free tier impractical (20 jobs/month); "worst customer service... they hang up on you"; app described as "buggy"; per-user fees add up |
+| **FieldEdge** | ~$100-$200+/technician/mo (custom pricing) | Strong for HVAC/plumbing; good QuickBooks integration; performance dashboards per technician | Expensive per-tech pricing; no transparent pricing; annual contracts; dated interface compared to newer players |
+| **ContractorPlus** | $7.99/mo (1 user); scales by team size | Extremely affordable; covers estimates, invoicing, scheduling, client management; built for solo contractors | Very new/small; limited integrations; lacks advanced features (DVI, dispatch optimization); limited mobile app |
+
+**Other notable players:** Sera Systems (HVAC-focused, AI-driven), ServiceFusion ($225-$325/mo, good mid-market option), mHelpDesk, Kickserv ($59-$239/mo, simple FSM), GorillaDesk (pest/lawn focused, $49-$99/mo), ServiceBridge (free basic tier).
+
+### Top Customer Complaints (from reviews)
+
+1. **"ServiceTitan is too expensive and too complex for small teams"** -- ServiceTitan costs $245-$398 per technician per month, meaning a 10-technician company pays $2,450-$3,980/month for software alone, plus $5,000-$50,000+ in one-time implementation fees. The company itself admits it's "not optimized for companies with 3 or fewer technicians." Small business owners report: "The product is complicated, which means you need help regularly, but their product support is TERRIBLE" (G2, June 2025). Multiple reviewers describe the onboarding as taking 6-12 months. Sources: [FieldCamp ServiceTitan Review](https://fieldcamp.ai/reviews/servicetitan/), [QuoteIQ ServiceTitan Pricing Calculator](https://myquoteiq.com/servicetitan-pricing-calculator/), [OneCrew ServiceTitan Reviews](https://www.getonecrew.com/post/servicetitan-reviews)
+
+2. **"Cost creep from add-ons and per-user pricing"** -- Housecall Pro's add-on model is the single most common reason businesses stop using it. Essential features like GPS tracking, sales proposals, and price books cost $20-$149/month each on top of base pricing. Jobber charges $29/user/month beyond included seats. A real-world 5-person team on Housecall Pro can easily hit $300-500/month when you add in features that should be standard. Sources: [Connecteam Housecall Pro Review](https://connecteam.com/reviews/housecall-pro/), [FieldCamp Housecall Pro Review](https://fieldcamp.ai/reviews/housecall-pro/), [Capterra Housecall Pro Reviews](https://www.capterra.com/p/140363/HouseCall-Pro/reviews/)
+
+3. **"Mobile app is buggy and unreliable"** -- Critical for field service where technicians live on their phones. Housecall Pro users encounter "frustrating bugs and crashes within the mobile app, causing some users to avoid the app altogether in favor of the desktop version." Employee tracking/GPS often lags, showing employees at locations hours after they've left. Calendar sync with Google Calendar requires workarounds. Sources: [Capterra Housecall Pro Reviews](https://www.capterra.com/p/140363/HouseCall-Pro/reviews/), [Connecteam Housecall Pro Review](https://connecteam.com/reviews/housecall-pro/)
+
+4. **"Support is chat-only or terrible"** -- Housecall Pro: "Customer service is absolutely the worst. You can't speak to a human. Everything is done by chat, and it takes forever to get a response." ServiceTitan: "Absolutely the worst customer service I've ever had in my entire life" (BBB complaint, July 2025). Workiz: reps "hang up on you." Live chat is only available limited hours (Housecall Pro: weekdays 5am-5pm, weekends 8am-4pm PST). Sources: [Trustpilot Housecall Pro](https://www.trustpilot.com/review/housecallpro.com), [Capterra ServiceTitan Reviews](https://www.capterra.com/p/150053/ServiceTitan/reviews/)
+
+5. **"Setup complexity and steep learning curves"** -- Across all major FSM tools, users note that the initial setup is complex and requires significant time and training. ServiceTitan takes 6-12 months to fully onboard. Even "simpler" tools like Jobber have a "feature overload" problem where small operators only use 20% of what they're paying for. Salesforce Field Service and Dynamics 365 require dedicated IT staff to configure. Sources: [G2 Field Service Management Category](https://www.g2.com/categories/field-service-management), [ServiceDynamics365 FSM Reviews](https://servicedynamics365.com/best-field-service-management-software/)
+
+6. **"Not designed for my specific trade"** -- General FSM tools try to serve 50+ industries, meaning none of them handle trade-specific workflows well. HVAC businesses need equipment tracking and refrigerant logs. Plumbers need fixture/part catalogs. Electricians need permit tracking. These trade-specific features are either missing or require expensive add-ons. Sources: [FieldBoss HVAC FSM Software](https://www.fieldboss.com/blog/best-hvac-field-service-software/), [Workyard HVAC Software](https://www.workyard.com/compare/hvac-software)
+
+### Identified Gap
+
+- **What's missing**: An affordable, dead-simple field service management tool purpose-built for solo operators and small trades businesses (1-5 technicians) in HVAC, plumbing, and electrical. The current market forces small operators to choose between: (A) enterprise platforms they can't afford or operationally absorb (ServiceTitan at $3K+/month), (B) mid-tier tools with cost creep from add-ons and per-user pricing (Housecall Pro/Jobber at $200-500/month real cost), or (C) ultra-basic free tools that lack core functionality. No product offers modern dispatch, customer texting, invoicing, basic CRM with service reminders, and a clean mobile technician app -- all at a flat price under $50/month with zero per-user fees and no contracts.
+
+- **Who needs it**: The estimated 500,000+ small HVAC, plumbing, and electrical businesses in the US with 1-5 employees. These are typically owner-operators who are the technician AND the office staff. They answer phones on the job site, write estimates on paper, send invoices from QuickBooks, and manually text customers for scheduling. Many are family businesses grossing $200K-$800K/year where a $200-500/month software bill represents a painful 3-6% of revenue. An estimated 30-40% of these small trades businesses still have no FSM software at all.
+
+- **Why competitors don't do it**: ServiceTitan (raised $600M+) is chasing enterprise and franchise accounts where ARPU is $3K-10K+/month. Housecall Pro and Jobber are VC-funded and optimize for per-user/add-on revenue expansion -- serving solo operators at $25/month doesn't move the needle. Legacy players (FieldEdge, ServiceFusion) are owned by larger companies with no incentive to race to the bottom on pricing. The few budget options (Connecteam, ContractorPlus) aren't purpose-built for field service trades and lack critical features.
+
+- **Current workaround**: Small trades businesses cobble together: Google Calendar or a physical whiteboard for scheduling, QuickBooks or Wave for invoicing, personal cell phone for customer calls and texts, paper forms for estimates, and a notebook or spreadsheet for customer records. Some use the cheapest tier of Jobber ($25/month for 1 user) but lose functionality as soon as they add a helper. The result is missed callbacks, lost leads, no service reminders (leaving recurring revenue on the table), and an unprofessional customer experience.
+
+### Our Opportunity
+
+- **Product concept**: A streamlined, mobile-first field service app built for the solo-to-small trades operator (1-5 techs). Core features: (1) Smart scheduling/dispatch with drag-and-drop calendar and route view, (2) Customer texting with appointment confirmations and on-my-way notifications, (3) Estimate and invoice creation with flat-rate pricing and labor guides, (4) Basic CRM with service history, equipment tracking, and automated maintenance reminders (recurring revenue engine), (5) Online booking page for customer self-scheduling, (6) QuickBooks Online/Xero sync, (7) Simple technician mobile app with job details, navigation, notes, and photos, (8) Payment collection in the field (card/ACH). No dispatch optimization for 50-truck fleets. No pricebook management for 10,000 SKUs. Deliberately scoped for the small operator who just needs the basics done right.
+
+- **Key differentiator**: (1) Flat-rate pricing at $29-$49/month with unlimited users (directly attacks the per-user/add-on pricing model that is the #1 complaint). (2) Set up in 15 minutes, not 6 months. No implementation fee. No annual contract. (3) Trade-specific templates -- HVAC, plumbing, and electrical each get pre-built estimate templates, equipment tracking fields, and service reminder schedules out of the box. (4) Customer texting and online booking included in every plan (not a $50/month add-on). (5) Positioned as "the anti-ServiceTitan" -- everything a small trades business needs, nothing it doesn't.
+
+- **LTD price point**: $99-$199 (lifetime, single-business license). Tier 1 at $59 (1-2 users), Tier 2 at $99 (up to 5 users), Tier 3 at $199 (unlimited users, single location). This undercuts even Jobber's annual cost ($300-$1,308/year) as a one-time payment.
+
+- **Target channels**:
+  - **Subreddits**: r/HVAC (250K+ members), r/Plumbing (200K+ members), r/electricians (400K+ members), r/smallbusiness, r/Entrepreneur, r/sweatystartup
+  - **Facebook Groups**: "HVAC Technicians," "Plumbers and Plumbing Professionals," "Electricians Network," "Small Business HVAC Owners," "One Man Crew HVAC" -- groups with 10K-100K+ members
+  - **Trade Forums**: HVAC-Talk.com (largest HVAC forum), PlumbingZone.com, ElectriciansForums.net, ContractorTalk.com
+  - **YouTube**: HVAC/plumbing YouTubers (HVAC School, Roger Wakefield, ThatHVACGuy) for review partnerships
+  - **Trade Shows**: AHR Expo (HVAC), PHCC Connect (plumbing), NECA Convention (electrical) -- even a small booth or sponsored demo session
+  - **Referral**: Offer 1-month free for every referral; trades businesses cluster geographically and talk to each other at supply houses
+
+- **AppSumo potential**: **Yes -- Strong fit.** No trades-specific FSM tool has had a significant AppSumo launch. The LTD model directly addresses the #1 objection in this market (monthly cost adds up). AppSumo's solopreneur audience overlaps heavily with independent contractors and small trades business owners. A well-positioned LTD at $59-$199 could generate $300K-$600K+ in launch revenue while building a user base of evangelists in trade forums and Facebook groups.
+
+### Source Links
+
+- [FieldBoss - 5 Best HVAC Field Service Software 2026](https://www.fieldboss.com/blog/best-hvac-field-service-software/)
+- [Workyard - 7 Best HVAC Software Solutions 2026](https://www.workyard.com/compare/hvac-software)
+- [Workiz - Best HVAC Business Software Comparison 2026](https://www.workiz.com/blog/hvac/best-hvac-business-software-comparison/)
+- [BDR - 2026 Guide to HVAC Business Software](https://www.bdrco.com/blog/hvac-business-software-guide/)
+- [ServiceTitan Pricing Page](https://www.servicetitan.com/pricing)
+- [QuoteIQ - ServiceTitan Pricing Calculator 2026](https://myquoteiq.com/servicetitan-pricing-calculator/)
+- [QuoteIQ - ServiceTitan Pricing 2026 Real Costs](https://myquoteiq.com/servicetitan-pricing/)
+- [FieldCamp - ServiceTitan Review 2026](https://fieldcamp.ai/reviews/servicetitan/)
+- [OneCrew - ServiceTitan Reviews: Pros, Cons, Criticisms 2026](https://www.getonecrew.com/post/servicetitan-reviews)
+- [TitanPro - ServiceTitan Costs for Small Businesses](https://titanprotechnologies.com/blog/servicetitan-costs-decoded-what-small-businesses-need-to-know/)
+- [Capterra - ServiceTitan Reviews](https://www.capterra.com/p/150053/ServiceTitan/reviews/)
+- [Capterra - Housecall Pro Reviews](https://www.capterra.com/p/140363/HouseCall-Pro/reviews/)
+- [Connecteam - Housecall Pro Review 2026](https://connecteam.com/reviews/housecall-pro/)
+- [FieldCamp - Housecall Pro Reviews 2026](https://fieldcamp.ai/reviews/housecall-pro/)
+- [Trustpilot - Housecall Pro Reviews](https://www.trustpilot.com/review/housecallpro.com)
+- [FieldPulse - Housecall Pro vs Jobber 2026](https://www.fieldpulse.com/resources/blog/housecall-pro-vs-jobber)
+- [Buildbite - Jobber vs Housecall Pro 2026](https://buildbite.com/insights/jobber-vs-housecall-pro)
+- [ContractorPlus - Housecall Pro vs Jobber vs ServiceTitan](https://contractorplus.app/blog/housecall-pro-vs-jobber-vs-servicetitan)
+- [Housecall Pro vs ServiceTitan Comparison 2026](https://www.housecallpro.com/compare/housecall-pro-servicetitan/)
+- [G2 - Field Service Management Category](https://www.g2.com/categories/field-service-management)
+- [G2 - Salesforce Field Service Reviews](https://www.g2.com/products/salesforce-field-service/reviews)
+- [G2 - Dynamics 365 Field Service Reviews](https://www.g2.com/products/dynamics-365-field-service/reviews)
+- [G2 - Best FSM for Small Business Discussion](https://www.g2.com/discussions/what-s-the-best-field-service-management-software-for-a-small-business)
+- [Fieldcode - Best FSM Software for SMBs 2025](https://fieldcode.com/en/field-service-daily/best-field-service-management-software-smbs-2025)
+- [Simpro - 12 Best FSM Software 2025](https://www.simprogroup.com/blog/best-field-service-management-software)
+- [Zendesk - 9 Best FSM Software 2026](https://www.zendesk.com/service/ticketing-system/field-service-software/)
+- [Software Advice - 8 Best HVAC Service Software 2025](https://www.softwareadvice.com/field-service/hvac-comparison/)
+- [Bill.com - Best Field Service Management Software](https://www.bill.com/blog/field-service-management-software)
