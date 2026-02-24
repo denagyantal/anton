@@ -332,44 +332,170 @@
 
 ---
 
+## Utilioo — Voice-to-Invoice PDF for Tradespeople
+- **Source**: https://news.ycombinator.com/item?id=46479899
+- **Additional Links**: None
+- **Platform**: HN
+- **Type**: Show HN
+- **Engagement**: 1 upvote (very early/undiscovered)
+- **Revenue Data**: Free, no revenue model. No signup, no account. PWA with offline support.
+- **Boring Business Score**: 5
+- **Target Industry**: Plumbers, electricians, contractors — any tradesperson doing invoicing on job sites
+- **Core Value Prop**: Speak your invoice naturally ("Invoice John for plumbing repair, 2 hours at $50, parts $30") and get a professional PDF. No typing, no forms, no account needed. All data stays in the user's browser (privacy-first). Works offline as a PWA.
+- **Gap/Opportunity**: Brilliant UX concept for tradespeople who hate paperwork — speak instead of type. But zero traction (1 upvote) and no business model. The voice-to-invoice pipeline is the right idea but it needs: (1) a revenue model, (2) integration with payment collection (Stripe/Square), (3) customer database to auto-fill repeat clients, (4) expense/material tracking alongside invoicing. Currently a cool demo, not a business.
+- **Our Angle**: Build a voice-first invoicing + payments tool for trades. The insight is correct — tradespeople are in the field with dirty hands and don't want to type. Combine voice invoicing with instant payment links (text/email to customer), expense tracking, and a simple CRM. Price at $19-29/mo. This is the "mobile-first, stupidly simple" field service tool that solo operators actually want. LTD would crush — trades love one-time purchases.
+- **LTD Potential**: 5
+
+---
+
+## Softalon — All-in-One Salon Booking & Scheduling
+- **Source**: https://news.ycombinator.com/item?id=46994580
+- **Additional Links**: None
+- **Platform**: HN
+- **Type**: Show HN
+- **Engagement**: 1 upvote (very early)
+- **Revenue Data**: Flat monthly subscription, no commissions. No specific pricing disclosed. Built over ~1 year as side project before going full-time.
+- **Boring Business Score**: 4
+- **Target Industry**: Salons, barbershops, beauty/wellness businesses
+- **Core Value Prop**: Unified platform replacing 3-5 disconnected tools salon owners currently juggle. Scheduling, online booking, payments, automated workflows, client profiles, AI assistant for bookings across messaging channels. Key differentiator: no commission on payments (salon keeps 100%), full data ownership (unlike Fresha/Booksy which control client relationships).
+- **Gap/Opportunity**: Salon software market is competitive (Fresha, Booksy, Squire, Vagaro) but most platforms take commissions and lock in client data. Softalon's "no commission + data ownership" positioning is strong but needs to overcome distribution challenge against well-funded incumbents. The AI booking assistant across messaging channels (WhatsApp, Instagram DM) is a genuine differentiator if it works well. One-year side project development suggests limited feature depth vs. established players.
+- **Our Angle**: The salon/barbershop market is served but not well-served at the bottom end. Solo stylists and chair renters (huge market) find existing tools expensive and complex. Build the "solo stylist" version: dead-simple booking page, automated reminders, tap-to-pay invoicing, and Instagram/WhatsApp booking. Price at $9-19/mo. The no-commission angle is compelling. LTD would work for solo stylists who see software as an expense, not an investment.
+- **LTD Potential**: 4
+
+---
+
+## ItemGrid — Visual Inventory for Single-Location Businesses
+- **Source**: https://news.ycombinator.com/item?id=46872508
+- **Additional Links**: None (pre-launch, collecting signups)
+- **Platform**: HN
+- **Type**: Show HN (validation phase)
+- **Engagement**: 3 upvotes
+- **Revenue Data**: Pre-revenue. Planned pricing: free for 1 location, $8/user/month for multi-location. Waiting for 50-100 signups before building.
+- **Boring Business Score**: 4
+- **Target Industry**: Single-location small businesses — retail shops, warehouses, workshops
+- **Core Value Prop**: Visual grid-based inventory with QR/barcode scanning. Fills the gap between "Google Sheets (messy, no mobile scanning) and enterprise software (expensive, overcomplicated)." Built by the creator of Box QR (personal inventory tool).
+- **Gap/Opportunity**: Smart validation approach — collecting signups before building. The "stuck between spreadsheets and enterprise" framing resonates across boring businesses. But inventory management is a crowded space. The visual grid UX and mobile scanning could differentiate. Real opportunity: vertical-ize for a specific boring industry (auto parts shop inventory, restaurant ingredient tracking, construction materials tracking).
+- **Our Angle**: Inventory management wins when niched down. Build for one specific boring vertical: auto repair shops (parts inventory + vehicle tracking), restaurants (ingredient inventory + supplier ordering), or construction sites (materials + tool tracking). The mobile scanning + visual interface is the right UX for non-tech users. LTD at $49-99 one-time for single location would be compelling.
+- **LTD Potential**: 4
+
+---
+
+## ZenMaid — Cleaning Services SaaS ($3M/yr, 10+ Years)
+- **Source**: https://www.indiehackers.com/post/tech/from-a-cleaning-side-hustle-to-a-3m-yr-saas-for-cleaning-services-suhsqkDZB1zIwRmXxrFm
+- **Additional Links**: https://zenmaid.com (implied)
+- **Platform**: Indie Hackers
+- **Type**: Revenue milestone / Founder interview
+- **Engagement**: Featured post on IH
+- **Revenue Data**: $3M annually (~$250k/mo). Started in 2013. First customer paid $1,000 LTD. Current pricing starts at $20/mo, tiered by number of clients. Founders went 2.5 years without pay before first full-time salary.
+- **Boring Business Score**: 5
+- **Target Industry**: Maid services and residential cleaning businesses
+- **Core Value Prop**: Scheduling software that simplifies operations for maid services. Automated scheduling, client/cleaner communication, pre-written SMS/email templates tailored for cleaning industry. Tech stack: Ruby on Rails, React, TypeScript, Tailwind CSS, migrating to GraphQL API.
+- **Gap/Opportunity**: ZenMaid proves the "boring cleaning SaaS" model works at scale ($3M/yr). Key growth channels: cold email (first 100-150 users), strategic partnerships, content marketing (YouTube + blog), paid ads (Google/Facebook/Instagram), community building (Facebook Mastermind groups, annual Maid Summit conference, podcast "Filthy Rich Cleaners"). Critical lesson: they built features users demanded but never used — validate actual behavior, not requests. 10+ years to reach $3M suggests slow but extremely sticky growth. The cleaning SaaS market now has competition (ZenMaid, Onedesk, Launch27) — differentiation needed.
+- **Our Angle**: ZenMaid's success validates the cleaning business vertical but they're now the incumbent. Opportunity: build for adjacent cleaning verticals they don't serve well — commercial cleaning (offices, restaurants), post-construction cleanup, Airbnb turnover cleaning. Or target newer cleaning businesses with a simpler, cheaper starter tool ($9-15/mo) that graduates them to ZenMaid-level tools. The community-building strategy (conference, podcast, Facebook groups) is a replicable playbook for any boring vertical.
+- **LTD Potential**: 4
+
+---
+
+## WrenchWise — YNAB-Style Car Maintenance & Project Car Tracker
+- **Source**: https://news.ycombinator.com/item?id=45013738
+- **Additional Links**: https://wrenchwise.app
+- **Platform**: HN
+- **Type**: Show HN
+- **Engagement**: 1 upvote (minimal traction)
+- **Revenue Data**: Monthly subscription to cover hosting (Hetzner). No specific pricing disclosed. Pre-revenue hobby project.
+- **Boring Business Score**: 3
+- **Target Industry**: Car enthusiasts, project car owners, DIY mechanics
+- **Core Value Prop**: Financial tracking for car maintenance and project builds. Categorized expense logging, multi-vehicle project tracking, dashboard overview. Rails CRUD app replacing spreadsheet tracking.
+- **Gap/Opportunity**: Niche within a niche — car enthusiasts who track project car expenses. The consumer market here is small and price-sensitive. The bigger opportunity: pivot this to auto repair shops. Small independent mechanics (100k+ in the US) need: job costing per vehicle, parts expense tracking, labor time tracking, customer invoicing. Currently most use paper or basic spreadsheets. The "YNAB for your shop's finances" angle is more valuable than "YNAB for your hobby car."
+- **Our Angle**: Reposition as auto repair shop management — job cards, parts tracking with supplier pricing, labor time logging, customer invoicing, and profitability analytics per job. Small independent mechanics are a massively underserved boring business. Price at $29-49/mo. LTD resonates with independent shop owners who distrust subscriptions.
+- **LTD Potential**: 4
+
+---
+
+## EventEssentials Concept — Vendor CRM for Wedding Planners
+- **Source**: https://www.flowjam.com/blog/indie-hackers-saas-ideas-2025-10-you-can-launch-fast
+- **Additional Links**: None (concept, not launched)
+- **Platform**: Indie Hackers / Blog
+- **Type**: Validated idea / Market analysis
+- **Engagement**: N/A (concept article)
+- **Revenue Data**: Proposed $29/planner + $5/vendor sub-account. Target: 15,000 independent wedding planners.
+- **Boring Business Score**: 4
+- **Target Industry**: Wedding planning / Event coordination
+- **Core Value Prop**: Vendor calendar sync, automated reminders (follow-ups to photographers, caterers, florists), commission tracking for vendor referrals. Generic CRMs don't understand wedding planning workflows (vendor coordination, timeline management, multi-party communication).
+- **Gap/Opportunity**: 15k independent wedding planners in the US, plus thousands more event planners. Wedding industry is $70B+. Most planners use spreadsheets + Google Calendar + WhatsApp groups. Existing tools (Aisle Planner, HoneyBook) are moving upmarket or are too generic. The vendor relationship management angle (tracking commissions, coordinating multiple vendors per event) is a specific pain point no tool handles well.
+- **Our Angle**: Build the "vendor coordination hub" for wedding/event planners. Key features: shared timelines with all vendors, automated check-in messages, commission tracking, and a vendor directory with reviews. Low launch cost: sponsor a wedding planner newsletter ($200). LTD at $149-199 lifetime would attract cost-conscious solo planners.
+- **LTD Potential**: 4
+
+---
+
+## LeaseLens Concept — Lease Agreement Summarizer for Renters
+- **Source**: https://www.flowjam.com/blog/indie-hackers-saas-ideas-2025-10-you-can-launch-fast
+- **Additional Links**: None (concept, not launched)
+- **Platform**: Indie Hackers / Blog
+- **Type**: Validated idea / Market analysis
+- **Engagement**: N/A (concept article)
+- **Revenue Data**: Freemium (1 doc/month free), $9/month unlimited. Additional revenue via renter-insurance affiliate commissions.
+- **Boring Business Score**: 3
+- **Target Industry**: Renters / Real estate / Legal-adjacent
+- **Core Value Prop**: Upload a lease agreement, AI flags illegal clauses, calculates true move-in costs, generates landlord correspondence templates. Targets Gen-Z renters in US cities who don't read their leases.
+- **Gap/Opportunity**: Consumer-facing (B2C), which makes acquisition harder than B2B. But the affiliate revenue model (renter insurance quotes) could drive strong unit economics. The AI lease analysis is technically straightforward with current LLMs. Real opportunity may be the B2B version: a tool for property managers to generate compliant leases (state-specific clauses, fair housing compliance) rather than helping renters analyze them.
+- **Our Angle**: Flip to B2B: build a lease generation + compliance tool for small property managers (1-20 units). State-specific legal templates, fair housing compliance checking, automated renewal notices, tenant screening integration. Small landlords use generic templates and risk legal exposure. Price at $19-39/mo per property manager. LTD would work for small landlords with a few rental properties.
+- **LTD Potential**: 3
+
+---
+
 # Key Themes & Patterns
 
-## Highest-Signal Opportunities (NEW this scan)
+## Highest-Signal Opportunities (Updated this scan)
 
 1. **Small-Batch Manufacturer Production Management** (Craftplan signal — 577 upvotes!): Bakeries, soap makers, breweries, candle makers — all outgrowing spreadsheets but can't afford $10k-50k/yr ERPs. Build a hosted version at $39-99/mo. Boring Business Score: 5. LTD Potential: 5.
 
-2. **Commercial Cleaning Business Management** (Onedesk $100k+ MRR validation): $100B industry, massive fragmentation, hybrid SaaS + ecommerce model works. Target the cleaning company operator with scheduling, dispatch, quality inspections. Boring Business Score: 5. LTD Potential: 5.
+2. **Voice-First Invoicing & Payments for Trades** (Utilioo concept + Onigiri 113-upvote demand): Tradespeople hate typing — speak your invoice, get a PDF, send payment link. Combine voice invoicing with instant payment collection, CRM, expense tracking. No good product exists yet (Utilioo is a free demo, Onigiri is for freelancers). Price at $19-29/mo. Boring Business Score: 5. LTD Potential: 5.
 
-3. **Locksmith-Specific CRM & Dispatch** (NicheNav concept): 25k+ mom-and-pop locksmiths with no purpose-built software. Key-code databases, 24/7 emergency dispatch, property manager invoicing. Boring Business Score: 5. LTD Potential: 5.
+3. **Commercial Cleaning Business Management** (Onedesk $100k+ MRR + ZenMaid $3M/yr validation): $100B industry, massive fragmentation. ZenMaid proves the model at $3M/yr for residential; Onedesk validates the commercial side. Sub-niches still open: Airbnb turnover, post-construction, commercial office cleaning. Boring Business Score: 5. LTD Potential: 5.
 
-4. **Therapist SOAP Notes Automation** (MedMemo concept): 400k therapists spending 30+ min/night on notes. Voice-to-SOAP with HIPAA compliance. $59/mo solo, $199/mo group. Boring Business Score: 4. LTD Potential: 4.
+4. **Locksmith-Specific CRM & Dispatch** (NicheNav concept): 25k+ mom-and-pop locksmiths with no purpose-built software. Key-code databases, 24/7 emergency dispatch, property manager invoicing. Boring Business Score: 5. LTD Potential: 5.
 
-5. **Municipal Grant Writing Assistant** (SwiftGrant concept): $3B left on table annually. 19k municipalities. Success-based pricing at $2k/grant. Boring Business Score: 5. LTD Potential: 2.
+5. **Auto Repair Shop Management** (WrenchWise signal + 100k+ independent mechanics): Independent mechanics use paper and spreadsheets. Need: job cards, parts tracking, labor time logging, customer invoicing, profitability per job. WrenchWise validates interest but targets consumers. B2B shop management at $29-49/mo is the real opportunity. Boring Business Score: 5. LTD Potential: 4.
+
+6. **Therapist SOAP Notes Automation** (MedMemo concept): 400k therapists spending 30+ min/night on notes. Voice-to-SOAP with HIPAA compliance. $59/mo solo, $199/mo group. Boring Business Score: 4. LTD Potential: 4.
+
+7. **Solo Stylist / Chair Renter Booking Tool** (Softalon signal): Salon software market is served at top but solo stylists and chair renters find tools expensive. No-commission, data-ownership positioning. Dead-simple booking page + automated reminders + tap-to-pay. $9-19/mo. Boring Business Score: 4. LTD Potential: 4.
+
+8. **Municipal Grant Writing Assistant** (SwiftGrant concept): $3B left on table annually. 19k municipalities. Success-based pricing at $2k/grant. Boring Business Score: 5. LTD Potential: 2.
 
 ## Continuing High-Signal Opportunities
 
-6. **Construction/Trades Invoicing & Financial Management** (InstaBuild, Onigiri demand signal): Massive pain point, contractors lose revenue to late payments, existing tools don't understand construction workflows. Boring Business Score: 5. LTD Potential: 4-5.
+9. **Construction/Trades Invoicing & Financial Management** (InstaBuild, Onigiri demand signal): Massive pain point, contractors lose revenue to late payments, existing tools don't understand construction workflows. Boring Business Score: 5. LTD Potential: 4-5.
 
-7. **Micro Fleet Management for Owner-Operators** (FleetFix signal): Small trucking/delivery fleets (5-50 vehicles) are underserved. Enterprise tools too expensive, free tools too basic. Boring Business Score: 5. LTD Potential: 4.
+10. **Micro Fleet Management for Owner-Operators** (FleetFix signal): Small trucking/delivery fleets (5-50 vehicles) are underserved. Enterprise tools too expensive, free tools too basic. Boring Business Score: 5. LTD Potential: 4.
 
-8. **Field Service Tool for Solo/Micro Operators** (GorillaDesk gap): The 1-5 person pest control/lawn/cleaning business that finds Jobber/GorillaDesk too expensive and complex. Mobile-first, dead simple, $19-39/mo. Boring Business Score: 5. LTD Potential: 5.
+11. **Field Service Tool for Solo/Micro Operators** (GorillaDesk gap): The 1-5 person pest control/lawn/cleaning business that finds Jobber/GorillaDesk too expensive and complex. Mobile-first, dead simple, $19-39/mo. Boring Business Score: 5. LTD Potential: 5.
 
-9. **Curated Directories for Boring Industries** (Khasanov model): Apply the database/directory model to trades — contractor directories, supplier databases, equipment rental directories. Replace spreadsheets. Boring Business Score: 4. LTD Potential: 4.
+12. **Curated Directories for Boring Industries** (Khasanov model): Apply the database/directory model to trades — contractor directories, supplier databases, equipment rental directories. Replace spreadsheets. Boring Business Score: 4. LTD Potential: 4.
 
-10. **Compliance/Paperwork Automation for Trades** (Government forms $30M signal): Licensing, permitting, insurance certificates, safety documentation. Every tradesperson hates paperwork. Boring Business Score: 5. LTD Potential: 4.
+13. **Compliance/Paperwork Automation for Trades** (Government forms $30M signal): Licensing, permitting, insurance certificates, safety documentation. Every tradesperson hates paperwork. Boring Business Score: 5. LTD Potential: 4.
+
+14. **Wedding/Event Planner Vendor CRM** (EventEssentials concept): 15k+ independent planners using spreadsheets + WhatsApp. Vendor coordination, commission tracking, shared timelines. $29/planner. Boring Business Score: 4. LTD Potential: 4.
+
+15. **Small Business Inventory with Mobile Scanning** (ItemGrid signal): The gap between Google Sheets and enterprise inventory software. Best when vertical-ized: auto parts shops, restaurants, construction sites. Free for 1 location, $8/user/month. Boring Business Score: 4. LTD Potential: 4.
 
 ## Recurring Patterns
 
 - **"Boring problems have strong moats"** — curated databases, operational tools, and industry-specific workflows are harder to replicate than AI wrappers
 - **"Your competition is Excel"** — most underserved industries rely on spreadsheets, not competing software
+- **Voice-first UX for field workers** — tradespeople have dirty hands, are on job sites, and hate typing. Voice input (Utilioo) and tap-to-complete interfaces win over form-heavy tools. This is an underexploited UX pattern.
 - **SEO dominance in niche keywords** is the #1 growth channel for boring-business SaaS (Stagetimer, Khasanov portfolio, JustFax Online)
 - **Hybrid pricing** (subscription + one-time) outperforms pure SaaS in markets where customers buy infrequently (events, construction projects)
 - **Domain expertise > tech sophistication** — the $10k/mo industry CRM runs on PHP/jQuery and a $4/mo server; the moat is understanding the workflow
 - **Enterprise SaaS disruption creates space below** — as ServiceTitan/Jobber move upmarket, micro-operators get left behind
-- **The "undercut and simplify" playbook** works: enter a market with expensive, bloated incumbents, build 80% of features at 30% of the price
+- **The "undercut and simplify" playbook** works: enter a market with expensive, bloated incumbents, build 80% of features at 30% of the price (Liinks $25k MRR proof)
+- **No-commission positioning** — salon/beauty tools that take commissions are resented. "You keep 100% of payments" is a strong differentiator in any marketplace-adjacent vertical.
 - **Open-source + AI = cheaper to build** — the barrier to entry for vertical SaaS has never been lower; differentiation is domain knowledge
 - **"Dead" technologies still alive in boring industries** — fax, EDI, legacy formats. No competition, steady revenue.
 - **Portfolio approach** — build 3-5 boring-industry tools on the same stack, cross-sell, compound SEO across verticals
+- **Community-led growth in boring niches** — ZenMaid's playbook: Facebook groups, annual conference (Maid Summit), podcast (Filthy Rich Cleaners). Replicable for any boring vertical.
+- **Validation before building** — ItemGrid's approach (50-100 signups before coding) and pre-selling founding plans at 50% lifetime discount are smart patterns for boring-niche SaaS
 
 ## Market Validation Signals
 
