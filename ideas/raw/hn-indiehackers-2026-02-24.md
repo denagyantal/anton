@@ -464,21 +464,33 @@
 
 8. **Municipal Grant Writing Assistant** (SwiftGrant concept): $3B left on table annually. 19k municipalities. Success-based pricing at $2k/grant. Boring Business Score: 5. LTD Potential: 2.
 
+9. **Dental Practice Patient Recall Automation** (Market data: 200k practices): Dentists lose 30-40% revenue to missed recalls. Existing systems have only basic features. $99-199/mo. Low competition. Boring Business Score: 5. LTD Potential: 4.
+
+10. **Restaurant Supplier Price Comparison & Ordering** (Market data: 660k restaurants): Manual multi-supplier comparison; 5% food cost savings pays for itself. $99-199/mo. Low competition. Boring Business Score: 5. LTD Potential: 4.
+
+11. **Construction Crew Time Tracking with Photo Verification** (Market data: mid-size contractors): 2-5% labor cost loss to time theft. $15-25/user/mo. Generic trackers lack construction specifics. Boring Business Score: 5. LTD Potential: 4.
+
+12. **Landscaping Chemical Application Compliance Tracking** (Market data: 600k businesses): Paper logs get lost, regulatory compliance required. $79-149/mo. Zero competition. Boring Business Score: 5. LTD Potential: 4.
+
 ## Continuing High-Signal Opportunities
 
-9. **Construction/Trades Invoicing & Financial Management** (InstaBuild, Onigiri demand signal): Massive pain point, contractors lose revenue to late payments, existing tools don't understand construction workflows. Boring Business Score: 5. LTD Potential: 4-5.
+13. **Construction/Trades Invoicing & Financial Management** (InstaBuild, Onigiri demand signal): Massive pain point, contractors lose revenue to late payments, existing tools don't understand construction workflows. Boring Business Score: 5. LTD Potential: 4-5.
 
-10. **Micro Fleet Management for Owner-Operators** (FleetFix signal): Small trucking/delivery fleets (5-50 vehicles) are underserved. Enterprise tools too expensive, free tools too basic. Boring Business Score: 5. LTD Potential: 4.
+14. **Micro Fleet Management for Owner-Operators** (FleetFix signal): Small trucking/delivery fleets (5-50 vehicles) are underserved. Enterprise tools too expensive, free tools too basic. Boring Business Score: 5. LTD Potential: 4.
 
-11. **Field Service Tool for Solo/Micro Operators** (GorillaDesk gap): The 1-5 person pest control/lawn/cleaning business that finds Jobber/GorillaDesk too expensive and complex. Mobile-first, dead simple, $19-39/mo. Boring Business Score: 5. LTD Potential: 5.
+15. **Field Service Tool for Solo/Micro Operators** (GorillaDesk gap): The 1-5 person pest control/lawn/cleaning business that finds Jobber/GorillaDesk too expensive and complex. Mobile-first, dead simple, $19-39/mo. Boring Business Score: 5. LTD Potential: 5.
 
-12. **Curated Directories for Boring Industries** (Khasanov model): Apply the database/directory model to trades — contractor directories, supplier databases, equipment rental directories. Replace spreadsheets. Boring Business Score: 4. LTD Potential: 4.
+16. **Curated Directories for Boring Industries** (Khasanov model): Apply the database/directory model to trades — contractor directories, supplier databases, equipment rental directories. Replace spreadsheets. Boring Business Score: 4. LTD Potential: 4.
 
-13. **Compliance/Paperwork Automation for Trades** (Government forms $30M signal): Licensing, permitting, insurance certificates, safety documentation. Every tradesperson hates paperwork. Boring Business Score: 5. LTD Potential: 4.
+17. **Compliance/Paperwork Automation for Trades** (Government forms $30M signal): Licensing, permitting, insurance certificates, safety documentation. Every tradesperson hates paperwork. Boring Business Score: 5. LTD Potential: 4.
 
-14. **Wedding/Event Planner Vendor CRM** (EventEssentials concept): 15k+ independent planners using spreadsheets + WhatsApp. Vendor coordination, commission tracking, shared timelines. $29/planner. Boring Business Score: 4. LTD Potential: 4.
+18. **Wedding/Event Planner Vendor CRM** (EventEssentials concept): 15k+ independent planners using spreadsheets + WhatsApp. Vendor coordination, commission tracking, shared timelines. $29/planner. Boring Business Score: 4. LTD Potential: 4.
 
-15. **Small Business Inventory with Mobile Scanning** (ItemGrid signal): The gap between Google Sheets and enterprise inventory software. Best when vertical-ized: auto parts shops, restaurants, construction sites. Free for 1 location, $8/user/month. Boring Business Score: 4. LTD Potential: 4.
+19. **Small Business Inventory with Mobile Scanning** (ItemGrid signal): The gap between Google Sheets and enterprise inventory software. Best when vertical-ized: auto parts shops, restaurants, construction sites. Free for 1 location, $8/user/month. Boring Business Score: 4. LTD Potential: 4.
+
+20. **HVAC Route Optimization with Weather Integration** (Market data: 120k companies): No existing tool integrates weather demand forecasting with route scheduling. $150-400/mo. Boring Business Score: 5. LTD Potential: 3.
+
+21. **Daycare Daily Report Automation** (Market data: 100k centers): 30-60 min daily on manual parent reports. Photo documentation + AI summaries. $79-149/mo. Boring Business Score: 5. LTD Potential: 4.
 
 ## Recurring Patterns
 
@@ -497,6 +509,80 @@
 - **Community-led growth in boring niches** — ZenMaid's playbook: Facebook groups, annual conference (Maid Summit), podcast (Filthy Rich Cleaners). Replicable for any boring vertical.
 - **Validation before building** — ItemGrid's approach (50-100 signups before coding) and pre-selling founding plans at 50% lifetime discount are smart patterns for boring-niche SaaS
 
+## NEW: InvoiceFast — One-Time Payment Invoicing (Show HN, 19 upvotes)
+
+- **Source**: https://news.ycombinator.com/item?id=42607682
+- **Additional Links**: https://invoicefast.io
+- **Platform**: HN
+- **Type**: Show HN
+- **Engagement**: 19 upvotes, 55 comments (strong engagement for invoicing tool)
+- **Revenue Data**: $35 one-time payment (considering shift to $35/year). Early stage.
+- **Boring Business Score**: 3
+- **Target Industry**: Freelancers, small businesses needing occasional invoicing
+- **Core Value Prop**: Quick invoice creation with automatic tracking of company info, payment details, and customer records. No monthly subscription — pay once.
+- **Gap/Opportunity**: 55-comment thread reveals major insights: (1) One-time pricing is unsustainable for SaaS (server/support/compliance costs recur), (2) Regulatory complexity is huge — VAT handling, electronic formats (XRechnung), country-specific numbering rules create compliance barriers, (3) Competitors like Zoho Invoice offer free tiers with broader features. Users want demo invoices before signup, GDPR compliance, and non-Google auth. The one-time payment model attracted interest but commenters correctly flagged sustainability concerns.
+- **Our Angle**: The pricing discussion is the real value here. For boring-business invoicing: offer trades-specific templates (progress billing, change orders, material markup) with a low annual subscription ($35-49/year) rather than monthly. The compliance angle (state-specific contractor licensing, lien waivers) creates a moat generic invoicing tools can't match. LTD works if infrastructure costs are minimal.
+- **LTD Potential**: 3
+
+---
+
+## NEW: 20 Underserved SaaS Niches — Market Size & Pricing Data
+
+- **Source**: https://saasopportunities.com/blog/saas-niches-that-make-money-underserved-markets
+- **Additional Links**: None
+- **Platform**: Market research / Blog
+- **Type**: Market analysis with specific sizing data
+- **Engagement**: N/A
+- **Revenue Data**: See niche breakdown below
+- **Boring Business Score**: 5 (covers exclusively boring industries)
+- **Target Industry**: Multiple boring verticals (see below)
+
+### Top Boring Niches with Market Data:
+
+| Niche | Market Size | Pricing | Problem |
+|-------|------------|---------|---------|
+| **Property Mgmt Maintenance Coordination** | 300k+ property managers | $100-300/mo | Juggling maintenance across dozens of properties; existing software treats maintenance as afterthought |
+| **Dental Practice Patient Recall Automation** | 200k+ dental practices | $99-199/mo | Lose 30-40% revenue to missed recall appointments; basic features only in existing systems |
+| **Construction Crew Time Tracking + Photo Verification** | Mid-size contractors (20-50 workers) | $15-25/user/mo ($300-1,250/mo) | 2-5% labor cost loss to time theft; generic trackers lack construction specifics |
+| **Vet Clinic Prescription Refill Management** | 30k+ vet clinics | $79-149/mo | Dozens of daily refill requests handled manually |
+| **HVAC Route Optimization + Weather Integration** | 120k+ HVAC companies | $150-400/mo | Scheduling ignores weather demand patterns; no weather forecasting integration exists |
+| **Salon Client Preference Memory System** | 80k+ salons/spas | $79-149/mo | Stylists forget client preferences (coffee, conversation, sensitivities); basic CRM insufficient |
+| **Restaurant Supplier Price Comparison** | 660k+ restaurants | $99-199/mo | Manual multi-supplier comparison; 5% food cost savings significant |
+| **Physical Therapy Exercise Compliance** | 40k+ PT clinics | $99-199/mo | Poor adherence → slower recovery; only basic email reminders available |
+| **Landscaping Chemical Application Tracking** | 600k+ landscaping businesses | $79-149/mo | Paper logs get lost; field service software lacks compliance focus |
+| **Church Volunteer Scheduling + Skills Matching** | 300k+ churches | $49-99/mo | Generic tools don't handle skills-based assignments or family coordination |
+| **Auto Repair Vehicle History Visualization** | 250k+ auto repair shops | $79-149/mo | Service records don't translate into customer understanding |
+| **Daycare Daily Report Automation + Photos** | 100k+ daycare centers | $79-149/mo | 30-60 min daily writing parent reports manually |
+| **Nonprofit Grant Requirement Tracking** | 1.5M nonprofits (3+ grants) | $79-149/mo | Missing requirements jeopardizes funding; spreadsheet-based tracking |
+| **Mobile Notary Route + Appointment Optimization** | 50k+ mobile notaries | $29-59/mo | 30-40% of day wasted driving inefficiently |
+| **Residential Cleaning Quality Control + Photos** | 90k+ cleaning companies | $79-149/mo | Can't verify quality without visiting every job site |
+| **Escape Room Booking Optimization** | 2,500+ escape rooms | $99-199/mo | Gaps between sessions; generic booking tools lack optimization |
+| **Craft Fair Vendor Inventory + Sales Tracking** | 200k+ regular vendors | $19-39/mo | Paper inventory logs across multiple events; retail systems assume fixed locations |
+| **Tutoring Session Note Sharing with Parents** | 500k+ private tutors | $19-39/mo | 15-30 min per session on parent updates manually |
+
+- **Gap/Opportunity**: ALL niches rated "Low competition." Key pattern: these are industries where the existing workflow is paper/spreadsheet-based and existing software either doesn't exist or treats the niche as an afterthought. The highest-value niches combine: large addressable market (300k+ businesses), meaningful price point ($79-199/mo), and a compliance/regulatory angle that creates switching cost moats.
+- **Our Angle**: The standout niches for LTD potential are: (1) **Dental patient recall** — 200k practices losing 30-40% revenue, $99-199/mo, compliance creates stickiness; (2) **Restaurant supplier comparison** — 660k restaurants, procurement is major cost center, 5% savings pays for itself; (3) **Construction crew time tracking** — $300-1,250/mo per company, photo verification is a natural moat; (4) **Landscaping chemical tracking** — 600k businesses, regulatory compliance requirement; (5) **Residential cleaning QC** — 90k companies, photo documentation is simple to build but high-value.
+- **LTD Potential**: 4-5 (varies by niche)
+
+---
+
+## NEW: Dead Chefs Society — Curated Restaurant Dinner Club ($126k/yr)
+
+- **Source**: https://news.ycombinator.com/item?id=46307973 (comment in "$500/mo side projects" thread)
+- **Additional Links**: https://deadchefssociety.com
+- **Platform**: HN
+- **Type**: Ask HN discussion comment
+- **Engagement**: Parent thread: strong engagement
+- **Revenue Data**: $126k in 2025 (~$10.5k/month). $115 per guest ticket.
+- **Boring Business Score**: 4
+- **Target Industry**: Restaurant / Food & Events
+- **Core Value Prop**: Monthly curated dinner club — partners with ethnic restaurants. Recurring events with high ticket prices.
+- **Gap/Opportunity**: Not software-first, but validates a pattern: curated experiences in the restaurant/hospitality vertical. The software opportunity: build the platform that enables anyone to run a "supper club" or "curated dining" business — booking, ticket sales, restaurant partner management, attendee CRM, automated marketing. Eventbrite is too generic; this needs restaurant-specific features (menu coordination, dietary restrictions, capacity management, chef profiles).
+- **Our Angle**: Build a "supper club in a box" SaaS — white-label booking platform for curated dining experiences. Target food bloggers, sommeliers, and culinary influencers who want to monetize their audience through events. Features: restaurant partnership management, ticket sales with waitlist, dietary restriction handling, attendee CRM, automated post-event follow-up. Price at $49-99/mo. The real revenue model might be a platform fee on ticket sales (3-5%).
+- **LTD Potential**: 3
+
+---
+
 ## Market Validation Signals
 
 - Property management software market: $26.5B (2025) → $52.2B (2032), 10.1% CAGR
@@ -507,3 +593,10 @@
 - $10k MRR companies selling for 6-7 figures on Flippa
 - Bootstrapped SaaS median growth: ~20%, top performers ~50%
 - 70% of micro-SaaS businesses generate under $1k/mo — but those that find boring-niche PMF scale fast
+- AI SaaS market: $71.54B (2024) → $775.44B projected by 2031, 38.28% CAGR
+- Landscaping services market: 600k+ businesses, compliance-driven software adoption
+- Dental practices in US: 200k+, losing 30-40% revenue to missed recall appointments
+- Restaurant industry: 660k+ establishments, procurement is #1 controllable cost
+- HVAC companies: 120k+, no weather-integrated scheduling exists
+- Laundry/dry cleaning services global market: expected to surpass $120B in 2026
+- On-demand laundry service market: poised for "transformational growth" through 2033
