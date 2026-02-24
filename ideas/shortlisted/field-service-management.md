@@ -1,62 +1,56 @@
-# Field Service Management for Small Trades (TradeFlow)
+# Field Service Management for Small Trades — Score: 100/105
 
-**Score: 97/105** | **Verdict: BUILD** | **Priority: #1**
+**Tier**: 1 (Strong Opportunity)
+**Verdict**: BUILD
+**Evaluation Date**: 2026-02-24
 
-## Concept
-Dead-simple field service tool built specifically for 1-5 technician shops. Drag-and-drop daily schedule, one-tap dispatch with GPS, mobile-first job tracking (photos, notes, time), instant invoicing from the field with payment collection, and basic customer history. Setup in 15 minutes, not 15 days. Flat pricing, no per-user fees, no annual contracts.
+## Summary
+Ultra-simple, mobile-first FSM app for solo/micro trade operators (HVAC, plumbing, electrical). Scheduling, dispatching, invoicing, payments, QuickBooks sync, and simple job costing. Works offline. Setup in minutes, not weeks. AI-powered automation. The "Anti-ServiceTitan" for 1-5 person shops.
 
 ## Scoring
+| Criterion | Score | Weight | Weighted |
+|-----------|-------|--------|----------|
+| Market Validation | 5/5 | 3x | 15 |
+| Competitor Weakness | 5/5 | 2x | 10 |
+| LTD Viability | 5/5 | 2x | 10 |
+| No Free Tier | 5/5 | 1x | 5 |
+| Channel Access | 5/5 | 2x | 10 |
+| Content Potential | 5/5 | 1x | 5 |
+| AppSumo Fit | 5/5 | 2x | 10 |
+| Review Potential | 5/5 | 1x | 5 |
+| MRR Path | 4/5 | 3x | 12 |
+| Build Feasibility | 5/5 | 2x | 10 |
+| Boring Business Bonus | 5/5 | 2x | 10 |
+| **Total** | | | **100/105** |
 
-| Criterion | Score | Weight | Weighted | Notes |
-|-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | ServiceTitan $9.5B valuation, Jobber $100M+ ARR, Housecall Pro acquired $585M. FSM market $5.6B → $9.7B by 2030. |
-| Competitor Weakness | 5/5 | 2x | 10 | ServiceTitan $250-500/user/mo + $2-5K setup. Per-tech pricing. Annual contracts. Mitchell 1 Windows-only UI from 2003. |
-| LTD Viability | 4/5 | 2x | 8 | $89-149 LTD profitable. High perceived value vs $200-500/mo competitors. |
-| No Free Tier | 4/5 | 1x | 4 | Trades businesses expect to pay. No meaningful free tier in market. |
-| Channel Access | 5/5 | 2x | 10 | r/HVAC, r/Plumbing, r/electricians, r/pestcontrol, r/sweatystartup. FB groups 50K+. Trade shows, supply houses. |
-| Content Potential | 5/5 | 1x | 5 | "HVAC scheduling software", "ServiceTitan alternative for small business". Comparison content gold. |
-| AppSumo Fit | 4/5 | 2x | 8 | High perceived value. Supplemental trade channel marketing needed. |
-| Review Potential | 4/5 | 1x | 4 | Trades owners review if it saves money and time. Strong G2/Capterra culture. |
-| MRR Path | 5/5 | 3x | 15 | LTD for core → MRR for AI dispatching, route optimization, advanced reporting. |
-| Build Feasibility | 4/5 | 2x | 8 | 4-6 week MVP. Core workflow well-understood. |
-| Boring Business Bonus | 5/5 | 2x | 10 | Peak boring: HVAC, plumbing, pest control. VCs ignore sub-$100/mo market. |
-
-## Target Market
-Solo HVAC technicians, husband-and-wife plumbing businesses, independent pest control operators, small electrical contractors. The 1-5 person shop using Google Calendar + paper invoices + QuickBooks.
+## Market Data
+- **Market Size**: $5.64B global FSM market (2025) → $9.68B by 2030
+- **Target Segment**: 3M+ trade businesses in the US, majority with <5 employees
+- **Pricing**: $29-49/mo flat. LTD at $79
+- **Revenue Potential**: >$10K MRR achievable within 12 months
 
 ## Key Differentiators
-1. Flat pricing — unlimited technicians, no per-user gotcha
-2. Mobile-first — built for phone use in the field, works offline
-3. 15-minute setup — no onboarding calls, no setup fees
-4. Month-to-month — no annual contracts
-
-## LTD Pricing
-- **Tier 1**: $89 (unlimited users, unlimited jobs)
-- **Tier 2**: $149 (+ inventory tracking and QuickBooks sync)
-
-## Distribution Channels
-- r/HVAC, r/Plumbing, r/electricians, r/pestcontrol, r/smallbusiness, r/sweatystartup
-- Facebook: HVAC Technicians (50K+), Plumbers & Pipefitters (30K+)
-- HVAC-Talk forums, trade shows (AHR Expo, PEST WORLD)
-- Supply house partnerships (Ferguson, Home Depot Pro)
-- AppSumo launch
+1. $29-49/mo flat (no per-user or add-on creep)
+2. Offline-first architecture with Android parity
+3. Built-in financial tracking (eliminates QuickBooks dependency)
+4. No contracts ever
+5. AI scheduling (suggest next job by proximity)
+6. Vertical-specific templates for HVAC, plumbing, electrical
 
 ## Next Steps
-1. Build MVP: drag-and-drop scheduler + one-tap dispatch + mobile job tracking + instant invoicing + payment collection
-2. Recruit 5-10 beta users from r/HVAC and r/Plumbing
-3. Launch on AppSumo at $89/$149 tiers within 6-8 weeks
-4. Simultaneously seed in trade Facebook groups and forums
+1. Pick primary trade vertical (HVAC vs plumbing vs electrical) for V1 templates
+2. Build mobile-first MVP: scheduling, invoicing, payments, customer CRM
+3. Pre-launch on r/HVAC and trade Facebook groups
+4. Prepare AppSumo LTD at $79
 
 ## Risks
-1. ServiceTitan/Jobber could launch a "lite" tier (mitigated: they can't cannibalize existing revenue)
-2. Trade owners skeptical of unknown brand (mitigate: extended trial, money-back guarantee)
-3. Field workers need offline capability (must be in MVP)
+1. Feature expectations from ServiceTitan defectors may be too high
+2. Offline-first architecture is technically complex
+3. Jobber/HCP may cut prices in response
 
 ## Key Source Links
-- https://www.g2.com/categories/field-service-management
-- https://www.reddit.com/r/HVAC/
-- https://www.reddit.com/r/Plumbing/comments/1kk09e5/plumbers_what_software_you_actually_use_and_what/
-- https://www.getonecrew.com/post/servicetitan-reviews
-- https://fieldcamp.ai/alternatives/jobber/
-- https://www.capterra.com/field-service-management-software/
-- https://www.g2.com/products/servicetitan/reviews
+- [ServiceTitan PissedConsumer (1.8/5)](https://servicetitan.pissedconsumer.com/review.html)
+- [ServiceTitan BBB Complaints ($39K cancellation)](https://www.bbb.org/us/ca/glendale/profile/digital-marketing/servicetitan-inc-1216-1290182/complaints)
+- [FieldCamp: ServiceTitan Alternatives 2026](https://fieldcamp.ai/alternatives/servicetitan/)
+- [OneCrew: ServiceTitan Reviews](https://www.getonecrew.com/post/servicetitan-reviews)
+- [MarketsandMarkets: FSM Market $9.17B by 2030](https://www.marketsandmarkets.com/PressReleases/field-service-management.asp)

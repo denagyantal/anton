@@ -1,27 +1,17 @@
-# Solo Therapist Practice Billing — Score: 75/105
+# Solo Therapist Practice Management — Score: 78/105
 
-**Evaluation Date**: 2026-02-23
-**Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
+**Verdict**: EXPLORE FURTHER
+**Evaluation Date**: 2026-02-24
 
-## Concept
-Ultra-simple HIPAA-compliant platform for solo therapists: session note templates (SOAP, DAP, BIRP), one-click insurance claim submission, automated appointment reminders, integrated telehealth, client self-scheduling. <5 minutes admin per session.
+## Summary
+HIPAA-compliant, stripped-down practice tool for solo therapists: AI-assisted session notes (audio to structured SOAP notes), simple calendar with self-booking, automated reminders, Stripe invoicing + insurance superbill generation, secure client portal. $99 LTD.
 
-## Scoring Summary
-Market Validation: 4/5 (3x=12) | Competitor Weakness: 3/5 (2x=6) | LTD Viability: 4/5 (2x=8) | No Free Tier: 4/5 (1x=4) | Channel Access: 3/5 (2x=6) | Content: 3/5 (1x=3) | AppSumo: 3/5 (2x=6) | Reviews: 4/5 (1x=4) | MRR Path: 4/5 (3x=12) | Build: 3/5 (2x=6) | Boring Bonus: 4/5 (2x=8)
-
-## Next Steps
-1. HIPAA compliance is table stakes
-2. MVP: HIPAA notes, scheduling, client portal, insurance claims
-3. SimplePractice bloat creates opening for focused tool
-
-## Risks
-- HIPAA adds build time and cost
-- SimplePractice has strong brand loyalty
-- Insurance claims are complex per payer
+## Market Data
+- **Target**: 400K+ licensed mental health counselors, majority solo
+- **Validation**: SimplePractice raised $370M. 656 "I wish" Reddit requests for health & wellness
+- **Competitors**: SimplePractice ($49-99/mo), TherapyNotes ($49+/mo)
 
 ## Key Source Links
-- [r/therapists](https://www.reddit.com/r/therapists/) | [SimplePractice](https://www.simplepractice.com)
-
-## LTD Pricing
-- Tier 1: $79 (solo, HIPAA notes + scheduling) | Tier 2: $99 (insurance claims, telehealth)
+- [Greensighter: Micro-SaaS Ideas](https://www.greensighter.com/blog/micro-saas-ideas)
+- [Reddit Analysis: 9,363 posts](https://nomusica.com/reddit-analysis-reveals-what-users-really-want-from-new-apps-and-saas-tools-in-2026/)

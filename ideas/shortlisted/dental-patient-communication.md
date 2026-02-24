@@ -1,29 +1,18 @@
-# Dental Practice Patient Communication — Score: 77/105
+# Dental Practice Patient Communication — Score: 87/105
 
-**Evaluation Date**: 2026-02-23
-**Verdict**: EXPLORE (patient communication add-on only; PASS on full PMS)
 **Tier**: 1 (Strong Opportunity)
+**Verdict**: BUILD
+**Evaluation Date**: 2026-02-24
 
-## Concept
-Standalone patient communication platform for dental practices: automated text/email reminders, post-visit review requests, treatment plan follow-ups, recall campaigns for overdue patients, two-way texting, online scheduling widget. Works alongside any existing PMS (Dentrix, Eaglesoft, Open Dental). "Weave for dental at 1/3 the price."
+## Summary
+Lightweight recall add-on for dental PMS: automated multi-channel reminders, no-show rebooking, waitlist management, post-visit review collection. Integrates with Dentrix/Eaglesoft/Open Dental. Not a PMS replacement — a communication layer. $79-99 LTD vs Weave at $300+/mo.
 
-**Full PMS is NOT recommended** — Archy has $47M funding and 300% growth. Focus on communication layer only.
-
-## Scoring Summary
-Market Validation: 5/5 (3x=15) | Competitor Weakness: 5/5 (2x=10) | LTD Viability: 2/5 (2x=4) | No Free Tier: 5/5 (1x=5) | Channel Access: 3/5 (2x=6) | Content: 4/5 (1x=4) | AppSumo: 2/5 (2x=4) | Reviews: 4/5 (1x=4) | MRR Path: 5/5 (3x=15) | Build: 1/5 (2x=2) | Boring Bonus: 4/5 (2x=8)
-
-## Next Steps
-1. Build communication-only tool (NOT full PMS)
-2. MVP: text reminders, recall campaigns, review requests, 2-way texting
-3. Target practices using Dentrix/Eaglesoft who can't afford Weave ($300+/mo)
-
-## Risks
-- Full PMS is multi-year project competing with $47M Archy
-- HIPAA compliance required
-- Weave has strong brand in dental
+## Market Data
+- **Market Size**: $2.9B dental PM software → $6.7B by 2035. 200K+ practices
+- **Key Stat**: 10-15% no-show rate costs $40K+/year per single-dentist practice
+- **Pricing**: $79-99 LTD per practice
 
 ## Key Source Links
-- [Archy Funding - Crunchbase](https://news.crunchbase.com/venture/dental-saas-provider-archy-raises-seriesb/) | [r/dentistry](https://www.reddit.com/r/dentistry/) | [Weave](https://www.getweave.com)
-
-## LTD Pricing
-- Tier 1: $79 (single practice, reminders + reviews) | Tier 2: $99 (recall campaigns, 2-way texting, booking widget)
+- [SaaS Opportunities: Dental Recall](https://saasopportunities.com/blog/saas-niches-that-make-money-underserved-markets)
+- [RevUpDental: Best Dental PMS 2026](https://revupdental.com/best-dental-practice-management-systems/)
+- [AI in Dental Market $3.26B by 2034](https://www.towardshealthcare.com/insights/ai-in-dental-market-sizing)

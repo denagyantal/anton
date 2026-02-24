@@ -1,43 +1,17 @@
-# Insurance Agent CRM & Policy Tracker — Score: 83/105
+# Insurance Agent CRM — Score: 81/105
 
-**Evaluation Date**: 2026-02-23
-**Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
+**Verdict**: BUILD
+**Evaluation Date**: 2026-02-24
 
-## Concept
-Lightweight policy tracker for solo/small agents: dashboard of upcoming renewals with days-to-expiration, automated client outreach for renewals, basic quoting workflow, commission tracking per policy, client communication log. Mobile-first. No complex accounting.
+## Summary
+Lightweight insurance CRM: client database with policy details, renewal pipeline with 60/30/15-day alerts, communication log, ACORD form auto-fill, basic commission tracking, document storage. No full policy administration. $79-99 LTD.
 
-## Scoring
-
-| Criterion | Score | Weight | Weighted | Notes |
-|-----------|-------|--------|----------|-------|
-| Market Validation | 4/5 | 3x | 12 | Applied Epic, EZLynx ($100+/user/mo), HawkSoft. 400K+ agents. |
-| Competitor Weakness | 5/5 | 2x | 10 | EZLynx "hell." QQ "5 steps for simple task." Applied Epic steep curve. |
-| LTD Viability | 4/5 | 2x | 8 | $79-99 LTD. |
-| No Free Tier | 5/5 | 1x | 5 | Insurance AMS always paid. |
-| Channel Access | 3/5 | 2x | 6 | r/Insurance (200K+), Insurance Forums, IIABA. |
-| Content Potential | 4/5 | 1x | 4 | "insurance CRM", "EZLynx alternative." |
-| AppSumo Fit | 3/5 | 2x | 6 | Agents less on AppSumo. |
-| Review Potential | 4/5 | 1x | 4 | Agents recommend through networks. |
-| MRR Path | 4/5 | 3x | 12 | Per-agent, carrier integrations, commission tracking premium. |
-| Build Feasibility | 3/5 | 2x | 6 | Policy tracking is simple. Carrier integrations are hard. |
-| Boring Business Bonus | 5/5 | 2x | 10 | Insurance — deeply boring. |
-
-## Next Steps
-1. MVP: policy expiration dashboard, renewal reminders, client log, commission tracker
-2. Skip carrier integrations in v1
-3. Validate with 5 independent agents
-
-## Risks
-1. Carrier integrations are complex
-2. Applied Epic dominance creates switching costs
-3. Insurance regulation varies by state
+## Market Data
+- **Target**: 400K+ licensed agents, 36K+ independent agencies
+- **Key Pain**: Applied Epic $1,100+/mo for 7 users, $10K-25K setup. "UI looks old, too many clicks"
+- **Key Stat**: Independent channel writes 60%+ of P&C premiums
 
 ## Key Source Links
-- [AgencyMate](https://agencymate.com/insights/insurance-agency-software/)
-- [Insurance Forums](https://www.insurance-forums.com/community/threads/what-agency-management-system-software-do-you-use.8760/page-6)
-- [r/Insurance](https://www.reddit.com/r/Insurance/)
-
-## LTD Pricing
-- Tier 1: $79 (solo agent)
-- Tier 2: $99 (small agency, up to 5 agents)
+- [Insurance Forums: Best AMS System](https://www.insurance-forums.com/community/threads/who-has-the-best-mgmt-system.112600/)
+- [SelectHub: Insurance AMS 2026](https://www.selecthub.com/c/insurance-agency-management-systems/)
