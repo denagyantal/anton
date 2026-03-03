@@ -1,48 +1,97 @@
-# Auto Repair Shop Management — Score: 88/105
+# Auto Repair Shop Management (BayBoss / WrenchPad) - Score: 88/105
 
-**Verdict**: BUILD (scope carefully — start with RO + invoicing + texting, DVI in v2)
-**LTD Price**: $499
-**Evaluation Date**: 2026-02-24
+**Verdict**: BUILD
+**Tier**: 1 (Strong Opportunity)
+**Evaluation Date**: 2026-03-03
 
 ## One-Line Pitch
+Modern, affordable shop management for independent 1-3 bay auto repair shops — filling the $50-150/mo "dead zone" with reliable QB sync and clean UX.
 
-Modern, affordable shop management for 1-3 bay independent shops at $69/mo or $499 one-time.
+## Scoring Breakdown
 
-## Market
+| Criterion | Score | Weight | Weighted | Notes |
+|-----------|-------|--------|----------|-------|
+| Market Validation | 5/5 | 3x | 15 | $800B market, only 2.6% cloud penetration; Tekmetric $31M, Shopmonkey $75M raised |
+| Competitor Weakness | 5/5 | 2x | 10 | $50-150/mo dead zone; QB sync universally broken; Shopmonkey V2 broke UX |
+| LTD Viability | 4/5 | 2x | 8 | $99 LTD for 1 location up to 5 users |
+| No Free Tier | 5/5 | 1x | 5 | Auto shops already paying $179-425/mo |
+| Channel Access | 4/5 | 2x | 8 | r/MechanicAdvice, auto shop FB groups, iATN forums |
+| Content Potential | 4/5 | 1x | 4 | "Best auto shop software" comparison content |
+| AppSumo Fit | 3/5 | 2x | 6 | Decent but niche — auto shop owners less likely on AppSumo |
+| Review Potential | 4/5 | 1x | 4 | Tekmetric has 300+ G2 reviews — market reviews heavily |
+| MRR Path | 4/5 | 3x | 12 | LTD → $49-99/mo; premium: parts catalog, DVI, AI estimating |
+| Build Feasibility | 3/5 | 2x | 6 | DVI, parts lookup, labor guides add complexity |
+| Boring Business Bonus | 5/5 | 2x | 10 | Deeply boring — auto repair |
 
-- $3.4B market (2026), growing to $8.6B by 2033 at 9.2% CAGR (fastest-growing segment)
-- 303K auto mechanic shops in the US; SMEs account for 62% of revenue
-- Massive pricing gap between bare-bones tools and feature-complete platforms
+## Must-Have Filters
+- [x] Problem is real (evidence of people paying for solutions)
+- [x] We can build an MVP without deep domain expertise
+- [x] Market is not dominated by a single unbeatable player
+- [x] Revenue potential > $10K MRR within 12 months
+
+## Boring Business Fit
+- [x] VCs mostly ignore independent shops (despite Tekmetric/Shopmonkey VC)
+- [x] Customers are non-technical
+- [x] Existing software is outdated (Mitchell 1, ALLDATA) or overpriced (Tekmetric $179+)
+- [x] Real budgets ($50K+/yr software spend common)
+- [x] Very low churn — shops resist switching once trained
+
+## Team Fit (4 co-founders)
+- **Front-end**: Digital RO workflow, customer texting, DVI builder, mobile-responsive
+- **Back-end**: Parts catalog API integration, labor guide lookups, QB sync, payment processing
+- **Designer**: Clean, modern UI (major differentiator vs legacy tools), DVI photo/video UX
+- **Generalist**: Auto shop forums outreach, SEO comparison content, local shop visits
 
 ## Key Differentiators
+1. **$50-150/mo pricing** — fills the dead zone between ARI ($20) and Tekmetric ($179+)
+2. **Reliable QB sync** — universally broken in competitors, massive pain point
+3. **Modern UX** — legacy tools (Mitchell 1, ALLDATA) have Access-era interfaces
+4. **No annual contracts** — month-to-month billing (competitors lock in)
+5. **Built-in customer texting** — DVI results, appointment reminders, pickup notifications
 
-- $69/mo all-inclusive with no per-user fees (vs. Tekmetric $199+/mo, Shopmonkey $179+/mo)
-- Offline-capable for shops with unreliable internet
-- 2-way customer texting included (most competitors charge extra or lack it)
-- Reliable QuickBooks sync (a top pain point in competitor reviews)
-- Vendor-neutral parts ordering (no lock-in to a single parts supplier)
+## Competitive Landscape
+| Competitor | Price | Key Weakness |
+|-----------|-------|-------------|
+| Tekmetric | $179-409/mo | Strong workflow but weak reporting, expensive |
+| Shopmonkey | $125-425/mo | V2.0 broke UX, QB integration broken |
+| Shop-Ware | $249-799/mo | Very expensive, feature overload |
+| Mitchell 1 | Opaque | Legacy, sneaky billing practices |
+| NAPA TRACS | $109-329/mo | "Slowest program ever" per reviews |
+| AutoFluent | $95/mo | Dated Access-like UI |
+| ARI | $19.99/mo | Too basic for multi-bay shops |
+| Garage360 | $99/mo | Newer, growing — closest competitor |
+| Shop Boss | $199-399/mo | Smaller user base |
 
-## Target Channels
+## MVP Feature Set
+1. Digital Repair Orders (RO) with status tracking
+2. Basic Digital Vehicle Inspection (DVI) with photos
+3. Customer texting (appointment reminders, DVI results, pickup notifications)
+4. Invoicing & payment collection
+5. QuickBooks sync (must be rock-solid)
+6. Customer history & vehicle records
+7. Basic labor time estimation
+8. Appointment scheduling
 
-- r/MechanicAdvice
-- r/AutoMechanic
-- Diagnostic Network forums
-- iATN (International Automotive Technicians Network)
-- ASA (Automotive Service Association) local chapters
+## LTD Pricing Strategy
+- **Tier 1**: $99 LTD — 1 location, up to 5 users
+- **Tier 2**: $149 LTD — 1 location, unlimited users, advanced reporting
+- **Post-LTD**: $49/mo (basic) / $99/mo (premium with parts catalog, advanced DVI)
 
-## Top 3 Risks
+## Next Steps
+1. Survey 20+ independent shops (1-3 bays) on must-have vs nice-to-have features
+2. Build MVP: digital RO, customer texting, basic DVI, invoicing, QB sync
+3. Launch at $99 LTD targeting independent shops
+4. Partner with local auto parts stores for distribution channel
 
-1. **Tekmetric well-liked** — strong incumbent with good reviews; need clear differentiation on price and simplicity
-2. **Parts database integration complex** — connecting to multiple parts catalogs (AutoZone, O'Reilly, NAPA, Worldpac) is technically demanding
-3. **Build complexity may exceed 6 weeks** — RO workflow, invoicing, texting, and QuickBooks sync together are substantial; must ruthlessly cut scope for v1
-
-## Verdict
-
-BUILD. The market is large ($3.4B), growing fast (9.2% CAGR), and independent shops are underserved by current pricing. A $499 LTD or $69/mo price point with no per-user fees directly addresses the most common complaints. Start with repair orders, invoicing, and texting; add DVI (digital vehicle inspection) in v2.
+## Risks
+1. Parts catalog and labor guide integrations (Mitchell/ALLDATA) are expensive to license
+2. DVI is table stakes but complex to build well
+3. Switching costs are high — shops resist changing once trained on a system
+4. Garage360 at $99/mo is closest competitor and improving
 
 ## Key Source Links
-
-- [Tekmetric Reviews — G2](https://www.g2.com/products/tekmetric/reviews?qs=pros-and-cons)
-- [Shopmonkey Reviews — Capterra](https://www.capterra.com/p/169022/Shopmonkey/reviews/)
-- [AutoLeap Reviews — Trustpilot](https://www.trustpilot.com/review/autoleap.com)
-- [Auto Repair Software Market $8.6B by 2033](https://www.newstrail.com/global-auto-repair-software-market-set-to-reach-us-8-6-bn-by-2033-expanding-at-a-14-2-cagr/)
+- $50-150 dead zone: competitor-analysis-2026-02-23.md, competitor-analysis-2026-02-26.md
+- Shopmonkey V2 complaints: competitor-analysis-2026-02-24.md
+- Market data (2.6% cloud penetration): trends-2026-02-25.md
+- Auto shop Reddit signals: reddit-2026-02-24.md
+- Revenue validation: competitor-analysis-2026-02-28.md ($1.8B → $4.2B by 2033)
