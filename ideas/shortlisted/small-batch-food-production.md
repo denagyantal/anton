@@ -1,46 +1,53 @@
-# Small-Batch Manufacturer Production Management — Score: 87/105
+# Small-Batch Food Production Management - Score: 88/105
 
 **Verdict**: BUILD
-**LTD Price**: $79-99
-**Evaluation Date**: 2026-02-24
+**Tier**: 1 (Strong Opportunity)
+**Evaluation Date**: 2026-03-04
 
 ## One-Line Pitch
+Commercial SaaS for micro-bakeries, cottage food, and small-batch producers — recipe management, cost rollups, inventory, order management, compliance.
 
-The ERP your micro-bakery can actually afford: production management for small manufacturers at $79-99 one-time.
+## Scoring Breakdown
 
-## Market
+| Criterion | Score | Weight | Weighted | Notes |
+|-----------|-------|--------|----------|-------|
+| Market Validation | 4/5 | 3x | 12 | Craftplan 577 HN pts. 700K+ cottage food businesses. Completely underserved |
+| Competitor Weakness | 5/5 | 2x | 10 | Zero affordable tools. Enterprise MES $10K+/mo. Craftplan open-source no commercial model |
+| LTD Viability | 5/5 | 2x | 10 | $99-149 LTD — zero competition |
+| No Free Tier | 4/5 | 1x | 4 | Craftplan terminal-based. No accessible free options |
+| Channel Access | 4/5 | 2x | 8 | Cottage food Facebook groups, bakery forums, farmers market communities |
+| Content Potential | 4/5 | 1x | 4 | "bakery management software", "cottage food business tools" |
+| AppSumo Fit | 3/5 | 2x | 6 | Food producers less likely on AppSumo |
+| Review Potential | 4/5 | 1x | 4 | Passionate community shares tools enthusiastically |
+| MRR Path | 4/5 | 3x | 12 | Monthly per-facility or tiered by recipe count |
+| Build Feasibility | 4/5 | 2x | 8 | Recipe/BOM + inventory + cost calcs + orders in 4-6 weeks |
+| Boring Business Bonus | 5/5 | 2x | 10 | Micro-bakeries, cottage food = deeply boring manufacturing |
 
-- Craftplan Show HN received 577 upvotes — extraordinary validation signal for this niche
-- Enterprise ERPs cost $10K-50K/yr, completely out of reach for small producers
-- Craftybase (closest competitor) limited in features at $50/mo
-- 700K+ cottage food and small-batch manufacturing businesses in the US
+## Must-Have Filters
+- [x] Problem is real
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
 
 ## Key Differentiators
+1. Recipe management with versioned BOMs and cost rollups
+2. Inventory with allergen/lot tracking
+3. Production batch planning
+4. State-specific compliance/licensing tracking
 
-- Hosted/managed SaaS (no self-hosting required, unlike open-source Craftplan)
-- Vertical-specific templates for bakery, soap, brewery, candle, and cosmetics makers
-- Recipe and BOM (bill of materials) with full cost rollups
-- E-commerce integrations (Shopify, Etsy, WooCommerce)
-- Allergen and ingredient tracking for food safety compliance
+## Next Steps
+1. Build commercial SaaS version of Craftplan concept
+2. Add compliance/licensing tracking (cottage food laws vary by state)
+3. Launch at $99 LTD
+4. Partner with cottage food associations and farmers market networks
 
-## Target Channels
-
-- Hacker News (proven — 577 upvotes on Craftplan post)
-- Etsy seller communities and forums
-- Bakery, brewery, and soap-making forums
-- AppSumo (strong fit for LTD model)
-
-## Top 3 Risks
-
-1. **Open-source Craftplan as free alternative** — technically savvy makers may self-host rather than pay; need to differentiate on ease-of-use, hosting, and integrations
-2. **Niche TAM may cap smaller** — while cottage food is growing, the total addressable market for production management tools is inherently bounded
-3. **Vertical-specific workflows add complexity** — bakery batching is different from soap curing is different from brewery fermentation; supporting multiple verticals increases build and maintenance cost
-
-## Verdict
-
-BUILD. The Craftplan HN signal (577 upvotes) proves demand exists. Enterprise ERPs are wildly overpriced for this segment, and Craftybase is the only real competitor at an accessible price point. A managed SaaS at $79-99 LTD with vertical templates and e-commerce integrations fills a clear gap. The open-source alternative actually validates the market rather than killing it — most small makers want hosted, not self-hosted.
+## Risks
+1. Niche market — 700K cottage food but not all adopt software
+2. AppSumo reach limited for food producers
+3. State-by-state compliance creates ongoing maintenance
 
 ## Key Source Links
-
-- [Craftplan — Show HN (577 upvotes, 167 comments)](https://news.ycombinator.com/item?id=46847690)
-- [Craftplan — Elixir Forum Discussion](https://elixirforum.com/t/craftplan-open-source-production-management-for-small-manufacturers/74142)
+- [Craftplan — Show HN (577 upvotes)](https://news.ycombinator.com/item?id=46847690)
+- [r/Entrepreneur](https://www.reddit.com/r/Entrepreneur/)
+- [Indie Hackers](https://www.indiehackers.com/)
+- [SaaS Opportunities — Underserved Markets](https://saasopportunities.com/blog/saas-niches-that-make-money-underserved-markets)

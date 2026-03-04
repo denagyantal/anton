@@ -1,51 +1,50 @@
-# Solo Therapist Practice Management
+# Solo Therapist Practice Management - Score: 79/105
 
-**Score**: 83/105
-**Verdict**: BUILD (with HIPAA expertise)
-**Evaluation Date**: 2026-02-24
+**Verdict**: EXPLORE FURTHER
+**Tier**: 1 (Strong Opportunity)
+**Evaluation Date**: 2026-03-04
 
 ## One-Line Pitch
+Streamlined practice management for solo therapists -- HIPAA-compliant scheduling, notes, billing, and client portal without SimplePractice bloat.
 
-HIPAA-compliant practice tool with AI SOAP notes: save 30+ min/day on admin for $99 one-time.
+## Scoring Breakdown
 
-## LTD Price
+| Criterion | Score | Weight | Weighted | Notes |
+|-----------|-------|--------|----------|-------|
+| Market Validation | 4/5 | 3x | 12 | 600K+ therapists. SimplePractice 200K+ users |
+| Competitor Weakness | 4/5 | 2x | 8 | SimplePractice bloating and raising prices. TherapyNotes adding unneeded features |
+| LTD Viability | 4/5 | 2x | 8 | $79-99 LTD. HIPAA compliance is the moat |
+| No Free Tier | 3/5 | 1x | 3 | Some basic free scheduling |
+| Channel Access | 4/5 | 2x | 8 | r/therapists 500K+ combined, therapy Facebook groups |
+| Content Potential | 4/5 | 1x | 4 | "SimplePractice alternative", "therapy practice management" |
+| AppSumo Fit | 3/5 | 2x | 6 | Therapists may or may not be on AppSumo |
+| Review Potential | 4/5 | 1x | 4 | Loyal word-of-mouth market |
+| MRR Path | 4/5 | 3x | 12 | Per-provider monthly |
+| Build Feasibility | 3/5 | 2x | 6 | HIPAA compliance adds complexity. 5-6 weeks |
+| Boring Business Bonus | 4/5 | 2x | 8 | Professional services, unglamorous |
 
-$99 (AI notes as usage-based add-on)
-
-## Market
-
-- 400K+ licensed mental health counselors in the US
-- SimplePractice raised $370M (validates massive demand)
-- Reddit analysis: 656 health/wellness app requests
-- Competitors charge $49-99/mo; massive LTD arbitrage opportunity
+## Must-Have Filters
+- [x] Problem is real
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
 
 ## Key Differentiators
+1. Simplified -- only what solo therapists need
+2. HIPAA-compliant from day one
+3. No feature bloat by design
+4. Affordable vs SimplePractice price increases
 
-- AI voice-to-SOAP notes (saves 30+ min/day)
-- Stripped-down for solo practitioners (no group features)
-- Stripe billing + insurance superbill generation
-- Secure client portal
-- HIPAA-compliant architecture
+## Next Steps
+1. Build HIPAA-compliant scheduling, notes, billing, client portal
+2. Focus on solo practitioners, not group practices
+3. Position as SimplePractice alternative for solo
 
-## Target Channels
-
-- r/therapists
-- r/psychotherapy
-- r/privatepractice
-- Therapy association partnerships
-
-## Top 3 Risks
-
-1. HIPAA compliance requires specific expertise and ongoing vigilance
-2. SimplePractice has massive brand recognition and network effects
-3. Insurance integration is complex and varies by state
-
-## Verdict
-
-BUILD -- with HIPAA expertise on the team. AI SOAP notes are a genuine time-saver that solo therapists are actively requesting. Strong differentiation against bloated incumbents.
+## Risks
+1. SimplePractice is well-established with 200K+ users
+2. HIPAA compliance adds build complexity
+3. Insurance billing complexity
 
 ## Key Source Links
-
+- [r/therapists](https://www.reddit.com/r/therapists/)
 - [Greensighter: Micro-SaaS Ideas](https://www.greensighter.com/blog/micro-saas-ideas)
-- [Flowjam: Indie Hackers SaaS Ideas 2025](https://www.flowjam.com/blog/indie-hackers-saas-ideas-2025-10-you-can-launch-fast)
-- [Reddit Analysis: What Users Want from New Apps](https://nomusica.com/reddit-analysis-reveals-what-users-really-want-from-new-apps-and-saas-tools-in-2026/)

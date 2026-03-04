@@ -1,49 +1,50 @@
-# Small Fleet Trucking Compliance & IFTA
+# Small Fleet Trucking TMS - Score: 79/105
 
-**Score**: 81/105
 **Verdict**: EXPLORE FURTHER
-**Evaluation Date**: 2026-02-24
+**Tier**: 1 (Strong Opportunity)
+**Evaluation Date**: 2026-03-04
 
 ## One-Line Pitch
+TMS built for 1-20 truck fleets -- load management, IFTA auto-calculation, compliance tracking, and dispatch that doesn't look like 2008.
 
-Compliance-first dashboard for owner-operators: IFTA auto-calculation, driver documents, DOT audit prep for $99 one-time.
+## Scoring Breakdown
 
-## LTD Price
+| Criterion | Score | Weight | Weighted | Notes |
+|-----------|-------|--------|----------|-------|
+| Market Validation | 4/5 | 3x | 12 | 500K+ trucking companies, 97% <20 trucks. AscendTMS 57K+ |
+| Competitor Weakness | 4/5 | 2x | 8 | Enterprise TMS $5-50K. AscendTMS limited. "Interfaces feel like 2008" |
+| LTD Viability | 4/5 | 2x | 8 | $99 LTD per fleet. IFTA alone justifies purchase |
+| No Free Tier | 3/5 | 1x | 3 | AscendTMS has free tier |
+| Channel Access | 4/5 | 2x | 8 | r/trucking 200K+, trucking Facebook groups |
+| Content Potential | 4/5 | 1x | 4 | "trucking software small fleet", "TMS for owner operators" |
+| AppSumo Fit | 2/5 | 2x | 4 | Truckers not on AppSumo |
+| Review Potential | 4/5 | 1x | 4 | Will review if compliance simplified |
+| MRR Path | 4/5 | 3x | 12 | Per-truck monthly |
+| Build Feasibility | 3/5 | 2x | 6 | Load mgmt + IFTA + compliance + dispatching. 5-6 weeks |
+| Boring Business Bonus | 5/5 | 2x | 10 | Trucking = deeply boring |
 
-$99 per fleet (up to 5 trucks)
-
-## Market
-
-- 500K+ trucking companies in the US, 97% operate fewer than 20 trucks
-- $875B+ US trucking market
-- AscendTMS: 57K+ companies on platform (validates demand for affordable tools)
+## Must-Have Filters
+- [x] Problem is real
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
 
 ## Key Differentiators
+1. IFTA auto-calculation
+2. Modern UI for small fleet operators
+3. Compliance tracking dashboard
+4. Affordable per-truck pricing
 
-- Compliance-first approach (not dispatch-first like most TMS)
-- IFTA auto-calculation from fuel receipts
-- Driver document tracking with expiration alerts
-- DOT inspection prep dashboard
-- No hardware required
+## Next Steps
+1. Build load management + IFTA auto-calculation + compliance tracking
+2. Modern dispatch interface
+3. Target owner-operators and small fleet operators
 
-## Target Channels
-
-- r/trucking (200K+)
-- r/logistics
-- Trucking association chapters
-
-## Top 3 Risks
-
-1. Trucking compliance requires deep domain knowledge to build correctly
-2. Truckbase (modern, funded startup) competes directly in this space
-3. FMCSA regulatory changes could require frequent product updates
-
-## Verdict
-
-EXPLORE FURTHER -- strong pain point and clear willingness to pay, but requires domain expertise and regulatory vigilance. IFTA quarterly filing deadlines create natural purchase triggers. Worth validating with 10-20 owner-operator interviews before committing to build.
+## Risks
+1. AscendTMS free tier captures basic use case
+2. Complex regulatory compliance requirements
+3. Truckers may have limited tech adoption
 
 ## Key Source Links
-
-- [EmpwrTrucking: Best Software for Small Fleets](https://www.empwrtrucking.com/trucking-industry/best-trucking-software-of-2025-top-3-picks-for-small-fleets/)
-- [PCS: Best Fleet Management Software](https://pcssoft.com/blog/best-fleet-management-software/)
-- [ToroTMS: TMS Software for Carriers](https://www.torotms.com/blog/tms-software-for-carriers)
+- [r/trucking](https://www.reddit.com/r/trucking/)
+- [EmpwrTrucking: Best Trucking Software for Small Fleets](https://www.empwrtrucking.com/trucking-industry/best-trucking-software-of-2025-top-3-picks-for-small-fleets/)

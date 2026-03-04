@@ -1,50 +1,50 @@
-# Self-Storage Facility Management - Score: 75/105
+# Self-Storage Facility Management - Score: 80/105
 
 **Verdict**: EXPLORE FURTHER
-**Tier**: 1 (Strong Opportunity — borderline)
-**Evaluation Date**: 2026-03-03
+**Tier**: 1 (Strong Opportunity)
+**Evaluation Date**: 2026-03-04
 
 ## One-Line Pitch
-Simple facility management for independent self-storage operators — unit tracking, tenant portal, automated billing, and gate access integration.
+Modern self-storage management -- unit tracking, tenant management, autopay, and lien processing without Storable's payment lock-in.
 
 ## Scoring Breakdown
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 3/5 | 3x | 9 | SiteLink, storEDGE exist; niche but real |
-| Competitor Weakness | 3/5 | 2x | 6 | Enterprise-focused or dated solutions |
-| LTD Viability | 4/5 | 2x | 8 | $99-149 LTD feasible |
-| No Free Tier | 4/5 | 1x | 4 | Facility operators will pay |
-| Channel Access | 3/5 | 2x | 6 | Self-storage forums, r/selfstorage |
-| Content Potential | 3/5 | 1x | 3 | Self-storage guides |
-| AppSumo Fit | 3/5 | 2x | 6 | Moderate |
-| Review Potential | 3/5 | 1x | 3 | Moderate |
-| MRR Path | 4/5 | 3x | 12 | Per-unit recurring pricing natural |
-| Build Feasibility | 4/5 | 2x | 8 | Unit management, tenant portal, payments — manageable |
-| Boring Business Bonus | 5/5 | 2x | 10 | Deeply boring — self-storage |
+| Market Validation | 4/5 | 3x | 12 | Storable/SiteLink prove market. Growing industry with PE consolidation |
+| Competitor Weakness | 4/5 | 2x | 8 | Storable locks operators to their payment processor. High fees, poor support |
+| LTD Viability | 4/5 | 2x | 8 | $79-129 LTD. High retention -- operators never switch |
+| No Free Tier | 4/5 | 1x | 4 | No free self-storage tools |
+| Channel Access | 3/5 | 2x | 6 | Self-Storage Association, SSA events, niche Facebook groups |
+| Content Potential | 4/5 | 1x | 4 | "self-storage management software", "Storable alternative" |
+| AppSumo Fit | 2/5 | 2x | 4 | Very niche for AppSumo |
+| Review Potential | 4/5 | 1x | 4 | High retention = loyal reviewers |
+| MRR Path | 4/5 | 3x | 12 | Per-unit or per-facility monthly |
+| Build Feasibility | 4/5 | 2x | 8 | Unit tracking + tenant mgmt + autopay + lien processing in 4-5 weeks |
+| Boring Business Bonus | 5/5 | 2x | 10 | Self-storage = deeply boring |
 
 ## Must-Have Filters
 - [x] Problem is real
 - [x] Can build without deep domain expertise
-- [x] Not dominated by single unbeatable player
-- [⚠️] Revenue potential — may be tight for $10K MRR in 12 months
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
 
 ## Key Differentiators
-1. Affordable pricing for independent operators (1-3 facilities)
-2. Modern mobile-first UX (vs dated SiteLink interface)
-3. RV storage specialization ($48B → $80B by 2035 opportunity)
+1. No payment processor lock-in
+2. Modern UI replacing legacy systems
+3. Transparent pricing without hidden fees
+4. Automated lien processing workflows
 
 ## Next Steps
-1. Validate market size for independent (non-REI) storage facility operators
-2. Research gate access/smart lock integration requirements
-3. Determine if RV storage is a better niche entry point
+1. Build unit tracking + tenant management + autopay
+2. Add automated lien processing
+3. Target independent operators frustrated with Storable
 
 ## Risks
-1. SiteLink has strong market share
-2. Smart lock/gate integration adds hardware complexity
-3. Market may be too small for $10K MRR goal
+1. Storable has deep market penetration
+2. Very niche for AppSumo reach
+3. Payment processing compliance
 
 ## Key Source Links
-- Market signals: reddit-2026-02-25.md
-- Niche PM trends: trends-2026-02-25.md
-- Storage complaints: reddit-2026-02-26.md
+- [Storable](https://www.storable.com)
+- [r/selfstorage](https://www.reddit.com/r/selfstorage/)

@@ -1,44 +1,54 @@
-# Contractor Quoting & Estimating Tool — Score: 91/105
+# Contractor Quoting & Estimating Tool - Score: 95/105
 
-**Evaluation Date**: 2026-02-23
-**Verdict**: BUILD (quick-win or feature of larger FSM)
+**Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
+**Evaluation Date**: 2026-03-04
 
-## Concept
-Mobile-first quoting app: select trade-specific templates, customize line items, add photos, send branded PDF via text/email in under 2 minutes. E-signatures, payment deposit links, automatic follow-up reminders, quote-to-invoice conversion. Recipient validation prevents wrong-client errors.
+## One-Line Pitch
+Professional quotes in 60 seconds from your phone — trade-specific templates for plumbing, electrical, HVAC, and painting.
 
-## Scoring
+## Scoring Breakdown
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 4/5 | 3x | 12 | Joist (acquired), Invoice Simple, Jobber quoting. Multiple HN attempts prove demand. |
-| Competitor Weakness | 4/5 | 2x | 8 | Generic, not trade-specific. Construction estimating $275-950/user/mo. Privacy breaches reported. |
-| LTD Viability | 5/5 | 2x | 10 | $59-79 LTD. Very low cost. |
-| No Free Tier | 3/5 | 1x | 3 | Free invoice tools exist. |
-| Channel Access | 5/5 | 2x | 10 | r/sweatystartup (200K+), all trade subreddits, supply houses. |
-| Content Potential | 5/5 | 1x | 5 | "plumbing estimate app", "contractor estimate template." |
-| AppSumo Fit | 5/5 | 2x | 10 | Perfect AppSumo product. Simple, clear, affordable. |
-| Review Potential | 4/5 | 1x | 4 | Faster quotes = more closed jobs = happy users. |
-| MRR Path | 3/5 | 3x | 9 | Standalone may be hard to upsell. Better as entry to larger product. |
-| Build Feasibility | 5/5 | 2x | 10 | Templates + PDF gen + e-sig + mobile in 2-3 weeks. |
-| Boring Business Bonus | 5/5 | 2x | 10 | Trades quoting — deeply boring. |
+| Market Validation | 4/5 | 3x | 12 | Multiple Show HN attempts, Joist acquired by Buildertrend. Repeated attempts = real demand + execution gap |
+| Competitor Weakness | 4/5 | 2x | 8 | Existing tools generic or expensive $275-950/user/mo. 73% electrical contractors prioritize estimating |
+| LTD Viability | 5/5 | 2x | 10 | $59-89 LTD compelling vs $79+/mo |
+| No Free Tier | 4/5 | 1x | 4 | Trade-specific quoting with pricing databases is paid |
+| Channel Access | 5/5 | 2x | 10 | r/sweatystartup 200K+, r/HVAC, r/Plumbing, r/electricians, Facebook trade groups |
+| Content Potential | 5/5 | 1x | 5 | "contractor estimate app", "HVAC quoting software" |
+| AppSumo Fit | 5/5 | 2x | 10 | Strong — simple tool, clear value |
+| Review Potential | 4/5 | 1x | 4 | Faster, professional quotes = reviews |
+| MRR Path | 4/5 | 3x | 12 | Upsell to full CRM/invoicing/job tracking |
+| Build Feasibility | 5/5 | 2x | 10 | Mobile quoting app in 2-3 weeks. Fastest MVP |
+| Boring Business Bonus | 5/5 | 2x | 10 | Pure trades tool |
+
+## Must-Have Filters
+- [x] Problem is real
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
+
+## Key Differentiators
+1. Trade-specific templates (plumbing, electrical, HVAC, painting)
+2. Photo attachment and e-signature
+3. Payment deposit links
+4. Mobile-first for jobsite use
 
 ## Next Steps
-1. Build as standalone OR core feature of FSM product
-2. Pre-built templates for plumbing, HVAC, electrical, painting
-3. Launch at $59-79 LTD on AppSumo
-4. Key: photo attachment, e-signature, payment deposit, auto-follow-up
+1. Build mobile-first quoting app with trade-specific templates
+2. Add photo attachment, e-signature, payment deposit links
+3. Launch on AppSumo at $69 LTD
+4. Seed r/sweatystartup and trade Facebook groups
 
 ## Risks
-1. May be too simple for standalone — better as feature
-2. Trade-specific pricing databases need maintenance
-3. Quoting is bundled in every FSM
+1. Jobber/Housecall Pro include quoting — must differentiate on speed and trade-specificity
+2. Offline capability is critical but adds complexity
+3. Trade-specific pricing databases take time to build
 
 ## Key Source Links
 - [r/sweatystartup](https://www.reddit.com/r/sweatystartup/)
-- [Workyard - Estimating Software](https://www.workyard.com/compare/construction-estimating-software-for-small-business)
-- [Joist](https://www.joist.com)
-
-## LTD Pricing
-- Tier 1: $59 (solo, unlimited quotes)
-- Tier 2: $79 (team, templates, analytics)
+- [r/electricians](https://www.reddit.com/r/electricians/)
+- [Workyard - Estimating Software Comparison](https://www.workyard.com/compare/construction-estimating-software-for-small-business)
+- [Show HN: Contractor Quoting](https://news.ycombinator.com/item?id=44246559)
+- [Show HN: Trade Estimating Tool](https://news.ycombinator.com/item?id=45706450)

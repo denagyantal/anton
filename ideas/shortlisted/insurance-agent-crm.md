@@ -1,50 +1,53 @@
-# Insurance Agency Lightweight CRM — Score: 78/105
+# Insurance Agent CRM & Policy Tracker - Score: 86/105
 
-**Evaluation Date**: 2026-02-24
 **Verdict**: EXPLORE FURTHER
+**Tier**: 1 (Strong Opportunity)
+**Evaluation Date**: 2026-03-04
 
 ## One-Line Pitch
+Lightweight policy CRM for independent insurance agents — renewal dashboard, automated client outreach, commission tracking, ACORD form auto-fill.
 
-Simple policy tracker and renewal pipeline for solo insurance agents: replace your spreadsheet for $79-99 one-time.
+## Scoring Breakdown
 
-## LTD Price
+| Criterion | Score | Weight | Weighted | Notes |
+|-----------|-------|--------|----------|-------|
+| Market Validation | 4/5 | 3x | 12 | 400K+ agents, 36K+ agencies. Applied Epic, EZLynx prove market. Independent channel writes 60%+ of P&C premiums |
+| Competitor Weakness | 5/5 | 2x | 10 | EZLynx "hell", AMS360 "outdated", Applied Epic $1,100+/mo + $10-25K setup |
+| LTD Viability | 4/5 | 2x | 8 | $79-99 LTD for lite CRM |
+| No Free Tier | 4/5 | 1x | 4 | No notable free insurance CRM |
+| Channel Access | 4/5 | 2x | 8 | r/Insurance 200K+, Insurance Forums, state associations |
+| Content Potential | 4/5 | 1x | 4 | "insurance agent CRM", "EZLynx alternative" |
+| AppSumo Fit | 3/5 | 2x | 6 | Insurance agents unlikely on AppSumo |
+| Review Potential | 4/5 | 1x | 4 | Will review if it saves clicks |
+| MRR Path | 4/5 | 3x | 12 | Per-agent monthly. Carrier integrations as premium |
+| Build Feasibility | 4/5 | 2x | 8 | Policy tracker + renewal reminders + CRM + commission tracking in 4-5 weeks |
+| Boring Business Bonus | 5/5 | 2x | 10 | Insurance = deeply boring professional services |
 
-$79-99 (CRM portion; carrier integrations as MRR add-on)
-
-## Market
-
-- 400K+ licensed agents in the US
-- 36K+ independent agencies
-- Applied Epic costs $1,100+/mo
-- Independent channel writes 60%+ of P&C premiums
+## Must-Have Filters
+- [x] Problem is real
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
 
 ## Key Differentiators
+1. ACORD form auto-fill
+2. Renewal dashboard with automated outreach
+3. Commission tracking per policy
+4. Modern UX vs legacy competitors
 
-- Lightweight tool (not a full AMS replacement)
-- Renewal pipeline with 60/30/15-day alerts
-- ACORD form auto-fill
-- Communication log per client
-- Commission tracking
-- CSV import for easy switching from spreadsheets
+## Next Steps
+1. Build lightweight policy CRM: renewal dashboard, automated outreach, communication log, commission tracking
+2. ACORD form auto-fill as killer feature
+3. Test at $99 LTD for solo agents
 
-## Target Channels
-
-- Insurance Forums
-- r/Insurance
-- Independent agency associations
-
-## Top 3 Risks
-
-1. Insurance is heavily regulated, adding compliance burden
-2. Carrier integrations are gatekept and difficult to obtain
-3. Hard to reach agents -- channels are fragmented with no single community
-
-## Verdict
-
-EXPLORE FURTHER -- The gap between spreadsheets and $1,100/mo AMS platforms is real. Focus on the lightweight CRM use case and avoid full policy administration.
+## Risks
+1. Insurance heavily regulated — compliance varies by state
+2. Carrier integrations are the moat but hardest to build
+3. Agents may need full AMS, not lite CRM
 
 ## Key Source Links
-
-- [Insurance Forums AMS Discussion](https://www.insurance-forums.com/community/threads/who-has-the-best-mgmt-system.112600/)
-- [SelectHub Insurance AMS](https://www.selecthub.com/c/insurance-agency-management-systems/)
-- [AgencyHeight Best AMS](https://agencyheight.com/the-best-insurance-agency-management-systems/)
+- [AgencyMate — Insurance Agency Software Insights](https://agencymate.com/insights/insurance-agency-software/)
+- [Insurance Forums — Agency Management System Discussion](https://www.insurance-forums.com/community/threads/what-agency-management-system-software-do-you-use.8760/)
+- [r/Insurance](https://www.reddit.com/r/Insurance/)
+- [GloveBox — Best Insurance Agency Management Systems](https://glovebox.io/blog/best-insurance-agency-management-systems/)
+- [G2 — Insurance Agency Management Systems](https://www.g2.com/categories/insurance-agency-management-systems)

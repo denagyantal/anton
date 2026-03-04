@@ -1,97 +1,54 @@
-# Landscaping & Lawn Care Business OS (LawnCRM) - Score: 93/105
+# Lawn Care / Landscaping Business OS - Score: 91/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-03-03
+**Evaluation Date**: 2026-03-04
 
 ## One-Line Pitch
-Offline-first scheduling, route optimization, and invoicing for lawn care operators with flat pricing — no per-user fees.
+Route-optimized scheduling, seasonal contracts, and recurring invoicing purpose-built for lawn care and landscaping businesses.
 
 ## Scoring Breakdown
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | $176B US lawn/landscape revenue, 650K-693K businesses |
-| Competitor Weakness | 4/5 | 2x | 8 | Per-user pricing punishes small teams, buggy mobile, no lawn-specific features |
-| LTD Viability | 5/5 | 2x | 10 | $149 LTD very feasible — flat pricing is the differentiator |
-| No Free Tier | 4/5 | 1x | 4 | Operators will pay; Yardbook free tier validates market |
-| Channel Access | 5/5 | 2x | 10 | r/lawncare (750K+), r/landscaping, LawnSite forums — massively active |
-| Content Potential | 4/5 | 1x | 4 | Seasonal content, "best lawn care software" SEO |
-| AppSumo Fit | 4/5 | 2x | 8 | Good LTD fit — operators understand one-time purchase |
-| Review Potential | 4/5 | 1x | 4 | GorillaDesk has 100+ reviews — market reviews actively |
-| MRR Path | 4/5 | 3x | 12 | LTD → $19-29/mo flat-rate; premium: AI route optimization, crew GPS |
-| Build Feasibility | 4/5 | 2x | 8 | Route optimization, scheduling, invoicing, QB sync — manageable |
-| Boring Business Bonus | 5/5 | 2x | 10 | Deeply boring — lawn care, landscaping |
+| Market Validation | 5/5 | 3x | 15 | $130B+ lawn care industry, 600K+ businesses. Jobber/Service Autopilot prove demand |
+| Competitor Weakness | 4/5 | 2x | 8 | Jobber generic, reports require Excel editing. Yardbook free but limited/stale |
+| LTD Viability | 4/5 | 2x | 8 | $69-99 LTD. Feb-Mar launch timing critical |
+| No Free Tier | 3/5 | 1x | 3 | Yardbook offers free tier |
+| Channel Access | 5/5 | 2x | 10 | r/lawncare 600K+, r/landscaping, LawnSite.com forums |
+| Content Potential | 5/5 | 1x | 5 | "lawn care software", "landscaping scheduling app" |
+| AppSumo Fit | 4/5 | 2x | 8 | Seasonal timing creates urgency |
+| Review Potential | 4/5 | 1x | 4 | Route-based owners value time savings |
+| MRR Path | 4/5 | 3x | 12 | Per-crew or monthly tiers |
+| Build Feasibility | 4/5 | 2x | 8 | Route scheduling + seasonal contracts + invoicing + photos in 4-5 weeks |
+| Boring Business Bonus | 5/5 | 2x | 10 | Mowing lawns = peak boring |
 
 ## Must-Have Filters
-- [x] Problem is real (evidence of people paying for solutions)
-- [x] We can build an MVP without deep domain expertise
-- [x] Market is not dominated by a single unbeatable player
-- [x] Revenue potential > $10K MRR within 12 months
-
-## Boring Business Fit
-- [x] Market VCs typically ignore
-- [x] Customers are non-technical
-- [x] Existing software is outdated or overpriced
-- [x] Businesses have real budgets
-- [x] Churn likely to be low (seasonal loyalty)
-
-## Team Fit (4 co-founders)
-- **Front-end**: Map-based route view, scheduling calendar, mobile-first offline design
-- **Back-end**: Route optimization algorithm, scheduling engine, QB sync, weather API
-- **Designer**: One-handed mobile UX (operators use phone in truck), map/route visualization
-- **Generalist**: Pre-season launch strategy, lawn care content marketing, FB group seeding
+- [x] Problem is real
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
 
 ## Key Differentiators
-1. **Flat-rate pricing** — no per-user fees (Jobber charges $29/extra user)
-2. **Weather-aware scheduling** — auto-reschedule for rain, frost
-3. **Offline-first mobile** — works in rural areas with no signal
-4. **Route optimization** — minimize drive time between jobs
-5. **Lawn-specific features** — chemical application tracking, property measurements, seasonal service templates
-
-## Competitive Landscape
-| Competitor | Price | Key Weakness |
-|-----------|-------|-------------|
-| Jobber | $39-599/mo + $29/user | Per-user pricing, not lawn-specific |
-| GorillaDesk | $49-99/mo | Limited route optimization |
-| Service Autopilot | $49-499+/mo | Complex, annual price hikes |
-| Housecall Pro | $59-189+/mo | Add-on creep, not lawn-specific |
-| LMN | $75+/mo | Estimate-focused, less operational |
-| Yardbook | Free-$34.99/mo | Limited features, no mobile app |
-
-## MVP Feature Set
-1. Job scheduling with recurring service templates (weekly mow, bi-weekly, seasonal)
-2. Route optimization with map view
-3. Offline-first mobile app (sync when connected)
-4. Invoicing & payment collection
-5. Customer portal with service history
-6. Weather integration (reschedule alerts)
-7. QuickBooks sync
-8. Chemical/fertilizer application tracking
-
-## LTD Pricing Strategy
-- **Tier 1**: $99 LTD — up to 50 active customers
-- **Tier 2**: $149 LTD — unlimited customers, route optimization
-- **Post-LTD**: $19/mo (basic) / $29/mo (premium with AI routing, crew GPS, advanced reporting)
-
-## Launch Timing
-- **Critical**: Launch in February-March (pre-season) for maximum impact
-- Lawn care businesses plan their season in January-March
-- Post-season (October-November) is too late — operators are winding down
+1. Route-optimized scheduling with recurring templates
+2. Property measurement via Google Maps integration
+3. Seasonal pricing and contract management
+4. Chemical application tracking and before/after photos
 
 ## Next Steps
-1. Analyze GorillaDesk/Jobber G2 reviews for #1 complaint patterns
-2. Build MVP with offline-first mobile, weather-aware scheduling, route optimization, flat pricing
-3. Launch in Feb-March pre-season on AppSumo
-4. Seed r/lawncare and lawn care FB groups with "built by a lawn care operator" positioning
+1. Build route-based scheduling with recurring job templates, crew assignment, seasonal pricing
+2. Add property measurement, chemical tracking, before/after photos
+3. Launch Feb-Mar for maximum seasonal conversion
+4. LTD at $79
 
 ## Risks
-1. Seasonal business — onboarding window is narrow (Feb-April)
-2. GorillaDesk is well-positioned in this niche already
-3. Route optimization requires mapping API costs that may affect LTD profitability
+1. Seasonal business = seasonal revenue
+2. Jobber well-established, could add lawn-specific features
+3. Route optimization requires mapping API costs
 
 ## Key Source Links
-- Market data & competitors: competitor-analysis-2026-02-25.md, competitor-analysis-2026-03-03.md
-- Trend analysis: trends-2026-02-25.md, trends-2026-02-27.md
-- Reddit signals: reddit-2026-02-25.md, reddit-2026-02-26.md
-- GorillaDesk validation: hn-indiehackers-2026-02-24.md
+- [r/lawncare](https://www.reddit.com/r/lawncare/)
+- [r/landscaping](https://www.reddit.com/r/landscaping/)
+- [LawnSite - Software Recommendations](https://www.lawnsite.com/threads/lawn-care-software-recommendations.500583/)
+- [Jobber Pricing](https://www.getjobber.com/pricing/)
+- [CleanSavannah - Lawn Care Software Guide](https://www.cleansavannah.com/post/2025-s-ultimate-guide-to-lawn-care-software-quoteiq-vs-copilot-crm-which-one-drives-greener-prof)

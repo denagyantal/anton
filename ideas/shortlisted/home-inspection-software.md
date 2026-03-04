@@ -1,47 +1,50 @@
-# Home Inspection Software — Score: 78/105
+# Home Inspection Report Software - Score: 80/105
 
 **Verdict**: EXPLORE FURTHER
-**LTD Price**: $79-99
-**Evaluation Date**: 2026-02-27
+**Tier**: 1 (Strong Opportunity)
+**Evaluation Date**: 2026-03-04
 
 ## One-Line Pitch
+Reliable home inspection reporting -- photo capture, templated reports, auto-organization, and realtor-friendly output that doesn't crash mid-inspection.
 
-Mobile-first home inspection app with checklist-driven report generation, photo annotation, and client portal for $79-99 one-time.
+## Scoring Breakdown
 
-## Market
+| Criterion | Score | Weight | Weighted | Notes |
+|-----------|-------|--------|----------|-------|
+| Market Validation | 4/5 | 3x | 12 | 80K+ inspectors. Spectora proves market but is "glitchy" |
+| Competitor Weakness | 4/5 | 2x | 8 | Spectora buggy, HomeGauge/HouseMaster aging. Reliability is #1 ask |
+| LTD Viability | 4/5 | 2x | 8 | $99-129 LTD |
+| No Free Tier | 4/5 | 1x | 4 | No free inspection tools |
+| Channel Access | 3/5 | 2x | 6 | ASHI events, inspector forums, realtor referral networks |
+| Content Potential | 4/5 | 1x | 4 | "home inspection software", "Spectora alternative" |
+| AppSumo Fit | 2/5 | 2x | 4 | Very niche for AppSumo |
+| Review Potential | 4/5 | 1x | 4 | Inspectors recommend within network |
+| MRR Path | 4/5 | 3x | 12 | Per-report or monthly subscription |
+| Build Feasibility | 4/5 | 2x | 8 | Photo capture + templated reports + auto-organization in 4-5 weeks |
+| Boring Business Bonus | 5/5 | 2x | 10 | Home inspection = deeply boring |
 
-- 30K+ home inspectors in the US (ASHI + InterNACHI members)
-- Spectora ($79+/mo), Home Inspector Pro (desktop-first), HomeGauge (dated)
-- Average inspection fee $300-500 — software cost is a clear business expense
+## Must-Have Filters
+- [x] Problem is real
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
 
 ## Key Differentiators
+1. Reliability -- never crashes mid-inspection
+2. Fast photo capture with auto-organization by room
+3. Templated reports with customization
+4. Realtor-friendly output format
 
-- Mobile-first with offline capability (inspectors work in basements/attics with no signal)
-- Checklist-driven report generation with photo annotation
-- Template library for different inspection types (full home, radon, mold, pre-listing)
-- Client portal with branded report delivery
-- Flat-rate pricing vs. Spectora's per-month model
+## Next Steps
+1. Build reliable photo capture + templated reports + auto-organization
+2. Focus on reliability as key differentiator
+3. Target ASHI community and realtor referral networks
 
-## Target Channels
-
-- InterNACHI and ASHI member communities
-- Home inspection forums and Facebook groups
-- r/homeinspectors
-- Home inspector training/certification programs
-
-## Top 3 Risks
-
-1. **Spectora is well-reviewed and growing** — harder competitive entry than most boring business categories
-2. **Small TAM (30K inspectors)** — limits scale potential; may cap below $10K MRR target
-3. **Report template creation requires domain expertise** — different states/regions have different standards and disclosure requirements
-
-## Verdict
-
-EXPLORE FURTHER. The market is proven and the pain is real (inspectors paying $79+/mo for software they use per-inspection), but the small TAM and strong incumbent (Spectora) make this a riskier bet. Best suited as a secondary product or test market for a multi-vertical strategy.
+## Risks
+1. Spectora is established despite bugs
+2. Small market (80K inspectors)
+3. Niche distribution challenge
 
 ## Key Source Links
-
-- [Spectora Reviews (Capterra)](https://www.capterra.com/p/157144/Spectora/reviews/)
-- [Home Inspector Pro Reviews (Capterra)](https://www.capterra.com/p/70519/Home-Inspector-Pro/reviews/)
-- [Home Inspection Software (GoAudits)](https://goaudits.com/blog/home-inspection-software-app/)
-- [Home Inspection Software (G2)](https://www.g2.com/categories/home-inspection)
+- [Home Inspection Software (Software Advice)](https://www.softwareadvice.com/home-inspection/)
+- [r/homeinspectors](https://www.reddit.com/r/homeinspectors/)

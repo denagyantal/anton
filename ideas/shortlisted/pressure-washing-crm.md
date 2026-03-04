@@ -1,52 +1,54 @@
-# Pressure Washing & Exterior Cleaning CRM - Score: 79/105
+# Pressure Washing / Auto Detailing CRM - Score: 95/105
 
-**Verdict**: EXPLORE FURTHER
+**Verdict**: BUILD -- Quick Win
 **Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-03-03
+**Evaluation Date**: 2026-03-04
 
 ## One-Line Pitch
-Purpose-built CRM for pressure washing and exterior cleaning operators — before/after photos, surface-specific quoting, chemical tracking, and route optimization.
+The first purpose-built software for exterior cleaning businesses — visual quoting, before/after photos, chemical tracking, route optimization.
 
 ## Scoring Breakdown
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 3/5 | 3x | 9 | ServiceMonster 75% retention validates; niche but growing |
-| Competitor Weakness | 4/5 | 2x | 8 | Very underserved — generic FSMs miss surface-specific pricing, before/after photos |
-| LTD Viability | 4/5 | 2x | 8 | $79-99 LTD feasible |
-| No Free Tier | 4/5 | 1x | 4 | Operators will pay for business-specific tool |
-| Channel Access | 4/5 | 2x | 8 | r/pressurewashing, detailing FB groups very active |
-| Content Potential | 3/5 | 1x | 3 | "How to start a pressure washing business" |
-| AppSumo Fit | 3/5 | 2x | 6 | Moderate — niche |
-| Review Potential | 3/5 | 1x | 3 | Moderate |
-| MRR Path | 4/5 | 3x | 12 | Recurring service = subscription-ready |
-| Build Feasibility | 4/5 | 2x | 8 | Simpler scope — scheduling, quoting, photos, invoicing |
-| Boring Business Bonus | 5/5 | 2x | 10 | Deeply boring — pressure washing |
+| Market Validation | 4/5 | 3x | 12 | $2.3B pressure washing 3.5% growth, $15B auto detailing |
+| Competitor Weakness | 5/5 | 2x | 10 | ZERO purpose-built software. All use generic FSM |
+| LTD Viability | 5/5 | 2x | 10 | $59-79 LTD — owner-operators love one-time payments |
+| No Free Tier | 4/5 | 1x | 4 | No free pressure washing-specific tools |
+| Channel Access | 5/5 | 2x | 10 | r/pressurewashing 90K+, r/AutoDetailing 600K+ |
+| Content Potential | 5/5 | 1x | 5 | "pressure washing software" near-zero SEO competition |
+| AppSumo Fit | 4/5 | 2x | 8 | Before/after photos create viral sharing |
+| Review Potential | 4/5 | 1x | 4 | Visual results encourage reviews |
+| MRR Path | 4/5 | 3x | 12 | Premium route optimization, chemical tracking, marketing as upsell |
+| Build Feasibility | 5/5 | 2x | 10 | Simple CRM + sqft estimating + invoicing + photos in 2-3 weeks |
+| Boring Business Bonus | 5/5 | 2x | 10 | Pressure washing = deeply boring blue-collar |
 
 ## Must-Have Filters
 - [x] Problem is real
 - [x] Can build without deep domain expertise
 - [x] No dominant player
-- [⚠️] Revenue potential — may be tight for $10K MRR as standalone
+- [x] Revenue potential $10K+ MRR within 12 months
 
 ## Key Differentiators
 1. Before/after photo management with client sharing
-2. Surface-specific quoting (driveway, deck, house, roof — different rates)
+2. Surface-specific quoting (driveway, deck, house, roof)
 3. Chemical tracking and dilution ratios
-4. "Built by pressure washers" positioning
+4. "Built for exterior cleaning" positioning
 
 ## Next Steps
-1. Validate market size — how many PW businesses exist?
-2. Determine if standalone or vertical skin on FSM Lite
-3. Test positioning: "Built by pressure washers, for pressure washers"
+1. Build visual-first CRM: photo-based quoting, before/after gallery, automated review requests
+2. Launch on AppSumo at $69 LTD
+3. Dominate SEO for "pressure washing software"
+4. Expand to window cleaning, gutter cleaning
 
 ## Risks
-1. Market may be too small for standalone SaaS
-2. Low barrier to entry = fly-by-night operators who churn
-3. Seasonal demand in northern climates
-4. May be better as a module within FSM Lite
+1. Small market per niche — need adjacent verticals
+2. Generic FSM tools could add specific features
+3. Owner-operators may have low tech literacy
 
 ## Key Source Links
-- ServiceMonster validation: reddit-2026-02-26.md
-- Market signals: reddit-2026-02-25.md
-- Competitor landscape: competitor-analysis-2026-02-26.md
+- [r/pressurewashing](https://www.reddit.com/r/pressurewashing/)
+- [r/AutoDetailing](https://www.reddit.com/r/AutoDetailing/)
+- [MyQuoteIQ - Pressure Washing CRM](https://myquoteiq.com/pressure-washing-crm-business-software/)
+- [ServiceMonster - Exterior Cleaning Software](https://www.servicemonster.com/exterior-cleaning-software)
+- [r/sweatystartup](https://www.reddit.com/r/sweatystartup/)

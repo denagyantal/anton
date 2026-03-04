@@ -1,51 +1,51 @@
-# Small Business Bookkeeping Simplifier — Score: 75/105
+# Simple Bookkeeping (QuickBooks Alternative) - Score: 84/105
 
-**Evaluation Date**: 2026-02-24
-**Verdict**: EXPLORE FURTHER (high risk, high reward)
+**Verdict**: EXPLORE FURTHER
+**Tier**: 1 (Strong Opportunity)
+**Evaluation Date**: 2026-03-04
 
 ## One-Line Pitch
+Dead-simple bookkeeping that does 3 things well — bank categorization, invoice sending, and tax reports. The anti-QuickBooks.
 
-AI-first bookkeeping for non-accountants: connect your bank, auto-categorize everything, plain-English dashboard for $79-99 one-time.
+## Scoring Breakdown
 
-## LTD Price
+| Criterion | Score | Weight | Weighted | Notes |
+|-----------|-------|--------|----------|-------|
+| Market Validation | 5/5 | 3x | 15 | QBO 7M+ subscribers. Massive revolt — "Does anyone think QuickBooks is terrible?" 6+ forum pages |
+| Competitor Weakness | 4/5 | 2x | 8 | QBO constant price increases, disappearing features. But Wave, Xero, FreshBooks exist |
+| LTD Viability | 4/5 | 2x | 8 | $59-79 LTD fills gap between free Wave and $35/mo QBO |
+| No Free Tier | 2/5 | 1x | 2 | Wave is free. Multiple free options |
+| Channel Access | 4/5 | 2x | 8 | r/smallbusiness, r/accounting, r/Bookkeeping |
+| Content Potential | 5/5 | 1x | 5 | "QuickBooks alternative", "simple bookkeeping software" |
+| AppSumo Fit | 5/5 | 2x | 10 | Perfect AppSumo — broad appeal, frustration-driven |
+| Review Potential | 4/5 | 1x | 4 | "Finally escaped QuickBooks" = compelling narrative |
+| MRR Path | 4/5 | 3x | 12 | Monthly natural for accounting |
+| Build Feasibility | 3/5 | 2x | 6 | Bank integrations via Plaid + categorization + invoicing + tax reports. 6+ weeks |
+| Boring Business Bonus | 3/5 | 2x | 6 | Boring but horizontal, not vertical |
 
-$79-99 (bank connection may need small monthly fee)
-
-## Market
-
-- QBO has 7M+ subscribers
-- 33M+ small businesses in the US
-- QBO prices up 125% since 2017
-- "QuickBooks alternative" search volume growing
+## Must-Have Filters
+- [x] Problem is real
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
 
 ## Key Differentiators
+1. Opinionated simplicity — 3 things only
+2. One-time LTD pricing vs monthly QBO
+3. No feature bloat by design
+4. "Escaped QuickBooks" community positioning
 
-- Zero accounting knowledge required
-- AI auto-categorization of transactions
-- Plain-English dashboard ("You made $12,400 this month")
-- One-click tax-ready reports
-- No chart of accounts setup needed
-- Receipt photo capture
+## Next Steps
+1. Validate if "simpler QBO" resonates more than "QBO for [specific trade]"
+2. Build opinionated tool: bank categorization, invoice sending, tax reports
+3. Test at $69 LTD on AppSumo
 
-## Target Channels
-
-- r/smallbusiness
-- r/accounting
-- r/Bookkeeping
-- AppSumo
-
-## Top 3 Risks
-
-1. Competing with free (Wave) and dominant (QBO) is extremely difficult
-2. Bank integration costs (Plaid) and reliability can erode LTD margins
-3. Regulatory requirements for financial software add compliance burden
-
-## Verdict
-
-EXPLORE FURTHER (high risk, high reward) -- Massive market with real frustration, but competing against free and dominant players is the hardest fight. Best angle may be vertical-specific ("QuickBooks for plumbers") rather than generic.
+## Risks
+1. Wave is free — hard to justify paid for basics
+2. QBO network effects (accountants require it)
+3. Reliable bank integrations are technically challenging
 
 ## Key Source Links
-
-- [QBO Alternatives 1800Accountant](https://1800accountant.com/blog/best-quickbooks-alternativ)
-- [QBO Alternatives NerdWallet](https://www.nerdwallet.com/best/small-business/quickbooks-online-alternatives)
-- [Why SMBs Still Use Spreadsheets](https://enabled.substack.com/p/why-small-businesses-still-use-spreadsheets)
+- [QuickBooks Community: Does Anyone Think QBO Is Terrible?](https://quickbooks.intuit.com/learn-support/en-us/employees-and-payroll/does-anyone-else-think-quickbooks-is-terrible/00/1044704)
+- [Thryve Digest: QuickBooks Alternatives 2026](https://thryvedigest.com/smallbusiness/quickbooks-alternatives-small-business-2026/)
+- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/)

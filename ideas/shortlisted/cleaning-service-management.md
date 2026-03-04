@@ -1,91 +1,53 @@
-# Cleaning Service Management (CleanOps) - Score: 95/105
+# Cleaning Service Management - Score: 92/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-03-03
+**Evaluation Date**: 2026-03-04
 
 ## One-Line Pitch
-All-in-one cleaning business platform with flat-rate pricing (no per-seat), route grouping, checklists, and payroll basics.
+All-in-one platform for cleaning businesses — visual recurring schedules, per-room checklists with photo verification, one-tap clock-in auto-invoicing.
 
 ## Scoring Breakdown
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | ZenMaid $1M+ ARR, Onedesk $100K+ MRR, BookingKoala, Swept — massive paying market |
-| Competitor Weakness | 4/5 | 2x | 8 | Per-seat pricing punishes part-timers, BookingKoala outage destroyed trust, Service Autopilot 10% annual hikes |
-| LTD Viability | 5/5 | 2x | 10 | $69-99 LTD highly feasible — low compute costs |
-| No Free Tier | 4/5 | 1x | 4 | Cleaning businesses will pay from day 1 |
-| Channel Access | 5/5 | 2x | 10 | r/CleaningService, r/EntrepreneurRideAlong, cleaning business FB groups extremely active |
-| Content Potential | 4/5 | 1x | 4 | "How to start a cleaning business" is evergreen SEO |
-| AppSumo Fit | 5/5 | 2x | 10 | Research explicitly rates cleaning SaaS LTD fit as "Very High" |
-| Review Potential | 4/5 | 1x | 4 | Cleaning business owners are active reviewers |
-| MRR Path | 4/5 | 3x | 12 | LTD → $19-29/mo subscription; AI quality assurance as premium |
-| Build Feasibility | 4/5 | 2x | 8 | MVP: scheduling, checklists, client portal, invoicing — 4-6 weeks |
-| Boring Business Bonus | 5/5 | 2x | 10 | Deeply boring — cleaning services |
+| Market Validation | 5/5 | 3x | 15 | $90B+ US cleaning industry. ZenMaid $3M/yr ARR, Onedesk $100K+ MRR. 10.6% CAGR |
+| Competitor Weakness | 4/5 | 2x | 8 | ZenMaid lacks 2-way SMS, BookingKoala hostile to feedback, Jobber generic, MaidCentral $450/mo. 45% juggle 5-7 apps |
+| LTD Viability | 4/5 | 2x | 8 | $69-149 LTD — cleaning owners are price-sensitive deal seekers |
+| No Free Tier | 4/5 | 1x | 4 | Cleaning-specific tools are paid |
+| Channel Access | 5/5 | 2x | 10 | r/CleaningBusiness 35K+, r/EntrepreneurRideAlong, Facebook Cleaning Business Owners 50K+ |
+| Content Potential | 5/5 | 1x | 5 | "cleaning business software", "ZenMaid alternative" |
+| AppSumo Fit | 4/5 | 2x | 8 | Cleaning owners are deal-seeking |
+| Review Potential | 4/5 | 1x | 4 | Vocal on Facebook groups |
+| MRR Path | 4/5 | 3x | 12 | Per-cleaner or flat monthly, payroll sync premium |
+| Build Feasibility | 4/5 | 2x | 8 | Recurring scheduling + checklists + photo verification + invoicing in 3-5 weeks |
+| Boring Business Bonus | 5/5 | 2x | 10 | Peak boring blue-collar |
 
 ## Must-Have Filters
-- [x] Problem is real (evidence of people paying for solutions)
-- [x] We can build an MVP without deep domain expertise
-- [x] Market is not dominated by a single unbeatable player
-- [x] Revenue potential > $10K MRR within 12 months
-
-## Boring Business Fit
-- [x] Market VCs typically ignore
-- [x] Customers are non-technical
-- [x] Existing software is outdated or overpriced
-- [x] Businesses have real budgets
-- [x] Churn likely to be low (loyal once they adopt)
-
-## Team Fit (4 co-founders)
-- **Front-end**: Standard UI patterns — scheduling calendar, checklists, dashboards
-- **Back-end**: CRUD + scheduling logic, route grouping algorithm, payment integration
-- **Designer**: Clean mobile-first design, checklist UX, before/after photo capture
-- **Generalist**: Clear GTM — AppSumo launch, cleaning business FB groups, SEO content
+- [x] Problem is real
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
 
 ## Key Differentiators
-1. **Flat-rate pricing** — no per-seat charges (ZenMaid charges $4-24/seat)
-2. **Offline-first mobile** — crews work in basements, poor signal areas
-3. **Built-in QC** — photo verification checklists (AI-enhanced later)
-4. **Multilingual** — many cleaning crews are Spanish/Portuguese-speaking
-
-## Competitive Landscape
-| Competitor | Price | Key Weakness |
-|-----------|-------|-------------|
-| ZenMaid | $19-49/mo + $4-24/seat | Per-seat pricing punishes part-timers |
-| BookingKoala | Free-$197/mo | Overwhelming setup, reliability issues (outage destroyed trust) |
-| Swept | $30-225/mo | App "unusable" per reviews |
-| Service Autopilot | $49-499+/mo | 10% annual price hikes |
-| Maidily | $21-25.50/mo | Small user base, limited features |
-| Jobber | $39-599/mo | Not cleaning-specific |
-
-## MVP Feature Set
-1. Scheduling & job management (recurring jobs, one-time cleans)
-2. Digital checklists with photo capture
-3. Client portal (booking, communication)
-4. Invoicing & payment collection
-5. Route grouping by area
-6. Basic crew/payroll tracking (hours, pay rates)
-7. QuickBooks sync
-
-## LTD Pricing Strategy
-- **Tier 1**: $69 LTD — up to 10 jobs/day, 5 crew members
-- **Tier 2**: $99 LTD — unlimited jobs, unlimited crew
-- **Post-LTD**: $19/mo (basic) / $29/mo (premium with AI QC, advanced reporting)
+1. Visual recurring schedule with skip weeks/holidays
+2. Per-room checklists with photo verification
+3. Ultra-simple cleaner app for non-tech-savvy staff
+4. Online booking portal
 
 ## Next Steps
-1. Deep-dive ZenMaid feature gap analysis — list every complaint on G2/Capterra
-2. Build MVP: scheduling + checklists + invoicing + route grouping (no per-seat pricing)
-3. Launch on AppSumo at $69/$99 LTD tiers
-4. Seed content: "ZenMaid vs CleanOps" comparison, "How to start a cleaning business" guide
+1. Build cleaning-specific platform with visual scheduling, per-room checklists, photo verification, one-tap clock-in auto-invoicing
+2. Ultra-simple cleaner app for non-tech-savvy staff
+3. Launch at $69 LTD (up to 5 cleaners) / $129 LTD (unlimited)
 
 ## Risks
-1. ZenMaid is well-loved and improving — must differentiate on pricing model
-2. Cleaning businesses are price-sensitive — support costs per dollar revenue higher
-3. Seasonal demand fluctuation may affect onboarding timing
+1. ZenMaid ($3M ARR) is established in residential
+2. Cleaning staff turnover 200%+ annually means constant onboarding
+3. Payroll/time tracking compliance varies by state
 
 ## Key Source Links
-- ZenMaid validation: competitor-analysis-2026-02-23.md, competitor-analysis-2026-02-26.md
-- Cleaning market trends: trends-2026-02-25.md, trends-2026-02-28.md
-- Reddit pain points: reddit-2026-02-25.md, reddit-2026-02-26.md
-- Onedesk $100K+ MRR: hn-indiehackers-2026-02-23.md
-- Market size data: competitor-analysis-2026-02-28.md ($1.98B market, 10.6% CAGR)
+- [r/CleaningBusiness](https://www.reddit.com/r/CleaningBusiness/)
+- [ZenMaid - Best Cleaning Business Software 2026](https://www.zenmaid.com/magazine/the-best-cleaning-business-software-in-2026/)
+- [ZenMaid G2 Reviews](https://www.g2.com/products/zenmaid/reviews)
+- [BuildBite - Cleaning Business Software](https://buildbite.com/insights/cleaning-business-software)
+- [Capterra - Maid Service Software](https://www.capterra.com/maid-service-software/)

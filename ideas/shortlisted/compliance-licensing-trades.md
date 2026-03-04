@@ -1,16 +1,52 @@
-# Compliance & Licensing Tracker for Trades — Score: 83/105
+# Compliance & Licensing Management for Trades - Score: 81/105
 
+**Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
-**Verdict**: BUILD
-**Evaluation Date**: 2026-02-24
+**Evaluation Date**: 2026-03-04
 
-## Summary
-State + trade compliance checker with automated renewal reminders. OSHA requirements, contractor licenses, certifications, training, safety documentation. "Stop worrying about fines" messaging. $99-149 LTD.
+## One-Line Pitch
+Never miss a license renewal — expiration tracker, CE credit logging, insurance COI management for trade businesses.
 
-## Market Data
-- **Key Signal**: Government forms software doing $30M/yr ARR proves compliance demand
-- **Deadlines**: OSHA penalty changes July 2025, UK MTD April 2026, EU e-invoicing mandates
+## Scoring Breakdown
+
+| Criterion | Score | Weight | Weighted | Notes |
+|-----------|-------|--------|----------|-------|
+| Market Validation | 3/5 | 3x | 9 | Early market — almost no purpose-built tools. Regulation-driven demand |
+| Competitor Weakness | 5/5 | 2x | 10 | Greenfield — no affordable SMB-friendly multi-trade compliance platform |
+| LTD Viability | 4/5 | 2x | 8 | $79-99 LTD. Avoiding fines/license loss = high perceived value |
+| No Free Tier | 5/5 | 1x | 5 | No free options. Zero competition |
+| Channel Access | 4/5 | 2x | 8 | ACCA, PHCC trade associations, supply house partnerships |
+| Content Potential | 5/5 | 1x | 5 | "HVAC license renewal tracking", "contractor compliance software" |
+| AppSumo Fit | 3/5 | 2x | 6 | Less exciting but fear-of-fines drives conversion |
+| Review Potential | 3/5 | 1x | 3 | Lower review activity — "set it and forget it" |
+| MRR Path | 3/5 | 3x | 9 | Annual renewal natural but LTD-to-MRR harder |
+| Build Feasibility | 4/5 | 2x | 8 | License/cert tracker with reminders in 2-3 weeks. State DB ongoing |
+| Boring Business Bonus | 5/5 | 2x | 10 | License compliance = peak boring |
+
+## Must-Have Filters
+- [x] Problem is real
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
+
+## Key Differentiators
+1. Multi-trade license expiration tracking with automated reminders
+2. CE credit tracking and documentation
+3. Insurance COI management
+4. State-specific compliance database
+
+## Next Steps
+1. Build MVP: license expiration tracker with 90/60/30 day reminders, CE credit tracking, insurance COI management
+2. Start with one state + one trade
+3. Expand incrementally
+
+## Risks
+1. Building state-specific licensing databases is labor-intensive
+2. Early market may require significant education
+3. Low review potential limits organic growth
 
 ## Key Source Links
-- [HN: "Why Boring Businesses Outlast AI" — $30M govt forms](https://news.ycombinator.com/item?id=44848018)
-- [OSHA Penalty Guidelines July 2025](https://www.osha.gov/news/newsreleases/osha-national-news-release/20250714)
+- [EPA Section 608](https://www.epa.gov/section608)
+- [r/HVAC](https://www.reddit.com/r/HVAC/)
+- [r/electricians](https://www.reddit.com/r/electricians/)
+- [BBSI: New Laws & Regulations for Small Business Owners 2026](https://www.bbsi.com/business-owner-resources/new-laws-regulations-small-business-owners-2026)

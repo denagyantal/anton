@@ -1,21 +1,51 @@
-# Daycare Daily Reports — Score: 76/105
+# Daycare Daily Report App - Score: 85/105
 
+**Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
-**Verdict**: EXPLORE FURTHER
-**Evaluation Date**: 2026-02-24
+**Evaluation Date**: 2026-03-04
 
-## Summary
-Daily report app for small daycare providers (in-home and small centers). Quick-tap interface: meal tracking, nap logging, diaper changes, activity photos, milestone recording. Auto-generate beautiful daily summary for parents. Add billing/tuition tracking as upsell. $29-49/mo or $79-129 LTD.
+## One-Line Pitch
+Quick-tap daily reports for in-home and small daycares — meals, naps, diapers, activities, photos — beautiful daily summary for parents.
 
-## Market Data
-- **Target**: 100K+ daycare centers in the US
-- **Key Pain**: 30-60 minutes daily on manual parent reports
-- **Competitor**: Brightwheel ($200+/mo, enterprise-focused)
+## Scoring Breakdown
+
+| Criterion | Score | Weight | Weighted | Notes |
+|-----------|-------|--------|----------|-------|
+| Market Validation | 4/5 | 3x | 12 | 100K+ daycares. Brightwheel $200+/mo proves market. Emotional buyers |
+| Competitor Weakness | 4/5 | 2x | 8 | Brightwheel enterprise-focused. Small in-home daycares 5-30 kids underserved |
+| LTD Viability | 4/5 | 2x | 8 | $79-129 LTD for small providers |
+| No Free Tier | 3/5 | 1x | 3 | Some basic free reporting apps |
+| Channel Access | 4/5 | 2x | 8 | Facebook daycare groups, childcare forums, state licensing events |
+| Content Potential | 4/5 | 1x | 4 | "daycare management software", "Brightwheel alternative" |
+| AppSumo Fit | 3/5 | 2x | 6 | Less tech-savvy but deal-seeking |
+| Review Potential | 4/5 | 1x | 4 | Parents push providers to adopt |
+| MRR Path | 4/5 | 3x | 12 | Per-child or monthly tier. Billing/tuition premium |
+| Build Feasibility | 5/5 | 2x | 10 | Quick-tap logging + parent app + photo sharing in 3-4 weeks |
+| Boring Business Bonus | 5/5 | 2x | 10 | Daycare = deeply boring local service |
+
+## Must-Have Filters
+- [x] Problem is real
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
+
+## Key Differentiators
+1. Quick-tap daily reporting (meals, naps, diapers, activities)
+2. Beautiful auto-generated daily summary for parents
+3. Photo sharing and milestone tracking
+4. Billing/tuition tracking as upsell
+
+## Next Steps
+1. Build quick-tap daily report: meals, naps, diapers, activities, photos
+2. Auto-generate beautiful daily summary for parents
+3. Add billing/tuition tracking as upsell
+4. Launch at $79 LTD
 
 ## Risks
-- Brightwheel is well-funded and expanding downmarket
-- In-home daycare providers have very small budgets
-- State licensing requirements vary
+1. Brightwheel expanding downmarket
+2. In-home providers may have limited tech skills
+3. CACFP reporting compliance varies by state
 
 ## Key Source Links
-- [SaaS Opportunities: Daycare Daily Reports](https://saasopportunities.com/blog/saas-niches-that-make-money-underserved-markets)
+- [SaaS Opportunities: Underserved Markets](https://saasopportunities.com/blog/saas-niches-that-make-money-underserved-markets)
+- [r/Entrepreneur](https://www.reddit.com/r/Entrepreneur/)
