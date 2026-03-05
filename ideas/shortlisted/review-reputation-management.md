@@ -1,54 +1,49 @@
-# Review / Reputation Management for Local Businesses - Score: 95/105
+# Review & Reputation Management for Local Services
 
-**Verdict**: BUILD -- Quick Win
-**Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-03-04
+**Score: 88/105** | **Verdict: BUILD** | **Evaluation Date: 2026-03-05**
 
-## One-Line Pitch
-Automated review collection that helps local businesses get 5x more Google reviews — simple SMS-based with AI response drafting.
+## Concept
+Automated review collection + AI response generation + referral automation for local service businesses. Post-job SMS review request → sentiment pre-screening → Google review redirect → AI-drafted responses → weekly reputation digest. $39-59/mo vs $300+/mo Birdeye/Podium.
+
+## Target Customer
+Local service businesses — plumbers, HVAC, dentists, auto repair, restaurants, salons, landscapers. 68% of small businesses don't actively collect reviews despite 88% of consumers trusting them.
 
 ## Scoring Breakdown
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | Birdeye $300+/mo, Podium $250+/mo $1B+ company, NiceJob prove massive market |
-| Competitor Weakness | 4/5 | 2x | 8 | Birdeye and Podium $250-300+/mo — massive price gap. Nothing under $30/mo |
-| LTD Viability | 5/5 | 2x | 10 | $49-69 LTD, high perceived value |
-| No Free Tier | 4/5 | 1x | 4 | Automated collection at scale is paid |
-| Channel Access | 5/5 | 2x | 10 | Every local business forum, trade group, BNI, Chamber |
-| Content Potential | 5/5 | 1x | 5 | "get more Google reviews", "Birdeye alternative" |
-| AppSumo Fit | 5/5 | 2x | 10 | Perfect AppSumo product |
-| Review Potential | 5/5 | 1x | 5 | Meta: review tool users will leave reviews |
-| MRR Path | 4/5 | 3x | 12 | Per-location, usage-based SMS, AI responses as premium |
-| Build Feasibility | 5/5 | 2x | 10 | MVP in 2 weeks — Twilio SMS + Google Places API |
-| Boring Business Bonus | 3/5 | 2x | 6 | Cross-vertical, less boring positioning |
-
-## Must-Have Filters
-- [x] Problem is real
-- [x] Can build without deep domain expertise
-- [x] No dominant player
-- [x] Revenue potential $10K+ MRR within 12 months
+| Market Validation | 5/5 | 3x | 15 | Reviewly $550K/yr; Birdeye/Podium $200-400/mo |
+| Competitor Weakness | 4/5 | 2x | 8 | $300+/mo absurd for solo operators |
+| LTD Viability | 4/5 | 2x | 8 | $49-69 LTD; SMS main variable |
+| No Free Tier | 3/5 | 1x | 3 | Google review links are free |
+| Channel Access | 5/5 | 2x | 10 | Universal appeal across local business communities |
+| Content Potential | 5/5 | 1x | 5 | "how to get more Google reviews" massive SEO |
+| AppSumo Fit | 5/5 | 2x | 10 | Clear ROI; strong AppSumo category |
+| Review Potential | 4/5 | 1x | 4 | Review tools generate reviews about themselves |
+| MRR Path | 3/5 | 3x | 9 | Simple tool; SMS usage for recurring |
+| Build Feasibility | 5/5 | 2x | 10 | Google API, Twilio, AI response; 2-3 week MVP |
+| Boring Business Bonus | 3/5 | 2x | 6 | Marketing tool serving boring businesses |
 
 ## Key Differentiators
-1. Dead-simple SMS-based review collection
-2. AI review response drafting
-3. Negative review alert with private feedback redirect
-4. Cross-vertical appeal at fraction of competitor pricing
+1. **AI response generation** — one-tap contextual review responses
+2. **Sentiment pre-screening** — redirect unhappy customers to private feedback
+3. **Referral automation** — auto-send referral codes after 5-star reviews
+4. **$39-59/mo** — 1/5th of Birdeye/Podium
+
+## LTD Pricing
+- $49 LTD: Core review requests, AI responses, screening
+- $79 LTD: + referral engine, website widget, multi-location
 
 ## Next Steps
-1. Build MVP: post-service text with Google review link -> track -> dashboard -> negative alert
-2. Add AI review response drafting
-3. Launch on AppSumo at $49 LTD
-4. Expand to review-to-social content generation
+1. Build MVP: Post-job SMS → Sentiment screen → Google link → AI response → Digest
+2. Bundle with referral automation
+3. Launch LTD at $49 on AppSumo
 
-## Risks
-1. Crowded category — must differentiate on simplicity and price
-2. Google API changes could impact functionality
-3. SMS costs eat into LTD margins at scale
+## Top Risks
+1. Google API changes
+2. Feature commoditization by AI assistants
+3. SMS costs at scale
 
 ## Key Source Links
-- [Birdeye](https://www.birdeye.com)
-- [Podium](https://www.podium.com)
-- [r/smallbusiness](https://www.reddit.com/r/smallbusiness/)
-- [NiceJob](https://www.nicejob.com)
-- [GatherUp](https://gatherup.com)
+- [Reviewly $550K/yr](https://microsaasidea.substack.com/p/micro-saas-ideas-veterinary-management-ecommerce-store-builder-expense-management-ai-review-ideas)
+- [88% trust reviews](https://superframeworks.com/blog/ai-micro-saas-ideas-small-business)

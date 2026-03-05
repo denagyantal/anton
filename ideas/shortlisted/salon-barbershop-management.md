@@ -1,53 +1,52 @@
-# Salon & Barbershop Management - Score: 86/105
+# Salon & Barbershop Management
 
-**Verdict**: BUILD — Quick Win
-**Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-03-04
+**Score: 88/105** | **Verdict: BUILD (Quick Win)** | **Evaluation Date: 2026-03-05**
 
-## One-Line Pitch
-Beautiful booking, client formula tracking, and retail POS for salons and barbershops — no marketplace, YOUR clients, YOUR brand.
+## Concept
+Booking and business management for independent stylists and small salons. Beautiful booking page (NO marketplace — your clients, your brand), client profiles with formula/preference history, built-in POS, tip management, daily cash-out. No per-provider pricing. Instagram/social-first booking.
+
+## Target Customer
+Independent stylists, booth renters, small salons (1-5 chairs), barbershops. Currently using Instagram DMs and paper appointment books.
 
 ## Scoring Breakdown
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | $1.5B+ market, 1M+ salons/barbershops. Vagaro, Fresha, Booksy prove demand |
-| Competitor Weakness | 4/5 | 2x | 8 | Marketplace-based tools send clients to competitors. No formula tracking |
-| LTD Viability | 4/5 | 2x | 8 | $59-119 LTD. Price-sensitive but deal-seeking |
-| No Free Tier | 2/5 | 1x | 2 | Square Appointments free, Fresha "free" plan |
-| Channel Access | 5/5 | 2x | 10 | r/hairstylist, r/Barber, Behind The Chair 200K+, Instagram |
-| Content Potential | 5/5 | 1x | 5 | "salon booking software", "Fresha alternative no marketplace" |
-| AppSumo Fit | 3/5 | 2x | 6 | Instagram/TikTok launch more effective |
-| Review Potential | 4/5 | 1x | 4 | Social media-savvy audience |
-| MRR Path | 4/5 | 3x | 12 | Per-stylist or per-location. Retail POS premium |
-| Build Feasibility | 5/5 | 2x | 10 | Booking + client profiles + retail POS in 3-4 weeks |
-| Boring Business Bonus | 3/5 | 2x | 6 | Creator-adjacent — salons have Instagram presence |
-
-## Must-Have Filters
-- [x] Problem is real
-- [x] Can build without deep domain expertise
-- [x] No dominant player
-- [x] Revenue potential $10K+ MRR within 12 months
+| Market Validation | 5/5 | 3x | 15 | Vagaro, Fresha, Booksy profitable; $1.5B+ market |
+| Competitor Weakness | 4/5 | 2x | 8 | Marketplaces steal clients; per-provider pricing; no formula tracking |
+| LTD Viability | 4/5 | 2x | 8 | $59-119 LTD feasible |
+| No Free Tier | 3/5 | 1x | 3 | Square Appointments free tier exists |
+| Channel Access | 5/5 | 2x | 10 | Behind The Chair (200K+), beauty FB groups, Instagram |
+| Content Potential | 4/5 | 1x | 4 | "salon booking software" has search volume |
+| AppSumo Fit | 3/5 | 2x | 6 | Social media launch better fit |
+| Review Potential | 4/5 | 1x | 4 | Stylists are social and share tools |
+| MRR Path | 4/5 | 3x | 12 | POS fees, SMS, premium features |
+| Build Feasibility | 5/5 | 2x | 10 | Booking + profiles + POS; 3-5 week MVP |
+| Boring Business Bonus | 4/5 | 2x | 8 | Barbershops = unglamorous services |
 
 ## Key Differentiators
-1. No marketplace — clients stay with the business
-2. Client formula/preference history tracking
-3. Built-in retail POS and tip management
-4. Beautiful, Instagram-worthy booking page
+1. **No marketplace** — your clients stay yours
+2. **Formula tracking** — built for stylists, not generic booking
+3. **Flat pricing** — not per-chair/per-stylist
+4. **Instagram-first booking** — social profile integration
+
+## LTD Pricing
+- $59 LTD: Solo stylist, unlimited clients
+- $119 LTD: Up to 5 stylists, retail POS
 
 ## Next Steps
-1. Build beautiful booking page, client profiles with formula history, built-in POS, tip management
-2. Position: "No marketplace — YOUR clients, YOUR brand"
-3. Launch via Instagram/TikTok beauty community + AppSumo at $59 LTD
+1. Build MVP: Beautiful booking page + Client profiles + POS + Tips
+2. "Your clients stay YOUR clients" positioning
+3. Instagram-first launch
+4. LTD at $59
 
-## Risks
-1. Square Appointments free tier is "good enough" for many
-2. Fresha's free plan hard to compete against
-3. Stylists may resist switching from Instagram DMs
+## Top Risks
+1. Crowded market with well-funded competitors
+2. Square Appointments free tier
+3. Payment processing partnerships needed
 
 ## Key Source Links
+- [Vagaro G2](https://www.g2.com/products/vagaro/reviews)
+- [Fresha G2](https://www.g2.com/products/fresha/reviews)
 - [r/hairstylist](https://www.reddit.com/r/hairstylist/)
-- [r/Barber](https://www.reddit.com/r/Barber/)
-- [G2 — Fresha Reviews](https://www.g2.com/products/fresha/reviews)
-- [G2 — Vagaro Reviews](https://www.g2.com/products/vagaro/reviews)
 - [Behind The Chair](https://www.behindthechair.com/)
