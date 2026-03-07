@@ -1,64 +1,53 @@
-# Property Management for Small Landlords — Score: 96/105
+# Property Management for Small Landlords - Score: 98/105
 
-**Tier**: 1 (Strong Opportunity)
 **Verdict**: BUILD
-**Evaluation Date**: 2026-02-24
+**Tier**: 1 (Strong Opportunity)
+**Evaluation Date**: 2026-03-04
 
-## Summary
+## One-Line Pitch
+The all-in-one tool for self-managing landlords with 1-50 units — rent collection, maintenance, leases, and expense tracking for $99 one-time.
 
-AI-powered, all-in-one property management for 1-50 units. Reliable rent collection (fast ACH, no per-txn fees), maintenance with photo/video, e-signatures, tenant screening, right-sized accounting with Schedule E export, state-specific lease templates. Filling the dead zone where no credible complete tool exists at $19-29/mo flat.
+## Scoring Breakdown
 
-## Scoring
+| Criterion | Score | Weight | Weighted | Notes |
+|-----------|-------|--------|----------|-------|
+| Market Validation | 5/5 | 3x | 15 | 10.6M individual US landlords, 91% own <=10 units. AppFolio, Buildium, Stessa all prove massive market. Micasa 621 HN pts + Propbox 520 HN pts |
+| Competitor Weakness | 5/5 | 2x | 10 | AppFolio $280/mo minimum, Buildium $58-375/mo with hidden price hikes, free tools buggy/abandoned. 40%+ still on spreadsheets |
+| LTD Viability | 5/5 | 2x | 10 | $79-149 LTD vs $55-280/mo competitors. DoorLoop launched on AppSumo |
+| No Free Tier | 3/5 | 1x | 3 | TurboTenant, Innago, Stessa offer free tiers |
+| Channel Access | 5/5 | 2x | 10 | BiggerPockets 2M+, r/realestateinvesting 500K+, r/landlord 65K+ |
+| Content Potential | 5/5 | 1x | 5 | "landlord software", "rent collection app", "Buildium alternative" |
+| AppSumo Fit | 5/5 | 2x | 10 | Real estate investors are deal-savvy buyers |
+| Review Potential | 4/5 | 1x | 4 | Landlords will review if it saves time/money |
+| MRR Path | 5/5 | 3x | 15 | Per-unit monthly or tiered. Portfolio growth = natural upsell |
+| Build Feasibility | 4/5 | 2x | 8 | Core MVP in 4-6 weeks |
+| Boring Business Bonus | 4/5 | 2x | 8 | Unglamorous professional service |
 
-| Criterion | Score | Weight | Weighted |
-|-----------|-------|--------|----------|
-| Market Validation | 5/5 | 3x | 15 |
-| Competitor Weakness | 5/5 | 2x | 10 |
-| LTD Viability | 5/5 | 2x | 10 |
-| No Free Tier | 4/5 | 1x | 4 |
-| Channel Access | 5/5 | 2x | 10 |
-| Content Potential | 5/5 | 1x | 5 |
-| AppSumo Fit | 5/5 | 2x | 10 |
-| Review Potential | 5/5 | 1x | 5 |
-| MRR Path | 4/5 | 3x | 12 |
-| Build Feasibility | 5/5 | 2x | 10 |
-| Boring Business Bonus | 4/5 | 2x | 8 |
-| **Total** | | | **96/105** (rounding from weighted calc) |
-
-## Market Data
-
-- **Market Size**: $5.88B property management software market (2024) → $12.56B by 2033
-- **Target Segment**: Small landlords with 1-50 units. 40%+ still use spreadsheets
-- **Pricing**: $19-29/mo flat. LTD at $79
-- **Revenue Potential**: >$10K MRR achievable within 12 months
-- **Validation Signals**: Micasa (621 HN pts), Propbox (520 HN pts), IH DIY landlord stack — 3 independent signals
+## Must-Have Filters
+- [x] Problem is real
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [x] Revenue potential $10K+ MRR within 12 months
 
 ## Key Differentiators
-
-1. $19-29/mo flat (not per-unit) — filling the dead zone
-2. Next-day ACH at flat monthly fee (not per-transaction)
-3. AI-first at small landlord pricing (only AppFolio at $298+/mo has AI today)
-4. One-click tax prep with Schedule E export
-5. State-specific legal compliance built in
-6. Transparent pricing with one-click cancellation
+1. Flat-rate unlimited units (not per-unit pricing)
+2. Schedule E tax automation
+3. Transparent pricing with zero hidden fees
+4. Mobile-first with reliable app
 
 ## Next Steps
-
-1. Build MVP: rent collection, lease management, maintenance requests, expense tracking
-2. Validate on BiggerPockets forums
-3. Add AI expense categorization + Schedule E export
-4. Launch LTD at $79 targeting 5-50 unit landlords
+1. Build MVP: rent collection + maintenance portal + lease management + expense tracking
+2. Launch on AppSumo at $99 LTD (up to 10 units) / $179 LTD (up to 50 units)
+3. Seed BiggerPockets forums and r/realestateinvesting with early access
 
 ## Risks
-
-1. Payment processing reliability is table stakes and complex
-2. Free competitors (Avail, Innago) create price pressure
-3. State-specific legal compliance requires broad research
+1. Free competitors (TurboTenant, Innago) may be "good enough"
+2. Stessa's 350K users could be retained by Roofstock
+3. Payment processing compliance adds complexity
 
 ## Key Source Links
-
-- [HN: Micasa — 621 upvotes](https://news.ycombinator.com/item?id=47075124)
-- [BiggerPockets: Best PM Software](https://www.biggerpockets.com/forums/899/topics/1114176-best-property-management-software)
-- [BiggerPockets: "5 months using RentRedi and I HATE it"](https://www.biggerpockets.com/forums/899/topics/1154114-5-months-using-rentredi-and-i-hate-it)
-- [MagicDoor: PM Software for Small Landlords](https://magicdoor.com/blog/property-management-software-for-small-landlords/)
-- [Grand View Research: PM Market](https://www.grandviewresearch.com/industry-analysis/property-management-software-market)
+- [BiggerPockets Forums](https://www.biggerpockets.com/forums/52)
+- [r/realestateinvesting](https://www.reddit.com/r/realestateinvesting/)
+- [r/landlord](https://www.reddit.com/r/landlord/)
+- [Buildium G2 Reviews](https://www.g2.com/products/buildium/reviews)
+- [Micasa HN Discussion](https://news.ycombinator.com/item?id=47075124)

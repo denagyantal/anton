@@ -18,4 +18,9 @@ if [ "$COUNT" -lt 2 ]; then
 fi
 
 echo "[$(date)] Evaluator: found $COUNT raw files for $DATE, running..." >> "$LOG_DIR/cron.log"
+
+# Build list of today's raw files for targeted evaluation
+TODAY_FILES=$(ls "$RAW_DIR"/*-"$DATE".md 2>/dev/null | tr '\n' ',' | sed 's/,$//')
+export TODAY_RAW_FILES="$TODAY_FILES"
+
 bash "$BASE_DIR/run-agent.sh" idea-evaluator

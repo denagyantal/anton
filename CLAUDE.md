@@ -20,7 +20,16 @@ Run any agent by opening its `.md` file and asking Claude to execute the researc
 
 1. Run individual agents to gather raw ideas → output goes to `ideas/raw/`
 2. Run the Idea Evaluator to score and rank ideas → output goes to `ideas/evaluated/`
-3. Best ideas get a full writeup in `ideas/shortlisted/`
+3. Best ideas get a full writeup in `ideas/shortlisted/` (using canonical filenames to avoid duplicates)
+4. Track idea decisions in `ideas/decisions.md` (NEW → VALIDATING → BUILDING / PARKED / REJECTED)
+
+### Deduplication
+
+The evaluator uses canonical filenames to prevent duplicate shortlisted files. Run `bash dedup-shortlisted.sh --dry-run` to check for duplicates, or `--merge` to consolidate them.
+
+### Decision Tracking
+
+Use `ideas/decisions.md` to move ideas through the pipeline. Each shortlisted idea has a `## Signal History` table tracking how many times it appeared and score changes over time.
 
 ### The 10-Step Playbook Filter (from r/SaaSMarketing)
 
