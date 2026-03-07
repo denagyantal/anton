@@ -1,83 +1,69 @@
 # Affordable Field Service Management for Micro Trades (1-5 Techs)
 
-**Score: 95/105** | **Verdict: BUILD** | **Evaluation Date: 2026-03-05**
+**Score**: 90/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-07
 
-## Concept
-"The anti-ServiceTitan" — dead-simple field service tool for 1-5 technician shops. Scheduling, dispatch, mobile invoicing, customer texting, basic CRM, and QuickBooks sync. No enterprise bloat, no per-user pricing, no annual contracts. Mobile-first, offline-capable. Setup in 15 minutes.
+## One-Line Pitch
+Anti-ServiceTitan for 1-5 tech shops: scheduling, dispatch, invoicing at $79-149 LTD vs $250-500/tech/month.
 
-## Target Customer
-Solo HVAC techs, 2-3 person plumbing shops, independent electricians, small pest control operators. The 1-5 person shop currently using Google Calendar + paper invoices + QuickBooks + text messages.
+## Problem
+Small trade shops (HVAC, plumbing, electrical) with 1-5 technicians are priced out by ServiceTitan ($250-500/tech/mo + $5K-50K implementation) and frustrated by its complexity ("excessively rigid," "adapt processes to software"). They use spreadsheets, QuickBooks + paper, or cobble together multiple tools. They want 80% of ServiceTitan at 20% of the cost, with setup in 30 minutes not 3 months.
+
+## Market Evidence
+- ServiceTitan: $1B+ ARR, $772M ARR at IPO, 14% market share — proving massive TAM
+- Housecall Pro: Acquired for $585M — validates mid-market
+- Jobber: $100M+ ARR — validates SMB segment
+- FieldFuze: $0/mo — signals market correction toward affordable
+- Reddit: ServiceTitan backlash documented across r/HVAC, r/Plumbing, r/electricians with fresh reviews (Jan 2026) confirming "invest significant time in setup"
+- $487B home services market growing 18% annually
 
 ## Scoring Breakdown
 
-| Criterion | Score | Weight | Weighted | Notes |
-|-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | $5.5B market; ServiceTitan $772M ARR; Jobber, HCP, Kickserv all profitable |
-| Competitor Weakness | 5/5 | 2x | 10 | ServiceTitan excludes <3 techs; per-user pricing; broken QB sync; terrible mobile; contract lock-in |
-| LTD Viability | 4/5 | 2x | 8 | $79-99 LTD profitable with tight scope |
-| No Free Tier | 4/5 | 1x | 4 | Solo operators already pay for cobbled tools |
-| Channel Access | 5/5 | 2x | 10 | r/HVAC, r/Plumbing, r/electricians, trade FB groups (50K+ each), HVAC-Talk |
-| Content Potential | 5/5 | 1x | 5 | "ServiceTitan alternative" massive SEO keyword |
-| AppSumo Fit | 4/5 | 2x | 8 | Trade owners deal-savvy but not all on AppSumo |
-| Review Potential | 5/5 | 1x | 5 | Strong G2/Capterra review culture in this market |
-| MRR Path | 4/5 | 3x | 12 | LTD → subscription via SMS, payment processing, AI add-ons |
-| Build Feasibility | 4/5 | 2x | 8 | Core well-understood; offline mode adds complexity; 4-6 week MVP |
-| Boring Business Bonus | 5/5 | 2x | 10 | HVAC, plumbing, electrical = deeply boring |
+| Criterion | Score | Weighted | Notes |
+|-----------|-------|----------|-------|
+| Market Validation | 5/5 | 15 | $1B+ ARR incumbent, massive proven market |
+| Competitor Weakness | 5/5 | 10 | $250-500/tech/mo, terrible implementation, documented revolt |
+| LTD Viability | 5/5 | 10 | $79-149 LTD vs $200+/mo, simple infra |
+| No Free Tier | 3/5 | 3 | FieldFuze $0/mo, Kickserv free tier |
+| Channel Access | 5/5 | 10 | r/HVAC 300K+, r/Plumbing 200K+, massive FB groups |
+| Content Potential | 5/5 | 5 | "ServiceTitan alternative" SEO goldmine |
+| AppSumo Fit | 5/5 | 10 | Perfect AppSumo product |
+| Review Potential | 4/5 | 4 | Trades owners review on G2/Capterra |
+| MRR Path | 5/5 | 15 | Advanced reporting, multi-location, API, marketing tools |
+| Build Feasibility | 4/5 | 8 | Scheduling/dispatch/invoicing doable, QB sync adds complexity |
+| Boring Business Bonus | 5/5 | 10 | Plumbing, HVAC, electrical — deeply boring |
 
-## Key Differentiators
-1. **Flat pricing** — unlimited technicians, no per-user fees
-2. **Mobile-first, offline-capable** — works in basements, crawl spaces, rural areas
-3. **15-minute setup** — no onboarding calls, no setup fees, no contracts
-4. **AI-native** — voice-to-invoice, smart scheduling, auto-follow-up
-5. **QuickBooks sync that actually works** — the #1 complaint across all competitors
+## Competitive Landscape
+| Competitor | Price | Weakness |
+|-----------|-------|----------|
+| ServiceTitan | $250-500/tech/mo + $5K-50K setup | Overkill for small shops, rigid, terrible support |
+| Housecall Pro | $59-329/mo | Add-on cost creep, limited customization, basic reporting |
+| Jobber | $169-599/mo | Per-user pricing scales fast, basic reporting, premium-gated features |
+| Service Fusion | $192/mo unlimited | Better value but still complex |
+| FieldFuze | $0/mo | Free but very limited features |
 
-## LTD Pricing
-- $79 LTD: Unlimited users, unlimited jobs, core features
-- $149 LTD: + inventory tracking, QuickBooks sync, AI features
+## MVP Scope (4-6 weeks)
+1. Job scheduling & dispatch (drag-and-drop calendar)
+2. Customer database with job history
+3. Mobile app for field techs (offline-capable)
+4. Invoicing with QuickBooks sync
+5. Before/after photo documentation
+6. Basic reporting (revenue, jobs completed, tech performance)
 
-## Market Data
-- FSM market: $5.49B (2025) → $9.17B by 2030 (12.5% CAGR)
-- ServiceTitan: $772M ARR, 14% market share — 86% up for grabs
-- ServiceTitan explicitly "not optimized for a company with 3 or fewer technicians"
-- 51% of FSM buyers budget $50-100/user/month
-- 80%+ of trade businesses have <5 employees
+## Go-to-Market
+1. AppSumo launch at $99 LTD (Tier 1) / $149 LTD (Tier 2 with more techs)
+2. Reddit: r/HVAC, r/Plumbing, r/electricians
+3. FB groups: HVAC Business Owners, Plumbing Business Owners
+4. SEO: "ServiceTitan alternative," "cheap HVAC software," "free plumbing dispatch"
+5. Content: comparison pages, ROI calculator, migration guides
 
-## Competitor Landscape
-| Competitor | Price | Key Weakness |
-|-----------|-------|-------------|
-| ServiceTitan | $245-500/tech/mo + $5-50K setup | Too expensive, too complex for small shops |
-| Housecall Pro | $59-189/mo + add-ons | Add-on cost creep; support went AI-only |
-| Jobber | $39-599/mo + $29/extra user | QB sync breaks; 333% forced upgrade adding 1 employee |
-| FieldEdge | ~$100/office + $125/tech/mo | GPS fails 80% of time; terrible support |
-| Service Fusion | $245-627/mo | No offline mode; essential features cost extra |
-| Kickserv | $31-199/mo | Unstable mobile app; limited reporting |
-
-## Distribution Channels
-- r/HVAC, r/Plumbing, r/electricians, r/pestcontrol, r/smallbusiness
-- HVAC-Talk forums, Contractor Talk forums
-- Facebook: HVAC Technicians (50K+), Plumbers & Pipefitters (30K+)
-- PHCC, ACCA association newsletters
-- Trade shows: AHR Expo, PEST WORLD
-- AppSumo (supplemented with trade channel marketing)
-
-## Next Steps
-1. Pick one trade (HVAC recommended — largest community, most vocal pain)
-2. Build 4-screen mobile MVP: Schedule → Dispatch → Job Notes → Invoice
-3. Seed beta in r/HVAC and HVAC-Talk forums
-4. Launch LTD at $79 on AppSumo + trade channels simultaneously
-
-## Top Risks
-1. Incumbents (Jobber, HCP) could launch stripped-down tiers
-2. Offline-first architecture is technically harder than it appears
-3. QuickBooks sync is notoriously hard to get right
+## Risks
+1. FieldFuze $0/mo could undercut on price
+2. Incumbents could launch stripped-down plans
+3. QB integration reliability is critical — bad sync kills trust
 
 ## Key Source Links
-- [ServiceTitan S-1 Breakdown — Meritech Capital](https://www.meritechcapital.com/blog/servicetitan-s-1-breakdown)
-- [ServiceTitan BBB Complaints](https://www.bbb.org/us/ca/glendale/profile/digital-marketing/servicetitan-inc-1216-1290182/complaints)
-- [Jobber Pricing Breakdown 2026](https://myquoteiq.com/jobber-pricing-breakdown-2026/)
-- [Housecall Pro Capterra Reviews](https://www.capterra.com/p/140363/HouseCall-Pro/reviews/)
-- [FieldCamp: ServiceTitan Alternatives](https://fieldcamp.ai/alternatives/servicetitan/)
-- [HVAC-Talk Forum](https://www.hvac-talk.com/threads/hvac-software-to-run-business.2226005/)
-- [MarketsandMarkets FSM Market](https://www.marketsandmarkets.com/PressReleases/field-service-management.asp)
-- [ServiceTitan IPO Deep Dive — Wing VC](https://www.wing.vc/content/servicetitans-ipo-a-deep-dive)
-- [OneCrew: ServiceTitan Reviews](https://www.getonecrew.com/post/servicetitan-reviews)
+- https://www.reddit.com/r/Plumbing/comments/1kk09e5/plumbers_what_software_you_actually_use_and_what/
+- https://www.reddit.com/r/HVAC/comments/1akewlj/software_you_use_and_why/
+- https://www.reddit.com/r/Bookkeeping/comments/1hdoyjn/software_options_for_plumbinghvac/
+- ServiceTitan G2 reviews (Jan 2026): implementation nightmare documented
+- https://www.reddit.com/r/SaaS/comments/1nzfmz0/burned_12k_on_saas_ideas_thinking_about_boring/

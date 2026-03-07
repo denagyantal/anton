@@ -1,52 +1,57 @@
-# Salon & Barbershop Management
+# Salon / Barbershop Management
 
-**Score: 88/105** | **Verdict: BUILD (Quick Win)** | **Evaluation Date: 2026-03-05**
+**Score**: 79/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-07
 
-## Concept
-Booking and business management for independent stylists and small salons. Beautiful booking page (NO marketplace — your clients, your brand), client profiles with formula/preference history, built-in POS, tip management, daily cash-out. No per-provider pricing. Instagram/social-first booking.
+## One-Line Pitch
+No-commission, no-contract booking and management for independent barbershops and solo stylists at $59-99 LTD.
 
-## Target Customer
-Independent stylists, booth renters, small salons (1-5 chairs), barbershops. Currently using Instagram DMs and paper appointment books.
+## Problem
+Mindbody has mandatory 12-month contracts and an outdated interface. Fresha has "duplicate payment issues and non-refundable processing fees." 52.1% of salon market is small/individual professionals subsidizing enterprise features. Booth renters growing with unique needs. Independent stylists need walk-in queue management, tip tracking, and client history without marketplace commissions.
+
+## Market Evidence
+- $840M-$1.36B market growing to $1.29-$1.69B by 2030
+- Mindbody, Fresha, GlossGenius, Mangomint, Boulevard — proven market
+- Fresha trust vacuum: broken promises, payment issues
+- GlossGenius winning independents with simplicity
+- 52.1% of market is small/individual professionals
 
 ## Scoring Breakdown
 
-| Criterion | Score | Weight | Weighted | Notes |
-|-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | Vagaro, Fresha, Booksy profitable; $1.5B+ market |
-| Competitor Weakness | 4/5 | 2x | 8 | Marketplaces steal clients; per-provider pricing; no formula tracking |
-| LTD Viability | 4/5 | 2x | 8 | $59-119 LTD feasible |
-| No Free Tier | 3/5 | 1x | 3 | Square Appointments free tier exists |
-| Channel Access | 5/5 | 2x | 10 | Behind The Chair (200K+), beauty FB groups, Instagram |
-| Content Potential | 4/5 | 1x | 4 | "salon booking software" has search volume |
-| AppSumo Fit | 3/5 | 2x | 6 | Social media launch better fit |
-| Review Potential | 4/5 | 1x | 4 | Stylists are social and share tools |
-| MRR Path | 4/5 | 3x | 12 | POS fees, SMS, premium features |
-| Build Feasibility | 5/5 | 2x | 10 | Booking + profiles + POS; 3-5 week MVP |
-| Boring Business Bonus | 4/5 | 2x | 8 | Barbershops = unglamorous services |
+| Criterion | Score | Weighted | Notes |
+|-----------|-------|----------|-------|
+| Market Validation | 4/5 | 12 | $840M-$1.36B market |
+| Competitor Weakness | 4/5 | 8 | Fresha broken, Mindbody contracts |
+| LTD Viability | 4/5 | 8 | Simple booking infrastructure |
+| No Free Tier | 2/5 | 2 | Fresha free, Square Appointments free |
+| Channel Access | 3/5 | 6 | Salon FB groups, fragmented |
+| Content Potential | 4/5 | 4 | "Best salon software" content |
+| AppSumo Fit | 4/5 | 8 | Good for independents |
+| Review Potential | 3/5 | 3 | Moderate activity |
+| MRR Path | 4/5 | 12 | Booking fees, payment processing |
+| Build Feasibility | 4/5 | 8 | Booking, walk-in queue, tips |
+| Boring Business Bonus | 4/5 | 8 | Unglamorous professional services |
 
-## Key Differentiators
-1. **No marketplace** — your clients stay yours
-2. **Formula tracking** — built for stylists, not generic booking
-3. **Flat pricing** — not per-chair/per-stylist
-4. **Instagram-first booking** — social profile integration
+## MVP Scope (4-5 weeks)
+1. Online appointment booking (client-facing)
+2. Walk-in queue management
+3. Client history and preferences
+4. Tip tracking and daily pay reports
+5. SMS appointment reminders
+6. No marketplace, no commissions, no contracts
 
-## LTD Pricing
-- $59 LTD: Solo stylist, unlimited clients
-- $119 LTD: Up to 5 stylists, retail POS
+## Go-to-Market
+1. Target independent barbershops (1-3 chairs) and booth renters
+2. Barber FB groups and local associations
+3. AppSumo at $59-99 LTD
+4. Positioning: "No commissions. No contracts. Just booking."
 
-## Next Steps
-1. Build MVP: Beautiful booking page + Client profiles + POS + Tips
-2. "Your clients stay YOUR clients" positioning
-3. Instagram-first launch
-4. LTD at $59
-
-## Top Risks
-1. Crowded market with well-funded competitors
-2. Square Appointments free tier
-3. Payment processing partnerships needed
+## Risks
+1. Fresha free tier hard to compete against
+2. Highly fragmented market
+3. Low switching costs
 
 ## Key Source Links
-- [Vagaro G2](https://www.g2.com/products/vagaro/reviews)
-- [Fresha G2](https://www.g2.com/products/fresha/reviews)
-- [r/hairstylist](https://www.reddit.com/r/hairstylist/)
-- [Behind The Chair](https://www.behindthechair.com/)
+- Fresha: broken promises, duplicate payment reports
+- Mindbody: mandatory 12-month contracts, outdated interface
+- GlossGenius: winning independents — validates segment
+- 52.1% of salon market is small/individual professionals

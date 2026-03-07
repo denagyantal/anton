@@ -1,43 +1,50 @@
-# Pest Control Route & Chemical Tracking — Score: 82/105
+# Pest Control Route & Chemical Tracking
 
-**Evaluation Date**: 2026-02-23
-**Verdict**: BUILD (niche micro-SaaS)
-**Tier**: 1 (Strong Opportunity)
+**Score**: 78/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-07
 
-## Concept
-Purpose-built for pest control: route-optimized scheduling with recurring contracts, chemical application log per property (product, amount, EPA number, target pest), auto-generated regulatory compliance reports, before/after photos, customer portal, automated re-service reminders. Chemical inventory tracker with low-stock alerts. State-specific compliance templates.
+## One-Line Pitch
+Scheduling, route optimization, chemical application logs, and compliance tracking for small pest control operators at $79-129 LTD.
 
-## Scoring
+## Problem
+65%+ of pest control companies use specialized software, but small operators (1-3 techs) are priced out by enterprise tools (PestPac, FieldRoutes). ServiceTitan entering the space adds complexity. Small shops need simple scheduling, recurring service tracking, chemical application logs (EPA compliance), route optimization, and invoicing without $200+/month.
 
-| Criterion | Score | Weight | Weighted | Notes |
-|-----------|-------|--------|----------|-------|
-| Market Validation | 4/5 | 3x | 12 | GorillaDesk ($49-99/mo), FieldRoutes ($200+/mo). $24B industry. |
-| Competitor Weakness | 4/5 | 2x | 8 | GorillaDesk lacks chemical tracking. FieldRoutes enterprise-priced. |
-| LTD Viability | 4/5 | 2x | 8 | $69-89 LTD. |
-| No Free Tier | 4/5 | 1x | 4 | Pest tools are paid. |
-| Channel Access | 3/5 | 2x | 6 | r/pestcontrol, industry forums. |
-| Content Potential | 4/5 | 1x | 4 | "pest control software", "chemical tracking." |
-| AppSumo Fit | 3/5 | 2x | 6 | Niche audience. |
-| Review Potential | 4/5 | 1x | 4 | Compliance tools = loyal customers. |
-| MRR Path | 4/5 | 3x | 12 | Compliance updates, route optimization premium. |
-| Build Feasibility | 4/5 | 2x | 8 | Route scheduling + chemical logs in 3-4 weeks. |
-| Boring Business Bonus | 5/5 | 2x | 10 | Pest control — deeply boring. |
+## Market Evidence
+- 31,778+ pest control businesses in US
+- PestPac: route optimization delivers 21% more jobs, 30% less drive time
+- FieldRoutes: targeting growth companies, not micro operators
+- Pool service pattern (Skimmer 35K+ users) validates recurring-service-route model
+- ServiceTitan entering pest control signals opportunity
 
-## Next Steps
-1. MVP: route scheduling, recurring contracts, chemical log, compliance reports
-2. Chemical tracking is the moat
-3. Launch before spring (peak pest season)
+## Scoring Breakdown
+
+| Criterion | Score | Weighted | Notes |
+|-----------|-------|----------|-------|
+| Market Validation | 4/5 | 12 | 31K+ businesses, PestPac/FieldRoutes validated |
+| Competitor Weakness | 4/5 | 8 | Enterprise-priced for small ops |
+| LTD Viability | 5/5 | 10 | Simple scheduling + chemical logs |
+| No Free Tier | 4/5 | 4 | No free pest control tools |
+| Channel Access | 4/5 | 8 | Pest control forums, trade associations |
+| Content Potential | 4/5 | 4 | Business/compliance guides |
+| AppSumo Fit | 4/5 | 8 | Good for small operators |
+| Review Potential | 3/5 | 3 | Moderate activity |
+| MRR Path | 4/5 | 12 | Compliance tracking creates recurring |
+| Build Feasibility | 4/5 | 8 | Scheduling, chemical logs, routes |
+| Boring Business Bonus | 5/5 | 10 | Deeply boring blue-collar |
+
+## MVP Scope (4-5 weeks)
+1. Job scheduling with recurring service templates
+2. Route optimization for daily runs
+3. Chemical application logs (product, quantity, location, date)
+4. Customer database with service history
+5. Invoicing with auto-billing
+6. Compliance reporting (chemical usage reports)
 
 ## Risks
-1. 35K pest control businesses — niche
-2. GorillaDesk is solid incumbent
-3. State compliance rules need maintenance
+1. Niche may be too small for significant revenue
+2. PestPac has strong market position
+3. Route optimization requires algorithmic work
 
 ## Key Source Links
-- [GorillaDesk](https://gorilladesk.com/industries/pest-control-software/)
-- [FieldRoutes](https://www.fieldroutes.com/blog/best-pest-control-scheduling-apps)
-- [r/pestcontrol](https://www.reddit.com/r/pestcontrol/)
-
-## LTD Pricing
-- Tier 1: $69 (up to 3 techs)
-- Tier 2: $89 (unlimited techs, compliance reports, chemical inventory)
+- PestPac (WorkWave): 21% more jobs, 30% less drive time
+- FieldRoutes: targeting growth companies
+- Skimmer: 35K+ pool service users validates route model

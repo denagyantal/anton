@@ -1,48 +1,49 @@
-# Contractor Bid & AI-Powered Estimation — Score: 89/105
+# Contractor Quoting & Estimation Tool
 
-**Verdict**: BUILD
-**LTD Price**: $199-399
-**Evaluation Date**: 2026-02-24
+**Score**: 83/105 | **Tier**: 1 | **Verdict**: EXPLORE FURTHER | **Evaluation Date**: 2026-03-07
 
 ## One-Line Pitch
+AI-powered photo-based quoting for contractors: snap a photo, get an estimate with material costs and labor in minutes.
 
-Snap a photo, get a quote: AI-powered estimating for residential contractors at $199-399 one-time.
+## Problem
+Contractors spend hours creating estimates manually with spreadsheets. No proper estimating software exists for small operators. Enterprise tools require training. AI-based quoting is crystallizing as a category (Handoff AI, QuoteIQ, Deep Lawn) but no dominant player. Contractors want: photo → instant estimate with local material pricing.
 
-## Market
+## Market Evidence
+- AI estimating category emerging fast with VC interest
+- Handoff AI, QuoteIQ, Deep Lawn — validated concept, no market leader
+- r/estimators: "I have no one to train me" — education + tooling gap
+- SoloBid contractor invoicing validation on HN (Mar 6, 2026)
+- 87% of contractors believe AI will have meaningful impact
 
-- 3M+ trade contractors in the US
-- 73% prioritize estimating features when selecting software
-- Category forming with no dominant player
+## Scoring Breakdown
 
-## Key Differentiators
+| Criterion | Score | Weighted | Notes |
+|-----------|-------|----------|-------|
+| Market Validation | 4/5 | 12 | Emerging category, no $10M+ player yet |
+| Competitor Weakness | 4/5 | 8 | All early stage, no clear winner |
+| LTD Viability | 3/5 | 6 | AI API costs per estimate, needs usage caps |
+| No Free Tier | 4/5 | 4 | Limited free estimation tools |
+| Channel Access | 5/5 | 10 | Trade subreddits, contractor forums |
+| Content Potential | 5/5 | 5 | "How to estimate" massive content |
+| AppSumo Fit | 3/5 | 6 | AI cost concerns for unlimited use |
+| Review Potential | 4/5 | 4 | Contractors review daily tools |
+| MRR Path | 4/5 | 12 | Per-estimate pricing, pricing DB subscriptions |
+| Build Feasibility | 3/5 | 6 | AI integration, pricing databases, trade-specific |
+| Boring Business Bonus | 5/5 | 10 | Contractor estimating — deeply boring |
 
-- Photo-based AI estimation (snap a photo of the job site, get a starting quote)
-- Trade-specific templates (electrical, HVAC, plumbing, general contracting)
-- Estimate-to-invoice pipeline (one-tap conversion)
-- Material cost lookup with local pricing
-- Offline-capable for job sites with poor connectivity
+## Next Steps
+1. Pick ONE trade (HVAC, roofing, or plumbing) for initial focus
+2. Build photo-based quoting MVP with AI price suggestions
+3. Compile pricing database for chosen trade
+4. Validate willingness to pay $10-20 per AI-assisted estimate
 
-## Target Channels
-
-- r/electricians (200K+ members)
-- r/HVAC
-- r/Plumbing
-- r/sweatystartup
-- YouTube demo videos targeting trade contractors
-
-## Top 3 Risks
-
-1. **AI accuracy varies by trade** — estimation models need significant tuning per trade vertical; bad estimates erode trust fast
-2. **FSM platforms could bundle** — field service management incumbents (Jobber, Housecall Pro) may add AI estimation as a feature
-3. **Material cost databases need maintenance** — lumber, copper, HVAC equipment prices fluctuate; keeping data current is an ongoing operational cost
-
-## Verdict
-
-BUILD. Strong market signal with 3M+ contractors, no dominant AI-first estimating tool, and clear willingness to pay. The $199-399 LTD sits in a sweet spot above basic tools but far below enterprise solutions. Photo-based AI estimation is a genuine differentiator that incumbents have not shipped.
+## Risks
+1. AI costs may not support LTD model — must go usage-based MRR
+2. Category moving fast — window could close
+3. Trade-specific pricing databases require domain expertise
 
 ## Key Source Links
-
-- [Handoff AI](https://www.handoff.ai/)
-- [QuoteIQ AI Estimator](https://myquoteiq.com/ai-estimator/)
-- [Estimatic / ContractorPlus AI Estimating](https://contractorplus.app/ai-estimating-software)
-- [Software Advice: Electrical Estimating Software](https://www.softwareadvice.com/construction/electrical-estimating-software-comparison/)
+- https://www.reddit.com/r/estimators/comments/us0wcv/hvac_estimating_software/
+- https://www.reddit.com/r/Contractor/comments/18ck2pd/what_software_do_you_use_for_your_business/
+- Handoff AI, QuoteIQ, Deep Lawn — emerging competitors
+- SoloBid contractor invoicing validation (HN Mar 6)

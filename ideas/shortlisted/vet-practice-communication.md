@@ -1,51 +1,45 @@
-# Veterinary Practice Communication & Recall Platform - Score: 78/105
+# Veterinary Practice Communication
 
-**Verdict**: EXPLORE FURTHER
-**Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-03-03
+**Score**: 75/105 | **Tier**: 1 | **Verdict**: EXPLORE FURTHER | **Evaluation Date**: 2026-03-07
 
 ## One-Line Pitch
-Communication add-on for veterinary practices — automated appointment reminders, vaccination recall campaigns, and client texting that works alongside existing PIMS.
+Appointment confirmations, prescription reminders, and follow-up scheduling for vet practices — same tech as dental communication, different branding.
+
+## Problem
+Cornerstone (IDEXX) is "click-heavy" and "doesn't communicate with lab machines." ezyVet starts at $245/mo. NaVetor requires "too many steps to process payment." No platform has cracked the vet-specific communication layer.
+
+## Market Evidence
+- 32K+ vet practices in US, 90%+ unserved by modern comms
+- Provet Cloud: 2,900 clinics
+- ezyVet: $245/mo — pricing headroom exists
+- Same communication-layer thesis as dental (Weave $399+/mo)
 
 ## Scoring Breakdown
 
-| Criterion | Score | Weight | Weighted | Notes |
-|-----------|-------|--------|----------|-------|
-| Market Validation | 4/5 | 3x | 12 | Vet PM market $435M → $732M by 2032; Provet Cloud 2,900+ clinics |
-| Competitor Weakness | 4/5 | 2x | 8 | Communication layer underserved; legacy PIMS lack modern texting/recall |
-| LTD Viability | 4/5 | 2x | 8 | $79-99 LTD feasible for communication add-on |
-| No Free Tier | 4/5 | 1x | 4 | Vet practices will pay for better client communication |
-| Channel Access | 3/5 | 2x | 6 | Vet-specific communities less accessible online |
-| Content Potential | 3/5 | 1x | 3 | "Vet practice communication tips" moderate SEO |
-| AppSumo Fit | 3/5 | 2x | 6 | Moderate — niche professional audience |
-| Review Potential | 3/5 | 1x | 3 | Vet practices do review software |
-| MRR Path | 4/5 | 3x | 12 | SMS/message volume → natural subscription |
-| Build Feasibility | 4/5 | 2x | 8 | SMS/email automation, reminders, recall campaigns — manageable |
-| Boring Business Bonus | 4/5 | 2x | 8 | Unglamorous professional services |
+| Criterion | Score | Weighted | Notes |
+|-----------|-------|----------|-------|
+| Market Validation | 4/5 | 12 | 32K+ practices |
+| Competitor Weakness | 4/5 | 8 | Cornerstone click-heavy, no comms layer |
+| LTD Viability | 3/5 | 6 | SMS costs ongoing |
+| No Free Tier | 4/5 | 4 | No free vet comms |
+| Channel Access | 3/5 | 6 | r/veterinary smaller |
+| Content Potential | 3/5 | 3 | Smaller audience |
+| AppSumo Fit | 2/5 | 4 | Vets don't shop AppSumo |
+| Review Potential | 3/5 | 3 | Moderate activity |
+| MRR Path | 5/5 | 15 | SMS = natural MRR |
+| Build Feasibility | 4/5 | 8 | Same tech as dental comms |
+| Boring Business Bonus | 4/5 | 8 | Unglamorous professional service |
 
-## Must-Have Filters
-- [x] Problem is real
-- [x] Can build without deep domain expertise (communication layer, not full PIMS)
-- [x] No single dominant player in communication add-on space
-- [x] Revenue potential > $10K MRR
-
-## Key Differentiators
-1. Communication-only — not trying to replace PIMS, just enhances it
-2. Vaccination recall automation (revenue generator for practices)
-3. Two-way texting with pet owners
-4. Multi-language support (critical for diverse communities)
-
-## Next Steps
-1. Talk to 10 vet practices about recall/reminder workflows
-2. Determine PIMS integration requirements (Cornerstone, AVImark, ezyVet)
-3. Build communication-only MVP alongside existing systems
+## Strategic Note
+Build as shared platform with dental communication — same tech stack, different branding/templates. Reduces dev cost, addresses two markets.
 
 ## Risks
-1. PIMS vendors may add communication features
-2. Legacy PIMS integration is technically challenging
-3. Limited online community for marketing/distribution
+1. Smaller market than dental
+2. Harder to reach vet practices
+3. SMS costs on LTD
 
 ## Key Source Links
-- Competitor analysis: competitor-analysis-2026-02-27.md
-- Reddit signals: reddit-2026-02-25.md, reddit-2026-02-26.md, reddit-2026-03-02.md
-- Market trends: trends-2026-02-27.md
+- Cornerstone (IDEXX): "doesn't communicate with lab machines"
+- ezyVet: $245/mo
+- NaVetor: "too many steps to process payment"
+- DaySmart Vet: reminder system "difficult to use"

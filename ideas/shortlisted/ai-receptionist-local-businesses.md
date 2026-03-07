@@ -1,53 +1,52 @@
-# AI Receptionist for Local Service Businesses - Score: 80/105
+# AI Receptionist / Virtual Front Desk for Local Businesses
 
-**Verdict**: EXPLORE FURTHER -- High platform bundling risk
-**Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-03-04
+**Score**: 82/105 | **Tier**: 1 | **Verdict**: EXPLORE FURTHER | **Evaluation Date**: 2026-03-07
 
 ## One-Line Pitch
-AI-powered phone answering for trades and local services -- never miss a call, book appointments, answer questions 24/7.
+AI-powered phone answering for trades and home services: never miss a call, auto-book appointments, capture leads 24/7.
+
+## Problem
+62% of calls to home service businesses go unanswered, costing $50K+ in annual revenue per business. Small shops can't afford a receptionist ($35K+/year) or Ruby Receptionists ($300+/mo). When a homeowner's pipe bursts at 10pm, the first plumber who answers gets the $5K job.
+
+## Market Evidence
+- Avoca: $1.4M ARR with only 13 people — AI receptionist for home services
+- Netic: $450M valuation — AI for trades
+- 62% of calls unanswered across home services
+- 4.3x ROI proven by early players
+- 2025 FIELDBOSS survey: 38% cite communication as #1 complaint (vs only 21% pricing)
 
 ## Scoring Breakdown
 
-| Criterion | Score | Weight | Weighted | Notes |
-|-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | Netic $43M raised $450M valuation. Avoca $1.4M revenue. Trades miss 60-80% of calls |
-| Competitor Weakness | 3/5 | 2x | 6 | Many competitors -- Netic, Avoca, Sameday, Newo. Jobber bundling AI receptionist |
-| LTD Viability | 2/5 | 2x | 4 | Ongoing AI API costs make pure LTD unsustainable |
-| No Free Tier | 4/5 | 1x | 4 | "Missed calls = lost revenue" understood |
-| Channel Access | 5/5 | 2x | 10 | All trade communities, every small business subreddit |
-| Content Potential | 5/5 | 1x | 5 | "AI answering service for plumber", "virtual receptionist" |
-| AppSumo Fit | 3/5 | 2x | 6 | Usage-based doesn't fit AppSumo well |
-| Review Potential | 4/5 | 1x | 4 | "Never miss a call" creates evangelists |
-| MRR Path | 4/5 | 3x | 12 | Natural MRR -- per-minute or per-call |
-| Build Feasibility | 4/5 | 2x | 8 | MVP in 2-3 weeks with Twilio/Vapi + LLM APIs |
-| Boring Business Bonus | 3/5 | 2x | 6 | AI-adjacent positioning -- less "boring" |
+| Criterion | Score | Weighted | Notes |
+|-----------|-------|----------|-------|
+| Market Validation | 5/5 | 15 | Avoca $1.4M ARR, proven ROI |
+| Competitor Weakness | 4/5 | 8 | Fragmented, no dominant SMB player |
+| LTD Viability | 2/5 | 4 | AI telephony costs $0.10-0.50/min |
+| No Free Tier | 4/5 | 4 | No free AI receptionist options |
+| Channel Access | 5/5 | 10 | Trade subreddits, home services FB groups |
+| Content Potential | 4/5 | 4 | Missed call ROI content |
+| AppSumo Fit | 2/5 | 4 | Usage-based doesn't work on AppSumo |
+| Review Potential | 5/5 | 5 | Strong word-of-mouth stories |
+| MRR Path | 5/5 | 15 | Per-call/per-minute natural recurring |
+| Build Feasibility | 3/5 | 6 | Voice AI reliability critical |
+| Boring Business Bonus | 5/5 | 10 | Home services — deeply boring |
 
-## Must-Have Filters
-- [x] Problem is real
-- [x] Can build without deep domain expertise
-- [x] No dominant player
-- [x] Revenue potential $10K+ MRR within 12 months
-
-## Key Differentiators
-1. Deep vertical logic (dental insurance verification, plumbing emergency triage)
-2. 24/7 availability for after-hours calls
-3. Calendar integration for instant booking
-4. Trade-specific conversation scripts
+## Critical Insight: Skip LTD, Go Straight to MRR
+This is one of the few ideas where LTD model does NOT work due to per-call AI costs. Go directly to monthly pricing ($99-199/mo) with usage tiers. The ROI story ($50K+ saved revenue vs $199/mo) sells itself.
 
 ## Next Steps
-1. Go deep into ONE vertical with custom AI logic platforms won't replicate
-2. Test as usage-based MRR, not LTD
-3. Validate unit economics before scaling
+1. Validate per-call unit economics at $99-199/mo price point
+2. Build MVP for ONE trade (HVAC or plumbing)
+3. Test with 5 real businesses for call quality
+4. Focus on appointment scheduling + lead capture as core features
 
 ## Risks
-1. Platform bundling -- Jobber, Housecall Pro adding AI receptionists
-2. Ongoing API costs compress margins
-3. Crowded -- Netic, Avoca, Sameday, Newo, Smith.ai all competing
+1. LTD model doesn't work — must go MRR from day 1
+2. Voice AI quality can frustrate callers
+3. Market moving fast with many funded competitors
 
 ## Key Source Links
-- [Netic](https://www.netic.ai/)
-- [Avoca](https://www.avoca.ai/)
-- [GoSameday](https://www.gosameday.com/)
-- [Newo AI HVAC/Plumbing Receptionist](https://newo.ai/hvac-plumbing-ai-receptionist/)
-- [Jobber AI Receptionist](https://www.getjobber.com/features/ai-receptionist/)
+- Avoca: $1.4M revenue, 13 people, AI receptionist for home services
+- Netic: $450M valuation, AI for trades
+- 2025 FIELDBOSS survey: 38% cite communication as #1 complaint
+- r/HVAC, r/Plumbing: "62% of calls go unanswered"

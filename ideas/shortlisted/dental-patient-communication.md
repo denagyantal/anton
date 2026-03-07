@@ -1,53 +1,60 @@
-# Dental Practice Patient Communication - Score: 88/105
+# Dental Patient Communication Platform
 
-**Verdict**: BUILD
-**Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-03-04
+**Score**: 85/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-07
 
 ## One-Line Pitch
-Affordable patient communication platform for dental practices — automated reminders, no-show rebooking, recall campaigns, review collection at a fraction of Weave's price.
+Appointment confirmations, recall campaigns, and review requests for dental practices at $49-99/mo vs Weave's $399+/mo.
+
+## Problem
+Dental practices need patient communication (appointment confirmations, recall/recare campaigns, review requests, two-way texting) but Weave charges $399+/mo. Dentrix "feels like Windows 95" and can't display images while charting. Tab 32 is "glitchy." The wedge: don't replace the PMS — add a communication layer on top.
+
+## Market Evidence
+- Weave: $399+/mo, hundreds of millions in ARR — proves massive market
+- RevenueWell, Lighthouse 360, Solutionreach — multiple competitors validate demand
+- Massive pricing headroom: $49-99/mo vs $399+/mo
+- r/Dentistry sentiment shifted toward open solutions
+- Two-way SMS shows 8x response rates vs email for patient communication
+- Dental recall AI validation: EUR 45K MRR from EU founder (HN Mar 6)
 
 ## Scoring Breakdown
 
-| Criterion | Score | Weight | Weighted | Notes |
-|-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | Weave $1B+. 200K+ practices. 10-15% no-show rate costs $40K+/year per practice |
-| Competitor Weakness | 5/5 | 2x | 10 | Weave $300+/mo, Solutionreach $300+/mo, RevenueWell $300+/mo. Massive price gap |
-| LTD Viability | 4/5 | 2x | 8 | $79-99 LTD per practice. Some ongoing SMS costs |
-| No Free Tier | 4/5 | 1x | 4 | No free dental communication tools |
-| Channel Access | 4/5 | 2x | 8 | r/dentistry 80K+, dental Facebook groups, state dental associations |
-| Content Potential | 5/5 | 1x | 5 | "dental patient communication software", "Weave alternative" |
-| AppSumo Fit | 3/5 | 2x | 6 | Dentists less on AppSumo |
-| Review Potential | 4/5 | 1x | 4 | Will review if it fills appointment slots |
-| MRR Path | 4/5 | 3x | 12 | Per-text usage or monthly. Recall campaigns and 2-way texting premium |
-| Build Feasibility | 4/5 | 2x | 8 | Automated SMS + intake forms + review requests + recall in 3-4 weeks |
-| Boring Business Bonus | 4/5 | 2x | 8 | Dental offices = unglamorous professional services |
+| Criterion | Score | Weighted | Notes |
+|-----------|-------|----------|-------|
+| Market Validation | 5/5 | 15 | Weave $399+/mo proves massive market |
+| Competitor Weakness | 5/5 | 10 | Massive pricing gap |
+| LTD Viability | 3/5 | 6 | SMS costs ongoing, needs usage caps |
+| No Free Tier | 5/5 | 5 | No free dental comms platforms |
+| Channel Access | 3/5 | 6 | Dental forums smaller, trade shows expensive |
+| Content Potential | 4/5 | 4 | Weave alternative content |
+| AppSumo Fit | 2/5 | 4 | Dentists rarely browse AppSumo |
+| Review Potential | 4/5 | 4 | Dental practices review on G2 |
+| MRR Path | 5/5 | 15 | SMS costs create natural MRR |
+| Build Feasibility | 4/5 | 8 | Two-way SMS, reminders, review requests |
+| Boring Business Bonus | 4/5 | 8 | Unglamorous professional service |
 
-## Must-Have Filters
-- [x] Problem is real
-- [x] Can build without deep domain expertise
-- [x] No dominant player
-- [x] Revenue potential $10K+ MRR within 12 months
+## MVP Scope (4-6 weeks)
+1. Appointment confirmation/reminder campaigns (SMS + email)
+2. Recall/recare campaign automation
+3. Two-way patient texting
+4. Automated review requests (post-appointment)
+5. Basic analytics (response rates, no-show reduction)
+6. Works alongside ANY PMS (not a replacement)
 
-## Key Differentiators
-1. Integrates with any dental PMS (Dentrix, Eaglesoft, Open Dental)
-2. Automated text reminders with no-show instant rebooking
-3. Recall campaigns for overdue patients
-4. Post-visit review collection at 1/3 competitor pricing
-
-## Next Steps
-1. Build standalone communication integrating with dental PMS
-2. Automated text reminders, no-show rebooking, recall campaigns, review collection
-3. Launch at $99 LTD per practice
+## Go-to-Market
+1. Direct outreach to dental practices (NOT AppSumo)
+2. Dental practice manager FB groups
+3. Content: "Weave alternative for dental practices" landing pages
+4. Dental conferences and trade shows
+5. Referral program (dental practices refer each other)
 
 ## Risks
-1. Weave has massive brand awareness in dental
-2. PMS integration (Dentrix, Eaglesoft) may be technically challenging
-3. HIPAA compliance required
+1. Hard to reach dental practices at scale without trade shows
+2. SMS costs eat into margins on LTD deals
+3. Weave could introduce lower-tier plans
 
 ## Key Source Links
-- [r/dentistry](https://www.reddit.com/r/dentistry/)
-- [Titan Web Agency — Dental Management Software Reviews](https://blog.titanwebagency.com/dental-management-software-reviews)
-- [Weave](https://www.getweave.com)
-- [RevUp Dental — Best Dental Practice Management Systems](https://revupdental.com/best-dental-practice-management-systems/)
-- [Daydream Dental — Best Dental Practice Management Software 2025](https://www.daydream.dental/blog-post/best-dental-practice-management-software-2025)
+- r/dentistry: Weave pricing complaints, Dentrix frustrations
+- Weave competitor analysis: $399+/mo for communication layer
+- Tab 32: "Good but glitchy. Frustrating at times."
+- CareStack: slow support cited in multiple threads
+- Dental recall AI: EUR 45K MRR from EU founder (HN Mar 6)

@@ -1,49 +1,44 @@
-# Review & Reputation Management for Local Services
+# Review / Reputation Management
 
-**Score: 88/105** | **Verdict: BUILD** | **Evaluation Date: 2026-03-05**
+**Score**: 76/105 | **Tier**: 1 | **Verdict**: EXPLORE FURTHER | **Evaluation Date**: 2026-03-07
 
-## Concept
-Automated review collection + AI response generation + referral automation for local service businesses. Post-job SMS review request → sentiment pre-screening → Google review redirect → AI-drafted responses → weekly reputation digest. $39-59/mo vs $300+/mo Birdeye/Podium.
+## One-Line Pitch
+Automated review collection and reputation management for local service businesses at $49-69 LTD vs Podium's $200-400/mo.
 
-## Target Customer
-Local service businesses — plumbers, HVAC, dentists, auto repair, restaurants, salons, landscapers. 68% of small businesses don't actively collect reviews despite 88% of consumers trusting them.
+## Problem
+Small businesses need Google reviews but lack systematic collection. Podium ($200-400/mo) and Birdeye are enterprise-priced. Most businesses manually ask or don't ask at all. Automated SMS-based review requests after service completion 3-5x review velocity.
+
+## Market Evidence
+- Podium: $200-400/mo proves massive market
+- Reviewly: $550K/yr bootstrapped (Indie Hackers)
+- Every boring business needs reviews — cross-vertical
+- Review tools have succeeded on AppSumo before
 
 ## Scoring Breakdown
 
-| Criterion | Score | Weight | Weighted | Notes |
-|-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | Reviewly $550K/yr; Birdeye/Podium $200-400/mo |
-| Competitor Weakness | 4/5 | 2x | 8 | $300+/mo absurd for solo operators |
-| LTD Viability | 4/5 | 2x | 8 | $49-69 LTD; SMS main variable |
-| No Free Tier | 3/5 | 1x | 3 | Google review links are free |
-| Channel Access | 5/5 | 2x | 10 | Universal appeal across local business communities |
-| Content Potential | 5/5 | 1x | 5 | "how to get more Google reviews" massive SEO |
-| AppSumo Fit | 5/5 | 2x | 10 | Clear ROI; strong AppSumo category |
-| Review Potential | 4/5 | 1x | 4 | Review tools generate reviews about themselves |
-| MRR Path | 3/5 | 3x | 9 | Simple tool; SMS usage for recurring |
-| Build Feasibility | 5/5 | 2x | 10 | Google API, Twilio, AI response; 2-3 week MVP |
-| Boring Business Bonus | 3/5 | 2x | 6 | Marketing tool serving boring businesses |
+| Criterion | Score | Weighted | Notes |
+|-----------|-------|----------|-------|
+| Market Validation | 4/5 | 12 | Podium/Birdeye prove market |
+| Competitor Weakness | 3/5 | 6 | Crowded with alternatives |
+| LTD Viability | 4/5 | 8 | Lightweight infrastructure |
+| No Free Tier | 3/5 | 3 | Google review tools free |
+| Channel Access | 4/5 | 8 | Every trade subreddit |
+| Content Potential | 4/5 | 4 | "Get more reviews" evergreen |
+| AppSumo Fit | 4/5 | 8 | Proven category |
+| Review Potential | 4/5 | 4 | Meta-irony: users leave reviews |
+| MRR Path | 3/5 | 9 | SMS credits, low switching costs |
+| Build Feasibility | 4/5 | 8 | Review requests, SMS, widgets |
+| Boring Business Bonus | 3/5 | 6 | Cross-industry, not deep vertical |
 
-## Key Differentiators
-1. **AI response generation** — one-tap contextual review responses
-2. **Sentiment pre-screening** — redirect unhappy customers to private feedback
-3. **Referral automation** — auto-send referral codes after 5-star reviews
-4. **$39-59/mo** — 1/5th of Birdeye/Podium
+## Key Recommendation
+Niche down to ONE boring industry for defensibility.
 
-## LTD Pricing
-- $49 LTD: Core review requests, AI responses, screening
-- $79 LTD: + referral engine, website widget, multi-location
-
-## Next Steps
-1. Build MVP: Post-job SMS → Sentiment screen → Google link → AI response → Digest
-2. Bundle with referral automation
-3. Launch LTD at $49 on AppSumo
-
-## Top Risks
-1. Google API changes
-2. Feature commoditization by AI assistants
-3. SMS costs at scale
+## Risks
+1. Crowded market
+2. Google review policy changes
+3. Cross-industry = less defensible
 
 ## Key Source Links
-- [Reviewly $550K/yr](https://microsaasidea.substack.com/p/micro-saas-ideas-veterinary-management-ecommerce-store-builder-expense-management-ai-review-ideas)
-- [88% trust reviews](https://superframeworks.com/blog/ai-micro-saas-ideas-small-business)
+- Podium: $200-400/mo
+- Reviewly: $550K/yr bootstrapped
+- r/smallbusiness: "how to get more reviews" recurring thread
