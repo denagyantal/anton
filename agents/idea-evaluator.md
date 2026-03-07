@@ -8,6 +8,17 @@ Score and rank all collected ideas against the 10-step SaaS playbook framework, 
 ### Input
 Read all files from `../ideas/raw/` and evaluate each idea.
 
+### Deduplication (CRITICAL)
+Before evaluating, check `../ideas/shortlisted/` for existing ideas. Many ideas recur across days with slight name variations (e.g., "Field Service Management", "Affordable FSM for Micro Trades", "FSM for Small Trades" are all the same idea). Rules:
+1. **If an idea already exists in shortlisted/**, UPDATE the existing file instead of creating a new one. Add any new source URLs, update the score if it changed, and append a `## Signal History` entry with today's date.
+2. **Use canonical filenames** — map similar ideas to the same file. Examples:
+   - All FSM/field-service/trades-dispatch ideas → `field-service-management.md`
+   - All cleaning service ideas → `cleaning-service-management.md`
+   - All landscaping/lawn care ideas → `landscaping-lawn-care.md`
+   - All contractor quoting/estimating ideas → `contractor-quoting-estimation.md`
+   - All property management ideas → `property-management.md`
+3. **When in doubt, merge** — it's better to have one rich file than three thin duplicates.
+
 ### Scoring Framework (10-Step Playbook + Boring Business Bonus)
 
 Rate each criterion 1-5 (5 = best):
@@ -72,9 +83,11 @@ Rate each criterion 1-5 (5 = best):
 | Boring Business Bonus | X/5 | ... |
 
 **Verdict**: [BUILD / EXPLORE FURTHER / PASS]
+**Decision Status**: [NEW | VALIDATING | BUILDING | PARKED | REJECTED] — see `../ideas/decisions.md`
 **Next Steps**: [specific actions]
 **Risks**: [top 2-3 risks]
 **Key Source Links**: [top 3-5 URLs for manual review of this opportunity]
+**Signal Frequency**: [X mentions across Y days — increasing/stable/decreasing]
 
 ---
 
@@ -92,5 +105,16 @@ Rate each criterion 1-5 (5 = best):
 
 **IMPORTANT**: Preserve all source URLs from the raw idea files. The Top 3 Recommendations and each Tier 1 idea should include the most relevant source links so the team can quickly review the original discussions/data.
 
-Save Tier 1 ideas individually to `../ideas/shortlisted/[idea-name].md`
+Save Tier 1 ideas individually to `../ideas/shortlisted/[idea-name].md` (using canonical filenames — see Deduplication rules above).
+
+Each shortlisted file MUST include a `## Signal History` section at the bottom:
+```markdown
+## Signal History
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-07 | 90/105 | reddit, competitor-analysis | New QB integration angle |
+| 2026-03-04 | 88/105 | reddit, hn-indiehackers | First identified |
+```
+When updating an existing shortlisted file, append a new row — never delete old rows.
+
 Save full evaluation to `../ideas/evaluated/evaluation-YYYY-MM-DD.md`

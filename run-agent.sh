@@ -59,6 +59,26 @@ timeout 1800 claude -p "$PROMPT" \
 EXIT_CODE=$?
 echo "[$(date)] Finished $AGENT_NAME (exit: $EXIT_CODE)" >> "$LOG_DIR/cron.log"
 
+# Validate output — skip commit if agent produced no/empty output
+if [ ! -f "$OUTPUT_FILE" ]; then
+  echo "[$(date)] ERROR: $AGENT_NAME produced no output file ($OUTPUT_FILE)" >> "$LOG_DIR/cron.log"
+  if [ -n "${BOT_TOKEN:-}" ] && [ -n "${CHAT_ID:-}" ]; then
+    curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+      -d chat_id="$CHAT_ID" -d text="⚠️ $AGENT_NAME failed — no output file produced ($DATE)" > /dev/null 2>&1
+  fi
+  exit 1
+fi
+
+FILE_SIZE=$(wc -c < "$OUTPUT_FILE" | tr -d ' ')
+if [ "$FILE_SIZE" -lt 500 ]; then
+  echo "[$(date)] WARNING: $AGENT_NAME output suspiciously small (${FILE_SIZE} bytes)" >> "$LOG_DIR/cron.log"
+  if [ -n "${BOT_TOKEN:-}" ] && [ -n "${CHAT_ID:-}" ]; then
+    curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+      -d chat_id="$CHAT_ID" -d text="⚠️ $AGENT_NAME output too small (${FILE_SIZE} bytes) — check logs ($DATE)" > /dev/null 2>&1
+  fi
+  exit 1
+fi
+
 # Auto-commit and push results to GitHub
 cd "$BASE_DIR"
 git add ideas/ logs/ 2>/dev/null || true
