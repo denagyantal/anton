@@ -1,0 +1,9 @@
+# Never sync these
+*.bak
+*.tmp
+.DS_Store
+
+# The settings directory will contain synced files - don't ignore it
+# But do ignore any accidental token files
+settings/tokens/
+settings/oauth/
