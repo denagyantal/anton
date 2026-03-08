@@ -76,12 +76,19 @@ run_bmad() {
   bash "$BASE_DIR/run-bmad-pipeline.sh"
 }
 
+# ─── Phase 4: AutoMVP — Build MVPs from ideas with completed PRDs ───
+run_automvp() {
+  log "=== Phase 4: AutoMVP Pipeline ==="
+  bash "$BASE_DIR/run-automvp.sh"
+}
+
 # ─── Execute selected phases ───
 case "$MODE" in
   all)
     run_research
     run_evaluate
     run_bmad
+    run_automvp
     notify "Daily pipeline complete ($DATE). Check ideas/decisions.md for updates."
     ;;
   research)
@@ -93,8 +100,11 @@ case "$MODE" in
   bmad)
     run_bmad
     ;;
+  automvp)
+    run_automvp
+    ;;
   *)
-    echo "Usage: run-all.sh [all|research|evaluate|bmad]"
+    echo "Usage: run-all.sh [all|research|evaluate|bmad|automvp]"
     exit 1
     ;;
 esac
