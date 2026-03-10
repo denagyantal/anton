@@ -6,7 +6,7 @@ allowed-tools: Bash, Read
 
 # Sync Settings Skill
 
-This skill syncs Claude Code configuration across devices using a private git repo at `~/claude-code-settings/`.
+This skill syncs Claude Code configuration across devices using a private git repo at `~/dev/antal-claude-code-settings/`.
 
 ## What it syncs
 
@@ -30,9 +30,9 @@ Parse the user's intent from their message. They may say:
 
 ## Execution
 
-1. Verify the sync repo exists at `~/claude-code-settings/`:
+1. Verify the sync repo exists at `~/dev/antal-claude-code-settings/`:
    ```bash
-   ls ~/claude-code-settings/sync.sh
+   ls ~/dev/antal-claude-code-settings/sync.sh
    ```
 
 2. If it doesn't exist, tell the user to clone their settings repo:
@@ -42,7 +42,7 @@ Parse the user's intent from their message. They may say:
 
 3. Run the appropriate command:
    ```bash
-   bash ~/claude-code-settings/sync.sh <command>
+   bash ~/dev/antal-claude-code-settings/sync.sh <command>
    ```
    Where `<command>` is one of: `push`, `pull`, `status`, `diff`, `install`
 
@@ -53,7 +53,7 @@ Parse the user's intent from their message. They may say:
 If the user hasn't set up sync yet:
 ```bash
 git clone <repo-url> ~/claude-code-settings
-bash ~/claude-code-settings/sync.sh install
+bash ~/dev/antal-claude-code-settings/sync.sh install
 ```
 
 The install command will detect whether the repo has settings already (pulls them) or not (pushes current local settings).

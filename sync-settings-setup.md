@@ -19,10 +19,10 @@ Sync your Claude Code settings (MCP servers, skills, rules, hooks, CLAUDE.md) ac
 ### 1. Create a Private GitHub Repo
 
 ```bash
-# Create a new private repo on GitHub called "claude-code-settings"
+# Create a new private repo on GitHub called "antal-claude-code-settings"
 # Then initialize locally:
-cd ~/claude-code-settings
-git remote add origin git@github.com:YOUR_USERNAME/claude-code-settings.git
+cd ~/dev/antal-claude-code-settings
+git remote add origin git@github.com:denagyantal/antal-claude-code-settings.git
 git branch -M main
 git push -u origin main
 ```
@@ -30,7 +30,7 @@ git push -u origin main
 ### 2. First Machine (Push Current Settings)
 
 ```bash
-cd ~/claude-code-settings
+cd ~/dev/antal-claude-code-settings
 bash sync.sh install
 ```
 
@@ -39,8 +39,8 @@ This pushes your current settings to the repo and installs the `/sync-settings` 
 ### 3. Additional Machines (Pull Settings)
 
 ```bash
-git clone git@github.com:YOUR_USERNAME/claude-code-settings.git ~/claude-code-settings
-cd ~/claude-code-settings
+git clone git@github.com:denagyantal/antal-claude-code-settings.git ~/dev/antal-claude-code-settings
+cd ~/dev/antal-claude-code-settings
 bash sync.sh install
 ```
 
@@ -51,10 +51,10 @@ This pulls settings from the repo and applies them locally.
 ### From the Terminal
 
 ```bash
-bash ~/claude-code-settings/sync.sh push      # Push local changes
-bash ~/claude-code-settings/sync.sh pull      # Pull from repo
-bash ~/claude-code-settings/sync.sh status    # Check what's different
-bash ~/claude-code-settings/sync.sh diff      # Preview changes
+bash ~/dev/antal-claude-code-settings/sync.sh push      # Push local changes
+bash ~/dev/antal-claude-code-settings/sync.sh pull      # Pull from repo
+bash ~/dev/antal-claude-code-settings/sync.sh status    # Check what's different
+bash ~/dev/antal-claude-code-settings/sync.sh diff      # Preview changes
 ```
 
 ### From Claude Code
