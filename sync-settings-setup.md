@@ -19,9 +19,14 @@ Sync your Claude Code settings (MCP servers, skills, rules, hooks, CLAUDE.md) ac
 ### 1. Create a Private GitHub Repo
 
 ```bash
-# Create a new private repo on GitHub called "antal-claude-code-settings"
-# Then initialize locally:
+# Create private repo on GitHub (via browser or gh CLI)
+gh repo create antal-claude-code-settings --private
+
+# Copy the files from anton into the new repo
+cp -r ~/anton/antal-claude-code-settings/* ~/dev/antal-claude-code-settings/
 cd ~/dev/antal-claude-code-settings
+git init && git add -A
+git commit -m "Initial sync setup"
 git remote add origin git@github.com:denagyantal/antal-claude-code-settings.git
 git branch -M main
 git push -u origin main
@@ -30,7 +35,7 @@ git push -u origin main
 ### 2. First Machine (Push Current Settings)
 
 ```bash
-cd ~/dev/antal-claude-code-settings
+# Run install to push current settings & install the skill
 bash sync.sh install
 ```
 
@@ -39,9 +44,9 @@ This pushes your current settings to the repo and installs the `/sync-settings` 
 ### 3. Additional Machines (Pull Settings)
 
 ```bash
+# On every other machine, just clone and install:
 git clone git@github.com:denagyantal/antal-claude-code-settings.git ~/dev/antal-claude-code-settings
-cd ~/dev/antal-claude-code-settings
-bash sync.sh install
+bash ~/dev/antal-claude-code-settings/sync.sh install
 ```
 
 This pulls settings from the repo and applies them locally.
