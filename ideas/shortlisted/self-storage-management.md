@@ -48,3 +48,9 @@ Modern self-storage management -- unit tracking, tenant management, autopay, and
 ## Key Source Links
 - [Storable](https://www.storable.com)
 - [r/selfstorage](https://www.reddit.com/r/selfstorage/)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 81/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

@@ -51,3 +51,9 @@ Lightweight policy CRM for independent insurance agents — renewal dashboard, a
 - [r/Insurance](https://www.reddit.com/r/Insurance/)
 - [GloveBox — Best Insurance Agency Management Systems](https://glovebox.io/blog/best-insurance-agency-management-systems/)
 - [G2 — Insurance Agency Management Systems](https://www.g2.com/categories/insurance-agency-management-systems)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 78/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

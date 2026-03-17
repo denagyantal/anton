@@ -55,3 +55,9 @@ Mindbody has mandatory 12-month contracts and an outdated interface. Fresha has 
 - Mindbody: mandatory 12-month contracts, outdated interface
 - GlossGenius: winning independents — validates segment
 - 52.1% of salon market is small/individual professionals
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 90/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

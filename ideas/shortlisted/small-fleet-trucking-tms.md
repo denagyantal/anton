@@ -48,3 +48,9 @@ TMS built for 1-20 truck fleets -- load management, IFTA auto-calculation, compl
 ## Key Source Links
 - [r/trucking](https://www.reddit.com/r/trucking/)
 - [EmpwrTrucking: Best Trucking Software for Small Fleets](https://www.empwrtrucking.com/trucking-industry/best-trucking-software-of-2025-top-3-picks-for-small-fleets/)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

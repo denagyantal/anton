@@ -50,3 +50,9 @@ Branded client portal for tax preparers — automated document checklist reminde
 - [Journal of Accountancy 2025 Tax Software Survey](https://www.journalofaccountancy.com/issues/2025/sep/2025-tax-software-survey/)
 - [Intuit Community: Drake vs Lacerte Discussion](https://accountants.intuit.com/community/tax-talk/discussion/considering-proseries-or-drake-software-from-lacerte/00/129886)
 - [TaxProTalk Forums](https://www.taxprotalk.com/forums/)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 75/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

@@ -43,3 +43,9 @@ HVAC, plumbing, electrical, roofing, pest control. 60-80% of calls go unanswered
 - [Avoca $1.4M revenue](https://getlatka.com/companies/avoca.ai)
 - [Newo.ai](https://newo.ai/hvac-plumbing-ai-receptionist/)
 - [Best AI Receptionist 2026](https://www.getnextphone.com/blog/best-ai-receptionist)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

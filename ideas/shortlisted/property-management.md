@@ -51,3 +51,9 @@ The all-in-one tool for self-managing landlords with 1-50 units — rent collect
 - [r/landlord](https://www.reddit.com/r/landlord/)
 - [Buildium G2 Reviews](https://www.g2.com/products/buildium/reviews)
 - [Micasa HN Discussion](https://news.ycombinator.com/item?id=47075124)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 96/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

@@ -51,3 +51,9 @@ Commercial SaaS for micro-bakeries, cottage food, and small-batch producers — 
 - [r/Entrepreneur](https://www.reddit.com/r/Entrepreneur/)
 - [Indie Hackers](https://www.indiehackers.com/)
 - [SaaS Opportunities — Underserved Markets](https://saasopportunities.com/blog/saas-niches-that-make-money-underserved-markets)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 75/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

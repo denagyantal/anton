@@ -42,3 +42,9 @@ Dead-simple review collection: after each job, auto-text customer with Google re
 ## LTD Pricing
 - Tier 1: $49 (100 review requests/mo)
 - Tier 2: $69 (unlimited, AI responses, website widget)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

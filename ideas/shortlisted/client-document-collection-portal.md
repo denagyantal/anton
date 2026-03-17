@@ -42,3 +42,9 @@ Simple document collection portal: create checklist of needed documents per clie
 ## LTD Pricing
 - Tier 1: $59 (up to 50 clients)
 - Tier 2: $79 (unlimited, custom branding, e-signatures)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 78/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

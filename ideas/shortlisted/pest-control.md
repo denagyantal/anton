@@ -52,3 +52,9 @@ Route-optimized scheduling with chemical compliance logging and EPA reporting pu
 - [GorillaDesk](https://gorilladesk.com/)
 - [Briostack](https://www.briostack.com/)
 - [Future of Pest Control Technology](https://fieldworkhq.com/2025/10/02/future-of-pest-control-technology/)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 88/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

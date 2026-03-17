@@ -14,3 +14,9 @@ Construction-specific invoicing MVP: progress billing, change order tracking, re
 ## Key Source Links
 - [HN: InstaBuild](https://news.ycombinator.com/item?id=44246559)
 - [Buildbite: Construction PM Software](https://buildbite.com/insights/construction-project-management-software-for-small-businesses)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 85/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

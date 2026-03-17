@@ -43,3 +43,9 @@ Build as shared platform with dental communication — same tech stack, differen
 - ezyVet: $245/mo
 - NaVetor: "too many steps to process payment"
 - DaySmart Vet: reminder system "difficult to use"
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 80/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

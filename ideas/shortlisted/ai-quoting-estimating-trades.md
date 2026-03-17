@@ -50,3 +50,9 @@ Small trade contractors — HVAC, plumbing, electrical, painting, roofing, concr
 - [Jobtable — built by tradespeople](https://jobtable.com/the-best-software-for-trades-in-2025-simplify-quotes-invoices-and-scheduling/)
 - [Contractor scheduling/quoting software 2026](https://contractorsoftwarehub.com/best-scheduling-software-contractors/)
 - [Superframeworks: AI micro-SaaS ideas](https://superframeworks.com/blog/ai-micro-saas-ideas-small-business)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 86/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

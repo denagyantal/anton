@@ -35,3 +35,9 @@ The anti-ServiceTitan: dead-simple quote>schedule>invoice>get-paid for 1-5 perso
 - [HCP Trustpilot Reviews](https://www.trustpilot.com/review/housecallpro.com)
 - [FSM Market Report](https://www.gminsights.com/industry-analysis/field-service-management-market)
 - [FieldFuze ServiceTitan Alternative](https://toricentlabs.com/blog/servicetitan-alternative.html)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 94/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

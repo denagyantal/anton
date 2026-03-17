@@ -49,3 +49,9 @@ Quick-tap daily reports for in-home and small daycares — meals, naps, diapers,
 ## Key Source Links
 - [SaaS Opportunities: Underserved Markets](https://saasopportunities.com/blog/saas-niches-that-make-money-underserved-markets)
 - [r/Entrepreneur](https://www.reddit.com/r/Entrepreneur/)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 79/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

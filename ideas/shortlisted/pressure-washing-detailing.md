@@ -52,3 +52,9 @@ The first purpose-built software for exterior cleaning businesses — visual quo
 - [MyQuoteIQ - Pressure Washing CRM](https://myquoteiq.com/pressure-washing-crm-business-software/)
 - [ServiceMonster - Exterior Cleaning Software](https://www.servicemonster.com/exterior-cleaning-software)
 - [r/sweatystartup](https://www.reddit.com/r/sweatystartup/)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 83/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

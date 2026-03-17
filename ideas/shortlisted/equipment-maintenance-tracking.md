@@ -25,3 +25,9 @@ Market Validation: 3/5 (3x=9) | Competitor Weakness: 3/5 (2x=6) | LTD Viability:
 
 ## LTD Pricing
 - Tier 1: $79 (up to 20 assets) | Tier 2: $99 (unlimited, compliance alerts)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 80/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

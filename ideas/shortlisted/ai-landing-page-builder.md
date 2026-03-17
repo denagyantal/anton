@@ -61,3 +61,9 @@ LTD phase → team tier (collaboration) → agency white-label ($99/mo) → traf
 3. Add A/B testing and analytics (2 weeks)
 4. Beta test with 20 indie hackers from Twitter/IH
 5. Launch on AppSumo with "describe your product, get a landing page in 60 seconds" hook
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 78/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

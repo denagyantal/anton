@@ -45,3 +45,9 @@ Full-featured auto shop management in the $50-150/mo dead zone: work orders, DVI
 - Shopmonkey: $110M raised, 2.6% penetration
 - Tekmetric: $179-409/mo, weak reporting
 - ARI: $20/mo ultra-basic
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 89/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

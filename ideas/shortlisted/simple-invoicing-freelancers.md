@@ -38,3 +38,9 @@ Send beautiful invoices in 30 seconds with automatic late payment reminders and 
 2. Add auto-reminders and expense tracking (2 weeks)
 3. Beta with 15 freelancers from r/freelance
 4. AppSumo launch focused on speed and simplicity
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 80/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

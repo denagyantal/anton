@@ -58,3 +58,9 @@ Dental practices need patient communication (appointment confirmations, recall/r
 - Tab 32: "Good but glitchy. Frustrating at times."
 - CareStack: slow support cited in multiple threads
 - Dental recall AI: EUR 45K MRR from EU founder (HN Mar 6)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 79/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

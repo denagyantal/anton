@@ -50,3 +50,9 @@ Never miss a license renewal — expiration tracker, CE credit logging, insuranc
 - [r/HVAC](https://www.reddit.com/r/HVAC/)
 - [r/electricians](https://www.reddit.com/r/electricians/)
 - [BBSI: New Laws & Regulations for Small Business Owners 2026](https://www.bbsi.com/business-owner-resources/new-laws-regulations-small-business-owners-2026)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 80/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

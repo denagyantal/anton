@@ -49,3 +49,9 @@ Dead-simple bookkeeping that does 3 things well — bank categorization, invoice
 - [QuickBooks Community: Does Anyone Think QBO Is Terrible?](https://quickbooks.intuit.com/learn-support/en-us/employees-and-payroll/does-anyone-else-think-quickbooks-is-terrible/00/1044704)
 - [Thryve Digest: QuickBooks Alternatives 2026](https://thryvedigest.com/smallbusiness/quickbooks-alternatives-small-business-2026/)
 - [r/smallbusiness](https://www.reddit.com/r/smallbusiness/)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 78/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

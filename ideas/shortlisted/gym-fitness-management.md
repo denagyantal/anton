@@ -47,3 +47,9 @@ EXPLORE FURTHER. The market is massive ($63.94B) and MindBody dissatisfaction is
 - [Gym Management Market $63.94B](https://www.openpr.com/news/4400895/gym-management-software-market-is-set-to-grow-usd-63-94-billion)
 - [MindBody Review (GymDesk)](https://gymdesk.com/blog/mindbody-review/)
 - [MindBody Alternatives (VibeFam)](https://vibefam.com/top-5-mindbody-alternatives-for-studio-management-in-2026/)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

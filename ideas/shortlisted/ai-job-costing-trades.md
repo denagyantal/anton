@@ -50,3 +50,9 @@ Know which jobs make money — GPS-verified time tracking, receipt photo OCR, an
 - [r/Plumbing](https://www.reddit.com/r/Plumbing/)
 - [Knowify](https://www.knowify.com)
 - [r/Construction](https://www.reddit.com/r/Construction/)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 83/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

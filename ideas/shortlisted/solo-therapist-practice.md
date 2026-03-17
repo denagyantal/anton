@@ -48,3 +48,9 @@ Streamlined practice management for solo therapists -- HIPAA-compliant schedulin
 ## Key Source Links
 - [r/therapists](https://www.reddit.com/r/therapists/)
 - [Greensighter: Micro-SaaS Ideas](https://www.greensighter.com/blog/micro-saas-ideas)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 80/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |

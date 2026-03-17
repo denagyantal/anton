@@ -51,3 +51,9 @@ Residential cleaning companies with 1-10 cleaners, maid services, house cleaning
 - [Swept Capterra Reviews](https://www.capterra.com/p/148615/Swept/)
 - [r/EntrepreneurRideAlong](https://www.reddit.com/r/EntrepreneurRideAlong/)
 - [Cleaning Services Software Market](https://www.datainsightsmarket.com/reports/cleaning-services-software-1977398)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-17 | 95/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
