@@ -1,4 +1,4 @@
-# Pressure Washing / Auto Detailing CRM - Score: 95/105
+# Pressure Washing / Auto Detailing CRM - Score: 93/105
 
 **Verdict**: BUILD -- Quick Win
 **Tier**: 1 (Strong Opportunity)
@@ -58,3 +58,4 @@ The first purpose-built software for exterior cleaning businesses — visual quo
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 83/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 93/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: QuoteIQ gaining but market still fragmented; before/after photo workflow is key differentiator |

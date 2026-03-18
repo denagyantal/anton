@@ -1,4 +1,4 @@
-# Small-Batch Food Production Management - Score: 88/105
+# Small-Batch Food Production Management - Score: 75/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
@@ -57,3 +57,4 @@ Commercial SaaS for micro-bakeries, cottage food, and small-batch producers — 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 75/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 75/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Craftplan gaining traction; Carbon ERP at $90/mo; YC RFS backing the category |

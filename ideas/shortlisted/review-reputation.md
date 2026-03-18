@@ -1,4 +1,4 @@
-# Reputation & Review Management for Local Businesses — Score: 89/105
+# Reputation & Review Management for Local Businesses — Score: 81/105
 
 **Evaluation Date**: 2026-02-23
 **Verdict**: BUILD (quick-win / add-on product)
@@ -48,3 +48,4 @@ Dead-simple review collection: after each job, auto-text customer with Google re
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 81/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Better as add-on module to FSM/cleaning tools; crowded standalone market |

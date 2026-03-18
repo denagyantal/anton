@@ -1,6 +1,6 @@
 # AI Receptionist for Home Service Businesses
 
-**Score: 85/105** | **Verdict: EXPLORE FURTHER** | **Evaluation Date: 2026-03-05**
+**Score: 89/105** | **Verdict: EXPLORE FURTHER** | **Evaluation Date: 2026-03-05**
 
 ## Concept
 Trade-specific AI phone agent. Understands industry terminology, triages emergencies, quotes standard jobs, books appointments, dispatches nearest tech. 24/7/365. Not generic — built for HVAC, plumbing, electrical specifically.
@@ -49,3 +49,4 @@ HVAC, plumbing, electrical, roofing, pest control. 60-80% of calls go unanswered
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 89/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Avoca $47.8M raised validates market; CallCatch concept for solo operators at $69/mo flat |

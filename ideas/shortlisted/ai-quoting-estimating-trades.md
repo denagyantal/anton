@@ -1,6 +1,6 @@
 # AI-Powered Quoting & Estimating for Trade Contractors
 
-**Score: 91/105** | **Verdict: BUILD** | **Evaluation Date: 2026-03-05**
+**Score: 86/105** | **Verdict: BUILD** | **Evaluation Date: 2026-03-05**
 
 ## Concept
 Mobile-first quoting app for trade contractors. Enter address → auto-pull property data → select trade-specific line items → generate professional PDF → text/email to customer → collect e-signature → follow-up automation. "Quote from the driveway in 5 minutes." AI-assisted pricing from job history.
@@ -56,3 +56,4 @@ Small trade contractors — HVAC, plumbing, electrical, painting, roofing, concr
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 86/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 86/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Rebar $14M Series A validates category; photo-to-estimate for residential is the indie gap |

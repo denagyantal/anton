@@ -1,4 +1,4 @@
-# Gym & Fitness Studio Management — Score: 76/105
+# Gym & Fitness Studio Management — Score: 83/105
 
 **Verdict**: EXPLORE FURTHER
 **LTD Price**: $99-149
@@ -53,3 +53,4 @@ EXPLORE FURTHER. The market is massive ($63.94B) and MindBody dissatisfaction is
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 83/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: GymPad concept at $39/mo flat; Mindbody $500-700/mo real cost; Vagaro 2026 update issues |

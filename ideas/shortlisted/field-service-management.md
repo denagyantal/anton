@@ -1,6 +1,6 @@
 # Field Service Management for Solo/Micro Trades
 
-**Score**: 102/105
+**Score**: 101/105
 **Verdict**: BUILD
 **LTD Price**: $79
 
@@ -41,3 +41,4 @@ The anti-ServiceTitan: dead-simple quote>schedule>invoice>get-paid for 1-5 perso
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 94/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 101/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Strongest signal across all sources; ServiceTitan $63K/yr cost validated; FieldBin ($30/mo) validates practitioner-built approach |

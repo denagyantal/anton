@@ -1,4 +1,4 @@
-# Small Fleet Trucking TMS - Score: 79/105
+# Small Fleet Trucking TMS - Score: 77/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -54,3 +54,4 @@ TMS built for 1-20 truck fleets -- load management, IFTA auto-calculation, compl
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 77/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: MileAlert ELD maintenance alerting concept; $3/truck/mo; ELD API integration is moat |

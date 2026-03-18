@@ -1,4 +1,4 @@
-# Commercial Laundry Management — Score: 75/105
+# Commercial Laundry Management — Score: 73/105
 
 **Tier**: 1 (Strong Opportunity)
 **Verdict**: EXPLORE FURTHER
@@ -47,3 +47,4 @@ All-in-one management tool for commercial laundry facilities (laundromats, hotel
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 75/105 | hn-indiehackers | First identified — Excel-and-WhatsApp industry, no indie product |
+| 2026-03-18 | 73/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Now Tier 2; real pain but tiny indie TAM; RFID knowledge required; LinenOps concept at $199/mo |

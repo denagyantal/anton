@@ -1,4 +1,4 @@
-# Freight Detention Tracking — Score: 77/105
+# Freight Detention Tracking — Score: 82/105
 
 **Tier**: 1 (Strong Opportunity)
 **Verdict**: EXPLORE FURTHER
@@ -47,3 +47,4 @@ Purpose-built tool for small carriers (3-15 trucks) to document, track, and reco
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 77/105 | hn-indiehackers, reddit | First identified — $11.5B productivity gap, no existing tool |
+| 2026-03-18 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: DetentionPay concept; GPS geofence detention clock; $11.5B productivity loss; ELD API integration needed |

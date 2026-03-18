@@ -56,3 +56,4 @@ Branded client portal for tax preparers — automated document checklist reminde
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 75/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 85/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Drake support collapse ongoing; One Big Beautiful Bill Act chaos; Oct launch window for Jan 2027 season |

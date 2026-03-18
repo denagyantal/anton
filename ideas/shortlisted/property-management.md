@@ -57,3 +57,4 @@ The all-in-one tool for self-managing landlords with 1-50 units — rent collect
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 96/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 98/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Brickwise AI (YC, $3M+) validates AI maintenance coordinator; AppFolio AI-only support anger; Buildium removing integrations |

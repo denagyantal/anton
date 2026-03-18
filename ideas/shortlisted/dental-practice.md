@@ -1,6 +1,6 @@
 # Dental Patient Communication Platform
 
-**Score**: 85/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-07
+**Score**: 83/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-07
 
 ## One-Line Pitch
 Appointment confirmations, recall campaigns, and review requests for dental practices at $49-99/mo vs Weave's $399+/mo.
@@ -64,3 +64,4 @@ Dental practices need patient communication (appointment confirmations, recall/r
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 79/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 83/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: DentBase concept at $129/mo; Dentrix/Eaglesoft duopoly entrenched; communication layer (anti-Weave) may be better wedge |

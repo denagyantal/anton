@@ -1,4 +1,4 @@
-# Restaurant Recipe Costing & Menu Profitability — Score: 88/105
+# Restaurant Recipe Costing & Menu Profitability — Score: 77/105
 
 **Verdict**: BUILD
 **LTD Price**: $69-89
@@ -44,3 +44,9 @@ BUILD. The pain is acute (3-5% margins mean every dollar of food cost matters), 
 - [FoodDocs: Restaurant Management Software Guide](https://www.fooddocs.com/post/restaurant-management-software)
 - [RestaurantHQ: Best Restaurant Management Software](https://www.therestauranthq.com/technology/best-restaurant-management-software/)
 - [Entrepreneurloop: SaaS Business Ideas 2026](https://entrepreneurloop.com/how-to-start-profitable-saas-business-2026-niche-ideas/)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-18 | 77/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: POS complexity limits LTD/indie viability; ops layer (scheduling+inventory) alongside existing POS is better angle |

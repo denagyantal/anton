@@ -1,6 +1,6 @@
 # Cleaning Service Management
 
-**Score: 91/105** | **Verdict: BUILD** | **Evaluation Date: 2026-03-05**
+**Score: 95/105** | **Verdict: BUILD** | **Evaluation Date: 2026-03-05**
 
 ## Concept
 Cleaning-specific business platform with ultra-simple cleaner app. Visual recurring schedule (drag-and-drop, skip weeks/holidays), customizable per-room checklists with photo verification, one-tap clock-in that auto-generates invoices, online booking with drive-time awareness, client portal with cleaning history. Flat pricing, not per-cleaner.
@@ -57,3 +57,4 @@ Residential cleaning companies with 1-10 cleaners, maid services, house cleaning
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 95/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 95/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Residential+commercial bridge gap confirmed; ZenMaid auto-invoicing gap persists; CleanBook concept refined |

@@ -1,6 +1,6 @@
 # Simple Invoicing for Freelancers
 
-**Evaluation Score**: 73/95 (Tier 1 — #6)
+**Evaluation Score**: 76/105
 **Verdict**: BUILD
 
 ## One-Line Pitch
@@ -44,3 +44,4 @@ Send beautiful invoices in 30 seconds with automatic late payment reminders and 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 80/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 76/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Self-hosted invoicing variant stronger; anti-subscription signal growing; crowded market limits upside |

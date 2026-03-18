@@ -1,4 +1,4 @@
-# Simple Bookkeeping (QuickBooks Alternative) - Score: 84/105
+# Simple Bookkeeping (QuickBooks Alternative) - Score: 87/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -55,3 +55,4 @@ Dead-simple bookkeeping that does 3 things well — bank categorization, invoice
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 78/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-18 | 87/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Sheila AI bookkeeping agent validates approach; QBO 64% cumulative price increase; multi-client dashboard gap persists |
