@@ -1,4 +1,4 @@
-# Insurance Agent CRM & Policy Tracker - Score: 82/105
+# Insurance Agent CRM & Policy Tracker - Score: 86/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -58,3 +58,4 @@ Lightweight policy CRM for independent insurance agents — renewal dashboard, a
 |------|-------|---------|-------|
 | 2026-03-17 | 78/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Applied Epic $1,100/mo; EZLynx support issues; browser extension for carrier portal auto-fill as wedge |
+| 2026-03-19 | 86/105 | reddit, competitor-analysis | Deep competitor analysis: Applied Epic $150-400/user/mo + $5K setup; $4.14B market; legacy oligopoly with 2008 UIs; AgentPad concept at $49/mo flat |

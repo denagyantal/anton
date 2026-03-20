@@ -50,3 +50,4 @@ HVAC, plumbing, electrical, roofing, pest control. 60-80% of calls go unanswered
 |------|-------|---------|-------|
 | 2026-03-17 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 89/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Avoca $47.8M raised validates market; CallCatch concept for solo operators at $69/mo flat |
+| 2026-03-19 | 89/105 | hn-indiehackers, trends | Stable: ServiceCall launched Mar 18; Rebar $14M Series A validates trades AI; contractor lead qualification accelerating |

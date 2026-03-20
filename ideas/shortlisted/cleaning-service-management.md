@@ -58,3 +58,4 @@ Residential cleaning companies with 1-10 cleaners, maid services, house cleaning
 |------|-------|---------|-------|
 | 2026-03-17 | 95/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 95/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Residential+commercial bridge gap confirmed; ZenMaid auto-invoicing gap persists; CleanBook concept refined |
+| 2026-03-19 | 95/105 | reddit, trends | Stable: mid-market gap (8-30 employees) validated again; Airbnb turnover sub-niche identified as potential wedge |

@@ -1,6 +1,6 @@
 # Veterinary Practice Communication
 
-**Score**: 77/105 | **Tier**: 1 | **Verdict**: EXPLORE FURTHER | **Evaluation Date**: 2026-03-07
+**Score**: 78/105 | **Tier**: 1 | **Verdict**: EXPLORE FURTHER | **Evaluation Date**: 2026-03-07
 
 ## One-Line Pitch
 Appointment confirmations, prescription reminders, and follow-up scheduling for vet practices — same tech as dental communication, different branding.
@@ -50,3 +50,4 @@ Build as shared platform with dental communication — same tech stack, differen
 |------|-------|---------|-------|
 | 2026-03-17 | 80/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 77/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: VetDesk concept at $69-89/mo; IDEXX owns Cornerstone+ezyVet creating lock-in; AI SOAP notes still early |
+| 2026-03-19 | 78/105 | reddit | Cloud migration pain from legacy systems; AI SOAP notes opportunity; pricing opacity persists across all PIMS except DaySmart/ezyVet |

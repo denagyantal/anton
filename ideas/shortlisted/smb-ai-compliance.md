@@ -49,3 +49,9 @@ Automated compliance checker for SMBs navigating Colorado AI Act, EU AI Act, and
 - Regulation timeline: trends-2026-02-26.md, trends-2026-02-25.md
 - Market analysis: trends-2026-03-02.md
 - Compliance automation trend: trends-2026-02-27.md
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-19 | 75/105 | trends | Stable: 2026 regulatory inflection point continues; 4+ layers of compliance but no SMB tools |

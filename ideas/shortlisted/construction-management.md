@@ -21,3 +21,4 @@ Construction-specific invoicing MVP: progress billing, change order tracking, re
 |------|-------|---------|-------|
 | 2026-03-17 | 85/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 92/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Majority of buyers have <$1M revenue & ≤5 employees; Buildertrend price doubling; BuildPad concept at $59/mo |
+| 2026-03-19 | 92/105 | reddit, competitor-analysis, trends | Stable: construction paper-to-digital accelerating; offline-first architecture non-negotiable; digital work orders as wedge |

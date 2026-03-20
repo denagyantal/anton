@@ -54,3 +54,4 @@ Streamlined practice management for solo therapists -- HIPAA-compliant schedulin
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 80/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-19 | 79/105 | reddit | Stable: SimplePractice bloating continues |

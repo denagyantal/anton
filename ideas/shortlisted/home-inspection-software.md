@@ -54,3 +54,4 @@ Reliable home inspection reporting -- photo capture, templated reports, auto-org
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 86/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-19 | 77/105 | reddit | Stable: no significant new data |

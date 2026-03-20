@@ -1,0 +1,69 @@
+# STR Turnover Coordinator - Score: 76/105
+
+**Verdict**: EXPLORE FURTHER
+**Tier**: 1 (Strong Opportunity — borderline)
+**Evaluation Date**: 2026-03-19
+
+## One-Line Pitch
+Auto-sync with Airbnb/VRBO calendars, auto-assign cleaners, photo-verified checklists, and supply tracking for short-term rental hosts managing 3-50 units.
+
+## Problem
+Airbnb hosts managing 3+ properties spend hours weekly on cleaner scheduling, quality verification, and supply tracking. Coordinating cleaning crews between checkout and check-in is time-sensitive and stressful. No single tool syncs with Airbnb/VRBO calendars AND handles cleaner dispatch + quality checklists + supply inventory. Current solutions are either full PMS (overkill) or basic calendar sharing (insufficient).
+
+## Market Evidence
+- 2M+ short-term rental listings in US
+- Growing host market; $12-19/listing/mo pricing validated
+- TurnoverBnB exists (marketplace, not management)
+- Hospitable focused on guest comms, not turnover
+- Guesty is enterprise-priced, overkill for 3-20 property hosts
+- Properly does inspection checklists only
+
+## Scoring Breakdown
+
+| Criterion | Score | Weight | Weighted | Notes |
+|-----------|-------|--------|----------|-------|
+| Market Validation | 4/5 | 3x | 12 | 2M+ STR listings; TurnoverBnB validates demand |
+| Competitor Weakness | 3/5 | 2x | 6 | No lightweight tool combining calendar sync + dispatch + quality + supply |
+| LTD Viability | 4/5 | 2x | 8 | $79-99 LTD for up to 5 listings; API costs minimal |
+| No Free Tier | 4/5 | 1x | 4 | No free turnover management |
+| Channel Access | 3/5 | 2x | 6 | STR host FB groups, Airbnb communities |
+| Content Potential | 3/5 | 1x | 3 | "Airbnb cleaning management" |
+| AppSumo Fit | 4/5 | 2x | 8 | Perfect micro-SaaS for solo developer |
+| Review Potential | 3/5 | 1x | 3 | Moderate |
+| MRR Path | 3/5 | 3x | 9 | Per-listing monthly |
+| Build Feasibility | 4/5 | 2x | 8 | Calendar sync + dispatch + checklists + photos; 3-4 weeks |
+| Boring Business Bonus | 4/5 | 2x | 8 | Cleaning coordination — unglamorous |
+
+## Must-Have Filters
+- [x] Problem is real (hosts spending hours on cleaner coordination)
+- [x] Can build without deep domain expertise
+- [x] No dominant player
+- [⚠️] Revenue potential depends on host acquisition — $10K MRR requires ~600-800 listings at $12-15/listing/mo
+
+## Key Differentiators
+1. Auto-sync with Airbnb/VRBO/Booking calendars
+2. Auto-assign cleaners based on availability and location
+3. Room-by-room checklist with photo verification
+4. Supply inventory with auto-reorder alerts
+5. Host dashboard with cleaner ratings and turnover timeline
+
+## Next Steps
+1. Build MVP: calendar sync + cleaner assignment + photo checklists
+2. Test with local Airbnb hosts in one market
+3. Launch at $12-19/listing/mo or $79 LTD for up to 5 listings
+
+## Risks
+1. Airbnb API access restrictions could limit functionality
+2. Small TAM compared to broader cleaning/trades markets
+3. Property management platforms could add turnover features
+
+## Key Source Links
+- [50 SaaS ideas from Reddit pain points](https://medium.com/@e2larsen/50-saas-ideas-pulled-straight-from-reddit-pain-points-a64569371691)
+- [30 micro SaaS ideas](https://www.greensighter.com/blog/micro-saas-ideas)
+- [Future of SaaS from Reddit](https://painonsocial.com/blog/future-of-saas-reddit)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-19 | 76/105 | reddit, hn-indiehackers | First identified: Airbnb turnover pain validated across multiple Reddit analysis sources; no dominant lightweight tool exists |

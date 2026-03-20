@@ -52,3 +52,9 @@ Professional quotes in 60 seconds from your phone — trade-specific templates f
 - [Workyard - Estimating Software Comparison](https://www.workyard.com/compare/construction-estimating-software-for-small-business)
 - [Show HN: Contractor Quoting](https://news.ycombinator.com/item?id=44246559)
 - [Show HN: Trade Estimating Tool](https://news.ycombinator.com/item?id=45706450)
+
+## Signal History
+
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-19 | 87/105 | reddit, hn-indiehackers | Stable: voice-first AI quoting for tradespeople flagged; photo/voice → AI estimate concept validated |

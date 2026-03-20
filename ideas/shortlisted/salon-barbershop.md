@@ -1,6 +1,6 @@
 # Salon / Barbershop Management
 
-**Score**: 77/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-07
+**Score**: 81/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-07
 
 ## One-Line Pitch
 No-commission, no-contract booking and management for independent barbershops and solo stylists at $59-99 LTD.
@@ -62,3 +62,4 @@ Mindbody has mandatory 12-month contracts and an outdated interface. Fresha has 
 |------|-------|---------|-------|
 | 2026-03-17 | 90/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 77/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Fresha free tier (20% commission) is strong competitor; niche is competitive |
+| 2026-03-19 | 81/105 | competitor-analysis | Deep competitor analysis: 444K salons; Mangomint $165+/mo; Squire worst service; 30-40% booth renters underserved; ChairBook $19/mo zero-commission concept |
