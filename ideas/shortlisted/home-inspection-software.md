@@ -1,4 +1,4 @@
-# Home Inspection Report Software - Score: 80/105
+# Home Inspection Report Software - Score: 78/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -55,3 +55,4 @@ Reliable home inspection reporting -- photo capture, templated reports, auto-org
 |------|-------|---------|-------|
 | 2026-03-17 | 86/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-19 | 77/105 | reddit | Stable: no significant new data |
+| 2026-03-20 | 78/105 | hn-indiehackers | Spectora $30M ARR from $5K MVP validates boring inspection niche pattern |

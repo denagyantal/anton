@@ -41,3 +41,4 @@ Lawn-care-specific CRM with satellite quoting, chemical tracking, and seasonal s
 | 2026-03-17 | 93/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 96/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Satellite quoting opportunity validated; Copilot CRM billing complaints increasing; MowBook concept refined |
 | 2026-03-19 | 96/105 | reddit, hn-indiehackers, competitor-analysis, trends | Stable: satellite quoting gap persists; LawnSite forum confirms no affordable route optimization; $176B industry |
+| 2026-03-20 | 96/105 | reddit | Copilot CRM overcharge bugs + 3.9% fees; LawnSite CRM discussions; route optimizer demand |

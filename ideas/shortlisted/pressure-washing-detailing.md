@@ -60,3 +60,4 @@ The first purpose-built software for exterior cleaning businesses — visual quo
 | 2026-03-17 | 83/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 93/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: QuoteIQ gaining but market still fragmented; before/after photo workflow is key differentiator |
 | 2026-03-19 | 93/105 | reddit, hn-indiehackers, competitor-analysis | Stable: vehicle-specific booking gap persists; Anolla AI-driven pricing but most operators on Jobber or paper |
+| 2026-03-20 | 93/105 | reddit | Auto detailing booking + portfolio demand; mobile operators need route optimization |

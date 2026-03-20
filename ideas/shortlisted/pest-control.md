@@ -1,4 +1,4 @@
-# Pest Control Route & Compliance Tracker - Score: 88/105
+# Pest Control Route & Compliance Tracker - Score: 77/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
@@ -60,3 +60,4 @@ Route-optimized scheduling with chemical compliance logging and EPA reporting pu
 | 2026-03-17 | 88/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 88/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: PestLog concept refined; NPMA-33 form builder as lead magnet; EPA compliance tracking as moat |
 | 2026-03-19 | 76/105 | trends | Stable: underserved industry flagged in deskless worker analysis |
+| 2026-03-20 | 77/105 | competitor-analysis | Deep competitor analysis confirms market gap and pricing opportunity |

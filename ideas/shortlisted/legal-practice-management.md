@@ -69,3 +69,4 @@ Dead-simple legal practice tool for solo attorneys — matter management, time t
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-19 | 86/105 | competitor-analysis | First identified: deep competitor analysis reveals 49% solo practitioners paying $109-139/mo for essential features; $3.14B market with massive pricing headroom |
+| 2026-03-20 | 86/105 | reddit | Client portal demand for professional services reinforced |

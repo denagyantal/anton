@@ -1,4 +1,4 @@
-# Restaurant Recipe Costing & Menu Profitability — Score: 84/105
+# Restaurant Recipe Costing & Menu Profitability — Score: 85/105
 
 **Verdict**: BUILD
 **LTD Price**: $69-89
@@ -51,3 +51,4 @@ BUILD. The pain is acute (3-5% margins mean every dollar of food cost matters), 
 |------|-------|---------|-------|
 | 2026-03-18 | 77/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: POS complexity limits LTD/indie viability; ops layer (scheduling+inventory) alongside existing POS is better angle |
 | 2026-03-19 | 84/105 | reddit, competitor-analysis | Deep competitor analysis: cheapest dedicated back-of-house tool $149/mo; 700K independents using clipboards; KitchenPad concept at $39/mo |
+| 2026-03-20 | 85/105 | reddit, hn-indiehackers | Food inventory/waste demand; "free POS" trap documented; MarketMan $239/mo gap |
