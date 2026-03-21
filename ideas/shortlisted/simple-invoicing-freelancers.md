@@ -45,3 +45,4 @@ Send beautiful invoices in 30 seconds with automatic late payment reminders and 
 |------|-------|---------|-------|
 | 2026-03-17 | 80/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 76/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Self-hosted invoicing variant stronger; anti-subscription signal growing; crowded market limits upside |
+| 2026-03-21 | 76/105 | hn-indiehackers | Contractor project tracker/invoicing in hn-indiehackers-2026-03-21 |

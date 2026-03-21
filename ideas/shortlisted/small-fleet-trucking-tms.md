@@ -57,3 +57,4 @@ TMS built for 1-20 truck fleets -- load management, IFTA auto-calculation, compl
 | 2026-03-18 | 77/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: MileAlert ELD maintenance alerting concept; $3/truck/mo; ELD API integration is moat |
 | 2026-03-19 | 80/105 | reddit, hn-indiehackers | Spreadsheet replacement angle validated; Samsara long hold times; MileAlert ELD maintenance alerting concept; IFTA auto-calc + compliance |
 | 2026-03-20 | 81/105 | reddit | Manually copying driver pay from spreadsheets; Samsara "overwhelming screens" |
+| 2026-03-21 | 81/105 | reddit | Confirmed in reddit-2026-03-21; fleet operations demand persistent |

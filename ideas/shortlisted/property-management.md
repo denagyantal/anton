@@ -60,3 +60,4 @@ The all-in-one tool for self-managing landlords with 1-50 units — rent collect
 | 2026-03-18 | 98/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Brickwise AI (YC, $3M+) validates AI maintenance coordinator; AppFolio AI-only support anger; Buildium removing integrations |
 | 2026-03-19 | 98/105 | reddit, hn-indiehackers, trends | Stable: AppFolio AI-only support anger continues; anti-AppFolio movement growing; AI landlord copilot opportunity validated |
 | 2026-03-20 | 98/105 | reddit, trends | AppFolio AI-only support anger persists; DoorLoop frustrating onboarding; legacy disruption accelerating |
+| 2026-03-21 | 98/105 | reddit | Stable; confirmed in reddit-2026-03-21; anti-AppFolio movement continues |

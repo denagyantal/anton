@@ -59,3 +59,4 @@ Branded client portal for tax preparers — automated document checklist reminde
 | 2026-03-18 | 85/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Drake support collapse ongoing; One Big Beautiful Bill Act chaos; Oct launch window for Jan 2027 season |
 | 2026-03-19 | 85/105 | reddit | Stable: price #1 complaint at 61.5%; Drake support collapse continues; NY forms printing watermarks during tax season |
 | 2026-03-20 | 85/105 | reddit | Client portal for professional services demand continues |
+| 2026-03-21 | 85/105 | reddit | Confirmed in reddit-2026-03-21; tax preparer PM demand persistent |

@@ -23,3 +23,4 @@ Construction-specific invoicing MVP: progress billing, change order tracking, re
 | 2026-03-18 | 92/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Majority of buyers have <$1M revenue & ≤5 employees; Buildertrend price doubling; BuildPad concept at $59/mo |
 | 2026-03-19 | 92/105 | reddit, competitor-analysis, trends | Stable: construction paper-to-digital accelerating; offline-first architecture non-negotiable; digital work orders as wedge |
 | 2026-03-20 | 92/105 | reddit, hn-indiehackers | Bid security/document tracker angle; subcontractor payment tracking on spreadsheets (HN) |
+| 2026-03-21 | 92/105 | hn-indiehackers | Hive ERP (construction) in hn-indiehackers-2026-03-21; mid-size construction ERP demand |

@@ -44,3 +44,4 @@ The anti-ServiceTitan: dead-simple quote>schedule>invoice>get-paid for 1-5 perso
 | 2026-03-18 | 101/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Strongest signal across all sources; ServiceTitan $63K/yr cost validated; FieldBin ($30/mo) validates practitioner-built approach |
 | 2026-03-19 | 101/105 | reddit, hn-indiehackers, competitor-analysis, trends | Stable at top: FieldFlow $5/mo validates practitioner-built; ServiceCall AI launched; voice-first AI for trades accelerating |
 | 2026-03-20 | 101/105 | reddit, hn-indiehackers, trends | Repair-CRM $89/mo validates gap; paper-to-digital saves 5+ hrs/week; mobile-first trend strong |
+| 2026-03-21 | 101/105 | reddit, trends | Stable at top; confirmed in reddit-2026-03-21 and trends-2026-03-21; SMS/WhatsApp-first workflows emerging |

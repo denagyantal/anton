@@ -59,3 +59,4 @@ Professional quotes in 60 seconds from your phone — trade-specific templates f
 |------|-------|---------|-------|
 | 2026-03-19 | 87/105 | reddit, hn-indiehackers | Stable: voice-first AI quoting for tradespeople flagged; photo/voice → AI estimate concept validated |
 | 2026-03-20 | 88/105 | trends, hn-indiehackers | AI estimating 97% accuracy, 80% automation (SignalFire); invoicing explosion on HN |
+| 2026-03-21 | 88/105 | trends | AI estimating trend continues in trends-2026-03-21; merging ai-quoting-estimating-trades into this canonical entry |

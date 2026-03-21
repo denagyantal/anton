@@ -60,3 +60,4 @@ Lightweight policy CRM for independent insurance agents — renewal dashboard, a
 | 2026-03-18 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Applied Epic $1,100/mo; EZLynx support issues; browser extension for carrier portal auto-fill as wedge |
 | 2026-03-19 | 86/105 | reddit, competitor-analysis | Deep competitor analysis: Applied Epic $150-400/user/mo + $5K setup; $4.14B market; legacy oligopoly with 2008 UIs; AgentPad concept at $49/mo flat |
 | 2026-03-20 | 87/105 | reddit, competitor-analysis | Applied Epic $1,100/mo documented; agents reverting to spreadsheets despite AMS |
+| 2026-03-21 | 87/105 | reddit | Confirmed in reddit-2026-03-21; agents still reverting to spreadsheets despite AMS |
