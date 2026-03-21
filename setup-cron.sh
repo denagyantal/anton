@@ -23,7 +23,8 @@ CRON_MARKER="# anton-research-pipeline"
 #   4:30 PM — AutoMVP: dev implementation (story 2)
 #   5:30 PM — AutoMVP: dev implementation (story 3)
 
-CRON_JOBS="# ─── Anton Research Pipeline ─── $CRON_MARKER
+CRON_JOBS="PATH=/root/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin $CRON_MARKER
+# ─── Anton Research Pipeline ─── $CRON_MARKER
 0 6 * * * cd $BASE_DIR && bash run-all.sh research >> logs/cron.log 2>&1 $CRON_MARKER
 30 7 * * * cd $BASE_DIR && bash run-all.sh evaluate >> logs/cron.log 2>&1 $CRON_MARKER
 30 8 * * * cd $BASE_DIR && bash run-bmad-pipeline.sh >> logs/cron.log 2>&1 $CRON_MARKER
