@@ -31,14 +31,45 @@ notify() {
   fi
 }
 
-# ─── Find the best idea that hasn't been through BMAD yet ───
+# ─── Find the best idea to process next ───
+# Priority: 1) ideas mid-pipeline (have research but need brief/PRD) 2) new ideas without research
 pick_idea() {
   if [ -n "$SPECIFIC_IDEA" ]; then
     echo "$SPECIFIC_IDEA"
     return
   fi
 
-  # Find shortlisted ideas with score 85+ that don't have a market research file yet
+  # First priority: find ideas that are mid-pipeline (have research, need brief or PRD)
+  IN_PROGRESS=""
+  IN_PROGRESS_SCORE=0
+  for FILE in "$SHORTLISTED"/*.md; do
+    [ ! -f "$FILE" ] && continue
+    NAME=$(basename "$FILE" .md)
+
+    # Must have market research already
+    if ! ls "$BMAD_OUT"/research/*"$NAME"* 2>/dev/null | grep -q .; then
+      continue
+    fi
+
+    # Skip if already has a PRD (fully done)
+    if ls "$BMAD_OUT"/*"$NAME"*prd* "$BMAD_OUT"/*prd*"$NAME"* 2>/dev/null | grep -q .; then
+      continue
+    fi
+
+    # This idea is mid-pipeline — pick the highest scoring one
+    SCORE=$(head -5 "$FILE" | grep -oP '[0-9]+(?=/10[05]|/95)' | head -1 || echo "0")
+    if [ "${SCORE:-0}" -gt "$IN_PROGRESS_SCORE" ]; then
+      IN_PROGRESS_SCORE=$SCORE
+      IN_PROGRESS="$NAME"
+    fi
+  done
+
+  if [ -n "$IN_PROGRESS" ]; then
+    echo "$IN_PROGRESS"
+    return
+  fi
+
+  # Second priority: find new ideas without any BMAD artifacts
   BEST=""
   BEST_SCORE=0
   for FILE in "$SHORTLISTED"/*.md; do
@@ -59,7 +90,7 @@ pick_idea() {
   done
 
   if [ -z "$BEST" ]; then
-    log "No unprocessed ideas with score 85+ found"
+    log "No unprocessed ideas found"
     return 1
   fi
 
