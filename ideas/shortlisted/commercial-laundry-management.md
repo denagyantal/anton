@@ -1,4 +1,4 @@
-# Commercial Laundry Management — Score: 73/105
+# Commercial Laundry Management — Score: 78/105
 
 **Tier**: 1 (Strong Opportunity)
 **Verdict**: EXPLORE FURTHER
@@ -48,3 +48,4 @@ All-in-one management tool for commercial laundry facilities (laundromats, hotel
 |------|-------|---------|-------|
 | 2026-03-17 | 75/105 | hn-indiehackers | First identified — Excel-and-WhatsApp industry, no indie product |
 | 2026-03-18 | 73/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Now Tier 2; real pain but tiny indie TAM; RFID knowledge required; LinenOps concept at $199/mo |
+| 2026-03-22 | 78/105 | reddit | ↑5: Single-location laundromat angle refines opportunity — CleanCloud $99-325/mo, Cents $149-330/mo all multi-location; 30K laundromats, 95% single-location; $29-39/mo concept for solo operator; kiosk mode, wash-and-fold tracking, loyalty punch card |

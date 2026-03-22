@@ -1,4 +1,4 @@
-# Pest Control Route & Compliance Tracker - Score: 77/105
+# Pest Control Route & Compliance Tracker - Score: 82/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
@@ -61,3 +61,4 @@ Route-optimized scheduling with chemical compliance logging and EPA reporting pu
 | 2026-03-18 | 88/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: PestLog concept refined; NPMA-33 form builder as lead magnet; EPA compliance tracking as moat |
 | 2026-03-19 | 76/105 | trends | Stable: underserved industry flagged in deskless worker analysis |
 | 2026-03-20 | 77/105 | competitor-analysis | Deep competitor analysis confirms market gap and pricing opportunity |
+| 2026-03-22 | 82/105 | reddit, competitor-analysis | ↑5: Reddit confirms paper-based compliance docs; competitor analysis: PestPac "antiquated", ServSuite "very outdated" with 50%+ unused features; PestRoute concept at $39/mo; compliance documentation as primary differentiator |

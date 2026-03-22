@@ -1,4 +1,4 @@
-# Small Fleet Trucking TMS - Score: 81/105
+# Small Fleet Trucking TMS - Score: 82/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -58,3 +58,4 @@ TMS built for 1-20 truck fleets -- load management, IFTA auto-calculation, compl
 | 2026-03-19 | 80/105 | reddit, hn-indiehackers | Spreadsheet replacement angle validated; Samsara long hold times; MileAlert ELD maintenance alerting concept; IFTA auto-calc + compliance |
 | 2026-03-20 | 81/105 | reddit | Manually copying driver pay from spreadsheets; Samsara "overwhelming screens" |
 | 2026-03-21 | 81/105 | reddit | Confirmed in reddit-2026-03-21; fleet operations demand persistent |
+| 2026-03-22 | 82/105 | competitor-analysis | ↑1: Detailed gap analysis — Samsara $25-45/vehicle/mo "overkill for five-truck outfit"; GPS Trackit UI "designed in early 2000s"; FleetDesk concept $39/mo flat for up to 20 vehicles; maintenance-first approach |

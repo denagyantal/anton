@@ -1,4 +1,4 @@
-# SaaS Expense Analyzer — Score: 78/105
+# SaaS Expense Analyzer — Score: 79/105
 
 **Tier**: 1 (Strong Opportunity)
 **Verdict**: EXPLORE FURTHER

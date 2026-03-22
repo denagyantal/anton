@@ -1,6 +1,6 @@
 # AI Receptionist for Home Service Businesses
 
-**Score: 91/105** | **Verdict: EXPLORE FURTHER** | **Evaluation Date: 2026-03-05**
+**Score: 92/105** | **Verdict: EXPLORE FURTHER** | **Evaluation Date: 2026-03-05**
 
 ## Concept
 Trade-specific AI phone agent. Understands industry terminology, triages emergencies, quotes standard jobs, books appointments, dispatches nearest tech. 24/7/365. Not generic — built for HVAC, plumbing, electrical specifically.
@@ -53,3 +53,4 @@ HVAC, plumbing, electrical, roofing, pest control. 60-80% of calls go unanswered
 | 2026-03-19 | 89/105 | hn-indiehackers, trends | Stable: ServiceCall launched Mar 18; Rebar $14M Series A validates trades AI; contractor lead qualification accelerating |
 | 2026-03-20 | 90/105 | trends, hn-indiehackers | AI back-office agents trending (TechCrunch SaaSpocalypse); 70% of trades admin AI-vulnerable |
 | 2026-03-21 | 91/105 | trends | Score +1; AI voice receptionist acceleration in trends-2026-03-21; Netic $450M valuation validates category |
+| 2026-03-22 | 92/105 | trends | ↑1: Netic 2,100% revenue growth; 60-80% missed call rates documented; callers can't distinguish AI from human; trade-specific qualification as key differentiator |
