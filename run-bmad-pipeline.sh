@@ -47,14 +47,14 @@ pick_idea() {
     NAME=$(basename "$FILE" .md)
 
     # Must have market research already
-    if ! ls "$BMAD_OUT"/research/*"$NAME"* 2>/dev/null | grep -q .; then
-      continue
-    fi
+    local HAS_RES
+    HAS_RES=$(find "$BMAD_OUT/research" -name "*${NAME}*" -print -quit 2>/dev/null || true)
+    [ -z "$HAS_RES" ] && continue
 
     # Skip if already has a PRD (fully done)
-    if ls "$BMAD_OUT"/*"$NAME"*prd* "$BMAD_OUT"/*prd*"$NAME"* 2>/dev/null | grep -q .; then
-      continue
-    fi
+    local HAS_P
+    HAS_P=$(find "$BMAD_OUT" -maxdepth 1 \( -name "*prd*${NAME}*" -o -name "*${NAME}*prd*" \) -print -quit 2>/dev/null || true)
+    [ -n "$HAS_P" ] && continue
 
     # This idea is mid-pipeline — pick the highest scoring one
     SCORE=$(head -5 "$FILE" | grep -oP '[0-9]+(?=/10[05]|/95)' | head -1 || echo "0")
@@ -77,9 +77,9 @@ pick_idea() {
     NAME=$(basename "$FILE" .md)
 
     # Skip if already has BMAD market research
-    if ls "$BMAD_OUT"/research/*"$NAME"* 2>/dev/null | grep -q .; then
-      continue
-    fi
+    local HAS_MR
+    HAS_MR=$(find "$BMAD_OUT/research" -name "*${NAME}*" -print -quit 2>/dev/null || true)
+    [ -n "$HAS_MR" ] && continue
 
     # Extract score
     SCORE=$(head -5 "$FILE" | grep -oP '[0-9]+(?=/10[05]|/95)' | head -1 || echo "0")
@@ -107,11 +107,16 @@ next_step() {
   fi
 
   # Check what artifacts already exist
-  if ! ls "$BMAD_OUT"/research/*"$IDEA"* 2>/dev/null | grep -q .; then
+  local HAS_RESEARCH HAS_BRIEF HAS_PRD
+  HAS_RESEARCH=$(find "$BMAD_OUT/research" -name "*${IDEA}*" -print -quit 2>/dev/null || true)
+  HAS_BRIEF=$(find "$BMAD_OUT" -maxdepth 1 \( -name "*brief*${IDEA}*" -o -name "*${IDEA}*brief*" \) -print -quit 2>/dev/null || true)
+  HAS_PRD=$(find "$BMAD_OUT" -maxdepth 1 \( -name "*prd*${IDEA}*" -o -name "*${IDEA}*prd*" \) -print -quit 2>/dev/null || true)
+
+  if [ -z "$HAS_RESEARCH" ]; then
     echo "market"
-  elif ! ls "$BMAD_OUT"/*"$IDEA"*brief* "$BMAD_OUT"/*brief*"$IDEA"* 2>/dev/null | grep -q .; then
+  elif [ -z "$HAS_BRIEF" ]; then
     echo "brief"
-  elif ! ls "$BMAD_OUT"/*"$IDEA"*prd* "$BMAD_OUT"/*prd*"$IDEA"* 2>/dev/null | grep -q .; then
+  elif [ -z "$HAS_PRD" ]; then
     echo "prd"
   else
     echo "done"
