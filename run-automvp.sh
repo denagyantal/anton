@@ -78,7 +78,7 @@ pick_idea() {
     fi
 
     # Extract score
-    SCORE=$(head -5 "$FILE" | grep -oE '[0-9]+(?=/105)' | head -1 || echo "0")
+    SCORE=$(head -5 "$FILE" | grep -oP '[0-9]+(?=/10[05]|/95)' | head -1 || echo "0")
     if [ "${SCORE:-0}" -gt "$BEST_SCORE" ]; then
       BEST_SCORE=$SCORE
       BEST="$NAME"
