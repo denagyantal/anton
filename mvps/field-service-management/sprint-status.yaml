@@ -41,7 +41,7 @@ story_location: /root/anton/research-team/mvps/field-service-management
 
 development_status:
   # Epic 1: Project Foundation & User Onboarding
-  epic-1: backlog
+  epic-1: ready-for-dev
   1-1-initialize-monorepo-and-project-scaffolding: backlog
   1-2-user-registration-and-authentication: backlog
   1-3-business-profile-setup-and-onboarding: backlog
