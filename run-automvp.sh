@@ -63,7 +63,9 @@ pick_idea() {
     NAME=$(basename "$FILE" .md)
 
     # Must have a PRD already
-    if ! ls "$BMAD_OUT"/*prd*"$NAME"* "$BMAD_OUT"/*"$NAME"*prd* 2>/dev/null | grep -q .; then
+    local HAS_PRD
+    HAS_PRD=$(find "$BMAD_OUT" -maxdepth 1 \( -name "*prd*${NAME}*" -o -name "*${NAME}*prd*" \) -print -quit 2>/dev/null || true)
+    if [ -z "$HAS_PRD" ]; then
       continue
     fi
 
@@ -102,17 +104,17 @@ init_mvp_dir() {
 
   # Copy existing planning artifacts if not already present
   if [ ! -f "$MVP/planning/prd.md" ]; then
-    PRD_FILE=$(ls "$BMAD_OUT"/*prd*"$IDEA"* "$BMAD_OUT"/*"$IDEA"*prd* 2>/dev/null | head -1)
+    PRD_FILE=$(find "$BMAD_OUT" -maxdepth 1 \( -name "*prd*${IDEA}*" -o -name "*${IDEA}*prd*" \) -print -quit 2>/dev/null || true)
     [ -n "$PRD_FILE" ] && cp "$PRD_FILE" "$MVP/planning/prd.md"
   fi
 
   if [ ! -f "$MVP/planning/product-brief.md" ]; then
-    BRIEF_FILE=$(ls "$BMAD_OUT"/*brief*"$IDEA"* "$BMAD_OUT"/*"$IDEA"*brief* 2>/dev/null | head -1)
+    BRIEF_FILE=$(find "$BMAD_OUT" -maxdepth 1 \( -name "*brief*${IDEA}*" -o -name "*${IDEA}*brief*" \) -print -quit 2>/dev/null || true)
     [ -n "$BRIEF_FILE" ] && cp "$BRIEF_FILE" "$MVP/planning/product-brief.md"
   fi
 
   if [ ! -f "$MVP/planning/market-research.md" ]; then
-    RESEARCH_FILE=$(ls "$BMAD_OUT"/research/*"$IDEA"* 2>/dev/null | head -1)
+    RESEARCH_FILE=$(find "$BMAD_OUT/research" -name "*${IDEA}*" -print -quit 2>/dev/null || true)
     [ -n "$RESEARCH_FILE" ] && cp "$RESEARCH_FILE" "$MVP/planning/market-research.md"
   fi
 

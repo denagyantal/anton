@@ -185,7 +185,7 @@ INSTRUCTIONS:
       ;;
 
     prd)
-      BRIEF_FILE=$(ls "$BMAD_OUT"/*brief*"$IDEA"* "$BMAD_OUT"/*"$IDEA"*brief* 2>/dev/null | head -1)
+      BRIEF_FILE=$(find "$BMAD_OUT" -maxdepth 1 \( -name "*brief*${IDEA}*" -o -name "*${IDEA}*brief*" \) -print -quit 2>/dev/null || true)
       BRIEF_CONTENT=""
       if [ -n "$BRIEF_FILE" ]; then
         BRIEF_CONTENT=$(cat "$BRIEF_FILE")
