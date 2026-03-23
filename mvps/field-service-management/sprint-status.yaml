@@ -44,7 +44,7 @@ development_status:
   epic-1: in-progress
   1-1-initialize-monorepo-and-project-scaffolding: ready-for-dev
   1-2-user-registration-and-authentication: ready-for-dev
-  1-3-business-profile-setup-and-onboarding: backlog
+  1-3-business-profile-setup-and-onboarding: ready-for-dev
   1-4-trade-specific-pricebook-templates: backlog
   epic-1-retrospective: optional
 
