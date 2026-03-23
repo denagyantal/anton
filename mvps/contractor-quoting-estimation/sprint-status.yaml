@@ -42,7 +42,7 @@ story_location: /root/anton/research-team/mvps/contractor-quoting-estimation
 development_status:
   epic-1: in-progress
   1-1-project-setup-from-starter-template: ready-for-dev
-  1-2-contractor-registration: backlog
+  1-2-contractor-registration: ready-for-dev
   1-3-contractor-login-and-password-reset: backlog
   1-4-contractor-profile-setup: backlog
   epic-1-retrospective: optional
