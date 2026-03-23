@@ -1,4 +1,4 @@
-# Insurance Agent CRM & Policy Tracker - Score: 87/105
+# Insurance Agent CRM & Policy Tracker - Score: 88/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -61,3 +61,4 @@ Lightweight policy CRM for independent insurance agents — renewal dashboard, a
 | 2026-03-19 | 86/105 | reddit, competitor-analysis | Deep competitor analysis: Applied Epic $150-400/user/mo + $5K setup; $4.14B market; legacy oligopoly with 2008 UIs; AgentPad concept at $49/mo flat |
 | 2026-03-20 | 87/105 | reddit, competitor-analysis | Applied Epic $1,100/mo documented; agents reverting to spreadsheets despite AMS |
 | 2026-03-21 | 87/105 | reddit | Confirmed in reddit-2026-03-21; agents still reverting to spreadsheets despite AMS |
+| 2026-03-23 | 88/105 | reddit | ↑1: Detailed policy lifecycle gap confirmed; AMS360 difficulty pulling data; Momentum buries features "a few clicks deep" with slower load times; AgencyZoom sales-only; agents cycling through 3-4 CRMs; insurance-native CRM built around lead→quote→bind→service→renew lifecycle |

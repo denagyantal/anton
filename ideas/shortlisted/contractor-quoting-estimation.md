@@ -1,4 +1,4 @@
-# Contractor Quoting & Estimating Tool - Score: 88/105
+# Contractor Quoting & Estimating Tool - Score: 89/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
@@ -60,3 +60,4 @@ Professional quotes in 60 seconds from your phone — trade-specific templates f
 | 2026-03-19 | 87/105 | reddit, hn-indiehackers | Stable: voice-first AI quoting for tradespeople flagged; photo/voice → AI estimate concept validated |
 | 2026-03-20 | 88/105 | trends, hn-indiehackers | AI estimating 97% accuracy, 80% automation (SignalFire); invoicing explosion on HN |
 | 2026-03-21 | 88/105 | trends | AI estimating trend continues in trends-2026-03-21; merging ai-quoting-estimating-trades into this canonical entry |
+| 2026-03-23 | 89/105 | reddit, trends | ↑1: Rebar $14M Series A validates AI estimating — doubled ARR in 6 weeks of 2026; Reddit: SMS-first quoting demand (text job details → branded PDF quote); Trends: massive white space for residential contractor quoting from photos/voice (Rebar targets commercial HVAC suppliers only) |

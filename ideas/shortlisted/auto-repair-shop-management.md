@@ -1,6 +1,6 @@
 # Auto Repair Shop Management
 
-**Score**: 88/105 | **Tier**: 1 | **Verdict**: EXPLORE FURTHER | **Evaluation Date**: 2026-03-07
+**Score**: 89/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
 
 ## One-Line Pitch
 Full-featured auto shop management in the $50-150/mo dead zone: work orders, DVI, customer texting, and QB sync between ARI's $20 and Tekmetric's $179.
@@ -55,3 +55,4 @@ Full-featured auto shop management in the $50-150/mo dead zone: work orders, DVI
 | 2026-03-19 | 77/105 | reddit | Stable: no significant new data |
 | 2026-03-21 | 87/105 | trends | EV readiness angle identified in trends-2026-03-21 (battery diagnostics, EV certification tracking) |
 | 2026-03-22 | 88/105 | competitor-analysis | ↑1: Detailed gap analysis — Shopmonkey v2 "nightmare, many features removed"; Tekmetric $199-439/mo; DVI usability issues; closed API ecosystems; BayBook concept at $59/mo |
+| 2026-03-23 | 89/105 | competitor-analysis | ↑1: Tekmetric confirmed price increase $179→$199; Shopmonkey v2 "harder to use, requires more keystrokes"; Garage360 $79/mo as new affordable floor; Mitchell 1 still Windows-only in 2026; advanced analytics require manual exports everywhere; WrenchPad concept at $39/mo for 1-2 bay shops |
