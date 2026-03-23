@@ -1,0 +1,101 @@
+# generated: 2026-03-23
+# project: Field Service Management for Solo/Micro Trades
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: /root/anton/research-team/mvps/field-service-management
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog -> in-progress: Automatically when first story is created (via create-story)
+#   - in-progress -> done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-03-23
+project: Field Service Management for Solo/Micro Trades
+project_key: NOKEY
+tracking_system: file-system
+story_location: /root/anton/research-team/mvps/field-service-management
+
+development_status:
+  # Epic 1: Project Foundation & User Onboarding
+  epic-1: backlog
+  1-1-initialize-monorepo-and-project-scaffolding: backlog
+  1-2-user-registration-and-authentication: backlog
+  1-3-business-profile-setup-and-onboarding: backlog
+  1-4-trade-specific-pricebook-templates: backlog
+  epic-1-retrospective: optional
+
+  # Epic 2: Quoting & Estimates
+  epic-2: backlog
+  2-1-customer-creation-and-contact-management: backlog
+  2-2-quote-creation-with-line-items: backlog
+  2-3-quote-photo-attachments-and-pdf-generation: backlog
+  2-4-quote-sms-delivery-and-customer-approval: backlog
+  epic-2-retrospective: optional
+
+  # Epic 3: Scheduling & Job Management
+  epic-3: backlog
+  3-1-calendar-view-and-job-scheduling: backlog
+  3-2-job-lifecycle-and-status-tracking: backlog
+  3-3-on-site-photo-documentation-and-signature-capture: backlog
+  3-4-automated-sms-appointment-reminders: backlog
+  epic-3-retrospective: optional
+
+  # Epic 4: Invoicing & Payments
+  epic-4: backlog
+  4-1-invoice-generation-from-completed-jobs: backlog
+  4-2-invoice-sms-delivery-and-payment-links: backlog
+  4-3-on-site-card-payment-processing: backlog
+  4-4-payment-tracking-and-partial-payments: backlog
+  epic-4-retrospective: optional
+
+  # Epic 5: Customer Management & Service History
+  epic-5: backlog
+  5-1-customer-job-history-and-service-records: backlog
+  5-2-customer-search-and-filtering: backlog
+  5-3-customer-csv-import: backlog
+  epic-5-retrospective: optional
+
+  # Epic 6: Offline-First Reliability & Data Sync
+  epic-6: backlog
+  6-1-offline-core-workflow-and-network-detection: backlog
+  6-2-automatic-background-sync-with-conflict-resolution: backlog
+  6-3-sync-status-display-and-error-reporting: backlog
+  epic-6-retrospective: optional
+
+  # Epic 7: QuickBooks Online Integration
+  epic-7: backlog
+  7-1-quickbooks-oauth-connection: backlog
+  7-2-automatic-customer-invoice-and-payment-sync: backlog
+  7-3-sync-status-dashboard-and-manual-re-sync: backlog
+  epic-7-retrospective: optional
+
+  # Epic 8: Team Collaboration & Web Dashboard
+  epic-8: backlog
+  8-1-team-member-invites-and-multi-device-access: backlog
+  8-2-dispatch-board-and-job-assignment: backlog
+  8-3-web-dashboard-for-office-partners: backlog
+  epic-8-retrospective: optional
