@@ -43,7 +43,7 @@ development_status:
   # Epic 1: Project Foundation & User Onboarding
   epic-1: in-progress
   1-1-initialize-monorepo-and-project-scaffolding: done
-  1-2-user-registration-and-authentication: ready-for-dev
+  1-2-user-registration-and-authentication: done
   1-3-business-profile-setup-and-onboarding: ready-for-dev
   1-4-trade-specific-pricebook-templates: ready-for-dev
   epic-1-retrospective: optional

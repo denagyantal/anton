@@ -1,5 +1,16 @@
 // Types
-export type { ApiResponse, ApiListResponse, ApiError, PaginationMeta } from './types/api.js';
+export type {
+  ApiResponse,
+  ApiListResponse,
+  ApiError,
+  PaginationMeta,
+  AuthSignupRequest,
+  AuthLoginRequest,
+  AuthRefreshRequest,
+  AuthSession,
+  AuthUser,
+  AuthResponse,
+} from './types/api.js';
 export type { Account, TeamMember } from './types/account.js';
 export type { Customer } from './types/customer.js';
 export type { Quote, QuoteStatus, LineItem } from './types/quote.js';

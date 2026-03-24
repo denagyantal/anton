@@ -6,3 +6,51 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum TradeType {
+  HVAC
+  PLUMBING
+  ELECTRICAL
+}
+
+enum TeamMemberRole {
+  OWNER
+  MEMBER
+}
+
+model Account {
+  id                 String      @id @default(uuid())
+  businessName       String?     @map("business_name")
+  businessLogoUrl    String?     @map("business_logo_url")
+  licenseNumber      String?     @map("license_number")
+  contactEmail       String?     @map("contact_email")
+  contactPhone       String?     @map("contact_phone")
+  tradeType          TradeType?  @map("trade_type")
+  quickbooksConnected Boolean    @default(false) @map("quickbooks_connected")
+  quickbooksRealmId  String?     @map("quickbooks_realm_id")
+  stripeAccountId    String?     @map("stripe_account_id")
+  createdAt          DateTime    @default(now()) @map("created_at")
+  updatedAt          DateTime    @updatedAt @map("updated_at")
+  syncedAt           DateTime?   @map("synced_at")
+
+  teamMembers TeamMember[]
+
+  @@map("accounts")
+}
+
+model TeamMember {
+  id         String         @id @default(uuid())
+  accountId  String         @map("account_id")
+  email      String         @unique
+  phone      String?
+  name       String
+  role       TeamMemberRole
+  authUserId String         @unique @map("auth_user_id")
+  createdAt  DateTime       @default(now()) @map("created_at")
+  updatedAt  DateTime       @updatedAt @map("updated_at")
+  syncedAt   DateTime?      @map("synced_at")
+
+  account Account @relation(fields: [accountId], references: [id])
+
+  @@map("team_members")
+}

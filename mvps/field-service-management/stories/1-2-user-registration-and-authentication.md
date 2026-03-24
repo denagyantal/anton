@@ -1,6 +1,6 @@
 # Story 1.2: User Registration and Authentication
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -24,55 +24,55 @@ so that I have a personal account to manage my business.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Set up Supabase client configuration (AC: #1, #2, #4)
-  - [ ] 1.1: Install `@supabase/supabase-js` in `apps/api` and `apps/mobile`
-  - [ ] 1.2: Create `apps/api/src/config/supabase.ts` — initialize Supabase admin client using `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` env vars
-  - [ ] 1.3: Create `apps/mobile/src/services/supabase-client.ts` — initialize Supabase client using `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` env vars
-  - [ ] 1.4: Update `apps/api/src/config/env.ts` to validate `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are present at startup
+- [x] Task 1: Set up Supabase client configuration (AC: #1, #2, #4)
+  - [x] 1.1: Install `@supabase/supabase-js` in `apps/api` and `apps/mobile`
+  - [x] 1.2: Create `apps/api/src/config/supabase.ts` — initialize Supabase admin client using `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` env vars
+  - [x] 1.3: Create `apps/mobile/src/services/supabase-client.ts` — initialize Supabase client using `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` env vars
+  - [x] 1.4: Update `apps/api/src/config/env.ts` to validate `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are present at startup
 
-- [ ] Task 2: Implement API auth middleware (AC: #4, #6)
-  - [ ] 2.1: Create `apps/api/src/middleware/auth.ts` — Express middleware that extracts Bearer token from `Authorization` header, verifies JWT via `supabase.auth.getUser(token)`, attaches `req.user` with `{ id, email, accountId }`, returns 401 `UNAUTHORIZED` AppError if invalid/missing
-  - [ ] 2.2: Create `apps/api/src/routes/auth.ts` — Express router with `POST /api/v1/auth/signup`, `POST /api/v1/auth/login`, `POST /api/v1/auth/refresh` endpoints
-  - [ ] 2.3: Implement signup endpoint: accept `{ email, phone, password }`, validate inputs with Zod, call `supabase.auth.admin.createUser()`, create account row in database, return `{ data: { user, session } }`
-  - [ ] 2.4: Implement login endpoint: accept `{ email, password }`, call `supabase.auth.signInWithPassword()`, return `{ data: { user, session } }`
-  - [ ] 2.5: Implement refresh endpoint: accept `{ refreshToken }`, call `supabase.auth.refreshSession()`, return new tokens
-  - [ ] 2.6: Register auth router on Express app at `/api/v1/auth`
-  - [ ] 2.7: Apply auth middleware to `GET /api/v1/health` as a protected route example (or create a `GET /api/v1/me` route that returns current user)
-  - [ ] 2.8: Install `zod` in `apps/api` for request validation
-  - [ ] 2.9: Create `apps/api/src/middleware/validate.ts` — generic Zod validation middleware that validates `req.body` against a schema and returns 422 `VALIDATION_ERROR` on failure
+- [x] Task 2: Implement API auth middleware (AC: #4, #6)
+  - [x] 2.1: Create `apps/api/src/middleware/auth.ts` — Express middleware that extracts Bearer token from `Authorization` header, verifies JWT via `supabase.auth.getUser(token)`, attaches `req.user` with `{ id, email, accountId }`, returns 401 `UNAUTHORIZED` AppError if invalid/missing
+  - [x] 2.2: Create `apps/api/src/routes/auth.ts` — Express router with `POST /api/v1/auth/signup`, `POST /api/v1/auth/login`, `POST /api/v1/auth/refresh` endpoints
+  - [x] 2.3: Implement signup endpoint: accept `{ email, phone, password }`, validate inputs with Zod, call `supabase.auth.admin.createUser()`, create account row in database, return `{ data: { user, session } }`
+  - [x] 2.4: Implement login endpoint: accept `{ email, password }`, call `supabase.auth.signInWithPassword()`, return `{ data: { user, session } }`
+  - [x] 2.5: Implement refresh endpoint: accept `{ refreshToken }`, call `supabase.auth.refreshSession()`, return new tokens
+  - [x] 2.6: Register auth router on Express app at `/api/v1/auth`
+  - [x] 2.7: Apply auth middleware to `GET /api/v1/health` as a protected route example (or create a `GET /api/v1/me` route that returns current user)
+  - [x] 2.8: Install `zod` in `apps/api` for request validation
+  - [x] 2.9: Create `apps/api/src/middleware/validate.ts` — generic Zod validation middleware that validates `req.body` against a schema and returns 422 `VALIDATION_ERROR` on failure
 
-- [ ] Task 3: Define Prisma schema for accounts and team_members (AC: #1)
-  - [ ] 3.1: Add `accounts` table to `prisma/schema.prisma` with fields: `id` (UUID, default `uuid()`), `business_name` (String, nullable), `business_logo_url` (String, nullable), `license_number` (String, nullable), `contact_email` (String, nullable), `contact_phone` (String, nullable), `trade_type` (enum TradeType: HVAC, PLUMBING, ELECTRICAL, nullable), `quickbooks_connected` (Boolean, default false), `quickbooks_realm_id` (String, nullable), `stripe_account_id` (String, nullable), `created_at` (DateTime, default now()), `updated_at` (DateTime, @updatedAt), `synced_at` (DateTime, nullable)
-  - [ ] 3.2: Add `team_members` table with fields: `id` (UUID, default `uuid()`), `account_id` (UUID, FK → accounts), `email` (String, unique), `phone` (String, nullable), `name` (String), `role` (enum TeamMemberRole: OWNER, MEMBER), `auth_user_id` (String, unique — maps to Supabase auth.users.id), `created_at`, `updated_at`, `synced_at`
-  - [ ] 3.3: Run `npx prisma migrate dev --name add-accounts-and-team-members` to create migration
-  - [ ] 3.4: Create `apps/api/src/config/prisma.ts` — singleton Prisma client instance
+- [x] Task 3: Define Prisma schema for accounts and team_members (AC: #1)
+  - [x] 3.1: Add `accounts` table to `prisma/schema.prisma` with fields: `id` (UUID, default `uuid()`), `business_name` (String, nullable), `business_logo_url` (String, nullable), `license_number` (String, nullable), `contact_email` (String, nullable), `contact_phone` (String, nullable), `trade_type` (enum TradeType: HVAC, PLUMBING, ELECTRICAL, nullable), `quickbooks_connected` (Boolean, default false), `quickbooks_realm_id` (String, nullable), `stripe_account_id` (String, nullable), `created_at` (DateTime, default now()), `updated_at` (DateTime, @updatedAt), `synced_at` (DateTime, nullable)
+  - [x] 3.2: Add `team_members` table with fields: `id` (UUID, default `uuid()`), `account_id` (UUID, FK → accounts), `email` (String, unique), `phone` (String, nullable), `name` (String), `role` (enum TeamMemberRole: OWNER, MEMBER), `auth_user_id` (String, unique — maps to Supabase auth.users.id), `created_at`, `updated_at`, `synced_at`
+  - [x] 3.3: Run `npx prisma migrate dev --name add-accounts-and-team-members` to create migration
+  - [x] 3.4: Create `apps/api/src/config/prisma.ts` — singleton Prisma client instance
 
-- [ ] Task 4: Implement mobile auth screens (AC: #1, #2, #5)
-  - [ ] 4.1: Create `apps/mobile/src/contexts/auth-context.tsx` — AuthContext providing `{ user, session, isLoading, isAuthenticated, signUp, signIn, signOut, refreshSession }` using Supabase auth state listener (`onAuthStateChange`)
-  - [ ] 4.2: Create `apps/mobile/app/(auth)/login.tsx` — login screen with email and password inputs, "Log In" button, link to signup; use Supabase `signInWithPassword()`
-  - [ ] 4.3: Create `apps/mobile/app/(auth)/signup.tsx` — signup screen with email, phone, password, confirm password inputs; call API `POST /api/v1/auth/signup` which creates account + user; display inline validation errors per field
-  - [ ] 4.4: Update `apps/mobile/app/_layout.tsx` — wrap app in AuthContext provider, implement auth gate: if not authenticated → show `(auth)` screens; if authenticated → show `(tabs)` screens
-  - [ ] 4.5: Implement inline field validation: email format (regex), password minimum 8 chars with 1 number and 1 uppercase, phone format, confirm password match
-  - [ ] 4.6: Store session tokens securely using `expo-secure-store` (maps to iOS Keychain / Android Keystore)
-  - [ ] 4.7: Install `expo-secure-store` and configure Supabase client to use it for token persistence via custom storage adapter
+- [x] Task 4: Implement mobile auth screens (AC: #1, #2, #5)
+  - [x] 4.1: Create `apps/mobile/src/contexts/auth-context.tsx` — AuthContext providing `{ user, session, isLoading, isAuthenticated, signUp, signIn, signOut, refreshSession }` using Supabase auth state listener (`onAuthStateChange`)
+  - [x] 4.2: Create `apps/mobile/app/(auth)/login.tsx` — login screen with email and password inputs, "Log In" button, link to signup; use Supabase `signInWithPassword()`
+  - [x] 4.3: Create `apps/mobile/app/(auth)/signup.tsx` — signup screen with email, phone, password, confirm password inputs; call API `POST /api/v1/auth/signup` which creates account + user; display inline validation errors per field
+  - [x] 4.4: Update `apps/mobile/app/_layout.tsx` — wrap app in AuthContext provider, implement auth gate: if not authenticated → show `(auth)` screens; if authenticated → show `(tabs)` screens
+  - [x] 4.5: Implement inline field validation: email format (regex), password minimum 8 chars with 1 number and 1 uppercase, phone format, confirm password match
+  - [x] 4.6: Store session tokens securely using `expo-secure-store` (maps to iOS Keychain / Android Keystore)
+  - [x] 4.7: Install `expo-secure-store` and configure Supabase client to use it for token persistence via custom storage adapter
 
-- [ ] Task 5: Implement mobile API client with auth headers (AC: #4)
-  - [ ] 5.1: Create `apps/mobile/src/services/api-client.ts` — HTTP client (fetch-based) that automatically attaches `Authorization: Bearer <token>` header from current Supabase session, sets base URL from `EXPO_PUBLIC_API_URL`, handles 401 responses by triggering sign-out
-  - [ ] 5.2: Add request/response interceptor pattern: attach auth header, parse JSON, handle standard error format `{ error: { code, message, status } }`
+- [x] Task 5: Implement mobile API client with auth headers (AC: #4)
+  - [x] 5.1: Create `apps/mobile/src/services/api-client.ts` — HTTP client (fetch-based) that automatically attaches `Authorization: Bearer <token>` header from current Supabase session, sets base URL from `EXPO_PUBLIC_API_URL`, handles 401 responses by triggering sign-out
+  - [x] 5.2: Add request/response interceptor pattern: attach auth header, parse JSON, handle standard error format `{ error: { code, message, status } }`
 
-- [ ] Task 6: Implement session refresh and token expiry (AC: #3)
-  - [ ] 6.1: Configure Supabase client with `autoRefreshToken: true` — automatically refreshes access token before 1h expiry
-  - [ ] 6.2: Handle auth state changes in AuthContext: on `TOKEN_REFRESHED` update stored session, on `SIGNED_OUT` clear session and navigate to login
-  - [ ] 6.3: On app foreground (AppState change), check if refresh token is still valid; if expired (30 days), force sign-out and show login screen
+- [x] Task 6: Implement session refresh and token expiry (AC: #3)
+  - [x] 6.1: Configure Supabase client with `autoRefreshToken: true` — automatically refreshes access token before 1h expiry
+  - [x] 6.2: Handle auth state changes in AuthContext: on `TOKEN_REFRESHED` update stored session, on `SIGNED_OUT` clear session and navigate to login
+  - [x] 6.3: On app foreground (AppState change), check if refresh token is still valid; if expired (30 days), force sign-out and show login screen
 
-- [ ] Task 7: Update shared types (AC: all)
-  - [ ] 7.1: Update `packages/shared/src/types/account.ts` — add `Account` interface and `TeamMember` interface matching Prisma schema
-  - [ ] 7.2: Update `packages/shared/src/types/api.ts` — add `AuthSignupRequest`, `AuthLoginRequest`, `AuthRefreshRequest`, `AuthResponse` (contains user + session tokens)
+- [x] Task 7: Update shared types (AC: all)
+  - [x] 7.1: Update `packages/shared/src/types/account.ts` — add `Account` interface and `TeamMember` interface matching Prisma schema
+  - [x] 7.2: Update `packages/shared/src/types/api.ts` — add `AuthSignupRequest`, `AuthLoginRequest`, `AuthRefreshRequest`, `AuthResponse` (contains user + session tokens)
 
-- [ ] Task 8: Write tests (AC: all)
-  - [ ] 8.1: Create `apps/api/src/middleware/auth.test.ts` — test auth middleware: valid token → sets `req.user`, missing token → 401, invalid token → 401
-  - [ ] 8.2: Create `apps/api/src/routes/auth.test.ts` — test signup (valid/invalid input, duplicate email), login (correct/wrong password), refresh (valid/expired token) using Supertest with mocked Supabase
-  - [ ] 8.3: Create `apps/api/src/middleware/validate.test.ts` — test Zod validation middleware with valid/invalid payloads
+- [x] Task 8: Write tests (AC: all)
+  - [x] 8.1: Create `apps/api/src/middleware/auth.test.ts` — test auth middleware: valid token → sets `req.user`, missing token → 401, invalid token → 401
+  - [x] 8.2: Create `apps/api/src/routes/auth.test.ts` — test signup (valid/invalid input, duplicate email), login (correct/wrong password), refresh (valid/expired token) using Supertest with mocked Supabase
+  - [x] 8.3: Create `apps/api/src/middleware/validate.test.ts` — test Zod validation middleware with valid/invalid payloads
 
 ## Dev Notes
 
@@ -250,9 +250,44 @@ mvps/field-service-management/src/
 ## Dev Agent Record
 
 ### Agent Model Used
+Claude Opus 4.6
 
 ### Debug Log References
+- Fixed ZodError `.errors` -> `.issues` for Zod v4 compatibility
+- Fixed Supabase client eager initialization causing test failures (lazy proxy pattern)
+- Prisma migration SQL created manually (no database connection in dev environment)
 
 ### Completion Notes List
+- All 8 tasks completed with 28 passing tests (7 auth middleware, 16 auth routes, 5 validation middleware)
+- API: Supabase admin client (lazy init), auth middleware (JWT verification), auth routes (signup/login/refresh), Zod validation middleware, Prisma schema with Account and TeamMember models, GET /api/v1/me protected route
+- Mobile: Supabase client with expo-secure-store storage adapter, AuthContext with onAuthStateChange listener and AppState foreground check, login/signup screens with inline validation, auth-aware API client with 401 auto-signout, auth gate in root layout
+- Shared: Updated Account/TeamMember types to match Prisma schema nullability, added AuthSignupRequest/AuthLoginRequest/AuthRefreshRequest/AuthResponse types
+- Signup flow routes through API (POST /api/v1/auth/signup) to atomically create Supabase user + Prisma account + team_member (OWNER role)
+- Login goes directly to Supabase from mobile client
+- autoRefreshToken: true handles 1h access token renewal; 30-day refresh token expiry enforced by Supabase
 
 ### File List
+- apps/api/src/config/supabase.ts (NEW)
+- apps/api/src/config/prisma.ts (NEW)
+- apps/api/src/config/env.ts (MODIFIED)
+- apps/api/src/middleware/auth.ts (NEW)
+- apps/api/src/middleware/auth.test.ts (NEW)
+- apps/api/src/middleware/validate.ts (NEW)
+- apps/api/src/middleware/validate.test.ts (NEW)
+- apps/api/src/routes/auth.ts (NEW)
+- apps/api/src/routes/auth.test.ts (NEW)
+- apps/api/src/index.ts (MODIFIED)
+- apps/api/prisma/schema.prisma (MODIFIED)
+- apps/api/prisma/migrations/20260324000000_add_accounts_and_team_members/migration.sql (NEW)
+- apps/api/prisma/migrations/migration_lock.toml (NEW)
+- apps/api/package.json (MODIFIED - added @supabase/supabase-js, zod, @prisma/client)
+- apps/mobile/src/services/supabase-client.ts (NEW)
+- apps/mobile/src/services/api-client.ts (NEW)
+- apps/mobile/src/contexts/auth-context.tsx (NEW)
+- apps/mobile/app/(auth)/login.tsx (NEW)
+- apps/mobile/app/(auth)/signup.tsx (NEW)
+- apps/mobile/app/_layout.tsx (MODIFIED)
+- apps/mobile/package.json (MODIFIED - added @supabase/supabase-js, expo-secure-store)
+- packages/shared/src/types/account.ts (MODIFIED)
+- packages/shared/src/types/api.ts (MODIFIED)
+- packages/shared/src/index.ts (MODIFIED)

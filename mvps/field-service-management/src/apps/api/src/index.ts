@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import { requestLogger } from './middleware/request-logger.js';
 import { errorHandler } from './middleware/error-handler.js';
+import { authRouter } from './routes/auth.js';
+import { authMiddleware } from './middleware/auth.js';
 
 export const app = express();
 
@@ -9,12 +11,24 @@ app.use(cors());
 app.use(express.json());
 app.use(requestLogger);
 
-// Health check
+// Health check (public)
 app.get('/api/v1/health', (_req, res) => {
   res.status(200).json({
     data: {
       status: 'ok',
       timestamp: new Date().toISOString(),
+    },
+  });
+});
+
+// Auth routes (public)
+app.use('/api/v1/auth', authRouter);
+
+// Protected route: current user
+app.get('/api/v1/me', authMiddleware, (req, res) => {
+  res.status(200).json({
+    data: {
+      user: req.user,
     },
   });
 });
