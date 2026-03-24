@@ -49,7 +49,7 @@ development_status:
   epic-1-retrospective: optional
 
   # Epic 2: Quoting & Estimates
-  epic-2: backlog
+  epic-2: ready-for-dev
   2-1-customer-creation-and-contact-management: backlog
   2-2-quote-creation-with-line-items: backlog
   2-3-quote-photo-attachments-and-pdf-generation: backlog
