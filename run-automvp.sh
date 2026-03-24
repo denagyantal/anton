@@ -73,7 +73,7 @@ pick_idea() {
     if [ -d "$MVPS_DIR/$NAME/src" ] && [ "$(ls -A "$MVPS_DIR/$NAME/src" 2>/dev/null)" ]; then
       # Check if all stories are done
       if [ -f "$MVPS_DIR/$NAME/sprint-status.yaml" ]; then
-        if ! grep -qE ':\s*(backlog|ready-for-dev|in-progress)\s*$' "$MVPS_DIR/$NAME/sprint-status.yaml" 2>/dev/null; then
+        if ! grep -qE '^\s+[0-9]+-[0-9]+.*:\s*(backlog|ready-for-dev|in-progress)\s*$' "$MVPS_DIR/$NAME/sprint-status.yaml" 2>/dev/null; then
           continue  # All stories done, skip this idea
         fi
       fi
@@ -141,10 +141,10 @@ next_step() {
     echo "epics"
   elif [ ! -f "$MVP/sprint-status.yaml" ]; then
     echo "sprint"
-  elif grep -qE ':\s*backlog\s*$' "$MVP/sprint-status.yaml" 2>/dev/null; then
-    echo "stories"
-  elif grep -qE ':\s*ready-for-dev\s*$' "$MVP/sprint-status.yaml" 2>/dev/null; then
+  elif grep -qE '^\s+[0-9]+-[0-9]+.*:\s*ready-for-dev\s*$' "$MVP/sprint-status.yaml" 2>/dev/null; then
     echo "dev"
+  elif grep -qE '^\s+[0-9]+-[0-9]+.*:\s*backlog\s*$' "$MVP/sprint-status.yaml" 2>/dev/null; then
+    echo "stories"
   else
     echo "done"
   fi
