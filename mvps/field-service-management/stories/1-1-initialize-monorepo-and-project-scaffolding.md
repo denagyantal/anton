@@ -1,6 +1,6 @@
 # Story 1.1: Initialize Monorepo and Project Scaffolding
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -26,64 +26,64 @@ so that all subsequent development has a consistent, working foundation.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Initialize monorepo root with npm workspaces (AC: #1, #2)
-  - [ ] 1.1: Create root `package.json` with npm workspaces config pointing to `apps/*` and `packages/*`
-  - [ ] 1.2: Create root `tsconfig.base.json` with strict mode, target ES2022, module NodeNext, path aliases
-  - [ ] 1.3: Create root `.gitignore` (node_modules, dist, .env, .expo, android/, ios/, .next/, prisma/*.db)
-  - [ ] 1.4: Create root `.nvmrc` with Node 20 LTS version
-  - [ ] 1.5: Add root ESLint config (flat config format) + Prettier config
-  - [ ] 1.6: Add root scripts: `build`, `lint`, `type-check`, `test` across all workspaces
+- [x] Task 1: Initialize monorepo root with npm workspaces (AC: #1, #2)
+  - [x] 1.1: Create root `package.json` with npm workspaces config pointing to `apps/*` and `packages/*`
+  - [x] 1.2: Create root `tsconfig.base.json` with strict mode, target ES2022, module NodeNext, path aliases
+  - [x] 1.3: Create root `.gitignore` (node_modules, dist, .env, .expo, android/, ios/, .next/, prisma/*.db)
+  - [x] 1.4: Create root `.nvmrc` with Node 20 LTS version
+  - [x] 1.5: Add root ESLint config (flat config format) + Prettier config
+  - [x] 1.6: Add root scripts: `build`, `lint`, `type-check`, `test` across all workspaces
 
-- [ ] Task 2: Create shared types package `packages/shared` (AC: #2, #5)
-  - [ ] 2.1: Create `packages/shared/package.json` with name `@field-service/shared`, main/types entry points
-  - [ ] 2.2: Create `packages/shared/tsconfig.json` extending `../../tsconfig.base.json`
-  - [ ] 2.3: Create `packages/shared/src/index.ts` barrel export
-  - [ ] 2.4: Create placeholder type files: `src/types/api.ts` (ApiResponse, ApiError, PaginationMeta), `src/types/account.ts`, `src/types/customer.ts`, `src/types/quote.ts`, `src/types/job.ts`, `src/types/invoice.ts`, `src/types/schedule.ts`, `src/types/sync.ts`, `src/types/quickbooks.ts`
-  - [ ] 2.5: Create `src/constants/error-codes.ts`, `src/constants/job-statuses.ts`, `src/constants/trade-types.ts` with enum stubs
-  - [ ] 2.6: Create `src/utils/money.ts` (cents-to-dollars and dollars-to-cents), `src/utils/dates.ts` (ISO helpers)
-  - [ ] 2.7: Verify package compiles with `tsc --noEmit` and exports resolve from other workspaces
+- [x] Task 2: Create shared types package `packages/shared` (AC: #2, #5)
+  - [x] 2.1: Create `packages/shared/package.json` with name `@field-service/shared`, main/types entry points
+  - [x] 2.2: Create `packages/shared/tsconfig.json` extending `../../tsconfig.base.json`
+  - [x] 2.3: Create `packages/shared/src/index.ts` barrel export
+  - [x] 2.4: Create placeholder type files: `src/types/api.ts` (ApiResponse, ApiError, PaginationMeta), `src/types/account.ts`, `src/types/customer.ts`, `src/types/quote.ts`, `src/types/job.ts`, `src/types/invoice.ts`, `src/types/schedule.ts`, `src/types/sync.ts`, `src/types/quickbooks.ts`
+  - [x] 2.5: Create `src/constants/error-codes.ts`, `src/constants/job-statuses.ts`, `src/constants/trade-types.ts` with enum stubs
+  - [x] 2.6: Create `src/utils/money.ts` (cents-to-dollars and dollars-to-cents), `src/utils/dates.ts` (ISO helpers)
+  - [x] 2.7: Verify package compiles with `tsc --noEmit` and exports resolve from other workspaces
 
-- [ ] Task 3: Scaffold API server `apps/api` (AC: #4, #6)
-  - [ ] 3.1: Create `apps/api/package.json` with Express, Prisma, TypeScript, ts-node, dotenv deps
-  - [ ] 3.2: Create `apps/api/tsconfig.json` extending `../../tsconfig.base.json` with outDir `./dist`
-  - [ ] 3.3: Create `apps/api/.env.example` with `DATABASE_URL`, `PORT`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `STRIPE_SECRET_KEY`, `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `JWT_SECRET`
-  - [ ] 3.4: Create `apps/api/src/index.ts` — Express app with JSON body parser, CORS, and health route
-  - [ ] 3.5: Create `apps/api/src/config/env.ts` — validate required env vars at startup
-  - [ ] 3.6: Create `apps/api/src/middleware/error-handler.ts` — global error handler returning `{ error: { code, message, status } }` format
-  - [ ] 3.7: Create `apps/api/src/middleware/request-logger.ts` — structured JSON request logging
-  - [ ] 3.8: Create `apps/api/src/utils/error.ts` — AppError class (`code`, `message`, `status`)
-  - [ ] 3.9: Create health route at `GET /api/v1/health` returning `{ data: { status: "ok", timestamp: <ISO> } }`
-  - [ ] 3.10: Init Prisma: `npx prisma init` → `prisma/schema.prisma` with PostgreSQL provider, `env("DATABASE_URL")`
-  - [ ] 3.11: Add dev/build/start scripts to `apps/api/package.json`
-  - [ ] 3.12: Write health endpoint test (`apps/api/src/index.test.ts`) using Jest + Supertest
+- [x] Task 3: Scaffold API server `apps/api` (AC: #4, #6)
+  - [x] 3.1: Create `apps/api/package.json` with Express, Prisma, TypeScript, ts-node, dotenv deps
+  - [x] 3.2: Create `apps/api/tsconfig.json` extending `../../tsconfig.base.json` with outDir `./dist`
+  - [x] 3.3: Create `apps/api/.env.example` with `DATABASE_URL`, `PORT`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `STRIPE_SECRET_KEY`, `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `JWT_SECRET`
+  - [x] 3.4: Create `apps/api/src/index.ts` — Express app with JSON body parser, CORS, and health route
+  - [x] 3.5: Create `apps/api/src/config/env.ts` — validate required env vars at startup
+  - [x] 3.6: Create `apps/api/src/middleware/error-handler.ts` — global error handler returning `{ error: { code, message, status } }` format
+  - [x] 3.7: Create `apps/api/src/middleware/request-logger.ts` — structured JSON request logging
+  - [x] 3.8: Create `apps/api/src/utils/error.ts` — AppError class (`code`, `message`, `status`)
+  - [x] 3.9: Create health route at `GET /api/v1/health` returning `{ data: { status: "ok", timestamp: <ISO> } }`
+  - [x] 3.10: Init Prisma: `npx prisma init` → `prisma/schema.prisma` with PostgreSQL provider, `env("DATABASE_URL")`
+  - [x] 3.11: Add dev/build/start scripts to `apps/api/package.json`
+  - [x] 3.12: Write health endpoint test (`apps/api/src/index.test.ts`) using Jest + Supertest
 
-- [ ] Task 4: Scaffold mobile app `apps/mobile` (AC: #3, #7)
-  - [ ] 4.1: Run `npx create-expo-app@latest apps/mobile --template tabs` (Expo Router tabs template)
-  - [ ] 4.2: Update `apps/mobile/package.json` name to `@field-service/mobile`, add workspace dep on `@field-service/shared`
-  - [ ] 4.3: Create/update `apps/mobile/tsconfig.json` extending `../../tsconfig.base.json` with Expo-specific JSX settings
-  - [ ] 4.4: Install WatermelonDB: `@nozbe/watermelondb` and `@nozbe/with-observables`, configure Babel plugin
-  - [ ] 4.5: Create `apps/mobile/src/db/schema.ts` — empty WatermelonDB schema (version 1, no tables yet)
-  - [ ] 4.6: Create `apps/mobile/src/db/index.ts` — database initialization with `Database` from WatermelonDB using LokiJSAdapter (for dev) / SQLiteAdapter (for native)
-  - [ ] 4.7: Create `apps/mobile/src/db/migrations.ts` — empty migrations array
-  - [ ] 4.8: Wire database init into app root layout (`app/_layout.tsx`) via DatabaseContext provider
-  - [ ] 4.9: Create `apps/mobile/src/contexts/database-context.tsx` — React context providing WatermelonDB database instance
-  - [ ] 4.10: Create `apps/mobile/.env.example` with `EXPO_PUBLIC_API_URL`, `EXPO_PUBLIC_SUPABASE_URL`, `EXPO_PUBLIC_SUPABASE_ANON_KEY`
-  - [ ] 4.11: Verify Expo dev server starts and renders the default tab screen
+- [x] Task 4: Scaffold mobile app `apps/mobile` (AC: #3, #7)
+  - [x] 4.1: Run `npx create-expo-app@latest apps/mobile --template tabs` (Expo Router tabs template)
+  - [x] 4.2: Update `apps/mobile/package.json` name to `@field-service/mobile`, add workspace dep on `@field-service/shared`
+  - [x] 4.3: Create/update `apps/mobile/tsconfig.json` extending `../../tsconfig.base.json` with Expo-specific JSX settings
+  - [x] 4.4: Install WatermelonDB: `@nozbe/watermelondb` and `@nozbe/with-observables`, configure Babel plugin
+  - [x] 4.5: Create `apps/mobile/src/db/schema.ts` — empty WatermelonDB schema (version 1, no tables yet)
+  - [x] 4.6: Create `apps/mobile/src/db/index.ts` — database initialization with `Database` from WatermelonDB using LokiJSAdapter (for dev) / SQLiteAdapter (for native)
+  - [x] 4.7: Create `apps/mobile/src/db/migrations.ts` — empty migrations array
+  - [x] 4.8: Wire database init into app root layout (`app/_layout.tsx`) via DatabaseContext provider
+  - [x] 4.9: Create `apps/mobile/src/contexts/database-context.tsx` — React context providing WatermelonDB database instance
+  - [x] 4.10: Create `apps/mobile/.env.example` with `EXPO_PUBLIC_API_URL`, `EXPO_PUBLIC_SUPABASE_URL`, `EXPO_PUBLIC_SUPABASE_ANON_KEY`
+  - [x] 4.11: Verify Expo dev server starts and renders the default tab screen
 
-- [ ] Task 5: Scaffold web dashboard `apps/web` (AC: #2)
-  - [ ] 5.1: Run `npx create-next-app@latest apps/web --typescript --tailwind --app --src-dir`
-  - [ ] 5.2: Update `apps/web/package.json` name to `@field-service/web`, add workspace dep on `@field-service/shared`
-  - [ ] 5.3: Update `apps/web/tsconfig.json` to extend `../../tsconfig.base.json` (merge with Next.js required settings)
-  - [ ] 5.4: Create `apps/web/.env.example` with `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-  - [ ] 5.5: Clean default Next.js boilerplate — minimal `src/app/page.tsx` with "Field Service Management Dashboard" heading
-  - [ ] 5.6: Verify `next dev` runs and page renders
+- [x] Task 5: Scaffold web dashboard `apps/web` (AC: #2)
+  - [x] 5.1: Run `npx create-next-app@latest apps/web --typescript --tailwind --app --src-dir`
+  - [x] 5.2: Update `apps/web/package.json` name to `@field-service/web`, add workspace dep on `@field-service/shared`
+  - [x] 5.3: Update `apps/web/tsconfig.json` to extend `../../tsconfig.base.json` (merge with Next.js required settings)
+  - [x] 5.4: Create `apps/web/.env.example` with `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+  - [x] 5.5: Clean default Next.js boilerplate — minimal `src/app/page.tsx` with "Field Service Management Dashboard" heading
+  - [x] 5.6: Verify `next dev` runs and page renders
 
-- [ ] Task 6: Verify full monorepo integration (AC: #1, #2, #5)
-  - [ ] 6.1: Run `npm install` from root — all workspaces resolve without errors
-  - [ ] 6.2: Run `npm run type-check` from root — all packages pass TypeScript strict compilation
-  - [ ] 6.3: Verify `@field-service/shared` types import correctly in `apps/api`, `apps/mobile`, and `apps/web`
-  - [ ] 6.4: Run `npm test` from root — health endpoint test passes
-  - [ ] 6.5: Verify no circular dependencies between packages
+- [x] Task 6: Verify full monorepo integration (AC: #1, #2, #5)
+  - [x] 6.1: Run `npm install` from root — all workspaces resolve without errors
+  - [x] 6.2: Run `npm run type-check` from root — all packages pass TypeScript strict compilation
+  - [x] 6.3: Verify `@field-service/shared` types import correctly in `apps/api`, `apps/mobile`, and `apps/web`
+  - [x] 6.4: Run `npm test` from root — health endpoint test passes
+  - [x] 6.5: Verify no circular dependencies between packages
 
 ## Dev Notes
 
@@ -225,9 +225,78 @@ mvps/field-service-management/src/
 ## Dev Agent Record
 
 ### Agent Model Used
+Claude Opus 4.6
 
 ### Debug Log References
+- Jest module resolution required `moduleNameMapper` to strip `.js` extensions from TS imports
 
 ### Completion Notes List
+- Monorepo initialized with npm workspaces (`apps/*`, `packages/*`)
+- Root `tsconfig.base.json` with strict mode, ES2022 target, NodeNext module resolution
+- ESLint flat config + Prettier configured at root
+- `@field-service/shared` package: 9 type files, 3 constant files, 2 utility files, barrel export
+- `@field-service/api`: Express server with health endpoint, Prisma initialized (PostgreSQL provider), error handler, request logger, AppError class
+- `@field-service/mobile`: Expo Router app with WatermelonDB (LokiJSAdapter), DatabaseContext provider, empty schema v1
+- `@field-service/web`: Next.js App Router with Tailwind CSS, minimal landing page
+- Health endpoint test passes (2 tests via Jest + Supertest)
+- `npm install` resolves all workspaces successfully
+- `npm run type-check` passes across all 4 packages with strict mode
+- `npm run test` passes across all workspaces
+- No circular dependencies between packages
 
 ### File List
+- mvps/field-service-management/src/package.json
+- mvps/field-service-management/src/tsconfig.base.json
+- mvps/field-service-management/src/.gitignore
+- mvps/field-service-management/src/.nvmrc
+- mvps/field-service-management/src/eslint.config.mjs
+- mvps/field-service-management/src/.prettierrc
+- mvps/field-service-management/src/packages/shared/package.json
+- mvps/field-service-management/src/packages/shared/tsconfig.json
+- mvps/field-service-management/src/packages/shared/src/index.ts
+- mvps/field-service-management/src/packages/shared/src/types/api.ts
+- mvps/field-service-management/src/packages/shared/src/types/account.ts
+- mvps/field-service-management/src/packages/shared/src/types/customer.ts
+- mvps/field-service-management/src/packages/shared/src/types/quote.ts
+- mvps/field-service-management/src/packages/shared/src/types/job.ts
+- mvps/field-service-management/src/packages/shared/src/types/invoice.ts
+- mvps/field-service-management/src/packages/shared/src/types/schedule.ts
+- mvps/field-service-management/src/packages/shared/src/types/sync.ts
+- mvps/field-service-management/src/packages/shared/src/types/quickbooks.ts
+- mvps/field-service-management/src/packages/shared/src/constants/error-codes.ts
+- mvps/field-service-management/src/packages/shared/src/constants/job-statuses.ts
+- mvps/field-service-management/src/packages/shared/src/constants/trade-types.ts
+- mvps/field-service-management/src/packages/shared/src/utils/money.ts
+- mvps/field-service-management/src/packages/shared/src/utils/dates.ts
+- mvps/field-service-management/src/apps/api/package.json
+- mvps/field-service-management/src/apps/api/tsconfig.json
+- mvps/field-service-management/src/apps/api/jest.config.js
+- mvps/field-service-management/src/apps/api/.env.example
+- mvps/field-service-management/src/apps/api/prisma/schema.prisma
+- mvps/field-service-management/src/apps/api/src/index.ts
+- mvps/field-service-management/src/apps/api/src/index.test.ts
+- mvps/field-service-management/src/apps/api/src/config/env.ts
+- mvps/field-service-management/src/apps/api/src/middleware/error-handler.ts
+- mvps/field-service-management/src/apps/api/src/middleware/request-logger.ts
+- mvps/field-service-management/src/apps/api/src/utils/error.ts
+- mvps/field-service-management/src/apps/mobile/package.json
+- mvps/field-service-management/src/apps/mobile/app.json
+- mvps/field-service-management/src/apps/mobile/tsconfig.json
+- mvps/field-service-management/src/apps/mobile/babel.config.js
+- mvps/field-service-management/src/apps/mobile/.env.example
+- mvps/field-service-management/src/apps/mobile/app/_layout.tsx
+- mvps/field-service-management/src/apps/mobile/app/(tabs)/_layout.tsx
+- mvps/field-service-management/src/apps/mobile/app/(tabs)/index.tsx
+- mvps/field-service-management/src/apps/mobile/src/db/schema.ts
+- mvps/field-service-management/src/apps/mobile/src/db/index.ts
+- mvps/field-service-management/src/apps/mobile/src/db/migrations.ts
+- mvps/field-service-management/src/apps/mobile/src/contexts/database-context.tsx
+- mvps/field-service-management/src/apps/web/package.json
+- mvps/field-service-management/src/apps/web/tsconfig.json
+- mvps/field-service-management/src/apps/web/next.config.js
+- mvps/field-service-management/src/apps/web/tailwind.config.js
+- mvps/field-service-management/src/apps/web/postcss.config.js
+- mvps/field-service-management/src/apps/web/.env.example
+- mvps/field-service-management/src/apps/web/src/app/globals.css
+- mvps/field-service-management/src/apps/web/src/app/layout.tsx
+- mvps/field-service-management/src/apps/web/src/app/page.tsx

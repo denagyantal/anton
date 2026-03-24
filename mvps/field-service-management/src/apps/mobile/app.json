@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Field Service Management",
+    "slug": "field-service-management",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "field-service",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.fieldservice.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.fieldservice.app"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
