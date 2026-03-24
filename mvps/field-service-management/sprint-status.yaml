@@ -51,7 +51,7 @@ development_status:
   # Epic 2: Quoting & Estimates
   epic-2: in-progress
   2-1-customer-creation-and-contact-management: ready-for-dev
-  2-2-quote-creation-with-line-items: backlog
+  2-2-quote-creation-with-line-items: ready-for-dev
   2-3-quote-photo-attachments-and-pdf-generation: backlog
   2-4-quote-sms-delivery-and-customer-approval: backlog
   epic-2-retrospective: optional
