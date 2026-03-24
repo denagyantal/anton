@@ -1,4 +1,4 @@
-# Consignment & Resale Shop Inventory with Auto-Decay Pricing — Score: 81/105
+# Consignment & Resale Shop Inventory with Auto-Decay Pricing — Score: 82/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
@@ -69,3 +69,4 @@ Consignment shops operate on contracts that require automatic price reductions a
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-22 | 81/105 | reddit | First identified: auto-decay pricing gap; $350B resale market; no modern POS with consignment-specific features |
+| 2026-03-24 | 82/105 | reddit | ↑1: Reddit: 40K+ consignment/resale shops confirmed; vendor payout workflow detail; sustainability trend driving new shop openings; auto-decay pricing + Shopify integration gap; ConsignPro dated Windows app, SimpleConsign $69-179/mo |

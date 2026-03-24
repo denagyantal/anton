@@ -1,6 +1,6 @@
 # Veterinary Practice Communication
 
-**Score**: 86/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
+**Score**: 88/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
 
 ## One-Line Pitch
 Appointment confirmations, prescription reminders, and follow-up scheduling for vet practices — same tech as dental communication, different branding.
@@ -53,3 +53,4 @@ Build as shared platform with dental communication — same tech stack, differen
 | 2026-03-19 | 78/105 | reddit | Cloud migration pain from legacy systems; AI SOAP notes opportunity; pricing opacity persists across all PIMS except DaySmart/ezyVet |
 | 2026-03-21 | 79/105 | reddit, trends | Score +1; confirmed in reddit-2026-03-21 and trends-2026-03-21; vet PIMS demand strong |
 | 2026-03-23 | 86/105 | reddit, competitor-analysis | ↑7: DUAL signal — Reddit: AI SOAP notes + cloud migration wave + small clinic gap; Competitor analysis: Cornerstone "horrible to navigate", "constantly freezes", "haphazard"; ezyVet $245/mo + $500-2K implementation; IDEXX Neo $116-565/mo per-user; Hippo Manager quality issues; VetDesk concept at $99/mo flat unlimited users |
+| 2026-03-24 | 88/105 | reddit, competitor-analysis | ↑2: DUAL signal — Reddit: cloud migration wave, AI SOAP notes, 33K+ practices 70% small; Competitor analysis: Cornerstone $420/mo "horrible to navigate, freezes", ezyVet $245/mo + implementation fees, Shepherd click-heavy, DaySmart $116-565/mo per-user; VetSimple concept at $69/mo flat |

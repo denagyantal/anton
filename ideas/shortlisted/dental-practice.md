@@ -1,6 +1,6 @@
 # Dental Patient Communication Platform
 
-**Score**: 88/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
+**Score**: 90/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
 
 ## One-Line Pitch
 Appointment confirmations, recall campaigns, and review requests for dental practices at $49-99/mo vs Weave's $399+/mo.
@@ -70,3 +70,4 @@ Dental practices need patient communication (appointment confirmations, recall/r
 | 2026-03-21 | 86/105 | reddit, trends | Score +1; front-desk automation angle in reddit-2026-03-21; dental PMS in trends-2026-03-21 |
 | 2026-03-22 | 87/105 | trends | ↑1: Market $1.97B→$4.16B by 2035 (8.64% CAGR); SaaS captured 60.53% market share; AI-powered claims accuracy 95%+; cloud growing at 13.85% CAGR |
 | 2026-03-23 | 88/105 | trends | ↑1: Legacy vs cloud sharp divide confirmed; Curve Dental cloud-native gaining; Pabau expanding into US; AI treatment planning + patient communication as white spaces; dental-specific marketing automation gap |
+| 2026-03-24 | 90/105 | reddit, competitor-analysis, trends | ↑2: TRIPLE signal — Reddit: patient recall + insurance verification top time-wasters, 2-3 hours daily; Trends: $4.16B market by 2035, AI treatment planning white space; Competitor analysis: Dentrix $250/mo dated, Eaglesoft server-based, CareStack $300/mo enterprise |

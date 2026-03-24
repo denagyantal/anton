@@ -1,4 +1,4 @@
-# Property Management for Small Landlords - Score: 99/105
+# Property Management for Small Landlords - Score: 100/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
@@ -62,3 +62,4 @@ The all-in-one tool for self-managing landlords with 1-50 units — rent collect
 | 2026-03-20 | 98/105 | reddit, trends | AppFolio AI-only support anger persists; DoorLoop frustrating onboarding; legacy disruption accelerating |
 | 2026-03-21 | 98/105 | reddit | Stable; confirmed in reddit-2026-03-21; anti-AppFolio movement continues |
 | 2026-03-22 | 99/105 | reddit, competitor-analysis, trends | ↑1: Competitor analysis details "losing 2.9% + $0.30 every rent payment"; DoorKeep $1 flat ACH concept; trends confirm small landlord modernization wave; 11M+ individual landlords |
+| 2026-03-24 | 100/105 | hn-indiehackers | ↑1: HN: active thread asking "what is PM software missing?" — post-lease management, IoT integration (smart locks, cameras), AI tenant communication gaps; $608B maintenance market; small landlord 1-10 units still cobbling together Venmo + texts + spreadsheets |

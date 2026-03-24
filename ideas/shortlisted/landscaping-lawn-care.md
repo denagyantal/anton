@@ -1,6 +1,6 @@
 # Landscaping & Lawn Care Business OS
 
-**Score**: 96/105
+**Score**: 97/105
 **Verdict**: BUILD
 **LTD Price**: $79-99
 
@@ -43,3 +43,4 @@ Lawn-care-specific CRM with satellite quoting, chemical tracking, and seasonal s
 | 2026-03-19 | 96/105 | reddit, hn-indiehackers, competitor-analysis, trends | Stable: satellite quoting gap persists; LawnSite forum confirms no affordable route optimization; $176B industry |
 | 2026-03-20 | 96/105 | reddit | Copilot CRM overcharge bugs + 3.9% fees; LawnSite CRM discussions; route optimizer demand |
 | 2026-03-21 | 96/105 | reddit | Route optimization demand confirmed in reddit-2026-03-21; standalone route optimizer as wedge |
+| 2026-03-24 | 97/105 | competitor-analysis | ↑1: Detailed competitor analysis: LMN $297-598/mo; ServiceTitan $145/user/mo; Service Autopilot "overly complex and cost-prohibitive"; massive gap between free Yardbook and $297 LMN; weather-aware scheduling + route optimization; MowPro concept at $39/mo flat |

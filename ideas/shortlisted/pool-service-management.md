@@ -1,4 +1,4 @@
-# Pool Service Management — Score: 86/105
+# Pool Service Management — Score: 88/105
 
 **Tier**: 1 (Strong Opportunity)
 **Verdict**: BUILD
@@ -71,3 +71,4 @@ Small pool service operators (1-5 trucks) serving 50-300 residential customers a
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-23 | 86/105 | competitor-analysis | First identified — detailed gap analysis: Skimmer per-customer pricing punishes growth; ServiceTitan overkill for pool companies; PoolPulse concept at $49/mo flat |
+| 2026-03-24 | 88/105 | reddit | ↑2: Reddit: 50K+ pool service companies confirmed; chemical compliance + water chemistry workflow detail (pH, chlorine, alkalinity, CYA); $71B global market; equipment serial number + warranty tracking needed; seasonal route optimization |

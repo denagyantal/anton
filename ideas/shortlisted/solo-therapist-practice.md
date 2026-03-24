@@ -1,4 +1,4 @@
-# Solo Therapist Practice Management - Score: 80/105
+# Solo Therapist Practice Management - Score: 82/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -56,3 +56,4 @@ Streamlined practice management for solo therapists -- HIPAA-compliant schedulin
 | 2026-03-17 | 80/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-19 | 79/105 | reddit | Stable: SimplePractice bloating continues |
 | 2026-03-20 | 80/105 | reddit | Reddit: 656 health/wellness requests with growing revenue signals |
+| 2026-03-24 | 82/105 | reddit | ↑2: Reddit: 200K+ practitioners, 60% solo, HIPAA compliance detail, 8-12 hours/week admin waste, mental health demand up 38% since 2020; SimplePractice $29-99/mo overkill; $19/mo flat solo concept with AI SOAP templates + telehealth |

@@ -1,4 +1,4 @@
-# Restaurant Recipe Costing & Menu Profitability — Score: 86/105
+# Restaurant Recipe Costing & Menu Profitability — Score: 87/105
 
 **Verdict**: BUILD
 **LTD Price**: $69-89
@@ -53,3 +53,4 @@ BUILD. The pain is acute (3-5% margins mean every dollar of food cost matters), 
 | 2026-03-19 | 84/105 | reddit, competitor-analysis | Deep competitor analysis: cheapest dedicated back-of-house tool $149/mo; 700K independents using clipboards; KitchenPad concept at $39/mo |
 | 2026-03-20 | 85/105 | reddit, hn-indiehackers | Food inventory/waste demand; "free POS" trap documented; MarketMan $239/mo gap |
 | 2026-03-22 | 86/105 | reddit | ↑1: Detailed independent restaurant ops hub analysis; Toast $69-165/mo, Clover pricing opacity; sub-$50/mo single-location POS concept; 1M+ restaurants, 70%+ independent |
+| 2026-03-24 | 87/105 | reddit | ↑1: Reddit: ghost kitchens (8K+) and food trucks (35K+) with NO purpose-built software; Toast commissions devastating delivery margins; multi-brand menu management gap; $49/mo per kitchen concept |

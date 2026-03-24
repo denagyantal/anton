@@ -1,6 +1,6 @@
 # Cleaning Service Management
 
-**Score: 95/105** | **Verdict: BUILD** | **Evaluation Date: 2026-03-05**
+**Score: 96/105** | **Verdict: BUILD** | **Evaluation Date: 2026-03-05**
 
 ## Concept
 Cleaning-specific business platform with ultra-simple cleaner app. Visual recurring schedule (drag-and-drop, skip weeks/holidays), customizable per-room checklists with photo verification, one-tap clock-in that auto-generates invoices, online booking with drive-time awareness, client portal with cleaning history. Flat pricing, not per-cleaner.
@@ -61,3 +61,4 @@ Residential cleaning companies with 1-10 cleaners, maid services, house cleaning
 | 2026-03-19 | 95/105 | reddit, trends | Stable: mid-market gap (8-30 employees) validated again; Airbnb turnover sub-niche identified as potential wedge |
 | 2026-03-20 | 95/105 | reddit | Mid-market gap 8-30 employees persists; residential/commercial split unaddressed |
 | 2026-03-21 | 95/105 | reddit, hn-indiehackers | Stable; confirmed in both reddit and hn-indiehackers-2026-03-21 |
+| 2026-03-24 | 96/105 | competitor-analysis | ↑1: Detailed competitor analysis: ZenMaid no mobile app + per-user pricing punishes part-time cleaners + payment processing failures; multilingual gap for immigrant-owned businesses; CleanOps concept at $39/mo flat up to 10 users with EN/ES/PT |

@@ -1,4 +1,4 @@
-# Construction Management for Small Contractors — Score: 92/105
+# Construction Management for Small Contractors — Score: 93/105
 
 **Tier**: 1 (Strong Opportunity)
 **Verdict**: BUILD
@@ -24,3 +24,4 @@ Construction-specific invoicing MVP: progress billing, change order tracking, re
 | 2026-03-19 | 92/105 | reddit, competitor-analysis, trends | Stable: construction paper-to-digital accelerating; offline-first architecture non-negotiable; digital work orders as wedge |
 | 2026-03-20 | 92/105 | reddit, hn-indiehackers | Bid security/document tracker angle; subcontractor payment tracking on spreadsheets (HN) |
 | 2026-03-21 | 92/105 | hn-indiehackers | Hive ERP (construction) in hn-indiehackers-2026-03-21; mid-size construction ERP demand |
+| 2026-03-24 | 93/105 | hn-indiehackers | ↑1: HN: Hive ERP $500K in construction contracts before open-sourcing validates WTP; SubPay subcontractor payment tracker concept (draws, retainage, lien waivers); construction-specific terminology matters |

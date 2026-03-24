@@ -1,4 +1,4 @@
-# Small Fleet Trucking TMS - Score: 82/105
+# Small Fleet Trucking TMS - Score: 83/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -59,3 +59,4 @@ TMS built for 1-20 truck fleets -- load management, IFTA auto-calculation, compl
 | 2026-03-20 | 81/105 | reddit | Manually copying driver pay from spreadsheets; Samsara "overwhelming screens" |
 | 2026-03-21 | 81/105 | reddit | Confirmed in reddit-2026-03-21; fleet operations demand persistent |
 | 2026-03-22 | 82/105 | competitor-analysis | ↑1: Detailed gap analysis — Samsara $25-45/vehicle/mo "overkill for five-truck outfit"; GPS Trackit UI "designed in early 2000s"; FleetDesk concept $39/mo flat for up to 20 vehicles; maintenance-first approach |
+| 2026-03-24 | 83/105 | reddit, hn-indiehackers | ↑1: Reddit: freight broker pain — Onfleet $599/mo, LoadOps $55/driver/mo "slowdowns during peak hours"; HN: small broker 1-5 person operations on spreadsheets; $39/mo flat for 100 loads concept; FMCSA/insurance verification as moat |
