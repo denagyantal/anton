@@ -26,3 +26,32 @@ export interface TeamMember {
   updatedAt: string;
   syncedAt: string | null;
 }
+
+export interface BusinessProfile {
+  businessName: string | null;
+  businessLogoUrl: string | null;
+  licenseNumber: string | null;
+  contactEmail: string | null;
+  contactPhone: string | null;
+  tradeType: 'HVAC' | 'PLUMBING' | 'ELECTRICAL' | null;
+}
+
+export interface AccountUpdateRequest {
+  businessName: string;
+  licenseNumber?: string;
+  contactEmail?: string;
+  contactPhone?: string;
+  tradeType: 'HVAC' | 'PLUMBING' | 'ELECTRICAL';
+}
+
+export interface AccountResponse {
+  id: string;
+  businessName: string | null;
+  businessLogoUrl: string | null;
+  licenseNumber: string | null;
+  contactEmail: string | null;
+  contactPhone: string | null;
+  tradeType: 'HVAC' | 'PLUMBING' | 'ELECTRICAL' | null;
+  createdAt: string;
+  updatedAt: string;
+}

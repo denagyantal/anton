@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { AppState, AppStateStatus } from 'react-native';
 import { supabase } from '../services/supabase-client';
+import { apiClient } from '../services/api-client';
 import type { Session, User } from '@supabase/supabase-js';
+import type { AccountResponse } from '@field-service/shared';
 
 interface AuthUser {
   id: string;
@@ -12,12 +14,15 @@ interface AuthUser {
 interface AuthContextValue {
   user: AuthUser | null;
   session: Session | null;
+  account: AccountResponse | null;
   isLoading: boolean;
   isAuthenticated: boolean;
+  isOnboarded: boolean;
   signUp: (email: string, phone: string, password: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
   refreshSession: () => Promise<void>;
+  refreshAccount: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
@@ -33,24 +38,48 @@ function mapUser(user: User): AuthUser {
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [session, setSession] = useState<Session | null>(null);
+  const [account, setAccount] = useState<AccountResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const fetchAccount = useCallback(async () => {
+    try {
+      const data = await apiClient.get<AccountResponse>('/api/v1/accounts/me');
+      setAccount(data);
+    } catch {
+      // Account fetch may fail if not set up yet — that's expected
+      setAccount(null);
+    }
+  }, []);
 
   useEffect(() => {
     // Get initial session
-    supabase.auth.getSession().then(({ data: { session: currentSession } }) => {
+    supabase.auth.getSession().then(async ({ data: { session: currentSession } }) => {
       setSession(currentSession);
-      setUser(currentSession?.user ? mapUser(currentSession.user) : null);
+      const mappedUser = currentSession?.user ? mapUser(currentSession.user) : null;
+      setUser(mappedUser);
+
+      if (mappedUser) {
+        await fetchAccount();
+      }
+
       setIsLoading(false);
     });
 
     // Listen for auth state changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
       setSession(newSession);
-      setUser(newSession?.user ? mapUser(newSession.user) : null);
+      const mappedUser = newSession?.user ? mapUser(newSession.user) : null;
+      setUser(mappedUser);
+
+      if (mappedUser) {
+        await fetchAccount();
+      } else {
+        setAccount(null);
+      }
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [fetchAccount]);
 
   // Check session on app foreground
   useEffect(() => {
@@ -60,6 +89,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (!currentSession) {
           setSession(null);
           setUser(null);
+          setAccount(null);
         }
       }
     };
@@ -102,6 +132,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await supabase.auth.signOut();
     setSession(null);
     setUser(null);
+    setAccount(null);
   }, []);
 
   const refreshSession = useCallback(async () => {
@@ -109,23 +140,33 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (error || !data.session) {
       setSession(null);
       setUser(null);
+      setAccount(null);
       return;
     }
     setSession(data.session);
     setUser(data.session.user ? mapUser(data.session.user) : null);
   }, []);
 
+  const refreshAccount = useCallback(async () => {
+    await fetchAccount();
+  }, [fetchAccount]);
+
+  const isOnboarded = account?.tradeType != null;
+
   return (
     <AuthContext.Provider
       value={{
         user,
         session,
+        account,
         isLoading,
         isAuthenticated: !!session && !!user,
+        isOnboarded,
         signUp,
         signIn,
         signOut,
         refreshSession,
+        refreshAccount,
       }}
     >
       {children}

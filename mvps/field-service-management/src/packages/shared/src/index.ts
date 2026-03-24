@@ -11,7 +11,13 @@ export type {
   AuthUser,
   AuthResponse,
 } from './types/api.js';
-export type { Account, TeamMember } from './types/account.js';
+export type {
+  Account,
+  TeamMember,
+  BusinessProfile,
+  AccountUpdateRequest,
+  AccountResponse,
+} from './types/account.js';
 export type { Customer } from './types/customer.js';
 export type { Quote, QuoteStatus, LineItem } from './types/quote.js';
 export type { Job, JobPhoto } from './types/job.js';

@@ -9,6 +9,12 @@ export default function TabLayout() {
           title: 'Jobs',
         }}
       />
+      <Tabs.Screen
+        name="more"
+        options={{
+          title: 'More',
+        }}
+      />
     </Tabs>
   );
 }

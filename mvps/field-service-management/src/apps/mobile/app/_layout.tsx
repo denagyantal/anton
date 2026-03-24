@@ -1,10 +1,10 @@
-import { Stack } from 'expo-router';
+import { Stack, Redirect } from 'expo-router';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { DatabaseProvider } from '../src/contexts/database-context';
 import { AuthProvider, useAuth } from '../src/contexts/auth-context';
 
 function AuthGate() {
-  const { isLoading, isAuthenticated } = useAuth();
+  const { isLoading, isAuthenticated, isOnboarded } = useAuth();
 
   if (isLoading) {
     return (
@@ -14,13 +14,25 @@ function AuthGate() {
     );
   }
 
+  if (!isAuthenticated) {
+    return (
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(auth)" />
+      </Stack>
+    );
+  }
+
+  if (!isOnboarded) {
+    return (
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(auth)" />
+      </Stack>
+    );
+  }
+
   return (
     <Stack screenOptions={{ headerShown: false }}>
-      {isAuthenticated ? (
-        <Stack.Screen name="(tabs)" />
-      ) : (
-        <Stack.Screen name="(auth)" />
-      )}
+      <Stack.Screen name="(tabs)" />
     </Stack>
   );
 }

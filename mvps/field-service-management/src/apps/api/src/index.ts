@@ -3,6 +3,7 @@ import cors from 'cors';
 import { requestLogger } from './middleware/request-logger.js';
 import { errorHandler } from './middleware/error-handler.js';
 import { authRouter } from './routes/auth.js';
+import { accountsRouter } from './routes/accounts.js';
 import { authMiddleware } from './middleware/auth.js';
 
 export const app = express();
@@ -23,6 +24,9 @@ app.get('/api/v1/health', (_req, res) => {
 
 // Auth routes (public)
 app.use('/api/v1/auth', authRouter);
+
+// Account routes (protected)
+app.use('/api/v1/accounts', accountsRouter);
 
 // Protected route: current user
 app.get('/api/v1/me', authMiddleware, (req, res) => {

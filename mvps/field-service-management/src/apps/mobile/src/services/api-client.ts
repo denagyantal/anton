@@ -85,11 +85,47 @@ export const apiClient = {
     return handleResponse<T>(response);
   },
 
+  async patch<T>(path: string, body?: unknown): Promise<T> {
+    const headers = await getAuthHeaders();
+    const response = await fetch(`${BASE_URL}${path}`, {
+      method: 'PATCH',
+      headers,
+      body: body ? JSON.stringify(body) : undefined,
+    });
+    return handleResponse<T>(response);
+  },
+
   async delete<T>(path: string): Promise<T> {
     const headers = await getAuthHeaders();
     const response = await fetch(`${BASE_URL}${path}`, {
       method: 'DELETE',
       headers,
+    });
+    return handleResponse<T>(response);
+  },
+
+  async uploadFile<T>(path: string, fileUri: string, fieldName: string): Promise<T> {
+    const { data: { session } } = await supabase.auth.getSession();
+    const headers: Record<string, string> = {};
+    if (session?.access_token) {
+      headers['Authorization'] = `Bearer ${session.access_token}`;
+    }
+
+    const formData = new FormData();
+    const filename = fileUri.split('/').pop() || 'photo.jpg';
+    const ext = filename.split('.').pop()?.toLowerCase() || 'jpg';
+    const mimeType = `image/${ext === 'jpg' ? 'jpeg' : ext}`;
+
+    formData.append(fieldName, {
+      uri: fileUri,
+      name: filename,
+      type: mimeType,
+    } as unknown as Blob);
+
+    const response = await fetch(`${BASE_URL}${path}`, {
+      method: 'POST',
+      headers,
+      body: formData,
     });
     return handleResponse<T>(response);
   },
