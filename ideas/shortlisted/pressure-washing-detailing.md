@@ -62,3 +62,4 @@ The first purpose-built software for exterior cleaning businesses — visual quo
 | 2026-03-19 | 93/105 | reddit, hn-indiehackers, competitor-analysis | Stable: vehicle-specific booking gap persists; Anolla AI-driven pricing but most operators on Jobber or paper |
 | 2026-03-20 | 93/105 | reddit | Auto detailing booking + portfolio demand; mobile operators need route optimization |
 | 2026-03-21 | 93/105 | reddit | Confirmed in reddit-2026-03-21; CRM + booking demand persistent |
+| 2026-03-25 | 94/105 | reddit | Before/after photo gallery, ceramic coating warranty management, fleet accounts, chemical tracking; Urable emerging; 65K+ detailing + 100K+ pressure washing businesses |

@@ -55,3 +55,4 @@ Modern self-storage management -- unit tracking, tenant management, autopay, and
 |------|-------|---------|-------|
 | 2026-03-17 | 81/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 76/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Storable monopoly; gate/lock hardware integration complexity limits indie viability |
+| 2026-03-25 | 79/105 | reddit | DETAILED: 50K+ facilities, $39B+ revenue, 70% independent; SiteLink "interface disaster" + 300% rate increases; revenue management gap; $2/unit/mo concept |

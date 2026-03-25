@@ -56,3 +56,4 @@ Reliable home inspection reporting -- photo capture, templated reports, auto-org
 | 2026-03-17 | 86/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-19 | 77/105 | reddit | Stable: no significant new data |
 | 2026-03-20 | 78/105 | hn-indiehackers | Spectora $30M ARR from $5K MVP validates boring inspection niche pattern |
+| 2026-03-25 | 81/105 | reddit, trends | DUAL: HIP "clunky and repetitive" tabs, freezes; Spectora per-inspection fees; 95K+ inspectors; AI photo-to-report emerging; offline critical; $39/mo flat concept |

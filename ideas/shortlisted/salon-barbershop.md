@@ -65,3 +65,4 @@ Mindbody has mandatory 12-month contracts and an outdated interface. Fresha has 
 | 2026-03-19 | 81/105 | competitor-analysis | Deep competitor analysis: 444K salons; Mangomint $165+/mo; Squire worst service; 30-40% booth renters underserved; ChairBook $19/mo zero-commission concept |
 | 2026-03-20 | 82/105 | hn-indiehackers | AI visual consultation (hair preview) untouched; color formula management gap |
 | 2026-03-21 | 82/105 | hn-indiehackers | Softalon salon management validation in hn-indiehackers-2026-03-21 |
+| 2026-03-25 | 84/105 | competitor-analysis | DETAILED: Mindbody $269+ hidden fees + $499 data hostage + 12-month contracts; per-staff pricing punishes growth; ChairTime $49/mo flat concept; 1M+ shops |

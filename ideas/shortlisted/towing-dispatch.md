@@ -77,3 +77,4 @@ Independent tow truck operators (1-5 trucks) make up the majority of the 35,000+
 |------|-------|---------|-------|
 | 2026-03-22 | 70/105 | — | Previously Tier 2; limited data |
 | 2026-03-23 | 77/105 | competitor-analysis | ↑7: Detailed competitor analysis reveals Towbook freezes/desktop-first; Traxero enterprise-only; mobile-first gap for independents; TowSnap concept at $35/mo |
+| 2026-03-25 | 79/105 | reddit | DETAILED: 60K+ companies, $14.5B revenue; motor club + lien + impound + DOT needs; 24/7 = high retention; $766.8M global market |

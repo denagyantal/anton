@@ -62,3 +62,4 @@ Residential cleaning companies with 1-10 cleaners, maid services, house cleaning
 | 2026-03-20 | 95/105 | reddit | Mid-market gap 8-30 employees persists; residential/commercial split unaddressed |
 | 2026-03-21 | 95/105 | reddit, hn-indiehackers | Stable; confirmed in both reddit and hn-indiehackers-2026-03-21 |
 | 2026-03-24 | 96/105 | competitor-analysis | ↑1: Detailed competitor analysis: ZenMaid no mobile app + per-user pricing punishes part-time cleaners + payment processing failures; multilingual gap for immigrant-owned businesses; CleanOps concept at $39/mo flat up to 10 users with EN/ES/PT |
+| 2026-03-25 | 97/105 | reddit | Detailed cleaning-specific workflows: recurring route scheduling, crew rotation, room-by-room photo checklists, supply inventory per truck, tip handling gap; 1.2M+ cleaning businesses |

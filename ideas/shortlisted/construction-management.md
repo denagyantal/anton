@@ -25,3 +25,4 @@ Construction-specific invoicing MVP: progress billing, change order tracking, re
 | 2026-03-20 | 92/105 | reddit, hn-indiehackers | Bid security/document tracker angle; subcontractor payment tracking on spreadsheets (HN) |
 | 2026-03-21 | 92/105 | hn-indiehackers | Hive ERP (construction) in hn-indiehackers-2026-03-21; mid-size construction ERP demand |
 | 2026-03-24 | 93/105 | hn-indiehackers | ↑1: HN: Hive ERP $500K in construction contracts before open-sourcing validates WTP; SubPay subcontractor payment tracker concept (draws, retainage, lien waivers); construction-specific terminology matters |
+| 2026-03-25 | 94/105 | competitor-analysis | DETAILED: Procore $375+/mo, Buildertrend $199-499/mo, Contractor Foreman $49/mo budget but unpolished; "spreadsheet-to-software" onboarding; JobBoard $39/mo flat concept |

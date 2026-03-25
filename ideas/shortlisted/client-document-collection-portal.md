@@ -48,3 +48,4 @@ Simple document collection portal: create checklist of needed documents per clie
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 78/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-25 | 87/105 | hn-indiehackers | Proven $30K-100K MRR category; ClientVault concept for attorneys/accountants at $39-79/mo with industry templates |

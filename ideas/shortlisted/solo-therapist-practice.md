@@ -57,3 +57,4 @@ Streamlined practice management for solo therapists -- HIPAA-compliant schedulin
 | 2026-03-19 | 79/105 | reddit | Stable: SimplePractice bloating continues |
 | 2026-03-20 | 80/105 | reddit | Reddit: 656 health/wellness requests with growing revenue signals |
 | 2026-03-24 | 82/105 | reddit | ↑2: Reddit: 200K+ practitioners, 60% solo, HIPAA compliance detail, 8-12 hours/week admin waste, mental health demand up 38% since 2020; SimplePractice $29-99/mo overkill; $19/mo flat solo concept with AI SOAP templates + telehealth |
+| 2026-03-25 | 83/105 | hn-indiehackers | AI clinical notes in 3+ independent roundups; HIPAA = moat; 198K+ psychologists + 370K+ counselors; NoteScribe $39/mo concept |

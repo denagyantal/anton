@@ -55,3 +55,4 @@ HVAC, plumbing, electrical, roofing, pest control. 60-80% of calls go unanswered
 | 2026-03-21 | 91/105 | trends | Score +1; AI voice receptionist acceleration in trends-2026-03-21; Netic $450M valuation validates category |
 | 2026-03-22 | 92/105 | trends | ↑1: Netic 2,100% revenue growth; 60-80% missed call rates documented; callers can't distinguish AI from human; trade-specific qualification as key differentiator |
 | 2026-03-24 | 93/105 | trends | ↑1: Trends: AI voice receptionist = top trend; AutomateNexus Voice launched Jan 2026; 97% SMB revenue increase; $50-300/mo vs $3,700-5,000/mo human receptionist; vertical integration with trade-specific dispatch as white space |
+| 2026-03-25 | 94/105 | trends | $6.26B virtual receptionist market; NextPhone trades-tuned; Trillet $29/mo; emergency triage + trades terminology pre-training |

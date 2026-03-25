@@ -76,3 +76,4 @@ Mindbody dominates but real cost is $500-700+/mo with 20% marketplace commission
 | 2026-03-18 | 83/105 | competitor-analysis | Mindbody $500-700/mo real cost with 20% marketplace commission; CrossFit community strong for word-of-mouth |
 | 2026-03-19 | 80/105 | competitor-analysis | Score adjusted: PushPress free tier competitive; Gymdesk and TeamUp show simpler alternatives gaining traction |
 | 2026-03-22 | 82/105 | competitor-analysis | ↑2: Mindbody "overwhelming and expensive" $139-699/mo + per-transaction fees + 12-month contracts; StudioPulse concept at $29/mo flat; no per-transaction fees; browser-based member booking |
+| 2026-03-25 | 84/105 | competitor-analysis | DETAILED: Mindbody $269-699/mo + 20% marketplace commissions + $499 data hostage; StudioSimple $59/mo flat zero commission concept; 100K+ boutique studios |

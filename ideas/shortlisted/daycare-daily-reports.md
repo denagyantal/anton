@@ -55,3 +55,4 @@ Quick-tap daily reports for in-home and small daycares — meals, naps, diapers,
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 79/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-03-25 | 86/105 | reddit | DETAILED: 800K+ providers, 55% home-based; Brightwheel $4-8/child expensive; CACFP meal documentation; ratio tracking; flat pricing differentiator |
