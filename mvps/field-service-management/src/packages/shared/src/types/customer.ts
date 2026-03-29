@@ -2,15 +2,23 @@ export interface Customer {
   id: string;
   accountId: string;
   name: string;
-  email: string | null;
-  phone: string | null;
-  addressLine1: string | null;
-  addressLine2: string | null;
-  city: string | null;
-  state: string | null;
-  zip: string | null;
-  notes: string | null;
-  quickbooksCustomerId: string | null;
+  email?: string;
+  phone: string;
+  addressLine1?: string;
+  addressLine2?: string;
+  city?: string;
+  state?: string;
+  zip?: string;
+  notes?: string;
+  quickbooksCustomerId?: string;
   createdAt: string;
   updatedAt: string;
 }
+
+export type CustomerAddress = {
+  addressLine1?: string;
+  addressLine2?: string;
+  city?: string;
+  state?: string;
+  zip?: string;
+};

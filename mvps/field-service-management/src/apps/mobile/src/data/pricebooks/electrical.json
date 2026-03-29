@@ -1,0 +1,44 @@
+[
+  { "category": "Panel Upgrades", "name": "200A Panel Upgrade", "description": "Upgrade main electrical panel to 200 amps", "unitPrice": 350000, "unitType": "FLAT" },
+  { "category": "Panel Upgrades", "name": "100A Panel Upgrade", "description": "Upgrade main electrical panel to 100 amps", "unitPrice": 250000, "unitType": "FLAT" },
+  { "category": "Panel Upgrades", "name": "Sub-Panel Installation", "description": "Install secondary electrical sub-panel", "unitPrice": 175000, "unitType": "FLAT" },
+  { "category": "Panel Upgrades", "name": "Panel Relocation", "description": "Relocate existing electrical panel", "unitPrice": 300000, "unitType": "FLAT" },
+  { "category": "Panel Upgrades", "name": "Meter Base Replacement", "description": "Replace electric meter base/socket", "unitPrice": 125000, "unitType": "FLAT" },
+
+  { "category": "Outlet & Switch", "name": "Outlet Installation", "description": "Install new standard electrical outlet", "unitPrice": 17500, "unitType": "EACH" },
+  { "category": "Outlet & Switch", "name": "GFCI Outlet Installation", "description": "Install ground-fault circuit interrupter outlet", "unitPrice": 22500, "unitType": "EACH" },
+  { "category": "Outlet & Switch", "name": "USB Outlet Installation", "description": "Install outlet with built-in USB charging ports", "unitPrice": 25000, "unitType": "EACH" },
+  { "category": "Outlet & Switch", "name": "Light Switch Installation", "description": "Install standard single-pole light switch", "unitPrice": 15000, "unitType": "EACH" },
+  { "category": "Outlet & Switch", "name": "Dimmer Switch Installation", "description": "Install dimmer switch", "unitPrice": 20000, "unitType": "EACH" },
+  { "category": "Outlet & Switch", "name": "Smart Switch Installation", "description": "Install and configure WiFi smart switch", "unitPrice": 27500, "unitType": "EACH" },
+  { "category": "Outlet & Switch", "name": "240V Outlet Installation", "description": "Install 240V outlet for appliances (dryer, range, EV)", "unitPrice": 45000, "unitType": "EACH" },
+  { "category": "Outlet & Switch", "name": "Outdoor Outlet Installation", "description": "Install weatherproof outdoor outlet", "unitPrice": 30000, "unitType": "EACH" },
+
+  { "category": "Wiring", "name": "Circuit Run (New)", "description": "Run new dedicated circuit from panel to location", "unitPrice": 35000, "unitType": "EACH" },
+  { "category": "Wiring", "name": "EV Charger Circuit Installation", "description": "Install dedicated 240V circuit for EV charger", "unitPrice": 85000, "unitType": "FLAT" },
+  { "category": "Wiring", "name": "Whole-House Rewire", "description": "Complete electrical rewire for standard home", "unitPrice": 1200000, "unitType": "FLAT" },
+  { "category": "Wiring", "name": "Knob & Tube Removal", "description": "Remove and replace knob-and-tube wiring per circuit", "unitPrice": 45000, "unitType": "EACH" },
+  { "category": "Wiring", "name": "Attic/Basement Wire Run", "description": "Run wiring through attic or basement", "unitPrice": 25000, "unitType": "EACH" },
+  { "category": "Wiring", "name": "Data/Ethernet Cable Run", "description": "Run Cat6 ethernet cable to location", "unitPrice": 20000, "unitType": "EACH" },
+
+  { "category": "Lighting", "name": "Ceiling Fan Install", "description": "Install ceiling fan (with existing wiring)", "unitPrice": 22500, "unitType": "EACH" },
+  { "category": "Lighting", "name": "Ceiling Fan Install (New Wiring)", "description": "Install ceiling fan with new wiring and switch", "unitPrice": 45000, "unitType": "EACH" },
+  { "category": "Lighting", "name": "Recessed Light Installation", "description": "Install LED recessed/can light", "unitPrice": 17500, "unitType": "EACH" },
+  { "category": "Lighting", "name": "Chandelier/Pendant Install", "description": "Install chandelier or pendant light fixture", "unitPrice": 25000, "unitType": "EACH" },
+  { "category": "Lighting", "name": "Under-Cabinet Lighting", "description": "Install LED under-cabinet lighting per linear foot", "unitPrice": 5000, "unitType": "EACH" },
+  { "category": "Lighting", "name": "Landscape Lighting Install", "description": "Install low-voltage landscape light fixture", "unitPrice": 15000, "unitType": "EACH" },
+  { "category": "Lighting", "name": "Motion Sensor Light Install", "description": "Install exterior motion-activated security light", "unitPrice": 22500, "unitType": "EACH" },
+
+  { "category": "Breakers & Safety", "name": "Circuit Breaker Replacement", "description": "Replace standard single-pole circuit breaker", "unitPrice": 17500, "unitType": "EACH" },
+  { "category": "Breakers & Safety", "name": "AFCI Breaker Installation", "description": "Install arc-fault circuit interrupter breaker", "unitPrice": 25000, "unitType": "EACH" },
+  { "category": "Breakers & Safety", "name": "Whole-House Surge Protector", "description": "Install whole-house surge protection device", "unitPrice": 45000, "unitType": "FLAT" },
+  { "category": "Breakers & Safety", "name": "Smoke Detector Installation", "description": "Install hardwired smoke detector", "unitPrice": 15000, "unitType": "EACH" },
+  { "category": "Breakers & Safety", "name": "CO Detector Installation", "description": "Install hardwired carbon monoxide detector", "unitPrice": 15000, "unitType": "EACH" },
+  { "category": "Breakers & Safety", "name": "Generator Transfer Switch", "description": "Install manual or automatic transfer switch", "unitPrice": 85000, "unitType": "FLAT" },
+  { "category": "Breakers & Safety", "name": "Grounding System Repair", "description": "Repair or install grounding electrode system", "unitPrice": 35000, "unitType": "FLAT" },
+
+  { "category": "Inspections", "name": "Electrical Inspection", "description": "Comprehensive electrical safety inspection", "unitPrice": 15000, "unitType": "FLAT" },
+  { "category": "Inspections", "name": "Pre-Purchase Electrical Inspection", "description": "Electrical inspection for home buyers", "unitPrice": 20000, "unitType": "FLAT" },
+  { "category": "Inspections", "name": "Troubleshooting (Per Hour)", "description": "Electrical troubleshooting and diagnostics", "unitPrice": 12500, "unitType": "HOUR" },
+  { "category": "Inspections", "name": "Electrical Labor Rate", "description": "Standard hourly labor rate", "unitPrice": 12500, "unitType": "HOUR" }
+]

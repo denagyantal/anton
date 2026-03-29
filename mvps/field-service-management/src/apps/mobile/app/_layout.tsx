@@ -33,6 +33,10 @@ function AuthGate() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="(tabs)" />
+      <Stack.Screen
+        name="(modals)/create-quote"
+        options={{ presentation: 'modal', headerShown: false }}
+      />
     </Stack>
   );
 }

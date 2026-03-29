@@ -18,7 +18,7 @@ export type {
   AccountUpdateRequest,
   AccountResponse,
 } from './types/account.js';
-export type { Customer } from './types/customer.js';
+export type { Customer, CustomerAddress } from './types/customer.js';
 export type { Quote, QuoteStatus, LineItem } from './types/quote.js';
 export type { Job, JobPhoto } from './types/job.js';
 export type {
@@ -37,6 +37,8 @@ export type {
   SyncLogEntry,
 } from './types/sync.js';
 export type { QBEntityType, QBSyncStatus, QBSyncLogEntry } from './types/quickbooks.js';
+export type { PricebookItem, PricebookCategory } from './types/pricebook.js';
+export { UnitType } from './types/pricebook.js';
 
 // Constants
 export { ErrorCodes } from './constants/error-codes.js';

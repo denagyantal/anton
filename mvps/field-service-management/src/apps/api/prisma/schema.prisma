@@ -18,6 +18,21 @@ enum TeamMemberRole {
   MEMBER
 }
 
+enum UnitType {
+  EACH
+  HOUR
+  FLAT
+}
+
+enum QuoteStatus {
+  DRAFT
+  SENT
+  VIEWED
+  APPROVED
+  DECLINED
+  EXPIRED
+}
+
 model Account {
   id                 String      @id @default(uuid())
   businessName       String?     @map("business_name")
@@ -33,7 +48,10 @@ model Account {
   updatedAt          DateTime    @updatedAt @map("updated_at")
   syncedAt           DateTime?   @map("synced_at")
 
-  teamMembers TeamMember[]
+  teamMembers    TeamMember[]
+  pricebookItems PricebookItem[]
+  customers      Customer[]
+  quotes         Quote[]
 
   @@map("accounts")
 }
@@ -53,4 +71,97 @@ model TeamMember {
   account Account @relation(fields: [accountId], references: [id])
 
   @@map("team_members")
+}
+
+model PricebookItem {
+  id         String   @id @default(uuid())
+  accountId  String   @map("account_id")
+  category   String
+  name       String
+  description String?
+  unitPrice  Int      @map("unit_price")
+  unitType   UnitType @map("unit_type")
+  isActive   Boolean  @default(true) @map("is_active")
+  isTemplate Boolean  @default(false) @map("is_template")
+  sortOrder  Int      @default(0) @map("sort_order")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+  syncedAt   DateTime? @map("synced_at")
+
+  account    Account    @relation(fields: [accountId], references: [id])
+  line_items LineItem[]
+
+  @@index([accountId], name: "idx_pricebook_items_account_id")
+  @@map("pricebook_items")
+}
+
+model Customer {
+  id                    String    @id @default(uuid())
+  accountId             String    @map("account_id")
+  name                  String
+  email                 String?
+  phone                 String
+  addressLine1          String?   @map("address_line1")
+  addressLine2          String?   @map("address_line2")
+  city                  String?
+  state                 String?
+  zip                   String?
+  notes                 String?
+  quickbooksCustomerId  String?   @map("quickbooks_customer_id")
+  createdAt             DateTime  @default(now()) @map("created_at")
+  updatedAt             DateTime  @updatedAt @map("updated_at")
+  syncedAt              DateTime? @map("synced_at")
+
+  account               Account   @relation(fields: [accountId], references: [id])
+  quotes                Quote[]
+
+  @@index([accountId], name: "idx_customers_account_id")
+  @@map("customers")
+}
+
+model Quote {
+  id             String      @id @default(uuid())
+  account_id     String
+  customer_id    String
+  created_by_id  String?
+  status         QuoteStatus @default(DRAFT)
+  subtotal       Int         @default(0)
+  tax_amount     Int         @default(0)
+  total          Int         @default(0)
+  notes          String?
+  approval_token String?
+  sent_at        DateTime?
+  approved_at    DateTime?
+  expires_at     DateTime?
+  created_at     DateTime    @default(now())
+  updated_at     DateTime    @updatedAt
+  synced_at      DateTime?
+
+  account    Account    @relation(fields: [account_id], references: [id])
+  customer   Customer   @relation(fields: [customer_id], references: [id])
+  line_items LineItem[]
+
+  @@index([account_id], name: "idx_quotes_account_id")
+  @@index([customer_id], name: "idx_quotes_customer_id")
+  @@map("quotes")
+}
+
+model LineItem {
+  id                String        @id @default(uuid())
+  quote_id          String
+  pricebook_item_id String?
+  description       String
+  quantity          Decimal       @default(1)
+  unit_price        Int           @default(0)
+  total             Int           @default(0)
+  sort_order        Int           @default(0)
+  created_at        DateTime      @default(now())
+  updated_at        DateTime      @updatedAt
+  synced_at         DateTime?
+
+  quote          Quote          @relation(fields: [quote_id], references: [id])
+  pricebook_item PricebookItem? @relation(fields: [pricebook_item_id], references: [id])
+
+  @@index([quote_id], name: "idx_line_items_quote_id")
+  @@map("line_items")
 }

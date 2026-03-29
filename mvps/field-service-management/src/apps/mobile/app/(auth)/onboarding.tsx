@@ -13,7 +13,9 @@ import {
   Alert,
 } from 'react-native';
 import { useAuth } from '../../src/contexts/auth-context';
+import { useDatabase } from '../../src/contexts/database-context';
 import { apiClient } from '../../src/services/api-client';
+import { seedPricebook } from '../../src/services/pricebook-service';
 
 type TradeType = 'HVAC' | 'PLUMBING' | 'ELECTRICAL';
 
@@ -30,6 +32,7 @@ interface FormErrors {
 
 export default function OnboardingScreen() {
   const { user, refreshAccount } = useAuth();
+  const database = useDatabase();
   const [step, setStep] = useState<1 | 2>(1);
   const [selectedTrade, setSelectedTrade] = useState<TradeType | null>(null);
 
@@ -135,6 +138,16 @@ export default function OnboardingScreen() {
         contactPhone: contactPhone.trim() || undefined,
         tradeType: selectedTrade,
       });
+
+      // Seed pricebook with trade-specific items
+      if (selectedTrade && user?.accountId) {
+        try {
+          await seedPricebook(database, selectedTrade, user.accountId);
+        } catch (e) {
+          // Pricebook seeding failure is non-blocking — can be loaded later from settings
+          console.error('Pricebook seeding failed:', e);
+        }
+      }
 
       // Refresh account data so auth gate re-evaluates
       await refreshAccount();
@@ -273,7 +286,10 @@ export default function OnboardingScreen() {
               disabled={isSubmitting}
             >
               {isSubmitting ? (
-                <ActivityIndicator color="#fff" />
+                <View style={styles.loadingRow}>
+                  <ActivityIndicator color="#fff" size="small" />
+                  <Text style={styles.loadingText}>Setting up your pricebook...</Text>
+                </View>
               ) : (
                 <Text style={styles.buttonText}>Complete Setup</Text>
               )}
@@ -430,5 +446,15 @@ const styles = StyleSheet.create({
   },
   completeButton: {
     flex: 2,
+  },
+  loadingRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+  },
+  loadingText: {
+    color: '#fff',
+    fontSize: 14,
   },
 });

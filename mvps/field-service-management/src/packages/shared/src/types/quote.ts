@@ -4,16 +4,16 @@ export interface Quote {
   id: string;
   accountId: string;
   customerId: string;
-  createdById: string;
+  createdById?: string;
   status: QuoteStatus;
   subtotal: number;
   taxAmount: number;
   total: number;
-  notes: string | null;
-  approvalToken: string | null;
-  sentAt: string | null;
-  approvedAt: string | null;
-  expiresAt: string | null;
+  notes?: string;
+  approvalToken?: string;
+  sentAt?: string;
+  approvedAt?: string;
+  expiresAt?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -21,10 +21,12 @@ export interface Quote {
 export interface LineItem {
   id: string;
   quoteId: string;
-  pricebookItemId: string | null;
+  pricebookItemId?: string;
   description: string;
   quantity: number;
   unitPrice: number;
   total: number;
   sortOrder: number;
+  createdAt: string;
+  updatedAt: string;
 }

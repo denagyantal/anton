@@ -1,0 +1,42 @@
+[
+  { "category": "Diagnostics & Service Calls", "name": "AC Diagnostic", "description": "Standard air conditioning diagnostic and troubleshooting", "unitPrice": 8900, "unitType": "FLAT" },
+  { "category": "Diagnostics & Service Calls", "name": "Heating System Diagnostic", "description": "Furnace or heat pump diagnostic", "unitPrice": 8900, "unitType": "FLAT" },
+  { "category": "Diagnostics & Service Calls", "name": "Emergency Service Call", "description": "After-hours emergency diagnostic visit", "unitPrice": 14900, "unitType": "FLAT" },
+  { "category": "Diagnostics & Service Calls", "name": "Second Opinion Diagnostic", "description": "Review previous diagnosis from another company", "unitPrice": 7900, "unitType": "FLAT" },
+  { "category": "Diagnostics & Service Calls", "name": "Ductwork Inspection", "description": "Visual inspection and airflow testing of duct system", "unitPrice": 12500, "unitType": "FLAT" },
+  { "category": "Diagnostics & Service Calls", "name": "Indoor Air Quality Test", "description": "Air quality assessment and recommendations", "unitPrice": 15000, "unitType": "FLAT" },
+
+  { "category": "Refrigerant & Charging", "name": "Refrigerant Recharge (R-410A)", "description": "Per pound of R-410A refrigerant added", "unitPrice": 7500, "unitType": "EACH" },
+  { "category": "Refrigerant & Charging", "name": "Refrigerant Recharge (R-22)", "description": "Per pound of R-22 refrigerant (legacy systems)", "unitPrice": 15000, "unitType": "EACH" },
+  { "category": "Refrigerant & Charging", "name": "Leak Detection & Repair", "description": "Electronic leak detection and minor repair", "unitPrice": 25000, "unitType": "FLAT" },
+  { "category": "Refrigerant & Charging", "name": "Refrigerant Recovery", "description": "Recovery and disposal of old refrigerant", "unitPrice": 15000, "unitType": "FLAT" },
+
+  { "category": "Motors & Fans", "name": "Blower Motor Replacement", "description": "Replace indoor blower motor", "unitPrice": 45000, "unitType": "FLAT" },
+  { "category": "Motors & Fans", "name": "Condenser Fan Motor Replacement", "description": "Replace outdoor condenser fan motor", "unitPrice": 35000, "unitType": "FLAT" },
+  { "category": "Motors & Fans", "name": "Inducer Motor Replacement", "description": "Replace furnace draft inducer motor", "unitPrice": 55000, "unitType": "FLAT" },
+  { "category": "Motors & Fans", "name": "Fan Blade Replacement", "description": "Replace condenser or blower fan blade", "unitPrice": 15000, "unitType": "FLAT" },
+  { "category": "Motors & Fans", "name": "ECM Motor Upgrade", "description": "Upgrade to variable speed ECM blower motor", "unitPrice": 85000, "unitType": "FLAT" },
+
+  { "category": "Capacitors & Electrical", "name": "Capacitor Replacement", "description": "Replace run or start capacitor", "unitPrice": 17500, "unitType": "FLAT" },
+  { "category": "Capacitors & Electrical", "name": "Contactor Replacement", "description": "Replace AC contactor switch", "unitPrice": 20000, "unitType": "FLAT" },
+  { "category": "Capacitors & Electrical", "name": "Thermostat Installation", "description": "Install standard programmable thermostat", "unitPrice": 25000, "unitType": "FLAT" },
+  { "category": "Capacitors & Electrical", "name": "Smart Thermostat Installation", "description": "Install and configure WiFi smart thermostat", "unitPrice": 35000, "unitType": "FLAT" },
+  { "category": "Capacitors & Electrical", "name": "Control Board Replacement", "description": "Replace furnace or AC control board", "unitPrice": 55000, "unitType": "FLAT" },
+  { "category": "Capacitors & Electrical", "name": "Transformer Replacement", "description": "Replace 24V control transformer", "unitPrice": 18000, "unitType": "FLAT" },
+
+  { "category": "Installation", "name": "Central AC System Installation", "description": "Complete central AC system (condenser + coil + line set)", "unitPrice": 550000, "unitType": "FLAT" },
+  { "category": "Installation", "name": "Furnace Installation", "description": "Complete gas furnace installation", "unitPrice": 450000, "unitType": "FLAT" },
+  { "category": "Installation", "name": "Heat Pump Installation", "description": "Complete heat pump system installation", "unitPrice": 650000, "unitType": "FLAT" },
+  { "category": "Installation", "name": "Mini-Split Installation (Single Zone)", "description": "Ductless mini-split single zone installation", "unitPrice": 350000, "unitType": "FLAT" },
+  { "category": "Installation", "name": "Compressor Replacement", "description": "Replace AC or heat pump compressor", "unitPrice": 250000, "unitType": "FLAT" },
+  { "category": "Installation", "name": "Evaporator Coil Replacement", "description": "Replace indoor evaporator coil", "unitPrice": 175000, "unitType": "FLAT" },
+  { "category": "Installation", "name": "Condenser Coil Replacement", "description": "Replace outdoor condenser coil", "unitPrice": 150000, "unitType": "FLAT" },
+
+  { "category": "Maintenance", "name": "AC Tune-Up", "description": "Seasonal AC maintenance and cleaning", "unitPrice": 12900, "unitType": "FLAT" },
+  { "category": "Maintenance", "name": "Furnace Tune-Up", "description": "Seasonal furnace maintenance and safety inspection", "unitPrice": 12900, "unitType": "FLAT" },
+  { "category": "Maintenance", "name": "Duct Cleaning", "description": "Complete duct cleaning for standard home", "unitPrice": 35000, "unitType": "FLAT" },
+  { "category": "Maintenance", "name": "Filter Replacement", "description": "Replace standard air filter (up to 20x25)", "unitPrice": 4500, "unitType": "EACH" },
+  { "category": "Maintenance", "name": "Coil Cleaning", "description": "Chemical cleaning of evaporator or condenser coil", "unitPrice": 20000, "unitType": "FLAT" },
+  { "category": "Maintenance", "name": "Drain Line Clearing", "description": "Clear clogged condensate drain line", "unitPrice": 12500, "unitType": "FLAT" },
+  { "category": "Maintenance", "name": "HVAC Labor Rate", "description": "Standard hourly labor rate", "unitPrice": 12500, "unitType": "HOUR" }
+]

@@ -1,0 +1,41 @@
+[
+  { "category": "Drain Clearing", "name": "Drain Snake (Main Line)", "description": "Mechanical snake clearing of main sewer line", "unitPrice": 25000, "unitType": "FLAT" },
+  { "category": "Drain Clearing", "name": "Drain Snake (Secondary)", "description": "Snake clearing of sink, tub, or floor drain", "unitPrice": 15000, "unitType": "FLAT" },
+  { "category": "Drain Clearing", "name": "Hydro Jetting", "description": "High-pressure water jetting of drain lines", "unitPrice": 55000, "unitType": "FLAT" },
+  { "category": "Drain Clearing", "name": "Camera Inspection", "description": "Video camera sewer line inspection", "unitPrice": 30000, "unitType": "FLAT" },
+  { "category": "Drain Clearing", "name": "Toilet Auger", "description": "Clear clogged toilet with closet auger", "unitPrice": 12500, "unitType": "FLAT" },
+  { "category": "Drain Clearing", "name": "Floor Drain Clearing", "description": "Clear basement or utility floor drain", "unitPrice": 17500, "unitType": "FLAT" },
+
+  { "category": "Pipe Repair", "name": "Copper Pipe Repair", "description": "Repair or replace section of copper pipe", "unitPrice": 35000, "unitType": "FLAT" },
+  { "category": "Pipe Repair", "name": "PEX Pipe Repair", "description": "Repair or replace section of PEX pipe", "unitPrice": 25000, "unitType": "FLAT" },
+  { "category": "Pipe Repair", "name": "Pipe Leak Repair", "description": "Locate and repair single pipe leak", "unitPrice": 30000, "unitType": "FLAT" },
+  { "category": "Pipe Repair", "name": "Slab Leak Repair", "description": "Locate and repair under-slab pipe leak", "unitPrice": 200000, "unitType": "FLAT" },
+  { "category": "Pipe Repair", "name": "Gas Line Repair", "description": "Repair gas line leak (pressure test included)", "unitPrice": 45000, "unitType": "FLAT" },
+  { "category": "Pipe Repair", "name": "Whole-House Repipe (PEX)", "description": "Complete PEX repipe for standard home", "unitPrice": 800000, "unitType": "FLAT" },
+
+  { "category": "Fixture Installation", "name": "Faucet Install", "description": "Install kitchen or bathroom faucet (faucet not included)", "unitPrice": 22500, "unitType": "FLAT" },
+  { "category": "Fixture Installation", "name": "Toilet Installation", "description": "Remove old and install new toilet", "unitPrice": 30000, "unitType": "FLAT" },
+  { "category": "Fixture Installation", "name": "Garbage Disposal Install", "description": "Install new garbage disposal unit", "unitPrice": 27500, "unitType": "FLAT" },
+  { "category": "Fixture Installation", "name": "Dishwasher Connection", "description": "Connect water supply and drain for dishwasher", "unitPrice": 20000, "unitType": "FLAT" },
+  { "category": "Fixture Installation", "name": "Sink Installation", "description": "Install kitchen or bathroom sink", "unitPrice": 35000, "unitType": "FLAT" },
+  { "category": "Fixture Installation", "name": "Bathtub/Shower Valve Install", "description": "Install or replace tub/shower mixing valve", "unitPrice": 45000, "unitType": "FLAT" },
+  { "category": "Fixture Installation", "name": "Hose Bib Installation", "description": "Install exterior hose bib/spigot", "unitPrice": 20000, "unitType": "FLAT" },
+
+  { "category": "Water Heater", "name": "Water Heater Replacement (Tank 40 gal)", "description": "Remove old and install 40-gallon tank water heater", "unitPrice": 150000, "unitType": "FLAT" },
+  { "category": "Water Heater", "name": "Water Heater Replacement (Tank 50 gal)", "description": "Remove old and install 50-gallon tank water heater", "unitPrice": 175000, "unitType": "FLAT" },
+  { "category": "Water Heater", "name": "Tankless Water Heater Install", "description": "Install tankless/on-demand water heater", "unitPrice": 350000, "unitType": "FLAT" },
+  { "category": "Water Heater", "name": "Water Heater Element Replacement", "description": "Replace electric water heater heating element", "unitPrice": 20000, "unitType": "FLAT" },
+  { "category": "Water Heater", "name": "Anode Rod Replacement", "description": "Replace sacrificial anode rod", "unitPrice": 15000, "unitType": "FLAT" },
+  { "category": "Water Heater", "name": "T&P Valve Replacement", "description": "Replace temperature and pressure relief valve", "unitPrice": 12500, "unitType": "FLAT" },
+
+  { "category": "Emergency Services", "name": "Emergency Service Call", "description": "After-hours emergency plumbing visit", "unitPrice": 19900, "unitType": "FLAT" },
+  { "category": "Emergency Services", "name": "Water Shut-Off Valve Replacement", "description": "Replace main water shut-off valve", "unitPrice": 35000, "unitType": "FLAT" },
+  { "category": "Emergency Services", "name": "Burst Pipe Emergency Repair", "description": "Emergency repair of burst water pipe", "unitPrice": 40000, "unitType": "FLAT" },
+  { "category": "Emergency Services", "name": "Sewer Backup Cleanup", "description": "Emergency sewer backup response and clearing", "unitPrice": 50000, "unitType": "FLAT" },
+  { "category": "Emergency Services", "name": "Sump Pump Replacement", "description": "Emergency sump pump replacement", "unitPrice": 55000, "unitType": "FLAT" },
+
+  { "category": "Maintenance", "name": "Water Heater Flush", "description": "Drain and flush sediment from water heater", "unitPrice": 12500, "unitType": "FLAT" },
+  { "category": "Maintenance", "name": "Plumbing Inspection", "description": "Whole-home plumbing inspection and report", "unitPrice": 15000, "unitType": "FLAT" },
+  { "category": "Maintenance", "name": "PRV Replacement", "description": "Replace pressure reducing valve", "unitPrice": 35000, "unitType": "FLAT" },
+  { "category": "Maintenance", "name": "Plumbing Labor Rate", "description": "Standard hourly labor rate", "unitPrice": 12500, "unitType": "HOUR" }
+]

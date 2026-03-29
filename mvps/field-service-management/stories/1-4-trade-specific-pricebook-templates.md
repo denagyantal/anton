@@ -1,6 +1,6 @@
 # Story 1.4: Trade-Specific Pricebook Templates
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -22,46 +22,46 @@ so that I can start creating quotes immediately without manual data entry.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Create pricebook JSON template data files (AC: #1, #2, #3)
-  - [ ] 1.1: Create `apps/mobile/src/data/pricebooks/hvac.json` — JSON array of pricebook items organized by category. Categories: "Diagnostics & Service Calls", "Refrigerant & Charging", "Motors & Fans", "Capacitors & Electrical", "Installation", "Maintenance". Each item: `{ "category": string, "name": string, "description": string, "unitPrice": number (in cents), "unitType": "EACH" | "HOUR" | "FLAT" }`. Include 30-40 realistic items with market-accurate pricing (e.g., "AC Diagnostic" = 8900 cents, "Capacitor Replacement" = 17500 cents, "Compressor Replacement" = 250000 cents).
-  - [ ] 1.2: Create `apps/mobile/src/data/pricebooks/plumbing.json` — Categories: "Drain Clearing", "Pipe Repair", "Fixture Installation", "Water Heater", "Emergency Services", "Maintenance". 30-40 items with realistic pricing (e.g., "Drain Snake" = 15000 cents, "Faucet Install" = 22500 cents, "Water Heater Replacement" = 150000 cents).
-  - [ ] 1.3: Create `apps/mobile/src/data/pricebooks/electrical.json` — Categories: "Panel Upgrades", "Outlet & Switch", "Wiring", "Lighting", "Breakers & Safety", "Inspections". 30-40 items with realistic pricing (e.g., "200A Panel Upgrade" = 350000 cents, "Outlet Installation" = 17500 cents, "Ceiling Fan Install" = 22500 cents).
+- [x] Task 1: Create pricebook JSON template data files (AC: #1, #2, #3)
+  - [x] 1.1: Create `apps/mobile/src/data/pricebooks/hvac.json` — 36 HVAC items across 6 categories with market-accurate pricing in cents.
+  - [x] 1.2: Create `apps/mobile/src/data/pricebooks/plumbing.json` — 34 plumbing items across 6 categories with realistic pricing.
+  - [x] 1.3: Create `apps/mobile/src/data/pricebooks/electrical.json` — 37 electrical items across 6 categories with realistic pricing.
 
-- [ ] Task 2: Create WatermelonDB pricebook_items model and schema (AC: #1, #2, #3, #4, #5)
-  - [ ] 2.1: Add `pricebook_items` table to `apps/mobile/src/db/schema.ts` — columns: `account_id` (string), `category` (string), `name` (string), `description` (string, optional), `unit_price` (number, integer cents), `unit_type` (string: EACH/HOUR/FLAT), `is_active` (boolean, default true), `sort_order` (number), `created_at` (number), `updated_at` (number). Add table to the schema's `tableSchemas` array.
-  - [ ] 2.2: Create `apps/mobile/src/db/models/pricebook-item.ts` — WatermelonDB Model class extending `Model` with `static table = 'pricebook_items'`. Define `@field` decorators for all columns. Add `@readonly @date('created_at') createdAt` and `@date('updated_at') updatedAt`. Export the model class.
-  - [ ] 2.3: Update `apps/mobile/src/db/index.ts` — add `PricebookItem` model to the `modelClasses` array in the Database initialization.
-  - [ ] 2.4: Update `apps/mobile/src/db/migrations.ts` — add a migration step to create the `pricebook_items` table (increment schema version).
+- [x] Task 2: Create WatermelonDB pricebook_items model and schema (AC: #1, #2, #3, #4, #5)
+  - [x] 2.1: Add `pricebook_items` table to schema.ts with all required columns. Schema version bumped to 2.
+  - [x] 2.2: Create PricebookItem WatermelonDB model with @text, @field, @readonly @date decorators.
+  - [x] 2.3: Register PricebookItem model in db/index.ts modelClasses array.
+  - [x] 2.4: Add migration step (toVersion: 2) with createTable for pricebook_items.
 
-- [ ] Task 3: Create pricebook seeding service (AC: #1, #2, #3)
-  - [ ] 3.1: Create `apps/mobile/src/services/pricebook-service.ts` — service with a `seedPricebook(database: Database, tradeType: TradeType, accountId: string): Promise<void>` function. Import the JSON files based on `tradeType` (use `require()` for JSON imports in React Native). Batch-write all items to WatermelonDB using `database.write()` with `database.batch()`. Each item becomes a `pricebook_items` record with `account_id` set, `is_active = true`, `sort_order` set based on array index within category. Use `database.get<PricebookItem>('pricebook_items').query().fetchCount()` to check if items already exist — skip seeding if count > 0 (idempotent).
-  - [ ] 3.2: Write test `apps/mobile/src/services/pricebook-service.test.ts` — test that `seedPricebook` with HVAC trade creates expected number of records, items have correct fields (unit_price as integer cents, valid unit_type enum value, non-empty name and category), and calling it twice does not create duplicates.
+- [x] Task 3: Create pricebook seeding service (AC: #1, #2, #3)
+  - [x] 3.1: Create seedPricebook() function with idempotency check, batch write, and JSON template loading via require().
+  - [x] 3.2: Write 7 tests: seeds each trade type (30-40 items), correct fields (integer cents, valid unit types), idempotency, account_id assignment.
 
-- [ ] Task 4: Integrate pricebook loading into onboarding flow (AC: #1, #2, #3)
-  - [ ] 4.1: Update `apps/mobile/app/(auth)/onboarding.tsx` — after the user taps "Complete Setup" and the API call succeeds (profile saved), call `seedPricebook(database, selectedTradeType, accountId)`. Show a brief loading indicator ("Setting up your pricebook...") during seeding. Only navigate to `(tabs)` after both API save AND pricebook seeding complete. If seeding fails, log error to console but still proceed (pricebook can be loaded later from settings).
-  - [ ] 4.2: Access the WatermelonDB `database` instance from `DatabaseContext` (created in Story 1.1) inside the onboarding screen. Import `useDatabase` hook or access via context.
+- [x] Task 4: Integrate pricebook loading into onboarding flow (AC: #1, #2, #3)
+  - [x] 4.1: Updated onboarding.tsx to call seedPricebook() after profile save. Shows "Setting up your pricebook..." loading indicator. Seeding failure is non-blocking (logs error, proceeds).
+  - [x] 4.2: Access database via useDatabase() hook from DatabaseContext.
 
-- [ ] Task 5: Create pricebook management screen (AC: #4)
-  - [ ] 5.1: Create `apps/mobile/app/(tabs)/more/pricebook.tsx` — screen showing all pricebook items grouped by category in collapsible sections (SectionList). Each item row shows: name, description (truncated), formatted unit price (e.g., "$89.00"), unit type. Long-press or swipe to reveal delete action.
-  - [ ] 5.2: Create `apps/mobile/src/components/pricebook/pricebook-item-form.tsx` — reusable form component (used for add/edit) with fields: category (text input with autocomplete from existing categories), name (required), description (optional), unit price (numeric input — user enters dollars, stored as cents), unit type (picker: Each, Hourly, Flat Rate). Validate: name is required, unit price > 0.
-  - [ ] 5.3: Add "Add Item" FAB or button on the pricebook screen — opens the form in a modal or pushes to a new screen. On save: `database.write()` to create a new `pricebook_items` record.
-  - [ ] 5.4: Tap on an existing item opens the form pre-populated for editing. On save: `database.write()` to update the record via `item.update()`.
-  - [ ] 5.5: Delete action sets `is_active = false` (soft delete) rather than destroying the record — completed quotes may reference these items. Show confirmation alert before deleting.
-  - [ ] 5.6: Add navigation link "Pricebook" to `apps/mobile/app/(tabs)/more/index.tsx` — placed below "Business Profile" link.
+- [x] Task 5: Create pricebook management screen (AC: #4)
+  - [x] 5.1: Created pricebook.tsx screen with SectionList grouped by category, showing name, description, formatted price, unit type.
+  - [x] 5.2: Created pricebook-item-form.tsx with category autocomplete, name/description/price/unitType fields, dollar-to-cents conversion, validation.
+  - [x] 5.3: Added FAB (+) button on pricebook screen that opens add form modal.
+  - [x] 5.4: Tap on item opens edit form pre-populated with existing values.
+  - [x] 5.5: Long-press triggers soft delete (is_active = false) with confirmation alert.
+  - [x] 5.6: Added "Pricebook" navigation link below "Business Profile" in more/index.tsx. Added pricebook route to more/_layout.tsx.
 
-- [ ] Task 6: Create pricebook picker component for quote creation (AC: #5)
-  - [ ] 6.1: Create `apps/mobile/src/components/pricebook/pricebook-picker.tsx` — a modal or bottom sheet that displays pricebook items grouped by category. Each category is a collapsible section. Tapping an item calls an `onSelect(item: PricebookItem)` callback prop. Include a search bar at the top that filters items by name across all categories. Only show items where `is_active = true`.
-  - [ ] 6.2: Create `apps/mobile/src/hooks/use-pricebook.ts` — custom hook that returns `{ items, categories, isLoading }` by observing `pricebook_items` from WatermelonDB where `is_active = true`, sorted by `category` then `sort_order`. Use WatermelonDB's `Q.where()` and `Q.sortBy()`. Group items by category for section list display.
+- [x] Task 6: Create pricebook picker component for quote creation (AC: #5)
+  - [x] 6.1: Created pricebook-picker.tsx modal with SectionList grouped by category, search bar filtering by name, onSelect callback. Only shows is_active=true items.
+  - [x] 6.2: Created use-pricebook.ts hook using WatermelonDB Q.where('is_active', true) and Q.sortBy() with observable subscription.
 
-- [ ] Task 7: Create API endpoint for pricebook sync (AC: #1, #2, #3)
-  - [ ] 7.1: Add `pricebook_items` table to `prisma/schema.prisma` — fields: `id` (UUID, default uuid()), `account_id` (UUID, FK to accounts), `category` (String), `name` (String), `description` (String, nullable), `unit_price` (Int — cents), `unit_type` (enum UnitType: EACH, HOUR, FLAT), `is_active` (Boolean, default true), `is_template` (Boolean, default false), `sort_order` (Int, default 0), `created_at` (DateTime, default now()), `updated_at` (DateTime, @updatedAt), `synced_at` (DateTime, nullable). Add relation to `accounts`. Add index `idx_pricebook_items_account_id` on `account_id`.
-  - [ ] 7.2: Run `npx prisma migrate dev --name add-pricebook-items` to create the migration.
-  - [ ] 7.3: Add `pricebook_items` seed data to `apps/api/prisma/seed.ts` — store the same template data server-side for future sync scenarios. Mark template items with `is_template = true`.
+- [x] Task 7: Create API endpoint for pricebook sync (AC: #1, #2, #3)
+  - [x] 7.1: Added PricebookItem model and UnitType enum to Prisma schema with FK to accounts, index on account_id.
+  - [x] 7.2: Migration not run (no database available) — schema is ready for `npx prisma migrate dev --name add-pricebook-items`.
+  - [x] 7.3: Created prisma/seed.ts with HVAC, plumbing, electrical template data marked with is_template=true. Added prisma seed config to package.json.
 
-- [ ] Task 8: Update shared types (AC: all)
-  - [ ] 8.1: Create `packages/shared/src/types/pricebook.ts` — export `PricebookItem` interface: `{ id: string, accountId: string, category: string, name: string, description?: string, unitPrice: number, unitType: UnitType, isActive: boolean, sortOrder: number, createdAt: string, updatedAt: string }`. Export `UnitType` enum: `EACH`, `HOUR`, `FLAT`. Export `PricebookCategory` type (string alias for now).
-  - [ ] 8.2: Update `packages/shared/src/index.ts` to export pricebook types.
-  - [ ] 8.3: Add `UnitType` enum to Prisma schema if not using shared enum — the Prisma enum must match the shared TypeScript enum values (`EACH`, `HOUR`, `FLAT`).
+- [x] Task 8: Update shared types (AC: all)
+  - [x] 8.1: Created packages/shared/src/types/pricebook.ts with PricebookItem interface, UnitType enum (EACH, HOUR, FLAT), PricebookCategory type.
+  - [x] 8.2: Updated packages/shared/src/index.ts to export PricebookItem, PricebookCategory types and UnitType enum.
+  - [x] 8.3: Added UnitType enum to Prisma schema matching shared TypeScript enum values.
 
 ## Dev Notes
 
@@ -268,9 +268,49 @@ mvps/field-service-management/src/
 ## Dev Agent Record
 
 ### Agent Model Used
+Claude Opus 4.6
 
 ### Debug Log References
+- All 7 pricebook-service tests pass (seedPricebook for HVAC/Plumbing/Electrical, field validation, idempotency, account_id, unit types)
+- All 39 API tests pass (no regressions)
+- Prisma migration not run (no database available) — schema ready for migration
 
 ### Completion Notes List
+- Implemented all 8 tasks covering shared types, JSON templates, WatermelonDB model/schema/migration, seeding service with tests, onboarding integration, pricebook management screen with CRUD, pricebook picker for quotes, Prisma schema, and seed data.
+- Trade-specific pricebooks: HVAC (36 items), Plumbing (34 items), Electrical (37 items) — all with realistic market pricing in integer cents.
+- All money stored as integer cents per architecture. Display uses centsToDollars() from shared utils.
+- Soft delete pattern (is_active=false) used for item removal to preserve quote references.
+- Pricebook seeding is idempotent — checks existingCount > 0 before seeding.
+- Onboarding pricebook seeding failure is non-blocking — logs error and proceeds.
+- Jest test framework set up for mobile app (ts-jest with decorator support).
+- usePricebook hook uses WatermelonDB observable queries for reactive UI updates.
 
 ### File List
+
+**New Files:**
+- `apps/mobile/src/data/pricebooks/hvac.json`
+- `apps/mobile/src/data/pricebooks/plumbing.json`
+- `apps/mobile/src/data/pricebooks/electrical.json`
+- `apps/mobile/src/db/models/pricebook-item.ts`
+- `apps/mobile/src/services/pricebook-service.ts`
+- `apps/mobile/src/services/pricebook-service.test.ts`
+- `apps/mobile/src/hooks/use-pricebook.ts`
+- `apps/mobile/src/components/pricebook/pricebook-item-form.tsx`
+- `apps/mobile/src/components/pricebook/pricebook-picker.tsx`
+- `apps/mobile/app/(tabs)/more/pricebook.tsx`
+- `apps/api/prisma/seed.ts`
+- `apps/mobile/jest.config.js`
+- `packages/shared/src/types/pricebook.ts`
+
+**Modified Files:**
+- `apps/mobile/src/db/schema.ts` — added pricebook_items table, version 1 -> 2
+- `apps/mobile/src/db/migrations.ts` — added migration to version 2
+- `apps/mobile/src/db/index.ts` — registered PricebookItem model
+- `apps/mobile/app/(auth)/onboarding.tsx` — added seedPricebook call after profile save
+- `apps/mobile/app/(tabs)/more/index.tsx` — added Pricebook navigation link
+- `apps/mobile/app/(tabs)/more/_layout.tsx` — added pricebook route
+- `apps/mobile/package.json` — added jest/ts-jest devDeps, updated test script
+- `apps/api/prisma/schema.prisma` — added UnitType enum, PricebookItem model
+- `apps/api/package.json` — added db:migrate, db:seed scripts, prisma seed config
+- `packages/shared/src/index.ts` — export pricebook types
+
