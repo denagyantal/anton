@@ -5,10 +5,13 @@
 # to produce a working MVP codebase.
 #
 # Usage:
-#   bash run-automvp.sh                              # Auto-pick best idea, run next step
-#   bash run-automvp.sh --idea affordable-helpdesk   # Specific idea
+#   bash run-automvp.sh                              # Process next idea from queue (or auto-pick)
+#   bash run-automvp.sh --idea affordable-helpdesk   # Specific idea (one-off, skips queue)
 #   bash run-automvp.sh --step architecture           # Force specific step
 #   bash run-automvp.sh --max-stories 3               # Process up to N stories per run (loop steps)
+#   bash run-automvp.sh --queue contractor-quoting    # Add idea to the queue
+#   bash run-automvp.sh --dequeue contractor-quoting  # Remove idea from the queue
+#   bash run-automvp.sh --list                        # Show current queue
 
 set -euo pipefail
 
@@ -18,9 +21,23 @@ DATE=$(date +%Y-%m-%d)
 SHORTLISTED="$BASE_DIR/ideas/shortlisted"
 BMAD_OUT="$BASE_DIR/_bmad-output/planning-artifacts"
 MVPS_DIR="$BASE_DIR/mvps"
+QUEUE_FILE="$BASE_DIR/automvp-queue.txt"
 mkdir -p "$LOG_DIR" "$MVPS_DIR"
 
 [ -f "$BASE_DIR/.env" ] && source "$BASE_DIR/.env"
+
+# ─── Quick step preview for --list (no SPECIFIC_STEP context) ───
+next_step_preview() {
+  local IDEA="$1"
+  local MVP="$MVPS_DIR/$IDEA"
+  if [ ! -f "$MVP/planning/architecture.md" ]; then echo "architecture"
+  elif [ ! -f "$MVP/planning/epics.md" ]; then echo "epics"
+  elif [ ! -f "$MVP/sprint-status.yaml" ]; then echo "sprint"
+  elif grep -qE '^\s+[0-9]+-[0-9]+.*:\s*(ready-for-dev|in-progress)\s*$' "$MVP/sprint-status.yaml" 2>/dev/null; then echo "dev"
+  elif grep -qE '^\s+[0-9]+-[0-9]+.*:\s*backlog\s*$' "$MVP/sprint-status.yaml" 2>/dev/null; then echo "stories"
+  else echo "done"
+  fi
+}
 
 # ─── Parse arguments ───
 SPECIFIC_IDEA=""
@@ -32,6 +49,49 @@ while [[ $# -gt 0 ]]; do
     --idea) SPECIFIC_IDEA="$2"; shift 2 ;;
     --step) SPECIFIC_STEP="$2"; shift 2 ;;
     --max-stories) MAX_STORIES="$2"; shift 2 ;;
+    --queue)
+      IDEA_TO_QUEUE="$2"
+      # Validate: must have a shortlisted file
+      if [ ! -f "$SHORTLISTED/${IDEA_TO_QUEUE}.md" ]; then
+        echo "Error: No shortlisted idea found: $IDEA_TO_QUEUE"
+        echo "Available ideas:"
+        ls "$SHORTLISTED"/*.md 2>/dev/null | xargs -I{} basename {} .md | sort
+        exit 1
+      fi
+      # Avoid duplicates
+      if grep -qx "$IDEA_TO_QUEUE" "$QUEUE_FILE" 2>/dev/null; then
+        echo "Already in queue: $IDEA_TO_QUEUE"
+      else
+        echo "$IDEA_TO_QUEUE" >> "$QUEUE_FILE"
+        echo "Added to queue: $IDEA_TO_QUEUE"
+      fi
+      exit 0
+      ;;
+    --dequeue)
+      IDEA_TO_DEQUEUE="$2"
+      if [ -f "$QUEUE_FILE" ] && grep -qx "$IDEA_TO_DEQUEUE" "$QUEUE_FILE"; then
+        grep -vx "$IDEA_TO_DEQUEUE" "$QUEUE_FILE" > "$QUEUE_FILE.tmp" && mv "$QUEUE_FILE.tmp" "$QUEUE_FILE"
+        echo "Removed from queue: $IDEA_TO_DEQUEUE"
+      else
+        echo "Not in queue: $IDEA_TO_DEQUEUE"
+      fi
+      exit 0
+      ;;
+    --list)
+      echo "=== AutoMVP Queue ==="
+      if [ -f "$QUEUE_FILE" ] && [ -s "$QUEUE_FILE" ]; then
+        N=1
+        while IFS= read -r line; do
+          [ -z "$line" ] && continue
+          STEP_INFO=$(next_step_preview "$line" 2>/dev/null || echo "?")
+          echo "  $N. $line  (next: $STEP_INFO)"
+          N=$((N + 1))
+        done < "$QUEUE_FILE"
+      else
+        echo "  (empty — will auto-pick by score)"
+      fi
+      exit 0
+      ;;
     *) echo "Unknown option: $1"; exit 1 ;;
   esac
 done
@@ -49,12 +109,36 @@ notify() {
 }
 
 # ─── Find an idea that has a PRD but hasn't been fully MVP'd yet ───
+# Priority: 1) --idea flag  2) queue file  3) auto-pick by score
 pick_idea() {
   if [ -n "$SPECIFIC_IDEA" ]; then
     echo "$SPECIFIC_IDEA"
     return
   fi
 
+  # Check queue file — pick the first idea that still has work to do
+  if [ -f "$QUEUE_FILE" ] && [ -s "$QUEUE_FILE" ]; then
+    while IFS= read -r QUEUED; do
+      [ -z "$QUEUED" ] && continue
+      [ ! -f "$SHORTLISTED/${QUEUED}.md" ] && continue
+
+      # Check if this idea is fully done
+      if [ -f "$MVPS_DIR/$QUEUED/sprint-status.yaml" ]; then
+        if ! grep -qE '^\s+[0-9]+-[0-9]+.*:\s*(backlog|ready-for-dev|in-progress)\s*$' "$MVPS_DIR/$QUEUED/sprint-status.yaml" 2>/dev/null; then
+          log "Queue: $QUEUED is fully done, removing from queue"
+          grep -vx "$QUEUED" "$QUEUE_FILE" > "$QUEUE_FILE.tmp" && mv "$QUEUE_FILE.tmp" "$QUEUE_FILE"
+          continue
+        fi
+      fi
+
+      echo "$QUEUED"
+      return
+    done < "$QUEUE_FILE"
+    # Queue existed but all items are done
+    log "Queue is empty (all items completed)"
+  fi
+
+  # Fallback: auto-pick highest-scoring idea with a PRD
   BEST=""
   BEST_SCORE=0
 
