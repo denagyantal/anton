@@ -141,7 +141,7 @@ next_step() {
     echo "epics"
   elif [ ! -f "$MVP/sprint-status.yaml" ]; then
     echo "sprint"
-  elif grep -qE '^\s+[0-9]+-[0-9]+.*:\s*ready-for-dev\s*$' "$MVP/sprint-status.yaml" 2>/dev/null; then
+  elif grep -qE '^\s+[0-9]+-[0-9]+.*:\s*(ready-for-dev|in-progress)\s*$' "$MVP/sprint-status.yaml" 2>/dev/null; then
     echo "dev"
   elif grep -qE '^\s+[0-9]+-[0-9]+.*:\s*backlog\s*$' "$MVP/sprint-status.yaml" 2>/dev/null; then
     echo "stories"
@@ -304,10 +304,14 @@ INSTRUCTIONS:
 
     dev)
       local STORY_KEY
-      STORY_KEY=$(next_story_key "$MVP/sprint-status.yaml" "ready-for-dev")
+      # Prioritize resuming in-progress stories over starting new ones
+      STORY_KEY=$(next_story_key "$MVP/sprint-status.yaml" "in-progress")
+      if [ -z "$STORY_KEY" ]; then
+        STORY_KEY=$(next_story_key "$MVP/sprint-status.yaml" "ready-for-dev")
+      fi
 
       if [ -z "$STORY_KEY" ]; then
-        log "No ready-for-dev stories found"
+        log "No in-progress or ready-for-dev stories found"
         return 0
       fi
 
