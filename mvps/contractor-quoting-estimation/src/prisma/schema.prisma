@@ -1,0 +1,134 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  resetToken    String?
+  resetTokenExpiry DateTime?
+  profile       Profile?
+  quotes        Quote[]
+  templates     Template[]
+}
+
+model Profile {
+  id              String  @id @default(cuid())
+  userId          String  @unique
+  user            User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  businessName    String
+  contactName     String?
+  phone           String?
+  email           String?
+  licenseNumber   String?
+  logoUrl         String?
+  defaultTaxRate  Float   @default(0)
+  paymentTerms    String?
+  brandColor      String  @default("#2563EB")
+  trade           Trade   @default(PLUMBING)
+}
+
+model Quote {
+  id              String      @id @default(cuid())
+  userId          String
+  user            User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status          QuoteStatus @default(DRAFT)
+  quoteNumber     String      @unique
+  trade           Trade
+  customerName    String
+  customerAddress String?
+  customerPhone   String?
+  customerEmail   String?
+  notes           String?
+  taxRate         Float       @default(0)
+  depositType     DepositType?
+  depositValue    Float?
+  termsText       String?
+  viewToken       String      @unique @default(cuid())
+  viewedAt        DateTime?
+  signedAt        DateTime?
+  signatureData   String?
+  signerIp        String?
+  paidAt          DateTime?
+  expiresAt       DateTime?
+  stripePaymentIntentId String?
+  depositAmountPaid     Float?
+  pdfUrl          String?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  sentAt          DateTime?
+  lineItems       LineItem[]
+  photos          QuotePhoto[]
+}
+
+model LineItem {
+  id          String  @id @default(cuid())
+  quoteId     String
+  quote       Quote   @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  description String
+  quantity    Float   @default(1)
+  unit        String  @default("each")
+  unitPrice   Float
+  sortOrder   Int     @default(0)
+  isCustom    Boolean @default(false)
+}
+
+model QuotePhoto {
+  id        String @id @default(cuid())
+  quoteId   String
+  quote     Quote  @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  url       String
+  thumbnail String?
+  sortOrder Int    @default(0)
+  caption   String?
+}
+
+model Template {
+  id          String         @id @default(cuid())
+  trade       Trade
+  name        String
+  description String?
+  isSystem    Boolean        @default(true)
+  userId      String?
+  user        User?          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items       TemplateItem[]
+}
+
+model TemplateItem {
+  id              String   @id @default(cuid())
+  templateId      String
+  template        Template @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  description     String
+  suggestedPrice  Float?
+  unit            String   @default("each")
+  category        String?
+  sortOrder       Int      @default(0)
+}
+
+enum Trade {
+  PLUMBING
+  ELECTRICAL
+  HVAC
+  PAINTING
+}
+
+enum QuoteStatus {
+  DRAFT
+  SENT
+  VIEWED
+  SIGNED
+  PAID
+  EXPIRED
+}
+
+enum DepositType {
+  FIXED
+  PERCENTAGE
+}
