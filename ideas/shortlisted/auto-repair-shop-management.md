@@ -1,6 +1,6 @@
 # Auto Repair Shop Management
 
-**Score**: 91/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
+**Score**: 92/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
 
 ## One-Line Pitch
 Full-featured auto shop management in the $50-150/mo dead zone: work orders, DVI, customer texting, and QB sync between ARI's $20 and Tekmetric's $179.
@@ -57,3 +57,4 @@ Full-featured auto shop management in the $50-150/mo dead zone: work orders, DVI
 | 2026-03-22 | 88/105 | competitor-analysis | ↑1: Detailed gap analysis — Shopmonkey v2 "nightmare, many features removed"; Tekmetric $199-439/mo; DVI usability issues; closed API ecosystems; BayBook concept at $59/mo |
 | 2026-03-23 | 89/105 | competitor-analysis | ↑1: Tekmetric confirmed price increase $179→$199; Shopmonkey v2 "harder to use, requires more keystrokes"; Garage360 $79/mo as new affordable floor; Mitchell 1 still Windows-only in 2026; advanced analytics require manual exports everywhere; WrenchPad concept at $39/mo for 1-2 bay shops |
 | 2026-03-24 | 91/105 | reddit, competitor-analysis, trends | ↑2: DETAILED competitor analysis — Shopmonkey $112-179/mo v2 "nightmare, features removed"; Tekmetric $179-199/mo "busy and unintuitive"; Shop-Ware $224/mo overkill; ARI $8-30/mo too basic; clear $30-112/mo dead zone; offline mode gap for rural shops |
+| 2026-04-01 | 92/105 | competitor-analysis | ↑1: Detailed competitor breakdown: Tekmetric "buggy" — no state inspection date field, no tech-job visibility; Shopmonkey v2 "nightmare, more clicks, features removed"; AutoLeap support "not possible" for feature requests; Mitchell 1 still no cloud sync Windows-only; $179/mo entry price across all 3 market leaders confirmed; ShopDesk concept at $79 LTD |

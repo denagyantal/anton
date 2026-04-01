@@ -1,4 +1,4 @@
-# Pest Control Route & Compliance Tracker - Score: 85/105
+# Pest Control Route & Compliance Tracker - Score: 87/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
@@ -65,3 +65,4 @@ Route-optimized scheduling with chemical compliance logging and EPA reporting pu
 | 2026-03-23 | 83/105 | reddit, trends | ↑1: Reddit: state-specific compliance platform with WDO inspection reports (FL), fumigation logs (CA), GPS/timestamp photo docs, EPA chemical tracking; Trends: paper-to-digital transition in pest control confirmed; 60% of young pest pros prefer mobile-first |
 | 2026-03-24 | 85/105 | reddit | ↑2: Reddit: 75K+ operators confirmed; EPA-mandated chemical application records; MSDS access in field; state-specific compliance reporting; different treatment intervals per pest type; PestRoutes/Briostack $99-199/mo; solo and 2-3 tech shops completely underserved at $29/mo |
 | 2026-03-25 | 86/105 | hn-indiehackers, trends | GorillaDesk 3,100+ companies $165-375/mo bootstrapped validates premium; lawn care software $1.98B→$3.2B; regulatory compliance tightening |
+| 2026-04-01 | 87/105 | reddit | ↑1: EPA registration number tracking per application confirmed as legal requirement; chemical inventory + usage tracking per job; treatment site map (bait station placement on property diagram) as unique differentiator; GorillaDesk $49-99/mo confirmed — lacks chemical compliance layer; 30K+ businesses, $26B+ market |

@@ -1,4 +1,4 @@
-# Legal Practice Management for Solo Attorneys - Score: 86/105
+# Legal Practice Management for Solo Attorneys - Score: 87/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
@@ -70,3 +70,4 @@ Dead-simple legal practice tool for solo attorneys — matter management, time t
 |------|-------|---------|-------|
 | 2026-03-19 | 86/105 | competitor-analysis | First identified: deep competitor analysis reveals 49% solo practitioners paying $109-139/mo for essential features; $3.14B market with massive pricing headroom |
 | 2026-03-20 | 86/105 | reddit | Client portal demand for professional services reinforced |
+| 2026-04-01 | 87/105 | competitor-analysis | ↑1: Detailed solo attorney stack analysis — Clio $49-129/user + add-ons; Time59 $199/yr billing-only; trust accounting locked at premium tiers; per-user pricing punishes growth; mobile afterthought across all tools; document automation quality poor; CaseFox free tier but no trust accounting; SoloDesk Legal concept at $89 LTD for up to 3 attorneys |

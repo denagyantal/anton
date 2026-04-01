@@ -1,4 +1,4 @@
-# Insurance Agent CRM & Policy Tracker - Score: 90/105
+# Insurance Agent CRM & Policy Tracker - Score: 91/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -63,3 +63,4 @@ Lightweight policy CRM for independent insurance agents — renewal dashboard, a
 | 2026-03-21 | 87/105 | reddit | Confirmed in reddit-2026-03-21; agents still reverting to spreadsheets despite AMS |
 | 2026-03-23 | 88/105 | reddit | ↑1: Detailed policy lifecycle gap confirmed; AMS360 difficulty pulling data; Momentum buries features "a few clicks deep" with slower load times; AgencyZoom sales-only; agents cycling through 3-4 CRMs; insurance-native CRM built around lead→quote→bind→service→renew lifecycle |
 | 2026-03-24 | 90/105 | reddit, competitor-analysis, hn-indiehackers | ↑2: TRIPLE signal — Reddit: carrier portal fragmentation, 25-40% revenue increase from CRM, 5-15 carrier portals daily; Competitor analysis: Applied Epic "most outdated, clunky" $150-300/user/mo, HawkSoft rigid workflows, EZLynx opaque; AgencyLite concept at $49/mo flat for up to 5 users |
+| 2026-04-01 | 91/105 | reddit, competitor-analysis | ↑1: DUAL signal — Reddit: 10-15 hrs/week admin tasks confirmed; commission reconciliation from 5-10 carriers monthly is manual; Competitor: Sagitta $5,000+/mo still has literal green-screen terminal interface in 2025; Applied Epic $300-800/mo; agencies using 3-4 disconnected tools; "locked into EZLynx hell" sentiment growing; AgencyOS concept at $99 LTD for up to 3 agents |

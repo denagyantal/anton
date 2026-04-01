@@ -1,6 +1,6 @@
 # Dental Patient Communication Platform
 
-**Score**: 90/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
+**Score**: 93/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
 
 ## One-Line Pitch
 Appointment confirmations, recall campaigns, and review requests for dental practices at $49-99/mo vs Weave's $399+/mo.
@@ -72,3 +72,4 @@ Dental practices need patient communication (appointment confirmations, recall/r
 | 2026-03-23 | 88/105 | trends | ↑1: Legacy vs cloud sharp divide confirmed; Curve Dental cloud-native gaining; Pabau expanding into US; AI treatment planning + patient communication as white spaces; dental-specific marketing automation gap |
 | 2026-03-24 | 90/105 | reddit, competitor-analysis, trends | ↑2: TRIPLE signal — Reddit: patient recall + insurance verification top time-wasters, 2-3 hours daily; Trends: $4.16B market by 2035, AI treatment planning white space; Competitor analysis: Dentrix $250/mo dated, Eaglesoft server-based, CareStack $300/mo enterprise |
 | 2026-03-25 | 92/105 | hn-indiehackers, competitor-analysis, trends | TRIPLE: $1.97B market 9.54% CAGR; Dentrix $500-800/mo, Eaglesoft outdated, Open Dental needs server; DentistryOS $129/mo flat concept; insurance verification = killer app |
+| 2026-04-01 | 93/105 | reddit | ↑1: Insurance verification automation saves 15-30 min/patient — confirmed #1 front desk burnout; treatment plan follow-up automation = "money left on the table"; patient reactivation for 18+ month lapsed patients; Patterson $3,600 data conversion + training fee confirmed; new angle: front-office automation layer on top of existing PMS |

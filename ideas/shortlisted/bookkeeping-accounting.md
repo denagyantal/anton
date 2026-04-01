@@ -1,4 +1,4 @@
-# Simple Bookkeeping (QuickBooks Alternative) - Score: 89/105
+# Simple Bookkeeping (QuickBooks Alternative) - Score: 90/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -59,3 +59,4 @@ Dead-simple bookkeeping that does 3 things well — bank categorization, invoice
 | 2026-03-19 | 88/105 | reddit | QBO 64% cumulative price increase; multi-client dashboard gap validated again; bookkeepers exporting to Excel is standard |
 | 2026-03-20 | 89/105 | reddit, competitor-analysis | SaaS costs $9,100/employee/yr; subscription fatigue quantified; accounting PM competitor analysis |
 | 2026-03-21 | 89/105 | reddit | Bookkeeper multi-client dashboard demand confirmed in reddit-2026-03-21 |
+| 2026-04-01 | 90/105 | reddit | ↑1: New B2B angle unlocked — bookkeeping firm client portal: monthly bank statement collection automation, transaction question queue (flag uncategorized items for client to answer), monthly P&L delivery in branded portal; 60% of small firm users cite price as #1 complaint (2025 Tax Software Survey); virtual bookkeeping fastest-growing freelance category; TaxDome/Canopy $50-100/user/mo are tax-focused — no bookkeeping-native portal exists |
