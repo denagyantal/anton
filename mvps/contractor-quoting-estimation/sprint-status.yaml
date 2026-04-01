@@ -48,7 +48,7 @@ development_status:
   epic-1-retrospective: optional
 
   epic-2: ready-for-dev
-  2-1-trade-template-and-line-item-library: backlog
+  2-1-trade-template-and-line-item-library: ready-for-dev
   2-2-quote-builder-create-and-edit-quotes: backlog
   2-3-quote-management-duplicate-delete-and-search: backlog
   epic-2-retrospective: optional
