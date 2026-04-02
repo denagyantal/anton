@@ -61,3 +61,4 @@ Branded client portal for tax preparers — automated document checklist reminde
 | 2026-03-20 | 85/105 | reddit | Client portal for professional services demand continues |
 | 2026-03-21 | 85/105 | reddit | Confirmed in reddit-2026-03-21; tax preparer PM demand persistent |
 | 2026-03-25 | 87/105 | reddit | DETAILED: Drake 3.0 for integration, Lacerte 30-45 min waits; 350K+ preparers; 193 pay signals strongest in Reddit SaaS analysis; $29/mo per preparer concept |
+| 2026-04-02 | 87/105 | reddit | Stable: TurboTax "steering users to loans and credit cards" recurring Reddit complaint; FreeTaxUSA movement (free federal, $15 state) displacing prep businesses — tax pros need tools to compete; ProConnect expensive for solo preparers; Drake $1,800+/yr, UltraTax $2,000+/yr confirmed; 300K preparers at $39/mo or $299 LTD concept; client portal + document collection + e-sig = wedge product |

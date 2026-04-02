@@ -63,3 +63,4 @@ The first purpose-built software for exterior cleaning businesses — visual quo
 | 2026-03-20 | 93/105 | reddit | Auto detailing booking + portfolio demand; mobile operators need route optimization |
 | 2026-03-21 | 93/105 | reddit | Confirmed in reddit-2026-03-21; CRM + booking demand persistent |
 | 2026-03-25 | 94/105 | reddit | Before/after photo gallery, ceramic coating warranty management, fleet accounts, chemical tracking; Urable emerging; 65K+ detailing + 100K+ pressure washing businesses |
+| 2026-04-02 | 94/105 | reddit | Stable: mobile detailers need route efficiency + instant quoting; no-show rates high without automated SMS reminders; Urable expensive/complex for solo operators; photo-based quoting (snap car → price auto-suggests) confirmed as differentiator; Stripe tap-to-pay + tip prompt for on-site payment; 50K+ auto detailing businesses in US confirmed |
