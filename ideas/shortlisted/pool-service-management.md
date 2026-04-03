@@ -1,4 +1,4 @@
-# Pool Service Management — Score: 89/105
+# Pool Service Management — Score: 91/105
 
 **Tier**: 1 (Strong Opportunity)
 **Verdict**: BUILD
@@ -74,3 +74,4 @@ Small pool service operators (1-5 trucks) serving 50-300 residential customers a
 | 2026-03-24 | 88/105 | reddit | ↑2: Reddit: 50K+ pool service companies confirmed; chemical compliance + water chemistry workflow detail (pH, chlorine, alkalinity, CYA); $71B global market; equipment serial number + warranty tracking needed; seasonal route optimization |
 | 2026-04-01 | 89/105 | reddit | ↑1: 115K+ pool service businesses confirmed (vs prior 50K estimate); 5.7M residential pools; Skimmer "buggy" — support blames internet/Chrome; Pool Brain $49.50/mo confirmed as main alternative but limited route optimization; sweet spot = 80-150 pool operators; seasonal billing freeze/hold gap confirmed |
 | 2026-04-02 | 90/105 | reddit, hn-indiehackers | ↑1: DUAL signal — Reddit: Skimmer doubled per-pool pricing $1→$2/pool (100% increase, "quadrupled over 5 years"); payment processing "won't get paid, won't communicate"; Android instability; QB sync broken; HN/IH: 60K+ pool service businesses in US; chemical log required by many counties for licensed operators; QR code scan for pool equipment history as differentiator; FL/TX/CA as geographic concentration targets |
+| 2026-04-03 | 91/105 | reddit, hn-indiehackers, trends | ↑1: TRIPLE signal — Reddit: 1,000+ person "Misfits" revolt group against Service Autopilot (users blocked from official FB group) = exceptional social proof; Pool Brain crashes "every 30 seconds"; average pool tech 7.5 hrs/week on paperwork; chemical compliance tracking for pest+pool operators = regulatory requirement; HN/IH: Skimmer raised $74M Series C (bootstrapped 2014→2022) = moving upmarket, creating opening for solo techs; irrigation maintenance as adjacent white space; Trends: legacy FSM disruption confirms pool service as white space; "pool route optimization + chemical log" = 3-4 week MVP |

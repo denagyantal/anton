@@ -67,3 +67,4 @@ Airbnb hosts managing 3+ properties spend hours weekly on cleaner scheduling, qu
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-19 | 76/105 | reddit, hn-indiehackers | First identified: Airbnb turnover pain validated across multiple Reddit analysis sources; no dominant lightweight tool exists |
+| 2026-04-03 | 77/105 | reddit | ↑1: Reddit confirms hosts "use spreadsheets to schedule cleaners"; TurnoverBnB per-listing pricing complaints and limited checklist customization; manual text-the-cleaner workflow when booking changes; hosts managing 3+ properties report cleaners showing up to occupied units or missing turnovers entirely; $12-19/listing or flat $49/mo for up to 10 properties concept confirmed viable |

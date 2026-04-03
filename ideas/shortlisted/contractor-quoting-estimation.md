@@ -1,4 +1,4 @@
-# Contractor Quoting & Estimating Tool - Score: 89/105
+# Contractor Quoting & Estimating Tool - Score: 90/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
@@ -62,3 +62,4 @@ Professional quotes in 60 seconds from your phone — trade-specific templates f
 | 2026-03-21 | 88/105 | trends | AI estimating trend continues in trends-2026-03-21; merging ai-quoting-estimating-trades into this canonical entry |
 | 2026-03-23 | 89/105 | reddit, trends | ↑1: Rebar $14M Series A validates AI estimating — doubled ARR in 6 weeks of 2026; Reddit: SMS-first quoting demand (text job details → branded PDF quote); Trends: massive white space for residential contractor quoting from photos/voice (Rebar targets commercial HVAC suppliers only) |
 | 2026-04-02 | 89/105 | reddit | Stable: enterprise construction estimating $275/user/mo at low end, $950+/user/mo at high end confirmed; 23% cite poor support; 22% not user-friendly; small plumbing/HVAC/electrical shops (1-5 workers) just need professional quotes with materials + labor; pre-built trade-specific material cost library + branded PDF + e-signature + payment link concept validated; $39/mo or $299 LTD sweet spot confirmed |
+| 2026-04-03 | 90/105 | reddit, trends | ↑1: DUAL signal with two new angles — (1) FINANCING INTEGRATION: solo remodelers (10M+ self-employed contractors) need estimate-to-invoice with inline homeowner financing (Wisetack/GreenSky API) — turn "too expensive" into monthly payment conversation; Buildertrend $399/mo for teams; "simultaneously estimators, carpenters, bookkeepers, salespeople"; $79 LTD + financing transaction fees as recurring revenue; (2) SECURE BID DELIVERY: contractor on r/Plumbing emailed quote to wrong client exposing personal details; no tool has tracked delivery (know when client opens) + e-acceptance + automatic follow-up sequence; $25-49/mo; Trends: Rebar $14M Series A (Mar 10, 2026) confirms AI estimating wave; residential photo-to-quote gap = white space where Rebar targets commercial suppliers only |

@@ -1,4 +1,4 @@
-# Funeral Home Management — Score: 82/105
+# Funeral Home Management — Score: 86/105
 
 **Tier**: 1 (Strong Opportunity)
 **Verdict**: BUILD
@@ -77,3 +77,4 @@ Modern cloud-based funeral home management for independents — case management,
 | 2026-03-22 | 65/105 | — | Previously Tier 2; limited data |
 | 2026-03-23 | 82/105 | competitor-analysis | ↑17: Detailed competitor analysis reveals paper/Excel still dominant; Osiris financial reporting terrible; no QB integration; opaque pricing everywhere; RestAssured concept at $59/mo flat |
 | 2026-03-25 | 83/105 | reddit | DETAILED: 19K homes, 60% independent; digital arrangements + cremation tracking + vital stats; SCI consolidation squeezing independents; $69/mo all-in-one concept |
+| 2026-04-03 | 86/105 | reddit, hn-indiehackers, trends | ↑3: TRIPLE signal — Reddit: paper case files causing "disorganized records" and "transcription errors"; families geographically dispersed = physical e-signature logistical nightmare; Osiris "unusable with numerous errors" confirmed; "hours of double-entering data" standard; HN/IH: STRONG CASE STUDY — $29K MRR in 12 months with 45 funeral homes at $650/month; $280 CAC; 0.9% monthly churn; Tribute Technology sold for ~$1B exit; Tribute now VC-backed and expensive — ~17K independent family funeral homes priced out and underserved; Trends: SMB consolidation wave validates death care modernization; vertical AI (funeral home scheduling/compliance) identified as white space; RestAssured concept $59/mo flat |

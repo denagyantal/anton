@@ -1,6 +1,6 @@
 # Auto Repair Shop Management
 
-**Score**: 92/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
+**Score**: 94/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
 
 ## One-Line Pitch
 Full-featured auto shop management in the $50-150/mo dead zone: work orders, DVI, customer texting, and QB sync between ARI's $20 and Tekmetric's $179.
@@ -59,3 +59,4 @@ Full-featured auto shop management in the $50-150/mo dead zone: work orders, DVI
 | 2026-03-24 | 91/105 | reddit, competitor-analysis, trends | ↑2: DETAILED competitor analysis — Shopmonkey $112-179/mo v2 "nightmare, features removed"; Tekmetric $179-199/mo "busy and unintuitive"; Shop-Ware $224/mo overkill; ARI $8-30/mo too basic; clear $30-112/mo dead zone; offline mode gap for rural shops |
 | 2026-04-01 | 92/105 | competitor-analysis | ↑1: Detailed competitor breakdown: Tekmetric "buggy" — no state inspection date field, no tech-job visibility; Shopmonkey v2 "nightmare, more clicks, features removed"; AutoLeap support "not possible" for feature requests; Mitchell 1 still no cloud sync Windows-only; $179/mo entry price across all 3 market leaders confirmed; ShopDesk concept at $79 LTD |
 | 2026-04-02 | 93/105 | competitor-analysis | ↑1: Shopmonkey v2.0 forced update 2025 "removed features, doubled clicks" — multiple 1-star Capterra/G2 reviews calling it "almost not functional" creating LIVE switching moment; Mitchell1 no cloud sync still Windows-only; QuickBooks sync fragile on all platforms; DVI locked behind higher tiers across all tools; $49-79/mo cloud shop management for 1-3 bay shops = clear dead zone; 65K independent shops confirmed |
+| 2026-04-03 | 94/105 | reddit, competitor-analysis, trends | ↑1: TRIPLE signal — Reddit: Garage Journal forum confirms integration failures (ProDemand + AutoLaborExperts refused to integrate); data hostage on cancellation; Mitchell cloud outages cause shop shutdowns; no job-based invoicing anywhere; Competitor: $179-299/mo across all major players; $49-79/mo dead zone between Garage360 ($79/mo limited) and Tekmetric ($179/mo); QBO sync fragile (third-party connector required at Tekmetric); Mitchell 1 "no cloud sync" Windows-only still in 2026; Trends: vertical AI for auto repair (voice-to-work-order) as differentiator; ShopFlow concept at $99/mo for 1-3 bay solo mechanic |
