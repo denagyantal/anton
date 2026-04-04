@@ -1,4 +1,4 @@
-# Solo Therapist Practice Management - Score: 82/105
+# Solo Therapist Practice Management - Score: 84/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -58,3 +58,4 @@ Streamlined practice management for solo therapists -- HIPAA-compliant schedulin
 | 2026-03-20 | 80/105 | reddit | Reddit: 656 health/wellness requests with growing revenue signals |
 | 2026-03-24 | 82/105 | reddit | ↑2: Reddit: 200K+ practitioners, 60% solo, HIPAA compliance detail, 8-12 hours/week admin waste, mental health demand up 38% since 2020; SimplePractice $29-99/mo overkill; $19/mo flat solo concept with AI SOAP templates + telehealth |
 | 2026-03-25 | 83/105 | hn-indiehackers | AI clinical notes in 3+ independent roundups; HIPAA = moat; 198K+ psychologists + 370K+ counselors; NoteScribe $39/mo concept |
+| 2026-04-04 | 84/105 | reddit | ↑1: Greensighter analysis confirms solo practitioners handle scheduling + HIPAA-compliant notes + insurance billing + Stripe payment manually across 3-5 disconnected tools; SimplePractice $69+/mo "enterprise-heavy" for solo with 20 clients; AI SOAP note generation = key differentiator for solo therapist time savings (8-12 hrs/week admin waste); telehealth integration = premium V2 feature; no insurance billing in V1 = fastest to market; 600K+ licensed mental health practitioners; $39/mo flat for solo concept validated; SimplePractice bloating continues to drive demand for simpler alternative |

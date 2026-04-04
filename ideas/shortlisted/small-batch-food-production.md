@@ -1,4 +1,4 @@
-# Small-Batch Food Production Management - Score: 75/105
+# Small-Batch Food Production Management - Score: 76/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
@@ -60,3 +60,4 @@ Commercial SaaS for micro-bakeries, cottage food, and small-batch producers — 
 | 2026-03-18 | 75/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Craftplan gaining traction; Carbon ERP at $90/mo; YC RFS backing the category |
 | 2026-03-19 | 75/105 | reddit | Stable: no significant new data |
 | 2026-03-21 | 75/105 | hn-indiehackers | Craftplan continued traction in hn-indiehackers-2026-03-21 |
+| 2026-04-04 | 76/105 | hn-indiehackers | ↑1: Craftplan HN post validated with strong engagement (100+ comments); multiple commenters "my wife runs a bakery and needs this"; "my wife is opening a bakery and I was thinking of building this" — organic product market fit signal; large ERP (SAP) is overkill; generic PM doesn't understand recipes/batches/yield; "wrestle with website, ERP, and building Notion connectors for production orders" = real pain; dead-simple production management: batch planner + recipe cost calculator + order manager + supplier ordering at $29-49/mo; cottage food law explosion post-COVID driving new micro-bakery formation; 100K+ micro-bakeries in US with zero purpose-built commercial SaaS |

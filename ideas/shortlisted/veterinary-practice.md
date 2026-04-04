@@ -1,6 +1,6 @@
 # Veterinary Practice Communication
 
-**Score**: 89/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
+**Score**: 90/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-04-04
 
 ## One-Line Pitch
 Appointment confirmations, prescription reminders, and follow-up scheduling for vet practices — same tech as dental communication, different branding.
@@ -56,3 +56,4 @@ Build as shared platform with dental communication — same tech stack, differen
 | 2026-03-24 | 88/105 | reddit, competitor-analysis | ↑2: DUAL signal — Reddit: cloud migration wave, AI SOAP notes, 33K+ practices 70% small; Competitor analysis: Cornerstone $420/mo "horrible to navigate, freezes", ezyVet $245/mo + implementation fees, Shepherd click-heavy, DaySmart $116-565/mo per-user; VetSimple concept at $69/mo flat |
 | 2026-04-01 | 89/105 | reddit | ↑1: IDEXX/Covetrus using software contracts to bundle diagnostic equipment sales confirmed — independent vets feel trapped; migration from Avimark requires 1-3 months + consultant; 60%+ of 30K US clinics independently owned; cloud alternatives $200-500/mo + long implementation; IDEXX Neo $116-565/mo per-user confirmed |
 | 2026-04-02 | 89/105 | reddit, hn-indiehackers | Stable: DUAL signal — Reddit: Shepherd "every letter in SOAP requires opening a different tab"; Covetrus Pulse "too many clicks", slow load times; legacy (AVImark/Cornerstone) desktop-only; AI SOAP note generation emerging as critical need; HN: Instinct Science in March 2026 HN hiring thread (VC-backed, actively recruiting) validates market demand; 30K+ indie vet practices; cloud-native EMR with AI SOAP notes for 1-3 vet clinic = clear white space at <$200/mo |
+| 2026-04-04 | 90/105 | trends | ↑1: MAJOR market signal — Lupa (London) raises $20M Series A just 5 months after seed round, reports 50x revenue growth; launch of world's first Veterinary AI Lab; "AI-native clinical tools are just now arriving" to vet industry; engineers from DeepMind, Meta AI, Palantir confirm serious talent; Digitail (all-in-one cloud-native vet PM) confirms cloud shift; 285+ vet PM software startups with 28 funded = competitive but growing market; AI SOAP notes for 1-3 vet clinic = confirmed white space; key insight: same communication-layer thesis as dental (Archy $20M, Wisdom $21M) applies directly to vet; 28K+ independent US clinics at <$200/mo = validated concept |

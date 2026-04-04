@@ -1,4 +1,4 @@
-# Gym / Fitness Studio Management - Score: 85/105
+# Gym / Fitness Studio Management - Score: 87/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -71,6 +71,8 @@ Mindbody dominates but real cost is $500-700+/mo with 20% marketplace commission
 | 2026-02-27 | 76/105 | reddit, trends | First identified: Mindbody dominant at $159+/mo; Glofox, GymDesk, Zen Planner exist; $63.94B market |
 | 2026-03-03 | 72/105 | reddit | Mindbody declining but fitness not boring enough; high churn in fitness industry |
 | 2026-03-05 | 72/105 | reddit | Stable; crowded market, fitness is trendy not boring |
+| 2026-03-19 | 85/105 | competitor-analysis, trends | ↑13: Full competitor analysis — Mindbody $139-700+/mo + per-transaction fees; WellnessLiving cheaper but less polished; Vagaro generic; Gymdesk limited; no right-sized option for 1-location boutiques; Mindbody 8-week onboarding impossible for gym owner who's also coaching; "Boutique Gym OS" at $49/mo flat with Stripe-direct processing (zero extra %) |
+| 2026-04-04 | 87/105 | competitor-analysis | ↑2: Detailed Mindbody exodus data — "plethora of hidden costs", per-transaction fees higher than Stripe EU rates, outdated UI making "basic tasks like booking more complex"; WellnessLiving ~$89-250/mo (cheaper but less polished); Vagaro ~$30-85/mo (affordable but limited gym features); Gymdesk $75-150/mo (clean but limited for complex schedules); Momence ~$139/mo (modern but limited retention analytics); Mariana Tek enterprise-priced; clear gap at $49/mo flat with Stripe pass-through, mobile member app included, 1-hour setup vs Mindbody's 8 weeks; CrossFit boxes as ICP (tight community, high WTP, "switch from Mindbody" narrative = organic marketing); AppSumo: Mindbody exodus = compelling pitch |
 | 2026-03-07 | 54/105 | trends | Score drop: enterprise-level complexity, free tier from ClassPass, Mindbody dominance |
 | 2026-03-17 | 82/105 | reddit, competitor-analysis | Major re-evaluation: boutique studio focus (yoga, CrossFit, pilates); Mindbody $120+/mo, users only use 40% of features |
 | 2026-03-18 | 83/105 | competitor-analysis | Mindbody $500-700/mo real cost with 20% marketplace commission; CrossFit community strong for word-of-mouth |
