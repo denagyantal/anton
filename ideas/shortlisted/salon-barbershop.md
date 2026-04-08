@@ -1,6 +1,6 @@
 # Salon / Barbershop Management
 
-**Score**: 82/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-07
+**Score**: 89/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-04-08
 
 ## One-Line Pitch
 No-commission, no-contract booking and management for independent barbershops and solo stylists at $59-99 LTD.
@@ -67,3 +67,4 @@ Mindbody has mandatory 12-month contracts and an outdated interface. Fresha has 
 | 2026-03-21 | 82/105 | hn-indiehackers | Softalon salon management validation in hn-indiehackers-2026-03-21 |
 | 2026-03-25 | 84/105 | competitor-analysis | DETAILED: Mindbody $269+ hidden fees + $499 data hostage + 12-month contracts; per-staff pricing punishes growth; ChairTime $49/mo flat concept; 1M+ shops |
 | 2026-04-07 | 88/105 | competitor-analysis-2026-04-07, trends-2026-04-07 | UPGRADE 84→88: Fresha 20% new client commission Nov 2025 confirmed = mass defection event; 450K+ professionals on Fresha; Vagaro "very slow" causing front desk queues + crashes; Mindbody "price quadrupled in 4 years"; no Google Business integration on Vagaro low tiers; "ChairBook" concept at $19/mo flat (no commissions, no per-booking fees); AI cancellation-fill SMS automation (2-3 week add-on) as v2 differentiator; "anti-Fresha" positioning confirmed as primary marketing message |
+| 2026-04-08 | 89/105 | competitor-analysis-2026-04-08 | ↑1: NEW SPECIFIC ANGLE — booth-rental barbershop model is the most specific gap: each barber is independent (pays weekly rent), needs independent calendar + payments + income dashboard, but existing software built for employee-model salons only; Mangomint explicitly excludes solos ("only teams allowed") — best-UX tool explicitly locks out 40%+ of the market; ALL platforms (Fresha, Vagaro, GlossGenius, Booksy) require clients to create platform account before booking — barbers report losing bookings at this friction point; Boulevard mobile app "buggy & low-rated on iOS & Android" — a booking app that doesn't work on phones is a critical failure for booth renters; 20% marketplace commission (Fresha + Booksy) creates indefinite revenue capture; "Booth Barber" concept: shop owner sees aggregate, each barber gets independent booking page, calendar, payment processing, income dashboard; clients book with just phone number (no account); $59/barber or $199/shop unlimited barbers |

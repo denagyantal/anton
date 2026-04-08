@@ -1,8 +1,8 @@
-# Freelancer Payment Collection & Late Invoice Chaser — Score: 79/105
+# Freelancer Payment Collection & Late Invoice Chaser — Score: 80/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-03-22
+**Evaluation Date**: 2026-04-08
 
 ## One-Line Pitch
 Automated invoice follow-up and escalation engine that sits between "send invoice" and "send to collections" — recovering late freelancer payments for $59-79 LTD.
@@ -72,3 +72,4 @@ Automated invoice follow-up and escalation engine that sits between "send invoic
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-22 | 79/105 | reddit | First identified: 54% late payment rate; 13-day average delay; no tool between invoicing and collections |
+| 2026-04-08 | 80/105 | hn-indiehackers-2026-04-08 | ↑1: HN thread (39 pts, 50 comments — high engagement for this type): QB/Xero reminders "feel robotic and go ignored"; WhatsApp manual follow-up described as "the thing that works" but inconsistent; clear gap: AI-drafted follow-up through WhatsApp Business API that adjusts tone by days overdue + client history; "this client is 3 days late → warm nudge; this one is 30 days late with no response → escalate"; $29-49/mo worth it to recover one invoice/month; family businesses especially struggle with relationship-preserving AR collection; new angle: WhatsApp Business API integration for AR = specific winnable feature nobody has nailed |
