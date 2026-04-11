@@ -1,4 +1,4 @@
-# Construction Management for Small Contractors — Score: 93/105
+# Construction Management for Small Contractors — Score: 95/105
 
 **Tier**: 1 (Strong Opportunity)
 **Verdict**: BUILD
@@ -26,3 +26,4 @@ Construction-specific invoicing MVP: progress billing, change order tracking, re
 | 2026-03-21 | 92/105 | hn-indiehackers | Hive ERP (construction) in hn-indiehackers-2026-03-21; mid-size construction ERP demand |
 | 2026-03-24 | 93/105 | hn-indiehackers | ↑1: HN: Hive ERP $500K in construction contracts before open-sourcing validates WTP; SubPay subcontractor payment tracker concept (draws, retainage, lien waivers); construction-specific terminology matters |
 | 2026-03-25 | 94/105 | competitor-analysis | DETAILED: Procore $375+/mo, Buildertrend $199-499/mo, Contractor Foreman $49/mo budget but unpolished; "spreadsheet-to-software" onboarding; JobBoard $39/mo flat concept |
+| 2026-04-11 | 95/105 | reddit-2026-04-11, trends-2026-04-11 | ↑1: DUAL-source NEW ANGLE — Reddit: WIP Reporting automation as QBO add-on for construction accountants (8-12 hrs/client/month wasted on manual WIP calculations); QBO "falls short for most construction clients" but $25K+ ERPs are overkill; Knowify ($99-249/mo) gaining traction but is contractor-focused, not accountant-focused; Adjacent: construction job costing QBO add-on (no commitment management, no AIA billing G702/G703, no subcontractor compliance in QBO); $3K/yr (QBO) → $25K/yr (ERP) = enormous gap; QBO-connected layer: real-time job cost dashboard, commitment tracking (POs auto-reserve budget), AIA progress billing, subcontractor COI tracking at $149-299/mo confirmed product concept; Trends: construction AI adoption doubled (38% with measurable impact, up from 17%); Joist (SignalFire) compresses proposals to under 1 hour; AI estimating 85-90% accuracy enabling 2-3x more project bids; YC Spring 2026 explicitly requesting construction tooling |
