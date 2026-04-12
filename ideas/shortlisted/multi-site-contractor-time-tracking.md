@@ -78,4 +78,5 @@ General contractors, landscaping companies, cleaning service businesses, and han
 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
+| 2026-04-12 | 85/105 | reddit-2026-04-12 | Stable: "#1 pain point from r/smallbusiness analysis (July 2025)" — "I need software that tracks employee hours across multiple job sites"; GPS geofenced clock-in per job site → auto job-cost allocation → payroll CSV = the missing workflow; Workyard $6-13/user + $50 base; Connecteam $34/mo base; Clockify no GPS job-site enforcement; r/sweatystartup + r/lawncare corroborate; $5-8/employee/mo or $99 LTD for up to 10 employees; 2M+ r/smallbusiness members = primary discovery channel |
 | 2026-04-04 | 85/105 | reddit | First identified — explicitly listed as "Reddit pain point with no solution"; GPS geo-fenced clock-in per job site for 5-50 employee contractors; ClockShark/Workyard too complex; Toggl missing GPS; payroll compliance = non-negotiable WTP; $5-8/employee/month MRR model |

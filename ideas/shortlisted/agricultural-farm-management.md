@@ -80,4 +80,5 @@ Beyond buyer psychology, there's a real compliance gap. Farmers participating in
 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
+| 2026-04-12 | 78/105 | hn-indiehackers-2026-04-12 | Stable: HN reconfirmed — "farmers use spreadsheets despite having economics degrees"; spray/chemical application records legally required in most US states; mobile-first spray event logging → re-entry interval auto-calculation → compliance report PDF = core MVP; $39/month; Granular (Corteva) = $1,000s/year, ignores small farms; no indie competitor found; 4/5 LTD potential |
 | 2026-04-01 | 78/105 | hn-indiehackers | First identified — HN community discussion confirms farmers on spreadsheets despite ag economics degrees; tax law (capital expenditure preference) makes LTD uniquely suitable; USDA program compliance creates regulatory pull |

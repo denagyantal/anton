@@ -90,4 +90,5 @@ Health inspectors walk in and see clipboards. A simple digital compliance app wi
 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
+| 2026-04-12 | 84/105 | hn-indiehackers-2026-04-12 | Stable: $12,000 average fines for food businesses failing compliance documentation reconfirmed; $49-$99/mo, very low competition; food trucks specifically as beachhead (fastest growing, active FB communities, health permit complexity high); daily temperature logs + cleaning schedule tracking + health permit document vault + inspection prep checklist + PDF export for inspector = MVP; 5/5 LTD potential confirmed |
 | 2026-04-05 | 84/105 | hn-indiehackers, trends | First identified — HN: food service compliance gap confirmed; FDA $12K fines; Jolt/FoodDocs enterprise-only; 300K+ indie restaurants on paper; inspector-ready PDF export as core feature; $499 LTD concept; food truck-specific angle; Trends: Oracle/NetSuite adding restaurant AI confirms investment thesis; Nory AI $37M Series B focuses on inventory/labor — compliance is separate underserved angle |
