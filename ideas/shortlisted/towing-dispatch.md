@@ -1,4 +1,4 @@
-# Towing Dispatch Software — Score: 77/105
+# Towing Dispatch Software — Score: 81/105
 
 **Tier**: 1 (Strong Opportunity)
 **Verdict**: EXPLORE FURTHER
@@ -78,3 +78,4 @@ Independent tow truck operators (1-5 trucks) make up the majority of the 35,000+
 | 2026-03-22 | 70/105 | — | Previously Tier 2; limited data |
 | 2026-03-23 | 77/105 | competitor-analysis | ↑7: Detailed competitor analysis reveals Towbook freezes/desktop-first; Traxero enterprise-only; mobile-first gap for independents; TowSnap concept at $35/mo |
 | 2026-03-25 | 79/105 | reddit | DETAILED: 60K+ companies, $14.5B revenue; motor club + lien + impound + DOT needs; 24/7 = high retention; $766.8M global market |
+| 2026-04-13 | 81/105 | competitor-analysis | ↑2: Detailed competitor analysis — Towbook $120/user/mo minimum ($300+/mo for 2-truck shop); month-end billing slowdowns + iPhone inferior to Android + sunk-cost lock-in; Omadi 1+ month onboarding + "support blames user error" (Capterra documented); Ranger SST per-call overage pricing at scale; motor club job assignment still requires manual phone calls despite "automation" claims; poor real-time multi-device sync across all players; "TowDash" $39/mo flat for 1-5 trucks with offline-first mobile + ETA texts + Stripe + motor club call logging |

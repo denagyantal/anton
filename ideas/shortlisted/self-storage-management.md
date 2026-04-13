@@ -1,4 +1,4 @@
-# Self-Storage Facility Management - Score: 76/105
+# Self-Storage Facility Management - Score: 82/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -56,3 +56,4 @@ Modern self-storage management -- unit tracking, tenant management, autopay, and
 | 2026-03-17 | 81/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 76/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Storable monopoly; gate/lock hardware integration complexity limits indie viability |
 | 2026-03-25 | 79/105 | reddit | DETAILED: 50K+ facilities, $39B+ revenue, 70% independent; SiteLink "interface disaster" + 300% rate increases; revenue management gap; $2/unit/mo concept |
+| 2026-04-13 | 82/105 | competitor-analysis | ↑3: Detailed competitor analysis — StorEDGE double-billed autopay in 2019 requiring 9 hours to void 200+ transactions; support "essentially gone" post-Storable acquisition (1-2 week email response); SiteLink data corruption + 3-year sync issue documented; SiteLink API paywall on top of subscription; feature stripping post-acquisition (removed smartphone payments, note-leaving); European challengers (Storeganise £0.25-£1/unit/mo, Stora £99.50/mo) not US-focused = clear US indie opening; "VaultDesk" $79/mo flat up to 200 units with reliable Stripe payments + US-based support |

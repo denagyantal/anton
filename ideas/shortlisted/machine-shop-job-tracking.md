@@ -1,6 +1,6 @@
 # Machine Shop Job Tracking (ERP Gap for 5–20 Person Shops)
 
-**Score**: 80/105
+**Score**: 84/105
 **Tier**: 1 (Strong Opportunity)
 **Verdict**: EXPLORE FURTHER
 **Evaluation Date**: 2026-04-03
@@ -84,3 +84,4 @@ Small machine shops (5–20 employees) are stuck between too-simple (Trello, Goo
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-04-03 | 80/105 | reddit | First identified: PracticalMachinist forum confirms shops stuck between Trello/Sheets (too simple) and AllOrders $1,800+/year ERP (too expensive); Realtrac "fairly affordable" but clunky; 5-20 person shops want cloud job tracking + quoting + work orders + tool crib at $100-300/mo; ~100K small US job shops; no cloud-native solution in this price range exists |
+| 2026-04-13 | 84/105 | competitor-analysis | ↑4: Detailed competitor analysis — ProShop $650-715/user/mo ($7,800/yr/user); one user abandoned $10,000+ implementation mid-project; JobBOSS² price tripled since 2012; Global Shop $90K routine update for 18 seats; Cetec minimum 5-user bill; MRPeasy overkill for <10 employees; no cloud-native under $300/mo option confirmed across all players; "developers have no shop floor feedback loop" — floor workers use, nobody tells developers; "TowDash" concept → "ShopFlow" $79/mo flat site license with no per-user pricing; offline BOM with parent/child parts; zero implementation cost |
