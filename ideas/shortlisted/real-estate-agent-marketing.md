@@ -40,3 +40,11 @@ New and independent real estate agents, small brokerages. 2M+ licensed agents; 1
 
 ## Key Source Links
 - [Greensighter: micro-SaaS ideas](https://www.greensighter.com/blog/micro-saas-ideas)
+- https://medium.com/@e2larsen/50-saas-ideas-pulled-straight-from-reddit-pain-points-a64569371691
+- https://www.dialpad.com/blog/real-estate-agent-software/
+
+## Signal History
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-03-05 | 75/105 | reddit, competitor-analysis | First identified; AI marketing kit generator concept |
+| 2026-04-14 | 75/105 | reddit | Stable: Solo RE agent "Lite CRM" angle identified — Follow Up Boss + BoldTrail "quote-based pricing significant investment for solo agents"; agents need lead pipeline tracking + follow-up reminders + deal status without 200-feature enterprise CRMs; "relationship memory" tool with Gmail/Outlook sync + touchpoint tracking + follow-up reminders; 2M+ licensed US agents; setup in under 10 minutes; $25-49/mo or $199-399 LTD; AI-suggested follow-up messages as differentiator |

@@ -56,3 +56,4 @@ Know which jobs make money — GPS-verified time tracking, receipt photo OCR, an
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 83/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-04-14 | 87/105 | reddit | ↑4 from last signal: QuickBooks forces "hack job costing using classes, items, custom fields" confirmed; "works until $2-3M revenue then gaps too expensive to ignore" = graduation pressure defined; CrewCost $599/mo out of reach for small GCs; Knowify $99/mo closest but limited adoption; 3.7M construction businesses in US (majority under $2M revenue) = large ICP; "job costing layer QuickBooks is missing" as positioning confirmed; budget vs. actual tracking + phase costing + simple reporting = MVP scope; $49-99/mo standalone or QuickBooks add-on |
