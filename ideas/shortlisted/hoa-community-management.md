@@ -1,7 +1,7 @@
 # HOA & Community Self-Management Platform
 
-**Score**: 80/105
-**Verdict**: EXPLORE FURTHER
+**Score**: 84/105
+**Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
 **Evaluation Date**: 2026-03-25
 
@@ -68,3 +68,4 @@ Free-tier HOA platform for self-managed communities — dues collection, financi
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-25 | 80/105 | reddit | First identified — 370K+ HOAs, 60% self-managed, Google Drive+Venmo workaround, volunteer board chaos |
+| 2026-04-15 | 84/105 | trends-2026-04-15 | ↑4: MAJOR VALIDATION — Assembly HOA (YC S2024) + Aldara (YC) = TWO YC-backed companies entering self-managed HOA space; investor conviction confirmed; 370K+ HOAs on email/spreadsheets confirmed at macro scale; self-managed HOAs completely unserved below $300/mo; TOPS Pro end-of-support July 2025 = active migration event; $99 LTD on dues collection + violation tracking + meeting minutes = clear product scope; speed advantage: indie can ship in 8 weeks before YC-funded competitors scale; upgraded verdict to BUILD |

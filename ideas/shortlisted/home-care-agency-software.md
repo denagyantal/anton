@@ -1,6 +1,6 @@
 # Home Care Agency Coordination Software
 
-**Score**: 75/105
+**Score**: 79/105
 **Verdict**: EXPLORE FURTHER
 **LTD Price**: N/A (MRR model at $199-399/mo per agency)
 **Evaluation Date**: 2026-04-04
@@ -84,3 +84,4 @@ Small independent home care agencies with 10-100 caregivers providing non-medica
 |------|-------|---------|-------|
 | 2026-04-04 | 75/105 | hn-indiehackers, trends | First identified — Caribou hiring in April 2026 HN thread; Careswitch acquired by Paradigm (AI home care OS); EVV mandate = forcing function for small agencies; $130B+ market; Birdie £52.6M + Honor $635M + ConcertoCare $150M validate institutional appetite; small agencies (<20 caregivers) still on paper/spreadsheets = clear white space at $199-399/mo |
 | 2026-04-14 | 77/105 | reddit | ↑2: EVV mandate creates forced adoption — PA 85% threshold by Jan 2025, NY 90% by Jan 2025 confirmed; agencies risking Medicaid reimbursement loss for non-compliant visits = regulatory forcing function; AlayaCare "up to six months to implement" + "requires significant internal resources" confirms implementation barrier for small agencies; office managers spend 30+ min entering schedules; exporting spreadsheets → billing vendor → re-entry into accounting = "multiple points of failure per pay cycle"; 33K home health agencies in US; simple scheduling + EVV mobile app + state-compliant GPS clock-in/out + billing export = 5-6 week MVP; $99-299/mo by caregiver count; LTD viability low (compliance complexity requires ongoing updates = MRR model better) |
+| 2026-04-15 | 79/105 | trends-2026-04-15 | ↑2: NEW PRIMARY DIFFERENTIATOR — caregiver retention as primary product surface confirmed; 80% sector-wide turnover rate; 70% of new hires quit within 100 days costing $2,600-$5,000 per departure = quantified ROI; no platform focuses on the 100-day onboarding window where attrition is highest; structured 100-day check-ins + automated milestone rewards + shift preference matching as unique feature set no current competitor has; EVV-compliant scheduling is the compliance wedge, retention is the differentiation; home care market $130B+; AxisCare + CareSmartz360 + ShiftCare all exist but none treat retention as primary product surface = confirmed white space |
