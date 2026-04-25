@@ -95,3 +95,4 @@ Build for the tattoo artist pain, not the studio owner. Tattoo artists are the p
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-04-22 | 92/105 | hn-indiehackers-2026-04-22 | New: Named by 3+ Indie Hackers sources simultaneously as prime 2026 boring-business SaaS opportunity; existing tools (Booksy, Vagaro) universally panned by tattoo artists for deposit handling; Ink Book outdated since 2021; LTD 5/5; build feasibility 5/5 |
+| 2026-04-25 | 92/105 | hn-indiehackers-2026-04-25 | Stable: Multiple 2026 IH sources name tattoo CRM as "real money" opportunity (wearefounders.uk, nxcode.io, entrepreneurloop.com confirmed again); 150K US tattoo artists; $29-59/mo target; "design drop" feature (artist uploads sketch → client approves) = unique differentiator; no-show prevention via deposit collection = primary pain point; 21K studios in US |
