@@ -49,3 +49,4 @@ Dead-simple review collection: after each job, auto-text customer with Google re
 |------|-------|---------|-------|
 | 2026-03-17 | 82/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
 | 2026-03-18 | 81/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Better as add-on module to FSM/cleaning tools; crowded standalone market |
+| 2026-04-30 | 84/105 | hn-indiehackers-2026-04-30 | ↑3: HN/IH — post-service review collection for local boring businesses; Birdeye/Podium $300-500/mo = 5-10x what SMBs can afford; Senja.io $1M ARR confirms testimonial collection niche; $49-$99/mo tool with native Jobber/HCP/Square integrations for trades = key differentiator; LTD 5/5 ($49-69 one-time); AI-powered response suggestions for negative reviews as v2; best positioned as bolt-on module inside FSM product rather than standalone |

@@ -4,7 +4,7 @@ description: Purpose-built CRM and dispatch tool for independent locksmiths with
 type: project
 ---
 
-# Locksmith CRM / Dispatch Tool — Score: 78/105
+# Locksmith CRM / Dispatch Tool — Score: 86/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
@@ -75,3 +75,4 @@ Generic CRMs (ServiceTitan, Jobber) are designed for HVAC/plumbing and feel comp
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-04-02 | 78/105 | hn-indiehackers | First identified — Indie Hackers community signal; 25K+ NA locksmiths; $49/user/mo validated; key-code DB as moat and switching cost; zero purpose-built indie CRM confirmed |
+| 2026-05-01 | 86/105 | hn-indiehackers-2026-05-01 | ↑8: HN/IH: FIRST EXPLICIT PRODUCT VALIDATION — Locksmith CRM with key-code lookup tables named as specific buildable product; ~20K independent locksmith businesses in US; generic CRMs don't track key-code fields, 24/7 dispatch status, or property manager billing (bill landlord not tenant = complex flow no horizontal tool handles); purpose-built: dispatch queue + key-code library + property manager invoice splitting at $29–49/user/mo; reach via locksmith FB groups + Locksmith Ledger trade publication; cited in multiple 2026 bootstrapped SaaS niche guides = validation across sources |
