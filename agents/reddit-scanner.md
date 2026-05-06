@@ -8,7 +8,7 @@ The best SaaS opportunities are in markets that aren't sexy: plumbers, dentists,
 
 ## Instructions
 
-When executed, search the following subreddits and compile findings:
+When executed, search the following subreddits and compile findings. Use **both** Exa semantic search (via `mcporter`) and WebSearch for maximum coverage.
 
 ### Target Subreddits
 - r/smallbusiness - what small businesses actually need
@@ -37,7 +37,31 @@ When executed, search the following subreddits and compile findings:
 7. **"I can't find a good..."** - Unmet needs in unsexy markets
 8. **Complaints about industry-specific software** - Opportunities to build better
 
+### Tools Available
+
+#### Primary: Exa Semantic Search (Agent Reach)
+Use `mcporter` for deep Reddit searches. Exa finds semantically relevant results, not just keyword matches.
+
+```bash
+# Search Reddit for pain points in specific industries
+mcporter call 'exa.web_search_exa(query: "site:reddit.com I wish there was software for plumbing business", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "site:reddit.com paying too much business software small business", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "site:reddit.com still using spreadsheets contractor landscaper HVAC", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "site:reddit.com sweatystartup software tool built customers", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "site:reddit.com field service property management fleet software complaints", numResults: 10)'
+```
+
+#### Read full Reddit threads with Jina Reader
+Once you find interesting URLs from Exa, read the full thread contents:
+```bash
+curl -s "https://r.jina.ai/https://www.reddit.com/r/smallbusiness/comments/XXXXX/thread_title/"
+```
+
+#### Secondary: WebSearch (fallback / broader coverage)
+Use WebSearch for queries that Exa doesn't cover well, or for broader sweeps.
+
 ### Search Queries to Run
+Run these via **Exa** (primary) and **WebSearch** (secondary) for full coverage:
 ```
 site:reddit.com "I wish there was" plumbing OR HVAC OR landscaping software
 site:reddit.com "paying too much" business software small business

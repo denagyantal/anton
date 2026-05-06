@@ -20,7 +20,28 @@ The best indie hacker wins come from solving problems in markets VCs ignore: plu
 3. **Group discussions** - What indie hackers building for boring markets struggle with
 4. **Interview posts** - Founder stories in vertical/niche markets with revenue data
 
+### Tools Available
+
+#### Primary: Exa Semantic Search (Agent Reach)
+Use `mcporter` for deep semantic searches — finds contextually relevant results beyond keyword matching:
+```bash
+mcporter call 'exa.web_search_exa(query: "site:news.ycombinator.com Show HN plumbing HVAC landscaping dental fleet software", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "site:news.ycombinator.com Ask HN looking for tool business management boring trades", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "site:indiehackers.com revenue MRR niche vertical boring business", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "site:indiehackers.com launched customers small business cleaning plumbing HVAC dental", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "indie hacker built MRR boring niche vertical SaaS sweaty startup", numResults: 10)'
+```
+
+#### Read full threads with Jina Reader
+Once you find interesting URLs from Exa, read the full content:
+```bash
+curl -s "https://r.jina.ai/https://news.ycombinator.com/item?id=XXXXX"
+```
+
+#### Secondary: WebSearch (fallback / broader coverage)
+
 ### Search Queries
+Run these via **Exa** (primary) and **WebSearch** (secondary):
 ```
 site:news.ycombinator.com "Show HN" plumbing OR HVAC OR landscaping OR dental OR fleet
 site:news.ycombinator.com "Ask HN" "looking for" tool business management

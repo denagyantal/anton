@@ -155,3 +155,27 @@ Every idea is evaluated against this framework:
 6. Is there AppSumo launch potential?
 7. Can we get G2/Trustpilot reviews from early users?
 8. Is there a clear path to MRR transition?
+
+### Agent Reach Integration
+
+Research agents have access to [Agent Reach](https://github.com/Panniantong/Agent-Reach) CLI tools for enhanced internet access. Available commands:
+
+```bash
+# Exa semantic search (better than site: queries for finding relevant content)
+mcporter call 'exa.web_search_exa(query: "your search query", numResults: 10)'
+
+# Read any web page as clean text
+curl -s "https://r.jina.ai/URL"
+
+# Reddit direct access (when Exa isn't enough)
+rdt search "query" --limit 10
+rdt read POST_ID
+
+# YouTube subtitle extraction
+yt-dlp --write-sub --skip-download -o "/tmp/%(id)s" "URL"
+
+# Check available channels
+agent-reach doctor
+```
+
+Agents should use Exa as primary search and WebSearch as fallback for maximum coverage.

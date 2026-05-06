@@ -53,7 +53,7 @@ mkdir -p "$BASE_DIR/ideas/shortlisted"
 echo "[$(date)] Starting $AGENT_NAME" >> "$LOG_DIR/cron.log"
 
 timeout 1800 claude -p "$PROMPT" \
-  --allowedTools "WebSearch,WebFetch,Read,Write,Glob,Grep,Edit" \
+  --allowedTools "WebSearch,WebFetch,Read,Write,Glob,Grep,Edit,Bash(mcporter *),Bash(curl *),Bash(rdt *),Bash(yt-dlp *),Bash(agent-reach *)" \
   >> "$LOG_DIR/$AGENT_NAME-$DATE-${HOUR}h.log" 2>&1
 
 EXIT_CODE=$?

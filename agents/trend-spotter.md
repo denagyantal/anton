@@ -8,13 +8,21 @@ The most profitable trends aren't the flashiest. While everyone chases AI writin
 
 ## Instructions
 
+Use **Exa semantic search** (via `mcporter`), **Jina Reader**, and **WebSearch** for maximum coverage across all sources.
+
 ### Sources to Monitor
 
 #### Product Hunt
 - Launches targeting boring industries (field service, property management, trades)
 - Vertical SaaS products gaining traction
 - Tools for non-tech business owners
+```bash
+# Exa semantic search (primary — finds more relevant results)
+mcporter call 'exa.web_search_exa(query: "site:producthunt.com launched plumbing HVAC dental cleaning property management software", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "site:producthunt.com vertical SaaS field service trades small business", numResults: 10)'
 ```
+```
+# WebSearch fallback
 site:producthunt.com "launched" plumbing OR HVAC OR dental OR cleaning OR property management
 site:producthunt.com vertical SaaS field service
 ```
@@ -23,9 +31,24 @@ site:producthunt.com vertical SaaS field service
 - Trending hashtags: #boringbusiness #sweatystartup #verticalsaas #smb
 - Viral tweets about boring business opportunities
 - "Just launched" tools for non-tech industries
+```bash
+# Exa semantic search for Twitter/X content (primary)
+mcporter call 'exa.web_search_exa(query: "site:x.com #boringbusiness OR #sweatystartup launched software tool", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "site:x.com vertical SaaS niche revenue customers boring business", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "site:x.com built software for plumbers OR dentists OR contractors OR HVAC customers MRR", numResults: 10)'
 ```
+```
+# WebSearch fallback
 site:twitter.com "#boringbusiness" OR "#sweatystartup" launched software
 site:twitter.com "vertical SaaS" niche revenue customers
+```
+
+#### RSS Feeds (Agent Reach)
+Subscribe to key newsletters and blogs for boring-business SaaS signals:
+```bash
+# Read RSS feeds for industry news
+curl -s "https://r.jina.ai/https://www.indiehackers.com/feed.xml" | head -200
+curl -s "https://r.jina.ai/https://sweatystartup.com/feed/" | head -200
 ```
 
 #### Google Trends
@@ -40,6 +63,11 @@ site:twitter.com "vertical SaaS" niche revenue customers
 - Sweaty Startup podcast/newsletter
 - SMB-focused SaaS newsletters
 - Indie Hackers niche/vertical discussions
+```bash
+# Exa semantic search across tech news
+mcporter call 'exa.web_search_exa(query: "vertical SaaS boring business trades field service funding launch 2026", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "site:news.ycombinator.com boring business software sweaty startup", numResults: 10)'
+```
 
 ### Trend Categories to Watch
 1. **Trades going digital** - HVAC, plumbing, electrical adopting modern software

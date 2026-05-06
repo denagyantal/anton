@@ -27,6 +27,22 @@ For any given boring-business niche/category, analyze the top 5-10 competitors a
 - Is the UX/UI outdated compared to modern SaaS standards?
 
 ### 3. Review Mining Sources
+
+#### Primary: Exa Semantic Search (Agent Reach)
+Use `mcporter` for deeper review mining — finds semantically relevant complaints and gaps:
+```bash
+mcporter call 'exa.web_search_exa(query: "site:g2.com [boring industry] software reviews cons missing features", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "site:capterra.com [boring industry] software reviews complaints overpriced", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "[product name] alternative competitor vs switching from", numResults: 10)'
+mcporter call 'exa.web_search_exa(query: "[boring industry] software too expensive overpriced outdated still using spreadsheets", numResults: 10)'
+```
+
+#### Read full review pages with Jina Reader
+```bash
+curl -s "https://r.jina.ai/https://www.g2.com/products/PRODUCT/reviews"
+```
+
+#### Secondary: WebSearch (fallback)
 ```
 site:g2.com [boring industry] software reviews
 site:capterra.com [boring industry] software reviews
