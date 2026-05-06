@@ -50,7 +50,7 @@ development_status:
   epic-2: ready-for-dev
   2-1-trade-template-and-line-item-library: done
   2-2-quote-builder-create-and-edit-quotes: review
-  2-3-quote-management-duplicate-delete-and-search: ready-for-dev
+  2-3-quote-management-duplicate-delete-and-search: done
   epic-2-retrospective: optional
 
   epic-3: backlog

@@ -41,16 +41,22 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
+    const search = new URL(request.url).searchParams.get("search") ?? "";
     const quotes = await prisma.quote.findMany({
-      where: { userId: session.user.id },
-      orderBy: { createdAt: "desc" },
+      where: {
+        userId: session.user.id,
+        ...(search
+          ? { customerName: { contains: search, mode: "insensitive" } }
+          : {}),
+      },
+      orderBy: { updatedAt: "desc" },
     });
     return NextResponse.json({ data: quotes });
   } catch (err) {

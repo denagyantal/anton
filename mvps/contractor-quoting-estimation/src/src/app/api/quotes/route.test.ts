@@ -21,8 +21,11 @@ import { POST, GET } from "./route";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 
-function makeRequest(method: string, body?: unknown) {
-  return new Request(`http://localhost/api/quotes`, {
+function makeRequest(method: string, body?: unknown, search?: string) {
+  const url = search
+    ? `http://localhost/api/quotes?search=${encodeURIComponent(search)}`
+    : `http://localhost/api/quotes`;
+  return new Request(url, {
     method,
     headers: { "Content-Type": "application/json" },
     body: body !== undefined ? JSON.stringify(body) : undefined,
@@ -105,7 +108,7 @@ describe("GET /api/quotes", () => {
 
   it("returns 401 when unauthenticated", async () => {
     vi.mocked(auth).mockResolvedValue(null);
-    const res = await GET();
+    const res = await GET(makeRequest("GET") as never);
     expect(res.status).toBe(401);
   });
 
@@ -115,9 +118,43 @@ describe("GET /api/quotes", () => {
       { id: "q-1", quoteNumber: "QT-2605-0001" },
     ] as never);
 
-    const res = await GET();
+    const res = await GET(makeRequest("GET") as never);
     expect(res.status).toBe(200);
     const body = await res.json();
     expect(body.data).toHaveLength(1);
+  });
+
+  it("returns all quotes when no search param provided", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
+    vi.mocked(prisma.quote.findMany).mockResolvedValue([
+      { id: "q-1", customerName: "Alice" },
+      { id: "q-2", customerName: "Bob" },
+    ] as never);
+
+    await GET(makeRequest("GET") as never);
+
+    expect(vi.mocked(prisma.quote.findMany)).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({ userId: "user-1" }),
+      })
+    );
+  });
+
+  it("filters by customerName when search param is provided", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
+    vi.mocked(prisma.quote.findMany).mockResolvedValue([
+      { id: "q-1", customerName: "Alice Johnson" },
+    ] as never);
+
+    const res = await GET(makeRequest("GET", undefined, "alice") as never);
+    expect(res.status).toBe(200);
+
+    expect(vi.mocked(prisma.quote.findMany)).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({
+          customerName: { contains: "alice", mode: "insensitive" },
+        }),
+      })
+    );
   });
 });

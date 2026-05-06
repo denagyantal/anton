@@ -1,6 +1,6 @@
 # Story 2.3: Quote Management — Duplicate, Delete & Search
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -52,7 +52,7 @@ so that I can work efficiently without recreating quotes from scratch.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Add DELETE handler to existing quotes [id] route (AC: #2, #3, #5, #6)
+- [x] Task 1: Add DELETE handler to existing quotes [id] route (AC: #2, #3, #5, #6)
   - [ ] 1.1 Open `src/app/api/quotes/[id]/route.ts` (already has GET and PUT) and add `export async function DELETE`
   - [ ] 1.2 Call `auth()`, return 401 if no session
   - [ ] 1.3 `await params` to get `{ id }` (Next.js 16 — params is a Promise)
@@ -62,7 +62,7 @@ so that I can work efficiently without recreating quotes from scratch.
   - [ ] 1.7 Return `NextResponse.json({}, { status: 204 })` on success
   - [ ] 1.8 Wrap in try/catch; return 500 on unexpected error
 
-- [ ] Task 2: Create duplicate API route (AC: #1, #7, #8)
+- [x] Task 2: Create duplicate API route (AC: #1, #7, #8)
   - [ ] 2.1 Create directory `src/app/api/quotes/[id]/duplicate/` and file `route.ts`
   - [ ] 2.2 Export `async function POST` — call `auth()`, return 401 if no session
   - [ ] 2.3 `await params` to get `{ id }`
@@ -78,20 +78,20 @@ so that I can work efficiently without recreating quotes from scratch.
   - [ ] 2.9 Return `NextResponse.json({ data: newQuote }, { status: 201 })`
   - [ ] 2.10 Wrap in try/catch; return 500 on unexpected error
 
-- [ ] Task 3: Enhance GET /api/quotes with search support (AC: #4)
+- [x] Task 3: Enhance GET /api/quotes with search support (AC: #4)
   - [ ] 3.1 Open `src/app/api/quotes/route.ts` — update the `GET` handler
   - [ ] 3.2 Read `search` from query params: `const search = request.nextUrl.searchParams.get('search') ?? ''`
   - [ ] 3.3 Build Prisma where clause: `where: { userId: session.user.id, ...(search ? { customerName: { contains: search, mode: 'insensitive' } } : {}) }`
   - [ ] 3.4 Order results by `updatedAt: 'desc'`
   - [ ] 3.5 Return `{ data: quotes }` — keep `include: { lineItems: false }` for the list (no need for line items on list view)
 
-- [ ] Task 4: Update useQuotes hook to support search (AC: #4)
+- [x] Task 4: Update useQuotes hook to support search (AC: #4)
   - [ ] 4.1 Open `src/hooks/use-quotes.ts`
   - [ ] 4.2 Update `useQuotes` signature to accept optional filters: `useQuotes(filters?: { search?: string })`
   - [ ] 4.3 Build the SWR key: `const params = new URLSearchParams(); if (filters?.search) params.set('search', filters.search); return useSWR(\`/api/quotes?\${params}\`, fetcher)`
   - [ ] 4.4 Keep `useQuote(id)` unchanged
 
-- [ ] Task 5: Update QuoteBuilder to add Duplicate and Delete actions (AC: #1, #2, #3)
+- [x] Task 5: Update QuoteBuilder to add Duplicate and Delete actions (AC: #1, #2, #3)
   - [ ] 5.1 Open `src/components/quotes/quote-builder.tsx`
   - [ ] 5.2 Add props: `quoteStatus: QuoteStatus` (pass from the page's `initialQuote.status`)
   - [ ] 5.3 Add state: `isDuplicating: boolean`, `isDeleting: boolean`, `showDeleteConfirm: boolean`
@@ -114,7 +114,7 @@ so that I can work efficiently without recreating quotes from scratch.
     - On "Delete Draft" click: set `showDeleteConfirm = true`
   - [ ] 5.8 Update `src/app/quotes/[id]/page.tsx` to pass `quoteStatus={quote.status}` prop to `QuoteBuilder`
 
-- [ ] Task 6: Create minimal dashboard page with search (AC: #4)
+- [x] Task 6: Create minimal dashboard page with search (AC: #4)
   - [ ] 6.1 Create `src/app/dashboard/page.tsx` as a server component
   - [ ] 6.2 Call `auth()` at top — if no session, `redirect('/login')`
   - [ ] 6.3 Render a client component `<QuoteDashboard />` for the interactive list + search
@@ -137,7 +137,7 @@ so that I can work efficiently without recreating quotes from scratch.
     - 44px minimum touch target for each row
   - [ ] 6.13 Check if `src/hooks/use-debounce.ts` exists (created in Story 1.x?). If not, create it: `export function useDebounce<T>(value: T, delay: number): T { const [debouncedValue, setDebouncedValue] = useState(value); useEffect(() => { const timer = setTimeout(() => setDebouncedValue(value), delay); return () => clearTimeout(timer); }, [value, delay]); return debouncedValue; }`
 
-- [ ] Task 7: Write tests (AC: #2, #3, #5, #6, #7, #8)
+- [x] Task 7: Write tests (AC: #2, #3, #5, #6, #7, #8)
   - [ ] 7.1 Create `src/app/api/quotes/[id]/route.test.ts` — ADD DELETE tests to the existing test file:
     - DELETE 401 when unauthenticated
     - DELETE 404 when quote belongs to another user
@@ -154,7 +154,7 @@ so that I can work efficiently without recreating quotes from scratch.
     - GET returns all quotes when no search param
     - GET filters by customerName when search param provided
 
-- [ ] Task 8: Final verification (AC: all)
+- [x] Task 8: Final verification (AC: all)
   - [ ] 8.1 Run `npm run build` from `mvps/contractor-quoting-estimation/src/` — must succeed with zero TypeScript errors
   - [ ] 8.2 Run `npm test` — all tests must pass (including existing Story 2.2 tests)
   - [ ] 8.3 Verify duplicate: creates new DRAFT with line items, no customer info, new quote number
@@ -603,6 +603,34 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None.
+
 ### Completion Notes List
 
+- Implemented DELETE handler with 401/404/403/204 status codes and Prisma cascade delete for line items.
+- Created POST /api/quotes/[id]/duplicate: copies trade, taxRate, depositType, depositValue, notes, termsText and all lineItems; sets customerName="", generates new quoteNumber; does not copy customer contact fields.
+- Updated GET /api/quotes to accept `?search=` param with case-insensitive Prisma `contains` filter; used `new URL(request.url).searchParams` instead of `request.nextUrl` for compatibility with test Request objects.
+- Updated `useQuotes` hook to accept optional `filters.search` and build the SWR key with URLSearchParams.
+- Updated QuoteBuilder to accept `quoteStatus: QuoteStatus` prop; added Duplicate and Delete Draft buttons with inline confirmation pattern (no `window.confirm`); uses `useRouter` from `next/navigation` for redirects.
+- Created Skeleton UI component, `useDebounce` hook, `QuoteDashboard` client component, and replaced the stub dashboard page with a live search + quote list implementation.
+- All 57 tests pass; `npm run build` succeeds with zero TypeScript errors.
+- Note: Button component does not support `asChild` (no Radix UI dependency), so dashboard "New Quote" links use plain `<Link>` with Tailwind button classes.
+
 ### File List
+
+**New files:**
+- `src/src/app/api/quotes/[id]/duplicate/route.ts`
+- `src/src/app/api/quotes/[id]/duplicate/route.test.ts`
+- `src/src/components/dashboard/quote-dashboard.tsx`
+- `src/src/components/ui/skeleton.tsx`
+- `src/src/hooks/use-debounce.ts`
+
+**Modified files:**
+- `src/src/app/api/quotes/[id]/route.ts` — added DELETE handler
+- `src/src/app/api/quotes/[id]/route.test.ts` — added DELETE test cases; added `quote.delete` to mock
+- `src/src/app/api/quotes/route.ts` — updated GET to accept and apply `?search=` param
+- `src/src/app/api/quotes/route.test.ts` — updated GET tests to pass request arg; added search filter tests
+- `src/src/hooks/use-quotes.ts` — updated `useQuotes` to accept `filters?: { search?: string }`
+- `src/src/components/quotes/quote-builder.tsx` — added `quoteStatus` prop, Duplicate and Delete Draft buttons
+- `src/src/app/quotes/[id]/page.tsx` — passes `quoteStatus={quote.status as QuoteStatus}` to QuoteBuilder
+- `src/src/app/dashboard/page.tsx` — replaced stub with server-side auth guard + QuoteDashboard

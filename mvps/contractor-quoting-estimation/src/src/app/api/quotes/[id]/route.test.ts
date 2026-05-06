@@ -6,6 +6,7 @@ vi.mock("@/lib/db", () => ({
     quote: {
       findFirst: vi.fn(),
       update: vi.fn(),
+      delete: vi.fn(),
     },
     lineItem: {
       deleteMany: vi.fn(),
@@ -15,7 +16,7 @@ vi.mock("@/lib/db", () => ({
   },
 }));
 
-import { GET, PUT } from "./route";
+import { GET, PUT, DELETE } from "./route";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 
@@ -177,5 +178,46 @@ describe("PUT /api/quotes/[id]", () => {
     );
 
     expect(vi.mocked(prisma.$transaction)).toHaveBeenCalled();
+  });
+});
+
+describe("DELETE /api/quotes/[id]", () => {
+  beforeEach(() => vi.clearAllMocks());
+
+  it("returns 401 when unauthenticated", async () => {
+    vi.mocked(auth).mockResolvedValue(null);
+    const res = await DELETE(makeRequest("DELETE") as never, makeParams("q-1") as never);
+    expect(res.status).toBe(401);
+  });
+
+  it("returns 404 when quote belongs to another user", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-2" } } as never);
+    vi.mocked(prisma.quote.findFirst).mockResolvedValue(null);
+
+    const res = await DELETE(makeRequest("DELETE") as never, makeParams("q-1") as never);
+    expect(res.status).toBe(404);
+  });
+
+  it("returns 403 when quote status is not DRAFT", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
+    vi.mocked(prisma.quote.findFirst).mockResolvedValue({
+      ...MOCK_QUOTE,
+      status: "SENT",
+    } as never);
+
+    const res = await DELETE(makeRequest("DELETE") as never, makeParams("q-1") as never);
+    expect(res.status).toBe(403);
+    const body = await res.json();
+    expect(body.error).toMatch(/draft/i);
+  });
+
+  it("returns 204 and deletes a DRAFT quote", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
+    vi.mocked(prisma.quote.findFirst).mockResolvedValue(MOCK_QUOTE as never);
+    vi.mocked(prisma.quote.delete).mockResolvedValue(MOCK_QUOTE as never);
+
+    const res = await DELETE(makeRequest("DELETE") as never, makeParams("q-1") as never);
+    expect(res.status).toBe(204);
+    expect(vi.mocked(prisma.quote.delete)).toHaveBeenCalledWith({ where: { id: "q-1" } });
   });
 });

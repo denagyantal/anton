@@ -4,6 +4,39 @@ import { prisma } from "@/lib/db";
 import { updateQuoteSchema } from "@/lib/validations/quote";
 import { ZodError } from "zod";
 
+export async function DELETE(
+  _req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const session = await auth();
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  try {
+    const { id } = await params;
+    const quote = await prisma.quote.findFirst({
+      where: { id, userId: session.user.id },
+    });
+    if (!quote) {
+      return NextResponse.json({ error: "Quote not found" }, { status: 404 });
+    }
+    if (quote.status !== "DRAFT") {
+      return NextResponse.json(
+        { error: "Only draft quotes can be deleted" },
+        { status: 403 }
+      );
+    }
+    await prisma.quote.delete({ where: { id } });
+    return new NextResponse(null, { status: 204 });
+  } catch (err) {
+    console.error("Delete quote error:", err);
+    return NextResponse.json(
+      { error: "Failed to delete quote." },
+      { status: 500 }
+    );
+  }
+}
+
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> }

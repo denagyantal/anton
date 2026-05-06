@@ -2,6 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { QuoteBuilder } from "@/components/quotes/quote-builder";
+import type { QuoteStatus } from "@/types";
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -26,7 +27,7 @@ export default async function QuotePage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen p-4 max-w-lg mx-auto">
-      <QuoteBuilder quoteId={id} initialQuote={quote} />
+      <QuoteBuilder quoteId={id} initialQuote={quote} quoteStatus={quote.status as QuoteStatus} />
     </main>
   );
 }

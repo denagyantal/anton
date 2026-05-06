@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import type { Quote, LineItem } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +11,7 @@ import { LineItemPicker, type TemplateItemData } from "@/components/quotes/line-
 import { DepositConfig } from "@/components/quotes/deposit-config";
 import { QuoteSummary } from "@/components/quotes/quote-summary";
 import { useQuote } from "@/hooks/use-quotes";
+import type { QuoteStatus } from "@/types";
 
 type QuoteWithLineItems = Quote & { lineItems: LineItem[] };
 
@@ -27,10 +29,12 @@ type DepositType = "FIXED" | "PERCENTAGE" | null;
 type QuoteBuilderProps = {
   quoteId: string;
   initialQuote: QuoteWithLineItems;
+  quoteStatus: QuoteStatus;
 };
 
-export function QuoteBuilder({ quoteId, initialQuote }: QuoteBuilderProps) {
+export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilderProps) {
   const { mutate } = useQuote(quoteId);
+  const router = useRouter();
 
   const [customerName, setCustomerName] = useState(initialQuote.customerName);
   const [customerAddress, setCustomerAddress] = useState(initialQuote.customerAddress ?? "");
@@ -56,6 +60,9 @@ export function QuoteBuilder({ quoteId, initialQuote }: QuoteBuilderProps) {
   );
 
   const [isSaving, setIsSaving] = useState(false);
+  const [isDuplicating, setIsDuplicating] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [saveMessage, setSaveMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   function handleCustomerChange(value: {
@@ -145,6 +152,32 @@ export function QuoteBuilder({ quoteId, initialQuote }: QuoteBuilderProps) {
     }
   }
 
+  async function handleDuplicate() {
+    setIsDuplicating(true);
+    try {
+      const res = await fetch(`/api/quotes/${quoteId}/duplicate`, { method: "POST" });
+      if (!res.ok) throw new Error("Failed to duplicate");
+      const body = await res.json();
+      router.push(`/quotes/${body.data.id}`);
+    } catch {
+      setSaveMessage({ type: "error", text: "Failed to duplicate quote. Please try again." });
+    } finally {
+      setIsDuplicating(false);
+    }
+  }
+
+  async function handleDeleteConfirm() {
+    setIsDeleting(true);
+    try {
+      const res = await fetch(`/api/quotes/${quoteId}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete");
+      router.push("/dashboard");
+    } catch {
+      setSaveMessage({ type: "error", text: "Failed to delete quote. Please try again." });
+      setIsDeleting(false);
+    }
+  }
+
   const { total } = (() => {
     const subtotal = lineItems.reduce((s, li) => s + li.quantity * li.unitPrice, 0);
     const tax = subtotal * (taxRate / 100);
@@ -152,7 +185,7 @@ export function QuoteBuilder({ quoteId, initialQuote }: QuoteBuilderProps) {
   })();
 
   return (
-    <div className="flex flex-col gap-6 pb-24">
+    <div className="flex flex-col gap-6 pb-48">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
@@ -274,8 +307,8 @@ export function QuoteBuilder({ quoteId, initialQuote }: QuoteBuilderProps) {
         </p>
       )}
 
-      {/* Save Button */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
+      {/* Action Buttons */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 flex flex-col gap-2">
         <Button
           onClick={handleSave}
           isLoading={isSaving}
@@ -284,6 +317,46 @@ export function QuoteBuilder({ quoteId, initialQuote }: QuoteBuilderProps) {
         >
           Save Quote
         </Button>
+
+        <Button
+          variant="outline"
+          onClick={handleDuplicate}
+          isLoading={isDuplicating}
+          className="w-full min-h-[44px]"
+        >
+          Duplicate Quote
+        </Button>
+
+        {quoteStatus === "DRAFT" && (
+          !showDeleteConfirm ? (
+            <Button
+              variant="destructive"
+              onClick={() => setShowDeleteConfirm(true)}
+              className="w-full min-h-[44px]"
+            >
+              Delete Draft
+            </Button>
+          ) : (
+            <div className="flex gap-2 items-center justify-center">
+              <span className="text-sm text-gray-700">Delete this draft?</span>
+              <Button
+                variant="destructive"
+                isLoading={isDeleting}
+                onClick={handleDeleteConfirm}
+                className="min-h-[44px]"
+              >
+                Yes, Delete
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setShowDeleteConfirm(false)}
+                className="min-h-[44px]"
+              >
+                Cancel
+              </Button>
+            </div>
+          )
+        )}
       </div>
     </div>
   );
