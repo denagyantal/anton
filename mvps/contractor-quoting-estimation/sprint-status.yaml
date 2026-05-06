@@ -53,8 +53,8 @@ development_status:
   2-3-quote-management-duplicate-delete-and-search: done
   epic-2-retrospective: optional
 
-  epic-3: backlog
-  3-1-jobsite-photo-capture-and-attachment: backlog
+  epic-3: in-progress
+  3-1-jobsite-photo-capture-and-attachment: ready-for-dev
   3-2-branded-pdf-generation: backlog
   3-3-quote-delivery-via-sms-and-email: backlog
   epic-3-retrospective: optional
