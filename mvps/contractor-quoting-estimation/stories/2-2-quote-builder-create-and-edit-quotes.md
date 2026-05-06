@@ -1,6 +1,6 @@
 # Story 2.2: Quote Builder — Create & Edit Quotes
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -62,100 +62,100 @@ so that I can build a complete, accurate quote for my customer.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Create Zod validation schemas (AC: #1, #2, #8)
-  - [ ] 1.1 Create `src/lib/validations/quote.ts`
-  - [ ] 1.2 Export `lineItemSchema` — validates a single line item: `description` (min 1), `quantity` (positive number), `unit` (min 1, default "each"), `unitPrice` (min 0), `isCustom` (boolean, default false)
-  - [ ] 1.3 Export `createQuoteSchema` — validates `{ trade: z.enum(["PLUMBING","ELECTRICAL","HVAC","PAINTING"]) }`
-  - [ ] 1.4 Export `updateQuoteSchema` — validates: `customerName` (string, min 1), `customerAddress` (optional string), `customerPhone` (optional string), `customerEmail` (optional string, allow empty), `notes` (optional string), `taxRate` (number, min 0, max 100), `depositType` (optional nullable enum FIXED|PERCENTAGE), `depositValue` (optional nullable number min 0), `termsText` (optional string), `lineItems` (array of `lineItemSchema`)
+- [x] Task 1: Create Zod validation schemas (AC: #1, #2, #8)
+  - [x] 1.1 Create `src/lib/validations/quote.ts`
+  - [x] 1.2 Export `lineItemSchema` — validates a single line item: `description` (min 1), `quantity` (positive number), `unit` (min 1, default "each"), `unitPrice` (min 0), `isCustom` (boolean, default false)
+  - [x] 1.3 Export `createQuoteSchema` — validates `{ trade: z.enum(["PLUMBING","ELECTRICAL","HVAC","PAINTING"]) }`
+  - [x] 1.4 Export `updateQuoteSchema` — validates: `customerName` (string, min 1), `customerAddress` (optional string), `customerPhone` (optional string), `customerEmail` (optional string, allow empty), `notes` (optional string), `taxRate` (number, min 0, max 100), `depositType` (optional nullable enum FIXED|PERCENTAGE), `depositValue` (optional nullable number min 0), `termsText` (optional string), `lineItems` (array of `lineItemSchema`)
 
-- [ ] Task 2: Create API routes (AC: #1, #8, #9, #10, #11)
-  - [ ] 2.1 Create `src/app/api/quotes/route.ts` with POST handler
-  - [ ] 2.2 In POST: call `auth()`, return 401 if no session
-  - [ ] 2.3 Parse body with `createQuoteSchema.parse(body)` — return 400 on ZodError with `err.issues[0]?.message`
-  - [ ] 2.4 Generate quote number using `generateQuoteNumber()` from `@/lib/utils`
-  - [ ] 2.5 Create quote via `prisma.quote.create({ data: { trade, quoteNumber, userId: session.user.id, customerName: "" } })` — `customerName` is required by Prisma schema, default to `""`
-  - [ ] 2.6 Return `{ data: quote }` with status 201
-  - [ ] 2.7 Wrap in try/catch — return 500 on unexpected error
-  - [ ] 2.8 Create `src/app/api/quotes/[id]/route.ts` with GET and PUT handlers
-  - [ ] 2.9 In GET: call `auth()`, return 401 if no session. Query `prisma.quote.findFirst({ where: { id, userId: session.user.id }, include: { lineItems: { orderBy: { sortOrder: 'asc' } } } })`. Return 404 if not found. Return `{ data: quote }`.
-  - [ ] 2.10 In PUT: call `auth()`, return 401 if no session. Parse body with `updateQuoteSchema`. Find quote for this user (404 if not found or belongs to another user). Run a Prisma transaction: delete all existing line items for the quote, then `quote.update` with the new field values, then create each new line item with `sortOrder` as its array index. Return `{ data: updatedQuote }` including line items.
-  - [ ] 2.11 Wrap all handlers in try/catch with appropriate error responses
+- [x] Task 2: Create API routes (AC: #1, #8, #9, #10, #11)
+  - [x] 2.1 Create `src/app/api/quotes/route.ts` with POST handler
+  - [x] 2.2 In POST: call `auth()`, return 401 if no session
+  - [x] 2.3 Parse body with `createQuoteSchema.parse(body)` — return 400 on ZodError with `err.issues[0]?.message`
+  - [x] 2.4 Generate quote number using `generateQuoteNumber()` from `@/lib/utils`
+  - [x] 2.5 Create quote via `prisma.quote.create({ data: { trade, quoteNumber, userId: session.user.id, customerName: "" } })` — `customerName` is required by Prisma schema, default to `""`
+  - [x] 2.6 Return `{ data: quote }` with status 201
+  - [x] 2.7 Wrap in try/catch — return 500 on unexpected error
+  - [x] 2.8 Create `src/app/api/quotes/[id]/route.ts` with GET and PUT handlers
+  - [x] 2.9 In GET: call `auth()`, return 401 if no session. Query `prisma.quote.findFirst({ where: { id, userId: session.user.id }, include: { lineItems: { orderBy: { sortOrder: 'asc' } } } })`. Return 404 if not found. Return `{ data: quote }`.
+  - [x] 2.10 In PUT: call `auth()`, return 401 if no session. Parse body with `updateQuoteSchema`. Find quote for this user (404 if not found or belongs to another user). Run a Prisma transaction: delete all existing line items for the quote, then `quote.update` with the new field values, then create each new line item with `sortOrder` as its array index. Return `{ data: updatedQuote }` including line items.
+  - [x] 2.11 Wrap all handlers in try/catch with appropriate error responses
 
-- [ ] Task 3: Create SWR hook (AC: #9)
-  - [ ] 3.1 Create `src/hooks/use-quotes.ts`
-  - [ ] 3.2 Export `useQuote(id: string | null | undefined)` — `useSWR(id ? /api/quotes/${id} : null, fetcher)` returning `{ data, error, isLoading, mutate }`
-  - [ ] 3.3 Export `useQuotes()` — `useSWR('/api/quotes', fetcher)` (full list, used by dashboard in Story 5)
+- [x] Task 3: Create SWR hook (AC: #9)
+  - [x] 3.1 Create `src/hooks/use-quotes.ts`
+  - [x] 3.2 Export `useQuote(id: string | null | undefined)` — `useSWR(id ? /api/quotes/${id} : null, fetcher)` returning `{ data, error, isLoading, mutate }`
+  - [x] 3.3 Export `useQuotes()` — `useSWR('/api/quotes', fetcher)` (full list, used by dashboard in Story 5)
 
-- [ ] Task 4: Create TradeSelector component (AC: #1)
-  - [ ] 4.1 Create `src/components/quotes/trade-selector.tsx` as `"use client"`
-  - [ ] 4.2 Props: `onSelect: (trade: string) => void`, `isLoading?: boolean`
-  - [ ] 4.3 Render four large tappable cards (one per trade) with trade name and an icon or emoji label
-  - [ ] 4.4 On click, call `onSelect(trade)` — the parent handles the API call and redirect
-  - [ ] 4.5 While `isLoading`, show a spinner and disable all cards
-  - [ ] 4.6 Cards must have minimum 44px touch targets (use `min-h-[44px]` or a tall card design)
+- [x] Task 4: Create TradeSelector component (AC: #1)
+  - [x] 4.1 Create `src/components/quotes/trade-selector.tsx` as `"use client"`
+  - [x] 4.2 Props: `onSelect: (trade: string) => void`, `isLoading?: boolean`
+  - [x] 4.3 Render four large tappable cards (one per trade) with trade name and an icon or emoji label
+  - [x] 4.4 On click, call `onSelect(trade)` — the parent handles the API call and redirect
+  - [x] 4.5 While `isLoading`, show a spinner and disable all cards
+  - [x] 4.6 Cards must have minimum 44px touch targets (use `min-h-[44px]` or a tall card design)
 
-- [ ] Task 5: Create CustomerInfo component (AC: #4)
-  - [ ] 5.1 Create `src/components/quotes/customer-info.tsx` as `"use client"`
-  - [ ] 5.2 Props: `value: { customerName: string; customerAddress?: string; customerPhone?: string; customerEmail?: string }`, `onChange: (value: ...) => void`
-  - [ ] 5.3 Render four `Input` fields (from `@/components/ui/input`): name (required), address, phone, email
-  - [ ] 5.4 Each field calls `onChange({ ...value, [field]: newValue })` on change
+- [x] Task 5: Create CustomerInfo component (AC: #4)
+  - [x] 5.1 Create `src/components/quotes/customer-info.tsx` as `"use client"`
+  - [x] 5.2 Props: `value: { customerName: string; customerAddress?: string; customerPhone?: string; customerEmail?: string }`, `onChange: (value: ...) => void`
+  - [x] 5.3 Render four `Input` fields (from `@/components/ui/input`): name (required), address, phone, email
+  - [x] 5.4 Each field calls `onChange({ ...value, [field]: newValue })` on change
 
-- [ ] Task 6: Create LineItemRow component (AC: #2, #3)
-  - [ ] 6.1 Create `src/components/quotes/line-item-row.tsx` as `"use client"`
-  - [ ] 6.2 Props: `item: { id?: string; description: string; quantity: number; unit: string; unitPrice: number; isCustom: boolean }`, `onChange: (item: ...) => void`, `onRemove: () => void`
-  - [ ] 6.3 Render inline-editable fields: description (text input), quantity (number input, min 0.01, step 0.01), unit (text input or select with common units: each, per linear foot, per square foot, per hour, flat rate), unitPrice (number input, min 0)
-  - [ ] 6.4 Show line total (`formatCurrency(quantity * unitPrice)`) as read-only at the end of the row
-  - [ ] 6.5 Remove button calls `onRemove()` — use a trash/× icon with `aria-label="Remove line item"`, minimum 44px touch target
-  - [ ] 6.6 All inputs call `onChange(updatedItem)` on change
+- [x] Task 6: Create LineItemRow component (AC: #2, #3)
+  - [x] 6.1 Create `src/components/quotes/line-item-row.tsx` as `"use client"`
+  - [x] 6.2 Props: `item: { id?: string; description: string; quantity: number; unit: string; unitPrice: number; isCustom: boolean }`, `onChange: (item: ...) => void`, `onRemove: () => void`
+  - [x] 6.3 Render inline-editable fields: description (text input), quantity (number input, min 0.01, step 0.01), unit (text input or select with common units: each, per linear foot, per square foot, per hour, flat rate), unitPrice (number input, min 0)
+  - [x] 6.4 Show line total (`formatCurrency(quantity * unitPrice)`) as read-only at the end of the row
+  - [x] 6.5 Remove button calls `onRemove()` — use a trash/× icon with `aria-label="Remove line item"`, minimum 44px touch target
+  - [x] 6.6 All inputs call `onChange(updatedItem)` on change
 
-- [ ] Task 7: Create DepositConfig component (AC: #7)
-  - [ ] 7.1 Create `src/components/quotes/deposit-config.tsx` as `"use client"`
-  - [ ] 7.2 Props: `depositType: "FIXED" | "PERCENTAGE" | null`, `depositValue: number | null`, `total: number`, `onChange: (depositType, depositValue) => void`
-  - [ ] 7.3 Render a toggle/radio for "None", "Fixed Amount ($)", "Percentage (%)"
-  - [ ] 7.4 When Fixed: show dollar input for deposit amount
-  - [ ] 7.5 When Percentage: show percentage input (0–100) + computed dollar amount display (`formatCurrency(total * depositValue / 100)`)
-  - [ ] 7.6 When None: `depositType = null`, `depositValue = null`
+- [x] Task 7: Create DepositConfig component (AC: #7)
+  - [x] 7.1 Create `src/components/quotes/deposit-config.tsx` as `"use client"`
+  - [x] 7.2 Props: `depositType: "FIXED" | "PERCENTAGE" | null`, `depositValue: number | null`, `total: number`, `onChange: (depositType, depositValue) => void`
+  - [x] 7.3 Render a toggle/radio for "None", "Fixed Amount ($)", "Percentage (%)"
+  - [x] 7.4 When Fixed: show dollar input for deposit amount
+  - [x] 7.5 When Percentage: show percentage input (0–100) + computed dollar amount display (`formatCurrency(total * depositValue / 100)`)
+  - [x] 7.6 When None: `depositType = null`, `depositValue = null`
 
-- [ ] Task 8: Create QuoteSummary component (AC: #3, #6)
-  - [ ] 8.1 Create `src/components/quotes/quote-summary.tsx` as `"use client"`
-  - [ ] 8.2 Props: `lineItems: Array<{ quantity: number; unitPrice: number }>`, `taxRate: number`, `depositType: "FIXED" | "PERCENTAGE" | null`, `depositValue: number | null`
-  - [ ] 8.3 Use `calculateTotal(lineItems, taxRate)` from `@/lib/utils` to compute `{ subtotal, tax, total }`
-  - [ ] 8.4 Display subtotal, tax (with tax rate %), total — all formatted with `formatCurrency()`
-  - [ ] 8.5 If deposit is configured, display deposit amount below total
-  - [ ] 8.6 Component is purely presentational — all values derived from props
+- [x] Task 8: Create QuoteSummary component (AC: #3, #6)
+  - [x] 8.1 Create `src/components/quotes/quote-summary.tsx` as `"use client"`
+  - [x] 8.2 Props: `lineItems: Array<{ quantity: number; unitPrice: number }>`, `taxRate: number`, `depositType: "FIXED" | "PERCENTAGE" | null`, `depositValue: number | null`
+  - [x] 8.3 Use `calculateTotal(lineItems, taxRate)` from `@/lib/utils` to compute `{ subtotal, tax, total }`
+  - [x] 8.4 Display subtotal, tax (with tax rate %), total — all formatted with `formatCurrency()`
+  - [x] 8.5 If deposit is configured, display deposit amount below total
+  - [x] 8.6 Component is purely presentational — all values derived from props
 
-- [ ] Task 9: Create QuoteBuilder component (AC: #1–#9)
-  - [ ] 9.1 Create `src/components/quotes/quote-builder.tsx` as `"use client"`
-  - [ ] 9.2 Props: `quoteId: string`, `initialQuote: QuoteWithLineItems` (type: `Quote & { lineItems: LineItem[] }` from `@prisma/client`)
-  - [ ] 9.3 Local state: mirror `initialQuote` into React state for all editable fields: `customerName`, `customerAddress`, `customerPhone`, `customerEmail`, `notes`, `taxRate`, `depositType`, `depositValue`, `lineItems`
-  - [ ] 9.4 Render `CustomerInfo`, list of `LineItemRow` components, `QuoteSummary`, `DepositConfig`, notes textarea, tax rate input
-  - [ ] 9.5 Render `LineItemPicker` (from Story 2.1, `@/components/quotes/line-item-picker`) for the quote's trade. When `onAddItem` fires, append to `lineItems` state with `isCustom: false`
-  - [ ] 9.6 Add a "+ Custom Item" button that appends a blank `LineItemRow` with `isCustom: true`, description `""`, quantity `1`, unit `"each"`, unitPrice `0`
-  - [ ] 9.7 Implement `handleSave()` — calls `PUT /api/quotes/[quoteId]` via `fetch` with all current state. On success, call `mutate()` from `useQuote(quoteId)` to update SWR cache. Show success toast or inline message. On error, show error message.
-  - [ ] 9.8 Show a "Save" `Button` (with `isLoading` state while saving) that calls `handleSave()`
-  - [ ] 9.9 Display quote number and trade (read-only header info)
-  - [ ] 9.10 Tax rate: render a number input (min 0, max 100, step 0.01) labeled "Tax Rate (%)". Default to `initialQuote.taxRate`. On change, update local `taxRate` state and the `QuoteSummary` recalculates immediately.
+- [x] Task 9: Create QuoteBuilder component (AC: #1–#9)
+  - [x] 9.1 Create `src/components/quotes/quote-builder.tsx` as `"use client"`
+  - [x] 9.2 Props: `quoteId: string`, `initialQuote: QuoteWithLineItems` (type: `Quote & { lineItems: LineItem[] }` from `@prisma/client`)
+  - [x] 9.3 Local state: mirror `initialQuote` into React state for all editable fields: `customerName`, `customerAddress`, `customerPhone`, `customerEmail`, `notes`, `taxRate`, `depositType`, `depositValue`, `lineItems`
+  - [x] 9.4 Render `CustomerInfo`, list of `LineItemRow` components, `QuoteSummary`, `DepositConfig`, notes textarea, tax rate input
+  - [x] 9.5 Render `LineItemPicker` (from Story 2.1, `@/components/quotes/line-item-picker`) for the quote's trade. When `onAddItem` fires, append to `lineItems` state with `isCustom: false`
+  - [x] 9.6 Add a "+ Custom Item" button that appends a blank `LineItemRow` with `isCustom: true`, description `""`, quantity `1`, unit `"each"`, unitPrice `0`
+  - [x] 9.7 Implement `handleSave()` — calls `PUT /api/quotes/[quoteId]` via `fetch` with all current state. On success, call `mutate()` from `useQuote(quoteId)` to update SWR cache. Show success toast or inline message. On error, show error message.
+  - [x] 9.8 Show a "Save" `Button` (with `isLoading` state while saving) that calls `handleSave()`
+  - [x] 9.9 Display quote number and trade (read-only header info)
+  - [x] 9.10 Tax rate: render a number input (min 0, max 100, step 0.01) labeled "Tax Rate (%)". Default to `initialQuote.taxRate`. On change, update local `taxRate` state and the `QuoteSummary` recalculates immediately.
 
-- [ ] Task 10: Create page routes (AC: #1, #9)
-  - [ ] 10.1 Create `src/app/quotes/new/page.tsx`
-  - [ ] 10.2 This is a client component (`"use client"`) — it renders `TradeSelector`
-  - [ ] 10.3 When trade is selected: call `fetch("POST /api/quotes", { body: { trade } })`. On success, use `router.push('/quotes/' + quote.id)` from `next/navigation`
-  - [ ] 10.4 Handle loading state (isLoading) while API call is in flight
-  - [ ] 10.5 Wrap in auth guard (middleware already handles this — page can assume authenticated)
-  - [ ] 10.6 Create `src/app/quotes/[id]/page.tsx` as a server component
-  - [ ] 10.7 In the server component, call `auth()` to get session. If no session, `redirect('/login')`. Await `params` (it's a Promise in Next.js 16): `const { id } = await params`
-  - [ ] 10.8 Fetch quote from Prisma: `prisma.quote.findFirst({ where: { id, userId: session.user.id }, include: { lineItems: { orderBy: { sortOrder: 'asc' } } } })`. If not found, `notFound()` from `next/navigation`.
-  - [ ] 10.9 Render `<QuoteBuilder quoteId={id} initialQuote={quote} />`
+- [x] Task 10: Create page routes (AC: #1, #9)
+  - [x] 10.1 Create `src/app/quotes/new/page.tsx`
+  - [x] 10.2 This is a client component (`"use client"`) — it renders `TradeSelector`
+  - [x] 10.3 When trade is selected: call `fetch("POST /api/quotes", { body: { trade } })`. On success, use `router.push('/quotes/' + quote.id)` from `next/navigation`
+  - [x] 10.4 Handle loading state (isLoading) while API call is in flight
+  - [x] 10.5 Wrap in auth guard (middleware already handles this — page can assume authenticated)
+  - [x] 10.6 Create `src/app/quotes/[id]/page.tsx` as a server component
+  - [x] 10.7 In the server component, call `auth()` to get session. If no session, `redirect('/login')`. Await `params` (it's a Promise in Next.js 16): `const { id } = await params`
+  - [x] 10.8 Fetch quote from Prisma: `prisma.quote.findFirst({ where: { id, userId: session.user.id }, include: { lineItems: { orderBy: { sortOrder: 'asc' } } } })`. If not found, `notFound()` from `next/navigation`.
+  - [x] 10.9 Render `<QuoteBuilder quoteId={id} initialQuote={quote} />`
 
-- [ ] Task 11: Write tests (AC: #1, #8, #10, #11)
-  - [ ] 11.1 Create `src/app/api/quotes/route.test.ts` — tests: 401 when unauthenticated, 400 for invalid trade, 201 creates quote with generated quote number, quote is scoped to authenticated user
-  - [ ] 11.2 Create `src/app/api/quotes/[id]/route.test.ts` — tests: GET 401 unauthenticated, GET 404 for other user's quote, GET 200 returns quote with line items, PUT 401 unauthenticated, PUT 404 for other user's quote, PUT 200 updates quote and replaces line items
+- [x] Task 11: Write tests (AC: #1, #8, #10, #11)
+  - [x] 11.1 Create `src/app/api/quotes/route.test.ts` — tests: 401 when unauthenticated, 400 for invalid trade, 201 creates quote with generated quote number, quote is scoped to authenticated user
+  - [x] 11.2 Create `src/app/api/quotes/[id]/route.test.ts` — tests: GET 401 unauthenticated, GET 404 for other user's quote, GET 200 returns quote with line items, PUT 401 unauthenticated, PUT 404 for other user's quote, PUT 200 updates quote and replaces line items
 
-- [ ] Task 12: Final verification (AC: all)
-  - [ ] 12.1 Run `npm run build` from `mvps/contractor-quoting-estimation/src/` — must succeed with zero TypeScript errors
-  - [ ] 12.2 Run `npm test` — all tests must pass
-  - [ ] 12.3 Verify QuoteSummary recalculates in real-time when quantity/price changes
-  - [ ] 12.4 Verify LineItemPicker integration: adding item from library appends it to the quote
+- [x] Task 12: Final verification (AC: all)
+  - [x] 12.1 Run `npm run build` from `mvps/contractor-quoting-estimation/src/` — must succeed with zero TypeScript errors
+  - [x] 12.2 Run `npm test` — all tests must pass
+  - [x] 12.3 Verify QuoteSummary recalculates in real-time when quantity/price changes
+  - [x] 12.4 Verify LineItemPicker integration: adding item from library appends it to the quote
 
 ## Dev Notes
 
@@ -567,10 +567,38 @@ describe("POST /api/quotes", () => {
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+claude-sonnet-4-6
 
 ### Debug Log References
 
+None — implementation proceeded without blockers.
+
 ### Completion Notes List
 
+- Implemented all 14 new files for the quote builder feature
+- Zod v4 schemas use `err.issues[0]?.message` for error extraction
+- Next.js 16 `params` is awaited as a Promise in all route handlers
+- PUT /api/quotes/[id] uses `prisma.$transaction` for atomic line item replacement, then re-fetches for the complete response
+- QuoteSummary uses `calculateTotal()` from `@/lib/utils` — purely presentational with real-time recalculation driven by React state in QuoteBuilder
+- LineItemPicker integration: `handleAddFromLibrary` converts `TemplateItemData` to a local line item with `isCustom: false`
+- TradeSelector cards use `h-28 min-h-[44px]` to meet the 44px touch target requirement
+- Save button is fixed to bottom of viewport for mobile usability
+- All 45 tests pass (18 new + 27 existing); `npm run build` succeeds with zero TypeScript errors
+- GET /api/quotes (list) implemented as a minimal functional endpoint — full dashboard story (Story 5) will add pagination/filtering
+
 ### File List
+
+- mvps/contractor-quoting-estimation/src/src/lib/validations/quote.ts
+- mvps/contractor-quoting-estimation/src/src/app/api/quotes/route.ts
+- mvps/contractor-quoting-estimation/src/src/app/api/quotes/route.test.ts
+- mvps/contractor-quoting-estimation/src/src/app/api/quotes/[id]/route.ts
+- mvps/contractor-quoting-estimation/src/src/app/api/quotes/[id]/route.test.ts
+- mvps/contractor-quoting-estimation/src/src/hooks/use-quotes.ts
+- mvps/contractor-quoting-estimation/src/src/components/quotes/trade-selector.tsx
+- mvps/contractor-quoting-estimation/src/src/components/quotes/customer-info.tsx
+- mvps/contractor-quoting-estimation/src/src/components/quotes/line-item-row.tsx
+- mvps/contractor-quoting-estimation/src/src/components/quotes/deposit-config.tsx
+- mvps/contractor-quoting-estimation/src/src/components/quotes/quote-summary.tsx
+- mvps/contractor-quoting-estimation/src/src/components/quotes/quote-builder.tsx
+- mvps/contractor-quoting-estimation/src/src/app/quotes/new/page.tsx
+- mvps/contractor-quoting-estimation/src/src/app/quotes/[id]/page.tsx
