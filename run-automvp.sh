@@ -239,7 +239,9 @@ next_story_key() {
   local STATUS_FILE="$1"
   local STATUS="$2"
   # Parse YAML for story keys with the given status (e.g., "  1-1-setup: backlog")
-  grep -E ":\s*${STATUS}\s*$" "$STATUS_FILE" 2>/dev/null | head -1 | sed 's/^\s*//' | cut -d: -f1
+  # Trailing `|| true` keeps `set -euo pipefail` from killing the script when
+  # grep finds no match — empty output means "no story with that status".
+  grep -E "^\s+[0-9]+-[0-9]+.*:\s*${STATUS}\s*$" "$STATUS_FILE" 2>/dev/null | head -1 | sed 's/^\s*//' | cut -d: -f1 || true
 }
 
 # ─── Run a step ───
