@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Quote, LineItem } from "@prisma/client";
+import type { Quote, LineItem, QuotePhoto } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CustomerInfo } from "@/components/quotes/customer-info";
@@ -10,10 +10,13 @@ import { LineItemRow } from "@/components/quotes/line-item-row";
 import { LineItemPicker, type TemplateItemData } from "@/components/quotes/line-item-picker";
 import { DepositConfig } from "@/components/quotes/deposit-config";
 import { QuoteSummary } from "@/components/quotes/quote-summary";
+import { PhotoCapture } from "@/components/quotes/photo-capture";
+import { PhotoGrid } from "@/components/quotes/photo-grid";
+import { compressImage } from "@/lib/image-compress";
 import { useQuote } from "@/hooks/use-quotes";
 import type { QuoteStatus } from "@/types";
 
-type QuoteWithLineItems = Quote & { lineItems: LineItem[] };
+type QuoteWithLineItems = Quote & { lineItems: LineItem[]; photos: QuotePhoto[] };
 
 type LocalLineItem = {
   id?: string;
@@ -58,6 +61,10 @@ export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilde
       isCustom: li.isCustom,
     }))
   );
+
+  const [photos, setPhotos] = useState<QuotePhoto[]>(initialQuote.photos);
+  const [isUploading, setIsUploading] = useState(false);
+  const [removingPhotoId, setRemovingPhotoId] = useState<string | null>(null);
 
   const [isSaving, setIsSaving] = useState(false);
   const [isDuplicating, setIsDuplicating] = useState(false);
@@ -114,6 +121,48 @@ export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilde
   function handleDepositChange(type: DepositType, value: number | null) {
     setDepositType(type);
     setDepositValue(value);
+  }
+
+  async function handleCapturePhoto(file: File) {
+    setIsUploading(true);
+    try {
+      const compressed = await compressImage(file, { maxSizeKB: 500, maxWidthOrHeight: 1200 });
+
+      const fd = new FormData();
+      fd.append("file", compressed);
+      fd.append("type", "photo");
+      const uploadRes = await fetch("/api/photos/upload", { method: "POST", body: fd });
+      if (!uploadRes.ok) throw new Error("Upload failed");
+      const uploadData = await uploadRes.json();
+
+      const attachRes = await fetch(`/api/quotes/${quoteId}/photos`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: uploadData.url, sortOrder: photos.length }),
+      });
+      if (!attachRes.ok) throw new Error("Failed to attach photo");
+      const { data: newPhoto } = await attachRes.json();
+      setPhotos((prev) => [...prev, newPhoto]);
+    } catch {
+      setSaveMessage({ type: "error", text: "Failed to add photo. Please try again." });
+    } finally {
+      setIsUploading(false);
+    }
+  }
+
+  async function handleRemovePhoto(photoId: string) {
+    setRemovingPhotoId(photoId);
+    try {
+      const res = await fetch(`/api/quotes/${quoteId}/photos/${photoId}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) throw new Error("Failed to remove photo");
+      setPhotos((prev) => prev.filter((p) => p.id !== photoId));
+    } catch {
+      setSaveMessage({ type: "error", text: "Failed to remove photo. Please try again." });
+    } finally {
+      setRemovingPhotoId(null);
+    }
   }
 
   async function handleSave() {
@@ -266,6 +315,21 @@ export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilde
           className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
         />
       </div>
+
+      {/* Photos */}
+      <section className="flex flex-col gap-2">
+        <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+          Photos ({photos.length}/10)
+        </h3>
+        <PhotoGrid photos={photos} onRemove={handleRemovePhoto} isRemoving={removingPhotoId} />
+        <div className="mt-2">
+          <PhotoCapture
+            onCapture={handleCapturePhoto}
+            disabled={photos.length >= 10}
+            isUploading={isUploading}
+          />
+        </div>
+      </section>
 
       {/* Tax Rate */}
       <div className="flex flex-col gap-1">

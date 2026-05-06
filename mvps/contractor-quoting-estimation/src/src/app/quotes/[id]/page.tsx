@@ -18,7 +18,10 @@ export default async function QuotePage({ params }: PageProps) {
 
   const quote = await prisma.quote.findFirst({
     where: { id, userId: session.user.id },
-    include: { lineItems: { orderBy: { sortOrder: "asc" } } },
+    include: {
+      lineItems: { orderBy: { sortOrder: "asc" } },
+      photos: { orderBy: { sortOrder: "asc" } },
+    },
   });
 
   if (!quote) {
