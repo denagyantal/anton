@@ -1,6 +1,6 @@
 # Story 4.1: Customer Quote View Page
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -67,10 +67,10 @@ so that I can review the itemized proposal, photos, and terms before deciding.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Create the public API route `GET /api/quotes/view/[token]` (AC: #1, #2, #3, #6)
-  - [ ] 1.1 Create directory `src/src/app/api/quotes/view/[token]/` and file `route.ts`
-  - [ ] 1.2 Export `async function GET` — NO auth check (this is a public endpoint)
-  - [ ] 1.3 `await params` before destructuring `{ token }` (Next.js 16 — params is a Promise)
+- [x] Task 1: Create the public API route `GET /api/quotes/view/[token]` (AC: #1, #2, #3, #6)
+  - [x] 1.1 Create directory `src/src/app/api/quotes/view/[token]/` and file `route.ts`
+  - [x] 1.2 Export `async function GET` — NO auth check (this is a public endpoint)
+  - [x] 1.3 `await params` before destructuring `{ token }` (Next.js 16 — params is a Promise)
   - [ ] 1.4 Query the database for the quote by `viewToken`:
     ```typescript
     const quote = await prisma.quote.findUnique({
@@ -84,8 +84,8 @@ so that I can review the itemized proposal, photos, and terms before deciding.
       },
     });
     ```
-  - [ ] 1.5 Return `404` if `!quote` with `{ error: "Quote not found" }`
-  - [ ] 1.6 Apply the status-to-VIEWED transition — only update if currently `SENT`:
+  - [x] 1.5 Return `404` if `!quote` with `{ error: "Quote not found" }`
+  - [x] 1.6 Apply the status-to-VIEWED transition — only update if currently `SENT`:
     ```typescript
     if (quote.status === "SENT") {
       await prisma.quote.update({
@@ -94,7 +94,7 @@ so that I can review the itemized proposal, photos, and terms before deciding.
       });
     }
     ```
-  - [ ] 1.7 Build the safe response payload — explicitly pick only the fields to expose (no `userId`, `signerIp`, `signatureData`, `stripePaymentIntentId`):
+  - [x] 1.7 Build the safe response payload — explicitly pick only the fields to expose (no `userId`, `signerIp`, `signatureData`, `stripePaymentIntentId`):
     ```typescript
     const responseData = {
       quote: {
@@ -139,12 +139,12 @@ so that I can review the itemized proposal, photos, and terms before deciding.
       },
     };
     ```
-  - [ ] 1.8 Return `NextResponse.json({ data: responseData }, { status: 200 })`
-  - [ ] 1.9 Wrap in try/catch — return `500` with `{ error: "Failed to load quote." }` on unexpected errors; log the error server-side
+  - [x] 1.8 Return `NextResponse.json({ data: responseData }, { status: 200 })`
+  - [x] 1.9 Wrap in try/catch — return `500` with `{ error: "Failed to load quote." }` on unexpected errors; log the error server-side
 
-- [ ] Task 2: Create `CustomerQuoteViewData` type in `src/src/types/index.ts` (AC: #6)
-  - [ ] 2.1 Open `src/src/types/index.ts` (MODIFY, do NOT recreate)
-  - [ ] 2.2 Add the following exported interfaces after the existing types:
+- [x] Task 2: Create `CustomerQuoteViewData` type in `src/src/types/index.ts` (AC: #6)
+  - [x] 2.1 Open `src/src/types/index.ts` (MODIFY, do NOT recreate)
+  - [x] 2.2 Add the following exported interfaces after the existing types:
     ```typescript
     export interface CustomerLineItem {
       id: string;
@@ -196,25 +196,25 @@ so that I can review the itemized proposal, photos, and terms before deciding.
     }
     ```
 
-- [ ] Task 3: Create `QuoteDisplay` component (AC: #1, #4, #5, #7, #8, #9, #10)
-  - [ ] 3.1 Create `src/src/components/customer-view/quote-display.tsx` (NEW file, new directory)
-  - [ ] 3.2 The component accepts `{ data: CustomerQuoteViewData }` as props — no server calls inside the component
-  - [ ] 3.3 Add `"use client"` directive at the top (the page passes SSR-fetched data as props; the component handles rendering only)
-  - [ ] 3.4 **Contractor header section**: display logo (Next.js `<Image>` with `alt={data.contractor.businessName}`, 80×80 max, `unoptimized` if external R2 URL), business name (heading level 1), license number (if present), phone, email. Apply the brand color from `data.contractor.brandColor` as the header background (inline style — Tailwind cannot handle dynamic hex values)
-  - [ ] 3.5 **Quote metadata section**: quote number, trade (display as human-readable: "Plumbing" not "PLUMBING"), date created (use `Intl.DateTimeFormat` with `{ dateStyle: "long" }` in the user's locale)
-  - [ ] 3.6 **Customer info section**: customer name, address (if present), phone, email
-  - [ ] 3.7 **Line items table**: render as a responsive table or stacked card list. Each row: description, quantity + unit (e.g., "2 each"), unit price (formatted with `formatCurrency` from `@/lib/utils`), line total (quantity × unitPrice, formatted). Show column headers. Make it scrollable horizontally on small screens (`overflow-x-auto`)
-  - [ ] 3.8 **Totals section**: subtotal (sum of all line item totals), tax amount (subtotal × taxRate / 100), total (subtotal + tax). Format all with `formatCurrency`. If `depositType` is set, show deposit row:
+- [x] Task 3: Create `QuoteDisplay` component (AC: #1, #4, #5, #7, #8, #9, #10)
+  - [x] 3.1 Create `src/src/components/customer-view/quote-display.tsx` (NEW file, new directory)
+  - [x] 3.2 The component accepts `{ data: CustomerQuoteViewData }` as props — no server calls inside the component
+  - [x] 3.3 Add `"use client"` directive at the top (the page passes SSR-fetched data as props; the component handles rendering only)
+  - [x] 3.4 **Contractor header section**: display logo (Next.js `<Image>` with `alt={data.contractor.businessName}`, 80×80 max, `unoptimized` if external R2 URL), business name (heading level 1), license number (if present), phone, email. Apply the brand color from `data.contractor.brandColor` as the header background (inline style — Tailwind cannot handle dynamic hex values)
+  - [x] 3.5 **Quote metadata section**: quote number, trade (display as human-readable: "Plumbing" not "PLUMBING"), date created (use `Intl.DateTimeFormat` with `{ dateStyle: "long" }` in the user's locale)
+  - [x] 3.6 **Customer info section**: customer name, address (if present), phone, email
+  - [x] 3.7 **Line items table**: render as a responsive table or stacked card list. Each row: description, quantity + unit (e.g., "2 each"), unit price (formatted with `formatCurrency` from `@/lib/utils`), line total (quantity × unitPrice, formatted). Show column headers. Make it scrollable horizontally on small screens (`overflow-x-auto`)
+  - [x] 3.8 **Totals section**: subtotal (sum of all line item totals), tax amount (subtotal × taxRate / 100), total (subtotal + tax). Format all with `formatCurrency`. If `depositType` is set, show deposit row:
     - `FIXED`: "Deposit Due: $[depositValue]"
     - `PERCENTAGE`: "Deposit Due: [depositValue]% — $[calculatedAmount]" where `calculatedAmount = total × depositValue / 100`
-  - [ ] 3.9 **Notes section**: only render if `quote.notes` is truthy. Show a section heading "Project Notes" and the notes text in a `<p>` tag preserving whitespace with `whitespace-pre-wrap`
-  - [ ] 3.10 **Photos section**: only render if `quote.photos.length > 0`. Show a section heading "Jobsite Photos". Render each photo as an `<img>` tag (NOT Next.js `<Image>` — no domain config needed, avoids complexity) with `alt={p.caption ?? "Jobsite photo"}`, `loading="lazy"`, and `className="w-full rounded object-cover"`. Arrange in a 2-column grid on mobile
-  - [ ] 3.11 **Terms section**: only render if `quote.termsText` is truthy. Show a section heading "Terms & Conditions" and the text in a `<p>` with `whitespace-pre-wrap`
-  - [ ] 3.12 **Accept & Sign CTA button**: always render at the bottom. Use a `<button>` element with `className` including `min-h-[44px]` and `w-full`. For Story 4.1, the button shows "Accept & Sign" and is visually prominent (use the brand color or a strong blue). The button does nothing on click for now (Story 4.2 wires up the signature flow). Mark it with `data-testid="accept-sign-btn"` for future test use. Do NOT disable it — leave it enabled so reviewers can see it visually; Story 4.2 will attach the `onClick` handler
+  - [x] 3.9 **Notes section**: only render if `quote.notes` is truthy. Show a section heading "Project Notes" and the notes text in a `<p>` tag preserving whitespace with `whitespace-pre-wrap`
+  - [x] 3.10 **Photos section**: only render if `quote.photos.length > 0`. Show a section heading "Jobsite Photos". Render each photo as an `<img>` tag (NOT Next.js `<Image>` — no domain config needed, avoids complexity) with `alt={p.caption ?? "Jobsite photo"}`, `loading="lazy"`, and `className="w-full rounded object-cover"`. Arrange in a 2-column grid on mobile
+  - [x] 3.11 **Terms section**: only render if `quote.termsText` is truthy. Show a section heading "Terms & Conditions" and the text in a `<p>` with `whitespace-pre-wrap`
+  - [x] 3.12 **Accept & Sign CTA button**: always render at the bottom. Use a `<button>` element with `className` including `min-h-[44px]` and `w-full`. For Story 4.1, the button shows "Accept & Sign" and is visually prominent (use the brand color or a strong blue). The button does nothing on click for now (Story 4.2 wires up the signature flow). Mark it with `data-testid="accept-sign-btn"` for future test use. Do NOT disable it — leave it enabled so reviewers can see it visually; Story 4.2 will attach the `onClick` handler
 
-- [ ] Task 4: Create the public SSR page at `/quote/[token]` (AC: #1, #3, #5)
-  - [ ] 4.1 Create directory `src/src/app/quote/[token]/` and file `page.tsx`
-  - [ ] 4.2 This is a **server component** (no `"use client"` directive). Fetch data server-side:
+- [x] Task 4: Create the public SSR page at `/quote/[token]` (AC: #1, #3, #5)
+  - [x] 4.1 Create directory `src/src/app/quote/[token]/` and file `page.tsx`
+  - [x] 4.2 This is a **server component** (no `"use client"` directive). Fetch data server-side:
     ```typescript
     import { notFound } from "next/navigation";
     import { QuoteDisplay } from "@/components/customer-view/quote-display";
@@ -245,8 +245,8 @@ so that I can review the itemized proposal, photos, and terms before deciding.
       );
     }
     ```
-  - [ ] 4.3 Do NOT wrap in any auth middleware — this page is intentionally public. Verify that `src/src/middleware.ts` does NOT protect the `/quote/` path (it should only protect `/dashboard`, `/quotes`, `/profile`)
-  - [ ] 4.4 Add a `generateMetadata` export for SEO:
+  - [x] 4.3 Do NOT wrap in any auth middleware — this page is intentionally public. Verify that `src/src/middleware.ts` does NOT protect the `/quote/` path (it should only protect `/dashboard`, `/quotes`, `/profile`)
+  - [x] 4.4 Add a `generateMetadata` export for SEO:
     ```typescript
     export async function generateMetadata({
       params,
@@ -259,7 +259,7 @@ so that I can review the itemized proposal, photos, and terms before deciding.
       };
     }
     ```
-  - [ ] 4.5 Create `src/src/app/quote/[token]/not-found.tsx` for the 404 case:
+  - [x] 4.5 Create `src/src/app/quote/[token]/not-found.tsx` for the 404 case:
     ```typescript
     export default function QuoteNotFound() {
       return (
@@ -275,34 +275,34 @@ so that I can review the itemized proposal, photos, and terms before deciding.
     }
     ```
 
-- [ ] Task 5: Verify middleware does NOT protect `/quote/[token]` (AC: #1)
-  - [ ] 5.1 Read `src/src/middleware.ts`
-  - [ ] 5.2 Confirm that the middleware matcher does NOT include `/quote` paths
-  - [ ] 5.3 If `/quote` is accidentally protected, update the matcher config to exclude it. The correct matcher pattern protects only: `/dashboard`, `/quotes`, `/profile` paths
+- [x] Task 5: Verify middleware does NOT protect `/quote/[token]` (AC: #1)
+  - [x] 5.1 Read `src/src/middleware.ts`
+  - [x] 5.2 Confirm that the middleware matcher does NOT include `/quote` paths
+  - [x] 5.3 If `/quote` is accidentally protected, update the matcher config to exclude it. The correct matcher pattern protects only: `/dashboard`, `/quotes`, `/profile` paths
 
-- [ ] Task 6: Write tests for `GET /api/quotes/view/[token]` (AC: #1–#3, #6)
-  - [ ] 6.1 Create `src/src/app/api/quotes/view/[token]/route.test.ts`
-  - [ ] 6.2 Mock `@/lib/db` at the top of the file (no auth mock needed — this is a public route)
-  - [ ] 6.3 Define `mockQuote` fixture with all required fields including nested `lineItems`, `photos`, `user.profile`
-  - [ ] 6.4 Test: returns `404` when `findUnique` returns null (invalid token)
-  - [ ] 6.5 Test: returns `200` with correct data shape when quote exists (check `data.quote.quoteNumber`, `data.contractor.businessName`)
-  - [ ] 6.6 Test: updates status to `VIEWED` and sets `viewedAt` when status is `SENT`
-  - [ ] 6.7 Test: does NOT call `prisma.quote.update` when status is already `VIEWED`
-  - [ ] 6.8 Test: does NOT call `prisma.quote.update` when status is `SIGNED`
-  - [ ] 6.9 Test: does NOT expose `userId`, `signerIp`, `signatureData`, `stripePaymentIntentId` in response
-  - [ ] 6.10 Test: returns `200` even when the quote has zero photos (empty array in response)
-  - [ ] 6.11 Test: returns `200` even when `user.profile` is null (gracefully returns empty strings for contractor info)
-  - [ ] 6.12 Total new tests: at least 8
+- [x] Task 6: Write tests for `GET /api/quotes/view/[token]` (AC: #1–#3, #6)
+  - [x] 6.1 Create `src/src/app/api/quotes/view/[token]/route.test.ts`
+  - [x] 6.2 Mock `@/lib/db` at the top of the file (no auth mock needed — this is a public route)
+  - [x] 6.3 Define `mockQuote` fixture with all required fields including nested `lineItems`, `photos`, `user.profile`
+  - [x] 6.4 Test: returns `404` when `findUnique` returns null (invalid token)
+  - [x] 6.5 Test: returns `200` with correct data shape when quote exists (check `data.quote.quoteNumber`, `data.contractor.businessName`)
+  - [x] 6.6 Test: updates status to `VIEWED` and sets `viewedAt` when status is `SENT`
+  - [x] 6.7 Test: does NOT call `prisma.quote.update` when status is already `VIEWED`
+  - [x] 6.8 Test: does NOT call `prisma.quote.update` when status is `SIGNED`
+  - [x] 6.9 Test: does NOT expose `userId`, `signerIp`, `signatureData`, `stripePaymentIntentId` in response
+  - [x] 6.10 Test: returns `200` even when the quote has zero photos (empty array in response)
+  - [x] 6.11 Test: returns `200` even when `user.profile` is null (gracefully returns empty strings for contractor info)
+  - [x] 6.12 Total new tests: at least 8
 
-- [ ] Task 7: Final verification (AC: all)
-  - [ ] 7.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
-  - [ ] 7.2 `npm test` — all tests pass (79 existing + at least 8 new = 87+ tests)
-  - [ ] 7.3 Confirm `src/src/app/quote/[token]/page.tsx` exists and has no `"use client"` directive
-  - [ ] 7.4 Confirm `src/src/components/customer-view/quote-display.tsx` has `"use client"` directive
-  - [ ] 7.5 Confirm `src/src/app/api/quotes/view/[token]/route.ts` has NO `import { auth }` (public endpoint)
-  - [ ] 7.6 Confirm the `viewedAt` update only fires when `status === "SENT"` (not on subsequent views)
-  - [ ] 7.7 Confirm `userId`, `signerIp`, `signatureData`, `stripePaymentIntentId` are absent from the API response
-  - [ ] 7.8 Confirm `src/src/middleware.ts` matcher does NOT protect `/quote` paths
+- [x] Task 7: Final verification (AC: all)
+  - [x] 7.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
+  - [x] 7.2 `npm test` — all tests pass (79 existing + at least 8 new = 87+ tests)
+  - [x] 7.3 Confirm `src/src/app/quote/[token]/page.tsx` exists and has no `"use client"` directive
+  - [x] 7.4 Confirm `src/src/components/customer-view/quote-display.tsx` has `"use client"` directive
+  - [x] 7.5 Confirm `src/src/app/api/quotes/view/[token]/route.ts` has NO `import { auth }` (public endpoint)
+  - [x] 7.6 Confirm the `viewedAt` update only fires when `status === "SENT"` (not on subsequent views)
+  - [x] 7.7 Confirm `userId`, `signerIp`, `signatureData`, `stripePaymentIntentId` are absent from the API response
+  - [x] 7.8 Confirm `src/src/middleware.ts` matcher does NOT protect `/quote` paths
 
 ## Dev Notes
 
@@ -743,6 +743,23 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None — implementation completed without issues.
+
 ### Completion Notes List
 
+- Created public API route `GET /api/quotes/view/[token]` with no auth, status-to-VIEWED transition on first view only, and explicit field whitelisting to prevent sensitive data exposure (userId, signerIp, signatureData, stripePaymentIntentId never returned).
+- Extended `src/types/index.ts` with `CustomerLineItem`, `CustomerPhoto`, `ContractorPublicInfo`, and `CustomerQuoteViewData` interfaces.
+- Created `QuoteDisplay` client component with full mobile-first layout: branded header with dynamic inline backgroundColor (not Tailwind dynamic class), line items table with overflow-x-auto, computed totals with FIXED/PERCENTAGE deposit display, conditional sections (notes/photos/terms only render when present), and prominent Accept & Sign button with data-testid and min-h-[44px].
+- Created SSR server component page at `/quote/[token]` — no `"use client"`, fetches data via internal API with `cache: "no-store"`, calls `notFound()` on API error.
+- Created `not-found.tsx` for the 404 error state.
+- Verified `proxy.ts` (the middleware file) matcher only covers `/dashboard/:path*`, `/quotes/:path*`, `/profile/:path*` — `/quote` is NOT protected.
+- 9 new tests added (88 total, up from 79). Build passes with zero TypeScript errors.
+
 ### File List
+
+- `mvps/contractor-quoting-estimation/src/src/app/api/quotes/view/[token]/route.ts` — NEW: public GET API route
+- `mvps/contractor-quoting-estimation/src/src/app/api/quotes/view/[token]/route.test.ts` — NEW: 9 Vitest tests
+- `mvps/contractor-quoting-estimation/src/src/app/quote/[token]/page.tsx` — NEW: public SSR customer view page
+- `mvps/contractor-quoting-estimation/src/src/app/quote/[token]/not-found.tsx` — NEW: 404 not-found page
+- `mvps/contractor-quoting-estimation/src/src/components/customer-view/quote-display.tsx` — NEW: read-only quote display component
+- `mvps/contractor-quoting-estimation/src/src/types/index.ts` — MODIFIED: added CustomerLineItem, CustomerPhoto, ContractorPublicInfo, CustomerQuoteViewData interfaces

@@ -100,3 +100,52 @@ export interface ProfilePdfData {
   brandColor: string;
   paymentTerms?: string | null;
 }
+
+export interface CustomerLineItem {
+  id: string;
+  description: string;
+  quantity: number;
+  unit: string;
+  unitPrice: number;
+  sortOrder: number;
+}
+
+export interface CustomerPhoto {
+  id: string;
+  url: string;
+  thumbnail?: string | null;
+  sortOrder: number;
+  caption?: string | null;
+}
+
+export interface ContractorPublicInfo {
+  businessName: string;
+  logoUrl?: string | null;
+  licenseNumber?: string | null;
+  phone?: string | null;
+  email?: string | null;
+  brandColor: string;
+  paymentTerms?: string | null;
+}
+
+export interface CustomerQuoteViewData {
+  quote: {
+    id: string;
+    quoteNumber: string;
+    trade: Trade;
+    status: QuoteStatus;
+    customerName: string;
+    customerAddress?: string | null;
+    customerPhone?: string | null;
+    customerEmail?: string | null;
+    notes?: string | null;
+    taxRate: number;
+    depositType?: DepositType | null;
+    depositValue?: number | null;
+    termsText?: string | null;
+    createdAt: Date | string;
+    lineItems: CustomerLineItem[];
+    photos: CustomerPhoto[];
+  };
+  contractor: ContractorPublicInfo;
+}

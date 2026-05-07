@@ -60,7 +60,7 @@ development_status:
   epic-3-retrospective: optional
 
   epic-4: in-progress
-  4-1-customer-quote-view-page: ready-for-dev
+  4-1-customer-quote-view-page: done
   4-2-electronic-signature-capture: backlog
   4-3-stripe-deposit-collection: backlog
   epic-4-retrospective: optional
