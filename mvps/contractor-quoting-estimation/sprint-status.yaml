@@ -59,8 +59,8 @@ development_status:
   3-3-quote-delivery-via-sms-and-email: done
   epic-3-retrospective: optional
 
-  epic-4: backlog
-  4-1-customer-quote-view-page: backlog
+  epic-4: in-progress
+  4-1-customer-quote-view-page: ready-for-dev
   4-2-electronic-signature-capture: backlog
   4-3-stripe-deposit-collection: backlog
   epic-4-retrospective: optional
