@@ -33,3 +33,9 @@ export const updateQuoteSchema = z.object({
 });
 
 export type UpdateQuoteInput = z.infer<typeof updateQuoteSchema>;
+
+export const sendQuoteSchema = z.object({
+  method: z.enum(["sms", "email"]),
+});
+
+export type SendQuoteInput = z.infer<typeof sendQuoteSchema>;

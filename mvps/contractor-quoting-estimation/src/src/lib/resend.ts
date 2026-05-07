@@ -11,6 +11,46 @@ function getResendClient(): Resend {
   return new Resend(apiKey);
 }
 
+export async function sendQuoteEmail(params: {
+  to: string;
+  businessName: string;
+  quoteNumber: string;
+  quoteViewUrl: string;
+  pdfUrl: string;
+}): Promise<void> {
+  const client = getResendClient();
+  await client.emails.send({
+    from: FROM_EMAIL,
+    to: params.to,
+    subject: `Your Quote from ${params.businessName}`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2>Your Quote is Ready</h2>
+        <p>${params.businessName} has sent you a quote (${params.quoteNumber}).</p>
+        <p>Click the button below to view, accept, and sign your quote online:</p>
+        <a
+          href="${params.quoteViewUrl}"
+          style="
+            display: inline-block;
+            background: #2563EB;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin: 16px 0;
+          "
+        >
+          View Your Quote
+        </a>
+        <p>Or download the PDF directly: <a href="${params.pdfUrl}">Download PDF</a></p>
+        <p style="color: #666; font-size: 14px;">
+          You can also copy this link: ${params.quoteViewUrl}
+        </p>
+      </div>
+    `,
+  });
+}
+
 export async function sendPasswordResetEmail(
   to: string,
   resetToken: string

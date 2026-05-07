@@ -56,7 +56,7 @@ development_status:
   epic-3: in-progress
   3-1-jobsite-photo-capture-and-attachment: done
   3-2-branded-pdf-generation: done
-  3-3-quote-delivery-via-sms-and-email: ready-for-dev
+  3-3-quote-delivery-via-sms-and-email: done
   epic-3-retrospective: optional
 
   epic-4: backlog

@@ -67,7 +67,10 @@ export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilde
   const [removingPhotoId, setRemovingPhotoId] = useState<string | null>(null);
 
   const [pdfUrl, setPdfUrl] = useState<string | null>(initialQuote.pdfUrl ?? null);
+  const [sentAt, setSentAt] = useState<Date | string | null>(initialQuote.sentAt ?? null);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [isSendingSms, setIsSendingSms] = useState(false);
+  const [isSendingEmail, setIsSendingEmail] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isDuplicating, setIsDuplicating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -164,6 +167,31 @@ export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilde
       setSaveMessage({ type: "error", text: "Failed to remove photo. Please try again." });
     } finally {
       setRemovingPhotoId(null);
+    }
+  }
+
+  async function handleSend(method: "sms" | "email") {
+    const setter = method === "sms" ? setIsSendingSms : setIsSendingEmail;
+    setter(true);
+    setSaveMessage(null);
+    try {
+      const res = await fetch(`/api/quotes/${quoteId}/send`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ method }),
+      });
+      if (!res.ok) {
+        const body = await res.json();
+        setSaveMessage({ type: "error", text: body.error ?? "Failed to send quote." });
+        return;
+      }
+      const { data } = await res.json();
+      setSentAt(data.sentAt);
+      setSaveMessage({ type: "success", text: "Quote sent successfully!" });
+    } catch {
+      setSaveMessage({ type: "error", text: "Network error sending quote. Please try again." });
+    } finally {
+      setter(false);
     }
   }
 
@@ -423,6 +451,38 @@ export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilde
             Download PDF
           </a>
         )}
+
+        <div className="border-t pt-3 mt-1">
+          <p className="text-xs font-medium text-gray-500 mb-2">Send to Customer</p>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={() => handleSend("sms")}
+              isLoading={isSendingSms}
+              disabled={isSendingSms || isSendingEmail || !customerPhone || !pdfUrl}
+              className="flex-1 min-h-[44px]"
+            >
+              Send SMS
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => handleSend("email")}
+              isLoading={isSendingEmail}
+              disabled={isSendingSms || isSendingEmail || !customerEmail || !pdfUrl}
+              className="flex-1 min-h-[44px]"
+            >
+              Send Email
+            </Button>
+          </div>
+          {sentAt && (
+            <p className="text-xs text-gray-500 mt-1 text-center">
+              Last sent: {new Date(sentAt).toLocaleDateString()}
+            </p>
+          )}
+          {!pdfUrl && (
+            <p className="text-xs text-amber-600 mt-1">Generate a PDF first before sending.</p>
+          )}
+        </div>
 
         <Button
           variant="outline"

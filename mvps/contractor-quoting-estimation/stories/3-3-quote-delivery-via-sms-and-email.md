@@ -1,6 +1,6 @@
 # Story 3.3: Quote Delivery via SMS & Email
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -80,10 +80,10 @@ so that the customer receives a professional quote link immediately.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Install Twilio and create `src/lib/twilio.ts` (AC: #1)
-  - [ ] 1.1 `cd mvps/contractor-quoting-estimation/src && npm install twilio`
-  - [ ] 1.2 Create `src/src/lib/twilio.ts` — server-only, no `"use client"` directive
-  - [ ] 1.3 Export `async function sendSms(to: string, body: string): Promise<void>` using lazy client creation pattern (same as resend.ts — throw if env var missing):
+- [x] Task 1: Install Twilio and create `src/lib/twilio.ts` (AC: #1)
+  - [x] 1.1 `cd mvps/contractor-quoting-estimation/src && npm install twilio`
+  - [x] 1.2 Create `src/src/lib/twilio.ts` — server-only, no `"use client"` directive
+  - [x] 1.3 Export `async function sendSms(to: string, body: string): Promise<void>` using lazy client creation pattern (same as resend.ts — throw if env var missing):
     ```typescript
     import twilio from "twilio";
 
@@ -103,11 +103,11 @@ so that the customer receives a professional quote link immediately.
       await client.messages.create({ to, from, body });
     }
     ```
-  - [ ] 1.4 Add `"twilio"` to `serverExternalPackages` in `next.config.ts` alongside `"bcrypt"`, `"@prisma/client"`, `"pg"`, `"@react-pdf/renderer"`
+  - [x] 1.4 Add `"twilio"` to `serverExternalPackages` in `next.config.ts` alongside `"bcrypt"`, `"@prisma/client"`, `"pg"`, `"@react-pdf/renderer"`
 
-- [ ] Task 2: Add `sendQuoteEmail()` to `src/lib/resend.ts` (AC: #2)
-  - [ ] 2.1 Open `src/src/lib/resend.ts` (MODIFY, do NOT recreate)
-  - [ ] 2.2 Add the following export below `sendPasswordResetEmail`:
+- [x] Task 2: Add `sendQuoteEmail()` to `src/lib/resend.ts` (AC: #2)
+  - [x] 2.1 Open `src/src/lib/resend.ts` (MODIFY, do NOT recreate)
+  - [x] 2.2 Add the following export below `sendPasswordResetEmail`:
     ```typescript
     export async function sendQuoteEmail(params: {
       to: string;
@@ -150,21 +150,21 @@ so that the customer receives a professional quote link immediately.
     }
     ```
 
-- [ ] Task 3: Create Zod validation schema for send request (AC: #10)
-  - [ ] 3.1 Open `src/src/lib/validations/quote.ts` (MODIFY, do NOT recreate)
-  - [ ] 3.2 Add and export `sendQuoteSchema`:
+- [x] Task 3: Create Zod validation schema for send request (AC: #10)
+  - [x] 3.1 Open `src/src/lib/validations/quote.ts` (MODIFY, do NOT recreate)
+  - [x] 3.2 Add and export `sendQuoteSchema`:
     ```typescript
     export const sendQuoteSchema = z.object({
       method: z.enum(["sms", "email"]),
     });
     ```
 
-- [ ] Task 4: Create `POST /api/quotes/[id]/send` route (AC: #1–#10)
-  - [ ] 4.1 Create directory `src/src/app/api/quotes/[id]/send/` and file `route.ts`
-  - [ ] 4.2 Export `async function POST` — call `auth()`, return `401` if no session
-  - [ ] 4.3 `await params` to get `{ id }` (Next.js 16 — params is a Promise)
-  - [ ] 4.4 Parse and validate the request body with `sendQuoteSchema.parse(body)` — return `400` on ZodError using `err.issues[0]?.message`
-  - [ ] 4.5 Fetch quote with ownership check and include line items count:
+- [x] Task 4: Create `POST /api/quotes/[id]/send` route (AC: #1–#10)
+  - [x] 4.1 Create directory `src/src/app/api/quotes/[id]/send/` and file `route.ts`
+  - [x] 4.2 Export `async function POST` — call `auth()`, return `401` if no session
+  - [x] 4.3 `await params` to get `{ id }` (Next.js 16 — params is a Promise)
+  - [x] 4.4 Parse and validate the request body with `sendQuoteSchema.parse(body)` — return `400` on ZodError using `err.issues[0]?.message`
+  - [x] 4.5 Fetch quote with ownership check and include line items count:
     ```typescript
     const quote = await prisma.quote.findFirst({
       where: { id, userId: session.user.id },
@@ -172,13 +172,13 @@ so that the customer receives a professional quote link immediately.
     });
     ```
     Return `404` if `!quote`
-  - [ ] 4.6 Validate quote has at least one line item: if `quote._count.lineItems === 0`, return `422` with `{ error: "Quote must have at least one line item before sending" }`
-  - [ ] 4.7 Validate `pdfUrl` is set: if `!quote.pdfUrl`, return `422` with `{ error: "Please generate the quote PDF before sending" }`
-  - [ ] 4.8 Fetch contractor profile for business name: `const profile = await prisma.profile.findUnique({ where: { userId: session.user.id } })`
-  - [ ] 4.9 Build the customer quote view URL: `const quoteViewUrl = \`${process.env.NEXT_PUBLIC_APP_URL}/quote/${quote.viewToken}\``
-  - [ ] 4.10 For `method === "sms"`: validate `quote.customerPhone` is non-null/non-empty, return `422` with `{ error: "Customer phone number is required to send via SMS" }` if missing; otherwise call `await sendSms(quote.customerPhone, \`${profile?.businessName ?? 'Your contractor'} sent you a quote. View it here: ${quoteViewUrl}\`)`
-  - [ ] 4.11 For `method === "email"`: validate `quote.customerEmail` is non-null/non-empty, return `422` with `{ error: "Customer email address is required to send via email" }` if missing; otherwise call `await sendQuoteEmail({ to: quote.customerEmail, businessName: profile?.businessName ?? 'Your contractor', quoteNumber: quote.quoteNumber, quoteViewUrl, pdfUrl: quote.pdfUrl })`
-  - [ ] 4.12 Update quote status and sentAt using conditional logic to avoid downgrading status:
+  - [x] 4.6 Validate quote has at least one line item: if `quote._count.lineItems === 0`, return `422` with `{ error: "Quote must have at least one line item before sending" }`
+  - [x] 4.7 Validate `pdfUrl` is set: if `!quote.pdfUrl`, return `422` with `{ error: "Please generate the quote PDF before sending" }`
+  - [x] 4.8 Fetch contractor profile for business name: `const profile = await prisma.profile.findUnique({ where: { userId: session.user.id } })`
+  - [x] 4.9 Build the customer quote view URL: `const quoteViewUrl = \`${process.env.NEXT_PUBLIC_APP_URL}/quote/${quote.viewToken}\``
+  - [x] 4.10 For `method === "sms"`: validate `quote.customerPhone` is non-null/non-empty, return `422` with `{ error: "Customer phone number is required to send via SMS" }` if missing; otherwise call `await sendSms(quote.customerPhone, \`${profile?.businessName ?? 'Your contractor'} sent you a quote. View it here: ${quoteViewUrl}\`)`
+  - [x] 4.11 For `method === "email"`: validate `quote.customerEmail` is non-null/non-empty, return `422` with `{ error: "Customer email address is required to send via email" }` if missing; otherwise call `await sendQuoteEmail({ to: quote.customerEmail, businessName: profile?.businessName ?? 'Your contractor', quoteNumber: quote.quoteNumber, quoteViewUrl, pdfUrl: quote.pdfUrl })`
+  - [x] 4.12 Update quote status and sentAt using conditional logic to avoid downgrading status:
     ```typescript
     const shouldUpdateStatus = quote.status === "DRAFT";
     const updatedQuote = await prisma.quote.update({
@@ -189,15 +189,15 @@ so that the customer receives a professional quote link immediately.
       },
     });
     ```
-  - [ ] 4.13 Return `NextResponse.json({ data: { status: updatedQuote.status, sentAt: updatedQuote.sentAt } }, { status: 200 })`
-  - [ ] 4.14 Wrap all logic after auth check in try/catch — catch ZodError for `400`, return `500` on unexpected error with message `"Failed to send quote."`
+  - [x] 4.13 Return `NextResponse.json({ data: { status: updatedQuote.status, sentAt: updatedQuote.sentAt } }, { status: 200 })`
+  - [x] 4.14 Wrap all logic after auth check in try/catch — catch ZodError for `400`, return `500` on unexpected error with message `"Failed to send quote."`
 
-- [ ] Task 5: Update `QuoteBuilder` to add Send UI (AC: #11, #12)
-  - [ ] 5.1 Open `src/src/components/quotes/quote-builder.tsx` (MODIFY, do NOT recreate)
-  - [ ] 5.2 Add state: `const [sentAt, setSentAt] = useState<Date | string | null>(initialQuote.sentAt ?? null)`
-  - [ ] 5.3 Add state: `const [isSendingSms, setIsSendingSms] = useState(false)`
-  - [ ] 5.4 Add state: `const [isSendingEmail, setIsSendingEmail] = useState(false)`
-  - [ ] 5.5 Implement `handleSend(method: "sms" | "email")`:
+- [x] Task 5: Update `QuoteBuilder` to add Send UI (AC: #11, #12)
+  - [x] 5.1 Open `src/src/components/quotes/quote-builder.tsx` (MODIFY, do NOT recreate)
+  - [x] 5.2 Add state: `const [sentAt, setSentAt] = useState<Date | string | null>(initialQuote.sentAt ?? null)`
+  - [x] 5.3 Add state: `const [isSendingSms, setIsSendingSms] = useState(false)`
+  - [x] 5.4 Add state: `const [isSendingEmail, setIsSendingEmail] = useState(false)`
+  - [x] 5.5 Implement `handleSend(method: "sms" | "email")`:
     ```typescript
     async function handleSend(method: "sms" | "email") {
       const setter = method === "sms" ? setIsSendingSms : setIsSendingEmail;
@@ -224,7 +224,7 @@ so that the customer receives a professional quote link immediately.
       }
     }
     ```
-  - [ ] 5.6 In the fixed bottom action bar (after the Generate PDF / Download PDF buttons), add:
+  - [x] 5.6 In the fixed bottom action bar (after the Generate PDF / Download PDF buttons), add:
     ```tsx
     <div className="border-t pt-3 mt-1">
       <p className="text-xs font-medium text-gray-500 mb-2">Send to Customer</p>
@@ -258,38 +258,38 @@ so that the customer receives a professional quote link immediately.
       )}
     </div>
     ```
-  - [ ] 5.7 The `customerPhone` and `customerEmail` values must be derived from the existing quote form state. In `QuoteBuilder`, the customer info fields are already tracked in state (`customerName`, `customerPhone`, `customerEmail`, etc.) — reference these existing state variables directly. Do NOT add new state for them.
-  - [ ] 5.8 The Send SMS button is disabled when: `!customerPhone` (falsy) OR `!pdfUrl` OR sending is in progress
-  - [ ] 5.9 The Send Email button is disabled when: `!customerEmail` (falsy) OR `!pdfUrl` OR sending is in progress
-  - [ ] 5.10 Initialize `sentAt` from `initialQuote.sentAt` (same pattern as `pdfUrl`)
+  - [x] 5.7 The `customerPhone` and `customerEmail` values must be derived from the existing quote form state. In `QuoteBuilder`, the customer info fields are already tracked in state (`customerName`, `customerPhone`, `customerEmail`, etc.) — reference these existing state variables directly. Do NOT add new state for them.
+  - [x] 5.8 The Send SMS button is disabled when: `!customerPhone` (falsy) OR `!pdfUrl` OR sending is in progress
+  - [x] 5.9 The Send Email button is disabled when: `!customerEmail` (falsy) OR `!pdfUrl` OR sending is in progress
+  - [x] 5.10 Initialize `sentAt` from `initialQuote.sentAt` (same pattern as `pdfUrl`)
 
-- [ ] Task 6: Write tests for `POST /api/quotes/[id]/send` (AC: #1–#10)
-  - [ ] 6.1 Create `src/src/app/api/quotes/[id]/send/route.test.ts`
-  - [ ] 6.2 Mock `@/lib/auth`, `@/lib/db`, `@/lib/twilio`, `@/lib/resend` at the top of the file
-  - [ ] 6.3 Test: returns `401` when `auth()` returns null
-  - [ ] 6.4 Test: returns `404` when quote belongs to another user
-  - [ ] 6.5 Test: returns `422` when quote has zero line items
-  - [ ] 6.6 Test: returns `422` when `pdfUrl` is null
-  - [ ] 6.7 Test: returns `422` when method is `"sms"` and `customerPhone` is null
-  - [ ] 6.8 Test: returns `422` when method is `"email"` and `customerEmail` is null
-  - [ ] 6.9 Test: returns `400` when method is invalid (e.g., `"whatsapp"`)
-  - [ ] 6.10 Test: SMS send — returns `200`, calls `sendSms` with correct args, updates `sentAt` and status to SENT when draft
-  - [ ] 6.11 Test: Email send — returns `200`, calls `sendQuoteEmail` with correct args, updates `sentAt`, does NOT change status when already VIEWED
-  - [ ] 6.12 Total new tests: at least 9
+- [x] Task 6: Write tests for `POST /api/quotes/[id]/send` (AC: #1–#10)
+  - [x] 6.1 Create `src/src/app/api/quotes/[id]/send/route.test.ts`
+  - [x] 6.2 Mock `@/lib/auth`, `@/lib/db`, `@/lib/twilio`, `@/lib/resend` at the top of the file
+  - [x] 6.3 Test: returns `401` when `auth()` returns null
+  - [x] 6.4 Test: returns `404` when quote belongs to another user
+  - [x] 6.5 Test: returns `422` when quote has zero line items
+  - [x] 6.6 Test: returns `422` when `pdfUrl` is null
+  - [x] 6.7 Test: returns `422` when method is `"sms"` and `customerPhone` is null
+  - [x] 6.8 Test: returns `422` when method is `"email"` and `customerEmail` is null
+  - [x] 6.9 Test: returns `400` when method is invalid (e.g., `"whatsapp"`)
+  - [x] 6.10 Test: SMS send — returns `200`, calls `sendSms` with correct args, updates `sentAt` and status to SENT when draft
+  - [x] 6.11 Test: Email send — returns `200`, calls `sendQuoteEmail` with correct args, updates `sentAt`, does NOT change status when already VIEWED
+  - [x] 6.12 Total new tests: at least 9
 
-- [ ] Task 7: Update `.env.example` with new Twilio variables (AC: #1)
-  - [ ] 7.1 Open `mvps/contractor-quoting-estimation/src/.env.example`
-  - [ ] 7.2 Ensure `TWILIO_ACCOUNT_SID=`, `TWILIO_AUTH_TOKEN=`, and `TWILIO_PHONE_NUMBER=` are listed (add if missing)
+- [x] Task 7: Update `.env.example` with new Twilio variables (AC: #1)
+  - [x] 7.1 Open `mvps/contractor-quoting-estimation/src/.env.example`
+  - [x] 7.2 Ensure `TWILIO_ACCOUNT_SID=`, `TWILIO_AUTH_TOKEN=`, and `TWILIO_PHONE_NUMBER=` are listed (add if missing)
 
-- [ ] Task 8: Final verification (AC: all)
-  - [ ] 8.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
-  - [ ] 8.2 `npm test` — all tests pass (70 existing + at least 9 new = 79+ tests)
-  - [ ] 8.3 Verify `twilio` is listed in `package.json` dependencies
-  - [ ] 8.4 Verify `"twilio"` is in `serverExternalPackages` in `next.config.ts`
-  - [ ] 8.5 Verify `src/lib/twilio.ts` has NO `"use client"` directive
-  - [ ] 8.6 Verify `sendQuoteEmail` is added to `src/lib/resend.ts` (not a new file)
-  - [ ] 8.7 Verify quote status is not downgraded (VIEWED stays VIEWED after resend)
-  - [ ] 8.8 Verify Send buttons in QuoteBuilder are disabled when pdfUrl is null
+- [x] Task 8: Final verification (AC: all)
+  - [x] 8.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
+  - [x] 8.2 `npm test` — all tests pass (70 existing + at least 9 new = 79+ tests)
+  - [x] 8.3 Verify `twilio` is listed in `package.json` dependencies
+  - [x] 8.4 Verify `"twilio"` is in `serverExternalPackages` in `next.config.ts`
+  - [x] 8.5 Verify `src/lib/twilio.ts` has NO `"use client"` directive
+  - [x] 8.6 Verify `sendQuoteEmail` is added to `src/lib/resend.ts` (not a new file)
+  - [x] 8.7 Verify quote status is not downgraded (VIEWED stays VIEWED after resend)
+  - [x] 8.8 Verify Send buttons in QuoteBuilder are disabled when pdfUrl is null
 
 ## Dev Notes
 
@@ -852,6 +852,32 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None.
+
 ### Completion Notes List
 
+- Installed `twilio` v6 via npm; added to `serverExternalPackages` in `next.config.ts` alongside existing packages.
+- Created `src/lib/twilio.ts` with lazy client creation pattern (server-only, no `"use client"`).
+- Extended `src/lib/resend.ts` with `sendQuoteEmail()` — inline HTML email matching existing `sendPasswordResetEmail` pattern.
+- Extended `src/lib/validations/quote.ts` with `sendQuoteSchema` (Zod `z.enum(["sms","email"])`).
+- Created `POST /api/quotes/[id]/send/route.ts` with full validation chain: auth → ZodParse → quote ownership → line items count → pdfUrl → method-specific field check → send → conditional status update.
+- Status-downgrade guard: only transitions `DRAFT → SENT`; VIEWED/SIGNED/PAID quotes keep their status, only `sentAt` is updated.
+- QuoteBuilder updated with `sentAt` state, `isSendingSms`/`isSendingEmail` loading states, `handleSend()` function, and send button section in the fixed bottom bar.
+- Send buttons disabled when `!pdfUrl`, `!customerPhone`/`!customerEmail`, or any send in progress.
+- 9 new Vitest tests added; all 79 tests pass. Build succeeds with zero TypeScript errors.
+
 ### File List
+
+**New:**
+- `src/src/lib/twilio.ts`
+- `src/src/app/api/quotes/[id]/send/route.ts`
+- `src/src/app/api/quotes/[id]/send/route.test.ts`
+
+**Modified:**
+- `src/src/lib/resend.ts` — added `sendQuoteEmail()`
+- `src/src/lib/validations/quote.ts` — added `sendQuoteSchema`
+- `src/src/components/quotes/quote-builder.tsx` — added `sentAt` state, `handleSend()`, send buttons
+- `src/next.config.ts` — added `"twilio"` to `serverExternalPackages`
+- `src/package.json` — `twilio` added via `npm install`
+- `src/.env.example` — added Twilio env vars
+- `mvps/contractor-quoting-estimation/sprint-status.yaml` — story status → done
