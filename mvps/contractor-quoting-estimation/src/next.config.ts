@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  serverExternalPackages: ["bcrypt", "@prisma/client", "pg"],
+  serverExternalPackages: ["bcrypt", "@prisma/client", "pg", "@react-pdf/renderer"],
 };
 
 export default nextConfig;

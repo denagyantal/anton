@@ -66,6 +66,8 @@ export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilde
   const [isUploading, setIsUploading] = useState(false);
   const [removingPhotoId, setRemovingPhotoId] = useState<string | null>(null);
 
+  const [pdfUrl, setPdfUrl] = useState<string | null>(initialQuote.pdfUrl ?? null);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isDuplicating, setIsDuplicating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -162,6 +164,26 @@ export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilde
       setSaveMessage({ type: "error", text: "Failed to remove photo. Please try again." });
     } finally {
       setRemovingPhotoId(null);
+    }
+  }
+
+  async function handleGeneratePdf() {
+    setIsGeneratingPdf(true);
+    setSaveMessage(null);
+    try {
+      const res = await fetch(`/api/quotes/${quoteId}/pdf`, { method: "POST" });
+      if (!res.ok) {
+        const body = await res.json();
+        setSaveMessage({ type: "error", text: body.error ?? "Failed to generate PDF." });
+        return;
+      }
+      const { data } = await res.json();
+      setPdfUrl(data.url);
+      setSaveMessage({ type: "success", text: "PDF generated successfully." });
+    } catch {
+      setSaveMessage({ type: "error", text: "Network error generating PDF. Please try again." });
+    } finally {
+      setIsGeneratingPdf(false);
     }
   }
 
@@ -381,6 +403,26 @@ export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilde
         >
           Save Quote
         </Button>
+
+        <Button
+          variant="outline"
+          onClick={handleGeneratePdf}
+          isLoading={isGeneratingPdf}
+          disabled={isGeneratingPdf || lineItems.length === 0}
+          className="w-full min-h-[44px]"
+        >
+          Generate PDF
+        </Button>
+        {pdfUrl && (
+          <a
+            href={pdfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-full min-h-[44px] rounded-md border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            Download PDF
+          </a>
+        )}
 
         <Button
           variant="outline"

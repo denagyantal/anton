@@ -68,3 +68,35 @@ export interface ApiResponse<T = unknown> {
   error?: string;
   message?: string;
 }
+
+export interface QuotePdfData {
+  quoteNumber: string;
+  trade: Trade;
+  createdAt: Date | string;
+  customerName: string;
+  customerAddress?: string | null;
+  customerPhone?: string | null;
+  customerEmail?: string | null;
+  notes?: string | null;
+  taxRate: number;
+  depositType?: 'FIXED' | 'PERCENTAGE' | null;
+  depositValue?: number | null;
+  termsText?: string | null;
+  lineItems: Array<{
+    description: string;
+    quantity: number;
+    unit: string;
+    unitPrice: number;
+  }>;
+  photos: Array<{ url: string; sortOrder: number }>;
+}
+
+export interface ProfilePdfData {
+  businessName: string;
+  logoUrl?: string | null;
+  licenseNumber?: string | null;
+  phone?: string | null;
+  email?: string | null;
+  brandColor: string;
+  paymentTerms?: string | null;
+}

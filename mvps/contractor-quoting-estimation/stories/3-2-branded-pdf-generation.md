@@ -1,6 +1,6 @@
 # Story 3.2: Branded PDF Generation
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -80,14 +80,14 @@ so that my customer receives a polished proposal with my logo, itemized pricing,
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Install `@react-pdf/renderer` and update Next.js config (AC: #1)
-  - [ ] 1.1 `cd mvps/contractor-quoting-estimation/src && npm install @react-pdf/renderer`
-  - [ ] 1.2 Open `mvps/contractor-quoting-estimation/src/next.config.ts`
-  - [ ] 1.3 Add `"@react-pdf/renderer"` to the `serverExternalPackages` array alongside `"bcrypt"`, `"@prisma/client"`, `"pg"` — this prevents Next.js from trying to bundle the library and avoids SSR issues
+- [x] Task 1: Install `@react-pdf/renderer` and update Next.js config (AC: #1)
+  - [x] 1.1 `cd mvps/contractor-quoting-estimation/src && npm install @react-pdf/renderer`
+  - [x] 1.2 Open `mvps/contractor-quoting-estimation/src/next.config.ts`
+  - [x] 1.3 Add `"@react-pdf/renderer"` to the `serverExternalPackages` array alongside `"bcrypt"`, `"@prisma/client"`, `"pg"` — this prevents Next.js from trying to bundle the library and avoids SSR issues
 
-- [ ] Task 2: Create TypeScript types for PDF data (AC: #2–#8)
-  - [ ] 2.1 Open `src/src/types/index.ts`
-  - [ ] 2.2 Add `QuotePdfData` export interface:
+- [x] Task 2: Create TypeScript types for PDF data (AC: #2–#8)
+  - [x] 2.1 Open `src/src/types/index.ts`
+  - [x] 2.2 Add `QuotePdfData` export interface:
     ```typescript
     export interface QuotePdfData {
       quoteNumber: string;
@@ -111,7 +111,7 @@ so that my customer receives a polished proposal with my logo, itemized pricing,
       photos: Array<{ url: string; sortOrder: number }>;
     }
     ```
-  - [ ] 2.3 Add `ProfilePdfData` export interface:
+  - [x] 2.3 Add `ProfilePdfData` export interface:
     ```typescript
     export interface ProfilePdfData {
       businessName: string;
@@ -124,20 +124,20 @@ so that my customer receives a polished proposal with my logo, itemized pricing,
     }
     ```
 
-- [ ] Task 3: Create `src/lib/pdf-generator.ts` utility (AC: #1, #9)
-  - [ ] 3.1 Create `src/src/lib/pdf-generator.ts`
-  - [ ] 3.2 Import `renderToBuffer` from `@react-pdf/renderer` and `React` from `react`
-  - [ ] 3.3 Import `QuotePdf` from `@/components/pdf/quote-pdf` and the types `QuotePdfData`, `ProfilePdfData`
-  - [ ] 3.4 Export `async function generateQuotePdf(quote: QuotePdfData, profile: ProfilePdfData | null): Promise<Buffer>` that calls `renderToBuffer(React.createElement(QuotePdf, { quote, profile }))` and returns the buffer
-  - [ ] 3.5 Verify the function does NOT use `"use client"` directive — it is server-only
+- [x] Task 3: Create `src/lib/pdf-generator.ts` utility (AC: #1, #9)
+  - [x] 3.1 Create `src/src/lib/pdf-generator.ts`
+  - [x] 3.2 Import `renderToBuffer` from `@react-pdf/renderer` and `React` from `react`
+  - [x] 3.3 Import `QuotePdf` from `@/components/pdf/quote-pdf` and the types `QuotePdfData`, `ProfilePdfData`
+  - [x] 3.4 Export `async function generateQuotePdf(quote: QuotePdfData, profile: ProfilePdfData | null): Promise<Buffer>` that calls `renderToBuffer(React.createElement(QuotePdf, { quote, profile }))` and returns the buffer
+  - [x] 3.5 Verify the function does NOT use `"use client"` directive — it is server-only
 
-- [ ] Task 4: Create `src/components/pdf/quote-pdf.tsx` PDF template (AC: #2–#8)
-  - [ ] 4.1 Create directory `src/src/components/pdf/` and file `quote-pdf.tsx`
-  - [ ] 4.2 Do NOT add `"use client"` — this component runs server-side only via `renderToBuffer`
-  - [ ] 4.3 Import primitives from `@react-pdf/renderer`: `Document`, `Page`, `View`, `Text`, `Image`, `StyleSheet`
-  - [ ] 4.4 Import types `QuotePdfData`, `ProfilePdfData` from `@/types`
-  - [ ] 4.5 Define `StyleSheet.create({...})` with all styles (see Dev Notes for style guide)
-  - [ ] 4.6 Implement `QuotePdf` component with props `{ quote: QuotePdfData, profile: ProfilePdfData | null }`:
+- [x] Task 4: Create `src/components/pdf/quote-pdf.tsx` PDF template (AC: #2–#8)
+  - [x] 4.1 Create directory `src/src/components/pdf/` and file `quote-pdf.tsx`
+  - [x] 4.2 Do NOT add `"use client"` — this component runs server-side only via `renderToBuffer`
+  - [x] 4.3 Import primitives from `@react-pdf/renderer`: `Document`, `Page`, `View`, `Text`, `Image`, `StyleSheet`
+  - [x] 4.4 Import types `QuotePdfData`, `ProfilePdfData` from `@/types`
+  - [x] 4.5 Define `StyleSheet.create({...})` with all styles (see Dev Notes for style guide)
+  - [x] 4.6 Implement `QuotePdf` component with props `{ quote: QuotePdfData, profile: ProfilePdfData | null }`:
     - Header section: brand-color background, logo image (if `profile?.logoUrl`), business name, license/phone/email
     - Quote info row: quote number, trade, date
     - Customer section: name, address, phone, email (skip null fields)
@@ -146,13 +146,13 @@ so that my customer receives a polished proposal with my logo, itemized pricing,
     - Notes section (skip if `quote.notes` is null/empty)
     - Photos section (skip if `quote.photos.length === 0`): render each photo with `<Image src={photo.url}>`
     - Terms section: show `quote.termsText` or `profile?.paymentTerms` or default placeholder
-  - [ ] 4.7 Use `formatCurrency` logic inline (no import from `@/lib/utils` — that file uses Intl which may behave differently in react-pdf's Node.js environment). Implement a simple helper inside the file: `(n: number) => '$' + n.toFixed(2)`
+  - [x] 4.7 Use `formatCurrency` logic inline (no import from `@/lib/utils` — that file uses Intl which may behave differently in react-pdf's Node.js environment). Implement a simple helper inside the file: `(n: number) => '$' + n.toFixed(2)`
 
-- [ ] Task 5: Create `POST /api/quotes/[id]/pdf` route (AC: #1, #9, #10, #11, #12)
-  - [ ] 5.1 Create directory `src/src/app/api/quotes/[id]/pdf/` and file `route.ts`
-  - [ ] 5.2 Export `async function POST` — call `auth()`, return `401` if no session
-  - [ ] 5.3 `await params` to get `{ id }` (Next.js 16 — params is a Promise)
-  - [ ] 5.4 Fetch quote with ownership check:
+- [x] Task 5: Create `POST /api/quotes/[id]/pdf` route (AC: #1, #9, #10, #11, #12)
+  - [x] 5.1 Create directory `src/src/app/api/quotes/[id]/pdf/` and file `route.ts`
+  - [x] 5.2 Export `async function POST` — call `auth()`, return `401` if no session
+  - [x] 5.3 `await params` to get `{ id }` (Next.js 16 — params is a Promise)
+  - [x] 5.4 Fetch quote with ownership check:
     ```typescript
     const quote = await prisma.quote.findFirst({
       where: { id, userId: session.user.id },
@@ -163,21 +163,21 @@ so that my customer receives a polished proposal with my logo, itemized pricing,
     });
     ```
     Return `404` if `!quote`
-  - [ ] 5.5 Validate quote has at least one line item: if `quote.lineItems.length === 0`, return `422` with `{ error: "Quote must have at least one line item to generate a PDF" }`
-  - [ ] 5.6 Fetch profile: `const profile = await prisma.profile.findUnique({ where: { userId: session.user.id } })`
-  - [ ] 5.7 Build `QuotePdfData` from quote fields
-  - [ ] 5.8 Build `ProfilePdfData` from profile (pass `null` if profile not found)
-  - [ ] 5.9 Generate PDF buffer: `const buffer = await generateQuotePdf(quoteData, profileData)`
-  - [ ] 5.10 Upload to R2: `const url = await uploadToR2(\`${session.user.id}/pdf/${id}.pdf\`, buffer, 'application/pdf')`
-  - [ ] 5.11 Update quote: `await prisma.quote.update({ where: { id }, data: { pdfUrl: url } })`
-  - [ ] 5.12 Return `NextResponse.json({ data: { url } }, { status: 200 })`
-  - [ ] 5.13 Wrap all logic after auth check in try/catch — return `500` on unexpected error with message `"Failed to generate PDF."`
+  - [x] 5.5 Validate quote has at least one line item: if `quote.lineItems.length === 0`, return `422` with `{ error: "Quote must have at least one line item to generate a PDF" }`
+  - [x] 5.6 Fetch profile: `const profile = await prisma.profile.findUnique({ where: { userId: session.user.id } })`
+  - [x] 5.7 Build `QuotePdfData` from quote fields
+  - [x] 5.8 Build `ProfilePdfData` from profile (pass `null` if profile not found)
+  - [x] 5.9 Generate PDF buffer: `const buffer = await generateQuotePdf(quoteData, profileData)`
+  - [x] 5.10 Upload to R2: `const url = await uploadToR2(\`${session.user.id}/pdf/${id}.pdf\`, buffer, 'application/pdf')`
+  - [x] 5.11 Update quote: `await prisma.quote.update({ where: { id }, data: { pdfUrl: url } })`
+  - [x] 5.12 Return `NextResponse.json({ data: { url } }, { status: 200 })`
+  - [x] 5.13 Wrap all logic after auth check in try/catch — return `500` on unexpected error with message `"Failed to generate PDF."`
 
-- [ ] Task 6: Update `QuoteBuilder` to add PDF generation UI (AC: #13, #14)
-  - [ ] 6.1 Open `src/src/components/quotes/quote-builder.tsx`
-  - [ ] 6.2 Add state: `const [pdfUrl, setPdfUrl] = useState<string | null>(initialQuote.pdfUrl ?? null)`
-  - [ ] 6.3 Add state: `const [isGeneratingPdf, setIsGeneratingPdf] = useState(false)`
-  - [ ] 6.4 Implement `handleGeneratePdf()`:
+- [x] Task 6: Update `QuoteBuilder` to add PDF generation UI (AC: #13, #14)
+  - [x] 6.1 Open `src/src/components/quotes/quote-builder.tsx`
+  - [x] 6.2 Add state: `const [pdfUrl, setPdfUrl] = useState<string | null>(initialQuote.pdfUrl ?? null)`
+  - [x] 6.3 Add state: `const [isGeneratingPdf, setIsGeneratingPdf] = useState(false)`
+  - [x] 6.4 Implement `handleGeneratePdf()`:
     ```typescript
     async function handleGeneratePdf() {
       setIsGeneratingPdf(true);
@@ -199,7 +199,7 @@ so that my customer receives a polished proposal with my logo, itemized pricing,
       }
     }
     ```
-  - [ ] 6.5 In the fixed bottom action bar (after "Save Quote" button and before "Duplicate Quote"), add:
+  - [x] 6.5 In the fixed bottom action bar (after "Save Quote" button and before "Duplicate Quote"), add:
     ```tsx
     <Button
       variant="outline"
@@ -221,25 +221,25 @@ so that my customer receives a polished proposal with my logo, itemized pricing,
       </a>
     )}
     ```
-  - [ ] 6.6 The "Generate PDF" button should be disabled (not just loading) if `lineItems.length === 0` — prevents generating an empty PDF
-  - [ ] 6.7 The "Download PDF" link always opens in a new tab (`target="_blank"`) — do NOT use Next.js `<Link>` for external URLs
+  - [x] 6.6 The "Generate PDF" button should be disabled (not just loading) if `lineItems.length === 0` — prevents generating an empty PDF
+  - [x] 6.7 The "Download PDF" link always opens in a new tab (`target="_blank"`) — do NOT use Next.js `<Link>` for external URLs
 
-- [ ] Task 7: Write tests for `POST /api/quotes/[id]/pdf` (AC: #10, #11, #12)
-  - [ ] 7.1 Create `src/src/app/api/quotes/[id]/pdf/route.test.ts`
-  - [ ] 7.2 Mock `@/lib/auth`, `@/lib/db`, `@/lib/r2`, `@/lib/pdf-generator` at the top of the file
-  - [ ] 7.3 Test: returns `401` when `auth()` returns null
-  - [ ] 7.4 Test: returns `404` when `prisma.quote.findFirst` returns null
-  - [ ] 7.5 Test: returns `422` when quote has zero line items
-  - [ ] 7.6 Test: returns `200` with `{ data: { url } }` and calls `prisma.quote.update` with `pdfUrl` when successful (mock `generateQuotePdf` to return `Buffer.from('fake')`, mock `uploadToR2` to return `'https://cdn.example.com/q1.pdf'`)
+- [x] Task 7: Write tests for `POST /api/quotes/[id]/pdf` (AC: #10, #11, #12)
+  - [x] 7.1 Create `src/src/app/api/quotes/[id]/pdf/route.test.ts`
+  - [x] 7.2 Mock `@/lib/auth`, `@/lib/db`, `@/lib/r2`, `@/lib/pdf-generator` at the top of the file
+  - [x] 7.3 Test: returns `401` when `auth()` returns null
+  - [x] 7.4 Test: returns `404` when `prisma.quote.findFirst` returns null
+  - [x] 7.5 Test: returns `422` when quote has zero line items
+  - [x] 7.6 Test: returns `200` with `{ data: { url } }` and calls `prisma.quote.update` with `pdfUrl` when successful (mock `generateQuotePdf` to return `Buffer.from('fake')`, mock `uploadToR2` to return `'https://cdn.example.com/q1.pdf'`)
 
-- [ ] Task 8: Final verification (AC: all)
-  - [ ] 8.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
-  - [ ] 8.2 `npm test` — all tests pass (includes the 4 new PDF route tests, total test count increases from 66)
-  - [ ] 8.3 Verify `@react-pdf/renderer` is listed in `package.json` dependencies
-  - [ ] 8.4 Verify `"@react-pdf/renderer"` is in `serverExternalPackages` in `next.config.ts`
-  - [ ] 8.5 Verify `quote-pdf.tsx` has NO `"use client"` directive
-  - [ ] 8.6 Verify `pdf-generator.ts` has NO `"use client"` directive
-  - [ ] 8.7 Verify the `pdfUrl` state in `QuoteBuilder` initializes from `initialQuote.pdfUrl` so existing PDF links survive page reloads
+- [x] Task 8: Final verification (AC: all)
+  - [x] 8.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
+  - [x] 8.2 `npm test` — all tests pass (includes the 4 new PDF route tests, total test count increases from 66)
+  - [x] 8.3 Verify `@react-pdf/renderer` is listed in `package.json` dependencies
+  - [x] 8.4 Verify `"@react-pdf/renderer"` is in `serverExternalPackages` in `next.config.ts`
+  - [x] 8.5 Verify `quote-pdf.tsx` has NO `"use client"` directive
+  - [x] 8.6 Verify `pdf-generator.ts` has NO `"use client"` directive
+  - [x] 8.7 Verify the `pdfUrl` state in `QuoteBuilder` initializes from `initialQuote.pdfUrl` so existing PDF links survive page reloads
 
 ## Dev Notes
 
@@ -774,6 +774,31 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+No debug issues. All tests passed on first run after fixing one TypeScript type cast.
+
 ### Completion Notes List
 
+- Installed `@react-pdf/renderer` (57 packages added).
+- Added `"@react-pdf/renderer"` to `serverExternalPackages` in `next.config.ts`.
+- Added `QuotePdfData` and `ProfilePdfData` interfaces to `src/types/index.ts`.
+- Created `src/components/pdf/quote-pdf.tsx` (server-only, no `"use client"`, no HTML elements, no Tailwind, uses inline `fmt()` helper instead of `formatCurrency`). Uses `{"&"}` interpolation for the ampersand in "Terms & Conditions" to be safe in JSX.
+- Created `src/lib/pdf-generator.ts` (server-only, uses `renderToBuffer` + `React.createElement`). Fixed TypeScript type mismatch: cast the element to `React.ReactElement<React.ComponentProps<typeof Document>>` since `renderToBuffer` signature expects a `DocumentProps` element but `QuotePdf` wraps `Document`.
+- Created `src/app/api/quotes/[id]/pdf/route.ts` with full auth/ownership/empty-items guards, R2 upload, and `quote.pdfUrl` persistence.
+- Created `src/app/api/quotes/[id]/pdf/route.test.ts` with 4 Vitest tests (401, 404, 422, 200).
+- Updated `QuoteBuilder` to add `pdfUrl` state (initialized from `initialQuote.pdfUrl`), `isGeneratingPdf` state, `handleGeneratePdf` function, "Generate PDF" button, and "Download PDF" link.
+- All 70 tests pass (`npm test`). Build completes with zero TypeScript errors (`npm run build`).
+
 ### File List
+
+**New files:**
+- `/home/anton/research-team/mvps/contractor-quoting-estimation/src/src/components/pdf/quote-pdf.tsx`
+- `/home/anton/research-team/mvps/contractor-quoting-estimation/src/src/lib/pdf-generator.ts`
+- `/home/anton/research-team/mvps/contractor-quoting-estimation/src/src/app/api/quotes/[id]/pdf/route.ts`
+- `/home/anton/research-team/mvps/contractor-quoting-estimation/src/src/app/api/quotes/[id]/pdf/route.test.ts`
+
+**Modified files:**
+- `/home/anton/research-team/mvps/contractor-quoting-estimation/src/next.config.ts`
+- `/home/anton/research-team/mvps/contractor-quoting-estimation/src/src/types/index.ts`
+- `/home/anton/research-team/mvps/contractor-quoting-estimation/src/src/components/quotes/quote-builder.tsx`
+- `/home/anton/research-team/mvps/contractor-quoting-estimation/src/package.json`
+- `/home/anton/research-team/mvps/contractor-quoting-estimation/sprint-status.yaml`
