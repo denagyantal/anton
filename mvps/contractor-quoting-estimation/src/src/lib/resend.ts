@@ -11,6 +11,14 @@ function getResendClient(): Resend {
   return new Resend(apiKey);
 }
 
+// Named export for use in route handlers (fully mocked in tests)
+export const resend = {
+  emails: {
+    send: (params: Parameters<Resend["emails"]["send"]>[0]) =>
+      getResendClient().emails.send(params),
+  },
+};
+
 export async function sendQuoteEmail(params: {
   to: string;
   businessName: string;

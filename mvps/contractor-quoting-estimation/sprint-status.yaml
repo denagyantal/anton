@@ -61,7 +61,7 @@ development_status:
 
   epic-4: in-progress
   4-1-customer-quote-view-page: done
-  4-2-electronic-signature-capture: ready-for-dev
+  4-2-electronic-signature-capture: done
   4-3-stripe-deposit-collection: backlog
   epic-4-retrospective: optional
 

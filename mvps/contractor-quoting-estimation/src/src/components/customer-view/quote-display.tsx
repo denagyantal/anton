@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { formatCurrency } from "@/lib/utils";
 import type { CustomerQuoteViewData } from "@/types";
+import { SignaturePad } from "@/components/customer-view/signature-pad";
 
 const TRADE_LABELS: Record<string, string> = {
   PLUMBING: "Plumbing",
@@ -13,10 +15,17 @@ const TRADE_LABELS: Record<string, string> = {
 
 interface Props {
   data: CustomerQuoteViewData;
+  token: string;
 }
 
-export function QuoteDisplay({ data }: Props) {
+export function QuoteDisplay({ data, token }: Props) {
   const { quote, contractor } = data;
+
+  const [showSignPad, setShowSignPad] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [localStatus, setLocalStatus] = useState(data.quote.status);
+  const [localSignedAt, setLocalSignedAt] = useState<string | null>(null);
 
   const subtotal = quote.lineItems.reduce(
     (sum, li) => sum + li.quantity * li.unitPrice,
@@ -37,6 +46,31 @@ export function QuoteDisplay({ data }: Props) {
   const createdDate = new Intl.DateTimeFormat(undefined, {
     dateStyle: "long",
   }).format(new Date(quote.createdAt));
+
+  const handleSignatureSubmit = async (signatureData: string) => {
+    setIsSubmitting(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch(`/api/quotes/view/${token}/sign`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ signatureData }),
+      });
+      if (!res.ok) {
+        const body = await res.json();
+        setSubmitError(body.error?.message ?? "Failed to submit signature. Please try again.");
+        return;
+      }
+      const body = await res.json();
+      setLocalStatus("SIGNED");
+      setLocalSignedAt(body.data?.signedAt ?? new Date().toISOString());
+      setShowSignPad(false);
+    } catch {
+      setSubmitError("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="max-w-2xl mx-auto pb-8">
@@ -239,15 +273,44 @@ export function QuoteDisplay({ data }: Props) {
           </section>
         )}
 
-        {/* Accept & Sign CTA */}
-        <div className="pt-2">
-          <button
-            data-testid="accept-sign-btn"
-            className="w-full min-h-[44px] py-3 px-6 rounded-lg font-semibold text-white text-base"
-            style={{ backgroundColor: contractor.brandColor }}
-          >
-            Accept &amp; Sign
-          </button>
+        {/* Bottom CTA — conditional on status */}
+        <div className="p-4">
+          {localStatus === "SIGNED" || localStatus === "PAID" ? (
+            <div className="text-center p-6 bg-green-50 rounded-xl border border-green-200">
+              <p className="text-green-700 font-semibold text-lg">Quote Signed</p>
+              {localSignedAt && (
+                <p className="text-green-600 text-sm mt-1">
+                  Signed on {new Intl.DateTimeFormat(undefined, { dateStyle: "long", timeStyle: "short" }).format(new Date(localSignedAt))}
+                </p>
+              )}
+              {(data.quote.status === "SIGNED" || data.quote.status === "PAID") && data.quote.signedAt && !localSignedAt && (
+                <p className="text-green-600 text-sm mt-1">
+                  Signed on {new Intl.DateTimeFormat(undefined, { dateStyle: "long", timeStyle: "short" }).format(new Date(data.quote.signedAt))}
+                </p>
+              )}
+            </div>
+          ) : showSignPad ? (
+            <div>
+              {submitError && (
+                <p className="text-red-600 text-sm mb-3" role="alert">{submitError}</p>
+              )}
+              <SignaturePad
+                signerName={data.quote.customerName}
+                onSubmit={handleSignatureSubmit}
+                onCancel={() => { setShowSignPad(false); setSubmitError(null); }}
+                isSubmitting={isSubmitting}
+              />
+            </div>
+          ) : (
+            <button
+              type="button"
+              data-testid="accept-sign-btn"
+              onClick={() => setShowSignPad(true)}
+              className="w-full min-h-[44px] bg-blue-600 text-white rounded-lg px-6 py-3 font-semibold text-base hover:bg-blue-700 active:bg-blue-800"
+            >
+              Accept &amp; Sign
+            </button>
+          )}
         </div>
       </div>
     </div>

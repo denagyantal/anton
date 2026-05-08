@@ -34,7 +34,7 @@ export default async function CustomerQuotePage({
 
   return (
     <main className="min-h-screen bg-gray-50">
-      <QuoteDisplay data={data} />
+      <QuoteDisplay data={data} token={token} />
     </main>
   );
 }

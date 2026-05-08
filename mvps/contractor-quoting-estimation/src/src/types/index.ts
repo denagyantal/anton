@@ -144,6 +144,7 @@ export interface CustomerQuoteViewData {
     depositValue?: number | null;
     termsText?: string | null;
     createdAt: Date | string;
+    signedAt?: Date | string | null;
     lineItems: CustomerLineItem[];
     photos: CustomerPhoto[];
   };

@@ -1,6 +1,6 @@
 # Story 4.2: Electronic Signature Capture
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -46,10 +46,10 @@ so that the contractor has a legally binding acceptance before starting work.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Create `POST /api/quotes/view/[token]/sign` API route (AC: #2, #3, #4, #6)
-  - [ ] 1.1 Create directory `src/src/app/api/quotes/view/[token]/sign/` and file `route.ts`
-  - [ ] 1.2 Export `async function POST` — NO auth check (public endpoint, authenticated by unguessable token only)
-  - [ ] 1.3 `await params` before destructuring `{ token }` (Next.js 16 — params is a Promise):
+- [x] Task 1: Create `POST /api/quotes/view/[token]/sign` API route (AC: #2, #3, #4, #6)
+  - [x] 1.1 Create directory `src/src/app/api/quotes/view/[token]/sign/` and file `route.ts`
+  - [x] 1.2 Export `async function POST` — NO auth check (public endpoint, authenticated by unguessable token only)
+  - [x] 1.3 `await params` before destructuring `{ token }` (Next.js 16 — params is a Promise):
     ```typescript
     export async function POST(
       request: NextRequest,
@@ -57,13 +57,13 @@ so that the contractor has a legally binding acceptance before starting work.
     ) {
       const { token } = await params;
     ```
-  - [ ] 1.4 Parse and validate request body using Zod:
+  - [x] 1.4 Parse and validate request body using Zod:
     ```typescript
     const body = await request.json();
     const validated = submitSignatureSchema.parse(body);
     // validated.signatureData — base64 PNG string
     ```
-  - [ ] 1.5 Find the quote by `viewToken`:
+  - [x] 1.5 Find the quote by `viewToken`:
     ```typescript
     const quote = await prisma.quote.findUnique({
       where: { viewToken: token },
@@ -76,7 +76,7 @@ so that the contractor has a legally binding acceptance before starting work.
       );
     }
     ```
-  - [ ] 1.6 Return `409 Conflict` if already signed or paid:
+  - [x] 1.6 Return `409 Conflict` if already signed or paid:
     ```typescript
     if (quote.status === "SIGNED" || quote.status === "PAID") {
       return NextResponse.json(
@@ -85,14 +85,14 @@ so that the contractor has a legally binding acceptance before starting work.
       );
     }
     ```
-  - [ ] 1.7 Extract client IP from request headers (real IP comes from `x-forwarded-for` in Vercel):
+  - [x] 1.7 Extract client IP from request headers (real IP comes from `x-forwarded-for` in Vercel):
     ```typescript
     const signerIp =
       request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
       request.headers.get("x-real-ip") ??
       "unknown";
     ```
-  - [ ] 1.8 Update the quote in the database:
+  - [x] 1.8 Update the quote in the database:
     ```typescript
     await prisma.quote.update({
       where: { id: quote.id },
@@ -104,7 +104,7 @@ so that the contractor has a legally binding acceptance before starting work.
       },
     });
     ```
-  - [ ] 1.9 Send notification email to contractor via Resend (fire-and-forget — log error but do NOT fail the request if email sending fails):
+  - [x] 1.9 Send notification email to contractor via Resend (fire-and-forget — log error but do NOT fail the request if email sending fails):
     ```typescript
     const contractorEmail = quote.user.profile?.email;
     if (contractorEmail) {
@@ -126,11 +126,11 @@ so that the contractor has a legally binding acceptance before starting work.
       }
     }
     ```
-  - [ ] 1.10 Return `200` success:
+  - [x] 1.10 Return `200` success:
     ```typescript
     return NextResponse.json({ data: { signed: true, signedAt: new Date() } }, { status: 200 });
     ```
-  - [ ] 1.11 Wrap entire handler in try/catch — catch ZodError separately (return 400), catch unknown errors (return 500):
+  - [x] 1.11 Wrap entire handler in try/catch — catch ZodError separately (return 400), catch unknown errors (return 500):
     ```typescript
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -147,8 +147,8 @@ so that the contractor has a legally binding acceptance before starting work.
     }
     ```
 
-- [ ] Task 2: Create Zod validation schema for signature submission (AC: #6)
-  - [ ] 2.1 Create `src/src/lib/validations/signature.ts` (NEW file):
+- [x] Task 2: Create Zod validation schema for signature submission (AC: #6)
+  - [x] 2.1 Create `src/src/lib/validations/signature.ts` (NEW file):
     ```typescript
     import { z } from "zod";
 
@@ -165,10 +165,10 @@ so that the contractor has a legally binding acceptance before starting work.
     export type SubmitSignatureInput = z.infer<typeof submitSignatureSchema>;
     ```
 
-- [ ] Task 3: Create `SignaturePad` component (AC: #1, #2, #5)
-  - [ ] 3.1 Create `src/src/components/customer-view/signature-pad.tsx` (NEW file in existing directory)
-  - [ ] 3.2 Add `"use client"` directive at top (canvas uses browser APIs)
-  - [ ] 3.3 Define props interface:
+- [x] Task 3: Create `SignaturePad` component (AC: #1, #2, #5)
+  - [x] 3.1 Create `src/src/components/customer-view/signature-pad.tsx` (NEW file in existing directory)
+  - [x] 3.2 Add `"use client"` directive at top (canvas uses browser APIs)
+  - [x] 3.3 Define props interface:
     ```typescript
     interface SignaturePadProps {
       onSubmit: (signatureData: string) => Promise<void>;
@@ -177,7 +177,7 @@ so that the contractor has a legally binding acceptance before starting work.
       isSubmitting: boolean;
     }
     ```
-  - [ ] 3.4 Set up refs and state:
+  - [x] 3.4 Set up refs and state:
     ```typescript
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const isDrawingRef = useRef(false);
@@ -185,7 +185,7 @@ so that the contractor has a legally binding acceptance before starting work.
     const [hasSignature, setHasSignature] = useState(false);
     const [error, setError] = useState<string | null>(null);
     ```
-  - [ ] 3.5 Implement `getCanvasPos` helper — converts event coordinates to canvas-relative coordinates:
+  - [x] 3.5 Implement `getCanvasPos` helper — converts event coordinates to canvas-relative coordinates:
     ```typescript
     const getCanvasPos = (canvas: HTMLCanvasElement, clientX: number, clientY: number) => {
       const rect = canvas.getBoundingClientRect();
@@ -198,7 +198,7 @@ so that the contractor has a legally binding acceptance before starting work.
     };
     ```
     Note: Scaling is required because CSS `width: 100%` stretches the canvas element but the internal canvas buffer dimensions stay at the declared `width`/`height` attributes. Without scaling, strokes appear offset on wider screens.
-  - [ ] 3.6 Implement `useEffect` to attach and clean up mouse + touch event listeners:
+  - [x] 3.6 Implement `useEffect` to attach and clean up mouse + touch event listeners:
     ```typescript
     useEffect(() => {
       const canvas = canvasRef.current;
@@ -277,7 +277,7 @@ so that the contractor has a legally binding acceptance before starting work.
       };
     }, []);
     ```
-  - [ ] 3.7 Implement `clearCanvas`:
+  - [x] 3.7 Implement `clearCanvas`:
     ```typescript
     const clearCanvas = () => {
       const canvas = canvasRef.current;
@@ -289,7 +289,7 @@ so that the contractor has a legally binding acceptance before starting work.
       setError(null);
     };
     ```
-  - [ ] 3.8 Implement `handleSubmit`:
+  - [x] 3.8 Implement `handleSubmit`:
     ```typescript
     const handleSubmit = async () => {
       if (!hasSignature) {
@@ -303,7 +303,7 @@ so that the contractor has a legally binding acceptance before starting work.
       await onSubmit(signatureData);
     };
     ```
-  - [ ] 3.9 Render the signature pad UI:
+  - [x] 3.9 Render the signature pad UI:
     ```tsx
     return (
       <div className="space-y-4 p-4 bg-white rounded-xl border border-gray-200">
@@ -359,16 +359,16 @@ so that the contractor has a legally binding acceptance before starting work.
     ```
     Note: `touch-none` CSS class (Tailwind) adds `touch-action: none` which prevents browser scroll hijacking on the canvas. The `passive: false` on touch listeners allows `e.preventDefault()` to prevent scroll during draw.
 
-- [ ] Task 4: Update `QuoteDisplay` component to wire up the signature flow (AC: #1, #2, #4, #5)
-  - [ ] 4.1 Open `src/src/components/customer-view/quote-display.tsx` (MODIFY — do NOT recreate)
-  - [ ] 4.2 Update the props interface to accept `token`:
+- [x] Task 4: Update `QuoteDisplay` component to wire up the signature flow (AC: #1, #2, #4, #5)
+  - [x] 4.1 Open `src/src/components/customer-view/quote-display.tsx` (MODIFY — do NOT recreate)
+  - [x] 4.2 Update the props interface to accept `token`:
     ```typescript
     interface QuoteDisplayProps {
       data: CustomerQuoteViewData;
       token: string;
     }
     ```
-  - [ ] 4.3 Add state variables inside the component:
+  - [x] 4.3 Add state variables inside the component:
     ```typescript
     const [showSignPad, setShowSignPad] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -376,7 +376,7 @@ so that the contractor has a legally binding acceptance before starting work.
     const [localStatus, setLocalStatus] = useState(data.quote.status);
     const [localSignedAt, setLocalSignedAt] = useState<string | null>(null);
     ```
-  - [ ] 4.4 Implement `handleSignatureSubmit`:
+  - [x] 4.4 Implement `handleSignatureSubmit`:
     ```typescript
     const handleSignatureSubmit = async (signatureData: string) => {
       setIsSubmitting(true);
@@ -403,7 +403,7 @@ so that the contractor has a legally binding acceptance before starting work.
       }
     };
     ```
-  - [ ] 4.5 Replace the existing bottom CTA section. The logic is:
+  - [x] 4.5 Replace the existing bottom CTA section. The logic is:
     - If `localStatus` is `SIGNED` or `PAID` → render signed confirmation UI
     - Else if `showSignPad` is true → render `<SignaturePad>` component
     - Else → render the "Accept & Sign" button:
@@ -448,15 +448,15 @@ so that the contractor has a legally binding acceptance before starting work.
       )}
     </div>
     ```
-  - [ ] 4.6 Import `SignaturePad` at the top of the file:
+  - [x] 4.6 Import `SignaturePad` at the top of the file:
     ```typescript
     import { SignaturePad } from "@/components/customer-view/signature-pad";
     ```
-  - [ ] 4.7 Add `signedAt` to the `CustomerQuoteViewData` type's quote shape (needed for displaying existing signed-at date on revisit):
+  - [x] 4.7 Add `signedAt` to the `CustomerQuoteViewData` type's quote shape (needed for displaying existing signed-at date on revisit):
 
-- [ ] Task 5: Update `CustomerQuoteViewData` type to include `signedAt` (AC: #4)
-  - [ ] 5.1 Open `src/src/types/index.ts` (MODIFY — do NOT recreate)
-  - [ ] 5.2 Find the `CustomerQuoteViewData` interface's `quote` sub-object and add `signedAt`:
+- [x] Task 5: Update `CustomerQuoteViewData` type to include `signedAt` (AC: #4)
+  - [x] 5.1 Open `src/src/types/index.ts` (MODIFY — do NOT recreate)
+  - [x] 5.2 Find the `CustomerQuoteViewData` interface's `quote` sub-object and add `signedAt`:
     ```typescript
     export interface CustomerQuoteViewData {
       quote: {
@@ -467,11 +467,11 @@ so that the contractor has a legally binding acceptance before starting work.
       contractor: ContractorPublicInfo;
     }
     ```
-  - [ ] 5.3 Verify the existing `CustomerLineItem`, `CustomerPhoto`, `ContractorPublicInfo` types are untouched
+  - [x] 5.3 Verify the existing `CustomerLineItem`, `CustomerPhoto`, `ContractorPublicInfo` types are untouched
 
-- [ ] Task 6: Update the public API route `GET /api/quotes/view/[token]` to expose `signedAt` (AC: #4)
-  - [ ] 6.1 Open `src/src/app/api/quotes/view/[token]/route.ts` (MODIFY — do NOT recreate)
-  - [ ] 6.2 In the `responseData` object's `quote` sub-object, add the `signedAt` field:
+- [x] Task 6: Update the public API route `GET /api/quotes/view/[token]` to expose `signedAt` (AC: #4)
+  - [x] 6.1 Open `src/src/app/api/quotes/view/[token]/route.ts` (MODIFY — do NOT recreate)
+  - [x] 6.2 In the `responseData` object's `quote` sub-object, add the `signedAt` field:
     ```typescript
     quote: {
       // ... existing fields ...
@@ -481,9 +481,9 @@ so that the contractor has a legally binding acceptance before starting work.
     ```
     Note: `signedAt` is safe to expose — it is not a sensitive field like `signerIp` or `signatureData`.
 
-- [ ] Task 7: Update the page component to pass `token` to `QuoteDisplay` (AC: #1, #2)
-  - [ ] 7.1 Open `src/src/app/quote/[token]/page.tsx` (MODIFY — do NOT recreate)
-  - [ ] 7.2 Update the JSX return to pass `token` as a prop:
+- [x] Task 7: Update the page component to pass `token` to `QuoteDisplay` (AC: #1, #2)
+  - [x] 7.1 Open `src/src/app/quote/[token]/page.tsx` (MODIFY — do NOT recreate)
+  - [x] 7.2 Update the JSX return to pass `token` as a prop:
     ```tsx
     return (
       <main className="min-h-screen bg-gray-50">
@@ -492,9 +492,9 @@ so that the contractor has a legally binding acceptance before starting work.
     );
     ```
 
-- [ ] Task 8: Write tests for `POST /api/quotes/view/[token]/sign` (AC: #2, #3, #4, #6)
-  - [ ] 8.1 Create `src/src/app/api/quotes/view/[token]/sign/route.test.ts`
-  - [ ] 8.2 Mock `@/lib/db` and `@/lib/resend` at the top:
+- [x] Task 8: Write tests for `POST /api/quotes/view/[token]/sign` (AC: #2, #3, #4, #6)
+  - [x] 8.1 Create `src/src/app/api/quotes/view/[token]/sign/route.test.ts`
+  - [x] 8.2 Mock `@/lib/db` and `@/lib/resend` at the top:
     ```typescript
     vi.mock("@/lib/db", () => ({
       prisma: {
@@ -513,7 +513,7 @@ so that the contractor has a legally binding acceptance before starting work.
       },
     }));
     ```
-  - [ ] 8.3 Define a `mockQuote` fixture with `status: "VIEWED"` and nested `user.profile`:
+  - [x] 8.3 Define a `mockQuote` fixture with `status: "VIEWED"` and nested `user.profile`:
     ```typescript
     const mockQuote = {
       id: "q1",
@@ -534,7 +534,7 @@ so that the contractor has a legally binding acceptance before starting work.
       },
     };
     ```
-  - [ ] 8.4 Define `makePostRequest` helper for brevity:
+  - [x] 8.4 Define `makePostRequest` helper for brevity:
     ```typescript
     const makePostRequest = (token: string, body: object) =>
       POST(
@@ -547,7 +547,7 @@ so that the contractor has a legally binding acceptance before starting work.
       );
     const validSignatureData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
     ```
-  - [ ] 8.5 Write these tests (at least 9 total):
+  - [x] 8.5 Write these tests (at least 9 total):
     - Test 1: Returns `404` when token does not match any quote
     - Test 2: Returns `409` when quote status is `SIGNED`
     - Test 3: Returns `409` when quote status is `PAID`
@@ -558,17 +558,17 @@ so that the contractor has a legally binding acceptance before starting work.
     - Test 8: Still returns `200` even when `resend.emails.send` throws (fire-and-forget — email failure must not fail the request)
     - Test 9: Still returns `200` when `quote.user.profile.email` is null (skips email silently)
 
-- [ ] Task 9: Final verification (AC: all)
-  - [ ] 9.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
-  - [ ] 9.2 `npm test` — all tests pass (88 existing + at least 9 new = 97+ tests)
-  - [ ] 9.3 Confirm `src/src/app/api/quotes/view/[token]/sign/route.ts` has NO `import { auth }` (public endpoint)
-  - [ ] 9.4 Confirm `src/src/components/customer-view/signature-pad.tsx` has `"use client"` directive
-  - [ ] 9.5 Confirm `QuoteDisplay` accepts `token` prop and passes it to the fetch call
-  - [ ] 9.6 Confirm canvas event listeners use `{ passive: false }` on touch events (required for `e.preventDefault()`)
-  - [ ] 9.7 Confirm `touch-none` Tailwind class is on the `<canvas>` element (prevents scroll during drawing)
-  - [ ] 9.8 Confirm the signed confirmation UI renders when `localStatus === "SIGNED"` (not when `showSignPad === false`)
-  - [ ] 9.9 Confirm email sending is fire-and-forget: wrapped in try/catch inside the route, error logged but NOT re-thrown
-  - [ ] 9.10 Confirm `signedAt` is exposed in `GET /api/quotes/view/[token]` response (needed for showing signed date on revisit)
+- [x] Task 9: Final verification (AC: all)
+  - [x] 9.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
+  - [x] 9.2 `npm test` — all tests pass (88 existing + at least 9 new = 97+ tests)
+  - [x] 9.3 Confirm `src/src/app/api/quotes/view/[token]/sign/route.ts` has NO `import { auth }` (public endpoint)
+  - [x] 9.4 Confirm `src/src/components/customer-view/signature-pad.tsx` has `"use client"` directive
+  - [x] 9.5 Confirm `QuoteDisplay` accepts `token` prop and passes it to the fetch call
+  - [x] 9.6 Confirm canvas event listeners use `{ passive: false }` on touch events (required for `e.preventDefault()`)
+  - [x] 9.7 Confirm `touch-none` Tailwind class is on the `<canvas>` element (prevents scroll during drawing)
+  - [x] 9.8 Confirm the signed confirmation UI renders when `localStatus === "SIGNED"` (not when `showSignPad === false`)
+  - [x] 9.9 Confirm email sending is fire-and-forget: wrapped in try/catch inside the route, error logged but NOT re-thrown
+  - [x] 9.10 Confirm `signedAt` is exposed in `GET /api/quotes/view/[token]` response (needed for showing signed date on revisit)
 
 ## Dev Notes
 
@@ -964,6 +964,26 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None.
+
 ### Completion Notes List
 
+- Added `resend` named export to `lib/resend.ts` (delegates to lazy `getResendClient()`) so the sign route can import it and tests can mock the full module.
+- The existing `resend.ts` only exported helper functions (`sendQuoteEmail`, `sendPasswordResetEmail`); a `resend` client object export was needed for the new pattern.
+- All 9 new tests pass. Total test count: 97 (88 pre-existing + 9 new).
+- Build produces zero TypeScript errors; all 18 routes including the new `/api/quotes/view/[token]/sign` appear in the route manifest.
+
 ### File List
+
+**New files:**
+- `src/src/lib/validations/signature.ts`
+- `src/src/app/api/quotes/view/[token]/sign/route.ts`
+- `src/src/app/api/quotes/view/[token]/sign/route.test.ts`
+- `src/src/components/customer-view/signature-pad.tsx`
+
+**Modified files:**
+- `src/src/lib/resend.ts` — added `resend` named export
+- `src/src/types/index.ts` — added `signedAt` to `CustomerQuoteViewData.quote`
+- `src/src/app/api/quotes/view/[token]/route.ts` — expose `signedAt` in GET response
+- `src/src/components/customer-view/quote-display.tsx` — added `token` prop, signature state, `SignaturePad` integration, signed confirmation UI
+- `src/src/app/quote/[token]/page.tsx` — pass `token` prop to `QuoteDisplay`
