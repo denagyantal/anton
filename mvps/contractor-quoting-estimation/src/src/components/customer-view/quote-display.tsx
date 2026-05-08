@@ -5,6 +5,7 @@ import Image from "next/image";
 import { formatCurrency } from "@/lib/utils";
 import type { CustomerQuoteViewData } from "@/types";
 import { SignaturePad } from "@/components/customer-view/signature-pad";
+import { DepositPayment } from "@/components/customer-view/deposit-payment";
 
 const TRADE_LABELS: Record<string, string> = {
   PLUMBING: "Plumbing",
@@ -16,9 +17,10 @@ const TRADE_LABELS: Record<string, string> = {
 interface Props {
   data: CustomerQuoteViewData;
   token: string;
+  paymentSuccess?: boolean;
 }
 
-export function QuoteDisplay({ data, token }: Props) {
+export function QuoteDisplay({ data, token, paymentSuccess }: Props) {
   const { quote, contractor } = data;
 
   const [showSignPad, setShowSignPad] = useState(false);
@@ -41,6 +43,15 @@ export function QuoteDisplay({ data, token }: Props) {
     }
     const depositAmount = total * (quote.depositValue / 100);
     return `Deposit Due: ${quote.depositValue}% — ${formatCurrency(depositAmount)}`;
+  })();
+
+  const depositAmountDisplay = (() => {
+    if (!quote.depositType || quote.depositValue == null) return null;
+    if (quote.depositType === "FIXED") {
+      return formatCurrency(quote.depositValue);
+    }
+    const depositAmount = total * (quote.depositValue / 100);
+    return `${quote.depositValue}% — ${formatCurrency(depositAmount)}`;
   })();
 
   const createdDate = new Intl.DateTimeFormat(undefined, {
@@ -274,30 +285,75 @@ export function QuoteDisplay({ data, token }: Props) {
         )}
 
         {/* Bottom CTA — conditional on status */}
-        <div className="p-4">
-          {localStatus === "SIGNED" || localStatus === "PAID" ? (
+        <div className="p-4 space-y-3">
+          {/* Payment-success banner (shown when Stripe redirect lands but webhook hasn't fired yet) */}
+          {paymentSuccess && localStatus !== "PAID" && (
+            <div className="p-4 bg-blue-50 rounded-xl border border-blue-200 text-center">
+              <p className="text-blue-700 font-semibold">Payment submitted!</p>
+              <p className="text-blue-600 text-sm mt-1">
+                Your deposit is being processed. This page will show confirmation shortly.
+              </p>
+            </div>
+          )}
+
+          {localStatus === "PAID" ? (
             <div className="text-center p-6 bg-green-50 rounded-xl border border-green-200">
-              <p className="text-green-700 font-semibold text-lg">Quote Signed</p>
-              {localSignedAt && (
+              <p className="text-green-700 font-semibold text-lg">Quote Signed &amp; Deposit Paid</p>
+              {data.quote.depositAmountPaid != null && (
                 <p className="text-green-600 text-sm mt-1">
-                  Signed on {new Intl.DateTimeFormat(undefined, { dateStyle: "long", timeStyle: "short" }).format(new Date(localSignedAt))}
+                  Deposit paid: {formatCurrency(data.quote.depositAmountPaid)}
                 </p>
               )}
-              {(data.quote.status === "SIGNED" || data.quote.status === "PAID") && data.quote.signedAt && !localSignedAt && (
+              {data.quote.paidAt && (
                 <p className="text-green-600 text-sm mt-1">
-                  Signed on {new Intl.DateTimeFormat(undefined, { dateStyle: "long", timeStyle: "short" }).format(new Date(data.quote.signedAt))}
+                  Paid on{" "}
+                  {new Intl.DateTimeFormat(undefined, { dateStyle: "long" }).format(
+                    new Date(data.quote.paidAt)
+                  )}
                 </p>
+              )}
+            </div>
+          ) : localStatus === "SIGNED" ? (
+            <div className="space-y-3">
+              <div className="text-center p-6 bg-green-50 rounded-xl border border-green-200">
+                <p className="text-green-700 font-semibold text-lg">Quote Signed</p>
+                {localSignedAt && (
+                  <p className="text-green-600 text-sm mt-1">
+                    Signed on{" "}
+                    {new Intl.DateTimeFormat(undefined, {
+                      dateStyle: "long",
+                      timeStyle: "short",
+                    }).format(new Date(localSignedAt))}
+                  </p>
+                )}
+                {!localSignedAt && data.quote.signedAt && (
+                  <p className="text-green-600 text-sm mt-1">
+                    Signed on{" "}
+                    {new Intl.DateTimeFormat(undefined, {
+                      dateStyle: "long",
+                      timeStyle: "short",
+                    }).format(new Date(data.quote.signedAt))}
+                  </p>
+                )}
+              </div>
+              {depositAmountDisplay && !paymentSuccess && (
+                <DepositPayment token={token} depositDisplay={depositAmountDisplay} />
               )}
             </div>
           ) : showSignPad ? (
             <div>
               {submitError && (
-                <p className="text-red-600 text-sm mb-3" role="alert">{submitError}</p>
+                <p className="text-red-600 text-sm mb-3" role="alert">
+                  {submitError}
+                </p>
               )}
               <SignaturePad
                 signerName={data.quote.customerName}
                 onSubmit={handleSignatureSubmit}
-                onCancel={() => { setShowSignPad(false); setSubmitError(null); }}
+                onCancel={() => {
+                  setShowSignPad(false);
+                  setSubmitError(null);
+                }}
                 isSubmitting={isSubmitting}
               />
             </div>

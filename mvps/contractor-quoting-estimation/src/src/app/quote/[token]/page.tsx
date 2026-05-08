@@ -16,10 +16,14 @@ export async function generateMetadata({
 
 export default async function CustomerQuotePage({
   params,
+  searchParams,
 }: {
   params: Promise<{ token: string }>;
+  searchParams: Promise<{ payment?: string }>;
 }) {
   const { token } = await params;
+  const { payment } = await searchParams;
+  const paymentSuccess = payment === "success";
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
   const res = await fetch(`${baseUrl}/api/quotes/view/${token}`, {
@@ -34,7 +38,7 @@ export default async function CustomerQuotePage({
 
   return (
     <main className="min-h-screen bg-gray-50">
-      <QuoteDisplay data={data} token={token} />
+      <QuoteDisplay data={data} token={token} paymentSuccess={paymentSuccess} />
     </main>
   );
 }

@@ -47,6 +47,8 @@ export async function GET(
         termsText: quote.termsText,
         createdAt: quote.createdAt,
         signedAt: quote.signedAt,
+        paidAt: quote.paidAt,
+        depositAmountPaid: quote.depositAmountPaid,
         lineItems: quote.lineItems.map((li) => ({
           id: li.id,
           description: li.description,

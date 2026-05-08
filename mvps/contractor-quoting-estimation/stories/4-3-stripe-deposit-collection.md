@@ -1,6 +1,6 @@
 # Story 4.3: Stripe Deposit Collection
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -53,12 +53,12 @@ so that the contractor can schedule my job and I've secured my spot.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Install `stripe` npm package (AC: #2, #3)
-  - [ ] 1.1 `cd mvps/contractor-quoting-estimation/src && npm install stripe`
-  - [ ] 1.2 Verify `stripe` appears in `package.json` under `"dependencies"`
+- [x] Task 1: Install `stripe` npm package (AC: #2, #3)
+  - [x] 1.1 `cd mvps/contractor-quoting-estimation/src && npm install stripe`
+  - [x] 1.2 Verify `stripe` appears in `package.json` under `"dependencies"`
 
-- [ ] Task 2: Create Stripe client singleton at `src/src/lib/stripe.ts` (AC: #2, #3)
-  - [ ] 2.1 Create the file using lazy-initialization pattern (same as `resend.ts`):
+- [x] Task 2: Create Stripe client singleton at `src/src/lib/stripe.ts` (AC: #2, #3)
+  - [x] 2.1 Create the file using lazy-initialization pattern (same as `resend.ts`):
     ```typescript
     import Stripe from "stripe";
 
@@ -86,11 +86,11 @@ so that the contractor can schedule my job and I've secured my spot.
       },
     };
     ```
-  - [ ] 2.2 This is the **sole entry point** for Stripe API calls per architecture boundaries — never import `stripe` directly in routes; always import from `@/lib/stripe`
+  - [x] 2.2 This is the **sole entry point** for Stripe API calls per architecture boundaries — never import `stripe` directly in routes; always import from `@/lib/stripe`
 
-- [ ] Task 3: Create `POST /api/quotes/view/[token]/pay` API route (public endpoint) (AC: #2, #8, #9)
-  - [ ] 3.1 Create directory `src/src/app/api/quotes/view/[token]/pay/` and file `route.ts`
-  - [ ] 3.2 Export `async function POST` — **NO auth check** (public endpoint, same pattern as the sign route):
+- [x] Task 3: Create `POST /api/quotes/view/[token]/pay` API route (public endpoint) (AC: #2, #8, #9)
+  - [x] 3.1 Create directory `src/src/app/api/quotes/view/[token]/pay/` and file `route.ts`
+  - [x] 3.2 Export `async function POST` — **NO auth check** (public endpoint, same pattern as the sign route):
     ```typescript
     export async function POST(
       request: NextRequest,
@@ -98,7 +98,7 @@ so that the contractor can schedule my job and I've secured my spot.
     ) {
       const { token } = await params;
     ```
-  - [ ] 3.3 Find the quote with line items and contractor profile:
+  - [x] 3.3 Find the quote with line items and contractor profile:
     ```typescript
     const quote = await prisma.quote.findUnique({
       where: { viewToken: token },
@@ -114,7 +114,7 @@ so that the contractor can schedule my job and I've secured my spot.
       );
     }
     ```
-  - [ ] 3.4 Verify quote is in SIGNED status (must sign before paying):
+  - [x] 3.4 Verify quote is in SIGNED status (must sign before paying):
     ```typescript
     if (quote.status !== "SIGNED") {
       return NextResponse.json(
@@ -123,7 +123,7 @@ so that the contractor can schedule my job and I've secured my spot.
       );
     }
     ```
-  - [ ] 3.5 Verify deposit is configured:
+  - [x] 3.5 Verify deposit is configured:
     ```typescript
     if (!quote.depositType || quote.depositValue == null) {
       return NextResponse.json(
@@ -132,7 +132,7 @@ so that the contractor can schedule my job and I've secured my spot.
       );
     }
     ```
-  - [ ] 3.6 Calculate deposit amount server-side (recalculates from line items — never trust client-side amounts):
+  - [x] 3.6 Calculate deposit amount server-side (recalculates from line items — never trust client-side amounts):
     ```typescript
     const subtotal = quote.lineItems.reduce(
       (sum, li) => sum + li.quantity * li.unitPrice,
@@ -155,7 +155,7 @@ so that the contractor can schedule my job and I've secured my spot.
       );
     }
     ```
-  - [ ] 3.7 Create Stripe Checkout Session:
+  - [x] 3.7 Create Stripe Checkout Session:
     ```typescript
     const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
@@ -183,14 +183,14 @@ so that the contractor can schedule my job and I've secured my spot.
       },
     });
     ```
-  - [ ] 3.8 Return the checkout URL:
+  - [x] 3.8 Return the checkout URL:
     ```typescript
     return NextResponse.json(
       { data: { checkoutUrl: session.url } },
       { status: 200 }
     );
     ```
-  - [ ] 3.9 Wrap entire handler in try/catch — catch ZodError if needed (400), unknown errors (500):
+  - [x] 3.9 Wrap entire handler in try/catch — catch ZodError if needed (400), unknown errors (500):
     ```typescript
     } catch (error) {
       console.error("Failed to create Stripe checkout session:", error);
@@ -201,22 +201,22 @@ so that the contractor can schedule my job and I've secured my spot.
     }
     ```
 
-- [ ] Task 4: Create `DepositPayment` client component (AC: #1, #2)
-  - [ ] 4.1 Create `src/src/components/customer-view/deposit-payment.tsx` (NEW file in existing directory)
-  - [ ] 4.2 Add `"use client"` directive at top
-  - [ ] 4.3 Define props interface:
+- [x] Task 4: Create `DepositPayment` client component (AC: #1, #2)
+  - [x] 4.1 Create `src/src/components/customer-view/deposit-payment.tsx` (NEW file in existing directory)
+  - [x] 4.2 Add `"use client"` directive at top
+  - [x] 4.3 Define props interface:
     ```typescript
     interface DepositPaymentProps {
       token: string;
       depositDisplay: string; // e.g., "$500.00" or "25% — $625.00"
     }
     ```
-  - [ ] 4.4 Set up state:
+  - [x] 4.4 Set up state:
     ```typescript
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     ```
-  - [ ] 4.5 Implement `handlePayDeposit` — calls the pay API and redirects to Stripe:
+  - [x] 4.5 Implement `handlePayDeposit` — calls the pay API and redirects to Stripe:
     ```typescript
     const handlePayDeposit = async () => {
       setIsLoading(true);
@@ -243,7 +243,7 @@ so that the contractor can schedule my job and I've secured my spot.
       }
     };
     ```
-  - [ ] 4.6 Render the payment button:
+  - [x] 4.6 Render the payment button:
     ```tsx
     return (
       <div className="space-y-2">
@@ -264,10 +264,10 @@ so that the contractor can schedule my job and I've secured my spot.
     );
     ```
 
-- [ ] Task 5: Create `POST /api/webhooks/stripe` route (AC: #3, #5, #6)
-  - [ ] 5.1 Create directory `src/src/app/api/webhooks/stripe/` and file `route.ts`
-  - [ ] 5.2 This route has NO auth check — it is authenticated by Stripe signature verification only
-  - [ ] 5.3 Read the raw body as text (required for Stripe signature verification — MUST use `request.text()` not `request.json()`):
+- [x] Task 5: Create `POST /api/webhooks/stripe` route (AC: #3, #5, #6)
+  - [x] 5.1 Create directory `src/src/app/api/webhooks/stripe/` and file `route.ts`
+  - [x] 5.2 This route has NO auth check — it is authenticated by Stripe signature verification only
+  - [x] 5.3 Read the raw body as text (required for Stripe signature verification — MUST use `request.text()` not `request.json()`):
     ```typescript
     export async function POST(request: NextRequest) {
       const rawBody = await request.text();
@@ -289,7 +289,7 @@ so that the contractor can schedule my job and I've secured my spot.
         );
       }
     ```
-  - [ ] 5.4 Verify the Stripe signature:
+  - [x] 5.4 Verify the Stripe signature:
     ```typescript
       let event: Stripe.Event;
       try {
@@ -302,7 +302,7 @@ so that the contractor can schedule my job and I've secured my spot.
         );
       }
     ```
-  - [ ] 5.5 Handle only `checkout.session.completed` — ignore all other event types:
+  - [x] 5.5 Handle only `checkout.session.completed` — ignore all other event types:
     ```typescript
       if (event.type !== "checkout.session.completed") {
         return NextResponse.json({ received: true }, { status: 200 });
@@ -316,7 +316,7 @@ so that the contractor can schedule my job and I've secured my spot.
         return NextResponse.json({ received: true }, { status: 200 });
       }
     ```
-  - [ ] 5.6 Look up the quote and update it — wrap DB operations in try/catch and return 500 on failure (so Stripe retries):
+  - [x] 5.6 Look up the quote and update it — wrap DB operations in try/catch and return 500 on failure (so Stripe retries):
     ```typescript
       try {
         const quote = await prisma.quote.findUnique({
@@ -387,12 +387,12 @@ so that the contractor can schedule my job and I've secured my spot.
       return NextResponse.json({ received: true }, { status: 200 });
     }
     ```
-  - [ ] 5.7 Import `Stripe` type at top: `import type Stripe from "stripe";`
-  - [ ] 5.8 Import `stripe` from `@/lib/stripe`, `prisma` from `@/lib/db`, `resend` from `@/lib/resend`
+  - [x] 5.7 Import `Stripe` type at top: `import type Stripe from "stripe";`
+  - [x] 5.8 Import `stripe` from `@/lib/stripe`, `prisma` from `@/lib/db`, `resend` from `@/lib/resend`
 
-- [ ] Task 6: Update `CustomerQuoteViewData` type to expose payment fields (AC: #4, #7)
-  - [ ] 6.1 Open `src/src/types/index.ts` (MODIFY — do NOT recreate)
-  - [ ] 6.2 Add `paidAt` and `depositAmountPaid` to the `CustomerQuoteViewData` interface's `quote` sub-object:
+- [x] Task 6: Update `CustomerQuoteViewData` type to expose payment fields (AC: #4, #7)
+  - [x] 6.1 Open `src/src/types/index.ts` (MODIFY — do NOT recreate)
+  - [x] 6.2 Add `paidAt` and `depositAmountPaid` to the `CustomerQuoteViewData` interface's `quote` sub-object:
     ```typescript
     export interface CustomerQuoteViewData {
       quote: {
@@ -405,11 +405,11 @@ so that the contractor can schedule my job and I've secured my spot.
       contractor: ContractorPublicInfo;
     }
     ```
-  - [ ] 6.3 These fields are safe to expose on the public customer view — they are confirmation data, not sensitive
+  - [x] 6.3 These fields are safe to expose on the public customer view — they are confirmation data, not sensitive
 
-- [ ] Task 7: Update `GET /api/quotes/view/[token]/route.ts` to expose payment fields (AC: #4, #7)
-  - [ ] 7.1 Open `src/src/app/api/quotes/view/[token]/route.ts` (MODIFY — do NOT recreate)
-  - [ ] 7.2 In the `responseData.quote` object, add the new fields alongside `signedAt`:
+- [x] Task 7: Update `GET /api/quotes/view/[token]/route.ts` to expose payment fields (AC: #4, #7)
+  - [x] 7.1 Open `src/src/app/api/quotes/view/[token]/route.ts` (MODIFY — do NOT recreate)
+  - [x] 7.2 In the `responseData.quote` object, add the new fields alongside `signedAt`:
     ```typescript
     quote: {
       // ... existing fields ...
@@ -419,11 +419,11 @@ so that the contractor can schedule my job and I've secured my spot.
       // ...
     }
     ```
-  - [ ] 7.3 Do NOT expose `stripePaymentIntentId` in the public response — it is for contractor use only
+  - [x] 7.3 Do NOT expose `stripePaymentIntentId` in the public response — it is for contractor use only
 
-- [ ] Task 8: Update `CustomerQuotePage` to handle `?payment=success` query param (AC: #7)
-  - [ ] 8.1 Open `src/src/app/quote/[token]/page.tsx` (MODIFY — do NOT recreate)
-  - [ ] 8.2 Add `searchParams` to the function signature — Next.js 16 requires `await searchParams`:
+- [x] Task 8: Update `CustomerQuotePage` to handle `?payment=success` query param (AC: #7)
+  - [x] 8.1 Open `src/src/app/quote/[token]/page.tsx` (MODIFY — do NOT recreate)
+  - [x] 8.2 Add `searchParams` to the function signature — Next.js 16 requires `await searchParams`:
     ```typescript
     export default async function CustomerQuotePage({
       params,
@@ -436,7 +436,7 @@ so that the contractor can schedule my job and I've secured my spot.
       const { payment } = await searchParams;
       const paymentSuccess = payment === "success";
     ```
-  - [ ] 8.3 Pass `paymentSuccess` to `QuoteDisplay`:
+  - [x] 8.3 Pass `paymentSuccess` to `QuoteDisplay`:
     ```tsx
     return (
       <main className="min-h-screen bg-gray-50">
@@ -445,9 +445,9 @@ so that the contractor can schedule my job and I've secured my spot.
     );
     ```
 
-- [ ] Task 9: Update `QuoteDisplay` component to wire up the deposit payment flow (AC: #1, #2, #4, #7)
-  - [ ] 9.1 Open `src/src/components/customer-view/quote-display.tsx` (MODIFY — do NOT recreate)
-  - [ ] 9.2 Add `paymentSuccess?: boolean` to the props interface:
+- [x] Task 9: Update `QuoteDisplay` component to wire up the deposit payment flow (AC: #1, #2, #4, #7)
+  - [x] 9.1 Open `src/src/components/customer-view/quote-display.tsx` (MODIFY — do NOT recreate)
+  - [x] 9.2 Add `paymentSuccess?: boolean` to the props interface:
     ```typescript
     interface Props {
       data: CustomerQuoteViewData;
@@ -455,13 +455,13 @@ so that the contractor can schedule my job and I've secured my spot.
       paymentSuccess?: boolean;
     }
     ```
-  - [ ] 9.3 Add `localPaidAt` state alongside existing state vars:
+  - [x] 9.3 Add `localPaidAt` state alongside existing state vars:
     ```typescript
     const [localPaidAt, setLocalPaidAt] = useState<string | null>(null);
     // note: setLocalPaidAt is not needed yet — the page SSR-loads with updated status after Stripe redirect
     // but keep it for completeness in case of future optimistic updates
     ```
-  - [ ] 9.4 Compute `depositAmountDisplay` for the pay button label (separate from the existing `depositDisplay` used in the totals section):
+  - [x] 9.4 Compute `depositAmountDisplay` for the pay button label (separate from the existing `depositDisplay` used in the totals section):
     ```typescript
     const depositAmountDisplay = (() => {
       if (!quote.depositType || quote.depositValue == null) return null;
@@ -472,11 +472,11 @@ so that the contractor can schedule my job and I've secured my spot.
       return `${quote.depositValue}% — ${formatCurrency(depositAmount)}`;
     })();
     ```
-  - [ ] 9.5 Import `DepositPayment` at the top:
+  - [x] 9.5 Import `DepositPayment` at the top:
     ```typescript
     import { DepositPayment } from "@/components/customer-view/deposit-payment";
     ```
-  - [ ] 9.6 Replace the existing bottom CTA section with the new multi-state version:
+  - [x] 9.6 Replace the existing bottom CTA section with the new multi-state version:
     ```tsx
     {/* Bottom CTA — conditional on status */}
     <div className="p-4 space-y-3">
@@ -563,11 +563,11 @@ so that the contractor can schedule my job and I've secured my spot.
       )}
     </div>
     ```
-  - [ ] 9.7 Remove the old CTA section that conditionally renders for `SIGNED || PAID` together — it is fully replaced by the new block above
+  - [x] 9.7 Remove the old CTA section that conditionally renders for `SIGNED || PAID` together — it is fully replaced by the new block above
 
-- [ ] Task 10: Write tests for `POST /api/quotes/view/[token]/pay` (AC: #2, #8, #9)
-  - [ ] 10.1 Create `src/src/app/api/quotes/view/[token]/pay/route.test.ts`
-  - [ ] 10.2 Mock dependencies at the top:
+- [x] Task 10: Write tests for `POST /api/quotes/view/[token]/pay` (AC: #2, #8, #9)
+  - [x] 10.1 Create `src/src/app/api/quotes/view/[token]/pay/route.test.ts`
+  - [x] 10.2 Mock dependencies at the top:
     ```typescript
     vi.mock("@/lib/db", () => ({
       prisma: {
@@ -587,7 +587,7 @@ so that the contractor can schedule my job and I've secured my spot.
       },
     }));
     ```
-  - [ ] 10.3 Define a `mockQuote` fixture with status `SIGNED`, depositType `FIXED`, depositValue `500`, and 2 line items:
+  - [x] 10.3 Define a `mockQuote` fixture with status `SIGNED`, depositType `FIXED`, depositValue `500`, and 2 line items:
     ```typescript
     const mockLineItems = [
       { id: "li-1", quantity: 2, unitPrice: 150, unit: "each", description: "Service A" },
@@ -612,7 +612,7 @@ so that the contractor can schedule my job and I've secured my spot.
       },
     };
     ```
-  - [ ] 10.4 Define `makePostRequest` helper:
+  - [x] 10.4 Define `makePostRequest` helper:
     ```typescript
     const makePostRequest = (token: string) =>
       POST(
@@ -622,7 +622,7 @@ so that the contractor can schedule my job and I've secured my spot.
         { params: Promise.resolve({ token }) }
       );
     ```
-  - [ ] 10.5 Write these tests (at least 8 total):
+  - [x] 10.5 Write these tests (at least 8 total):
     - Test 1: Returns `404` when token does not match any quote
     - Test 2: Returns `400` when quote status is `DRAFT` (not SIGNED)
     - Test 3: Returns `400` when quote status is `PAID` (already paid)
@@ -632,9 +632,9 @@ so that the contractor can schedule my job and I've secured my spot.
     - Test 7: Calls `stripe.checkout.sessions.create` with correct `metadata` (includes `viewToken` and `quoteId`)
     - Test 8: Returns `200` and calculates PERCENTAGE deposit correctly (e.g., 25% of total)
 
-- [ ] Task 11: Write tests for `POST /api/webhooks/stripe` (AC: #3, #5, #6)
-  - [ ] 11.1 Create `src/src/app/api/webhooks/stripe/route.test.ts`
-  - [ ] 11.2 Mock dependencies:
+- [x] Task 11: Write tests for `POST /api/webhooks/stripe` (AC: #3, #5, #6)
+  - [x] 11.1 Create `src/src/app/api/webhooks/stripe/route.test.ts`
+  - [x] 11.2 Mock dependencies:
     ```typescript
     vi.mock("@/lib/db", () => ({
       prisma: {
@@ -661,7 +661,7 @@ so that the contractor can schedule my job and I've secured my spot.
       },
     }));
     ```
-  - [ ] 11.3 Define mock fixtures:
+  - [x] 11.3 Define mock fixtures:
     ```typescript
     const mockCheckoutSession = {
       id: "cs_test_123",
@@ -696,7 +696,7 @@ so that the contractor can schedule my job and I've secured my spot.
       },
     };
     ```
-  - [ ] 11.4 Define `makeWebhookRequest` helper:
+  - [x] 11.4 Define `makeWebhookRequest` helper:
     ```typescript
     const makeWebhookRequest = (body: string, sig: string) =>
       new Request("http://localhost/api/webhooks/stripe", {
@@ -708,7 +708,7 @@ so that the contractor can schedule my job and I've secured my spot.
         body,
       }) as NextRequest;
     ```
-  - [ ] 11.5 Write these tests (at least 10 total):
+  - [x] 11.5 Write these tests (at least 10 total):
     - Test 1: Returns `400` when `stripe-signature` header is missing
     - Test 2: Returns `400` when `stripe.webhooks.constructEvent` throws (invalid signature)
     - Test 3: Returns `200` with `{ received: true }` for non-checkout events (e.g., `payment_intent.created`) without touching DB
@@ -721,22 +721,22 @@ so that the contractor can schedule my job and I've secured my spot.
     - Test 10: Returns `200` (logs but does NOT fail) when `viewToken` is missing from session metadata
     - Test 11: Returns `500` when `prisma.quote.update` throws (so Stripe retries the webhook)
 
-- [ ] Task 12: Final verification (AC: all)
-  - [ ] 12.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
-  - [ ] 12.2 `npm test` — all tests pass (97 existing + at least 19 new = 116+ tests)
-  - [ ] 12.3 Confirm `stripe` is listed in `package.json` dependencies
-  - [ ] 12.4 Confirm `src/src/lib/stripe.ts` exists and exports `stripe` object (NOT a raw `Stripe` instance)
-  - [ ] 12.5 Confirm `POST /api/quotes/view/[token]/pay` has NO `import { auth }` (public endpoint)
-  - [ ] 12.6 Confirm `POST /api/webhooks/stripe` uses `request.text()` (NOT `request.json()`) for raw body
-  - [ ] 12.7 Confirm webhook returns `500` on DB errors (so Stripe retries) but `200` when email fails (email is fire-and-forget)
-  - [ ] 12.8 Confirm webhook is idempotent — if quote is already `PAID`, it returns `200` without re-updating
-  - [ ] 12.9 Confirm `QuoteDisplay` shows "Pay Deposit" button only when `localStatus === "SIGNED"` AND `depositAmountDisplay` is not null AND `!paymentSuccess`
-  - [ ] 12.10 Confirm `QuoteDisplay` shows separate PAID confirmation state (distinct from SIGNED state)
-  - [ ] 12.11 Confirm `DepositPayment` component has `"use client"` directive
-  - [ ] 12.12 Confirm payment success banner appears only when `paymentSuccess && localStatus !== "PAID"`
-  - [ ] 12.13 Confirm `paidAt` and `depositAmountPaid` are exposed in `GET /api/quotes/view/[token]` response
-  - [ ] 12.14 Confirm no card data is stored — only `stripePaymentIntentId`, `depositAmountPaid`, `paidAt`
-  - [ ] 12.15 Confirm deposit amount is always calculated server-side from DB line items — never trusted from client
+- [x] Task 12: Final verification (AC: all)
+  - [x] 12.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
+  - [x] 12.2 `npm test` — all tests pass (97 existing + at least 19 new = 116+ tests)
+  - [x] 12.3 Confirm `stripe` is listed in `package.json` dependencies
+  - [x] 12.4 Confirm `src/src/lib/stripe.ts` exists and exports `stripe` object (NOT a raw `Stripe` instance)
+  - [x] 12.5 Confirm `POST /api/quotes/view/[token]/pay` has NO `import { auth }` (public endpoint)
+  - [x] 12.6 Confirm `POST /api/webhooks/stripe` uses `request.text()` (NOT `request.json()`) for raw body
+  - [x] 12.7 Confirm webhook returns `500` on DB errors (so Stripe retries) but `200` when email fails (email is fire-and-forget)
+  - [x] 12.8 Confirm webhook is idempotent — if quote is already `PAID`, it returns `200` without re-updating
+  - [x] 12.9 Confirm `QuoteDisplay` shows "Pay Deposit" button only when `localStatus === "SIGNED"` AND `depositAmountDisplay` is not null AND `!paymentSuccess`
+  - [x] 12.10 Confirm `QuoteDisplay` shows separate PAID confirmation state (distinct from SIGNED state)
+  - [x] 12.11 Confirm `DepositPayment` component has `"use client"` directive
+  - [x] 12.12 Confirm payment success banner appears only when `paymentSuccess && localStatus !== "PAID"`
+  - [x] 12.13 Confirm `paidAt` and `depositAmountPaid` are exposed in `GET /api/quotes/view/[token]` response
+  - [x] 12.14 Confirm no card data is stored — only `stripePaymentIntentId`, `depositAmountPaid`, `paidAt`
+  - [x] 12.15 Confirm deposit amount is always calculated server-side from DB line items — never trusted from client
 
 ## Dev Notes
 
@@ -1040,6 +1040,31 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None — implementation proceeded without blockers.
+
 ### Completion Notes List
 
+- Installed `stripe@^22.1.1` npm package.
+- Created `src/lib/stripe.ts` using same lazy-initialization pattern as `resend.ts` to prevent build-time errors when env vars are not set.
+- Created public `POST /api/quotes/view/[token]/pay` route (no auth) that validates SIGNED status, calculates deposit amount server-side from DB line items, and creates a Stripe Checkout Session returning `checkoutUrl`.
+- Created `DepositPayment` client component with loading/error state that redirects to Stripe Checkout via `window.location.href`.
+- Created `POST /api/webhooks/stripe` route using `request.text()` (not `request.json()`) for raw body required by Stripe signature verification. Implements full idempotency guard (skips if already PAID), fire-and-forget email notification, and returns 500 only on DB failures so Stripe retries.
+- Updated `CustomerQuoteViewData` type with `paidAt` and `depositAmountPaid` fields.
+- Updated `GET /api/quotes/view/[token]` to expose `paidAt` and `depositAmountPaid` in response (excludes `stripePaymentIntentId`).
+- Updated `CustomerQuotePage` to await `searchParams` (Next.js 16 Promise requirement) and pass `paymentSuccess` prop.
+- Restructured `QuoteDisplay` CTA section into 4 distinct states: PAID confirmation, SIGNED confirmation + deposit button, signature pad, accept & sign button. Added payment success banner for race condition when webhook hasn't fired yet.
+- Final test count: **117 tests** across **15 test files** (up from 97 baseline). Build passes with zero TypeScript errors.
+
 ### File List
+
+- `mvps/contractor-quoting-estimation/src/src/lib/stripe.ts` — NEW: Stripe client singleton
+- `mvps/contractor-quoting-estimation/src/src/app/api/quotes/view/[token]/pay/route.ts` — NEW: POST create Stripe checkout session
+- `mvps/contractor-quoting-estimation/src/src/app/api/quotes/view/[token]/pay/route.test.ts` — NEW: 8 Vitest tests
+- `mvps/contractor-quoting-estimation/src/src/app/api/webhooks/stripe/route.ts` — NEW: POST Stripe webhook handler
+- `mvps/contractor-quoting-estimation/src/src/app/api/webhooks/stripe/route.test.ts` — NEW: 11 Vitest tests
+- `mvps/contractor-quoting-estimation/src/src/components/customer-view/deposit-payment.tsx` — NEW: Pay Deposit button component
+- `mvps/contractor-quoting-estimation/src/src/types/index.ts` — MODIFIED: Added paidAt and depositAmountPaid to CustomerQuoteViewData
+- `mvps/contractor-quoting-estimation/src/src/app/api/quotes/view/[token]/route.ts` — MODIFIED: Expose paidAt and depositAmountPaid in GET response
+- `mvps/contractor-quoting-estimation/src/src/app/quote/[token]/page.tsx` — MODIFIED: Added searchParams, paymentSuccess prop
+- `mvps/contractor-quoting-estimation/src/src/components/customer-view/quote-display.tsx` — MODIFIED: Restructured CTA with PAID/SIGNED/payment-success states
+- `mvps/contractor-quoting-estimation/src/package.json` — MODIFIED: Added stripe dependency
