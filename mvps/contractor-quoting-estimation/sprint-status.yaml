@@ -66,7 +66,7 @@ development_status:
   epic-4-retrospective: optional
 
   epic-5: in-progress
-  5-1-quote-list-dashboard-with-status-tracking: ready-for-dev
+  5-1-quote-list-dashboard-with-status-tracking: done
   5-2-quote-search-filter-and-view-tracking: backlog
   epic-5-retrospective: optional
 

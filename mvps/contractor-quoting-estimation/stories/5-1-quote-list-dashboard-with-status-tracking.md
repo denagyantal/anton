@@ -1,6 +1,6 @@
 # Story 5.1: Quote List Dashboard with Status Tracking
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -54,13 +54,13 @@ so that I know which quotes need follow-up and where my pipeline stands.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Install `@tanstack/react-virtual` for virtual scrolling (AC: #2)
-  - [ ] 1.1 `cd mvps/contractor-quoting-estimation/src && npm install @tanstack/react-virtual`
-  - [ ] 1.2 Verify it appears in `package.json` under `"dependencies"`
+- [x] Task 1: Install `@tanstack/react-virtual` for virtual scrolling (AC: #2)
+  - [x] 1.1 `cd mvps/contractor-quoting-estimation/src && npm install @tanstack/react-virtual`
+  - [x] 1.2 Verify it appears in `package.json` under `"dependencies"`
 
-- [ ] Task 2: Update `GET /api/quotes` to include total amount per quote (AC: #1)
-  - [ ] 2.1 Open `src/src/app/api/quotes/route.ts` (MODIFY — do NOT recreate)
-  - [ ] 2.2 In the `findMany` call, add `include` to fetch line items for total calculation:
+- [x] Task 2: Update `GET /api/quotes` to include total amount per quote (AC: #1)
+  - [x] 2.1 Open `src/src/app/api/quotes/route.ts` (MODIFY — do NOT recreate)
+  - [x] 2.2 In the `findMany` call, add `include` to fetch line items for total calculation:
     ```typescript
     const quotes = await prisma.quote.findMany({
       where: {
@@ -75,7 +75,7 @@ so that I know which quotes need follow-up and where my pipeline stands.
       },
     });
     ```
-  - [ ] 2.3 Map over results to compute `total` server-side using the existing `calculateTotal` util, then strip `lineItems` from the response:
+  - [x] 2.3 Map over results to compute `total` server-side using the existing `calculateTotal` util, then strip `lineItems` from the response:
     ```typescript
     import { calculateTotal, generateQuoteNumber } from "@/lib/utils";
     // ... (top of file)
@@ -87,12 +87,12 @@ so that I know which quotes need follow-up and where my pipeline stands.
 
     return NextResponse.json({ data: quotesWithTotals });
     ```
-  - [ ] 2.4 The `calculateTotal` function is already exported from `@/lib/utils` — do NOT reimplement it
-  - [ ] 2.5 Verify the response shape does NOT include the raw `lineItems` array — only `total: number`
+  - [x] 2.4 The `calculateTotal` function is already exported from `@/lib/utils` — do NOT reimplement it
+  - [x] 2.5 Verify the response shape does NOT include the raw `lineItems` array — only `total: number`
 
-- [ ] Task 3: Update `GET /api/quotes` tests to cover total amount (AC: #1)
-  - [ ] 3.1 Open `src/src/app/api/quotes/route.test.ts` (MODIFY — do NOT recreate)
-  - [ ] 3.2 Update the `prisma.quote.findMany` mock to return `lineItems`:
+- [x] Task 3: Update `GET /api/quotes` tests to cover total amount (AC: #1)
+  - [x] 3.1 Open `src/src/app/api/quotes/route.test.ts` (MODIFY — do NOT recreate)
+  - [x] 3.2 Update the `prisma.quote.findMany` mock to return `lineItems`:
     ```typescript
     vi.mocked(prisma.quote.findMany).mockResolvedValue([
       {
@@ -106,7 +106,7 @@ so that I know which quotes need follow-up and where my pipeline stands.
       },
     ] as never);
     ```
-  - [ ] 3.3 Add test: `GET /api/quotes` returns `total` field (not `lineItems`) in each quote:
+  - [x] 3.3 Add test: `GET /api/quotes` returns `total` field (not `lineItems`) in each quote:
     ```typescript
     it("returns quotes with computed total (not raw lineItems)", async () => {
       vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
@@ -125,12 +125,12 @@ so that I know which quotes need follow-up and where my pipeline stands.
       expect(body.data[0].lineItems).toBeUndefined();
     });
     ```
-  - [ ] 3.4 Update the mock in the existing "returns list of quotes" test to include `lineItems: []` and `taxRate: 0` so it doesn't break
-  - [ ] 3.5 Update ALL existing `GET /api/quotes` mock return values to include `lineItems` and `taxRate` fields (or the map will fail)
+  - [x] 3.4 Update the mock in the existing "returns list of quotes" test to include `lineItems: []` and `taxRate: 0` so it doesn't break
+  - [x] 3.5 Update ALL existing `GET /api/quotes` mock return values to include `lineItems` and `taxRate` fields (or the map will fail)
 
-- [ ] Task 4: Create `StatusBadge` component (AC: #3)
-  - [ ] 4.1 Create `src/src/components/dashboard/status-badge.tsx` (NEW file)
-  - [ ] 4.2 Define the color map and component:
+- [x] Task 4: Create `StatusBadge` component (AC: #3)
+  - [x] 4.1 Create `src/src/components/dashboard/status-badge.tsx` (NEW file)
+  - [x] 4.2 Define the color map and component:
     ```typescript
     import type { QuoteStatus } from "@/types";
 
@@ -180,16 +180,16 @@ so that I know which quotes need follow-up and where my pipeline stands.
     }
     ```
 
-- [ ] Task 5: Update `QuoteDashboard` component (AC: #1, #2, #3, #6, #7)
-  - [ ] 5.1 Open `src/src/components/dashboard/quote-dashboard.tsx` (MODIFY — do NOT recreate)
-  - [ ] 5.2 Add imports:
+- [x] Task 5: Update `QuoteDashboard` component (AC: #1, #2, #3, #6, #7)
+  - [x] 5.1 Open `src/src/components/dashboard/quote-dashboard.tsx` (MODIFY — do NOT recreate)
+  - [x] 5.2 Add imports:
     ```typescript
     import { useRef } from "react";
     import { useVirtualizer } from "@tanstack/react-virtual";
     import { StatusBadge } from "@/components/dashboard/status-badge";
     import { formatCurrency, formatDate } from "@/lib/utils";
     ```
-  - [ ] 5.3 Update the `QuoteRow` interface to add `total` field:
+  - [x] 5.3 Update the `QuoteRow` interface to add `total` field:
     ```typescript
     interface QuoteRow {
       id: string;
@@ -201,11 +201,11 @@ so that I know which quotes need follow-up and where my pipeline stands.
       total: number;   // ← add this
     }
     ```
-  - [ ] 5.4 Add `listContainerRef` ref for the virtual scroll container (used only when quotes.length > 100):
+  - [x] 5.4 Add `listContainerRef` ref for the virtual scroll container (used only when quotes.length > 100):
     ```typescript
     const listContainerRef = useRef<HTMLDivElement>(null);
     ```
-  - [ ] 5.5 Define the virtualizer (always constructed, but only used conditionally):
+  - [x] 5.5 Define the virtualizer (always constructed, but only used conditionally):
     ```typescript
     const shouldVirtualize = quotes.length > 100;
     const rowVirtualizer = useVirtualizer({
@@ -215,7 +215,7 @@ so that I know which quotes need follow-up and where my pipeline stands.
       overscan: 8,
     });
     ```
-  - [ ] 5.6 Replace the existing quote list rendering section (the `<div className="flex flex-col gap-2">` block) with the virtual-scrolling-aware version:
+  - [x] 5.6 Replace the existing quote list rendering section (the `<div className="flex flex-col gap-2">` block) with the virtual-scrolling-aware version:
     ```tsx
     {shouldVirtualize ? (
       /* Virtual scroll container — fixed height, internal scroll */
@@ -288,12 +288,12 @@ so that I know which quotes need follow-up and where my pipeline stands.
       );
     }
     ```
-  - [ ] 5.8 Remove the old `{quote.status}` plain text rendering — it is replaced by `<StatusBadge status={quote.status} />`
-  - [ ] 5.9 Verify the skeleton loader section (5 `<Skeleton>` rows) and empty state section remain unchanged
+  - [x] 5.8 Remove the old `{quote.status}` plain text rendering — it is replaced by `<StatusBadge status={quote.status} />`
+  - [x] 5.9 Verify the skeleton loader section (5 `<Skeleton>` rows) and empty state section remain unchanged
 
-- [ ] Task 6: Update `GET /api/quotes/[id]` to include photos in the response (AC: #5)
-  - [ ] 6.1 Open `src/src/app/api/quotes/[id]/route.ts` (MODIFY — do NOT recreate)
-  - [ ] 6.2 In the `GET` handler's `findFirst` call, add `photos` to the include (lineItems is already there):
+- [x] Task 6: Update `GET /api/quotes/[id]` to include photos in the response (AC: #5)
+  - [x] 6.1 Open `src/src/app/api/quotes/[id]/route.ts` (MODIFY — do NOT recreate)
+  - [x] 6.2 In the `GET` handler's `findFirst` call, add `photos` to the include (lineItems is already there):
     ```typescript
     const quote = await prisma.quote.findFirst({
       where: { id, userId: session.user.id },
@@ -303,12 +303,12 @@ so that I know which quotes need follow-up and where my pipeline stands.
       },
     });
     ```
-  - [ ] 6.3 No changes needed to the `PUT` or `DELETE` handlers — only the `GET` response is affected
-  - [ ] 6.4 All status timestamps (`sentAt`, `viewedAt`, `signedAt`, `paidAt`, `expiresAt`, `createdAt`) are already part of the quote record and will be returned automatically — no additional select needed
+  - [x] 6.3 No changes needed to the `PUT` or `DELETE` handlers — only the `GET` response is affected
+  - [x] 6.4 All status timestamps (`sentAt`, `viewedAt`, `signedAt`, `paidAt`, `expiresAt`, `createdAt`) are already part of the quote record and will be returned automatically — no additional select needed
 
-- [ ] Task 7: Create `QuoteStatusHistory` component (AC: #4)
-  - [ ] 7.1 Create `src/src/components/dashboard/quote-status-history.tsx` (NEW file)
-  - [ ] 7.2 Define the component:
+- [x] Task 7: Create `QuoteStatusHistory` component (AC: #4)
+  - [x] 7.1 Create `src/src/components/dashboard/quote-status-history.tsx` (NEW file)
+  - [x] 7.2 Define the component:
     ```typescript
     import { formatDate } from "@/lib/utils";
 
@@ -366,14 +366,14 @@ so that I know which quotes need follow-up and where my pipeline stands.
     }
     ```
 
-- [ ] Task 8: Update quote detail page to show status history (AC: #4, #5)
-  - [ ] 8.1 Open `src/src/app/quotes/[id]/page.tsx` (MODIFY — do NOT recreate)
-  - [ ] 8.2 Add import for `QuoteStatusHistory`:
+- [x] Task 8: Update quote detail page to show status history (AC: #4, #5)
+  - [x] 8.1 Open `src/src/app/quotes/[id]/page.tsx` (MODIFY — do NOT recreate)
+  - [x] 8.2 Add import for `QuoteStatusHistory`:
     ```typescript
     import { QuoteStatusHistory } from "@/components/dashboard/quote-status-history";
     ```
-  - [ ] 8.3 The `findFirst` query already includes `lineItems` and `photos` in this page (loaded from DB directly, not via API). The `photos` include was already there from Story 3.1. Verify it's present — do NOT duplicate.
-  - [ ] 8.4 Add the `QuoteStatusHistory` section above the `QuoteBuilder` in the JSX:
+  - [x] 8.3 The `findFirst` query already includes `lineItems` and `photos` in this page (loaded from DB directly, not via API). The `photos` include was already there from Story 3.1. Verify it's present — do NOT duplicate.
+  - [x] 8.4 Add the `QuoteStatusHistory` section above the `QuoteBuilder` in the JSX:
     ```tsx
     return (
       <main className="min-h-screen p-4 max-w-lg mx-auto">
@@ -388,11 +388,11 @@ so that I know which quotes need follow-up and where my pipeline stands.
       </main>
     );
     ```
-  - [ ] 8.5 The `QuoteBuilder` component must NOT be modified — only the page wrapper changes
+  - [x] 8.5 The `QuoteBuilder` component must NOT be modified — only the page wrapper changes
 
-- [ ] Task 9: Write tests for updated `GET /api/quotes/[id]` (AC: #5)
-  - [ ] 9.1 Open `src/src/app/api/quotes/[id]/route.test.ts` (MODIFY — do NOT recreate)
-  - [ ] 9.2 Update `prisma.quote.findFirst` mock in existing GET tests to include both `lineItems` and `photos` in the mock return value (to reflect the updated query):
+- [x] Task 9: Write tests for updated `GET /api/quotes/[id]` (AC: #5)
+  - [x] 9.1 Open `src/src/app/api/quotes/[id]/route.test.ts` (MODIFY — do NOT recreate)
+  - [x] 9.2 Update `prisma.quote.findFirst` mock in existing GET tests to include both `lineItems` and `photos` in the mock return value (to reflect the updated query):
     ```typescript
     vi.mocked(prisma.quote.findFirst).mockResolvedValue({
       id: "q-1",
@@ -405,7 +405,7 @@ so that I know which quotes need follow-up and where my pipeline stands.
       updatedAt: new Date(),
     } as never);
     ```
-  - [ ] 9.3 Add a new test: `GET /api/quotes/[id]` includes photos in response:
+  - [x] 9.3 Add a new test: `GET /api/quotes/[id]` includes photos in response:
     ```typescript
     it("includes photos in the GET response", async () => {
       vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
@@ -432,7 +432,7 @@ so that I know which quotes need follow-up and where my pipeline stands.
       expect(body.data.photos[0].url).toBe("https://r2.example.com/photo1.jpg");
     });
     ```
-  - [ ] 9.4 Add a test: `GET /api/quotes/[id]` includes status timestamps:
+  - [x] 9.4 Add a test: `GET /api/quotes/[id]` includes status timestamps:
     ```typescript
     it("returns quote with all status timestamps", async () => {
       vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
@@ -464,21 +464,21 @@ so that I know which quotes need follow-up and where my pipeline stands.
     });
     ```
 
-- [ ] Task 10: Final verification (AC: all)
-  - [ ] 10.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
-  - [ ] 10.2 `npm test` — all tests pass (117 existing + new tests from this story)
-  - [ ] 10.3 Confirm `@tanstack/react-virtual` is listed in `package.json` dependencies
-  - [ ] 10.4 Confirm `src/src/components/dashboard/status-badge.tsx` exists and exports `StatusBadge`
-  - [ ] 10.5 Confirm `src/src/components/dashboard/quote-status-history.tsx` exists and exports `QuoteStatusHistory`
-  - [ ] 10.6 Confirm the dashboard quote list shows `<StatusBadge>` (not plain text status string)
-  - [ ] 10.7 Confirm the dashboard quote list shows `formatCurrency(quote.total)` for each quote
-  - [ ] 10.8 Confirm `GET /api/quotes` response includes `total: number` and does NOT include `lineItems` array
-  - [ ] 10.9 Confirm `GET /api/quotes/[id]` response includes both `lineItems` and `photos`
-  - [ ] 10.10 Confirm `/quotes/[id]` page shows `<QuoteStatusHistory>` above `<QuoteBuilder>` without breaking the existing builder
-  - [ ] 10.11 Confirm virtual scrolling is ONLY applied when `quotes.length > 100` (no regression for small lists)
-  - [ ] 10.12 Confirm skeleton loaders and empty state in `QuoteDashboard` are NOT broken
-  - [ ] 10.13 Confirm the `QuoteCard` sub-component has `min-h-[44px]` touch target (NFR20 compliance)
-  - [ ] 10.14 Confirm `useQuotes` hook in `src/src/hooks/use-quotes.ts` still passes `search` param correctly — Story 5.2 adds `trade` and `date` filters, so leave extension points but do NOT add them yet
+- [x] Task 10: Final verification (AC: all)
+  - [x] 10.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
+  - [x] 10.2 `npm test` — all tests pass (120 tests across 15 test files)
+  - [x] 10.3 Confirm `@tanstack/react-virtual` is listed in `package.json` dependencies
+  - [x] 10.4 Confirm `src/src/components/dashboard/status-badge.tsx` exists and exports `StatusBadge`
+  - [x] 10.5 Confirm `src/src/components/dashboard/quote-status-history.tsx` exists and exports `QuoteStatusHistory`
+  - [x] 10.6 Confirm the dashboard quote list shows `<StatusBadge>` (not plain text status string)
+  - [x] 10.7 Confirm the dashboard quote list shows `formatCurrency(quote.total)` for each quote
+  - [x] 10.8 Confirm `GET /api/quotes` response includes `total: number` and does NOT include `lineItems` array
+  - [x] 10.9 Confirm `GET /api/quotes/[id]` response includes both `lineItems` and `photos`
+  - [x] 10.10 Confirm `/quotes/[id]` page shows `<QuoteStatusHistory>` above `<QuoteBuilder>` without breaking the existing builder
+  - [x] 10.11 Confirm virtual scrolling is ONLY applied when `quotes.length > 100` (no regression for small lists)
+  - [x] 10.12 Confirm skeleton loaders and empty state in `QuoteDashboard` are NOT broken
+  - [x] 10.13 Confirm the `QuoteCard` sub-component has `min-h-[44px]` touch target (NFR20 compliance)
+  - [x] 10.14 Confirm `useQuotes` hook in `src/src/hooks/use-quotes.ts` still passes `search` param correctly — Story 5.2 adds `trade` and `date` filters, so leave extension points but do NOT add them yet
 
 ## Dev Notes
 
@@ -751,6 +751,29 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None — implementation proceeded without blockers.
+
 ### Completion Notes List
 
+- Installed `@tanstack/react-virtual@^3.13.24` for virtual scrolling support.
+- Updated `GET /api/quotes` to include `lineItems` (select quantity/unitPrice only), compute total via `calculateTotal` utility, then strip lineItems from the response shape — only `total: number` is returned.
+- Created `StatusBadge` component with color-coded styles for all 6 quote statuses (DRAFT/SENT/VIEWED/SIGNED/PAID/EXPIRED).
+- Rewrote `QuoteDashboard` to use `QuoteCard` sub-component, `StatusBadge`, `formatCurrency(quote.total)`, `formatDate`, and `useVirtualizer` — virtual scroll container only activates when `quotes.length > 100`.
+- Updated `GET /api/quotes/[id]` GET handler to include `photos` in the response alongside the existing `lineItems`.
+- Created `QuoteStatusHistory` component — timeline showing created/sent/viewed/signed/paid steps with timestamps, filtered to only show steps where the timestamp exists (except Created which always shows).
+- Updated `/quotes/[id]/page.tsx` to render `QuoteStatusHistory` above `QuoteBuilder` — page already had `photos` in its Prisma query from Story 3.1.
+- Updated all test mocks in `route.test.ts` and `[id]/route.test.ts` to include `lineItems`/`photos`/`taxRate` fields as required by the updated queries.
+- Added 3 new tests: total calculation with lineItems stripping, photos in GET response, status timestamps in GET response.
+- Final result: 120 tests across 15 test files, all passing. TypeScript build clean with zero errors.
+
 ### File List
+
+- `mvps/contractor-quoting-estimation/src/package.json` — added `@tanstack/react-virtual` dependency
+- `mvps/contractor-quoting-estimation/src/src/app/api/quotes/route.ts` — added lineItems include + calculateTotal mapping + stripped lineItems from response
+- `mvps/contractor-quoting-estimation/src/src/app/api/quotes/route.test.ts` — updated mocks with lineItems/taxRate fields, added total calculation test
+- `mvps/contractor-quoting-estimation/src/src/app/api/quotes/[id]/route.ts` — added photos to GET handler include
+- `mvps/contractor-quoting-estimation/src/src/app/api/quotes/[id]/route.test.ts` — updated MOCK_QUOTE with photos/createdAt/updatedAt, added photos test and timestamps test
+- `mvps/contractor-quoting-estimation/src/src/components/dashboard/status-badge.tsx` — NEW: color-coded status badge
+- `mvps/contractor-quoting-estimation/src/src/components/dashboard/quote-status-history.tsx` — NEW: status timeline component
+- `mvps/contractor-quoting-estimation/src/src/components/dashboard/quote-dashboard.tsx` — added StatusBadge, formatCurrency, virtual scrolling, QuoteCard sub-component
+- `mvps/contractor-quoting-estimation/src/src/app/quotes/[id]/page.tsx` — added QuoteStatusHistory above QuoteBuilder

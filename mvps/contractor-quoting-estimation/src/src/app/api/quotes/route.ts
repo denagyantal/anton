@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { createQuoteSchema } from "@/lib/validations/quote";
-import { generateQuoteNumber } from "@/lib/utils";
+import { calculateTotal, generateQuoteNumber } from "@/lib/utils";
 import { ZodError } from "zod";
 
 export async function POST(request: NextRequest) {
@@ -57,8 +57,17 @@ export async function GET(request: NextRequest) {
           : {}),
       },
       orderBy: { updatedAt: "desc" },
+      include: {
+        lineItems: { select: { quantity: true, unitPrice: true } },
+      },
     });
-    return NextResponse.json({ data: quotes });
+
+    const quotesWithTotals = quotes.map(({ lineItems, ...quote }) => {
+      const { total } = calculateTotal(lineItems, quote.taxRate);
+      return { ...quote, total };
+    });
+
+    return NextResponse.json({ data: quotesWithTotals });
   } catch (err) {
     console.error("List quotes error:", err);
     return NextResponse.json(

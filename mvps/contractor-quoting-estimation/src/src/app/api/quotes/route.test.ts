@@ -115,7 +115,7 @@ describe("GET /api/quotes", () => {
   it("returns list of quotes for authenticated user", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
     vi.mocked(prisma.quote.findMany).mockResolvedValue([
-      { id: "q-1", quoteNumber: "QT-2605-0001" },
+      { id: "q-1", quoteNumber: "QT-2605-0001", taxRate: 0, lineItems: [] },
     ] as never);
 
     const res = await GET(makeRequest("GET") as never);
@@ -127,8 +127,8 @@ describe("GET /api/quotes", () => {
   it("returns all quotes when no search param provided", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
     vi.mocked(prisma.quote.findMany).mockResolvedValue([
-      { id: "q-1", customerName: "Alice" },
-      { id: "q-2", customerName: "Bob" },
+      { id: "q-1", customerName: "Alice", taxRate: 0, lineItems: [] },
+      { id: "q-2", customerName: "Bob", taxRate: 0, lineItems: [] },
     ] as never);
 
     await GET(makeRequest("GET") as never);
@@ -143,7 +143,7 @@ describe("GET /api/quotes", () => {
   it("filters by customerName when search param is provided", async () => {
     vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
     vi.mocked(prisma.quote.findMany).mockResolvedValue([
-      { id: "q-1", customerName: "Alice Johnson" },
+      { id: "q-1", customerName: "Alice Johnson", taxRate: 0, lineItems: [] },
     ] as never);
 
     const res = await GET(makeRequest("GET", undefined, "alice") as never);
@@ -156,5 +156,22 @@ describe("GET /api/quotes", () => {
         }),
       })
     );
+  });
+
+  it("returns quotes with computed total (not raw lineItems)", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
+    vi.mocked(prisma.quote.findMany).mockResolvedValue([
+      {
+        id: "q-1",
+        taxRate: 10,
+        lineItems: [{ quantity: 2, unitPrice: 100 }],
+      },
+    ] as never);
+
+    const res = await GET(makeRequest("GET") as never);
+    const body = await res.json();
+    // subtotal = 200, tax = 20 (10%), total = 220
+    expect(body.data[0].total).toBe(220);
+    expect(body.data[0].lineItems).toBeUndefined();
   });
 });

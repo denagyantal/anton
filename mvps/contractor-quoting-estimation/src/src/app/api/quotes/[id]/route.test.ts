@@ -60,6 +60,9 @@ const MOCK_QUOTE = {
   status: "DRAFT",
   customerName: "Jane Smith",
   lineItems: [],
+  photos: [],
+  createdAt: new Date(),
+  updatedAt: new Date(),
 };
 
 describe("GET /api/quotes/[id]", () => {
@@ -101,6 +104,66 @@ describe("GET /api/quotes/[id]", () => {
         where: expect.objectContaining({ userId: "user-1" }),
       })
     );
+  });
+
+  it("includes photos in the GET response", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
+    vi.mocked(prisma.quote.findFirst).mockResolvedValue({
+      id: "q-1",
+      userId: "user-1",
+      status: "SIGNED",
+      quoteNumber: "QT-2605-0001",
+      lineItems: [],
+      photos: [
+        {
+          id: "photo-1",
+          url: "https://r2.example.com/photo1.jpg",
+          sortOrder: 0,
+          thumbnail: null,
+          caption: null,
+        },
+      ],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    } as never);
+
+    const res = await GET(
+      new Request("http://localhost/api/quotes/q-1") as never,
+      { params: Promise.resolve({ id: "q-1" }) }
+    );
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body.data.photos).toHaveLength(1);
+    expect(body.data.photos[0].url).toBe("https://r2.example.com/photo1.jpg");
+  });
+
+  it("returns quote with all status timestamps", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
+    const now = new Date();
+    vi.mocked(prisma.quote.findFirst).mockResolvedValue({
+      id: "q-1",
+      userId: "user-1",
+      status: "PAID",
+      quoteNumber: "QT-2605-0001",
+      lineItems: [],
+      photos: [],
+      createdAt: now,
+      updatedAt: now,
+      sentAt: now,
+      viewedAt: now,
+      signedAt: now,
+      paidAt: now,
+    } as never);
+
+    const res = await GET(
+      new Request("http://localhost/api/quotes/q-1") as never,
+      { params: Promise.resolve({ id: "q-1" }) }
+    );
+    const body = await res.json();
+    expect(body.data.sentAt).toBeDefined();
+    expect(body.data.viewedAt).toBeDefined();
+    expect(body.data.signedAt).toBeDefined();
+    expect(body.data.paidAt).toBeDefined();
   });
 });
 

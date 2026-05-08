@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
+import { useVirtualizer } from "@tanstack/react-virtual";
 import { useQuotes } from "@/hooks/use-quotes";
 import { useDebounce } from "@/hooks/use-debounce";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { StatusBadge } from "@/components/dashboard/status-badge";
+import { formatCurrency, formatDate } from "@/lib/utils";
 import type { QuoteStatus, Trade } from "@/types";
 
 interface QuoteRow {
@@ -15,6 +18,7 @@ interface QuoteRow {
   trade: Trade;
   status: QuoteStatus;
   updatedAt: string;
+  total: number;
 }
 
 const TRADE_LABELS: Record<Trade, string> = {
@@ -24,12 +28,53 @@ const TRADE_LABELS: Record<Trade, string> = {
   PAINTING: "Painting",
 };
 
+function QuoteCard({ quote }: { quote: QuoteRow }) {
+  return (
+    <Link
+      href={`/quotes/${quote.id}`}
+      className="flex items-center gap-4 rounded-lg border border-gray-200 bg-white px-4 py-3 min-h-[44px] hover:bg-gray-50 transition-colors"
+    >
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className="text-sm font-medium text-gray-900 truncate">
+            {quote.quoteNumber}
+          </span>
+          <span className="shrink-0 text-xs bg-gray-100 text-gray-600 rounded px-1.5 py-0.5">
+            {TRADE_LABELS[quote.trade] ?? quote.trade}
+          </span>
+          <StatusBadge status={quote.status} />
+        </div>
+        <p className="text-sm text-gray-600 truncate mt-0.5">
+          {quote.customerName || "—"}
+        </p>
+      </div>
+      <div className="text-right shrink-0">
+        <p className="text-sm font-semibold text-gray-900">
+          {formatCurrency(quote.total)}
+        </p>
+        <p className="text-xs text-gray-400">{formatDate(quote.updatedAt)}</p>
+      </div>
+    </Link>
+  );
+}
+
 export function QuoteDashboard() {
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 300);
 
   const { data, isLoading } = useQuotes({ search: debouncedSearch });
-  const quotes: QuoteRow[] = (data as { data: QuoteRow[] } | undefined)?.data ?? [];
+  const quotes: QuoteRow[] =
+    (data as { data: QuoteRow[] } | undefined)?.data ?? [];
+
+  const listContainerRef = useRef<HTMLDivElement>(null);
+  const shouldVirtualize = quotes.length > 100;
+  const rowVirtualizer = useVirtualizer({
+    count: quotes.length,
+    getScrollElement: () =>
+      shouldVirtualize ? listContainerRef.current : null,
+    estimateSize: () => 76,
+    overscan: 8,
+  });
 
   return (
     <div className="flex flex-col gap-6">
@@ -87,38 +132,41 @@ export function QuoteDashboard() {
             </Link>
           </div>
         )
+      ) : shouldVirtualize ? (
+        <div
+          ref={listContainerRef}
+          className="overflow-y-auto rounded-lg border border-gray-200"
+          style={{ height: "calc(100vh - 280px)", minHeight: "300px" }}
+        >
+          <div
+            style={{
+              height: `${rowVirtualizer.getTotalSize()}px`,
+              position: "relative",
+            }}
+          >
+            {rowVirtualizer.getVirtualItems().map((virtualRow) => {
+              const quote = quotes[virtualRow.index];
+              return (
+                <div
+                  key={virtualRow.key}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    transform: `translateY(${virtualRow.start}px)`,
+                  }}
+                >
+                  <QuoteCard quote={quote} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
       ) : (
         <div className="flex flex-col gap-2">
           {quotes.map((quote) => (
-            <Link
-              key={quote.id}
-              href={`/quotes/${quote.id}`}
-              className="flex items-center gap-4 rounded-lg border border-gray-200 bg-white px-4 py-3 min-h-[44px] hover:bg-gray-50 transition-colors"
-            >
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-medium text-gray-900 truncate">
-                    {quote.quoteNumber}
-                  </span>
-                  <span className="shrink-0 text-xs bg-gray-100 text-gray-600 rounded px-1.5 py-0.5">
-                    {TRADE_LABELS[quote.trade] ?? quote.trade}
-                  </span>
-                </div>
-                <p className="text-sm text-gray-600 truncate">
-                  {quote.customerName || "—"}
-                </p>
-              </div>
-              <div className="text-right shrink-0">
-                <p className="text-sm text-gray-700">{quote.status}</p>
-                <p className="text-xs text-gray-400">
-                  {new Intl.DateTimeFormat("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  }).format(new Date(quote.updatedAt))}
-                </p>
-              </div>
-            </Link>
+            <QuoteCard key={quote.id} quote={quote} />
           ))}
         </div>
       )}
