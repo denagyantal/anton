@@ -32,6 +32,23 @@ function makeRequest(method: string, body?: unknown, search?: string) {
   });
 }
 
+function makeFilterRequest(filters: {
+  search?: string;
+  trade?: string;
+  dateFrom?: string;
+  dateTo?: string;
+}) {
+  const params = new URLSearchParams();
+  if (filters.search) params.set("search", filters.search);
+  if (filters.trade) params.set("trade", filters.trade);
+  if (filters.dateFrom) params.set("dateFrom", filters.dateFrom);
+  if (filters.dateTo) params.set("dateTo", filters.dateTo);
+  return new Request(
+    `http://localhost/api/quotes?${params.toString()}`,
+    { method: "GET", headers: { "Content-Type": "application/json" } }
+  );
+}
+
 describe("POST /api/quotes", () => {
   beforeEach(() => vi.clearAllMocks());
 
@@ -173,5 +190,83 @@ describe("GET /api/quotes", () => {
     // subtotal = 200, tax = 20 (10%), total = 220
     expect(body.data[0].total).toBe(220);
     expect(body.data[0].lineItems).toBeUndefined();
+  });
+
+  it("filters by trade when trade param is provided", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
+    vi.mocked(prisma.quote.findMany).mockResolvedValue([
+      { id: "q-1", customerName: "Alice", taxRate: 0, lineItems: [], trade: "PLUMBING" },
+    ] as never);
+
+    const res = await GET(makeFilterRequest({ trade: "PLUMBING" }) as never);
+    expect(res.status).toBe(200);
+
+    expect(vi.mocked(prisma.quote.findMany)).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: expect.objectContaining({ trade: "PLUMBING" }),
+      })
+    );
+  });
+
+  it("ignores unknown trade values", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
+    vi.mocked(prisma.quote.findMany).mockResolvedValue([] as never);
+
+    await GET(makeFilterRequest({ trade: "CARPENTRY" }) as never);
+
+    const call = vi.mocked(prisma.quote.findMany).mock.calls[0][0];
+    expect((call as { where: Record<string, unknown> }).where).not.toHaveProperty("trade");
+  });
+
+  it("filters by dateFrom when provided", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
+    vi.mocked(prisma.quote.findMany).mockResolvedValue([] as never);
+
+    await GET(makeFilterRequest({ dateFrom: "2026-03-01" }) as never);
+
+    const call = vi.mocked(prisma.quote.findMany).mock.calls[0][0];
+    const where = (call as { where: Record<string, unknown> }).where as {
+      createdAt?: { gte?: Date; lte?: Date };
+    };
+    expect(where.createdAt?.gte).toEqual(new Date("2026-03-01T00:00:00.000Z"));
+    expect(where.createdAt?.lte).toBeUndefined();
+  });
+
+  it("filters by dateTo when provided", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
+    vi.mocked(prisma.quote.findMany).mockResolvedValue([] as never);
+
+    await GET(makeFilterRequest({ dateTo: "2026-03-31" }) as never);
+
+    const call = vi.mocked(prisma.quote.findMany).mock.calls[0][0];
+    const where = (call as { where: Record<string, unknown> }).where as {
+      createdAt?: { gte?: Date; lte?: Date };
+    };
+    expect(where.createdAt?.lte).toEqual(new Date("2026-03-31T23:59:59.999Z"));
+    expect(where.createdAt?.gte).toBeUndefined();
+  });
+
+  it("applies all filters together with AND logic", async () => {
+    vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
+    vi.mocked(prisma.quote.findMany).mockResolvedValue([] as never);
+
+    await GET(
+      makeFilterRequest({
+        search: "johnson",
+        trade: "ELECTRICAL",
+        dateFrom: "2026-03-01",
+        dateTo: "2026-03-31",
+      }) as never
+    );
+
+    const call = vi.mocked(prisma.quote.findMany).mock.calls[0][0];
+    const where = (call as { where: Record<string, unknown> }).where as {
+      customerName?: unknown;
+      trade?: unknown;
+      createdAt?: unknown;
+    };
+    expect(where.customerName).toEqual({ contains: "johnson", mode: "insensitive" });
+    expect(where.trade).toBe("ELECTRICAL");
+    expect(where.createdAt).toBeDefined();
   });
 });

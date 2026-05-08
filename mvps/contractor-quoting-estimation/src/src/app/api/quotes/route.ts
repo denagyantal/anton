@@ -48,14 +48,36 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const search = new URL(request.url).searchParams.get("search") ?? "";
+    const searchParams = new URL(request.url).searchParams;
+    const search = searchParams.get("search") ?? "";
+    const tradeParam = searchParams.get("trade") ?? "";
+    const dateFrom = searchParams.get("dateFrom") ?? "";
+    const dateTo = searchParams.get("dateTo") ?? "";
+
+    const VALID_TRADES = ["PLUMBING", "ELECTRICAL", "HVAC", "PAINTING"] as const;
+    type ValidTrade = (typeof VALID_TRADES)[number];
+    const trade: ValidTrade | "" = VALID_TRADES.includes(tradeParam as ValidTrade)
+      ? (tradeParam as ValidTrade)
+      : "";
+
+    const where = {
+      userId: session.user.id,
+      ...(search
+        ? { customerName: { contains: search, mode: "insensitive" as const } }
+        : {}),
+      ...(trade ? { trade } : {}),
+      ...(dateFrom || dateTo
+        ? {
+            createdAt: {
+              ...(dateFrom ? { gte: new Date(`${dateFrom}T00:00:00.000Z`) } : {}),
+              ...(dateTo ? { lte: new Date(`${dateTo}T23:59:59.999Z`) } : {}),
+            },
+          }
+        : {}),
+    };
+
     const quotes = await prisma.quote.findMany({
-      where: {
-        userId: session.user.id,
-        ...(search
-          ? { customerName: { contains: search, mode: "insensitive" } }
-          : {}),
-      },
+      where,
       orderBy: { updatedAt: "desc" },
       include: {
         lineItems: { select: { quantity: true, unitPrice: true } },

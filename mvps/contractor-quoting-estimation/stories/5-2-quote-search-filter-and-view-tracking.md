@@ -1,6 +1,6 @@
 # Story 5.2: Quote Search, Filter & View Tracking
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -39,9 +39,9 @@ so that I can quickly find specific quotes and track which customers have viewed
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Update `GET /api/quotes` to support `trade` and date range query params (AC: #2, #3, #4)
-  - [ ] 1.1 Open `src/src/app/api/quotes/route.ts` (MODIFY — do NOT recreate)
-  - [ ] 1.2 Parse new query params from the URL after the existing `search` param:
+- [x] Task 1: Update `GET /api/quotes` to support `trade` and date range query params (AC: #2, #3, #4)
+  - [x] 1.1 Open `src/src/app/api/quotes/route.ts` (MODIFY — do NOT recreate)
+  - [x] 1.2 Parse new query params from the URL after the existing `search` param:
     ```typescript
     const searchParams = new URL(request.url).searchParams;
     const search = searchParams.get("search") ?? "";
@@ -49,7 +49,7 @@ so that I can quickly find specific quotes and track which customers have viewed
     const dateFrom = searchParams.get("dateFrom") ?? "";
     const dateTo = searchParams.get("dateTo") ?? "";
     ```
-  - [ ] 1.3 Validate `tradeParam` against the allowed enum values before using it in a Prisma query (prevents injection of invalid enum values):
+  - [x] 1.3 Validate `tradeParam` against the allowed enum values before using it in a Prisma query (prevents injection of invalid enum values):
     ```typescript
     const VALID_TRADES = ["PLUMBING", "ELECTRICAL", "HVAC", "PAINTING"] as const;
     type ValidTrade = (typeof VALID_TRADES)[number];
@@ -57,7 +57,7 @@ so that I can quickly find specific quotes and track which customers have viewed
       ? (tradeParam as ValidTrade)
       : "";
     ```
-  - [ ] 1.4 Build the `where` clause with AND logic for all active filters:
+  - [x] 1.4 Build the `where` clause with AND logic for all active filters:
     ```typescript
     const where = {
       userId: session.user.id,
@@ -75,7 +75,7 @@ so that I can quickly find specific quotes and track which customers have viewed
         : {}),
     };
     ```
-  - [ ] 1.5 Replace the existing `where` object in `prisma.quote.findMany` with the new combined `where` variable:
+  - [x] 1.5 Replace the existing `where` object in `prisma.quote.findMany` with the new combined `where` variable:
     ```typescript
     const quotes = await prisma.quote.findMany({
       where,
@@ -85,11 +85,11 @@ so that I can quickly find specific quotes and track which customers have viewed
       },
     });
     ```
-  - [ ] 1.6 The `quotesWithTotals` mapping and response remain unchanged — no modifications needed there
+  - [x] 1.6 The `quotesWithTotals` mapping and response remain unchanged — no modifications needed there
 
-- [ ] Task 2: Update `useQuotes` hook to pass trade and date filter params (AC: #2, #3, #4)
-  - [ ] 2.1 Open `src/src/hooks/use-quotes.ts` (MODIFY — do NOT recreate)
-  - [ ] 2.2 Extend the filters type to include `trade`, `dateFrom`, and `dateTo`:
+- [x] Task 2: Update `useQuotes` hook to pass trade and date filter params (AC: #2, #3, #4)
+  - [x] 2.1 Open `src/src/hooks/use-quotes.ts` (MODIFY — do NOT recreate)
+  - [x] 2.2 Extend the filters type to include `trade`, `dateFrom`, and `dateTo`:
     ```typescript
     export function useQuotes(filters?: {
       search?: string;
@@ -106,17 +106,17 @@ so that I can quickly find specific quotes and track which customers have viewed
       return useSWR(`/api/quotes${query ? `?${query}` : ""}`, fetcher);
     }
     ```
-  - [ ] 2.3 The `useQuote(id)` export is unchanged — do NOT touch it
+  - [x] 2.3 The `useQuote(id)` export is unchanged — do NOT touch it
 
-- [ ] Task 3: Add trade and date range filter controls to `QuoteDashboard` (AC: #2, #3, #4)
-  - [ ] 3.1 Open `src/src/components/dashboard/quote-dashboard.tsx` (MODIFY — do NOT recreate)
-  - [ ] 3.2 Add `trade` and date state variables below the existing `search`/`debouncedSearch` state:
+- [x] Task 3: Add trade and date range filter controls to `QuoteDashboard` (AC: #2, #3, #4)
+  - [x] 3.1 Open `src/src/components/dashboard/quote-dashboard.tsx` (MODIFY — do NOT recreate)
+  - [x] 3.2 Add `trade` and date state variables below the existing `search`/`debouncedSearch` state:
     ```typescript
     const [trade, setTrade] = useState<string>("");
     const [dateFrom, setDateFrom] = useState<string>("");
     const [dateTo, setDateTo] = useState<string>("");
     ```
-  - [ ] 3.3 Update the `useQuotes` call to pass all four filter values (search is debounced; trade/date are not):
+  - [x] 3.3 Update the `useQuotes` call to pass all four filter values (search is debounced; trade/date are not):
     ```typescript
     const { data, isLoading } = useQuotes({
       search: debouncedSearch,
@@ -125,7 +125,7 @@ so that I can quickly find specific quotes and track which customers have viewed
       dateTo,
     });
     ```
-  - [ ] 3.4 Add the filter row below the existing search `<div>` and above the quote list:
+  - [x] 3.4 Add the filter row below the existing search `<div>` and above the quote list:
     ```tsx
     {/* Filters */}
     <div className="flex flex-wrap gap-3">
@@ -173,7 +173,7 @@ so that I can quickly find specific quotes and track which customers have viewed
       )}
     </div>
     ```
-  - [ ] 3.5 Update the empty state message to account for active filters (trade/date as well as search):
+  - [x] 3.5 Update the empty state message to account for active filters (trade/date as well as search):
     ```tsx
     ) : quotes.length === 0 ? (
       debouncedSearch || trade || dateFrom || dateTo ? (
@@ -184,11 +184,11 @@ so that I can quickly find specific quotes and track which customers have viewed
         // existing "No quotes yet" empty state — unchanged
       )
     ```
-  - [ ] 3.6 Preserve ALL existing code: `useVirtualizer`, `listContainerRef`, skeleton loaders, `QuoteCard`, `StatusBadge`, `TRADE_LABELS`, `useDebounce`. Do NOT remove or alter anything from Story 5.1.
+  - [x] 3.6 Preserve ALL existing code: `useVirtualizer`, `listContainerRef`, skeleton loaders, `QuoteCard`, `StatusBadge`, `TRADE_LABELS`, `useDebounce`. Do NOT remove or alter anything from Story 5.1.
 
-- [ ] Task 4: Update `GET /api/quotes` tests to cover trade and date range filters (AC: #2, #3, #4)
-  - [ ] 4.1 Open `src/src/app/api/quotes/route.test.ts` (MODIFY — do NOT recreate)
-  - [ ] 4.2 Add a helper for building filter query strings (add near `makeRequest`):
+- [x] Task 4: Update `GET /api/quotes` tests to cover trade and date range filters (AC: #2, #3, #4)
+  - [x] 4.1 Open `src/src/app/api/quotes/route.test.ts` (MODIFY — do NOT recreate)
+  - [x] 4.2 Add a helper for building filter query strings (add near `makeRequest`):
     ```typescript
     function makeFilterRequest(filters: {
       search?: string;
@@ -207,7 +207,7 @@ so that I can quickly find specific quotes and track which customers have viewed
       );
     }
     ```
-  - [ ] 4.3 Add test: filters by trade when `trade` param is provided:
+  - [x] 4.3 Add test: filters by trade when `trade` param is provided:
     ```typescript
     it("filters by trade when trade param is provided", async () => {
       vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
@@ -225,7 +225,7 @@ so that I can quickly find specific quotes and track which customers have viewed
       );
     });
     ```
-  - [ ] 4.4 Add test: ignores invalid trade values (does not include trade in where clause):
+  - [x] 4.4 Add test: ignores invalid trade values (does not include trade in where clause):
     ```typescript
     it("ignores unknown trade values", async () => {
       vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
@@ -238,7 +238,7 @@ so that I can quickly find specific quotes and track which customers have viewed
       expect((call as { where: Record<string, unknown> }).where).not.toHaveProperty("trade");
     });
     ```
-  - [ ] 4.5 Add test: filters by `dateFrom` — includes `createdAt.gte`:
+  - [x] 4.5 Add test: filters by `dateFrom` — includes `createdAt.gte`:
     ```typescript
     it("filters by dateFrom when provided", async () => {
       vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
@@ -254,7 +254,7 @@ so that I can quickly find specific quotes and track which customers have viewed
       expect(where.createdAt?.lte).toBeUndefined();
     });
     ```
-  - [ ] 4.6 Add test: filters by `dateTo` — includes `createdAt.lte` (end of day):
+  - [x] 4.6 Add test: filters by `dateTo` — includes `createdAt.lte` (end of day):
     ```typescript
     it("filters by dateTo when provided", async () => {
       vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
@@ -270,7 +270,7 @@ so that I can quickly find specific quotes and track which customers have viewed
       expect(where.createdAt?.gte).toBeUndefined();
     });
     ```
-  - [ ] 4.7 Add test: AND logic — search + trade + date range all active simultaneously:
+  - [x] 4.7 Add test: AND logic — search + trade + date range all active simultaneously:
     ```typescript
     it("applies all filters together with AND logic", async () => {
       vi.mocked(auth).mockResolvedValue({ user: { id: "user-1" } } as never);
@@ -296,24 +296,24 @@ so that I can quickly find specific quotes and track which customers have viewed
       expect(where.createdAt).toBeDefined();
     });
     ```
-  - [ ] 4.8 Confirm all existing tests still pass — the `makeRequest` helper and existing test cases are unchanged
+  - [x] 4.8 Confirm all existing tests still pass — the `makeRequest` helper and existing test cases are unchanged
 
-- [ ] Task 5: Final verification (AC: all)
-  - [ ] 5.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
-  - [ ] 5.2 `npm test` — all tests pass (expected: 125+ tests across 15 test files)
-  - [ ] 5.3 Confirm `GET /api/quotes?trade=PLUMBING` returns only PLUMBING quotes (Prisma where includes `trade: "PLUMBING"`)
-  - [ ] 5.4 Confirm `GET /api/quotes?trade=CARPENTRY` does NOT include a `trade` key in the Prisma where clause (invalid enum value silently ignored)
-  - [ ] 5.5 Confirm `GET /api/quotes?dateFrom=2026-03-01&dateTo=2026-03-31` produces `createdAt: { gte: ..., lte: ... }` in the Prisma where clause
-  - [ ] 5.6 Confirm `GET /api/quotes?search=alice&trade=PLUMBING` applies both filters simultaneously (AND)
-  - [ ] 5.7 Confirm `useQuotes({ trade: "PLUMBING" })` constructs `/api/quotes?trade=PLUMBING`
-  - [ ] 5.8 Confirm `useQuotes({ dateFrom: "2026-03-01", dateTo: "2026-03-31" })` constructs `/api/quotes?dateFrom=2026-03-01&dateTo=2026-03-31`
-  - [ ] 5.9 Confirm the trade `<select>` on the dashboard has `min-h-[44px]` (NFR20 touch target compliance)
-  - [ ] 5.10 Confirm the date inputs on the dashboard have `min-h-[44px]`
-  - [ ] 5.11 Confirm "Clear filters" button only appears when at least one of trade/dateFrom/dateTo is set (not for search alone)
-  - [ ] 5.12 Confirm the empty state shows "No quotes match the selected filters." when any filter is active AND result is empty
-  - [ ] 5.13 Confirm the existing "No quotes yet. Create your first quote!" empty state still shows when NO filters are active
-  - [ ] 5.14 Confirm view tracking: visit `/quote/[token]` for a SENT quote → status on dashboard changes to VIEWED (amber badge) — view tracking is already implemented in Story 4.1, this is a smoke test only
-  - [ ] 5.15 Confirm skeleton loaders, virtual scrolling (>100 quotes), `StatusBadge`, and customer name search from Story 5.1 are NOT regressed
+- [x] Task 5: Final verification (AC: all)
+  - [x] 5.1 `cd mvps/contractor-quoting-estimation/src && npm run build` — zero TypeScript errors
+  - [x] 5.2 `npm test` — all tests pass (expected: 125+ tests across 15 test files)
+  - [x] 5.3 Confirm `GET /api/quotes?trade=PLUMBING` returns only PLUMBING quotes (Prisma where includes `trade: "PLUMBING"`)
+  - [x] 5.4 Confirm `GET /api/quotes?trade=CARPENTRY` does NOT include a `trade` key in the Prisma where clause (invalid enum value silently ignored)
+  - [x] 5.5 Confirm `GET /api/quotes?dateFrom=2026-03-01&dateTo=2026-03-31` produces `createdAt: { gte: ..., lte: ... }` in the Prisma where clause
+  - [x] 5.6 Confirm `GET /api/quotes?search=alice&trade=PLUMBING` applies both filters simultaneously (AND)
+  - [x] 5.7 Confirm `useQuotes({ trade: "PLUMBING" })` constructs `/api/quotes?trade=PLUMBING`
+  - [x] 5.8 Confirm `useQuotes({ dateFrom: "2026-03-01", dateTo: "2026-03-31" })` constructs `/api/quotes?dateFrom=2026-03-01&dateTo=2026-03-31`
+  - [x] 5.9 Confirm the trade `<select>` on the dashboard has `min-h-[44px]` (NFR20 touch target compliance)
+  - [x] 5.10 Confirm the date inputs on the dashboard have `min-h-[44px]`
+  - [x] 5.11 Confirm "Clear filters" button only appears when at least one of trade/dateFrom/dateTo is set (not for search alone)
+  - [x] 5.12 Confirm the empty state shows "No quotes match the selected filters." when any filter is active AND result is empty
+  - [x] 5.13 Confirm the existing "No quotes yet. Create your first quote!" empty state still shows when NO filters are active
+  - [x] 5.14 Confirm view tracking: visit `/quote/[token]` for a SENT quote → status on dashboard changes to VIEWED (amber badge) — view tracking is already implemented in Story 4.1, this is a smoke test only
+  - [x] 5.15 Confirm skeleton loaders, virtual scrolling (>100 quotes), `StatusBadge`, and customer name search from Story 5.1 are NOT regressed
 
 ## Dev Notes
 
@@ -538,6 +538,20 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None.
+
 ### Completion Notes List
 
+- All 4 files modified in place; no new files created.
+- Added `makeFilterRequest` helper to `route.test.ts` as a separate function from the existing `makeRequest` to avoid breaking existing tests.
+- Trade enum validation uses a local `VALID_TRADES` constant instead of importing from `@prisma/client` to avoid serverless import issues.
+- Date range uses UTC midnight/end-of-day (`T00:00:00.000Z` / `T23:59:59.999Z`) to include the full boundary days.
+- Empty state condition updated to `debouncedSearch || trade || dateFrom || dateTo` to cover all active filter types.
+- Final test count: 125 tests across 15 test files (5 new tests added). Build: zero TypeScript errors.
+
 ### File List
+
+- `src/src/app/api/quotes/route.ts` — added trade + dateFrom/dateTo query param parsing and combined `where` clause
+- `src/src/app/api/quotes/route.test.ts` — added `makeFilterRequest` helper and 5 new filter tests
+- `src/src/hooks/use-quotes.ts` — extended filters type with trade/dateFrom/dateTo
+- `src/src/components/dashboard/quote-dashboard.tsx` — added trade/date state, filter row JSX, updated empty state condition

@@ -61,8 +61,16 @@ function QuoteCard({ quote }: { quote: QuoteRow }) {
 export function QuoteDashboard() {
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 300);
+  const [trade, setTrade] = useState<string>("");
+  const [dateFrom, setDateFrom] = useState<string>("");
+  const [dateTo, setDateTo] = useState<string>("");
 
-  const { data, isLoading } = useQuotes({ search: debouncedSearch });
+  const { data, isLoading } = useQuotes({
+    search: debouncedSearch,
+    trade,
+    dateFrom,
+    dateTo,
+  });
   const quotes: QuoteRow[] =
     (data as { data: QuoteRow[] } | undefined)?.data ?? [];
 
@@ -109,6 +117,48 @@ export function QuoteDashboard() {
         )}
       </div>
 
+      {/* Filters */}
+      <div className="flex flex-wrap gap-3">
+        <select
+          aria-label="Filter by trade"
+          value={trade}
+          onChange={(e) => setTrade(e.target.value)}
+          className="h-10 min-h-[44px] rounded-md border border-gray-300 bg-white px-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="">All trades</option>
+          <option value="PLUMBING">Plumbing</option>
+          <option value="ELECTRICAL">Electrical</option>
+          <option value="HVAC">HVAC</option>
+          <option value="PAINTING">Painting</option>
+        </select>
+
+        <input
+          type="date"
+          aria-label="From date"
+          value={dateFrom}
+          onChange={(e) => setDateFrom(e.target.value)}
+          className="h-10 min-h-[44px] rounded-md border border-gray-300 bg-white px-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <input
+          type="date"
+          aria-label="To date"
+          value={dateTo}
+          onChange={(e) => setDateTo(e.target.value)}
+          className="h-10 min-h-[44px] rounded-md border border-gray-300 bg-white px-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        {(trade || dateFrom || dateTo) && (
+          <button
+            type="button"
+            onClick={() => { setTrade(""); setDateFrom(""); setDateTo(""); }}
+            className="h-10 min-h-[44px] rounded-md border border-gray-300 bg-white px-3 text-sm text-gray-500 hover:text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            Clear filters
+          </button>
+        )}
+      </div>
+
       {/* Quote List */}
       {isLoading ? (
         <div className="flex flex-col gap-3">
@@ -117,9 +167,9 @@ export function QuoteDashboard() {
           ))}
         </div>
       ) : quotes.length === 0 ? (
-        debouncedSearch ? (
+        debouncedSearch || trade || dateFrom || dateTo ? (
           <p className="text-center text-sm text-gray-500 py-8">
-            No quotes matching &ldquo;{debouncedSearch}&rdquo;
+            No quotes match the selected filters.
           </p>
         ) : (
           <div className="text-center py-12 flex flex-col items-center gap-4">
