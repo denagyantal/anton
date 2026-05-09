@@ -218,3 +218,36 @@ export function blobToDataUrl(blob: Blob): Promise<string> {
     reader.readAsDataURL(blob);
   });
 }
+
+export async function getSyncQueueItems(): Promise<SyncQueueItem[]> {
+  return offlineDb.syncQueue.orderBy("createdAt").toArray();
+}
+
+export async function markQuoteSynced(
+  localId: string,
+  serverId: string
+): Promise<void> {
+  await offlineDb.offlineQuotes.update(localId, {
+    serverId,
+    status: "synced",
+    updatedAt: Date.now(),
+  });
+}
+
+export async function markQuoteSyncFailed(localId: string): Promise<void> {
+  await offlineDb.offlineQuotes.update(localId, {
+    status: "sync-failed",
+    updatedAt: Date.now(),
+  });
+}
+
+export async function removeSyncQueueItem(id: string): Promise<void> {
+  await offlineDb.syncQueue.delete(id);
+}
+
+export async function incrementSyncAttempts(id: string): Promise<void> {
+  const item = await offlineDb.syncQueue.get(id);
+  if (item) {
+    await offlineDb.syncQueue.update(id, { attempts: item.attempts + 1 });
+  }
+}

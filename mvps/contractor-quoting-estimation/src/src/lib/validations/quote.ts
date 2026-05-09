@@ -39,3 +39,22 @@ export const sendQuoteSchema = z.object({
 });
 
 export type SendQuoteInput = z.infer<typeof sendQuoteSchema>;
+
+export const syncQuoteSchema = z.object({
+  localId: z.string().min(1, "localId is required"),
+  trade: z.enum(["PLUMBING", "ELECTRICAL", "HVAC", "PAINTING"]),
+  quoteNumber: z.string().min(1, "quoteNumber is required"),
+  customerName: z.string().default(""),
+  customerAddress: z.string().optional(),
+  customerPhone: z.string().optional(),
+  customerEmail: z.string().optional(),
+  notes: z.string().optional(),
+  taxRate: z.number().min(0).max(100).default(0),
+  depositType: z.enum(["FIXED", "PERCENTAGE"]).nullable().optional(),
+  depositValue: z.number().min(0).nullable().optional(),
+  termsText: z.string().optional(),
+  lineItems: z.array(lineItemSchema).default([]),
+  photoUrls: z.array(z.string()).default([]),
+});
+
+export type SyncQuoteInput = z.infer<typeof syncQuoteSchema>;

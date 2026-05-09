@@ -18,6 +18,9 @@ vi.mock("dexie", () => {
   const syncQueueTable = {
     ...mockTable,
     count: vi.fn().mockResolvedValue(0),
+    orderBy: vi.fn().mockReturnThis(),
+    toArray: vi.fn().mockResolvedValue([]),
+    get: vi.fn().mockResolvedValue(null),
   };
 
   class MockDexie {
@@ -110,5 +113,28 @@ describe("saveQuoteOffline interface", () => {
   it("exports getOfflineQuoteWithItems function", async () => {
     const { getOfflineQuoteWithItems } = await import("@/lib/offline-db");
     expect(typeof getOfflineQuoteWithItems).toBe("function");
+  });
+});
+
+describe("sync engine helpers", () => {
+  it("getSyncQueueItems returns items", async () => {
+    const { getSyncQueueItems } = await import("@/lib/offline-db");
+    const items = await getSyncQueueItems();
+    expect(Array.isArray(items)).toBe(true);
+  });
+
+  it("markQuoteSynced updates quote with serverId and synced status", async () => {
+    const { markQuoteSynced } = await import("@/lib/offline-db");
+    await expect(markQuoteSynced("local-1", "server-1")).resolves.toBeUndefined();
+  });
+
+  it("markQuoteSyncFailed updates quote status to sync-failed", async () => {
+    const { markQuoteSyncFailed } = await import("@/lib/offline-db");
+    await expect(markQuoteSyncFailed("local-1")).resolves.toBeUndefined();
+  });
+
+  it("removeSyncQueueItem deletes the item", async () => {
+    const { removeSyncQueueItem } = await import("@/lib/offline-db");
+    await expect(removeSyncQueueItem("queue-item-1")).resolves.toBeUndefined();
   });
 });
