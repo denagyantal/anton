@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { useOffline } from "@/hooks/use-offline";
 
 interface PhotoCaptureProps {
   onCapture: (file: File) => void;
@@ -12,6 +13,7 @@ interface PhotoCaptureProps {
 export function PhotoCapture({ onCapture, disabled, isUploading }: PhotoCaptureProps) {
   const cameraRef = useRef<HTMLInputElement>(null);
   const galleryRef = useRef<HTMLInputElement>(null);
+  const { isOnline } = useOffline();
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];

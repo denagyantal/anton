@@ -72,6 +72,6 @@ development_status:
 
   epic-6: in-progress
   6-1-pwa-installation-and-service-worker-setup: done
-  6-2-offline-quote-creation-and-storage: ready-for-dev
+  6-2-offline-quote-creation-and-storage: done
   6-3-auto-sync-engine: backlog
   epic-6-retrospective: optional

@@ -14,6 +14,8 @@ import { PhotoCapture } from "@/components/quotes/photo-capture";
 import { PhotoGrid } from "@/components/quotes/photo-grid";
 import { compressImage } from "@/lib/image-compress";
 import { useQuote } from "@/hooks/use-quotes";
+import { useOffline } from "@/hooks/use-offline";
+import { saveQuoteOffline, updateQuoteOffline, addPhotoOffline, blobToDataUrl } from "@/lib/offline-db";
 import type { QuoteStatus } from "@/types";
 
 type QuoteWithLineItems = Quote & { lineItems: LineItem[]; photos: QuotePhoto[] };
@@ -38,6 +40,9 @@ type QuoteBuilderProps = {
 export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilderProps) {
   const { mutate } = useQuote(quoteId);
   const router = useRouter();
+  const { isOnline } = useOffline();
+  // Tracks the offline localId once a quote has been saved to IndexedDB offline
+  const [offlineLocalId, setOfflineLocalId] = useState<string | null>(null);
 
   const [customerName, setCustomerName] = useState(initialQuote.customerName);
   const [customerAddress, setCustomerAddress] = useState(initialQuote.customerAddress ?? "");
@@ -133,6 +138,33 @@ export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilde
     try {
       const compressed = await compressImage(file, { maxSizeKB: 500, maxWidthOrHeight: 1200 });
 
+      if (!isOnline) {
+        // Offline path — store compressed blob in IndexedDB
+        const compressedBlob = new Blob([compressed], { type: compressed.type });
+        const thumbnailDataUrl = await blobToDataUrl(compressedBlob);
+        const quoteLocalId = offlineLocalId ?? quoteId;
+        const localPhotoId = await addPhotoOffline(
+          quoteLocalId,
+          compressedBlob,
+          thumbnailDataUrl,
+          photos.length
+        );
+        const blobUrl = URL.createObjectURL(compressedBlob);
+        // Create a local photo entry for UI display
+        const offlinePhoto = {
+          id: `offline-${localPhotoId}`,
+          quoteId,
+          url: blobUrl,
+          thumbnail: thumbnailDataUrl,
+          sortOrder: photos.length,
+          caption: null,
+        } as QuotePhoto;
+        setPhotos((prev) => [...prev, offlinePhoto]);
+        setSaveMessage({ type: "success", text: "Photo saved locally — will sync when back online." });
+        return;
+      }
+
+      // Online path — upload to R2 as before
       const fd = new FormData();
       fd.append("file", compressed);
       fd.append("type", "photo");
@@ -220,6 +252,44 @@ export function QuoteBuilder({ quoteId, initialQuote, quoteStatus }: QuoteBuilde
     setSaveMessage(null);
 
     try {
+      if (!isOnline) {
+        // Offline path — save to IndexedDB
+        const quoteData = {
+          trade: initialQuote.trade,
+          quoteNumber: initialQuote.quoteNumber,
+          customerName,
+          customerAddress: customerAddress || undefined,
+          customerPhone: customerPhone || undefined,
+          customerEmail: customerEmail || undefined,
+          notes: notes || undefined,
+          taxRate,
+          depositType: depositType ?? undefined,
+          depositValue: depositValue ?? undefined,
+          termsText: undefined,
+          serverId: quoteId,
+        };
+        const mappedLineItems = lineItems.map((item, i) => ({
+          description: item.description,
+          quantity: item.quantity,
+          unit: item.unit,
+          unitPrice: item.unitPrice,
+          sortOrder: i,
+          isCustom: item.isCustom ?? false,
+        }));
+
+        if (offlineLocalId) {
+          // Update existing offline draft
+          await updateQuoteOffline(offlineLocalId, quoteData, mappedLineItems);
+        } else {
+          // Create new offline record
+          const localId = await saveQuoteOffline(quoteData, mappedLineItems);
+          setOfflineLocalId(localId);
+        }
+        setSaveMessage({ type: "success", text: "Quote saved locally — will sync when back online." });
+        return;
+      }
+
+      // Online path — save to server as before
       const res = await fetch(`/api/quotes/${quoteId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
