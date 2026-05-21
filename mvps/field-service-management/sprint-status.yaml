@@ -52,7 +52,7 @@ development_status:
   epic-2: in-progress
   2-1-customer-creation-and-contact-management: done
   2-2-quote-creation-with-line-items: done
-  2-3-quote-photo-attachments-and-pdf-generation: backlog
+  2-3-quote-photo-attachments-and-pdf-generation: ready-for-dev
   2-4-quote-sms-delivery-and-customer-approval: backlog
   epic-2-retrospective: optional
 
