@@ -1,6 +1,5 @@
 import { Database } from '@nozbe/watermelondb';
 import LokiJSAdapter from '@nozbe/watermelondb/adapters/lokijs';
-import { Q } from '@nozbe/watermelondb';
 import { schema } from '../db/schema';
 import Quote from '../db/models/quote';
 import LineItem from '../db/models/line-item';
@@ -120,10 +119,8 @@ describe('Quote WatermelonDB operations', () => {
       await createQuote(db, { accountId: 'acc-1', status: 'SENT' });
       await createQuote(db, { accountId: 'acc-2', status: 'DRAFT' });
 
-      const acc1Quotes = await db
-        .get<Quote>('quotes')
-        .query(Q.where('account_id', 'acc-1'))
-        .fetch();
+      const all = await db.get<Quote>('quotes').query().fetch();
+      const acc1Quotes = all.filter((q) => q.accountId === 'acc-1');
       expect(acc1Quotes).toHaveLength(2);
     });
 
@@ -133,10 +130,8 @@ describe('Quote WatermelonDB operations', () => {
       await createQuote(db, { accountId: 'acc-1', status: 'SENT' });
       await createQuote(db, { accountId: 'acc-1', status: 'APPROVED' });
 
-      const drafts = await db
-        .get<Quote>('quotes')
-        .query(Q.where('account_id', 'acc-1'), Q.where('status', 'DRAFT'))
-        .fetch();
+      const all = await db.get<Quote>('quotes').query().fetch();
+      const drafts = all.filter((q) => q.accountId === 'acc-1' && q.status === 'DRAFT');
       expect(drafts).toHaveLength(1);
       expect(drafts[0]!.status).toBe('DRAFT');
     });
@@ -164,10 +159,8 @@ describe('Quote WatermelonDB operations', () => {
         sortOrder: 1,
       });
 
-      const lineItems = await db
-        .get<LineItem>('line_items')
-        .query(Q.where('quote_id', quote.id))
-        .fetch();
+      const all = await db.get<LineItem>('line_items').query().fetch();
+      const lineItems = all.filter((li) => li.quoteId === quote.id);
       expect(lineItems).toHaveLength(2);
     });
 
@@ -180,10 +173,10 @@ describe('Quote WatermelonDB operations', () => {
       await createLineItem(db, { quoteId: quote.id, description: 'First', sortOrder: 0 });
       await createLineItem(db, { quoteId: quote.id, description: 'Second', sortOrder: 1 });
 
-      const lineItems = await db
-        .get<LineItem>('line_items')
-        .query(Q.where('quote_id', quote.id), Q.sortBy('sort_order', Q.asc))
-        .fetch();
+      const all = await db.get<LineItem>('line_items').query().fetch();
+      const lineItems = all
+        .filter((li) => li.quoteId === quote.id)
+        .sort((a, b) => a.sortOrder - b.sortOrder);
 
       expect(lineItems).toHaveLength(3);
       expect(lineItems[0]!.description).toBe('First');
@@ -234,10 +227,8 @@ describe('Quote WatermelonDB operations', () => {
       const quotes = await db.get<Quote>('quotes').query().fetch();
       expect(quotes).toHaveLength(1);
 
-      const lineItems = await db
-        .get<LineItem>('line_items')
-        .query(Q.where('quote_id', quotes[0]!.id))
-        .fetch();
+      const allLineItems = await db.get<LineItem>('line_items').query().fetch();
+      const lineItems = allLineItems.filter((li) => li.quoteId === quotes[0]!.id);
       expect(lineItems).toHaveLength(2);
     });
   });

@@ -1,4 +1,11 @@
-export type QuoteStatus = 'DRAFT' | 'SENT' | 'VIEWED' | 'APPROVED' | 'DECLINED' | 'EXPIRED';
+export enum QuoteStatus {
+  DRAFT = 'DRAFT',
+  SENT = 'SENT',
+  VIEWED = 'VIEWED',
+  APPROVED = 'APPROVED',
+  DECLINED = 'DECLINED',
+  EXPIRED = 'EXPIRED',
+}
 
 export interface Quote {
   id: string;

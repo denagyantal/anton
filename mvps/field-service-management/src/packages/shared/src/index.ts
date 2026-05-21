@@ -19,7 +19,7 @@ export type {
   AccountResponse,
 } from './types/account.js';
 export type { Customer, CustomerAddress } from './types/customer.js';
-export type { Quote, QuoteStatus, LineItem } from './types/quote.js';
+export * from './types/quote.js';
 export type { Job, JobPhoto } from './types/job.js';
 export type {
   Invoice,
