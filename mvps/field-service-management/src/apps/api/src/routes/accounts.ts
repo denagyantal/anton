@@ -155,4 +155,37 @@ router.post(
   },
 );
 
+const pushTokenSchema = z.object({
+  pushToken: z.string().min(1, 'Push token is required'),
+});
+
+// PATCH /api/v1/accounts/me/push-token
+router.patch(
+  '/me/push-token',
+  validate(pushTokenSchema),
+  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const { pushToken } = req.body;
+
+      const teamMember = await prisma.teamMember.findUnique({
+        where: { authUserId: req.user!.id },
+      });
+
+      if (!teamMember) {
+        next(new AppError('ACCOUNT_NOT_FOUND', 'No account found for this user', 404));
+        return;
+      }
+
+      await prisma.teamMember.update({
+        where: { id: teamMember.id },
+        data: { pushToken },
+      });
+
+      res.status(200).json({ data: { ok: true } });
+    } catch (err) {
+      next(err);
+    }
+  },
+);
+
 export { router as accountsRouter };

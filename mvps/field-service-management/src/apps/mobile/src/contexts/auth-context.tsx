@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState, useCallback } fr
 import { AppState, AppStateStatus } from 'react-native';
 import { supabase } from '../services/supabase-client';
 import { apiClient } from '../services/api-client';
+import { registerPushToken } from '../services/notification-service';
 import type { Session, User } from '@supabase/supabase-js';
 import type { AccountResponse } from '@field-service/shared';
 
@@ -60,6 +61,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (mappedUser) {
         await fetchAccount();
+        registerPushToken();
       }
 
       setIsLoading(false);
@@ -73,6 +75,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (mappedUser) {
         await fetchAccount();
+        registerPushToken();
       } else {
         setAccount(null);
       }

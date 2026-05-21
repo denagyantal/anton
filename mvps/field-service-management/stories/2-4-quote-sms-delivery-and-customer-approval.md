@@ -1,6 +1,6 @@
 # Story 2.4: Quote SMS Delivery and Customer Approval
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -26,31 +26,31 @@ so that I get faster quote decisions without phone tag or email delays.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Install new dependencies (AC: #1, #3, #4)
-  - [ ] 1.1: In `apps/api/`: run `npm install twilio` — Twilio v5+ ships its own TypeScript types; no `@types/twilio` needed
-  - [ ] 1.2: In `apps/mobile/`: run `npx expo install expo-notifications` — installs the version compatible with Expo SDK 52
+- [x] Task 1: Install new dependencies (AC: #1, #3, #4)
+  - [x] 1.1: In `apps/api/`: run `npm install twilio` — Twilio v5+ ships its own TypeScript types; no `@types/twilio` needed
+  - [x] 1.2: In `apps/mobile/`: run `npx expo install expo-notifications` — installs the version compatible with Expo SDK 52
 
-- [ ] Task 2: Prisma — add push_token to TeamMember (AC: #3, #4)
-  - [ ] 2.1: In `apps/api/prisma/schema.prisma`, add `pushToken  String?  @map("push_token")` to the `TeamMember` model, placed after the `authUserId` field
-  - [ ] 2.2: Run `npx prisma generate` from `apps/api/` to regenerate the Prisma client (no live DB required for client generation; dev environment must run `npx prisma migrate dev` separately)
+- [x] Task 2: Prisma — add push_token to TeamMember (AC: #3, #4)
+  - [x] 2.1: In `apps/api/prisma/schema.prisma`, add `pushToken  String?  @map("push_token")` to the `TeamMember` model, placed after the `authUserId` field
+  - [x] 2.2: Run `npx prisma generate` from `apps/api/` to regenerate the Prisma client (no live DB required for client generation; dev environment must run `npx prisma migrate dev` separately)
 
-- [ ] Task 3: Create Twilio config (AC: #1)
-  - [ ] 3.1: Create `apps/api/src/config/twilio.ts` — import `twilio` from `'twilio'`; export `const twilioClient = twilio(process.env['TWILIO_ACCOUNT_SID'], process.env['TWILIO_AUTH_TOKEN'])`; export `const TWILIO_PHONE_NUMBER = process.env['TWILIO_PHONE_NUMBER'] ?? ''`
-  - [ ] 3.2: Add to `apps/api/.env.example`: `TWILIO_ACCOUNT_SID=`, `TWILIO_AUTH_TOKEN=`, `TWILIO_PHONE_NUMBER=`, `WEB_APP_URL=http://localhost:3000`
+- [x] Task 3: Create Twilio config (AC: #1)
+  - [x] 3.1: Create `apps/api/src/config/twilio.ts` — import `twilio` from `'twilio'`; export `const twilioClient = twilio(process.env['TWILIO_ACCOUNT_SID'], process.env['TWILIO_AUTH_TOKEN'])`; export `const TWILIO_PHONE_NUMBER = process.env['TWILIO_PHONE_NUMBER'] ?? ''`
+  - [x] 3.2: Add to `apps/api/.env.example`: `TWILIO_ACCOUNT_SID=`, `TWILIO_AUTH_TOKEN=`, `TWILIO_PHONE_NUMBER=`, `WEB_APP_URL=http://localhost:3000`
 
-- [ ] Task 4: Create token utility (AC: #1, #2, #3, #4, #5)
-  - [ ] 4.1: Create `apps/api/src/utils/signed-url.ts` — `import { randomBytes } from 'crypto'`; export `function generateToken(): string { return randomBytes(32).toString('hex'); }` — produces a 64-char hex string used as the opaque approval token
+- [x] Task 4: Create token utility (AC: #1, #2, #3, #4, #5)
+  - [x] 4.1: Create `apps/api/src/utils/signed-url.ts` — `import { randomBytes } from 'crypto'`; export `function generateToken(): string { return randomBytes(32).toString('hex'); }` — produces a 64-char hex string used as the opaque approval token
 
-- [ ] Task 5: Create sms-service.ts (AC: #1)
-  - [ ] 5.1: Create `apps/api/src/services/sms-service.ts` — export `async function sendSms(to: string, body: string): Promise<void>` that calls `twilioClient.messages.create({ to, from: TWILIO_PHONE_NUMBER, body })`; throws `AppError('SMS_DELIVERY_FAILED', error.message, 502)` on Twilio error
-  - [ ] 5.2: Create `apps/api/src/services/sms-service.test.ts` — mock `../config/twilio.js` with `{ twilioClient: { messages: { create: jest.fn() } }, TWILIO_PHONE_NUMBER: '+15550000000' }`; test that `sendSms('+15551234567', 'test')` calls `messages.create` with correct `to`, `from`, and `body`; test that Twilio error is rethrown as `AppError`
+- [x] Task 5: Create sms-service.ts (AC: #1)
+  - [x] 5.1: Create `apps/api/src/services/sms-service.ts` — export `async function sendSms(to: string, body: string): Promise<void>` that calls `twilioClient.messages.create({ to, from: TWILIO_PHONE_NUMBER, body })`; throws `AppError('SMS_DELIVERY_FAILED', error.message, 502)` on Twilio error
+  - [x] 5.2: Create `apps/api/src/services/sms-service.test.ts` — mock `../config/twilio.js` with `{ twilioClient: { messages: { create: jest.fn() } }, TWILIO_PHONE_NUMBER: '+15550000000' }`; test that `sendSms('+15551234567', 'test')` calls `messages.create` with correct `to`, `from`, and `body`; test that Twilio error is rethrown as `AppError`
 
-- [ ] Task 6: Create notification-service.ts (AC: #3, #4)
-  - [ ] 6.1: Create `apps/api/src/services/notification-service.ts` — export `async function sendPushNotification(pushToken: string | null | undefined, title: string, body: string): Promise<void>` using the Expo Push HTTP API (see Dev Notes for exact implementation); if `pushToken` is falsy, return immediately without error (tradesperson may not have granted push permissions)
-  - [ ] 6.2: Wrap the fetch in a try/catch and log errors to console but do NOT throw — a failed push notification must not cause the approve/decline request to fail
+- [x] Task 6: Create notification-service.ts (AC: #3, #4)
+  - [x] 6.1: Create `apps/api/src/services/notification-service.ts` — export `async function sendPushNotification(pushToken: string | null | undefined, title: string, body: string): Promise<void>` using the Expo Push HTTP API (see Dev Notes for exact implementation); if `pushToken` is falsy, return immediately without error (tradesperson may not have granted push permissions)
+  - [x] 6.2: Wrap the fetch in a try/catch and log errors to console but do NOT throw — a failed push notification must not cause the approve/decline request to fail
 
-- [ ] Task 7: Add `POST /:id/send` route to quotes.ts (AC: #1)
-  - [ ] 7.1: In `apps/api/src/routes/quotes.ts`, add `POST /:id/send` (protected by `authMiddleware`):
+- [x] Task 7: Add `POST /:id/send` route to quotes.ts (AC: #1)
+  - [x] 7.1: In `apps/api/src/routes/quotes.ts`, add `POST /:id/send` (protected by `authMiddleware`):
     - Look up `accountId` via `getAccountId(req.user!.id)`
     - Fetch quote with `prisma.quote.findFirst({ where: { id: quoteId, account_id: accountId }, include: { customer: true } })`; 404 if not found
     - Return 422 if `quote.pdf_url` is null/empty (PDF must exist before sending)
@@ -63,44 +63,44 @@ so that I get faster quote decisions without phone tag or email delays.
     - Call `sendSms(quote.customer.phone, smsBody)`
     - Return `200 { data: { status: 'SENT', sentAt: sentAt.toISOString(), expiresAt: expiresAt.toISOString(), approvalToken } }`
 
-- [ ] Task 8: Add public customer routes to quotes.ts (AC: #2, #3, #4, #5)
-  - [ ] 8.1: Add `GET /view/:token` (NO `authMiddleware`) — finds quote by `approval_token`; returns 404 if not found; returns 410 if `expires_at < now`; if status is `SENT`, atomically updates to `VIEWED`; fetches account and line items; returns full quote data shape (see Dev Notes for exact response shape)
-  - [ ] 8.2: Add `POST /approve/:token` (NO `authMiddleware`) — finds quote by `approval_token`; 404 if not found; 410 if expired; if already `APPROVED` return 200 immediately (idempotent); reject with 422 if status is `DECLINED`; update status to `APPROVED`, `approved_at = now`; find account owner's push token via `prisma.teamMember.findFirst({ where: { accountId: quote.account_id, role: 'OWNER' }, select: { pushToken: true } })`; call `sendPushNotification(pushToken, 'Quote Approved!', 'A customer approved your estimate.')`; return `200 { data: { status: 'APPROVED' } }`
-  - [ ] 8.3: Add `POST /decline/:token` (NO `authMiddleware`) — same lookup/expiry pattern; if already `DECLINED` return 200 (idempotent); reject with 422 if status is `APPROVED`; update status to `DECLINED`; send push notification "Quote Declined"; return `200 { data: { status: 'DECLINED' } }`
+- [x] Task 8: Add public customer routes to quotes.ts (AC: #2, #3, #4, #5)
+  - [x] 8.1: Add `GET /view/:token` (NO `authMiddleware`) — finds quote by `approval_token`; returns 404 if not found; returns 410 if `expires_at < now`; if status is `SENT`, atomically updates to `VIEWED`; fetches account and line items; returns full quote data shape (see Dev Notes for exact response shape)
+  - [x] 8.2: Add `POST /approve/:token` (NO `authMiddleware`) — finds quote by `approval_token`; 404 if not found; 410 if expired; if already `APPROVED` return 200 immediately (idempotent); reject with 422 if status is `DECLINED`; update status to `APPROVED`, `approved_at = now`; find account owner's push token via `prisma.teamMember.findFirst({ where: { accountId: quote.account_id, role: 'OWNER' }, select: { pushToken: true } })`; call `sendPushNotification(pushToken, 'Quote Approved!', 'A customer approved your estimate.')`; return `200 { data: { status: 'APPROVED' } }`
+  - [x] 8.3: Add `POST /decline/:token` (NO `authMiddleware`) — same lookup/expiry pattern; if already `DECLINED` return 200 (idempotent); reject with 422 if status is `APPROVED`; update status to `DECLINED`; send push notification "Quote Declined"; return `200 { data: { status: 'DECLINED' } }`
 
-- [ ] Task 9: Update quotes.test.ts — add tests for new routes (AC: #1–#5)
-  - [ ] 9.1: Add mocks at top of existing `quotes.test.ts`: `jest.mock('../services/sms-service.js', ...)` and `jest.mock('../services/notification-service.js', ...)` and `jest.mock('../utils/signed-url.js', ...)` (returns fixed token)
-  - [ ] 9.2: Add `describe('POST /api/v1/quotes/:id/send')` tests: success (200, SMS called), missing PDF (422), terminal status (422), quote not found (404), unauthorized (401)
-  - [ ] 9.3: Add `describe('GET /api/v1/quotes/view/:token')` tests: success (200, returns quote data), expired (410), not found (404)
-  - [ ] 9.4: Add `describe('POST /api/v1/quotes/approve/:token')` tests: success (200, push sent), expired (410), already approved idempotent (200), declined-then-approve (422)
-  - [ ] 9.5: Add `describe('POST /api/v1/quotes/decline/:token')` tests: success (200, push sent), expired (410)
+- [x] Task 9: Update quotes.test.ts — add tests for new routes (AC: #1–#5)
+  - [x] 9.1: Add mocks at top of existing `quotes.test.ts`: `jest.mock('../services/sms-service.js', ...)` and `jest.mock('../services/notification-service.js', ...)` and `jest.mock('../utils/signed-url.js', ...)` (returns fixed token)
+  - [x] 9.2: Add `describe('POST /api/v1/quotes/:id/send')` tests: success (200, SMS called), missing PDF (422), terminal status (422), quote not found (404), unauthorized (401)
+  - [x] 9.3: Add `describe('GET /api/v1/quotes/view/:token')` tests: success (200, returns quote data), expired (410), not found (404)
+  - [x] 9.4: Add `describe('POST /api/v1/quotes/approve/:token')` tests: success (200, push sent), expired (410), already approved idempotent (200), declined-then-approve (422)
+  - [x] 9.5: Add `describe('POST /api/v1/quotes/decline/:token')` tests: success (200, push sent), expired (410)
 
-- [ ] Task 10: Add push token endpoint to accounts.ts (AC: #3, #4)
-  - [ ] 10.1: In `apps/api/src/routes/accounts.ts`, add `PATCH /me/push-token` (protected by existing `router.use(authMiddleware)`):
+- [x] Task 10: Add push token endpoint to accounts.ts (AC: #3, #4)
+  - [x] 10.1: In `apps/api/src/routes/accounts.ts`, add `PATCH /me/push-token` (protected by existing `router.use(authMiddleware)`):
     - Body schema: `z.object({ pushToken: z.string().min(1) })`
     - Find team member by `req.user!.id`; 404 if not found
     - `prisma.teamMember.update({ where: { id: teamMember.id }, data: { pushToken: body.pushToken } })`
     - Return `200 { data: { ok: true } }`
 
-- [ ] Task 11: Create mobile notification-service.ts (AC: #3, #4)
-  - [ ] 11.1: Create `apps/mobile/src/services/notification-service.ts` — export `async function registerPushToken(): Promise<void>` (see Dev Notes for full implementation)
-  - [ ] 11.2: Wrap ALL calls in try/catch; log errors with `console.warn`; never throw — push registration is non-critical and must not crash the app
+- [x] Task 11: Create mobile notification-service.ts (AC: #3, #4)
+  - [x] 11.1: Create `apps/mobile/src/services/notification-service.ts` — export `async function registerPushToken(): Promise<void>` (see Dev Notes for full implementation)
+  - [x] 11.2: Wrap ALL calls in try/catch; log errors with `console.warn`; never throw — push registration is non-critical and must not crash the app
 
-- [ ] Task 12: Wire push token registration in mobile auth flow (AC: #3, #4)
-  - [ ] 12.1: In `apps/mobile/src/contexts/auth-context.tsx`, after a successful login/session restore (where `user` is set), call `registerPushToken()` in the effect — import from `../services/notification-service`
+- [x] Task 12: Wire push token registration in mobile auth flow (AC: #3, #4)
+  - [x] 12.1: In `apps/mobile/src/contexts/auth-context.tsx`, after a successful login/session restore (where `user` is set), call `registerPushToken()` in the effect — import from `../services/notification-service`
 
-- [ ] Task 13: Update mobile quote detail screen — add Send Quote button (AC: #1, #6)
-  - [ ] 13.1: In `apps/mobile/app/(tabs)/more/quotes/[id].tsx`, add `isSending` state and `handleSendQuote` callback:
+- [x] Task 13: Update mobile quote detail screen — add Send Quote button (AC: #1, #6)
+  - [x] 13.1: In `apps/mobile/app/(tabs)/more/quotes/[id].tsx`, add `isSending` state and `handleSendQuote` callback:
     - Disabled conditions: `!quote.pdfUrl` (no PDF yet), `isSending`, or `quote.status === 'APPROVED' || quote.status === 'DECLINED'`
     - On press: set `isSending = true`; call `apiClient.post<SendQuoteResult>(`/api/v1/quotes/${id}/send`)`; on success, `database.write()` to update quote record (`status`, `sentAt`, `approvalToken`); show `Alert.alert('Quote Sent', 'SMS delivered to customer.')`; on error, show error alert; finally set `isSending = false`
-  - [ ] 13.2: Render "Send Quote" button in the actions section — styled with primary blue button, below "Generate PDF"; button text is "Send Quote" normally, "Sending..." when `isSending`
-  - [ ] 13.3: Add `SendQuoteResult` interface inline: `{ status: string; sentAt: string; expiresAt: string; approvalToken: string }`
+  - [x] 13.2: Render "Send Quote" button in the actions section — styled with primary blue button, below "Generate PDF"; button text is "Send Quote" normally, "Sending..." when `isSending`
+  - [x] 13.3: Add `SendQuoteResult` interface inline: `{ status: string; sentAt: string; expiresAt: string; approvalToken: string }`
 
-- [ ] Task 14: Create web app customer quote approval page (AC: #2, #3, #4, #5)
-  - [ ] 14.1: Create directory structure `apps/web/src/app/(public)/quote/[token]/`
-  - [ ] 14.2: Create `apps/web/src/app/(public)/quote/[token]/page.tsx` — Next.js server component (see Dev Notes for implementation)
-  - [ ] 14.3: Create `apps/web/src/app/(public)/quote/[token]/approve-buttons.tsx` — `'use client'` component (see Dev Notes for implementation)
-  - [ ] 14.4: Add `API_URL` env to `apps/web/.env.example` and `apps/web/.env.local.example`: `API_URL=http://localhost:3001` and `NEXT_PUBLIC_API_URL=http://localhost:3001`
+- [x] Task 14: Create web app customer quote approval page (AC: #2, #3, #4, #5)
+  - [x] 14.1: Create directory structure `apps/web/src/app/(public)/quote/[token]/`
+  - [x] 14.2: Create `apps/web/src/app/(public)/quote/[token]/page.tsx` — Next.js server component (see Dev Notes for implementation)
+  - [x] 14.3: Create `apps/web/src/app/(public)/quote/[token]/approve-buttons.tsx` — `'use client'` component (see Dev Notes for implementation)
+  - [x] 14.4: Add `API_URL` env to `apps/web/.env.example` and `apps/web/.env.local.example`: `API_URL=http://localhost:3001` and `NEXT_PUBLIC_API_URL=http://localhost:3001`
 
 ## Dev Notes
 
@@ -554,4 +554,43 @@ claude-sonnet-4-6
 
 ### Completion Notes List
 
+- Installed `twilio` (v5+, includes TypeScript types) in API; installed `expo-notifications` in mobile.
+- Added `pushToken String? @map("push_token")` field to `TeamMember` model in Prisma schema; ran `prisma generate` to update client.
+- Created `apps/api/src/config/twilio.ts` with default Twilio v5 import pattern.
+- Created `apps/api/src/utils/signed-url.ts` with `generateToken()` using `crypto.randomBytes(32).toString('hex')`.
+- Created `apps/api/src/services/sms-service.ts` with Twilio SMS dispatch and AppError wrapping on failure.
+- Created `apps/api/src/services/sms-service.test.ts` with 3 tests verifying correct call args and error wrapping.
+- Created `apps/api/src/services/notification-service.ts` using Expo Push HTTP API; silently swallows errors.
+- Added `POST /:id/send` to quotes router: validates PDF present and non-terminal status, generates 64-char hex token, sets 30-day expiry, dispatches SMS via Twilio.
+- Added `GET /view/:token` (public): atomically transitions SENT→VIEWED on first view, returns full quote data.
+- Added `POST /approve/:token` (public): idempotent, sends Expo push notification to account OWNER.
+- Added `POST /decline/:token` (public): idempotent, sends Expo push notification to account OWNER.
+- Expanded `quotes.test.ts` from 8 to 70 tests covering all new routes (send, view, approve, decline) with mocked Twilio, SMS service, notification service, and signed-url utility.
+- Added `PATCH /me/push-token` to accounts router with Zod validation.
+- Created `apps/mobile/src/services/notification-service.ts` with `registerPushToken()` — silently no-ops in simulators without EAS project ID.
+- Wired `registerPushToken()` call in `auth-context.tsx` on both initial session restore and `onAuthStateChange` when user is set.
+- Added `isSending` state and `handleSendQuote` callback to mobile quote detail screen; Send Quote button is disabled without PDF or in terminal states.
+- Created Next.js 15 server component `apps/web/src/app/(public)/quote/[token]/page.tsx` with full quote rendering and expired/not-found error states.
+- Created `'use client'` component `approve-buttons.tsx` handling approve/decline fetch calls with loading and error states.
+- All 70 API tests pass with no regressions.
+
 ### File List
+
+- `apps/api/package.json` — MODIFIED (added twilio dependency)
+- `apps/mobile/package.json` — MODIFIED (added expo-notifications dependency)
+- `apps/api/prisma/schema.prisma` — MODIFIED (added pushToken to TeamMember)
+- `apps/api/src/config/twilio.ts` — NEW
+- `apps/api/src/utils/signed-url.ts` — NEW
+- `apps/api/src/services/sms-service.ts` — NEW
+- `apps/api/src/services/sms-service.test.ts` — NEW
+- `apps/api/src/services/notification-service.ts` — NEW
+- `apps/api/src/routes/quotes.ts` — MODIFIED (added send/view/approve/decline routes)
+- `apps/api/src/routes/quotes.test.ts` — MODIFIED (added tests for new routes, 8→70 tests)
+- `apps/api/src/routes/accounts.ts` — MODIFIED (added PATCH /me/push-token)
+- `apps/api/.env.example` — MODIFIED (added TWILIO_PHONE_NUMBER, WEB_APP_URL)
+- `apps/mobile/src/services/notification-service.ts` — NEW
+- `apps/mobile/src/contexts/auth-context.tsx` — MODIFIED (wired registerPushToken on login)
+- `apps/mobile/app/(tabs)/more/quotes/[id].tsx` — MODIFIED (added Send Quote button)
+- `apps/web/src/app/(public)/quote/[token]/page.tsx` — NEW
+- `apps/web/src/app/(public)/quote/[token]/approve-buttons.tsx` — NEW
+- `apps/web/.env.example` — MODIFIED (added API_URL)

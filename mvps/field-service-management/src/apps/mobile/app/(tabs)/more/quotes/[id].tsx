@@ -45,6 +45,7 @@ export default function QuoteDetailScreen() {
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
     if (!quote?.customerId) return;
@@ -110,6 +111,32 @@ export default function QuoteDetailScreen() {
     if (!quote?.pdfUrl) return;
     Linking.openURL(quote.pdfUrl);
   }, [quote?.pdfUrl]);
+
+  const handleSendQuote = useCallback(async () => {
+    if (!id || !quote) return;
+    setIsSending(true);
+    try {
+      interface SendQuoteResult {
+        status: string;
+        sentAt: string;
+        expiresAt: string;
+        approvalToken: string;
+      }
+      const result = await apiClient.post<SendQuoteResult>(`/api/v1/quotes/${id}/send`);
+      await database.write(async () => {
+        await (quote as Quote).update((record) => {
+          record.status = result.status;
+          record.sentAt = Date.parse(result.sentAt);
+          record.approvalToken = result.approvalToken;
+        });
+      });
+      Alert.alert('Quote Sent', 'SMS delivered to customer.');
+    } catch {
+      Alert.alert('Error', 'Failed to send quote. Please try again.');
+    } finally {
+      setIsSending(false);
+    }
+  }, [id, quote, database]);
 
   const handleUploadPending = useCallback(async () => {
     if (!id) return;
@@ -222,6 +249,21 @@ export default function QuoteDetailScreen() {
         >
           <Text style={[styles.actionButtonText, styles.primaryButtonText]}>
             {isGeneratingPdf ? 'Generating PDF...' : 'Generate PDF'}
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[
+            styles.actionButton,
+            styles.sendButton,
+            (!quote.pdfUrl || isSending || quote.status === 'APPROVED' || quote.status === 'DECLINED') &&
+              styles.disabledButton,
+          ]}
+          onPress={handleSendQuote}
+          disabled={!quote.pdfUrl || isSending || quote.status === 'APPROVED' || quote.status === 'DECLINED'}
+        >
+          <Text style={[styles.actionButtonText, styles.sendButtonText]}>
+            {isSending ? 'Sending...' : 'Send Quote'}
           </Text>
         </TouchableOpacity>
 
@@ -385,6 +427,13 @@ const styles = StyleSheet.create({
   },
   disabledButton: {
     opacity: 0.5,
+  },
+  sendButton: {
+    backgroundColor: '#2563eb',
+    borderColor: '#2563eb',
+  },
+  sendButtonText: {
+    color: '#fff',
   },
   successButton: {
     backgroundColor: '#16a34a',

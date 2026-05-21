@@ -53,7 +53,7 @@ development_status:
   2-1-customer-creation-and-contact-management: done
   2-2-quote-creation-with-line-items: done
   2-3-quote-photo-attachments-and-pdf-generation: done
-  2-4-quote-sms-delivery-and-customer-approval: ready-for-dev
+  2-4-quote-sms-delivery-and-customer-approval: done
   epic-2-retrospective: optional
 
   # Epic 3: Scheduling & Job Management
