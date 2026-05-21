@@ -1,7 +1,30 @@
-import { schemaMigrations, createTable } from '@nozbe/watermelondb/Schema/migrations';
+import { schemaMigrations, createTable, addColumns } from '@nozbe/watermelondb/Schema/migrations';
 
 export const migrations = schemaMigrations({
   migrations: [
+    {
+      toVersion: 5,
+      steps: [
+        addColumns({
+          table: 'quotes',
+          columns: [
+            { name: 'pdf_url', type: 'string', isOptional: true },
+          ],
+        }),
+        createTable({
+          name: 'quote_photos',
+          columns: [
+            { name: 'quote_id', type: 'string' },
+            { name: 'local_uri', type: 'string', isOptional: true },
+            { name: 'remote_url', type: 'string', isOptional: true },
+            { name: 'caption', type: 'string', isOptional: true },
+            { name: 'taken_at', type: 'number', isOptional: true },
+            { name: 'created_at', type: 'number' },
+            { name: 'updated_at', type: 'number' },
+          ],
+        }),
+      ],
+    },
     {
       toVersion: 4,
       steps: [

@@ -4,14 +4,27 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
+  Pressable,
   StyleSheet,
   ActivityIndicator,
+  Alert,
+  Linking,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { centsToDollars } from '@field-service/shared';
-import { useQuote, useQuoteLineItems } from '../../../../src/hooks/use-quotes';
+import { useQuote, useQuoteLineItems, useQuotePhotos } from '../../../../src/hooks/use-quotes';
 import { useDatabase } from '../../../../src/contexts/database-context';
+import { QuotePhotoGallery } from '../../../../src/components/quotes/quote-photo-gallery';
 import Customer from '../../../../src/db/models/customer';
+import Quote from '../../../../src/db/models/quote';
+import {
+  capturePhoto,
+  compressPhoto,
+  savePhotoLocally,
+  uploadPhoto,
+  uploadPendingPhotos,
+} from '../../../../src/services/photo-service';
+import { apiClient } from '../../../../src/services/api-client';
 
 const STATUS_COLORS: Record<string, { bg: string; text: string }> = {
   DRAFT: { bg: '#f3f4f6', text: '#6b7280' },
@@ -28,8 +41,10 @@ export default function QuoteDetailScreen() {
   const database = useDatabase();
   const { quote, isLoading: quoteLoading } = useQuote(id ?? '');
   const { lineItems, isLoading: itemsLoading } = useQuoteLineItems(id ?? '');
+  const { photos } = useQuotePhotos(id ?? '');
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   useEffect(() => {
     if (!quote?.customerId) return;
@@ -59,6 +74,49 @@ export default function QuoteDetailScreen() {
     });
   }, [router, quote]);
 
+  const handleAddPhoto = useCallback(async () => {
+    const uri = await capturePhoto();
+    if (!uri || !id) return;
+
+    const compressedUri = await compressPhoto(uri);
+    const photo = await savePhotoLocally(id, compressedUri);
+
+    try {
+      await uploadPhoto(id, photo.id, compressedUri);
+    } catch {
+      Alert.alert('Photo saved', 'Photo saved — will upload when online');
+    }
+  }, [id]);
+
+  const handleGeneratePdf = useCallback(async () => {
+    if (!id || !quote) return;
+    setIsGeneratingPdf(true);
+    try {
+      const result = await apiClient.post<{ pdfUrl: string }>(`/api/v1/quotes/${id}/generate-pdf`);
+      await database.write(async () => {
+        await (quote as Quote).update((record) => {
+          record.pdfUrl = result.pdfUrl;
+        });
+      });
+      Alert.alert('Success', 'PDF generated successfully');
+    } catch {
+      Alert.alert('Error', 'Failed to generate PDF. Please try again.');
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  }, [id, quote, database]);
+
+  const handleViewPdf = useCallback(() => {
+    if (!quote?.pdfUrl) return;
+    Linking.openURL(quote.pdfUrl);
+  }, [quote?.pdfUrl]);
+
+  const handleUploadPending = useCallback(async () => {
+    if (!id) return;
+    const count = await uploadPendingPhotos(id);
+    Alert.alert('Upload complete', `${count} photo${count === 1 ? '' : 's'} uploaded`);
+  }, [id]);
+
   if (quoteLoading || itemsLoading || !quote) {
     return (
       <View style={styles.loadingContainer}>
@@ -67,10 +125,12 @@ export default function QuoteDetailScreen() {
     );
   }
 
-  const statusStyle = STATUS_COLORS[quote.status] ?? STATUS_COLORS.DRAFT;
+  const statusStyle = STATUS_COLORS[quote.status] ?? STATUS_COLORS['DRAFT']!;
   const createdDate = quote.createdAt
     ? new Date(quote.createdAt).toLocaleDateString()
     : '';
+
+  const hasPendingPhotos = photos.some((p) => p.remoteUrl === '');
 
   return (
     <ScrollView style={styles.container}>
@@ -143,11 +203,39 @@ export default function QuoteDetailScreen() {
         </View>
       ) : null}
 
+      {/* Photos */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Photos</Text>
+        <QuotePhotoGallery photos={photos} onAddPhoto={handleAddPhoto} />
+      </View>
+
       {/* Actions */}
       <View style={styles.actions}>
         <TouchableOpacity style={styles.actionButton} onPress={handleDuplicate}>
           <Text style={styles.actionButtonText}>Duplicate Quote</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.actionButton, styles.primaryButton, isGeneratingPdf && styles.disabledButton]}
+          onPress={handleGeneratePdf}
+          disabled={isGeneratingPdf}
+        >
+          <Text style={[styles.actionButtonText, styles.primaryButtonText]}>
+            {isGeneratingPdf ? 'Generating PDF...' : 'Generate PDF'}
+          </Text>
+        </TouchableOpacity>
+
+        {quote.pdfUrl ? (
+          <Pressable style={[styles.actionButton, styles.successButton]} onPress={handleViewPdf}>
+            <Text style={[styles.actionButtonText, styles.successButtonText]}>View PDF</Text>
+          </Pressable>
+        ) : null}
+
+        {hasPendingPhotos ? (
+          <Pressable style={[styles.actionButton, styles.warningButton]} onPress={handleUploadPending}>
+            <Text style={[styles.actionButtonText, styles.warningButtonText]}>Upload Pending Photos</Text>
+          </Pressable>
+        ) : null}
       </View>
 
       <View style={styles.bottomPadding} />
@@ -287,6 +375,30 @@ const styles = StyleSheet.create({
     color: '#2563eb',
     fontSize: 15,
     fontWeight: '600',
+  },
+  primaryButton: {
+    backgroundColor: '#2563eb',
+    borderColor: '#2563eb',
+  },
+  primaryButtonText: {
+    color: '#fff',
+  },
+  disabledButton: {
+    opacity: 0.5,
+  },
+  successButton: {
+    backgroundColor: '#16a34a',
+    borderColor: '#16a34a',
+  },
+  successButtonText: {
+    color: '#fff',
+  },
+  warningButton: {
+    backgroundColor: '#eab308',
+    borderColor: '#eab308',
+  },
+  warningButtonText: {
+    color: '#fff',
   },
   bottomPadding: {
     height: 32,

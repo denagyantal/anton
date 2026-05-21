@@ -13,6 +13,7 @@ export default class Quote extends Model {
   @field('total') total!: number;
   @text('notes') notes!: string;
   @text('approval_token') approvalToken!: string;
+  @text('pdf_url') pdfUrl!: string;
   @field('sent_at') sentAt!: number | null;
   @field('approved_at') approvedAt!: number | null;
   @field('expires_at') expiresAt!: number | null;

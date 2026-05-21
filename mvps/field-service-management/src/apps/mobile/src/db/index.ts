@@ -6,6 +6,7 @@ import PricebookItem from './models/pricebook-item';
 import Customer from './models/customer';
 import Quote from './models/quote';
 import LineItem from './models/line-item';
+import QuotePhoto from './models/quote-photo';
 
 const adapter = new LokiJSAdapter({
   schema,
@@ -16,5 +17,5 @@ const adapter = new LokiJSAdapter({
 
 export const database = new Database({
   adapter,
-  modelClasses: [PricebookItem, Customer, Quote, LineItem],
+  modelClasses: [PricebookItem, Customer, Quote, LineItem, QuotePhoto],
 });

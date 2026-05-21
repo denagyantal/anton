@@ -4,6 +4,7 @@ import { useDatabase } from '../contexts/database-context';
 import { useAuth } from '../contexts/auth-context';
 import Quote from '../db/models/quote';
 import LineItem from '../db/models/line-item';
+import QuotePhoto from '../db/models/quote-photo';
 
 interface UseQuotesResult {
   quotes: Quote[];
@@ -107,4 +108,31 @@ export function useQuoteLineItems(quoteId: string): UseQuoteLineItemsResult {
   }, [database, quoteId]);
 
   return { lineItems, isLoading };
+}
+
+export function useQuotePhotos(quoteId: string): { photos: QuotePhoto[]; isLoading: boolean } {
+  const database = useDatabase();
+  const [photos, setPhotos] = useState<QuotePhoto[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!quoteId) {
+      setPhotos([]);
+      setIsLoading(false);
+      return;
+    }
+
+    const query = database
+      .get<QuotePhoto>('quote_photos')
+      .query(Q.where('quote_id', quoteId), Q.sortBy('taken_at', Q.asc));
+
+    const subscription = query.observe().subscribe((records) => {
+      setPhotos(records);
+      setIsLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [database, quoteId]);
+
+  return { photos, isLoading };
 }

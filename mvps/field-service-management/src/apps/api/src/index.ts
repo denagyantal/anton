@@ -4,6 +4,7 @@ import { requestLogger } from './middleware/request-logger.js';
 import { errorHandler } from './middleware/error-handler.js';
 import { authRouter } from './routes/auth.js';
 import { accountsRouter } from './routes/accounts.js';
+import { quotesRouter } from './routes/quotes.js';
 import { authMiddleware } from './middleware/auth.js';
 
 export const app = express();
@@ -27,6 +28,9 @@ app.use('/api/v1/auth', authRouter);
 
 // Account routes (protected)
 app.use('/api/v1/accounts', accountsRouter);
+
+// Quote action routes (protected)
+app.use('/api/v1/quotes', quotesRouter);
 
 // Protected route: current user
 app.get('/api/v1/me', authMiddleware, (req, res) => {

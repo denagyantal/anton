@@ -7,5 +7,6 @@ module.exports = {
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1',
     '^@field-service/shared$': '<rootDir>/../../packages/shared/src/index.ts',
+    '^@react-pdf/renderer$': '<rootDir>/src/__mocks__/@react-pdf/renderer.js',
   },
 };

@@ -26,3 +26,19 @@ export async function deleteFile(bucket: string, path: string): Promise<void> {
     throw new AppError('STORAGE_ERROR', error.message, 500);
   }
 }
+
+export async function getSignedUrl(
+  bucket: string,
+  path: string,
+  expiresInSeconds: number,
+): Promise<string> {
+  const { data, error } = await supabaseAdmin.storage
+    .from(bucket)
+    .createSignedUrl(path, expiresInSeconds);
+
+  if (error || !data?.signedUrl) {
+    throw new AppError('STORAGE_ERROR', error?.message ?? 'Failed to create signed URL', 500);
+  }
+
+  return data.signedUrl;
+}

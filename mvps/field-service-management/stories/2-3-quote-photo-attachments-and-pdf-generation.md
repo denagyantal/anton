@@ -1,6 +1,6 @@
 # Story 2.3: Quote Photo Attachments and PDF Generation
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -22,72 +22,72 @@ so that customers see the issue clearly and receive a polished, trustworthy esti
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Add QuotePhoto shared types (AC: #1, #2)
-  - [ ] 1.1: Update `packages/shared/src/types/quote.ts` — add `QuotePhoto` interface with fields: `id: string`, `quoteId: string`, `remoteUrl: string`, `localUri: string`, `caption: string`, `takenAt?: string` (ISO 8601), `createdAt: string`, `updatedAt: string`
-  - [ ] 1.2: Add optional `pdfUrl?: string` field to the existing `Quote` interface in the same file
-  - [ ] 1.3: Verify `packages/shared/src/index.ts` uses `export * from './types/quote'` (already the case — no change needed)
+- [x] Task 1: Add QuotePhoto shared types (AC: #1, #2)
+  - [x] 1.1: Update `packages/shared/src/types/quote.ts` — add `QuotePhoto` interface with fields: `id: string`, `quoteId: string`, `remoteUrl: string`, `localUri: string`, `caption: string`, `takenAt?: string` (ISO 8601), `createdAt: string`, `updatedAt: string`
+  - [x] 1.2: Add optional `pdfUrl?: string` field to the existing `Quote` interface in the same file
+  - [x] 1.3: Verify `packages/shared/src/index.ts` uses `export * from './types/quote'` (already the case — no change needed)
 
-- [ ] Task 2: Add QuotePhoto model to Prisma schema (AC: #3)
-  - [ ] 2.1: Add `pdf_url String?` field to the existing `Quote` model in `apps/api/prisma/schema.prisma` (follow the raw snake_case field name pattern already used in the Quote model — do NOT add `@map`)
-  - [ ] 2.2: Add `quote_photos QuotePhoto[]` relation field to the `Quote` model
-  - [ ] 2.3: Add new `QuotePhoto` model to schema.prisma (see Dev Notes for exact definition)
-  - [ ] 2.4: Run `npx prisma generate` from `apps/api/` to regenerate Prisma client types (no live DB required)
+- [x] Task 2: Add QuotePhoto model to Prisma schema (AC: #3)
+  - [x] 2.1: Add `pdf_url String?` field to the existing `Quote` model in `apps/api/prisma/schema.prisma` (follow the raw snake_case field name pattern already used in the Quote model — do NOT add `@map`)
+  - [x] 2.2: Add `quote_photos QuotePhoto[]` relation field to the `Quote` model
+  - [x] 2.3: Add new `QuotePhoto` model to schema.prisma (see Dev Notes for exact definition)
+  - [x] 2.4: Run `npx prisma generate` from `apps/api/` to regenerate Prisma client types (no live DB required)
 
-- [ ] Task 3: Add quote_photos to WatermelonDB and update Quote model (AC: #1, #2)
-  - [ ] 3.1: Update `apps/mobile/src/db/schema.ts` — add `{ name: 'pdf_url', type: 'string', isOptional: true }` column to the existing `quotes` tableSchema; add a new `quote_photos` tableSchema (see Dev Notes); change `appSchema({ version: 4, ... })` to `version: 5`
-  - [ ] 3.2: Create `apps/mobile/src/db/models/quote-photo.ts` — WatermelonDB Model class for QuotePhoto (see Dev Notes for full pattern)
-  - [ ] 3.3: Update `apps/mobile/src/db/models/quote.ts` — add `@text('pdf_url') pdfUrl!: string` field
-  - [ ] 3.4: Update `apps/mobile/src/db/migrations.ts` — insert a new `{ toVersion: 5, steps: [...] }` block at the TOP of the migrations array (before the existing `toVersion: 4` block); import `addColumns` alongside existing imports; use `addColumns` to add `pdf_url` to `quotes` and `createTable` to create `quote_photos` (see Dev Notes)
-  - [ ] 3.5: Update `apps/mobile/src/db/index.ts` — import `QuotePhoto` from `./models/quote-photo` and add it to the `modelClasses` array
+- [x] Task 3: Add quote_photos to WatermelonDB and update Quote model (AC: #1, #2)
+  - [x] 3.1: Update `apps/mobile/src/db/schema.ts` — add `{ name: 'pdf_url', type: 'string', isOptional: true }` column to the existing `quotes` tableSchema; add a new `quote_photos` tableSchema (see Dev Notes); change `appSchema({ version: 4, ... })` to `version: 5`
+  - [x] 3.2: Create `apps/mobile/src/db/models/quote-photo.ts` — WatermelonDB Model class for QuotePhoto (see Dev Notes for full pattern)
+  - [x] 3.3: Update `apps/mobile/src/db/models/quote.ts` — add `@text('pdf_url') pdfUrl!: string` field
+  - [x] 3.4: Update `apps/mobile/src/db/migrations.ts` — insert a new `{ toVersion: 5, steps: [...] }` block at the TOP of the migrations array (before the existing `toVersion: 4` block); import `addColumns` alongside existing imports; use `addColumns` to add `pdf_url` to `quotes` and `createTable` to create `quote_photos` (see Dev Notes)
+  - [x] 3.5: Update `apps/mobile/src/db/index.ts` — import `QuotePhoto` from `./models/quote-photo` and add it to the `modelClasses` array
 
-- [ ] Task 4: Create mobile photo-service (AC: #1, #5)
-  - [ ] 4.1: Create `apps/mobile/src/services/photo-service.ts` with the functions listed below
-  - [ ] 4.2: Implement `capturePhoto(): Promise<string | null>` — calls `ImagePicker.requestCameraPermissionsAsync()`; if granted, calls `ImagePicker.launchCameraAsync({ mediaTypes: ImagePicker.MediaTypeOptions.Images, quality: 1, allowsEditing: false })`; returns `result.assets[0].uri` or `null` if cancelled/denied
-  - [ ] 4.3: Implement `compressPhoto(uri: string): Promise<string>` — calls `ImageManipulator.manipulateAsync(uri, [{ resize: { width: 1200 } }], { compress: 0.8, format: ImageManipulator.SaveFormat.JPEG })`; returns `result.uri`
-  - [ ] 4.4: Implement `savePhotoLocally(quoteId: string, localUri: string, caption?: string): Promise<QuotePhoto>` — does a `database.write()` to create a new QuotePhoto record with `quoteId`, `localUri`, `remoteUrl: ''`, `caption: caption ?? ''`, `takenAt: Date.now()`
-  - [ ] 4.5: Implement `uploadPhoto(quoteId: string, photoId: string, localUri: string): Promise<string>` — calls `apiClient.uploadFile<{ photoUrl: string }>('/api/v1/quotes/${quoteId}/photos', localUri, 'photo')`; on success, does a `database.write()` to update the QuotePhoto record (found by `photoId`) setting `remoteUrl = photoUrl`; returns the `photoUrl`
-  - [ ] 4.6: Implement `uploadPendingPhotos(quoteId: string): Promise<number>` — queries WatermelonDB for QuotePhoto records where `quote_id == quoteId` AND `remote_url == ''`; calls `uploadPhoto()` for each; returns count of successfully uploaded photos
-  - [ ] 4.7: Create `apps/mobile/src/services/photo-service.test.ts` — mock `expo-image-picker` and `expo-image-manipulator`; test `compressPhoto` (verify manipulateAsync called with correct args); test `savePhotoLocally` (verify WatermelonDB record created with empty remoteUrl)
+- [x] Task 4: Create mobile photo-service (AC: #1, #5)
+  - [x] 4.1: Create `apps/mobile/src/services/photo-service.ts` with the functions listed below
+  - [x] 4.2: Implement `capturePhoto(): Promise<string | null>` — calls `ImagePicker.requestCameraPermissionsAsync()`; if granted, calls `ImagePicker.launchCameraAsync({ mediaTypes: ImagePicker.MediaTypeOptions.Images, quality: 1, allowsEditing: false })`; returns `result.assets[0].uri` or `null` if cancelled/denied
+  - [x] 4.3: Implement `compressPhoto(uri: string): Promise<string>` — calls `ImageManipulator.manipulateAsync(uri, [{ resize: { width: 1200 } }], { compress: 0.8, format: ImageManipulator.SaveFormat.JPEG })`; returns `result.uri`
+  - [x] 4.4: Implement `savePhotoLocally(quoteId: string, localUri: string, caption?: string): Promise<QuotePhoto>` — does a `database.write()` to create a new QuotePhoto record with `quoteId`, `localUri`, `remoteUrl: ''`, `caption: caption ?? ''`, `takenAt: Date.now()`
+  - [x] 4.5: Implement `uploadPhoto(quoteId: string, photoId: string, localUri: string): Promise<string>` — calls `apiClient.uploadFile<{ photoUrl: string }>('/api/v1/quotes/${quoteId}/photos', localUri, 'photo')`; on success, does a `database.write()` to update the QuotePhoto record (found by `photoId`) setting `remoteUrl = photoUrl`; returns the `photoUrl`
+  - [x] 4.6: Implement `uploadPendingPhotos(quoteId: string): Promise<number>` — queries WatermelonDB for QuotePhoto records where `quote_id == quoteId` AND `remote_url == ''`; calls `uploadPhoto()` for each; returns count of successfully uploaded photos
+  - [x] 4.7: Create `apps/mobile/src/services/photo-service.test.ts` — mock `expo-image-picker` and `expo-image-manipulator`; test `compressPhoto` (verify manipulateAsync called with correct args); test `savePhotoLocally` (verify WatermelonDB record created with empty remoteUrl)
 
-- [ ] Task 5: Add getSignedUrl to storage-service (AC: #3)
-  - [ ] 5.1: Update `apps/api/src/services/storage-service.ts` — add `getSignedUrl(bucket: string, path: string, expiresInSeconds: number): Promise<string>` using `supabaseAdmin.storage.from(bucket).createSignedUrl(path, expiresInSeconds)`; throw `AppError('STORAGE_ERROR', error.message, 500)` on failure; return the signed URL string
+- [x] Task 5: Add getSignedUrl to storage-service (AC: #3)
+  - [x] 5.1: Update `apps/api/src/services/storage-service.ts` — add `getSignedUrl(bucket: string, path: string, expiresInSeconds: number): Promise<string>` using `supabaseAdmin.storage.from(bucket).createSignedUrl(path, expiresInSeconds)`; throw `AppError('STORAGE_ERROR', error.message, 500)` on failure; return the signed URL string
 
-- [ ] Task 6: Create PDF service (AC: #3)
-  - [ ] 6.1: Verify `@react-pdf/renderer` is in `apps/api/package.json`; if absent, install it: `cd apps/api && npm install @react-pdf/renderer`
-  - [ ] 6.2: Create `apps/api/src/services/pdf-service.ts`
-  - [ ] 6.3: Define a `QuotePdfData` type within the file holding all fields needed for the PDF template
-  - [ ] 6.4: Define the PDF template as a `buildQuotePdf(data: QuotePdfData)` function using `React.createElement` with `Document`, `Page`, `View`, `Text`, `Image` from `@react-pdf/renderer`; the template must include all sections from AC3: header (logo + business name + license number), customer info, quote date, line items table (description / qty / unit price / line total), subtotal/tax/grand total footer, notes section, and photos section (up to 4 photos in 2-column layout)
-  - [ ] 6.5: Export `async function generateQuotePdf(quoteId: string, accountId: string): Promise<Buffer>` — fetches from Prisma: the quote (include `line_items` ordered by `sort_order asc`), the customer, the account (for business logo and branding), and all `quote_photos` for the quote; calls `renderToBuffer(buildQuotePdf(data))` and returns the buffer
-  - [ ] 6.6: Create `apps/api/src/services/pdf-service.test.ts` — mock Prisma client; verify `generateQuotePdf` resolves to a Buffer for a valid mock quote
+- [x] Task 6: Create PDF service (AC: #3)
+  - [x] 6.1: Verify `@react-pdf/renderer` is in `apps/api/package.json`; if absent, install it: `cd apps/api && npm install @react-pdf/renderer`
+  - [x] 6.2: Create `apps/api/src/services/pdf-service.ts`
+  - [x] 6.3: Define a `QuotePdfData` type within the file holding all fields needed for the PDF template
+  - [x] 6.4: Define the PDF template as a `buildQuotePdf(data: QuotePdfData)` function using `React.createElement` with `Document`, `Page`, `View`, `Text`, `Image` from `@react-pdf/renderer`; the template must include all sections from AC3: header (logo + business name + license number), customer info, quote date, line items table (description / qty / unit price / line total), subtotal/tax/grand total footer, notes section, and photos section (up to 4 photos in 2-column layout)
+  - [x] 6.5: Export `async function generateQuotePdf(quoteId: string, accountId: string): Promise<Buffer>` — fetches from Prisma: the quote (include `line_items` ordered by `sort_order asc`), the customer, the account (for business logo and branding), and all `quote_photos` for the quote; calls `renderToBuffer(buildQuotePdf(data))` and returns the buffer
+  - [x] 6.6: Create `apps/api/src/services/pdf-service.test.ts` — mock Prisma client; verify `generateQuotePdf` resolves to a Buffer for a valid mock quote
 
-- [ ] Task 7: Create quotes API routes (AC: #1, #3, #4)
-  - [ ] 7.1: Create `apps/api/src/routes/quotes.ts`; import `Router`, `authMiddleware`, `prisma`, `AppError`, `uploadFile` (from storage-service), `generateQuotePdf` (from pdf-service), and `multer`; define `const upload = multer({ storage: multer.memoryStorage() })`
-  - [ ] 7.2: Add `POST /api/v1/quotes/:id/photos` — apply `authMiddleware` and `upload.single('photo')`; look up the authenticated user's `accountId` via `prisma.teamMember.findUnique`; verify the quote exists and belongs to that account; validate `req.file` exists (422 if not); upload buffer to Supabase Storage at `photos` bucket, path `quotes/${accountId}/${quoteId}/${Date.now()}.jpg`, content-type `image/jpeg`; create `prisma.quotePhoto` record with the returned URL; respond `201 { data: { id, photoUrl, caption, takenAt } }`
-  - [ ] 7.3: Add `POST /api/v1/quotes/:id/generate-pdf` — apply `authMiddleware`; look up `accountId`; verify quote ownership; call `generateQuotePdf(quoteId, accountId)` to get a buffer; upload buffer to Supabase Storage at `pdfs` bucket, path `quotes/${accountId}/${quoteId}.pdf`, content-type `application/pdf`; update `prisma.quote.update` to set `pdf_url = publicUrl`; respond `200 { data: { pdfUrl: publicUrl } }`
-  - [ ] 7.4: Export as `export const quotesRouter = router`
-  - [ ] 7.5: Create `apps/api/src/routes/quotes.test.ts` — mock `prisma`, `storage-service`, and `pdf-service`; test both endpoints: happy path (201/200 responses), missing file (422), quote not found (404), unauthenticated (401)
+- [x] Task 7: Create quotes API routes (AC: #1, #3, #4)
+  - [x] 7.1: Create `apps/api/src/routes/quotes.ts`; import `Router`, `authMiddleware`, `prisma`, `AppError`, `uploadFile` (from storage-service), `generateQuotePdf` (from pdf-service), and `multer`; define `const upload = multer({ storage: multer.memoryStorage() })`
+  - [x] 7.2: Add `POST /api/v1/quotes/:id/photos` — apply `authMiddleware` and `upload.single('photo')`; look up the authenticated user's `accountId` via `prisma.teamMember.findUnique`; verify the quote exists and belongs to that account; validate `req.file` exists (422 if not); upload buffer to Supabase Storage at `photos` bucket, path `quotes/${accountId}/${quoteId}/${Date.now()}.jpg`, content-type `image/jpeg`; create `prisma.quotePhoto` record with the returned URL; respond `201 { data: { id, photoUrl, caption, takenAt } }`
+  - [x] 7.3: Add `POST /api/v1/quotes/:id/generate-pdf` — apply `authMiddleware`; look up `accountId`; verify quote ownership; call `generateQuotePdf(quoteId, accountId)` to get a buffer; upload buffer to Supabase Storage at `pdfs` bucket, path `quotes/${accountId}/${quoteId}.pdf`, content-type `application/pdf`; update `prisma.quote.update` to set `pdf_url = publicUrl`; respond `200 { data: { pdfUrl: publicUrl } }`
+  - [x] 7.4: Export as `export const quotesRouter = router`
+  - [x] 7.5: Create `apps/api/src/routes/quotes.test.ts` — mock `prisma`, `storage-service`, and `pdf-service`; test both endpoints: happy path (201/200 responses), missing file (422), quote not found (404), unauthenticated (401)
 
-- [ ] Task 8: Register quotes router in Express app (AC: #1, #3)
-  - [ ] 8.1: Update `apps/api/src/index.ts` — import `{ quotesRouter } from './routes/quotes.js'` and add `app.use('/api/v1/quotes', quotesRouter)` after the accounts router line
+- [x] Task 8: Register quotes router in Express app (AC: #1, #3)
+  - [x] 8.1: Update `apps/api/src/index.ts` — import `{ quotesRouter } from './routes/quotes.js'` and add `app.use('/api/v1/quotes', quotesRouter)` after the accounts router line
 
-- [ ] Task 9: Add useQuotePhotos hook (AC: #2, #5)
-  - [ ] 9.1: Add `export function useQuotePhotos(quoteId: string)` to `apps/mobile/src/hooks/use-quotes.ts` — use `useQuery(() => database.get<QuotePhoto>('quote_photos').query(Q.where('quote_id', quoteId), Q.sortBy('taken_at', Q.asc)), [quoteId])`; import `QuotePhoto` from `../db/models/quote-photo`
+- [x] Task 9: Add useQuotePhotos hook (AC: #2, #5)
+  - [x] 9.1: Add `export function useQuotePhotos(quoteId: string)` to `apps/mobile/src/hooks/use-quotes.ts` — use `useQuery(() => database.get<QuotePhoto>('quote_photos').query(Q.where('quote_id', quoteId), Q.sortBy('taken_at', Q.asc)), [quoteId])`; import `QuotePhoto` from `../db/models/quote-photo`
 
-- [ ] Task 10: Create QuotePhotoGallery component (AC: #2)
-  - [ ] 10.1: Create `apps/mobile/src/components/quotes/quote-photo-gallery.tsx`
-  - [ ] 10.2: Accept props: `photos: QuotePhoto[]`, `onAddPhoto: () => void`
-  - [ ] 10.3: Render a horizontal `ScrollView` containing: an "Add Photo" pressable card first, then one 80×80 `Image` thumbnail per photo
-  - [ ] 10.4: Image source: `{ uri: photo.remoteUrl || photo.localUri }` — falls back to local URI when remote is empty
-  - [ ] 10.5: Overlay a small yellow dot badge on thumbnails where `photo.remoteUrl === ''` to signal pending upload
-  - [ ] 10.6: Show an empty state label "No photos yet" if `photos.length === 0` (alongside the Add Photo card)
+- [x] Task 10: Create QuotePhotoGallery component (AC: #2)
+  - [x] 10.1: Create `apps/mobile/src/components/quotes/quote-photo-gallery.tsx`
+  - [x] 10.2: Accept props: `photos: QuotePhoto[]`, `onAddPhoto: () => void`
+  - [x] 10.3: Render a horizontal `ScrollView` containing: an "Add Photo" pressable card first, then one 80×80 `Image` thumbnail per photo
+  - [x] 10.4: Image source: `{ uri: photo.remoteUrl || photo.localUri }` — falls back to local URI when remote is empty
+  - [x] 10.5: Overlay a small yellow dot badge on thumbnails where `photo.remoteUrl === ''` to signal pending upload
+  - [x] 10.6: Show an empty state label "No photos yet" if `photos.length === 0` (alongside the Add Photo card)
 
-- [ ] Task 11: Update quote detail screen (AC: #1, #2, #3, #4, #5)
-  - [ ] 11.1: Update `apps/mobile/app/(tabs)/more/quotes/[id].tsx`
-  - [ ] 11.2: Import and render `QuotePhotoGallery` below the line items section, passing `photos` from `useQuotePhotos(id)` and an `onAddPhoto` callback
-  - [ ] 11.3: Implement `onAddPhoto`: call `capturePhoto()` → if null, return; call `compressPhoto(uri)` → call `savePhotoLocally(id, compressedUri)` → attempt `uploadPhoto(id, photo.id, compressedUri)` in a try/catch; if upload throws (offline), show a toast "Photo saved — will upload when online"
-  - [ ] 11.4: Add "Generate PDF" button: disabled when `isGeneratingPdf` state is true; on press, call `apiClient.post<{ pdfUrl: string }>('/api/v1/quotes/${id}/generate-pdf')`; on success, update WatermelonDB Quote record setting `pdfUrl = result.pdfUrl` via `database.write()`; show success toast
-  - [ ] 11.5: Render a "View PDF" `Pressable` that calls `Linking.openURL(quote.pdfUrl)` — conditionally rendered only when `quote.pdfUrl` is non-empty
-  - [ ] 11.6: Render an "Upload Pending Photos" `Pressable` only when `photos.some(p => p.remoteUrl === '')`; on press, call `uploadPendingPhotos(id)` and show result toast ("N photos uploaded")
+- [x] Task 11: Update quote detail screen (AC: #1, #2, #3, #4, #5)
+  - [x] 11.1: Update `apps/mobile/app/(tabs)/more/quotes/[id].tsx`
+  - [x] 11.2: Import and render `QuotePhotoGallery` below the line items section, passing `photos` from `useQuotePhotos(id)` and an `onAddPhoto` callback
+  - [x] 11.3: Implement `onAddPhoto`: call `capturePhoto()` → if null, return; call `compressPhoto(uri)` → call `savePhotoLocally(id, compressedUri)` → attempt `uploadPhoto(id, photo.id, compressedUri)` in a try/catch; if upload throws (offline), show a toast "Photo saved — will upload when online"
+  - [x] 11.4: Add "Generate PDF" button: disabled when `isGeneratingPdf` state is true; on press, call `apiClient.post<{ pdfUrl: string }>('/api/v1/quotes/${id}/generate-pdf')`; on success, update WatermelonDB Quote record setting `pdfUrl = result.pdfUrl` via `database.write()`; show success toast
+  - [x] 11.5: Render a "View PDF" `Pressable` that calls `Linking.openURL(quote.pdfUrl)` — conditionally rendered only when `quote.pdfUrl` is non-empty
+  - [x] 11.6: Render an "Upload Pending Photos" `Pressable` only when `photos.some(p => p.remoteUrl === '')`; on press, call `uploadPendingPhotos(id)` and show result toast ("N photos uploaded")
 
 ## Dev Notes
 
@@ -421,6 +421,44 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None.
+
 ### Completion Notes List
 
+- All 11 tasks implemented and verified across 49 API tests + 43 mobile tests (all passing).
+- `@react-pdf/renderer` is ESM-only; resolved by adding a `moduleNameMapper` in `jest.config.js` pointing to a manual CJS mock at `src/__mocks__/@react-pdf/renderer.js`.
+- `expo-image-picker` and `expo-image-manipulator` added to `apps/mobile/package.json` and installed via `npm install` at monorepo root.
+- WatermelonDB schema bumped from v4 → v5 with `addColumns` for `pdf_url` on `quotes` and `createTable` for `quote_photos`; migration block added at top of migrations array (highest-version-first order).
+- Prisma `QuotePhoto` model follows existing Quote snake_case field pattern (no `@map()`).
+- PDF template built with `React.createElement` (no JSX) in a `.ts` file using `renderToBuffer()` for Node.js server-side rendering.
+- `req.params['id']` cast to `String()` in quotes route to satisfy TypeScript strict mode (`string | string[] | undefined`).
+- Mobile quote detail screen updated with photo gallery, Generate PDF (disabled during generation), View PDF (conditional on pdfUrl), and Upload Pending Photos (conditional on pending photos) sections.
+
 ### File List
+
+**Modified:**
+- `mvps/field-service-management/src/packages/shared/src/types/quote.ts`
+- `mvps/field-service-management/src/apps/api/prisma/schema.prisma`
+- `mvps/field-service-management/src/apps/mobile/src/db/schema.ts`
+- `mvps/field-service-management/src/apps/mobile/src/db/migrations.ts`
+- `mvps/field-service-management/src/apps/mobile/src/db/models/quote.ts`
+- `mvps/field-service-management/src/apps/mobile/src/db/index.ts`
+- `mvps/field-service-management/src/apps/api/src/services/storage-service.ts`
+- `mvps/field-service-management/src/apps/api/src/index.ts`
+- `mvps/field-service-management/src/apps/mobile/src/hooks/use-quotes.ts`
+- `mvps/field-service-management/src/apps/mobile/app/(tabs)/more/quotes/[id].tsx`
+- `mvps/field-service-management/src/apps/api/package.json` (added @react-pdf/renderer)
+- `mvps/field-service-management/src/apps/mobile/package.json` (added expo-image-picker, expo-image-manipulator)
+- `mvps/field-service-management/src/apps/api/jest.config.js` (added @react-pdf/renderer moduleNameMapper)
+- `mvps/field-service-management/sprint-status.yaml`
+
+**Created:**
+- `mvps/field-service-management/src/apps/mobile/src/db/models/quote-photo.ts`
+- `mvps/field-service-management/src/apps/mobile/src/services/photo-service.ts`
+- `mvps/field-service-management/src/apps/mobile/src/services/photo-service.test.ts`
+- `mvps/field-service-management/src/apps/mobile/src/components/quotes/quote-photo-gallery.tsx`
+- `mvps/field-service-management/src/apps/api/src/services/pdf-service.ts`
+- `mvps/field-service-management/src/apps/api/src/services/pdf-service.test.ts`
+- `mvps/field-service-management/src/apps/api/src/routes/quotes.ts`
+- `mvps/field-service-management/src/apps/api/src/routes/quotes.test.ts`
+- `mvps/field-service-management/src/apps/api/src/__mocks__/@react-pdf/renderer.js`

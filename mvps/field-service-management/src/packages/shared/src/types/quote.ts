@@ -21,6 +21,18 @@ export interface Quote {
   sentAt?: string;
   approvedAt?: string;
   expiresAt?: string;
+  pdfUrl?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface QuotePhoto {
+  id: string;
+  quoteId: string;
+  remoteUrl: string;
+  localUri: string;
+  caption: string;
+  takenAt?: string;
   createdAt: string;
   updatedAt: string;
 }

@@ -133,17 +133,35 @@ model Quote {
   sent_at        DateTime?
   approved_at    DateTime?
   expires_at     DateTime?
+  pdf_url        String?
   created_at     DateTime    @default(now())
   updated_at     DateTime    @updatedAt
   synced_at      DateTime?
 
-  account    Account    @relation(fields: [account_id], references: [id])
-  customer   Customer   @relation(fields: [customer_id], references: [id])
-  line_items LineItem[]
+  account      Account      @relation(fields: [account_id], references: [id])
+  customer     Customer     @relation(fields: [customer_id], references: [id])
+  line_items   LineItem[]
+  quote_photos QuotePhoto[]
 
   @@index([account_id], name: "idx_quotes_account_id")
   @@index([customer_id], name: "idx_quotes_customer_id")
   @@map("quotes")
+}
+
+model QuotePhoto {
+  id         String    @id @default(uuid())
+  quote_id   String
+  photo_url  String
+  caption    String?
+  taken_at   DateTime?
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  synced_at  DateTime?
+
+  quote Quote @relation(fields: [quote_id], references: [id])
+
+  @@index([quote_id], name: "idx_quote_photos_quote_id")
+  @@map("quote_photos")
 }
 
 model LineItem {

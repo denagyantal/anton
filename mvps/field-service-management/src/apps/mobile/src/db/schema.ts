@@ -1,7 +1,7 @@
 import { appSchema, tableSchema } from '@nozbe/watermelondb';
 
 export const schema = appSchema({
-  version: 4,
+  version: 5,
   tables: [
     tableSchema({
       name: 'pricebook_items',
@@ -51,6 +51,19 @@ export const schema = appSchema({
         { name: 'sent_at', type: 'number', isOptional: true },
         { name: 'approved_at', type: 'number', isOptional: true },
         { name: 'expires_at', type: 'number', isOptional: true },
+        { name: 'pdf_url', type: 'string', isOptional: true },
+        { name: 'created_at', type: 'number' },
+        { name: 'updated_at', type: 'number' },
+      ],
+    }),
+    tableSchema({
+      name: 'quote_photos',
+      columns: [
+        { name: 'quote_id', type: 'string' },
+        { name: 'local_uri', type: 'string', isOptional: true },
+        { name: 'remote_url', type: 'string', isOptional: true },
+        { name: 'caption', type: 'string', isOptional: true },
+        { name: 'taken_at', type: 'number', isOptional: true },
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
       ],
