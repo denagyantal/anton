@@ -1,8 +1,8 @@
 # AI Local SEO & Lead Generation for Trades
 
-## Score: 75/105
+## Score: 87/105
 
-## Verdict: EXPLORE FURTHER
+## Verdict: BUILD
 
 ## Overview
 Tool that helps trades businesses optimize for AI-powered search (Google AI Mode, Siri, Alexa) and generate leads through automated content. Audits how AI assistants describe/recommend their business, generates structured data markup, manages reviews across platforms, and creates AI-optimized content.
@@ -38,7 +38,7 @@ Google's AI Mode is fundamentally changing how homeowners find plumbers, electri
 | Build Feasibility | 4/5 | 2x | 8 | API integrations + content generation; 3-4 weeks |
 | Boring Business Bonus | 4/5 | 2x | 8 | Marketing tool for boring businesses |
 
-## Decision Status: NEW
+## Decision Status: VALIDATING
 
 ## Next Steps
 1. Research how Google AI Mode, Siri, and Alexa select/recommend local trades businesses
@@ -61,3 +61,4 @@ Google's AI Mode is fundamentally changing how homeowners find plumbers, electri
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-20 | 75/105 | trends | First identified; Google AI Mode disrupting local search |
+| 2026-05-22 | 87/105 | trends-2026-05-22 | ↑12: MAJOR UPGRADE — 87% of independent HVAC/plumbing contractors have zero AI citation share in their own metro areas, even with 800+ reviews and 30 years in business; 45% of consumers now use AI (ChatGPT, Perplexity, Gemini) to find local services — up from just 6% one year ago; Google AI Mode live, most contractors invisible; no trade-specific AI visibility product found; "GEO for Contractors" = $99/mo or $199 LTD; 3–4 weeks MVP; Sources: pmmag.com/articles/107415-87-of-hvac-and-plumbing-contractors-are-invisible-when-homeowners-ask-ai, marketingcode.com/ai-search-6-to-45-percent-contractors-invisible, contractormag.com/management/best-practices/article/55378932/how-ai-search-is-changing-how-homeowners-find-contractors |
