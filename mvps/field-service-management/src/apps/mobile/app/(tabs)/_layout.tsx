@@ -29,6 +29,10 @@ export default function TabLayout() {
           title: 'More',
         }}
       />
+      <Tabs.Screen
+        name="jobs/[id]"
+        options={{ href: null, title: 'Job Details' }}
+      />
     </Tabs>
   );
 }

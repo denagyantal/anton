@@ -52,6 +52,7 @@ export interface CreateJobParams {
   quoteId?: string;
   notes?: string;
   externalCalendarId?: string;
+  initialStatus?: string;
 }
 
 export function useCreateJob(): { createJob: (params: CreateJobParams) => Promise<{ job: Job; event: ScheduleEvent }> } {
@@ -70,7 +71,7 @@ export function useCreateJob(): { createJob: (params: CreateJobParams) => Promis
           record.accountId = user.accountId;
           record.customerId = params.customerId;
           record.quoteId = params.quoteId ?? '';
-          record.status = 'SCHEDULED';
+          record.status = params.initialStatus ?? 'SCHEDULED';
           record.title = params.title;
           record.scheduledStart = params.startTime.getTime();
           record.scheduledEnd = params.endTime.getTime();

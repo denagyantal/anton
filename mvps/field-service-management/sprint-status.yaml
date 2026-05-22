@@ -59,8 +59,8 @@ development_status:
   # Epic 3: Scheduling & Job Management
   epic-3: in-progress
   3-1-calendar-view-and-job-scheduling: done
-  3-2-job-lifecycle-and-status-tracking: ready-for-dev
-  3-3-on-site-photo-documentation-and-signature-capture: backlog
+  3-2-job-lifecycle-and-status-tracking: done
+  3-3-on-site-photo-documentation-and-signature-capture: ready-for-dev
   3-4-automated-sms-appointment-reminders: backlog
   epic-3-retrospective: optional
 
