@@ -8,11 +8,24 @@ import {
   StyleSheet,
   ActivityIndicator,
   Animated,
+  Modal,
+  Image,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, Stack } from 'expo-router';
+import * as FileSystem from 'expo-file-system';
 import { useJob, useTransitionJobStatus, useUpdateJobNotes } from '../../../src/hooks/use-jobs';
 import { useCustomers } from '../../../src/hooks/use-customers';
+import {
+  useJobPhotos,
+  useAddJobPhoto,
+  useUpdateJobSignature,
+} from '../../../src/hooks/use-job-photos';
+import { JobPhotoGallery } from '../../../src/components/jobs/job-photo-gallery';
 import JobStatusBadge from '../../../src/components/jobs/job-status-badge';
+import SignatureCanvas, { SignatureViewRef } from 'react-native-signature-canvas';
+
+const SIGNATURE_ELIGIBLE_STATUSES = ['SCHEDULED', 'IN_PROGRESS', 'COMPLETE'];
 
 function formatDate(timestamp: number | null): string {
   if (!timestamp) return '';
@@ -41,9 +54,14 @@ export default function JobDetailScreen() {
   const { customers } = useCustomers();
   const { transitionStatus } = useTransitionJobStatus();
   const { updateNotes } = useUpdateJobNotes();
+  const { photos } = useJobPhotos(id ?? '');
+  const { addPhoto } = useAddJobPhoto();
+  const { updateSignature } = useUpdateJobSignature();
 
   const [localNotes, setLocalNotes] = useState('');
+  const [signatureVisible, setSignatureVisible] = useState(false);
   const savedOpacity = useRef(new Animated.Value(0)).current;
+  const signatureRef = useRef<SignatureViewRef>(null);
 
   useEffect(() => {
     if (job) {
@@ -71,6 +89,28 @@ export default function JobDetailScreen() {
       await transitionStatus(job.id, newStatus);
     },
     [job, transitionStatus],
+  );
+
+  const handleAddPhoto = useCallback(async () => {
+    if (!job) return;
+    await addPhoto(job.id);
+  }, [job, addPhoto]);
+
+  const handleSignatureOK = useCallback(
+    async (signature: string) => {
+      if (!job) return;
+      const dir = FileSystem.documentDirectory + 'signatures/';
+      await FileSystem.makeDirectoryAsync(dir, { intermediates: true });
+      const path = dir + job.id + '.png';
+      await FileSystem.writeAsStringAsync(
+        path,
+        signature.replace('data:image/png;base64,', ''),
+        { encoding: FileSystem.EncodingType.Base64 },
+      );
+      await updateSignature(job.id, path);
+      setSignatureVisible(false);
+    },
+    [job, updateSignature],
   );
 
   function renderActionButton() {
@@ -115,6 +155,8 @@ export default function JobDetailScreen() {
       ? formatDate(job.completedAt)
       : null;
 
+  const showSignatureButton = SIGNATURE_ELIGIBLE_STATUSES.includes(job.status);
+
   return (
     <>
       <Stack.Screen options={{ title: job.title ?? 'Job Detail' }} />
@@ -128,6 +170,34 @@ export default function JobDetailScreen() {
           {timeRange ? <Text style={styles.timeRange}>{timeRange}</Text> : null}
           {completedDate ? (
             <Text style={styles.completedAt}>Completed: {completedDate}</Text>
+          ) : null}
+        </View>
+
+        {/* Photos section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Photos</Text>
+          <JobPhotoGallery photos={photos} onAddPhoto={handleAddPhoto} />
+        </View>
+
+        {/* Signature section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Signature</Text>
+          {job.signatureUrl ? (
+            <Image
+              source={{ uri: job.signatureUrl }}
+              style={styles.signaturePreview}
+              resizeMode="contain"
+            />
+          ) : null}
+          {showSignatureButton ? (
+            <TouchableOpacity
+              style={styles.signatureButton}
+              onPress={() => setSignatureVisible(true)}
+            >
+              <Text style={styles.signatureButtonText}>
+                {job.signatureUrl ? 'Re-capture Signature' : 'Capture Signature'}
+              </Text>
+            </TouchableOpacity>
           ) : null}
         </View>
 
@@ -151,6 +221,37 @@ export default function JobDetailScreen() {
 
         <View style={styles.bottomPadding} />
       </ScrollView>
+
+      <Modal
+        visible={signatureVisible}
+        animationType="slide"
+        onRequestClose={() => setSignatureVisible(false)}
+      >
+        <SafeAreaView style={styles.modalContainer}>
+          <View style={styles.modalHeader}>
+            <Text style={styles.modalTitle}>Customer Signature</Text>
+            <TouchableOpacity onPress={() => setSignatureVisible(false)}>
+              <Text style={styles.modalCancel}>✕ Cancel</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{ flex: 1 }}>
+            <SignatureCanvas
+              ref={signatureRef}
+              onOK={handleSignatureOK}
+              onEmpty={() => undefined}
+              backgroundColor="white"
+              descriptionText=""
+              webStyle="body { margin: 0; } canvas { width: 100% !important; height: 100% !important; }"
+            />
+          </View>
+          <TouchableOpacity
+            style={styles.saveSignatureButton}
+            onPress={() => signatureRef.current?.readSignature()}
+          >
+            <Text style={styles.saveSignatureButtonText}>Save Signature</Text>
+          </TouchableOpacity>
+        </SafeAreaView>
+      </Modal>
     </>
   );
 }
@@ -205,6 +306,28 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     letterSpacing: 0.5,
   },
+  signaturePreview: {
+    width: '100%',
+    height: 120,
+    marginBottom: 10,
+    backgroundColor: '#f9f9f9',
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: '#e5e7eb',
+  },
+  signatureButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    borderWidth: 1.5,
+    borderColor: '#2563eb',
+    alignItems: 'center',
+  },
+  signatureButtonText: {
+    color: '#2563eb',
+    fontSize: 15,
+    fontWeight: '600',
+  },
   notesInput: {
     minHeight: 100,
     backgroundColor: '#f9f9f9',
@@ -248,5 +371,39 @@ const styles = StyleSheet.create({
   },
   bottomPadding: {
     height: 32,
+  },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e5e7eb',
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#111',
+  },
+  modalCancel: {
+    fontSize: 15,
+    color: '#6b7280',
+  },
+  saveSignatureButton: {
+    margin: 16,
+    paddingVertical: 14,
+    borderRadius: 8,
+    backgroundColor: '#2563eb',
+    alignItems: 'center',
+  },
+  saveSignatureButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });

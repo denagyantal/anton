@@ -3,6 +3,23 @@ import { schemaMigrations, createTable, addColumns } from '@nozbe/watermelondb/S
 export const migrations = schemaMigrations({
   migrations: [
     {
+      toVersion: 7,
+      steps: [
+        createTable({
+          name: 'job_photos',
+          columns: [
+            { name: 'job_id', type: 'string' },
+            { name: 'local_uri', type: 'string', isOptional: true },
+            { name: 'remote_url', type: 'string', isOptional: true },
+            { name: 'caption', type: 'string', isOptional: true },
+            { name: 'taken_at', type: 'number', isOptional: true },
+            { name: 'created_at', type: 'number' },
+            { name: 'updated_at', type: 'number' },
+          ],
+        }),
+      ],
+    },
+    {
       toVersion: 6,
       steps: [
         createTable({

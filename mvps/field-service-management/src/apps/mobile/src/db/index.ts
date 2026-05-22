@@ -8,6 +8,7 @@ import Quote from './models/quote';
 import LineItem from './models/line-item';
 import QuotePhoto from './models/quote-photo';
 import Job from './models/job';
+import JobPhoto from './models/job-photo';
 import ScheduleEvent from './models/schedule-event';
 
 const adapter = new LokiJSAdapter({
@@ -19,5 +20,5 @@ const adapter = new LokiJSAdapter({
 
 export const database = new Database({
   adapter,
-  modelClasses: [PricebookItem, Customer, Quote, LineItem, QuotePhoto, Job, ScheduleEvent],
+  modelClasses: [PricebookItem, Customer, Quote, LineItem, QuotePhoto, Job, JobPhoto, ScheduleEvent],
 });
