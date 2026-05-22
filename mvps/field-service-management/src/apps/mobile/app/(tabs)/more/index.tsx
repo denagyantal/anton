@@ -8,16 +8,31 @@ import {
   getDefaultCalendarId,
 } from '../../../src/services/calendar-service';
 
+const REMINDER_OPTIONS = [
+  { label: '1 hour before', value: 60 },
+  { label: '2 hours before', value: 120 },
+  { label: '24 hours before', value: 1440 },
+];
+
 export default function MoreScreen() {
   const router = useRouter();
   const { signOut } = useAuth();
   const [calendarSyncEnabled, setCalendarSyncEnabled] = useState(false);
+  const [reminderMinutes, setReminderMinutes] = useState<number>(1440);
 
   useEffect(() => {
     AsyncStorage.getItem('calendarSyncEnabled').then((value) => {
       setCalendarSyncEnabled(value === 'true');
     });
+    AsyncStorage.getItem('reminderMinutes').then((v) => {
+      if (v) setReminderMinutes(parseInt(v, 10));
+    });
   }, []);
+
+  async function handleReminderSelect(minutes: number) {
+    await AsyncStorage.setItem('reminderMinutes', String(minutes));
+    setReminderMinutes(minutes);
+  }
 
   async function handleCalendarSyncToggle(enabled: boolean) {
     if (enabled) {
@@ -85,6 +100,21 @@ export default function MoreScreen() {
           thumbColor={calendarSyncEnabled ? '#2563eb' : '#f4f3f4'}
         />
       </View>
+
+      <Text style={styles.sectionHeader}>Notifications</Text>
+
+      {REMINDER_OPTIONS.map((option) => (
+        <TouchableOpacity
+          key={option.value}
+          style={styles.row}
+          onPress={() => handleReminderSelect(option.value)}
+        >
+          <Text style={styles.rowText}>{option.label}</Text>
+          {reminderMinutes === option.value && (
+            <Text style={{ color: '#2563eb', fontSize: 18, fontWeight: '600' }}>✓</Text>
+          )}
+        </TouchableOpacity>
+      ))}
 
       <TouchableOpacity style={styles.row} onPress={signOut}>
         <Text style={[styles.rowText, styles.signOutText]}>Sign Out</Text>

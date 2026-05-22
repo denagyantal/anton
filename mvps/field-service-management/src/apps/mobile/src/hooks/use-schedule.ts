@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Q } from '@nozbe/watermelondb';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDatabase } from '../contexts/database-context';
 import { useAuth } from '../contexts/auth-context';
 import ScheduleEvent from '../db/models/schedule-event';
@@ -66,6 +67,9 @@ export function useCreateJob(): { createJob: (params: CreateJobParams) => Promis
       let createdJob!: Job;
       let createdEvent!: ScheduleEvent;
 
+      const storedMinutes = await AsyncStorage.getItem('reminderMinutes');
+      const reminderMins = storedMinutes ? parseInt(storedMinutes, 10) : 1440;
+
       await database.write(async () => {
         createdJob = await database.get<Job>('jobs').create((record) => {
           record.accountId = user.accountId;
@@ -87,7 +91,7 @@ export function useCreateJob(): { createJob: (params: CreateJobParams) => Promis
           record.startTime = params.startTime.getTime();
           record.endTime = params.endTime.getTime();
           record.allDay = false;
-          record.reminderMinutes = 1440;
+          record.reminderMinutes = reminderMins;
           record.reminderSent = false;
           record.externalCalendarId = params.externalCalendarId ?? '';
         });
@@ -113,6 +117,7 @@ export function useRescheduleJob(): {
         await event.update((record) => {
           record.startTime = newStart.getTime();
           record.endTime = newEnd.getTime();
+          record.reminderSent = false;
         });
         if (jobId) {
           const job = await database.get<Job>('jobs').find(jobId);

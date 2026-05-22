@@ -203,7 +203,7 @@ model Job {
   id             String     @id @default(uuid())
   accountId      String     @map("account_id")
   customerId     String     @map("customer_id")
-  quoteId        String?    @map("quote_id")
+  quoteId        String?    @unique @map("quote_id")
   assignedToId   String?    @map("assigned_to_id")
   status         JobStatus  @default(SCHEDULED)
   title          String

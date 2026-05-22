@@ -6,6 +6,7 @@ import { authRouter } from './routes/auth.js';
 import { accountsRouter } from './routes/accounts.js';
 import { quotesRouter } from './routes/quotes.js';
 import { authMiddleware } from './middleware/auth.js';
+import { startReminderJob } from './jobs/reminder-sender.js';
 
 export const app = express();
 
@@ -49,4 +50,5 @@ if (process.env['NODE_ENV'] !== 'test') {
   app.listen(port, () => {
     console.log(`API server running on port ${port}`);
   });
+  startReminderJob();
 }
