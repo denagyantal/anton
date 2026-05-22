@@ -3,6 +3,48 @@ import { schemaMigrations, createTable, addColumns } from '@nozbe/watermelondb/S
 export const migrations = schemaMigrations({
   migrations: [
     {
+      toVersion: 6,
+      steps: [
+        createTable({
+          name: 'jobs',
+          columns: [
+            { name: 'account_id', type: 'string' },
+            { name: 'customer_id', type: 'string' },
+            { name: 'quote_id', type: 'string', isOptional: true },
+            { name: 'assigned_to_id', type: 'string', isOptional: true },
+            { name: 'status', type: 'string' },
+            { name: 'title', type: 'string' },
+            { name: 'description', type: 'string', isOptional: true },
+            { name: 'scheduled_start', type: 'number', isOptional: true },
+            { name: 'scheduled_end', type: 'number', isOptional: true },
+            { name: 'completed_at', type: 'number', isOptional: true },
+            { name: 'signature_url', type: 'string', isOptional: true },
+            { name: 'notes', type: 'string', isOptional: true },
+            { name: 'created_at', type: 'number' },
+            { name: 'updated_at', type: 'number' },
+          ],
+        }),
+        createTable({
+          name: 'schedule_events',
+          columns: [
+            { name: 'account_id', type: 'string' },
+            { name: 'job_id', type: 'string', isOptional: true },
+            { name: 'assigned_to_id', type: 'string', isOptional: true },
+            { name: 'customer_id', type: 'string', isOptional: true },
+            { name: 'title', type: 'string' },
+            { name: 'start_time', type: 'number' },
+            { name: 'end_time', type: 'number' },
+            { name: 'all_day', type: 'boolean' },
+            { name: 'reminder_minutes', type: 'number' },
+            { name: 'reminder_sent', type: 'boolean' },
+            { name: 'external_calendar_id', type: 'string', isOptional: true },
+            { name: 'created_at', type: 'number' },
+            { name: 'updated_at', type: 'number' },
+          ],
+        }),
+      ],
+    },
+    {
       toVersion: 5,
       steps: [
         addColumns({

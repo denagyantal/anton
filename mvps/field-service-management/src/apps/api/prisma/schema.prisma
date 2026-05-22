@@ -33,6 +33,14 @@ enum QuoteStatus {
   EXPIRED
 }
 
+enum JobStatus {
+  QUOTED
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETE
+  INVOICED
+}
+
 model Account {
   id                 String      @id @default(uuid())
   businessName       String?     @map("business_name")
@@ -52,6 +60,8 @@ model Account {
   pricebookItems PricebookItem[]
   customers      Customer[]
   quotes         Quote[]
+  jobs           Job[]
+  scheduleEvents ScheduleEvent[]
 
   @@map("accounts")
 }
@@ -69,7 +79,9 @@ model TeamMember {
   updatedAt  DateTime       @updatedAt @map("updated_at")
   syncedAt   DateTime?      @map("synced_at")
 
-  account Account @relation(fields: [accountId], references: [id])
+  account        Account          @relation(fields: [accountId], references: [id])
+  assignedJobs   Job[]            @relation("AssignedJobs")
+  assignedEvents ScheduleEvent[]  @relation("AssignedEvents")
 
   @@map("team_members")
 }
@@ -115,6 +127,7 @@ model Customer {
 
   account               Account   @relation(fields: [accountId], references: [id])
   quotes                Quote[]
+  jobs                  Job[]
 
   @@index([accountId], name: "idx_customers_account_id")
   @@map("customers")
@@ -143,6 +156,7 @@ model Quote {
   customer     Customer     @relation(fields: [customer_id], references: [id])
   line_items   LineItem[]
   quote_photos QuotePhoto[]
+  job          Job?
 
   @@index([account_id], name: "idx_quotes_account_id")
   @@index([customer_id], name: "idx_quotes_customer_id")
@@ -183,4 +197,58 @@ model LineItem {
 
   @@index([quote_id], name: "idx_line_items_quote_id")
   @@map("line_items")
+}
+
+model Job {
+  id             String     @id @default(uuid())
+  accountId      String     @map("account_id")
+  customerId     String     @map("customer_id")
+  quoteId        String?    @map("quote_id")
+  assignedToId   String?    @map("assigned_to_id")
+  status         JobStatus  @default(SCHEDULED)
+  title          String
+  description    String?
+  scheduledStart DateTime?  @map("scheduled_start")
+  scheduledEnd   DateTime?  @map("scheduled_end")
+  completedAt    DateTime?  @map("completed_at")
+  signatureUrl   String?    @map("signature_url")
+  notes          String?
+  createdAt      DateTime   @default(now()) @map("created_at")
+  updatedAt      DateTime   @updatedAt @map("updated_at")
+  syncedAt       DateTime?  @map("synced_at")
+
+  account         Account         @relation(fields: [accountId], references: [id])
+  customer        Customer        @relation(fields: [customerId], references: [id])
+  quote           Quote?          @relation(fields: [quoteId], references: [id])
+  assignedTo      TeamMember?     @relation("AssignedJobs", fields: [assignedToId], references: [id])
+  schedule_events ScheduleEvent[]
+
+  @@index([accountId], name: "idx_jobs_account_id")
+  @@index([customerId], name: "idx_jobs_customer_id")
+  @@map("jobs")
+}
+
+model ScheduleEvent {
+  id                 String    @id @default(uuid())
+  accountId          String    @map("account_id")
+  jobId              String?   @map("job_id")
+  assignedToId       String?   @map("assigned_to_id")
+  title              String
+  startTime          DateTime  @map("start_time")
+  endTime            DateTime  @map("end_time")
+  allDay             Boolean   @default(false) @map("all_day")
+  reminderMinutes    Int       @default(1440) @map("reminder_minutes")
+  reminderSent       Boolean   @default(false) @map("reminder_sent")
+  externalCalendarId String?   @map("external_calendar_id")
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
+  syncedAt           DateTime? @map("synced_at")
+
+  account    Account     @relation(fields: [accountId], references: [id])
+  job        Job?        @relation(fields: [jobId], references: [id])
+  assignedTo TeamMember? @relation("AssignedEvents", fields: [assignedToId], references: [id])
+
+  @@index([accountId], name: "idx_schedule_events_account_id")
+  @@index([jobId], name: "idx_schedule_events_job_id")
+  @@map("schedule_events")
 }
