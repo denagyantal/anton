@@ -10,11 +10,13 @@ import {
   Animated,
   Modal,
   Image,
+  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, Stack } from 'expo-router';
 import * as FileSystem from 'expo-file-system';
 import { useJob, useTransitionJobStatus, useUpdateJobNotes } from '../../../src/hooks/use-jobs';
+import { useJobInvoice, useGenerateInvoice } from '../../../src/hooks/use-invoices';
 import { useCustomers } from '../../../src/hooks/use-customers';
 import {
   useJobPhotos,
@@ -57,6 +59,8 @@ export default function JobDetailScreen() {
   const { photos } = useJobPhotos(id ?? '');
   const { addPhoto } = useAddJobPhoto();
   const { updateSignature } = useUpdateJobSignature();
+  const { invoice } = useJobInvoice(id ?? '');
+  const { generateInvoice, isLoading: isGenerating } = useGenerateInvoice();
 
   const [localNotes, setLocalNotes] = useState('');
   const [signatureVisible, setSignatureVisible] = useState(false);
@@ -113,6 +117,16 @@ export default function JobDetailScreen() {
     [job, updateSignature],
   );
 
+  const handleGenerateInvoice = useCallback(async () => {
+    if (!job) return;
+    try {
+      await generateInvoice(job.id);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to generate invoice';
+      Alert.alert('Invoice Error', message);
+    }
+  }, [job, generateInvoice]);
+
   function renderActionButton() {
     if (!job) return null;
     if (job.status === 'QUOTED' || job.status === 'SCHEDULED') {
@@ -132,6 +146,30 @@ export default function JobDetailScreen() {
           onPress={() => handleTransition('COMPLETE')}
         >
           <Text style={styles.completeButtonText}>Complete Job</Text>
+        </TouchableOpacity>
+      );
+    }
+    if (job.status === 'COMPLETE') {
+      if (invoice) {
+        return (
+          <View style={styles.invoicedBadge}>
+            <Text style={styles.invoicedText}>
+              {invoice.invoiceNumber ?? 'Invoice'} — ${(invoice.total / 100).toFixed(2)}
+            </Text>
+          </View>
+        );
+      }
+      return (
+        <TouchableOpacity
+          style={[styles.actionButton, styles.invoiceButton]}
+          onPress={handleGenerateInvoice}
+          disabled={isGenerating}
+        >
+          {isGenerating ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.invoiceButtonText}>Generate Invoice</Text>
+          )}
         </TouchableOpacity>
       );
     }
@@ -367,6 +405,26 @@ const styles = StyleSheet.create({
   completeButtonText: {
     color: '#fff',
     fontSize: 16,
+    fontWeight: '600',
+  },
+  invoiceButton: {
+    backgroundColor: '#7C3AED',
+  },
+  invoiceButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  invoicedBadge: {
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    backgroundColor: '#F3F4F6',
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  invoicedText: {
+    fontSize: 15,
+    color: '#374151',
     fontWeight: '600',
   },
   bottomPadding: {

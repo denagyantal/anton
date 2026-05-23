@@ -2,6 +2,7 @@ import React from 'react';
 import { Document, Page, View, Text, Image, StyleSheet, renderToBuffer } from '@react-pdf/renderer';
 import { prisma } from '../config/prisma.js';
 import { centsToDollars } from '@field-service/shared';
+import { AppError } from '../utils/error.js';
 
 export interface QuotePdfData {
   quoteId: string;
@@ -181,6 +182,178 @@ export function buildQuotePdf(data: QuotePdfData) {
         : null,
     ),
   );
+}
+
+export interface InvoicePdfData {
+  invoiceNumber: string;
+  invoiceDate: string;
+  dueDate: string;
+  businessName: string;
+  businessLogoUrl: string | null;
+  licenseNumber: string | null;
+  customerName: string;
+  customerAddress: string;
+  lineItems: Array<{
+    description: string;
+    quantity: number;
+    unitPrice: number;
+    total: number;
+  }>;
+  subtotal: number;
+  taxAmount: number;
+  grandTotal: number;
+}
+
+export function buildInvoicePdf(data: InvoicePdfData) {
+  return React.createElement(
+    Document,
+    null,
+    React.createElement(
+      Page,
+      { size: 'LETTER', style: styles.page },
+      // Header
+      React.createElement(
+        View,
+        { style: styles.header },
+        data.businessLogoUrl
+          ? React.createElement(Image, { src: data.businessLogoUrl, style: styles.logo })
+          : null,
+        React.createElement(
+          View,
+          { style: styles.businessInfo },
+          React.createElement(Text, { style: styles.businessName }, data.businessName),
+          data.licenseNumber
+            ? React.createElement(Text, null, `Lic: ${data.licenseNumber}`)
+            : null,
+        ),
+      ),
+      // Invoice title
+      React.createElement(
+        View,
+        { style: styles.section },
+        React.createElement(
+          Text,
+          { style: { fontSize: 18, fontWeight: 'bold', color: '#111827', marginBottom: 4 } },
+          'INVOICE',
+        ),
+        React.createElement(Text, { style: styles.dateText }, `Invoice #: ${data.invoiceNumber}`),
+        React.createElement(Text, { style: styles.dateText }, `Invoice Date: ${data.invoiceDate}`),
+        React.createElement(Text, { style: styles.dateText }, `Due Date: ${data.dueDate}`),
+      ),
+      // Customer Info
+      React.createElement(
+        View,
+        { style: styles.section },
+        React.createElement(Text, { style: styles.sectionTitle }, 'Customer'),
+        React.createElement(Text, { style: styles.customerText }, data.customerName),
+        data.customerAddress
+          ? React.createElement(Text, { style: styles.customerText }, data.customerAddress)
+          : null,
+      ),
+      // Line Items Table
+      React.createElement(
+        View,
+        { style: styles.section },
+        React.createElement(Text, { style: styles.sectionTitle }, 'Line Items'),
+        React.createElement(
+          View,
+          { style: styles.tableHeader },
+          React.createElement(Text, { style: [styles.col_desc, styles.colHeader] }, 'Description'),
+          React.createElement(Text, { style: [styles.col_num, styles.colHeader] }, 'Qty'),
+          React.createElement(Text, { style: [styles.col_num, styles.colHeader] }, 'Unit Price'),
+          React.createElement(Text, { style: [styles.col_num, styles.colHeader] }, 'Total'),
+        ),
+        ...data.lineItems.map((item, i) =>
+          React.createElement(
+            View,
+            { style: styles.tableRow, key: String(i) },
+            React.createElement(Text, { style: styles.col_desc }, item.description),
+            React.createElement(Text, { style: styles.col_num }, String(item.quantity)),
+            React.createElement(Text, { style: styles.col_num }, `$${centsToDollars(item.unitPrice)}`),
+            React.createElement(Text, { style: styles.col_num }, `$${centsToDollars(item.total)}`),
+          ),
+        ),
+      ),
+      // Totals
+      React.createElement(
+        View,
+        { style: styles.totalSection },
+        React.createElement(
+          View,
+          { style: styles.totalRow },
+          React.createElement(Text, { style: styles.totalLabel }, 'Subtotal'),
+          React.createElement(Text, { style: styles.totalValue }, `$${centsToDollars(data.subtotal)}`),
+        ),
+        React.createElement(
+          View,
+          { style: styles.totalRow },
+          React.createElement(Text, { style: styles.totalLabel }, 'Tax'),
+          React.createElement(Text, { style: styles.totalValue }, `$${centsToDollars(data.taxAmount)}`),
+        ),
+        React.createElement(
+          View,
+          { style: styles.grandTotalRow },
+          React.createElement(Text, { style: styles.grandTotalLabel }, 'Total'),
+          React.createElement(Text, { style: styles.grandTotalValue }, `$${centsToDollars(data.grandTotal)}`),
+        ),
+      ),
+    ),
+  );
+}
+
+export async function generateInvoicePdf(invoiceId: string, accountId: string): Promise<Buffer> {
+  const invoice = await prisma.invoice.findFirst({
+    where: { id: invoiceId, accountId },
+    include: {
+      customer: true,
+      job: {
+        include: {
+          quote: {
+            include: {
+              line_items: { orderBy: { sort_order: 'asc' } },
+            },
+          },
+        },
+      },
+    },
+  });
+
+  if (!invoice) throw new AppError('INVOICE_NOT_FOUND', 'Invoice not found', 404);
+
+  const account = await prisma.account.findUnique({ where: { id: accountId } });
+  if (!account) throw new AppError('ACCOUNT_NOT_FOUND', 'Account not found', 404);
+
+  const lineItems = invoice.job?.quote?.line_items ?? [];
+  const customerAddress = [
+    invoice.customer.addressLine1,
+    invoice.customer.city,
+    invoice.customer.state,
+    invoice.customer.zip,
+  ].filter(Boolean).join(', ');
+
+  const data: InvoicePdfData = {
+    invoiceNumber: invoice.invoiceNumber,
+    invoiceDate: invoice.createdAt.toISOString().split('T')[0] ?? '',
+    dueDate: invoice.dueAt ? (invoice.dueAt.toISOString().split('T')[0] ?? '') : '',
+    businessName: account.businessName ?? '',
+    businessLogoUrl: account.businessLogoUrl ?? null,
+    licenseNumber: account.licenseNumber ?? null,
+    customerName: invoice.customer.name,
+    customerAddress,
+    lineItems: lineItems.map((item) => ({
+      description: item.description,
+      quantity: Number(item.quantity),
+      unitPrice: item.unit_price,
+      total: item.total,
+    })),
+    subtotal: invoice.subtotal,
+    taxAmount: invoice.taxAmount,
+    grandTotal: invoice.total,
+  };
+
+  const element = buildInvoicePdf(data);
+  const buffer = await renderToBuffer(element);
+  return buffer as Buffer;
 }
 
 export async function generateQuotePdf(quoteId: string, accountId: string): Promise<Buffer> {

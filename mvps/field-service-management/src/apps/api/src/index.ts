@@ -5,6 +5,7 @@ import { errorHandler } from './middleware/error-handler.js';
 import { authRouter } from './routes/auth.js';
 import { accountsRouter } from './routes/accounts.js';
 import { quotesRouter } from './routes/quotes.js';
+import { invoicesRouter } from './routes/invoices.js';
 import { authMiddleware } from './middleware/auth.js';
 import { startReminderJob } from './jobs/reminder-sender.js';
 
@@ -32,6 +33,9 @@ app.use('/api/v1/accounts', accountsRouter);
 
 // Quote action routes (protected)
 app.use('/api/v1/quotes', quotesRouter);
+
+// Invoice routes (protected)
+app.use('/api/v1/invoices', invoicesRouter);
 
 // Protected route: current user
 app.get('/api/v1/me', authMiddleware, (req, res) => {

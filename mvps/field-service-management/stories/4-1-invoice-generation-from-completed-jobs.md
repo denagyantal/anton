@@ -1,6 +1,6 @@
 # Story 4.1: Invoice Generation from Completed Jobs
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -30,7 +30,7 @@ so that I can bill customers immediately without re-entering any information.
 
 ### Task 1: Prisma Schema — Add Invoice Model and Enums (AC: #3, #5, #8)
 
-- [ ] 1.1: In `apps/api/prisma/schema.prisma`, add the `InvoiceStatus` enum after `JobStatus`:
+- [x] 1.1: In `apps/api/prisma/schema.prisma`, add the `InvoiceStatus` enum after `JobStatus`:
   ```prisma
   enum InvoiceStatus {
     DRAFT
@@ -41,7 +41,7 @@ so that I can bill customers immediately without re-entering any information.
     OVERDUE
   }
   ```
-- [ ] 1.2: Add the `Invoice` model after the `Job` model:
+- [x] 1.2: Add the `Invoice` model after the `Job` model:
   ```prisma
   model Invoice {
     id                  String        @id @default(uuid())
@@ -74,25 +74,25 @@ so that I can bill customers immediately without re-entering any information.
     @@map("invoices")
   }
   ```
-- [ ] 1.3: In the `Account` model's relation block, add after `jobs Job[]`:
+- [x] 1.3: In the `Account` model's relation block, add after `jobs Job[]`:
   ```prisma
   invoices Invoice[]
   ```
-- [ ] 1.4: In the `Customer` model's relation block, add after `jobs Job[]`:
+- [x] 1.4: In the `Customer` model's relation block, add after `jobs Job[]`:
   ```prisma
   invoices Invoice[]
   ```
-- [ ] 1.5: In the `Job` model's relation block, add after `schedule_events ScheduleEvent[]`:
+- [x] 1.5: In the `Job` model's relation block, add after `schedule_events ScheduleEvent[]`:
   ```prisma
   invoice Invoice?
   ```
-- [ ] 1.6: Run migration: `cd apps/api && npx prisma migrate dev --name add-invoices`
-- [ ] 1.7: Run `npx prisma generate` to update the Prisma client types
+- [x] 1.6: Run migration: `cd apps/api && npx prisma migrate dev --name add-invoices`
+- [x] 1.7: Run `npx prisma generate` to update the Prisma client types
 
 ### Task 2: WatermelonDB Schema — Add `invoices` Table (AC: #1, #8)
 
-- [ ] 2.1: In `apps/mobile/src/db/schema.ts`, bump `version: 7` to `version: 8`
-- [ ] 2.2: Add the `invoices` tableSchema at the end of the `tables` array (after `schedule_events`):
+- [x] 2.1: In `apps/mobile/src/db/schema.ts`, bump `version: 7` to `version: 8`
+- [x] 2.2: Add the `invoices` tableSchema at the end of the `tables` array (after `schedule_events`):
   ```typescript
   tableSchema({
     name: 'invoices',
@@ -120,7 +120,7 @@ so that I can bill customers immediately without re-entering any information.
 
 ### Task 3: WatermelonDB Migration — v8 (AC: #1)
 
-- [ ] 3.1: In `apps/mobile/src/db/migrations.ts`, add the v8 migration at the **TOP** of the `migrations` array (before the existing `toVersion: 7` entry — WatermelonDB requires descending order):
+- [x] 3.1: In `apps/mobile/src/db/migrations.ts`, add the v8 migration at the **TOP** of the `migrations` array (before the existing `toVersion: 7` entry — WatermelonDB requires descending order):
   ```typescript
   {
     toVersion: 8,
@@ -153,7 +153,7 @@ so that I can bill customers immediately without re-entering any information.
 
 ### Task 4: WatermelonDB Invoice Model (AC: #1)
 
-- [ ] 4.1: Create `apps/mobile/src/db/models/invoice.ts`:
+- [x] 4.1: Create `apps/mobile/src/db/models/invoice.ts`:
   ```typescript
   import { Model } from '@nozbe/watermelondb';
   import { field, text, readonly, date } from '@nozbe/watermelondb/decorators';
@@ -183,15 +183,15 @@ so that I can bill customers immediately without re-entering any information.
 
 ### Task 5: Register Invoice Model in db/index.ts (AC: #1)
 
-- [ ] 5.1: In `apps/mobile/src/db/index.ts`, add import: `import Invoice from './models/invoice';`
-- [ ] 5.2: Add `Invoice` to the `modelClasses` array in `new Database({ ... })`:
+- [x] 5.1: In `apps/mobile/src/db/index.ts`, add import: `import Invoice from './models/invoice';`
+- [x] 5.2: Add `Invoice` to the `modelClasses` array in `new Database({ ... })`:
   ```typescript
   modelClasses: [PricebookItem, Customer, Quote, LineItem, QuotePhoto, Job, JobPhoto, ScheduleEvent, Invoice],
   ```
 
 ### Task 6: Shared Types — Add `invoiceNumber` (AC: #3, #6)
 
-- [ ] 6.1: In `packages/shared/src/types/invoice.ts`, add `invoiceNumber?: string;` to the `Invoice` interface, after `quoteId`:
+- [x] 6.1: In `packages/shared/src/types/invoice.ts`, add `invoiceNumber?: string;` to the `Invoice` interface, after `quoteId`:
   ```typescript
   export interface Invoice {
     id: string;
@@ -207,7 +207,7 @@ so that I can bill customers immediately without re-entering any information.
 
 ### Task 7: API — Create `invoice-service.ts` (AC: #3, #5, #8)
 
-- [ ] 7.1: Create `apps/api/src/services/invoice-service.ts`:
+- [x] 7.1: Create `apps/api/src/services/invoice-service.ts`:
   ```typescript
   import { prisma } from '../config/prisma.js';
   import { AppError } from '../utils/error.js';
@@ -268,7 +268,7 @@ so that I can bill customers immediately without re-entering any information.
 
 ### Task 8: API — Add Invoice PDF to `pdf-service.ts` (AC: #4)
 
-- [ ] 8.1: In `apps/api/src/services/pdf-service.ts`, add the `InvoicePdfData` interface after the existing `QuotePdfData` interface:
+- [x] 8.1: In `apps/api/src/services/pdf-service.ts`, add the `InvoicePdfData` interface after the existing `QuotePdfData` interface:
   ```typescript
   export interface InvoicePdfData {
     invoiceNumber: string;
@@ -290,11 +290,11 @@ so that I can bill customers immediately without re-entering any information.
     grandTotal: number;
   }
   ```
-- [ ] 8.2: Add `buildInvoicePdf(data: InvoicePdfData)` after `buildQuotePdf`. It reuses the same `styles` object — copy the structure of `buildQuotePdf` with these differences:
+- [x] 8.2: Add `buildInvoicePdf(data: InvoicePdfData)` after `buildQuotePdf`. It reuses the same `styles` object — copy the structure of `buildQuotePdf` with these differences:
   - Replace the quote date section with: "Invoice #: {invoiceNumber}", "Invoice Date: {invoiceDate}", "Due Date: {dueDate}" lines
   - Remove the photos section (invoices don't include photos)
   - Section title reads "INVOICE" (add as a bold header in the page, styled like `styles.businessName` with slightly larger font)
-- [ ] 8.3: Add `generateInvoicePdf(invoiceId: string, accountId: string): Promise<Buffer>`:
+- [x] 8.3: Add `generateInvoicePdf(invoiceId: string, accountId: string): Promise<Buffer>`:
   ```typescript
   export async function generateInvoicePdf(invoiceId: string, accountId: string): Promise<Buffer> {
     const invoice = await prisma.invoice.findFirst({
@@ -354,7 +354,7 @@ so that I can bill customers immediately without re-entering any information.
 
 ### Task 9: API — Create `routes/invoices.ts` (AC: #3, #5)
 
-- [ ] 9.1: Create `apps/api/src/routes/invoices.ts`:
+- [x] 9.1: Create `apps/api/src/routes/invoices.ts`:
   ```typescript
   import express from 'express';
   import { authMiddleware } from '../middleware/auth.js';
@@ -399,18 +399,18 @@ so that I can bill customers immediately without re-entering any information.
 
 ### Task 10: Register Invoices Route in `index.ts` (AC: #3)
 
-- [ ] 10.1: In `apps/api/src/index.ts`, add import after quotes import:
+- [x] 10.1: In `apps/api/src/index.ts`, add import after quotes import:
   ```typescript
   import { invoicesRouter } from './routes/invoices.js';
   ```
-- [ ] 10.2: Add route registration after the quotes route line:
+- [x] 10.2: Add route registration after the quotes route line:
   ```typescript
   app.use('/api/v1/invoices', invoicesRouter);
   ```
 
 ### Task 11: Mobile — Create `use-invoices.ts` Hook (AC: #1, #5, #6, #7)
 
-- [ ] 11.1: Create `apps/mobile/src/hooks/use-invoices.ts` with two exports:
+- [x] 11.1: Create `apps/mobile/src/hooks/use-invoices.ts` with two exports:
 
   **`useJobInvoice(jobId: string)`** — observes the invoice for a specific job:
   ```typescript
@@ -515,16 +515,16 @@ so that I can bill customers immediately without re-entering any information.
 
 ### Task 12: Mobile — Update Job Detail Screen (AC: #1, #2, #6, #7)
 
-- [ ] 12.1: In `apps/mobile/app/(tabs)/jobs/[id].tsx`, add imports at the top:
+- [x] 12.1: In `apps/mobile/app/(tabs)/jobs/[id].tsx`, add imports at the top:
   ```typescript
   import { useJobInvoice, useGenerateInvoice } from '../../../src/hooks/use-invoices';
   ```
-- [ ] 12.2: Inside `JobDetailScreen`, after the existing hooks, add:
+- [x] 12.2: Inside `JobDetailScreen`, after the existing hooks, add:
   ```typescript
   const { invoice } = useJobInvoice(id ?? '');
   const { generateInvoice, isLoading: isGenerating } = useGenerateInvoice();
   ```
-- [ ] 12.3: Add a `handleGenerateInvoice` callback:
+- [x] 12.3: Add a `handleGenerateInvoice` callback:
   ```typescript
   const handleGenerateInvoice = useCallback(async () => {
     if (!job) return;
@@ -538,7 +538,7 @@ so that I can bill customers immediately without re-entering any information.
   }, [job, generateInvoice]);
   ```
   Add `Alert` to the React Native import block at the top of the file.
-- [ ] 12.4: In `renderActionButton()`, add a new case **before** the final `return null` at the bottom of the function:
+- [x] 12.4: In `renderActionButton()`, add a new case **before** the final `return null` at the bottom of the function:
   ```typescript
   if (job.status === 'COMPLETE') {
     if (invoice) {
@@ -564,7 +564,7 @@ so that I can bill customers immediately without re-entering any information.
     );
   }
   ```
-- [ ] 12.5: Add the new styles to `StyleSheet.create` at the bottom of the file:
+- [x] 12.5: Add the new styles to `StyleSheet.create` at the bottom of the file:
   ```typescript
   invoiceButton: {
     backgroundColor: '#7C3AED',
@@ -590,22 +590,22 @@ so that I can bill customers immediately without re-entering any information.
 
 ### Task 13: Tests — invoice-service.ts (AC: #3, #5, #8)
 
-- [ ] 13.1: Create `apps/api/src/services/invoice-service.test.ts`
-- [ ] 13.2: Mock `'../config/prisma.js'` via `jest.mock()`
-- [ ] 13.3: Test: job COMPLETE with quote → invoice created with correct `subtotal`/`taxAmount`/`total` from quote, `invoiceNumber` matches `INV-{YYYY}-NNNN`, job status updated to `INVOICED`, all inside `$transaction`
-- [ ] 13.4: Test: job status is `IN_PROGRESS` → throws `AppError` with code `JOB_NOT_COMPLETE`, HTTP 422
-- [ ] 13.5: Test: `prisma.job.findFirst` returns null → throws `AppError` with code `JOB_NOT_FOUND`, HTTP 404
-- [ ] 13.6: Test: job already has `invoice` property → throws `AppError` with code `INVOICE_ALREADY_EXISTS`, HTTP 409
-- [ ] 13.7: Test: invoice number at count=0 → `INV-{year}-0001`; at count=9 → `INV-{year}-0010`
-- [ ] 13.8: Test: job without linked quote → totals default to 0, invoice still created
+- [x] 13.1: Create `apps/api/src/services/invoice-service.test.ts`
+- [x] 13.2: Mock `'../config/prisma.js'` via `jest.mock()`
+- [x] 13.3: Test: job COMPLETE with quote → invoice created with correct `subtotal`/`taxAmount`/`total` from quote, `invoiceNumber` matches `INV-{YYYY}-NNNN`, job status updated to `INVOICED`, all inside `$transaction`
+- [x] 13.4: Test: job status is `IN_PROGRESS` → throws `AppError` with code `JOB_NOT_COMPLETE`, HTTP 422
+- [x] 13.5: Test: `prisma.job.findFirst` returns null → throws `AppError` with code `JOB_NOT_FOUND`, HTTP 404
+- [x] 13.6: Test: job already has `invoice` property → throws `AppError` with code `INVOICE_ALREADY_EXISTS`, HTTP 409
+- [x] 13.7: Test: invoice number at count=0 → `INV-{year}-0001`; at count=9 → `INV-{year}-0010`
+- [x] 13.8: Test: job without linked quote → totals default to 0, invoice still created
 
 ### Task 14: Tests — invoices route integration (AC: #3, #5)
 
-- [ ] 14.1: Create `apps/api/tests/integration/invoices.test.ts`
-- [ ] 14.2: Mock `../../src/services/invoice-service.js`, `../../src/services/pdf-service.js`, `../../src/services/storage-service.js`, and `../../src/config/prisma.js`
-- [ ] 14.3: Test: `POST /api/v1/invoices/generate-from-job/:jobId` without auth header → 401
-- [ ] 14.4: Test: success path (no existing invoice) → `generateInvoiceFromJob` called once, `generateInvoicePdf` called once, `uploadFile` called with `'invoices'` bucket, `prisma.invoice.update` called with `{ pdfUrl }`, response 201 with invoice data including `pdfUrl`
-- [ ] 14.5: Test: `prisma.invoice.findFirst` returns existing invoice → `generateInvoiceFromJob` NOT called, response 200 with existing invoice
+- [x] 14.1: Create `apps/api/tests/integration/invoices.test.ts`
+- [x] 14.2: Mock `../../src/services/invoice-service.js`, `../../src/services/pdf-service.js`, `../../src/services/storage-service.js`, and `../../src/config/prisma.js`
+- [x] 14.3: Test: `POST /api/v1/invoices/generate-from-job/:jobId` without auth header → 401
+- [x] 14.4: Test: success path (no existing invoice) → `generateInvoiceFromJob` called once, `generateInvoicePdf` called once, `uploadFile` called with `'invoices'` bucket, `prisma.invoice.update` called with `{ pdfUrl }`, response 201 with invoice data including `pdfUrl`
+- [x] 14.5: Test: `prisma.invoice.findFirst` returns existing invoice → `generateInvoiceFromJob` NOT called, response 200 with existing invoice
 
 ## Dev Notes
 
@@ -758,4 +758,38 @@ claude-sonnet-4-6
 
 ### Completion Notes List
 
+- Implemented all 14 tasks across API, mobile, and shared packages.
+- Prisma schema: Added `InvoiceStatus` enum and `Invoice` model with relations to Account, Customer, and Job. Created manual migration SQL (no DATABASE_URL in dev env).
+- WatermelonDB: Bumped schema to v8, added `invoices` table, v8 migration at top of array (descending order requirement). Created `Invoice` model with decorators matching existing patterns.
+- Shared types: Added `invoiceNumber?: string` to the `Invoice` interface.
+- API invoice service: `generateInvoiceFromJob` creates invoice with `INV-{YYYY}-{NNNN}` numbering, copies totals from quote (defaults to 0 if no quote), uses `$transaction` for atomicity.
+- API PDF service: Added `buildInvoicePdf` / `generateInvoicePdf` reusing existing `styles` object. Fixed `string | undefined` TS type error on `split('T')[0]` with null coalescing.
+- API invoice route: Idempotent `POST /generate-from-job/:jobId` — returns 200 on existing, 201 on new (with PDF generation and storage upload).
+- Mobile hook: `useJobInvoice` observes WatermelonDB, `useGenerateInvoice` calls API and writes to WatermelonDB preserving server UUID via `_raw.id`.
+- Mobile job detail screen: Added "Generate Invoice" button for COMPLETE jobs with loading state, invoice badge after generation. Created `NetworkProvider`/`NetworkContext` (prerequisite not previously created).
+- Tests: 89 total passing (11 test suites). Invoice service: 8 unit tests. Integration: 3 route tests. No regressions.
+- Had to add `tests/` to `roots` in jest.config.js and explicitly configure ts-jest `transform` to process files outside `src/`. Also updated tsconfig to include `tests/`.
+
 ### File List
+
+**Created:**
+- `apps/api/prisma/migrations/20260523000000_add_invoices/migration.sql`
+- `apps/api/src/services/invoice-service.ts`
+- `apps/api/src/services/invoice-service.test.ts`
+- `apps/api/src/routes/invoices.ts`
+- `apps/api/tests/integration/invoices.test.ts`
+- `apps/mobile/src/db/models/invoice.ts`
+- `apps/mobile/src/hooks/use-invoices.ts`
+- `apps/mobile/src/contexts/network-context.tsx`
+
+**Modified:**
+- `apps/api/prisma/schema.prisma`
+- `apps/api/jest.config.js`
+- `apps/api/tsconfig.json`
+- `apps/api/src/services/pdf-service.ts`
+- `apps/api/src/index.ts`
+- `apps/mobile/src/db/schema.ts`
+- `apps/mobile/src/db/migrations.ts`
+- `apps/mobile/src/db/index.ts`
+- `apps/mobile/app/(tabs)/jobs/[id].tsx`
+- `packages/shared/src/types/invoice.ts`

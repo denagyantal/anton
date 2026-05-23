@@ -41,6 +41,15 @@ enum JobStatus {
   INVOICED
 }
 
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  VIEWED
+  PAID
+  PARTIALLY_PAID
+  OVERDUE
+}
+
 model Account {
   id                 String      @id @default(uuid())
   businessName       String?     @map("business_name")
@@ -62,6 +71,7 @@ model Account {
   quotes         Quote[]
   jobs           Job[]
   scheduleEvents ScheduleEvent[]
+  invoices       Invoice[]
 
   @@map("accounts")
 }
@@ -128,6 +138,7 @@ model Customer {
   account               Account   @relation(fields: [accountId], references: [id])
   quotes                Quote[]
   jobs                  Job[]
+  invoices              Invoice[]
 
   @@index([accountId], name: "idx_customers_account_id")
   @@map("customers")
@@ -222,6 +233,7 @@ model Job {
   quote           Quote?          @relation(fields: [quoteId], references: [id])
   assignedTo      TeamMember?     @relation("AssignedJobs", fields: [assignedToId], references: [id])
   schedule_events ScheduleEvent[]
+  invoice         Invoice?
 
   @@index([accountId], name: "idx_jobs_account_id")
   @@index([customerId], name: "idx_jobs_customer_id")
@@ -251,4 +263,35 @@ model ScheduleEvent {
   @@index([accountId], name: "idx_schedule_events_account_id")
   @@index([jobId], name: "idx_schedule_events_job_id")
   @@map("schedule_events")
+}
+
+model Invoice {
+  id                  String        @id @default(uuid())
+  accountId           String        @map("account_id")
+  customerId          String        @map("customer_id")
+  jobId               String?       @unique @map("job_id")
+  quoteId             String?       @map("quote_id")
+  invoiceNumber       String        @map("invoice_number")
+  status              InvoiceStatus @default(DRAFT)
+  subtotal            Int           @default(0)
+  taxAmount           Int           @default(0) @map("tax_amount")
+  total               Int           @default(0)
+  amountPaid          Int           @default(0) @map("amount_paid")
+  pdfUrl              String?       @map("pdf_url")
+  paymentToken        String?       @map("payment_token")
+  sentAt              DateTime?     @map("sent_at")
+  paidAt              DateTime?     @map("paid_at")
+  dueAt               DateTime?     @map("due_at")
+  quickbooksInvoiceId String?       @map("quickbooks_invoice_id")
+  createdAt           DateTime      @default(now()) @map("created_at")
+  updatedAt           DateTime      @updatedAt @map("updated_at")
+  syncedAt            DateTime?     @map("synced_at")
+
+  account  Account  @relation(fields: [accountId], references: [id])
+  customer Customer @relation(fields: [customerId], references: [id])
+  job      Job?     @relation(fields: [jobId], references: [id])
+
+  @@index([accountId], name: "idx_invoices_account_id")
+  @@index([customerId], name: "idx_invoices_customer_id")
+  @@map("invoices")
 }

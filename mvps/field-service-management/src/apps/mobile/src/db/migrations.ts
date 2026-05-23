@@ -3,6 +3,33 @@ import { schemaMigrations, createTable, addColumns } from '@nozbe/watermelondb/S
 export const migrations = schemaMigrations({
   migrations: [
     {
+      toVersion: 8,
+      steps: [
+        createTable({
+          name: 'invoices',
+          columns: [
+            { name: 'account_id', type: 'string' },
+            { name: 'customer_id', type: 'string' },
+            { name: 'job_id', type: 'string', isOptional: true },
+            { name: 'quote_id', type: 'string', isOptional: true },
+            { name: 'invoice_number', type: 'string', isOptional: true },
+            { name: 'status', type: 'string' },
+            { name: 'subtotal', type: 'number' },
+            { name: 'tax_amount', type: 'number' },
+            { name: 'total', type: 'number' },
+            { name: 'amount_paid', type: 'number' },
+            { name: 'pdf_url', type: 'string', isOptional: true },
+            { name: 'payment_token', type: 'string', isOptional: true },
+            { name: 'sent_at', type: 'number', isOptional: true },
+            { name: 'paid_at', type: 'number', isOptional: true },
+            { name: 'due_at', type: 'number', isOptional: true },
+            { name: 'created_at', type: 'number' },
+            { name: 'updated_at', type: 'number' },
+          ],
+        }),
+      ],
+    },
+    {
       toVersion: 7,
       steps: [
         createTable({

@@ -6,6 +6,7 @@ export interface Invoice {
   customerId: string;
   jobId: string | null;
   quoteId: string | null;
+  invoiceNumber?: string;
   status: InvoiceStatus;
   subtotal: number;
   taxAmount: number;
