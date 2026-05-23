@@ -50,6 +50,18 @@ enum InvoiceStatus {
   OVERDUE
 }
 
+enum PaymentMethod {
+  CARD_ON_SITE
+  CARD_VIA_LINK
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCEEDED
+  FAILED
+  REFUNDED
+}
+
 model Account {
   id                 String      @id @default(uuid())
   businessName       String?     @map("business_name")
@@ -72,6 +84,7 @@ model Account {
   jobs           Job[]
   scheduleEvents ScheduleEvent[]
   invoices       Invoice[]
+  payments       Payment[]
 
   @@map("accounts")
 }
@@ -287,11 +300,33 @@ model Invoice {
   updatedAt           DateTime      @updatedAt @map("updated_at")
   syncedAt            DateTime?     @map("synced_at")
 
-  account  Account  @relation(fields: [accountId], references: [id])
-  customer Customer @relation(fields: [customerId], references: [id])
-  job      Job?     @relation(fields: [jobId], references: [id])
+  account  Account   @relation(fields: [accountId], references: [id])
+  customer Customer  @relation(fields: [customerId], references: [id])
+  job      Job?      @relation(fields: [jobId], references: [id])
+  payments Payment[]
 
   @@index([accountId], name: "idx_invoices_account_id")
   @@index([customerId], name: "idx_invoices_customer_id")
   @@map("invoices")
+}
+
+model Payment {
+  id                  String        @id @default(uuid())
+  accountId           String        @map("account_id")
+  invoiceId           String        @map("invoice_id")
+  amount              Int
+  stripePaymentId     String?       @unique @map("stripe_payment_id")
+  paymentMethod       PaymentMethod @map("payment_method")
+  status              PaymentStatus @default(PENDING)
+  quickbooksPaymentId String?       @map("quickbooks_payment_id")
+  createdAt           DateTime      @default(now()) @map("created_at")
+  updatedAt           DateTime      @updatedAt @map("updated_at")
+  syncedAt            DateTime?     @map("synced_at")
+
+  account Account @relation(fields: [accountId], references: [id])
+  invoice Invoice @relation(fields: [invoiceId], references: [id])
+
+  @@index([accountId], name: "idx_payments_account_id")
+  @@index([invoiceId], name: "idx_payments_invoice_id")
+  @@map("payments")
 }

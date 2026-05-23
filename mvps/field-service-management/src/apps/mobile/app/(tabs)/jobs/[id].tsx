@@ -16,7 +16,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, Stack } from 'expo-router';
 import * as FileSystem from 'expo-file-system';
 import { useJob, useTransitionJobStatus, useUpdateJobNotes } from '../../../src/hooks/use-jobs';
-import { useJobInvoice, useGenerateInvoice } from '../../../src/hooks/use-invoices';
+import { useJobInvoice, useGenerateInvoice, useSendInvoice } from '../../../src/hooks/use-invoices';
 import { useCustomers } from '../../../src/hooks/use-customers';
 import {
   useJobPhotos,
@@ -61,6 +61,7 @@ export default function JobDetailScreen() {
   const { updateSignature } = useUpdateJobSignature();
   const { invoice } = useJobInvoice(id ?? '');
   const { generateInvoice, isLoading: isGenerating } = useGenerateInvoice();
+  const { sendInvoice, isSending } = useSendInvoice();
 
   const [localNotes, setLocalNotes] = useState('');
   const [signatureVisible, setSignatureVisible] = useState(false);
@@ -127,6 +128,17 @@ export default function JobDetailScreen() {
     }
   }, [job, generateInvoice]);
 
+  const handleSendInvoice = useCallback(async () => {
+    if (!invoice) return;
+    try {
+      await sendInvoice(invoice.id);
+      Alert.alert('Invoice Sent', 'Payment link sent to customer via SMS.');
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to send invoice';
+      Alert.alert('Send Error', message);
+    }
+  }, [invoice, sendInvoice]);
+
   function renderActionButton() {
     if (!job) return null;
     if (job.status === 'QUOTED' || job.status === 'SCHEDULED') {
@@ -149,12 +161,35 @@ export default function JobDetailScreen() {
         </TouchableOpacity>
       );
     }
-    if (job.status === 'COMPLETE') {
+    if (job.status === 'COMPLETE' || job.status === 'INVOICED') {
       if (invoice) {
+        if (invoice.status === 'DRAFT') {
+          return (
+            <View>
+              <View style={styles.invoicedBadge}>
+                <Text style={styles.invoicedText}>
+                  {invoice.invoiceNumber ?? 'Invoice'} — ${(invoice.total / 100).toFixed(2)}
+                </Text>
+              </View>
+              <TouchableOpacity
+                style={[styles.actionButton, styles.sendInvoiceButton]}
+                onPress={handleSendInvoice}
+                disabled={isSending}
+              >
+                {isSending ? (
+                  <ActivityIndicator color="#fff" />
+                ) : (
+                  <Text style={styles.sendInvoiceButtonText}>Send Invoice</Text>
+                )}
+              </TouchableOpacity>
+            </View>
+          );
+        }
         return (
           <View style={styles.invoicedBadge}>
             <Text style={styles.invoicedText}>
               {invoice.invoiceNumber ?? 'Invoice'} — ${(invoice.total / 100).toFixed(2)}
+              {invoice.status === 'PAID' ? ' · PAID' : invoice.status === 'SENT' ? ' · SENT' : ''}
             </Text>
           </View>
         );
@@ -425,6 +460,15 @@ const styles = StyleSheet.create({
   invoicedText: {
     fontSize: 15,
     color: '#374151',
+    fontWeight: '600',
+  },
+  sendInvoiceButton: {
+    backgroundColor: '#2563EB',
+    marginTop: 8,
+  },
+  sendInvoiceButtonText: {
+    color: '#fff',
+    fontSize: 16,
     fontWeight: '600',
   },
   bottomPadding: {

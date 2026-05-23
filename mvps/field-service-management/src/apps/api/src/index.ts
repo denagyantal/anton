@@ -5,13 +5,18 @@ import { errorHandler } from './middleware/error-handler.js';
 import { authRouter } from './routes/auth.js';
 import { accountsRouter } from './routes/accounts.js';
 import { quotesRouter } from './routes/quotes.js';
-import { invoicesRouter } from './routes/invoices.js';
+import { invoicesRouter, publicInvoicesRouter } from './routes/invoices.js';
+import { paymentsRouter } from './routes/payments.js';
 import { authMiddleware } from './middleware/auth.js';
 import { startReminderJob } from './jobs/reminder-sender.js';
 
 export const app = express();
 
 app.use(cors());
+
+// Stripe webhook must receive raw body — register BEFORE express.json()
+app.use('/api/v1/payments', express.raw({ type: 'application/json' }), paymentsRouter);
+
 app.use(express.json());
 app.use(requestLogger);
 
@@ -33,6 +38,9 @@ app.use('/api/v1/accounts', accountsRouter);
 
 // Quote action routes (protected)
 app.use('/api/v1/quotes', quotesRouter);
+
+// Public (no auth) invoice routes — view and pay by token
+app.use('/api/v1/invoices', publicInvoicesRouter);
 
 // Invoice routes (protected)
 app.use('/api/v1/invoices', invoicesRouter);

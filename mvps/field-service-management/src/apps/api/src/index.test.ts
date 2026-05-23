@@ -1,3 +1,13 @@
+jest.mock('./config/stripe.js', () => ({
+  stripe: {
+    checkout: { sessions: { create: jest.fn(), retrieve: jest.fn() } },
+    webhooks: { constructEvent: jest.fn() },
+  },
+}));
+jest.mock('./jobs/reminder-sender.js', () => ({
+  startReminderJob: jest.fn(),
+}));
+
 import request from 'supertest';
 import { app } from './index.js';
 

@@ -1,5 +1,19 @@
 import request from 'supertest';
 
+// Mock stripe (required when index.ts is imported)
+jest.mock('../../src/config/stripe.js', () => ({
+  stripe: {
+    checkout: { sessions: { create: jest.fn(), retrieve: jest.fn() } },
+    webhooks: { constructEvent: jest.fn() },
+  },
+}));
+
+// Mock payment service
+jest.mock('../../src/services/payment-service.js', () => ({
+  createCheckoutSession: jest.fn(),
+  handleCheckoutCompleted: jest.fn(),
+}));
+
 // Mock auth middleware as jest.fn() so tests can override behaviour
 jest.mock('../../src/middleware/auth.js', () => ({
   authMiddleware: jest.fn((req: any, _res: any, next: any) => {

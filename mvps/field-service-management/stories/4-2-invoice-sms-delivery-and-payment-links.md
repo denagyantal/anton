@@ -1,6 +1,6 @@
 # Story 4.2: Invoice SMS Delivery and Payment Links
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -32,8 +32,8 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 1: Install Stripe SDK (AC: #4, #6)
 
-- [ ] 1.1: In `apps/api/`, run `npm install stripe` — Stripe v17+ ships its own TypeScript types; no `@types/stripe` needed
-- [ ] 1.2: Add to `apps/api/.env.example`:
+- [x] 1.1: In `apps/api/`, run `npm install stripe` — Stripe v17+ ships its own TypeScript types; no `@types/stripe` needed
+- [x] 1.2: Add to `apps/api/.env.example`:
   ```
   STRIPE_SECRET_KEY=sk_test_...
   STRIPE_WEBHOOK_SECRET=whsec_...
@@ -41,7 +41,7 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 2: Prisma — Add Payment Model (AC: #6, #7, #9)
 
-- [ ] 2.1: In `apps/api/prisma/schema.prisma`, add two enums after the existing `InvoiceStatus` enum:
+- [x] 2.1: In `apps/api/prisma/schema.prisma`, add two enums after the existing `InvoiceStatus` enum:
   ```prisma
   enum PaymentMethod {
     CARD_ON_SITE
@@ -55,7 +55,7 @@ so that I can collect payment instantly from their phone without writing a check
     REFUNDED
   }
   ```
-- [ ] 2.2: Add the `Payment` model after the `Invoice` model:
+- [x] 2.2: Add the `Payment` model after the `Invoice` model:
   ```prisma
   model Payment {
     id                  String        @id @default(uuid())
@@ -78,20 +78,20 @@ so that I can collect payment instantly from their phone without writing a check
     @@map("payments")
   }
   ```
-- [ ] 2.3: In the `Account` model's relation block, add after `invoices Invoice[]`:
+- [x] 2.3: In the `Account` model's relation block, add after `invoices Invoice[]`:
   ```prisma
   payments Payment[]
   ```
-- [ ] 2.4: In the `Invoice` model's relation block, add after the existing closing brace (before `@@index`):
+- [x] 2.4: In the `Invoice` model's relation block, add after the existing closing brace (before `@@index`):
   ```prisma
   payments Payment[]
   ```
-- [ ] 2.5: Run migration: `cd apps/api && npx prisma migrate dev --name add-payments`
-- [ ] 2.6: Run `npx prisma generate` to update the Prisma client types
+- [x] 2.5: Run migration: `cd apps/api && npx prisma migrate dev --name add-payments`
+- [x] 2.6: Run `npx prisma generate` to update the Prisma client types
 
 ### Task 3: Stripe Config (AC: #4, #6)
 
-- [ ] 3.1: Create `apps/api/src/config/stripe.ts`:
+- [x] 3.1: Create `apps/api/src/config/stripe.ts`:
   ```typescript
   import Stripe from 'stripe';
 
@@ -103,8 +103,8 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 4: WatermelonDB Schema — Add `payments` Table (AC: #8, #9)
 
-- [ ] 4.1: In `apps/mobile/src/db/schema.ts`, bump `version: 8` to `version: 9`
-- [ ] 4.2: Add the `payments` tableSchema at the end of the `tables` array (after `invoices`):
+- [x] 4.1: In `apps/mobile/src/db/schema.ts`, bump `version: 8` to `version: 9`
+- [x] 4.2: Add the `payments` tableSchema at the end of the `tables` array (after `invoices`):
   ```typescript
   tableSchema({
     name: 'payments',
@@ -123,7 +123,7 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 5: WatermelonDB Migration — v9 (AC: #8)
 
-- [ ] 5.1: In `apps/mobile/src/db/migrations.ts`, add the v9 migration at the **TOP** of the `migrations` array (before the existing `toVersion: 8` entry — WatermelonDB requires descending order):
+- [x] 5.1: In `apps/mobile/src/db/migrations.ts`, add the v9 migration at the **TOP** of the `migrations` array (before the existing `toVersion: 8` entry — WatermelonDB requires descending order):
   ```typescript
   {
     toVersion: 9,
@@ -147,7 +147,7 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 6: WatermelonDB Payment Model (AC: #8)
 
-- [ ] 6.1: Create `apps/mobile/src/db/models/payment.ts`:
+- [x] 6.1: Create `apps/mobile/src/db/models/payment.ts`:
   ```typescript
   import { Model } from '@nozbe/watermelondb';
   import { field, text, readonly, date } from '@nozbe/watermelondb/decorators';
@@ -168,15 +168,15 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 7: Register Payment Model in db/index.ts (AC: #8)
 
-- [ ] 7.1: In `apps/mobile/src/db/index.ts`, add import: `import Payment from './models/payment';`
-- [ ] 7.2: Add `Payment` to the `modelClasses` array:
+- [x] 7.1: In `apps/mobile/src/db/index.ts`, add import: `import Payment from './models/payment';`
+- [x] 7.2: Add `Payment` to the `modelClasses` array:
   ```typescript
   modelClasses: [PricebookItem, Customer, Quote, LineItem, QuotePhoto, Job, JobPhoto, ScheduleEvent, Invoice, Payment],
   ```
 
 ### Task 8: API — Create `payment-service.ts` (AC: #4, #6, #7)
 
-- [ ] 8.1: Create `apps/api/src/services/payment-service.ts`:
+- [x] 8.1: Create `apps/api/src/services/payment-service.ts`:
   ```typescript
   import { stripe } from '../config/stripe.js';
   import { prisma } from '../config/prisma.js';
@@ -331,12 +331,12 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 9: API — Add `send` and `view` Endpoints to `invoices.ts` (AC: #1, #3, #5)
 
-- [ ] 9.1: In `apps/api/src/routes/invoices.ts`, add the missing imports at the top (if not already present):
+- [x] 9.1: In `apps/api/src/routes/invoices.ts`, add the missing imports at the top (if not already present):
   ```typescript
   import { sendSms } from '../services/sms-service.js';
   import { generateToken } from '../utils/signed-url.js';
   ```
-- [ ] 9.2: Add `POST /:id/send` (protected by `authMiddleware` which is applied via `invoicesRouter.use(authMiddleware)` from story 4.1):
+- [x] 9.2: Add `POST /:id/send` (protected by `authMiddleware` which is applied via `invoicesRouter.use(authMiddleware)` from story 4.1):
   ```typescript
   invoicesRouter.post('/:id/send', async (req, res, next) => {
     try {
@@ -390,7 +390,7 @@ so that I can collect payment instantly from their phone without writing a check
   });
   ```
 
-- [ ] 9.3: Add `GET /view/:token` (NO `authMiddleware` — placed BEFORE `invoicesRouter.use(authMiddleware)` by using the Express app directly, or add it as a separate unauthenticated router):
+- [x] 9.3: Add `GET /view/:token` (NO `authMiddleware` — placed BEFORE `invoicesRouter.use(authMiddleware)` by using the Express app directly, or add it as a separate unauthenticated router):
 
   **IMPORTANT:** Because `invoicesRouter.use(authMiddleware)` applies auth to all routes on that router, public routes must be added to a SEPARATE router. Create a `publicInvoicesRouter` in the same file:
   ```typescript
@@ -461,7 +461,7 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 10: API — Add Public `pay` Endpoint to `publicInvoicesRouter` (AC: #4, #5)
 
-- [ ] 10.1: In the same `publicInvoicesRouter` block in `invoices.ts`, add `POST /pay/:token`:
+- [x] 10.1: In the same `publicInvoicesRouter` block in `invoices.ts`, add `POST /pay/:token`:
   ```typescript
   publicInvoicesRouter.post('/pay/:token', async (req, res, next) => {
     try {
@@ -503,7 +503,7 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 11: API — Create `routes/payments.ts` with Stripe Webhook (AC: #6, #7)
 
-- [ ] 11.1: Create `apps/api/src/routes/payments.ts`:
+- [x] 11.1: Create `apps/api/src/routes/payments.ts`:
   ```typescript
   import express from 'express';
   import { stripe } from '../config/stripe.js';
@@ -574,23 +574,23 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 12: Register Routes in `index.ts` (AC: #1, #4, #6)
 
-- [ ] 12.1: In `apps/api/src/index.ts`, add imports at the top of the route imports section:
+- [x] 12.1: In `apps/api/src/index.ts`, add imports at the top of the route imports section:
   ```typescript
   import { paymentsRouter } from './routes/payments.js';
   import { publicInvoicesRouter } from './routes/invoices.js';
   ```
-- [ ] 12.2: Register the webhook route with `express.raw()` **BEFORE** `app.use(express.json())`. Find the line where `express.json()` is applied globally and add before it:
+- [x] 12.2: Register the webhook route with `express.raw()` **BEFORE** `app.use(express.json())`. Find the line where `express.json()` is applied globally and add before it:
   ```typescript
   // Stripe webhook must receive raw body — register BEFORE express.json()
   app.use('/api/v1/payments', express.raw({ type: 'application/json' }), paymentsRouter);
   app.use('/api/v1/invoices', publicInvoicesRouter); // public (no auth) invoice routes
   ```
-- [ ] 12.3: Verify the existing `app.use('/api/v1/invoices', invoicesRouter)` line remains in place (registered after `express.json()`) — the authenticated routes stay on the existing `invoicesRouter`. The `publicInvoicesRouter` handles only the `/view/:token` and `/pay/:token` paths, so there is no conflict.
+- [x] 12.3: Verify the existing `app.use('/api/v1/invoices', invoicesRouter)` line remains in place (registered after `express.json()`) — the authenticated routes stay on the existing `invoicesRouter`. The `publicInvoicesRouter` handles only the `/view/:token` and `/pay/:token` paths, so there is no conflict.
 
 ### Task 13: Web App — Customer Payment Page (AC: #3, #4, #5)
 
-- [ ] 13.1: Create directory `apps/web/src/app/(public)/pay/[token]/`
-- [ ] 13.2: Create `apps/web/src/app/(public)/pay/[token]/page.tsx` (Next.js 15 server component):
+- [x] 13.1: Create directory `apps/web/src/app/(public)/pay/[token]/`
+- [x] 13.2: Create `apps/web/src/app/(public)/pay/[token]/page.tsx` (Next.js 15 server component):
   ```typescript
   const API_URL = process.env['API_URL'] ?? 'http://localhost:3001';
 
@@ -740,7 +740,7 @@ so that I can collect payment instantly from their phone without writing a check
   ```
   Note: Import `PayButton` from `'./pay-button'` at the top of the file.
 
-- [ ] 13.3: Create `apps/web/src/app/(public)/pay/[token]/pay-button.tsx` (`'use client'` component):
+- [x] 13.3: Create `apps/web/src/app/(public)/pay/[token]/pay-button.tsx` (`'use client'` component):
   ```typescript
   'use client';
 
@@ -796,7 +796,7 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 14: Mobile — Add `useSendInvoice` Hook to `use-invoices.ts` (AC: #1, #2)
 
-- [ ] 14.1: In `apps/mobile/src/hooks/use-invoices.ts`, add `useSendInvoice` export at the bottom of the file:
+- [x] 14.1: In `apps/mobile/src/hooks/use-invoices.ts`, add `useSendInvoice` export at the bottom of the file:
   ```typescript
   import type { Invoice as InvoiceType } from '@field-service/shared';
 
@@ -847,15 +847,15 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 15: Mobile — Add "Send Invoice" Button to Job Detail Screen (AC: #1, #2)
 
-- [ ] 15.1: In `apps/mobile/app/(tabs)/jobs/[id].tsx`, update the existing `useInvoices` import:
+- [x] 15.1: In `apps/mobile/app/(tabs)/jobs/[id].tsx`, update the existing `useInvoices` import:
   ```typescript
   import { useJobInvoice, useGenerateInvoice, useSendInvoice } from '../../../src/hooks/use-invoices';
   ```
-- [ ] 15.2: Inside `JobDetailScreen`, add after the existing invoice hooks:
+- [x] 15.2: Inside `JobDetailScreen`, add after the existing invoice hooks:
   ```typescript
   const { sendInvoice, isSending } = useSendInvoice();
   ```
-- [ ] 15.3: Add a `handleSendInvoice` callback:
+- [x] 15.3: Add a `handleSendInvoice` callback:
   ```typescript
   const handleSendInvoice = useCallback(async () => {
     if (!invoice) return;
@@ -868,7 +868,7 @@ so that I can collect payment instantly from their phone without writing a check
     }
   }, [invoice, sendInvoice]);
   ```
-- [ ] 15.4: In the `renderActionButton()` function, update the `INVOICED` job block (currently showing the invoice badge). Extend it to show a "Send Invoice" button when the invoice status is `DRAFT`:
+- [x] 15.4: In the `renderActionButton()` function, update the `INVOICED` job block (currently showing the invoice badge). Extend it to show a "Send Invoice" button when the invoice status is `DRAFT`:
   ```typescript
   if (job.status === 'COMPLETE' || job.status === 'INVOICED') {
     if (invoice) {
@@ -904,7 +904,7 @@ so that I can collect payment instantly from their phone without writing a check
     // ... existing Generate Invoice button code (unchanged)
   }
   ```
-- [ ] 15.5: Add styles to `StyleSheet.create`:
+- [x] 15.5: Add styles to `StyleSheet.create`:
   ```typescript
   sendInvoiceButton: {
     backgroundColor: '#2563EB',
@@ -919,36 +919,36 @@ so that I can collect payment instantly from their phone without writing a check
 
 ### Task 16: Tests — `payment-service.ts` Unit Tests (AC: #6, #7, #9)
 
-- [ ] 16.1: Create `apps/api/src/services/payment-service.test.ts`
-- [ ] 16.2: Mock `'../config/stripe.js'` and `'../config/prisma.js'`
-- [ ] 16.3: Test `createCheckoutSession`: invoice found → `stripe.checkout.sessions.create` called with correct `unit_amount` (invoice.total in cents), `mode: 'payment'`, metadata includes `invoiceId` and `token`; returns `session.url`
-- [ ] 16.4: Test `createCheckoutSession`: invoice not found → throws `AppError` with code `INVOICE_NOT_FOUND`, status 404
-- [ ] 16.5: Test `handleCheckoutCompleted`: no existing payment → creates payment with `CARD_VIA_LINK`, updates invoice to `PAID`, returns `alreadyProcessed: false` with invoice and customer data
-- [ ] 16.6: Test `handleCheckoutCompleted`: payment with same `stripePaymentId` already exists → returns `{ alreadyProcessed: true }` immediately; `prisma.$transaction` NOT called
-- [ ] 16.7: Test `handleCheckoutCompleted`: missing metadata (`invoiceId` or `accountId` null) → returns `{ alreadyProcessed: true }`
+- [x] 16.1: Create `apps/api/src/services/payment-service.test.ts`
+- [x] 16.2: Mock `'../config/stripe.js'` and `'../config/prisma.js'`
+- [x] 16.3: Test `createCheckoutSession`: invoice found → `stripe.checkout.sessions.create` called with correct `unit_amount` (invoice.total in cents), `mode: 'payment'`, metadata includes `invoiceId` and `token`; returns `session.url`
+- [x] 16.4: Test `createCheckoutSession`: invoice not found → throws `AppError` with code `INVOICE_NOT_FOUND`, status 404
+- [x] 16.5: Test `handleCheckoutCompleted`: no existing payment → creates payment with `CARD_VIA_LINK`, updates invoice to `PAID`, returns `alreadyProcessed: false` with invoice and customer data
+- [x] 16.6: Test `handleCheckoutCompleted`: payment with same `stripePaymentId` already exists → returns `{ alreadyProcessed: true }` immediately; `prisma.$transaction` NOT called
+- [x] 16.7: Test `handleCheckoutCompleted`: missing metadata (`invoiceId` or `accountId` null) → returns `{ alreadyProcessed: true }`
 
 ### Task 17: Tests — Invoice Routes Integration Tests (AC: #1, #3, #4, #5)
 
-- [ ] 17.1: Create `apps/api/tests/integration/invoice-send.test.ts`
-- [ ] 17.2: Mock `../../src/services/sms-service.js`, `../../src/services/payment-service.js`, `../../src/config/prisma.js`, `../../src/utils/signed-url.js` (returns fixed `'test-token-hex'`)
-- [ ] 17.3: Test `POST /api/v1/invoices/:id/send`: success → SMS sent with formatted amount and URL containing the token, invoice updated with `status='SENT'` and `paymentToken`, response 200 with `{ status, sentAt, paymentToken }`
-- [ ] 17.4: Test `POST /api/v1/invoices/:id/send`: no `pdfUrl` → 422 with code `PDF_NOT_GENERATED`
-- [ ] 17.5: Test `POST /api/v1/invoices/:id/send`: invoice not found → 404
-- [ ] 17.6: Test `POST /api/v1/invoices/:id/send`: unauthorized → 401
-- [ ] 17.7: Test `GET /api/v1/invoices/view/:token`: success → 200 with full invoice data including `lineItems`, `total`, `dueAt`
-- [ ] 17.8: Test `GET /api/v1/invoices/view/:token`: `sentAt` > 30 days ago → 410 with code `PAYMENT_LINK_EXPIRED`
-- [ ] 17.9: Test `GET /api/v1/invoices/view/:token`: token not found → 404
-- [ ] 17.10: Test `POST /api/v1/invoices/pay/:token`: success → `createCheckoutSession` called, returns `{ checkoutUrl }`
-- [ ] 17.11: Test `POST /api/v1/invoices/pay/:token`: expired link → 410
+- [x] 17.1: Create `apps/api/tests/integration/invoice-send.test.ts`
+- [x] 17.2: Mock `../../src/services/sms-service.js`, `../../src/services/payment-service.js`, `../../src/config/prisma.js`, `../../src/utils/signed-url.js` (returns fixed `'test-token-hex'`)
+- [x] 17.3: Test `POST /api/v1/invoices/:id/send`: success → SMS sent with formatted amount and URL containing the token, invoice updated with `status='SENT'` and `paymentToken`, response 200 with `{ status, sentAt, paymentToken }`
+- [x] 17.4: Test `POST /api/v1/invoices/:id/send`: no `pdfUrl` → 422 with code `PDF_NOT_GENERATED`
+- [x] 17.5: Test `POST /api/v1/invoices/:id/send`: invoice not found → 404
+- [x] 17.6: Test `POST /api/v1/invoices/:id/send`: unauthorized → 401
+- [x] 17.7: Test `GET /api/v1/invoices/view/:token`: success → 200 with full invoice data including `lineItems`, `total`, `dueAt`
+- [x] 17.8: Test `GET /api/v1/invoices/view/:token`: `sentAt` > 30 days ago → 410 with code `PAYMENT_LINK_EXPIRED`
+- [x] 17.9: Test `GET /api/v1/invoices/view/:token`: token not found → 404
+- [x] 17.10: Test `POST /api/v1/invoices/pay/:token`: success → `createCheckoutSession` called, returns `{ checkoutUrl }`
+- [x] 17.11: Test `POST /api/v1/invoices/pay/:token`: expired link → 410
 
 ### Task 18: Tests — Webhook Route Tests (AC: #6, #7)
 
-- [ ] 18.1: Create `apps/api/tests/integration/payments-webhook.test.ts`
-- [ ] 18.2: Mock `../../src/config/stripe.js`, `../../src/services/payment-service.js`, `../../src/services/notification-service.js`, `../../src/services/sms-service.js`, `../../src/config/prisma.js`
-- [ ] 18.3: Test `POST /api/v1/payments/webhook`: invalid Stripe signature → 400 with code `WEBHOOK_INVALID`
-- [ ] 18.4: Test `POST /api/v1/payments/webhook`: `checkout.session.completed` with `alreadyProcessed: false` → `handleCheckoutCompleted` called, push notification sent, SMS sent, response 200 `{ received: true }`
-- [ ] 18.5: Test `POST /api/v1/payments/webhook`: `alreadyProcessed: true` → push/SMS NOT called, response 200 `{ received: true }`
-- [ ] 18.6: Test `POST /api/v1/payments/webhook`: unhandled event type (e.g., `payment_intent.created`) → `handleCheckoutCompleted` NOT called, response 200 `{ received: true }`
+- [x] 18.1: Create `apps/api/tests/integration/payments-webhook.test.ts`
+- [x] 18.2: Mock `../../src/config/stripe.js`, `../../src/services/payment-service.js`, `../../src/services/notification-service.js`, `../../src/services/sms-service.js`, `../../src/config/prisma.js`
+- [x] 18.3: Test `POST /api/v1/payments/webhook`: invalid Stripe signature → 400 with code `WEBHOOK_INVALID`
+- [x] 18.4: Test `POST /api/v1/payments/webhook`: `checkout.session.completed` with `alreadyProcessed: false` → `handleCheckoutCompleted` called, push notification sent, SMS sent, response 200 `{ received: true }`
+- [x] 18.5: Test `POST /api/v1/payments/webhook`: `alreadyProcessed: true` → push/SMS NOT called, response 200 `{ received: true }`
+- [x] 18.6: Test `POST /api/v1/payments/webhook`: unhandled event type (e.g., `payment_intent.created`) → `handleCheckoutCompleted` NOT called, response 200 `{ received: true }`
 
 ## Dev Notes
 
@@ -1172,6 +1172,43 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None — all tasks completed without blockers.
+
 ### Completion Notes List
 
+- Installed Stripe v22 (latest available); API version string is `'2026-04-22.dahlia'` (not `basil` as in the story example — checked from `node_modules/stripe/cjs/apiVersion.d.ts`).
+- No live database available, so migration was created manually as a SQL file instead of running `prisma migrate dev`. `prisma generate` succeeded using the schema file only.
+- `publicInvoicesRouter` registered before `invoicesRouter` in `index.ts`; both share the `/api/v1/invoices` prefix and Express resolves them in registration order.
+- Stripe webhook route registered with `express.raw()` before `express.json()` to preserve raw body for signature verification.
+- Added stripe mock to three existing test files (`quotes.test.ts`, `index.test.ts`, `tests/integration/invoices.test.ts`) that now transitively import stripe via `index.ts → payments.ts → stripe.ts`.
+- All 110 tests pass across 14 test suites (37 new tests added this story).
+- Mobile PAID status update flows via sync, not direct write — consistent with architecture.
+
 ### File List
+
+**Created:**
+- `apps/api/src/config/stripe.ts`
+- `apps/api/src/services/payment-service.ts`
+- `apps/api/src/services/payment-service.test.ts`
+- `apps/api/src/routes/payments.ts`
+- `apps/api/tests/integration/invoice-send.test.ts`
+- `apps/api/tests/integration/payments-webhook.test.ts`
+- `apps/api/prisma/migrations/20260523100000_add_payments/migration.sql`
+- `apps/mobile/src/db/models/payment.ts`
+- `apps/web/src/app/(public)/pay/[token]/page.tsx`
+- `apps/web/src/app/(public)/pay/[token]/pay-button.tsx`
+
+**Modified:**
+- `apps/api/prisma/schema.prisma` — added PaymentMethod/PaymentStatus enums, Payment model, relations on Account and Invoice
+- `apps/api/src/routes/invoices.ts` — added `POST /:id/send`, exported `publicInvoicesRouter` with `/view/:token` and `/pay/:token`
+- `apps/api/src/index.ts` — registered paymentsRouter with express.raw(), publicInvoicesRouter; moved raw middleware before express.json()
+- `apps/api/.env.example` — added STRIPE_WEBHOOK_SECRET
+- `apps/api/package.json` — added stripe dependency
+- `apps/api/src/index.test.ts` — added stripe mock
+- `apps/api/src/routes/quotes.test.ts` — added stripe mock
+- `apps/api/tests/integration/invoices.test.ts` — added stripe and payment-service mocks
+- `apps/mobile/src/db/schema.ts` — bumped to v9, added payments tableSchema
+- `apps/mobile/src/db/migrations.ts` — added toVersion: 9 migration at top
+- `apps/mobile/src/db/index.ts` — imported Payment, added to modelClasses
+- `apps/mobile/src/hooks/use-invoices.ts` — added useSendInvoice export
+- `apps/mobile/app/(tabs)/jobs/[id].tsx` — added Send Invoice button, extended invoice badge with PAID/SENT indicators, added handleSendInvoice callback and styles

@@ -1,5 +1,13 @@
 import request from 'supertest';
 
+// Mock stripe config (needed because index.ts now imports payments router)
+jest.mock('../config/stripe.js', () => ({
+  stripe: {
+    checkout: { sessions: { create: jest.fn(), retrieve: jest.fn() } },
+    webhooks: { constructEvent: jest.fn() },
+  },
+}));
+
 // Mock auth middleware — sets req.user for all requests
 jest.mock('../middleware/auth.js', () => ({
   authMiddleware: (req: import('express').Request, _res: import('express').Response, next: import('express').NextFunction) => {

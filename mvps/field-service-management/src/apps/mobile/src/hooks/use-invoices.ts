@@ -89,3 +89,49 @@ export function useGenerateInvoice() {
 
   return { generateInvoice, isLoading };
 }
+
+interface SendInvoiceResult {
+  status: string;
+  sentAt: string;
+  paymentToken: string;
+}
+
+export function useSendInvoice() {
+  const [isSending, setIsSending] = useState(false);
+  const { isConnected } = useContext(NetworkContext);
+
+  const sendInvoice = useCallback(
+    async (invoiceId: string): Promise<void> => {
+      if (!isConnected) {
+        throw new Error('Send requires an internet connection');
+      }
+
+      setIsSending(true);
+      try {
+        const result = await apiClient.post<SendInvoiceResult>(
+          `/api/v1/invoices/${invoiceId}/send`,
+        );
+
+        await database.write(async () => {
+          const invoices = await database
+            .get<Invoice>('invoices')
+            .query(Q.where('id', invoiceId))
+            .fetch();
+
+          if (invoices[0]) {
+            await invoices[0].update((record) => {
+              record.status = result.status;
+              record.sentAt = Date.parse(result.sentAt);
+              record.paymentToken = result.paymentToken;
+            });
+          }
+        });
+      } finally {
+        setIsSending(false);
+      }
+    },
+    [isConnected],
+  );
+
+  return { sendInvoice, isSending };
+}
