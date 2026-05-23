@@ -152,6 +152,7 @@ export default function JobDetailScreen() {
       params: {
         invoiceId: invoice.id,
         invoiceTotal: String(invoice.total),
+        invoiceAmountPaid: String(invoice.amountPaid),
       },
     });
   }, [invoice, isConnected]);

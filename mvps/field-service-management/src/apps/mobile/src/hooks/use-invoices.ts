@@ -143,6 +143,7 @@ interface PaymentIntentResult {
   paymentIntentId: string;
   amount: number;
   merchantDisplayName: string;
+  remainingBalance: number;
 }
 
 interface RecordOnsiteResult {
@@ -160,15 +161,20 @@ export function useCollectPayment() {
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
 
   const collectPayment = useCallback(
-    async (invoiceId: string): Promise<{ success: boolean; amount: number }> => {
+    async (
+      invoiceId: string,
+      customAmountCents?: number,
+    ): Promise<{ success: boolean; amount: number }> => {
       if (!isConnected) {
         throw new Error('An internet connection is required to process card payments.');
       }
 
       setIsLoading(true);
       try {
+        // Pass custom amount to server; undefined → server defaults to remaining balance
         const piResult = await apiClient.post<PaymentIntentResult>(
           `/api/v1/invoices/${invoiceId}/payment-intent`,
+          customAmountCents !== undefined ? { amount: customAmountCents } : undefined,
         );
 
         const { error: initError } = await initPaymentSheet({
@@ -230,4 +236,80 @@ export function useCollectPayment() {
   );
 
   return { collectPayment, isLoading };
+}
+
+export function useAllInvoices(statusFilter?: string) {
+  const [invoices, setInvoices] = useState<Invoice[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const baseQuery = statusFilter
+      ? database.get<Invoice>('invoices').query(Q.where('status', statusFilter))
+      : database.get<Invoice>('invoices').query();
+
+    const subscription = baseQuery.observe().subscribe((results) => {
+      // WatermelonDB does not support ORDER BY in observe() for all adapters — sort in JS
+      const sorted = [...results].sort(
+        (a, b) => (b.createdAt as unknown as number) - (a.createdAt as unknown as number),
+      );
+      setInvoices(sorted);
+      setIsLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [statusFilter]);
+
+  return { invoices, isLoading };
+}
+
+interface InvoiceSummary {
+  outstanding: number;   // integer cents
+  receivedToday: number; // integer cents
+  overdueCount: number;
+}
+
+export function useInvoiceSummary() {
+  const [summary, setSummary] = useState<InvoiceSummary>({
+    outstanding: 0,
+    receivedToday: 0,
+    overdueCount: 0,
+  });
+  const [isLoading, setIsLoading] = useState(true);
+
+  const calculate = useCallback(async () => {
+    try {
+      const allInvoices = await database.get<Invoice>('invoices').query().fetch();
+
+      const outstanding = allInvoices
+        .filter((inv) => inv.status !== 'PAID' && inv.status !== 'DRAFT')
+        .reduce((sum, inv) => sum + Math.max(0, inv.total - inv.amountPaid), 0);
+
+      const overdueCount = allInvoices.filter((inv) => inv.status === 'OVERDUE').length;
+
+      const startOfToday = new Date();
+      startOfToday.setHours(0, 0, 0, 0);
+
+      const todayPayments = await database
+        .get<Payment>('payments')
+        .query(
+          Q.where('status', 'SUCCEEDED'),
+          Q.where('created_at', Q.gte(startOfToday.getTime())),
+        )
+        .fetch();
+
+      const receivedToday = todayPayments.reduce((sum, p) => sum + p.amount, 0);
+
+      setSummary({ outstanding, receivedToday, overdueCount });
+    } catch (err) {
+      console.error('[useInvoiceSummary] calculation error:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    calculate();
+  }, [calculate]);
+
+  return { summary, isLoading, refresh: calculate };
 }

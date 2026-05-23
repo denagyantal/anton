@@ -6,6 +6,7 @@ import {
   StyleSheet,
   ActivityIndicator,
   Alert,
+  TextInput,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, router } from 'expo-router';
@@ -15,9 +16,10 @@ import { useCollectPayment } from '../../src/hooks/use-invoices';
 type PaymentState = 'idle' | 'processing' | 'success';
 
 export default function PaymentModal() {
-  const { invoiceId, invoiceTotal } = useLocalSearchParams<{
+  const { invoiceId, invoiceTotal, invoiceAmountPaid } = useLocalSearchParams<{
     invoiceId: string;
     invoiceTotal: string;
+    invoiceAmountPaid: string;
   }>();
   const [state, setState] = useState<PaymentState>('idle');
   const [paidAmount, setPaidAmount] = useState<number>(0);
@@ -25,7 +27,22 @@ export default function PaymentModal() {
   const { collectPayment } = useCollectPayment();
 
   const totalCents = parseInt(invoiceTotal ?? '0', 10);
-  const formattedTotal = `$${(totalCents / 100).toFixed(2)}`;
+  const alreadyPaidCents = parseInt(invoiceAmountPaid ?? '0', 10);
+  const remainingCents = Math.max(0, totalCents - alreadyPaidCents);
+  const remainingFormatted = `$${(remainingCents / 100).toFixed(2)}`;
+
+  const [customAmountStr, setCustomAmountStr] = useState(
+    (remainingCents / 100).toFixed(2),
+  );
+
+  const customAmountCents = Math.round(parseFloat(customAmountStr || '0') * 100);
+  const isAmountValid = customAmountCents > 0 && customAmountCents <= remainingCents;
+  const amountError =
+    customAmountStr !== '' && !isAmountValid
+      ? customAmountCents <= 0
+        ? 'Amount must be greater than $0.00'
+        : `Cannot exceed ${remainingFormatted}`
+      : null;
 
   const handleChargeCard = useCallback(async () => {
     if (!invoiceId) return;
@@ -37,7 +54,7 @@ export default function PaymentModal() {
 
     setState('processing');
     try {
-      const result = await collectPayment(invoiceId);
+      const result = await collectPayment(invoiceId, customAmountCents);
       if (result.success) {
         setPaidAmount(result.amount);
         setState('success');
@@ -49,7 +66,7 @@ export default function PaymentModal() {
       const message = err instanceof Error ? err.message : 'Payment failed. Please try again.';
       Alert.alert('Payment Failed', message);
     }
-  }, [invoiceId, isConnected, collectPayment]);
+  }, [invoiceId, isConnected, collectPayment, customAmountCents]);
 
   if (state === 'success') {
     const paidFormatted = `$${(paidAmount / 100).toFixed(2)}`;
@@ -81,8 +98,21 @@ export default function PaymentModal() {
       </View>
 
       <View style={styles.amountSection}>
-        <Text style={styles.amountLabel}>Amount Due</Text>
-        <Text style={styles.amountValue}>{formattedTotal}</Text>
+        <Text style={styles.remainingLabel}>Remaining Balance: {remainingFormatted}</Text>
+        <Text style={styles.amountSubLabel}>Amount to Charge</Text>
+        <View style={styles.amountInputRow}>
+          <Text style={styles.dollarSign}>$</Text>
+          <TextInput
+            style={styles.amountInput}
+            value={customAmountStr}
+            onChangeText={setCustomAmountStr}
+            keyboardType="decimal-pad"
+            returnKeyType="done"
+            selectTextOnFocus
+            editable={state !== 'processing'}
+          />
+        </View>
+        {amountError ? <Text style={styles.amountError}>{amountError}</Text> : null}
       </View>
 
       <View style={styles.infoSection}>
@@ -94,9 +124,12 @@ export default function PaymentModal() {
 
       <View style={styles.buttonSection}>
         <TouchableOpacity
-          style={[styles.chargeButton, state === 'processing' && styles.chargeButtonDisabled]}
+          style={[
+            styles.chargeButton,
+            (state === 'processing' || !isAmountValid) && styles.chargeButtonDisabled,
+          ]}
           onPress={handleChargeCard}
-          disabled={state === 'processing'}
+          disabled={state === 'processing' || !isAmountValid}
         >
           {state === 'processing' ? (
             <ActivityIndicator color="#fff" />
@@ -134,20 +167,51 @@ const styles = StyleSheet.create({
   },
   amountSection: {
     alignItems: 'center',
-    paddingVertical: 48,
+    paddingVertical: 32,
+    paddingHorizontal: 24,
   },
-  amountLabel: {
+  remainingLabel: {
     fontSize: 14,
     color: '#6b7280',
+    textAlign: 'center',
     fontWeight: '500',
-    marginBottom: 8,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
+    marginBottom: 16,
   },
-  amountValue: {
-    fontSize: 48,
+  amountSubLabel: {
+    fontSize: 13,
+    color: '#374151',
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  amountInputRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: '#d1d5db',
+    borderRadius: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    backgroundColor: '#f9fafb',
+  },
+  dollarSign: {
+    fontSize: 32,
     fontWeight: '700',
-    color: '#111',
+    color: '#374151',
+    marginRight: 2,
+  },
+  amountInput: {
+    fontSize: 32,
+    fontWeight: '700',
+    color: '#111827',
+    minWidth: 80,
+    textAlign: 'left',
+  },
+  amountError: {
+    fontSize: 13,
+    color: '#dc2626',
+    textAlign: 'center',
+    marginTop: 6,
   },
   infoSection: {
     paddingHorizontal: 24,

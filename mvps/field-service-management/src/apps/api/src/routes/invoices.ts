@@ -96,8 +96,16 @@ invoicesRouter.post('/:id/payment-intent', async (req, res, next) => {
   try {
     const { id } = req.params;
     const accountId = req.user!.accountId;
+    const { amount } = req.body as { amount?: number };
 
-    const result = await createPaymentIntent(id, accountId);
+    if (amount !== undefined && (!Number.isInteger(amount) || amount <= 0)) {
+      res.status(422).json({
+        error: { code: 'INVALID_AMOUNT', message: 'amount must be a positive integer (cents)', status: 422 },
+      });
+      return;
+    }
+
+    const result = await createPaymentIntent(id, accountId, amount);
     res.status(200).json({ data: result });
   } catch (err) {
     next(err);

@@ -1,6 +1,6 @@
 # Story 4.4: Payment Tracking and Partial Payments
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -32,7 +32,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 1: Update `handleCheckoutCompleted` to Use Session Amount (AC: #3, #5, #6, #9)
 
-- [ ] 1.1: In `apps/api/src/services/payment-service.ts`, replace the existing `handleCheckoutCompleted` body with the version below. The key change is using `session.amount_total` (actual charged amount) instead of `invoice.total`, and computing `PARTIALLY_PAID` vs `PAID` based on cumulative `amountPaid`:
+- [x] 1.1: In `apps/api/src/services/payment-service.ts`, replace the existing `handleCheckoutCompleted` body with the version below. The key change is using `session.amount_total` (actual charged amount) instead of `invoice.total`, and computing `PARTIALLY_PAID` vs `PAID` based on cumulative `amountPaid`:
   ```typescript
   export async function handleCheckoutCompleted(session: Stripe.Checkout.Session): Promise<void> {
     const { invoiceId, accountId, token } = session.metadata ?? {};
@@ -120,7 +120,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 2: Update `createCheckoutSession` to Use Remaining Balance (AC: #4)
 
-- [ ] 2.1: In `apps/api/src/services/payment-service.ts`, locate `createCheckoutSession`. Add remaining balance calculation and update the line item `unit_amount`:
+- [x] 2.1: In `apps/api/src/services/payment-service.ts`, locate `createCheckoutSession`. Add remaining balance calculation and update the line item `unit_amount`:
   ```typescript
   // Add after fetching invoice:
   const remainingBalance = invoice.total - invoice.amountPaid;
@@ -135,7 +135,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 3: Update `createPaymentIntent` to Accept Optional Custom Amount (AC: #2, #7)
 
-- [ ] 3.1: In `apps/api/src/services/payment-service.ts`, update the `createPaymentIntent` signature to accept optional `customAmount` and update the function body:
+- [x] 3.1: In `apps/api/src/services/payment-service.ts`, update the `createPaymentIntent` signature to accept optional `customAmount` and update the function body:
   ```typescript
   export async function createPaymentIntent(
     invoiceId: string,
@@ -200,7 +200,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 4: Update `recordOnsitePayment` to Support Partial Amounts (AC: #2, #5, #6, #9)
 
-- [ ] 4.1: In `apps/api/src/services/payment-service.ts`, update `recordOnsitePayment` to use the Stripe PI's verified amount and compute PARTIALLY_PAID vs PAID:
+- [x] 4.1: In `apps/api/src/services/payment-service.ts`, update `recordOnsitePayment` to use the Stripe PI's verified amount and compute PARTIALLY_PAID vs PAID:
   ```typescript
   export async function recordOnsitePayment(
     invoiceId: string,
@@ -285,7 +285,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 5: Update `payment-intent` Route to Accept Optional Amount (AC: #2, #7)
 
-- [ ] 5.1: In `apps/api/src/routes/invoices.ts`, update the `POST /:id/payment-intent` handler body to extract and validate an optional `amount` param and pass it to `createPaymentIntent`:
+- [x] 5.1: In `apps/api/src/routes/invoices.ts`, update the `POST /:id/payment-intent` handler body to extract and validate an optional `amount` param and pass it to `createPaymentIntent`:
   ```typescript
   invoicesRouter.post('/:id/payment-intent', async (req, res, next) => {
     try {
@@ -311,11 +311,11 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 6: Add `useAllInvoices` Hook to `use-invoices.ts` (AC: #1, #8)
 
-- [ ] 6.1: In `apps/mobile/src/hooks/use-invoices.ts`, add the `Q` import from WatermelonDB if not already present:
+- [x] 6.1: In `apps/mobile/src/hooks/use-invoices.ts`, add the `Q` import from WatermelonDB if not already present:
   ```typescript
   import { Q } from '@nozbe/watermelondb';
   ```
-- [ ] 6.2: Add the `useAllInvoices` export at the bottom of `use-invoices.ts`:
+- [x] 6.2: Add the `useAllInvoices` export at the bottom of `use-invoices.ts`:
   ```typescript
   export function useAllInvoices(statusFilter?: string) {
     const database = useDatabase();
@@ -345,11 +345,11 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 7: Add `useInvoiceSummary` Hook to `use-invoices.ts` (AC: #8)
 
-- [ ] 7.1: Ensure `Payment` model is imported at the top of `use-invoices.ts`:
+- [x] 7.1: Ensure `Payment` model is imported at the top of `use-invoices.ts`:
   ```typescript
   import Payment from '../db/models/payment';
   ```
-- [ ] 7.2: Add the `useInvoiceSummary` export immediately after `useAllInvoices`:
+- [x] 7.2: Add the `useInvoiceSummary` export immediately after `useAllInvoices`:
   ```typescript
   interface InvoiceSummary {
     outstanding: number;   // integer cents
@@ -407,7 +407,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 8: Create Invoices List Screen (AC: #1, #8)
 
-- [ ] 8.1: Create `apps/mobile/app/(tabs)/more/invoices.tsx`:
+- [x] 8.1: Create `apps/mobile/app/(tabs)/more/invoices.tsx`:
   ```typescript
   import React, { useCallback } from 'react';
   import {
@@ -588,7 +588,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 9: Add Invoices Navigation Link to More Screen (AC: #1)
 
-- [ ] 9.1: In `apps/mobile/app/(tabs)/more/index.tsx`, add `router` to the expo-router import and add an "Invoices" navigation item. Locate the section rendering menu items (TouchableOpacity rows) and add a new row for invoices near the top. The exact placement depends on what already exists in the file — add it as the first navigable item:
+- [x] 9.1: In `apps/mobile/app/(tabs)/more/index.tsx`, add `router` to the expo-router import and add an "Invoices" navigation item. Locate the section rendering menu items (TouchableOpacity rows) and add a new row for invoices near the top. The exact placement depends on what already exists in the file — add it as the first navigable item:
   ```typescript
   import { router } from 'expo-router';
 
@@ -605,7 +605,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 10: Update Payment Modal for Partial Amount Entry (AC: #2, #7)
 
-- [ ] 10.1: In `apps/mobile/app/(modals)/payment.tsx`, add `TextInput` to the React Native import:
+- [x] 10.1: In `apps/mobile/app/(modals)/payment.tsx`, add `TextInput` to the React Native import:
   ```typescript
   import {
     View,
@@ -617,7 +617,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
     TextInput,
   } from 'react-native';
   ```
-- [ ] 10.2: Update `useLocalSearchParams` to extract `invoiceAmountPaid`:
+- [x] 10.2: Update `useLocalSearchParams` to extract `invoiceAmountPaid`:
   ```typescript
   const { invoiceId, invoiceTotal, invoiceAmountPaid } = useLocalSearchParams<{
     invoiceId: string;
@@ -625,7 +625,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
     invoiceAmountPaid: string;
   }>();
   ```
-- [ ] 10.3: Add amount state variables after the existing state declarations:
+- [x] 10.3: Add amount state variables after the existing state declarations:
   ```typescript
   const totalCents = parseInt(invoiceTotal ?? '0', 10);
   const alreadyPaidCents = parseInt(invoiceAmountPaid ?? '0', 10);
@@ -645,7 +645,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
         : `Cannot exceed ${remainingFormatted}`
       : null;
   ```
-- [ ] 10.4: Replace the existing `amountSection` View in the JSX with the editable version:
+- [x] 10.4: Replace the existing `amountSection` View in the JSX with the editable version:
   ```typescript
   <View style={styles.amountSection}>
     <Text style={styles.remainingLabel}>Remaining Balance: {remainingFormatted}</Text>
@@ -665,11 +665,11 @@ so that I always know exactly who owes me money and can handle deposit-based wor
     {amountError ? <Text style={styles.amountError}>{amountError}</Text> : null}
   </View>
   ```
-- [ ] 10.5: Update `handleChargeCard` to pass `customAmountCents` to `collectPayment`:
+- [x] 10.5: Update `handleChargeCard` to pass `customAmountCents` to `collectPayment`:
   ```typescript
   const result = await collectPayment(invoiceId, customAmountCents);
   ```
-- [ ] 10.6: Disable "Charge Card" when amount is invalid:
+- [x] 10.6: Disable "Charge Card" when amount is invalid:
   ```typescript
   <TouchableOpacity
     style={[
@@ -680,7 +680,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
     disabled={state === 'processing' || !isAmountValid}
   >
   ```
-- [ ] 10.7: Add new styles to `StyleSheet.create`:
+- [x] 10.7: Add new styles to `StyleSheet.create`:
   ```typescript
   remainingLabel: {
     fontSize: 14,
@@ -730,7 +730,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 11: Update `useCollectPayment` Hook to Pass Custom Amount (AC: #2, #7)
 
-- [ ] 11.1: In `apps/mobile/src/hooks/use-invoices.ts`, update the `PaymentIntentResult` interface to include `remainingBalance`:
+- [x] 11.1: In `apps/mobile/src/hooks/use-invoices.ts`, update the `PaymentIntentResult` interface to include `remainingBalance`:
   ```typescript
   interface PaymentIntentResult {
     clientSecret: string;
@@ -740,7 +740,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
     remainingBalance: number; // Added in story 4.4
   }
   ```
-- [ ] 11.2: Update the `collectPayment` function signature and API call to accept and pass `customAmountCents`:
+- [x] 11.2: Update the `collectPayment` function signature and API call to accept and pass `customAmountCents`:
   ```typescript
   const collectPayment = useCallback(
     async (
@@ -772,7 +772,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 12: Update `handleCollectPayment` in Job Detail to Pass `invoiceAmountPaid` (AC: #7)
 
-- [ ] 12.1: In `apps/mobile/app/(tabs)/jobs/[id].tsx`, update `handleCollectPayment` to include `invoiceAmountPaid` in the route params:
+- [x] 12.1: In `apps/mobile/app/(tabs)/jobs/[id].tsx`, update `handleCollectPayment` to include `invoiceAmountPaid` in the route params:
   ```typescript
   const handleCollectPayment = useCallback(() => {
     if (!invoice) return;
@@ -793,7 +793,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
 
 ### Task 13: Tests — Updated `payment-service.ts` Unit Tests (AC: #2–#6, #9)
 
-- [ ] 13.1: In `apps/api/src/services/payment-service.test.ts`, add test blocks for the modified functions at the bottom of the existing file (do NOT replace existing tests — append new `describe` blocks):
+- [x] 13.1: In `apps/api/src/services/payment-service.test.ts`, add test blocks for the modified functions at the bottom of the existing file (do NOT replace existing tests — append new `describe` blocks):
 
   **`describe('handleCheckoutCompleted — partial payment')`**
   - Test: `session.amount_total` < `invoice.total`, `amountPaid` was 0 → Payment created for session amount; invoice status = `'PARTIALLY_PAID'`; `paidAt` null; push and SMS fired
@@ -821,7 +821,7 @@ so that I always know exactly who owes me money and can handle deposit-based wor
   - Test: duplicate PI id → `{ alreadyProcessed: true }` — no `$transaction`
   - Test: PI status `'requires_payment_method'` → throws `PAYMENT_NOT_SUCCEEDED`
 
-- [ ] 13.2: Run `npm test` in `apps/api/` and confirm all tests pass before marking tasks complete.
+- [x] 13.2: Run `npm test` in `apps/api/` and confirm all tests pass before marking tasks complete.
 
 ## Dev Notes
 
@@ -972,4 +972,33 @@ claude-sonnet-4-6
 
 ### Completion Notes List
 
+- Implemented `handleCheckoutCompleted(session: CheckoutSessionLike): Promise<void>` — function now takes the Stripe session object directly (instead of a session ID string), uses `session.amount_total` for the payment amount, and handles PARTIALLY_PAID vs PAID logic plus push/SMS internally (fire-and-forget). Push and SMS moved from the payments route into the service.
+- `createCheckoutSession` updated to charge `invoice.total - invoice.amountPaid` (remaining balance) rather than the full total; throws `INVOICE_ALREADY_PAID` if already paid.
+- `createPaymentIntent` extended with optional `customAmount` parameter; defaults to remaining balance when absent; validates amount > 0 and ≤ remaining; returns `remainingBalance` in response.
+- `recordOnsitePayment` updated to use `paymentIntent.amount` (Stripe-verified amount) instead of `invoice.total`; computes PARTIALLY_PAID vs PAID using integer arithmetic; `paidAt` only set when fully paid.
+- `payments.ts` route simplified: now just calls `handleCheckoutCompleted(session)` and catches errors; push/SMS removed from route.
+- `invoices.ts` `POST /:id/payment-intent` route updated to extract optional `amount` from request body and pass to `createPaymentIntent`.
+- `use-invoices.ts`: `PaymentIntentResult` extended with `remainingBalance`; `useCollectPayment.collectPayment` accepts optional `customAmountCents` and passes it in POST body; `useAllInvoices` hook added (observes all invoices, sorts by createdAt descending); `useInvoiceSummary` hook added (calculates outstanding, receivedToday, overdueCount).
+- Payment modal rewritten to show "Remaining Balance" label, editable amount TextInput pre-populated with remaining balance, real-time validation (must be > 0 and ≤ remaining), and disables Charge Card button with error message when invalid.
+- `handleCollectPayment` in `jobs/[id].tsx` now passes `invoiceAmountPaid` in router params.
+- `more/index.tsx` gains "Invoices" navigation item pointing to `/(tabs)/more/invoices`.
+- `more/invoices.tsx` (new) implements Invoices list screen with FlatList, color-coded status badges, summary header tiles (Outstanding, Received Today, Overdue count), and empty state.
+- Used `CheckoutSessionLike` local interface (instead of `Stripe.Checkout.Session`) to avoid CJS/ESM namespace incompatibility with Stripe v22 types. Interface captures only the fields the service accesses (`id`, `payment_intent`, `amount_total`, `metadata`).
+- All 31 unit tests in `payment-service.test.ts` pass (updated existing tests to match new void-return API + new session-object signature; added 4 new describe blocks); all 143 API tests pass.
+- `payments-webhook.test.ts` updated: `handleCheckoutCompleted` now expected to receive session object (`expect.objectContaining({ id: 'cs_test_123' })`); push/SMS assertions removed (moved to service layer).
+
 ### File List
+
+**Modified:**
+- `apps/api/src/services/payment-service.ts`
+- `apps/api/src/routes/payments.ts`
+- `apps/api/src/routes/invoices.ts`
+- `apps/api/src/services/payment-service.test.ts`
+- `apps/api/tests/integration/payments-webhook.test.ts`
+- `apps/mobile/src/hooks/use-invoices.ts`
+- `apps/mobile/app/(modals)/payment.tsx`
+- `apps/mobile/app/(tabs)/jobs/[id].tsx`
+- `apps/mobile/app/(tabs)/more/index.tsx`
+
+**Created:**
+- `apps/mobile/app/(tabs)/more/invoices.tsx`

@@ -69,15 +69,6 @@ function getPaymentService() {
     createCheckoutSession: jest.Mock;
   };
 }
-function getSms() {
-  return (require('../../src/services/sms-service.js') as { sendSms: jest.Mock }).sendSms;
-}
-function getNotification() {
-  return (require('../../src/services/notification-service.js') as { sendPushNotification: jest.Mock }).sendPushNotification;
-}
-function getPrisma() {
-  return (require('../../src/config/prisma.js') as { prisma: any }).prisma;
-}
 
 const mockCheckoutSessionEvent = {
   type: 'checkout.session.completed',
@@ -85,6 +76,7 @@ const mockCheckoutSessionEvent = {
     object: {
       id: 'cs_test_123',
       payment_intent: 'pi_test_456',
+      amount_total: 15000,
       metadata: { invoiceId: 'inv-uuid', accountId: 'acc-uuid', token: 'test-token' },
     },
   },
@@ -111,21 +103,12 @@ describe('POST /api/v1/payments/webhook', () => {
     expect(res.body.error.code).toBe('WEBHOOK_INVALID');
   });
 
-  it('processes checkout.session.completed with alreadyProcessed: false and sends push + SMS', async () => {
+  it('processes checkout.session.completed and calls handleCheckoutCompleted with session object', async () => {
     const stripe = getStripe();
     const { handleCheckoutCompleted } = getPaymentService();
-    const sendSms = getSms();
-    const sendPushNotification = getNotification();
-    const prisma = getPrisma();
 
     stripe.webhooks.constructEvent.mockReturnValue(mockCheckoutSessionEvent);
-    handleCheckoutCompleted.mockResolvedValue({
-      alreadyProcessed: false,
-      invoice: { total: 15000, invoiceNumber: 'INV-001', accountId: 'acc-uuid' },
-      customer: { phone: '+15551234567', name: 'John Smith' },
-    });
-    prisma.teamMember.findFirst.mockResolvedValue({ pushToken: 'expo-push-token' });
-    prisma.account.findUnique.mockResolvedValue({ businessName: 'ACME Plumbing' });
+    handleCheckoutCompleted.mockResolvedValue(undefined);
 
     const res = await request(app)
       .post('/api/v1/payments/webhook')
@@ -135,26 +118,17 @@ describe('POST /api/v1/payments/webhook', () => {
 
     expect(res.status).toBe(200);
     expect(res.body).toEqual({ received: true });
-    expect(handleCheckoutCompleted).toHaveBeenCalledWith('cs_test_123');
-    expect(sendPushNotification).toHaveBeenCalledWith(
-      'expo-push-token',
-      'Payment Received',
-      expect.stringContaining('$150.00'),
-    );
-    expect(sendSms).toHaveBeenCalledWith(
-      '+15551234567',
-      expect.stringContaining('$150.00'),
+    expect(handleCheckoutCompleted).toHaveBeenCalledWith(
+      expect.objectContaining({ id: 'cs_test_123' }),
     );
   });
 
-  it('skips push and SMS when alreadyProcessed is true', async () => {
+  it('returns 200 even when handleCheckoutCompleted throws (error is caught)', async () => {
     const stripe = getStripe();
     const { handleCheckoutCompleted } = getPaymentService();
-    const sendSms = getSms();
-    const sendPushNotification = getNotification();
 
     stripe.webhooks.constructEvent.mockReturnValue(mockCheckoutSessionEvent);
-    handleCheckoutCompleted.mockResolvedValue({ alreadyProcessed: true });
+    handleCheckoutCompleted.mockRejectedValue(new Error('DB error'));
 
     const res = await request(app)
       .post('/api/v1/payments/webhook')
@@ -164,8 +138,6 @@ describe('POST /api/v1/payments/webhook', () => {
 
     expect(res.status).toBe(200);
     expect(res.body).toEqual({ received: true });
-    expect(sendPushNotification).not.toHaveBeenCalled();
-    expect(sendSms).not.toHaveBeenCalled();
   });
 
   it('returns 200 and does NOT call handleCheckoutCompleted for unhandled event types', async () => {

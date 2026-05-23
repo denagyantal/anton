@@ -1,21 +1,23 @@
 import { stripe } from '../config/stripe.js';
 import { prisma } from '../config/prisma.js';
 import { AppError } from '../utils/error.js';
+import { sendPushNotification } from './notification-service.js';
+import { sendSms } from './sms-service.js';
 
 export async function createPaymentIntent(
   invoiceId: string,
   accountId: string,
+  customAmount?: number,
 ): Promise<{
   clientSecret: string;
   paymentIntentId: string;
   amount: number;
   merchantDisplayName: string;
+  remainingBalance: number;
 }> {
   const invoice = await prisma.invoice.findFirst({
     where: { id: invoiceId, accountId },
-    include: {
-      account: { select: { businessName: true } },
-    },
+    include: { account: { select: { businessName: true } } },
   });
   if (!invoice) throw new AppError('INVOICE_NOT_FOUND', 'Invoice not found', 404);
   if (invoice.status === 'PAID') {
@@ -25,14 +27,28 @@ export async function createPaymentIntent(
     throw new AppError('INVOICE_ZERO_AMOUNT', 'Invoice total must be greater than zero', 422);
   }
 
+  const remainingBalance = invoice.total - invoice.amountPaid;
+  if (remainingBalance <= 0) {
+    throw new AppError('INVOICE_ALREADY_PAID', 'Invoice has already been paid in full', 422);
+  }
+
+  const chargeAmount = customAmount ?? remainingBalance;
+  if (chargeAmount <= 0) {
+    throw new AppError('INVALID_AMOUNT', 'Payment amount must be greater than zero', 422);
+  }
+  if (chargeAmount > remainingBalance) {
+    throw new AppError(
+      'AMOUNT_EXCEEDS_BALANCE',
+      `Payment amount ${chargeAmount} exceeds remaining balance of ${remainingBalance} cents`,
+      422,
+    );
+  }
+
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: invoice.total,
+    amount: chargeAmount,
     currency: 'usd',
     payment_method_types: ['card'],
-    metadata: {
-      invoiceId: invoice.id,
-      accountId,
-    },
+    metadata: { invoiceId: invoice.id, accountId },
   });
 
   if (!paymentIntent.client_secret) {
@@ -44,6 +60,7 @@ export async function createPaymentIntent(
     paymentIntentId: paymentIntent.id,
     amount: paymentIntent.amount,
     merchantDisplayName: invoice.account.businessName ?? 'Your service provider',
+    remainingBalance,
   };
 }
 
@@ -83,13 +100,19 @@ export async function recordOnsitePayment(
   });
   if (!invoice) throw new AppError('INVOICE_NOT_FOUND', 'Invoice not found', 404);
 
-  const paidAt = new Date();
+  // Use actual PI amount — supports partial payments
+  const paymentAmount = paymentIntent.amount;
+  const newAmountPaid = invoice.amountPaid + paymentAmount;
+  const isFullyPaid = newAmountPaid >= invoice.total;
+  const newStatus = isFullyPaid ? 'PAID' : 'PARTIALLY_PAID';
+  const paidAt = isFullyPaid ? new Date() : null;
+
   const [payment] = await prisma.$transaction([
     prisma.payment.create({
       data: {
         accountId,
         invoiceId,
-        amount: invoice.total,
+        amount: paymentAmount,
         stripePaymentId: paymentIntentId,
         paymentMethod: 'CARD_ON_SITE',
         status: 'SUCCEEDED',
@@ -98,9 +121,9 @@ export async function recordOnsitePayment(
     prisma.invoice.update({
       where: { id: invoiceId },
       data: {
-        status: 'PAID',
-        amountPaid: invoice.total,
-        paidAt,
+        amountPaid: newAmountPaid,
+        status: newStatus,
+        ...(isFullyPaid && { paidAt }),
       },
     }),
   ]);
@@ -109,8 +132,8 @@ export async function recordOnsitePayment(
     alreadyProcessed: false,
     payment: { id: payment.id, amount: payment.amount },
     invoice: {
-      status: 'PAID',
-      amountPaid: invoice.total,
+      status: newStatus,
+      amountPaid: newAmountPaid,
       paidAt,
       invoiceNumber: invoice.invoiceNumber,
       accountId,
@@ -132,6 +155,11 @@ export async function createCheckoutSession(
   });
   if (!invoice) throw new AppError('INVOICE_NOT_FOUND', 'Invoice not found', 404);
 
+  const remainingBalance = invoice.total - invoice.amountPaid;
+  if (remainingBalance <= 0) {
+    throw new AppError('INVOICE_ALREADY_PAID', 'Invoice has already been paid in full', 422);
+  }
+
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     line_items: [
@@ -142,7 +170,7 @@ export async function createCheckoutSession(
             name: `Invoice ${invoice.invoiceNumber ?? invoice.id}`,
             description: `From ${invoice.account.businessName ?? 'Your service provider'}`,
           },
-          unit_amount: invoice.total,
+          unit_amount: remainingBalance,
         },
         quantity: 1,
       },
@@ -163,48 +191,92 @@ export async function createCheckoutSession(
   return session.url;
 }
 
-export async function handleCheckoutCompleted(sessionId: string): Promise<{
-  alreadyProcessed: boolean;
-  invoice?: { total: number; invoiceNumber: string | null; accountId: string };
-  customer?: { phone: string; name: string };
-}> {
-  const session = await stripe.checkout.sessions.retrieve(sessionId);
+interface CheckoutSessionLike {
+  id: string;
+  payment_intent?: unknown;
+  amount_total?: number | null;
+  metadata?: Record<string, string> | null;
+}
 
-  const stripePaymentId =
-    typeof session.payment_intent === 'string' ? session.payment_intent : session.id;
+export async function handleCheckoutCompleted(session: CheckoutSessionLike): Promise<void> {
+  const { invoiceId, accountId, token } = session.metadata ?? {};
+  if (!invoiceId || !accountId || !token) {
+    console.error('[webhook] Missing metadata on session:', session.id);
+    return;
+  }
 
-  const { invoiceId, accountId } = session.metadata ?? {};
-  if (!invoiceId || !accountId) return { alreadyProcessed: true };
-
-  const existing = await prisma.payment.findFirst({ where: { stripePaymentId } });
-  if (existing) return { alreadyProcessed: true };
+  // Idempotency — already processed this session
+  const existingPayment = await prisma.payment.findFirst({
+    where: { stripePaymentId: session.payment_intent as string },
+  });
+  if (existingPayment) return;
 
   const invoice = await prisma.invoice.findFirst({
-    where: { id: invoiceId, accountId },
-    include: { customer: { select: { name: true, phone: true } } },
+    where: { id: invoiceId, accountId, paymentToken: token },
+    include: { customer: { select: { phone: true, name: true } } },
   });
-  if (!invoice) return { alreadyProcessed: true };
+  if (!invoice) {
+    console.error('[webhook] Invoice not found for session:', session.id, 'invoiceId:', invoiceId);
+    return;
+  }
+
+  // Use actual session amount — supports partial payments
+  const paymentAmount = session.amount_total ?? invoice.total;
+  const newAmountPaid = invoice.amountPaid + paymentAmount;
+  const isFullyPaid = newAmountPaid >= invoice.total;
+  const newStatus = isFullyPaid ? 'PAID' : 'PARTIALLY_PAID';
+  const paidAt = isFullyPaid ? new Date() : null;
 
   await prisma.$transaction([
     prisma.payment.create({
       data: {
         accountId,
         invoiceId,
-        amount: invoice.total,
-        stripePaymentId,
+        amount: paymentAmount,
+        stripePaymentId: session.payment_intent as string,
         paymentMethod: 'CARD_VIA_LINK',
         status: 'SUCCEEDED',
       },
     }),
     prisma.invoice.update({
       where: { id: invoiceId },
-      data: { status: 'PAID', amountPaid: invoice.total, paidAt: new Date() },
+      data: {
+        amountPaid: newAmountPaid,
+        status: newStatus,
+        ...(isFullyPaid && { paidAt }),
+      },
     }),
   ]);
 
-  return {
-    alreadyProcessed: false,
-    invoice: { total: invoice.total, invoiceNumber: invoice.invoiceNumber, accountId },
-    customer: { phone: invoice.customer.phone, name: invoice.customer.name },
-  };
+  // Push notification — fires for both PAID and PARTIALLY_PAID (fire and forget)
+  const formattedAmount = `$${(paymentAmount / 100).toFixed(2)}`;
+  const invoiceLabel = invoice.invoiceNumber ?? 'invoice';
+  try {
+    const owner = await prisma.teamMember.findFirst({
+      where: { accountId, role: 'OWNER' },
+      select: { pushToken: true },
+    });
+    await sendPushNotification(
+      owner?.pushToken,
+      'Payment Received',
+      `${formattedAmount} received for ${invoiceLabel}`,
+    );
+  } catch (err) {
+    console.error('[webhook] push notification error:', err);
+  }
+
+  // SMS confirmation (fire and forget)
+  try {
+    const account = await prisma.account.findUnique({
+      where: { id: accountId },
+      select: { businessName: true },
+    });
+    const businessName = account?.businessName ?? 'Your service provider';
+    await sendSms(
+      invoice.customer.phone,
+      `${businessName} received your payment of ${formattedAmount} for ${invoiceLabel}. Thank you!`,
+    );
+  } catch (err) {
+    console.error('[webhook] SMS error:', err);
+  }
 }

@@ -64,6 +64,14 @@ export default function MoreScreen() {
 
       <TouchableOpacity
         style={styles.row}
+        onPress={() => router.push('/(tabs)/more/invoices')}
+      >
+        <Text style={styles.rowText}>Invoices</Text>
+        <Text style={styles.rowArrow}>›</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.row}
         onPress={() => router.push('/(tabs)/more/quotes')}
       >
         <Text style={styles.rowText}>Quotes</Text>
