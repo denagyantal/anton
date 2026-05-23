@@ -67,7 +67,7 @@ development_status:
   # Epic 4: Invoicing & Payments
   epic-4: in-progress
   4-1-invoice-generation-from-completed-jobs: done
-  4-2-invoice-sms-delivery-and-payment-links: backlog
+  4-2-invoice-sms-delivery-and-payment-links: ready-for-dev
   4-3-on-site-card-payment-processing: backlog
   4-4-payment-tracking-and-partial-payments: backlog
   epic-4-retrospective: optional
