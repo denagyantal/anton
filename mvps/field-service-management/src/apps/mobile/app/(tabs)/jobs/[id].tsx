@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef, useEffect, useContext } from 'react';
 import {
   View,
   Text,
@@ -13,10 +13,11 @@ import {
   Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useLocalSearchParams, Stack } from 'expo-router';
+import { useLocalSearchParams, Stack, router } from 'expo-router';
 import * as FileSystem from 'expo-file-system';
 import { useJob, useTransitionJobStatus, useUpdateJobNotes } from '../../../src/hooks/use-jobs';
-import { useJobInvoice, useGenerateInvoice, useSendInvoice } from '../../../src/hooks/use-invoices';
+import { useJobInvoice, useGenerateInvoice, useSendInvoice, useCollectPayment } from '../../../src/hooks/use-invoices';
+import { NetworkContext } from '../../../src/contexts/network-context';
 import { useCustomers } from '../../../src/hooks/use-customers';
 import {
   useJobPhotos,
@@ -62,6 +63,7 @@ export default function JobDetailScreen() {
   const { invoice } = useJobInvoice(id ?? '');
   const { generateInvoice, isLoading: isGenerating } = useGenerateInvoice();
   const { sendInvoice, isSending } = useSendInvoice();
+  const { isConnected } = useContext(NetworkContext);
 
   const [localNotes, setLocalNotes] = useState('');
   const [signatureVisible, setSignatureVisible] = useState(false);
@@ -139,6 +141,21 @@ export default function JobDetailScreen() {
     }
   }, [invoice, sendInvoice]);
 
+  const handleCollectPayment = useCallback(() => {
+    if (!invoice) return;
+    if (!isConnected) {
+      Alert.alert('Collect Payment', 'An internet connection is required to process card payments.');
+      return;
+    }
+    router.push({
+      pathname: '/(modals)/payment',
+      params: {
+        invoiceId: invoice.id,
+        invoiceTotal: String(invoice.total),
+      },
+    });
+  }, [invoice, isConnected]);
+
   function renderActionButton() {
     if (!job) return null;
     if (job.status === 'QUOTED' || job.status === 'SCHEDULED') {
@@ -163,34 +180,40 @@ export default function JobDetailScreen() {
     }
     if (job.status === 'COMPLETE' || job.status === 'INVOICED') {
       if (invoice) {
-        if (invoice.status === 'DRAFT') {
-          return (
-            <View>
-              <View style={styles.invoicedBadge}>
-                <Text style={styles.invoicedText}>
-                  {invoice.invoiceNumber ?? 'Invoice'} — ${(invoice.total / 100).toFixed(2)}
-                </Text>
-              </View>
+        const isPaid = invoice.status === 'PAID';
+        const statusLabel =
+          invoice.status === 'PAID' ? ' · PAID' :
+          invoice.status === 'SENT' ? ' · SENT' :
+          invoice.status === 'VIEWED' ? ' · VIEWED' :
+          invoice.status === 'PARTIALLY_PAID' ? ' · PARTIAL' :
+          invoice.status === 'OVERDUE' ? ' · OVERDUE' : '';
+
+        return (
+          <View>
+            {invoice.status === 'DRAFT' ? (
               <TouchableOpacity
                 style={[styles.actionButton, styles.sendInvoiceButton]}
                 onPress={handleSendInvoice}
                 disabled={isSending}
               >
-                {isSending ? (
-                  <ActivityIndicator color="#fff" />
-                ) : (
-                  <Text style={styles.sendInvoiceButtonText}>Send Invoice</Text>
-                )}
+                {isSending
+                  ? <ActivityIndicator color="#fff" />
+                  : <Text style={styles.sendInvoiceButtonText}>Send Invoice</Text>}
               </TouchableOpacity>
+            ) : null}
+            <View style={[styles.invoicedBadge, isPaid && styles.invoicedBadgePaid]}>
+              <Text style={[styles.invoicedText, isPaid && styles.invoicedTextPaid]}>
+                {invoice.invoiceNumber ?? 'Invoice'} — ${(invoice.total / 100).toFixed(2)}{statusLabel}
+              </Text>
             </View>
-          );
-        }
-        return (
-          <View style={styles.invoicedBadge}>
-            <Text style={styles.invoicedText}>
-              {invoice.invoiceNumber ?? 'Invoice'} — ${(invoice.total / 100).toFixed(2)}
-              {invoice.status === 'PAID' ? ' · PAID' : invoice.status === 'SENT' ? ' · SENT' : ''}
-            </Text>
+            {!isPaid ? (
+              <TouchableOpacity
+                style={[styles.actionButton, styles.collectPaymentButton]}
+                onPress={handleCollectPayment}
+              >
+                <Text style={styles.collectPaymentButtonText}>Collect Payment</Text>
+              </TouchableOpacity>
+            ) : null}
           </View>
         );
       }
@@ -470,6 +493,21 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: '600',
+  },
+  collectPaymentButton: {
+    backgroundColor: '#16A34A',
+    marginTop: 8,
+  },
+  collectPaymentButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  invoicedBadgePaid: {
+    backgroundColor: '#DCFCE7',
+  },
+  invoicedTextPaid: {
+    color: '#15803D',
   },
   bottomPadding: {
     height: 32,

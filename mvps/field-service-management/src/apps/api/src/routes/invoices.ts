@@ -6,6 +6,8 @@ import { uploadFile } from '../services/storage-service.js';
 import { prisma } from '../config/prisma.js';
 import { sendSms } from '../services/sms-service.js';
 import { generateToken } from '../utils/signed-url.js';
+import { createPaymentIntent, recordOnsitePayment } from '../services/payment-service.js';
+import { sendPushNotification } from '../services/notification-service.js';
 
 export const invoicesRouter = express.Router();
 invoicesRouter.use(authMiddleware);
@@ -83,6 +85,82 @@ invoicesRouter.post('/:id/send', async (req, res, next) => {
         status: 'SENT',
         sentAt: sentAt.toISOString(),
         paymentToken,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+invoicesRouter.post('/:id/payment-intent', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const accountId = req.user!.accountId;
+
+    const result = await createPaymentIntent(id, accountId);
+    res.status(200).json({ data: result });
+  } catch (err) {
+    next(err);
+  }
+});
+
+invoicesRouter.post('/:id/record-onsite-payment', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const accountId = req.user!.accountId;
+    const { paymentIntentId } = req.body as { paymentIntentId: string };
+
+    if (!paymentIntentId) {
+      res.status(422).json({
+        error: { code: 'MISSING_PAYMENT_INTENT_ID', message: 'paymentIntentId is required', status: 422 },
+      });
+      return;
+    }
+
+    const result = await recordOnsitePayment(id, accountId, paymentIntentId);
+
+    if (!result.alreadyProcessed && result.payment && result.invoice && result.customer) {
+      const { payment, invoice, customer } = result;
+      const formattedAmount = `$${(payment.amount / 100).toFixed(2)}`;
+      const invoiceLabel = invoice.invoiceNumber ?? 'invoice';
+
+      try {
+        const owner = await prisma.teamMember.findFirst({
+          where: { accountId: invoice.accountId, role: 'OWNER' },
+          select: { pushToken: true },
+        });
+        await sendPushNotification(
+          owner?.pushToken,
+          'Payment Received',
+          `${formattedAmount} received for ${invoiceLabel}`,
+        );
+      } catch (notifErr) {
+        console.error('[record-onsite-payment] push notification error:', notifErr);
+      }
+
+      try {
+        const account = await prisma.account.findUnique({
+          where: { id: invoice.accountId },
+          select: { businessName: true },
+        });
+        const businessName = account?.businessName ?? 'Your service provider';
+        await sendSms(
+          customer.phone,
+          `${businessName} received your payment of ${formattedAmount} for ${invoiceLabel}. Thank you!`,
+        );
+      } catch (smsErr) {
+        console.error('[record-onsite-payment] SMS error:', smsErr);
+      }
+    }
+
+    res.status(200).json({
+      data: {
+        alreadyProcessed: result.alreadyProcessed,
+        paymentId: result.payment?.id ?? null,
+        amount: result.payment?.amount ?? null,
+        invoiceStatus: result.invoice?.status ?? null,
+        invoiceAmountPaid: result.invoice?.amountPaid ?? null,
+        invoicePaidAt: result.invoice?.paidAt?.toISOString() ?? null,
       },
     });
   } catch (err) {

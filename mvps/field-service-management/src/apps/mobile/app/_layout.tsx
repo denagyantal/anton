@@ -1,5 +1,6 @@
 import { Stack, Redirect } from 'expo-router';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { StripeProvider } from '@stripe/stripe-react-native';
 import { DatabaseProvider } from '../src/contexts/database-context';
 import { AuthProvider, useAuth } from '../src/contexts/auth-context';
 
@@ -37,17 +38,23 @@ function AuthGate() {
         name="(modals)/create-quote"
         options={{ presentation: 'modal', headerShown: false }}
       />
+      <Stack.Screen
+        name="(modals)/payment"
+        options={{ presentation: 'modal', headerShown: false }}
+      />
     </Stack>
   );
 }
 
 export default function RootLayout() {
   return (
-    <AuthProvider>
-      <DatabaseProvider>
-        <AuthGate />
-      </DatabaseProvider>
-    </AuthProvider>
+    <StripeProvider publishableKey={process.env['EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY'] ?? ''}>
+      <AuthProvider>
+        <DatabaseProvider>
+          <AuthGate />
+        </DatabaseProvider>
+      </AuthProvider>
+    </StripeProvider>
   );
 }
 

@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback, useContext } from 'react';
 import { Q } from '@nozbe/watermelondb';
+import { useStripe } from '@stripe/stripe-react-native';
 import { database } from '../db';
 import Invoice from '../db/models/invoice';
+import Payment from '../db/models/payment';
 import type { Invoice as InvoiceType } from '@field-service/shared';
 import { apiClient } from '../services/api-client';
 import { NetworkContext } from '../contexts/network-context';
@@ -134,4 +136,98 @@ export function useSendInvoice() {
   );
 
   return { sendInvoice, isSending };
+}
+
+interface PaymentIntentResult {
+  clientSecret: string;
+  paymentIntentId: string;
+  amount: number;
+  merchantDisplayName: string;
+}
+
+interface RecordOnsiteResult {
+  alreadyProcessed: boolean;
+  paymentId: string | null;
+  amount: number | null;
+  invoiceStatus: string | null;
+  invoiceAmountPaid: number | null;
+  invoicePaidAt: string | null;
+}
+
+export function useCollectPayment() {
+  const [isLoading, setIsLoading] = useState(false);
+  const { isConnected } = useContext(NetworkContext);
+  const { initPaymentSheet, presentPaymentSheet } = useStripe();
+
+  const collectPayment = useCallback(
+    async (invoiceId: string): Promise<{ success: boolean; amount: number }> => {
+      if (!isConnected) {
+        throw new Error('An internet connection is required to process card payments.');
+      }
+
+      setIsLoading(true);
+      try {
+        const piResult = await apiClient.post<PaymentIntentResult>(
+          `/api/v1/invoices/${invoiceId}/payment-intent`,
+        );
+
+        const { error: initError } = await initPaymentSheet({
+          paymentIntentClientSecret: piResult.clientSecret,
+          merchantDisplayName: piResult.merchantDisplayName,
+          style: 'automatic',
+        });
+        if (initError) {
+          throw new Error(initError.message);
+        }
+
+        const { error: presentError } = await presentPaymentSheet();
+        if (presentError) {
+          if (presentError.code === 'Canceled') {
+            return { success: false, amount: 0 };
+          }
+          throw new Error(presentError.message);
+        }
+
+        const recordResult = await apiClient.post<RecordOnsiteResult>(
+          `/api/v1/invoices/${invoiceId}/record-onsite-payment`,
+          { paymentIntentId: piResult.paymentIntentId },
+        );
+
+        if (!recordResult.alreadyProcessed && recordResult.paymentId && recordResult.invoiceStatus) {
+          await database.write(async () => {
+            const invoices = await database
+              .get<Invoice>('invoices')
+              .query(Q.where('id', invoiceId))
+              .fetch();
+            if (invoices[0]) {
+              await invoices[0].update((record) => {
+                record.status = recordResult.invoiceStatus!;
+                record.amountPaid = recordResult.invoiceAmountPaid ?? invoices[0].amountPaid;
+                if (recordResult.invoicePaidAt) {
+                  record.paidAt = Date.parse(recordResult.invoicePaidAt);
+                }
+              });
+            }
+
+            const accountId = invoices[0]?.accountId ?? '';
+            await database.get<Payment>('payments').create((record) => {
+              record._raw.id = recordResult.paymentId!;
+              record.accountId = accountId;
+              record.invoiceId = invoiceId;
+              record.amount = recordResult.amount ?? piResult.amount;
+              record.paymentMethod = 'CARD_ON_SITE';
+              record.status = 'SUCCEEDED';
+            });
+          });
+        }
+
+        return { success: true, amount: recordResult.amount ?? piResult.amount };
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [isConnected, initPaymentSheet, presentPaymentSheet],
+  );
+
+  return { collectPayment, isLoading };
 }

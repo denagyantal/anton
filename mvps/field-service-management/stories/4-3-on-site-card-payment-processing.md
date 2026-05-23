@@ -1,6 +1,6 @@
 # Story 4.3: On-Site Card Payment Processing
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -42,20 +42,20 @@ so that I can get paid immediately without relying on the customer to pay the SM
 
 ### Task 1: Install `@stripe/stripe-react-native` (AC: #4, #5)
 
-- [ ] 1.1: In `apps/mobile/`, run `npx expo install @stripe/stripe-react-native`
-- [ ] 1.2: Verify `@stripe/stripe-react-native` appears in `apps/mobile/package.json` dependencies
-- [ ] 1.3: Add to `apps/mobile/.env.example`:
+- [x] 1.1: In `apps/mobile/`, run `npx expo install @stripe/stripe-react-native`
+- [x] 1.2: Verify `@stripe/stripe-react-native` appears in `apps/mobile/package.json` dependencies
+- [x] 1.3: Add to `apps/mobile/.env.example`:
   ```
   EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
   ```
 
 ### Task 2: Add `StripeProvider` to Root Layout (AC: #5)
 
-- [ ] 2.1: In `apps/mobile/app/_layout.tsx`, add import at the top:
+- [x] 2.1: In `apps/mobile/app/_layout.tsx`, add import at the top:
   ```typescript
   import { StripeProvider } from '@stripe/stripe-react-native';
   ```
-- [ ] 2.2: Wrap the existing `<AuthProvider>` tree with `<StripeProvider>`:
+- [x] 2.2: Wrap the existing `<AuthProvider>` tree with `<StripeProvider>`:
   ```typescript
   export default function RootLayout() {
     return (
@@ -73,7 +73,7 @@ so that I can get paid immediately without relying on the customer to pay the SM
 
 ### Task 3: Register `(modals)/payment` Route in `_layout.tsx` (AC: #2)
 
-- [ ] 3.1: In `apps/mobile/app/_layout.tsx`, inside `AuthGate`'s authenticated `<Stack>`, add the payment modal Screen after the existing `create-quote` modal Screen:
+- [x] 3.1: In `apps/mobile/app/_layout.tsx`, inside `AuthGate`'s authenticated `<Stack>`, add the payment modal Screen after the existing `create-quote` modal Screen:
   ```typescript
   <Stack.Screen
     name="(modals)/payment"
@@ -99,7 +99,7 @@ so that I can get paid immediately without relying on the customer to pay the SM
 
 ### Task 4: API — Add `createPaymentIntent` to `payment-service.ts` (AC: #4, #14)
 
-- [ ] 4.1: In `apps/api/src/services/payment-service.ts`, add after `handleCheckoutCompleted`:
+- [x] 4.1: In `apps/api/src/services/payment-service.ts`, add after `handleCheckoutCompleted`:
   ```typescript
   export async function createPaymentIntent(
     invoiceId: string,
@@ -149,7 +149,7 @@ so that I can get paid immediately without relying on the customer to pay the SM
 
 ### Task 5: API — Add `recordOnsitePayment` to `payment-service.ts` (AC: #7, #8, #14)
 
-- [ ] 5.1: In `apps/api/src/services/payment-service.ts`, add after `createPaymentIntent`:
+- [x] 5.1: In `apps/api/src/services/payment-service.ts`, add after `createPaymentIntent`:
   ```typescript
   export async function recordOnsitePayment(
     invoiceId: string,
@@ -228,11 +228,11 @@ so that I can get paid immediately without relying on the customer to pay the SM
 
 ### Task 6: API — Add `payment-intent` Endpoint to `invoices.ts` (AC: #4)
 
-- [ ] 6.1: In `apps/api/src/routes/invoices.ts`, add import at the top:
+- [x] 6.1: In `apps/api/src/routes/invoices.ts`, add import at the top:
   ```typescript
   import { createPaymentIntent, recordOnsitePayment } from '../services/payment-service.js';
   ```
-- [ ] 6.2: Add `POST /:id/payment-intent` on `invoicesRouter` (already uses `authMiddleware`):
+- [x] 6.2: Add `POST /:id/payment-intent` on `invoicesRouter` (already uses `authMiddleware`):
   ```typescript
   invoicesRouter.post('/:id/payment-intent', async (req, res, next) => {
     try {
@@ -249,12 +249,12 @@ so that I can get paid immediately without relying on the customer to pay the SM
 
 ### Task 7: API — Add `record-onsite-payment` Endpoint to `invoices.ts` (AC: #7, #8, #10, #11)
 
-- [ ] 7.1: In `apps/api/src/routes/invoices.ts`, add additional imports:
+- [x] 7.1: In `apps/api/src/routes/invoices.ts`, add additional imports:
   ```typescript
   import { sendPushNotification } from '../services/notification-service.js';
   ```
   Note: `sendSms` and `prisma` are already imported from earlier tasks in this file.
-- [ ] 7.2: Add `POST /:id/record-onsite-payment` on `invoicesRouter`:
+- [x] 7.2: Add `POST /:id/record-onsite-payment` on `invoicesRouter`:
   ```typescript
   invoicesRouter.post('/:id/record-onsite-payment', async (req, res, next) => {
     try {
@@ -325,12 +325,12 @@ so that I can get paid immediately without relying on the customer to pay the SM
 
 ### Task 8: Mobile — Add `useCollectPayment` Hook to `use-invoices.ts` (AC: #3, #5, #6, #7, #9, #12)
 
-- [ ] 8.1: In `apps/mobile/src/hooks/use-invoices.ts`, add imports at the top:
+- [x] 8.1: In `apps/mobile/src/hooks/use-invoices.ts`, add imports at the top:
   ```typescript
   import { useStripe } from '@stripe/stripe-react-native';
   import Payment from '../db/models/payment';
   ```
-- [ ] 8.2: Add the `CollectPaymentApiResult` interface and `useCollectPayment` export at the bottom of the file:
+- [x] 8.2: Add the `CollectPaymentApiResult` interface and `useCollectPayment` export at the bottom of the file:
   ```typescript
   interface PaymentIntentResult {
     clientSecret: string;
@@ -437,7 +437,7 @@ so that I can get paid immediately without relying on the customer to pay the SM
 
 ### Task 9: Mobile — Create Payment Modal (`(modals)/payment.tsx`) (AC: #2, #3, #6, #12, #13)
 
-- [ ] 9.1: Create `apps/mobile/app/(modals)/payment.tsx`:
+- [x] 9.1: Create `apps/mobile/app/(modals)/payment.tsx`:
   ```typescript
   import React, { useState, useCallback } from 'react';
   import {
@@ -669,7 +669,7 @@ so that I can get paid immediately without relying on the customer to pay the SM
 
 ### Task 10: Mobile — Add "Collect Payment" Button to Job Detail Screen (AC: #1, #2, #3)
 
-- [ ] 10.1: In `apps/mobile/app/(tabs)/jobs/[id].tsx`, update the import from `use-invoices`:
+- [x] 10.1: In `apps/mobile/app/(tabs)/jobs/[id].tsx`, update the import from `use-invoices`:
   ```typescript
   import { useJobInvoice, useGenerateInvoice, useSendInvoice, useCollectPayment } from '../../../src/hooks/use-invoices';
   ```
@@ -677,7 +677,7 @@ so that I can get paid immediately without relying on the customer to pay the SM
   ```typescript
   import { useLocalSearchParams, Stack, router } from 'expo-router';
   ```
-- [ ] 10.2: Inside `JobDetailScreen`, add after the existing `useSendInvoice` hook:
+- [x] 10.2: Inside `JobDetailScreen`, add after the existing `useSendInvoice` hook:
   ```typescript
   const { isConnected } = useContext(NetworkContext);
   ```
@@ -686,7 +686,7 @@ so that I can get paid immediately without relying on the customer to pay the SM
   import { NetworkContext } from '../../../src/contexts/network-context';
   ```
   And add the `useContext` import to the React import if not present.
-- [ ] 10.3: Add a `handleCollectPayment` callback below `handleSendInvoice`:
+- [x] 10.3: Add a `handleCollectPayment` callback below `handleSendInvoice`:
   ```typescript
   const handleCollectPayment = useCallback(() => {
     if (!invoice) return;
@@ -703,7 +703,7 @@ so that I can get paid immediately without relying on the customer to pay the SM
     });
   }, [invoice, isConnected]);
   ```
-- [ ] 10.4: In `renderActionButton()`, update the invoice status block to add the "Collect Payment" button. The updated logic:
+- [x] 10.4: In `renderActionButton()`, update the invoice status block to add the "Collect Payment" button. The updated logic:
   ```typescript
   if (job.status === 'COMPLETE' || job.status === 'INVOICED') {
     if (invoice) {
@@ -758,7 +758,7 @@ so that I can get paid immediately without relying on the customer to pay the SM
     );
   }
   ```
-- [ ] 10.5: Add styles to `StyleSheet.create`:
+- [x] 10.5: Add styles to `StyleSheet.create`:
   ```typescript
   collectPaymentButton: {
     backgroundColor: '#16A34A',
@@ -779,8 +779,8 @@ so that I can get paid immediately without relying on the customer to pay the SM
 
 ### Task 11: Tests — `payment-service.ts` Unit Tests for On-Site Functions (AC: #4, #7, #8, #14)
 
-- [ ] 11.1: In `apps/api/src/services/payment-service.test.ts`, add the new test blocks at the end of the existing file
-- [ ] 11.2: Extend the `stripe` mock to include `paymentIntents`:
+- [x] 11.1: In `apps/api/src/services/payment-service.test.ts`, add the new test blocks at the end of the existing file
+- [x] 11.2: Extend the `stripe` mock to include `paymentIntents`:
   ```typescript
   jest.mock('../config/stripe.js', () => ({
     stripe: {
@@ -813,27 +813,27 @@ so that I can get paid immediately without relying on the customer to pay the SM
     },
   }));
   ```
-- [ ] 11.3: Test `createPaymentIntent`: invoice found → `stripe.paymentIntents.create` called with `amount = invoice.total`, `currency: 'usd'`, `metadata.invoiceId`; returns `{ clientSecret, paymentIntentId, amount, merchantDisplayName }`
-- [ ] 11.4: Test `createPaymentIntent`: invoice not found → throws `AppError` with code `INVOICE_NOT_FOUND`, status 404
-- [ ] 11.5: Test `createPaymentIntent`: invoice status is `PAID` → throws `AppError` with code `INVOICE_ALREADY_PAID`, status 422
-- [ ] 11.6: Test `createPaymentIntent`: invoice total is 0 → throws `AppError` with code `INVOICE_ZERO_AMOUNT`, status 422
-- [ ] 11.7: Test `recordOnsitePayment`: no existing payment, PI status is `succeeded` → creates Payment with `CARD_ON_SITE`, updates invoice to `PAID`, returns `alreadyProcessed: false` with payment id and invoice data
-- [ ] 11.8: Test `recordOnsitePayment`: payment with same `stripePaymentId` already exists → returns `{ alreadyProcessed: true }` immediately; `$transaction` NOT called
-- [ ] 11.9: Test `recordOnsitePayment`: PI status is NOT `succeeded` (e.g., `requires_payment_method`) → throws `AppError` with code `PAYMENT_NOT_SUCCEEDED`, status 422
+- [x] 11.3: Test `createPaymentIntent`: invoice found → `stripe.paymentIntents.create` called with `amount = invoice.total`, `currency: 'usd'`, `metadata.invoiceId`; returns `{ clientSecret, paymentIntentId, amount, merchantDisplayName }`
+- [x] 11.4: Test `createPaymentIntent`: invoice not found → throws `AppError` with code `INVOICE_NOT_FOUND`, status 404
+- [x] 11.5: Test `createPaymentIntent`: invoice status is `PAID` → throws `AppError` with code `INVOICE_ALREADY_PAID`, status 422
+- [x] 11.6: Test `createPaymentIntent`: invoice total is 0 → throws `AppError` with code `INVOICE_ZERO_AMOUNT`, status 422
+- [x] 11.7: Test `recordOnsitePayment`: no existing payment, PI status is `succeeded` → creates Payment with `CARD_ON_SITE`, updates invoice to `PAID`, returns `alreadyProcessed: false` with payment id and invoice data
+- [x] 11.8: Test `recordOnsitePayment`: payment with same `stripePaymentId` already exists → returns `{ alreadyProcessed: true }` immediately; `$transaction` NOT called
+- [x] 11.9: Test `recordOnsitePayment`: PI status is NOT `succeeded` (e.g., `requires_payment_method`) → throws `AppError` with code `PAYMENT_NOT_SUCCEEDED`, status 422
 
 ### Task 12: Tests — Integration Tests for New Invoice Routes (AC: #4, #7, #8)
 
-- [ ] 12.1: Create `apps/api/tests/integration/invoice-payment.test.ts`
-- [ ] 12.2: Mock `../../src/services/payment-service.js`, `../../src/services/notification-service.js`, `../../src/services/sms-service.js`, `../../src/config/prisma.js`, `../../src/config/stripe.js`
-- [ ] 12.3: Test `POST /api/v1/invoices/:id/payment-intent`: success → 200 with `{ data: { clientSecret, paymentIntentId, amount, merchantDisplayName } }`
-- [ ] 12.4: Test `POST /api/v1/invoices/:id/payment-intent`: no auth header → 401
-- [ ] 12.5: Test `POST /api/v1/invoices/:id/payment-intent`: `createPaymentIntent` throws `INVOICE_NOT_FOUND` → 404
-- [ ] 12.6: Test `POST /api/v1/invoices/:id/payment-intent`: `createPaymentIntent` throws `INVOICE_ALREADY_PAID` → 422
-- [ ] 12.7: Test `POST /api/v1/invoices/:id/record-onsite-payment`: success (`alreadyProcessed: false`) → push notification called, SMS called, 200 with payment and invoice data
-- [ ] 12.8: Test `POST /api/v1/invoices/:id/record-onsite-payment`: `alreadyProcessed: true` → push/SMS NOT called, 200 with `{ alreadyProcessed: true }`
-- [ ] 12.9: Test `POST /api/v1/invoices/:id/record-onsite-payment`: missing `paymentIntentId` in body → 422 with code `MISSING_PAYMENT_INTENT_ID`
-- [ ] 12.10: Test `POST /api/v1/invoices/:id/record-onsite-payment`: `recordOnsitePayment` throws `PAYMENT_NOT_SUCCEEDED` → 422
-- [ ] 12.11: Test `POST /api/v1/invoices/:id/record-onsite-payment`: no auth → 401
+- [x] 12.1: Create `apps/api/tests/integration/invoice-payment.test.ts`
+- [x] 12.2: Mock `../../src/services/payment-service.js`, `../../src/services/notification-service.js`, `../../src/services/sms-service.js`, `../../src/config/prisma.js`, `../../src/config/stripe.js`
+- [x] 12.3: Test `POST /api/v1/invoices/:id/payment-intent`: success → 200 with `{ data: { clientSecret, paymentIntentId, amount, merchantDisplayName } }`
+- [x] 12.4: Test `POST /api/v1/invoices/:id/payment-intent`: no auth header → 401
+- [x] 12.5: Test `POST /api/v1/invoices/:id/payment-intent`: `createPaymentIntent` throws `INVOICE_NOT_FOUND` → 404
+- [x] 12.6: Test `POST /api/v1/invoices/:id/payment-intent`: `createPaymentIntent` throws `INVOICE_ALREADY_PAID` → 422
+- [x] 12.7: Test `POST /api/v1/invoices/:id/record-onsite-payment`: success (`alreadyProcessed: false`) → push notification called, SMS called, 200 with payment and invoice data
+- [x] 12.8: Test `POST /api/v1/invoices/:id/record-onsite-payment`: `alreadyProcessed: true` → push/SMS NOT called, 200 with `{ alreadyProcessed: true }`
+- [x] 12.9: Test `POST /api/v1/invoices/:id/record-onsite-payment`: missing `paymentIntentId` in body → 422 with code `MISSING_PAYMENT_INTENT_ID`
+- [x] 12.10: Test `POST /api/v1/invoices/:id/record-onsite-payment`: `recordOnsitePayment` throws `PAYMENT_NOT_SUCCEEDED` → 422
+- [x] 12.11: Test `POST /api/v1/invoices/:id/record-onsite-payment`: no auth → 401
 
 ## Dev Notes
 
@@ -972,10 +972,32 @@ All paths relative to `mvps/field-service-management/src/` as the monorepo root.
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+claude-sonnet-4-6
 
 ### Debug Log References
 
 ### Completion Notes List
 
+- Implemented `createPaymentIntent` and `recordOnsitePayment` in `payment-service.ts` following the existing `createCheckoutSession`/`handleCheckoutCompleted` pattern.
+- Added `POST /:id/payment-intent` and `POST /:id/record-onsite-payment` routes to `invoicesRouter` in `invoices.ts`. Both are automatically auth-protected by the router-level `authMiddleware`.
+- Added `@stripe/stripe-react-native: 0.38.0` to `mobile/package.json` and `EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY` to `.env.example`.
+- Wrapped `RootLayout` with `StripeProvider` and registered the `(modals)/payment` route in `_layout.tsx`.
+- Added `useCollectPayment` hook to `use-invoices.ts` using `useStripe()` from `@stripe/stripe-react-native`. Handles the full flow: create PaymentIntent → init Payment Sheet → present Payment Sheet → record on server → write to WatermelonDB.
+- Created `(modals)/payment.tsx` modal with idle/processing/success states, offline connectivity guard, and user-friendly error handling.
+- Updated `jobs/[id].tsx` `renderActionButton()` to show "Collect Payment" button for all unpaid invoice states (DRAFT, SENT, VIEWED, PARTIALLY_PAID, OVERDUE) and green PAID badge for paid invoices.
+- Extended `payment-service.test.ts` Stripe mock to include `paymentIntents.create/retrieve`. Added 7 new unit tests covering all AC for `createPaymentIntent` and `recordOnsitePayment`.
+- Created `invoice-payment.test.ts` integration tests (9 tests). Fixed tests to throw actual `AppError` instances so the `instanceof AppError` check in the error handler works correctly.
+- All 126 API tests pass with no regressions.
+
 ### File List
+
+- `apps/api/src/services/payment-service.ts` — Added `createPaymentIntent`, `recordOnsitePayment`
+- `apps/api/src/services/payment-service.test.ts` — Extended Stripe mock, added `createPaymentIntent` and `recordOnsitePayment` test suites (7 new tests)
+- `apps/api/src/routes/invoices.ts` — Added `POST /:id/payment-intent` and `POST /:id/record-onsite-payment` endpoints, imported `createPaymentIntent`, `recordOnsitePayment`, `sendPushNotification`
+- `apps/api/tests/integration/invoice-payment.test.ts` — New integration test file (9 tests)
+- `apps/mobile/package.json` — Added `@stripe/stripe-react-native: 0.38.0`
+- `apps/mobile/.env.example` — Added `EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY`
+- `apps/mobile/app/_layout.tsx` — Added `StripeProvider` wrapper, registered `(modals)/payment` route
+- `apps/mobile/src/hooks/use-invoices.ts` — Added `useStripe` import, `Payment` model import, `useCollectPayment` hook
+- `apps/mobile/app/(modals)/payment.tsx` — New payment modal screen
+- `apps/mobile/app/(tabs)/jobs/[id].tsx` — Added `useCollectPayment`, `NetworkContext`, `router`, `handleCollectPayment`, updated `renderActionButton`, added `collectPaymentButton`, `collectPaymentButtonText`, `invoicedBadgePaid`, `invoicedTextPaid` styles
