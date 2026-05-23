@@ -69,7 +69,7 @@ development_status:
   4-1-invoice-generation-from-completed-jobs: done
   4-2-invoice-sms-delivery-and-payment-links: done
   4-3-on-site-card-payment-processing: done
-  4-4-payment-tracking-and-partial-payments: backlog
+  4-4-payment-tracking-and-partial-payments: ready-for-dev
   epic-4-retrospective: optional
 
   # Epic 5: Customer Management & Service History
