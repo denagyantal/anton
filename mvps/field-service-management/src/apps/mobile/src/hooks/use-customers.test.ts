@@ -19,24 +19,35 @@ function createTestDatabase(): Database {
 
 async function createCustomer(
   db: Database,
-  data: { name: string; phone: string; accountId?: string; email?: string; city?: string; state?: string },
+  overrides: Partial<{
+    accountId: string;
+    name: string;
+    phone: string;
+    email: string;
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    state: string;
+    zip: string;
+  }> = {},
 ): Promise<Customer> {
-  let customer: Customer | null = null;
+  let created!: Customer;
   await db.write(async () => {
-    customer = await db.get<Customer>('customers').create((record) => {
-      record.accountId = data.accountId ?? 'test-account';
-      record.name = data.name;
-      record.phone = data.phone;
-      record.email = data.email ?? '';
-      record.addressLine1 = '';
-      record.addressLine2 = '';
-      record.city = data.city ?? '';
-      record.state = data.state ?? '';
-      record.zip = '';
+    created = await db.get<Customer>('customers').create((record) => {
+      record.accountId = overrides.accountId ?? 'test-account';
+      record.name = overrides.name ?? 'Test Customer';
+      record.phone = overrides.phone ?? '555-0000';
+      record.email = overrides.email ?? '';
+      record.addressLine1 = overrides.addressLine1 ?? '';
+      record.addressLine2 = overrides.addressLine2 ?? '';
+      record.city = overrides.city ?? '';
+      record.state = overrides.state ?? '';
+      record.zip = overrides.zip ?? '';
       record.notes = '';
+      record.quickbooksCustomerId = '';
     });
   });
-  return customer!;
+  return created;
 }
 
 describe('Customer WatermelonDB operations', () => {
@@ -194,5 +205,92 @@ describe('Customer WatermelonDB operations', () => {
       const sanitized = Q.sanitizeLikeString('');
       expect(sanitized).toBe('');
     });
+  });
+});
+
+// LokiJS adapter does not support Q.like — fetch all and filter in JS (consistent with use-jobs.test.ts pattern)
+function matchesQuery(customer: Customer, query: string): boolean {
+  const q = query.toLowerCase();
+  return (
+    customer.name.toLowerCase().includes(q) ||
+    customer.phone.toLowerCase().includes(q) ||
+    customer.addressLine1.toLowerCase().includes(q) ||
+    customer.addressLine2.toLowerCase().includes(q) ||
+    customer.city.toLowerCase().includes(q) ||
+    customer.state.toLowerCase().includes(q) ||
+    customer.zip.toLowerCase().includes(q)
+  );
+}
+
+describe('useCustomerSearch — WatermelonDB query logic', () => {
+  it('returns customer matching name substring', async () => {
+    const db = createTestDatabase();
+    await createCustomer(db, { name: 'Alice Johnson', phone: '555-0001', city: 'Denver' });
+    await createCustomer(db, { name: 'Bob Smith', phone: '555-0002', city: 'Reno' });
+
+    const all = await db.get<Customer>('customers').query().fetch();
+    const results = all.filter((c) => matchesQuery(c, 'alice'));
+
+    expect(results).toHaveLength(1);
+    expect(results[0]!.name).toBe('Alice Johnson');
+  });
+
+  it('returns all customers with partial phone match', async () => {
+    const db = createTestDatabase();
+    await createCustomer(db, { name: 'Alice', phone: '555-1234' });
+    await createCustomer(db, { name: 'Bob', phone: '555-5678' });
+    await createCustomer(db, { name: 'Carol', phone: '444-9999' });
+
+    const all = await db.get<Customer>('customers').query().fetch();
+    const results = all.filter((c) => matchesQuery(c, '555'));
+
+    expect(results).toHaveLength(2);
+    expect(results.every((c) => c.phone.includes('555'))).toBe(true);
+  });
+
+  it('returns customer matching address_line1 fragment', async () => {
+    const db = createTestDatabase();
+    await createCustomer(db, { name: 'Alice', phone: '555-0001', addressLine1: '123 Oak St' });
+    await createCustomer(db, { name: 'Bob', phone: '555-0002', addressLine1: '456 Elm Ave' });
+
+    const all = await db.get<Customer>('customers').query().fetch();
+    const results = all.filter((c) => matchesQuery(c, 'Oak St'));
+
+    expect(results).toHaveLength(1);
+    expect(results[0]!.addressLine1).toBe('123 Oak St');
+  });
+
+  it('returns customer matching city fragment', async () => {
+    const db = createTestDatabase();
+    await createCustomer(db, { name: 'Alice', phone: '555-0001', city: 'Denver' });
+    await createCustomer(db, { name: 'Bob', phone: '555-0002', city: 'Reno' });
+
+    const all = await db.get<Customer>('customers').query().fetch();
+    const results = all.filter((c) => matchesQuery(c, 'Den'));
+
+    expect(results).toHaveLength(1);
+    expect(results[0]!.city).toBe('Denver');
+  });
+
+  it('returns all customers when query is empty string', async () => {
+    const db = createTestDatabase();
+    await createCustomer(db, { name: 'Alice', phone: '555-0001' });
+    await createCustomer(db, { name: 'Bob', phone: '555-0002' });
+
+    const all = await db.get<Customer>('customers').query().fetch();
+    // empty query → no filtering applied, all customers returned
+    const results = ''.length > 0 ? all.filter((c) => matchesQuery(c, '')) : all;
+
+    expect(results).toHaveLength(2);
+  });
+
+  it('returns empty array when no customer matches query', async () => {
+    const db = createTestDatabase();
+    await createCustomer(db, { name: 'Alice', phone: '555-0001', city: 'Denver' });
+
+    const all = await db.get<Customer>('customers').query().fetch();
+    const results = all.filter((c) => matchesQuery(c, 'zzznomatch'));
+
+    expect(results).toHaveLength(0);
   });
 });

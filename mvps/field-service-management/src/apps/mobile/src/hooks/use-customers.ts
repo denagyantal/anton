@@ -99,6 +99,11 @@ export function useCustomerSearch(query: string): UseCustomerSearchResult {
         Q.or(
           Q.where('name', Q.like(`%${sanitized}%`)),
           Q.where('phone', Q.like(`%${sanitized}%`)),
+          Q.where('address_line1', Q.like(`%${sanitized}%`)),
+          Q.where('address_line2', Q.like(`%${sanitized}%`)),
+          Q.where('city', Q.like(`%${sanitized}%`)),
+          Q.where('state', Q.like(`%${sanitized}%`)),
+          Q.where('zip', Q.like(`%${sanitized}%`)),
         ),
       );
     }

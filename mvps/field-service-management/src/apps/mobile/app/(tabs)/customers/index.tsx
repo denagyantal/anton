@@ -48,6 +48,14 @@ export default function CustomerListScreen() {
 
   function renderEmpty() {
     if (isLoading) return null;
+    if (isSearching) {
+      return (
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyTitle}>No customers found</Text>
+          <Text style={styles.emptySubtitle}>Try a different name, phone, or address</Text>
+        </View>
+      );
+    }
     return (
       <View style={styles.emptyContainer}>
         <Text style={styles.emptyTitle}>No customers yet</Text>
@@ -63,7 +71,7 @@ export default function CustomerListScreen() {
           style={styles.searchInput}
           value={searchText}
           onChangeText={setSearchText}
-          placeholder="Search by name or phone..."
+          placeholder="Search by name, phone, or address..."
           testID="customer-search-input"
         />
       </View>

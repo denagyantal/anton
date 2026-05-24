@@ -75,8 +75,8 @@ development_status:
   # Epic 5: Customer Management & Service History
   epic-5: in-progress
   5-1-customer-job-history-and-service-records: done
-  5-2-customer-search-and-filtering: ready-for-dev
-  5-3-customer-csv-import: backlog
+  5-2-customer-search-and-filtering: done
+  5-3-customer-csv-import: ready-for-dev
   epic-5-retrospective: optional
 
   # Epic 6: Offline-First Reliability & Data Sync
