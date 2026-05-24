@@ -76,12 +76,12 @@ development_status:
   epic-5: in-progress
   5-1-customer-job-history-and-service-records: done
   5-2-customer-search-and-filtering: done
-  5-3-customer-csv-import: ready-for-dev
+  5-3-customer-csv-import: done
   epic-5-retrospective: optional
 
   # Epic 6: Offline-First Reliability & Data Sync
-  epic-6: backlog
-  6-1-offline-core-workflow-and-network-detection: backlog
+  epic-6: in-progress
+  6-1-offline-core-workflow-and-network-detection: ready-for-dev
   6-2-automatic-background-sync-with-conflict-resolution: backlog
   6-3-sync-status-display-and-error-reporting: backlog
   epic-6-retrospective: optional

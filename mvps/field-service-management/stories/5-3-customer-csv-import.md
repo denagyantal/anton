@@ -1,6 +1,6 @@
 # Story 5.3: Customer CSV Import
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -30,15 +30,15 @@ so that I don't have to re-enter hundreds of customer records manually.
 
 ### Task 1: Install Required Dependencies (AC: #2, #4)
 
-- [ ] 1.1: In `apps/mobile/package.json`, add `"expo-document-picker": "~13.0.0"` to `dependencies`. This is the Expo SDK 52-compatible version for file picking. Run `npm install` from the monorepo root or `apps/mobile/` directory.
+- [x] 1.1: In `apps/mobile/package.json`, add `"expo-document-picker": "~13.0.0"` to `dependencies`. This is the Expo SDK 52-compatible version for file picking. Run `npm install` from the monorepo root or `apps/mobile/` directory.
 
-- [ ] 1.2: In `apps/mobile/package.json`, add `"papaparse": "^5.4.1"` to `dependencies` and `"@types/papaparse": "^5.3.16"` to `devDependencies`. PapaParse is the standard CSV parser that works in React Native (pure JS, no native modules required).
+- [x] 1.2: In `apps/mobile/package.json`, add `"papaparse": "^5.4.1"` to `dependencies` and `"@types/papaparse": "^5.3.16"` to `devDependencies`. PapaParse is the standard CSV parser that works in React Native (pure JS, no native modules required).
 
   Verify installation: `import Papa from 'papaparse'` should type-check cleanly. PapaParse's `Papa.parse(csvString, { header: true })` returns `{ data: Array<Record<string, string>>, errors: ... }`.
 
 ### Task 2: Create `import-customers.tsx` Screen (AC: #2, #3, #4, #5, #6, #7, #8)
 
-- [ ] 2.1: Create `apps/mobile/app/(tabs)/more/import-customers.tsx`. The screen manages three phases via a `phase` state variable:
+- [x] 2.1: Create `apps/mobile/app/(tabs)/more/import-customers.tsx`. The screen manages three phases via a `phase` state variable:
   - `'idle'` — initial state, shows "Select CSV File" button
   - `'mapping'` — CSV parsed, shows preview rows and column mapping UI
   - `'done'` — import complete, shows summary
@@ -79,7 +79,7 @@ so that I don't have to re-enter hundreds of customer records manually.
   }
   ```
 
-- [ ] 2.2: Implement the **idle phase** — "Select CSV File" button:
+- [x] 2.2: Implement the **idle phase** — "Select CSV File" button:
   ```typescript
   async function handleSelectFile() {
     const result = await DocumentPicker.getDocumentAsync({
@@ -111,7 +111,7 @@ so that I don't have to re-enter hundreds of customer records manually.
 
   The `copyToCacheDirectory: true` option ensures the file is copied to a location Expo can read with `FileSystem.readAsStringAsync`.
 
-- [ ] 2.3: Implement `detectColumns(headers: string[]): ColumnMapping` — auto-detection helper that maps CSV headers to customer fields using case-insensitive substring matching:
+- [x] 2.3: Implement `detectColumns(headers: string[]): ColumnMapping` — auto-detection helper that maps CSV headers to customer fields using case-insensitive substring matching:
 
   ```typescript
   function detectColumns(headers: string[]): ColumnMapping {
@@ -136,13 +136,13 @@ so that I don't have to re-enter hundreds of customer records manually.
 
   Note: `find()` returns the first matching header string or `''` if no match. If `name` auto-detects to `''`, the "Import" button must be disabled with a visible explanation: "Please map a column to 'Name' to continue."
 
-- [ ] 2.4: Implement the **mapping phase UI** — preview table and field mapping dropdowns/pickers:
+- [x] 2.4: Implement the **mapping phase UI** — preview table and field mapping dropdowns/pickers:
   - Show "Preview (first 5 rows)" section: render `rows.slice(0, 5)` as a horizontal-scrollable table with column headers from `headers` array.
   - For each customer field (name, phone, email, address_line1, city, state, zip), show a row: field label on left, column selector on right. The selector can be a simple `TouchableOpacity` that cycles through available headers + "(none)" option when tapped (no external picker library needed — keep it simple with an in-line `Alert.alert` with options or a togglable dropdown).
   - Show total row count: "X rows detected (excluding header)".
   - "Import {rows.length} Customers" button — disabled and grayed out if `mapping.name === ''`.
 
-- [ ] 2.5: Implement `handleImport()` — the core import function called when user taps "Import":
+- [x] 2.5: Implement `handleImport()` — the core import function called when user taps "Import":
 
   ```typescript
   async function handleImport() {
@@ -253,17 +253,17 @@ so that I don't have to re-enter hundreds of customer records manually.
 
   Import `Q` from `@nozbe/watermelondb` at top of file for the pre-fetch query.
 
-- [ ] 2.6: Implement the **done phase UI**:
+- [x] 2.6: Implement the **done phase UI**:
   - Show "Import complete!" title.
   - Show summary text: `"Imported {summary.imported} customer(s)."` on one line; if `summary.updated > 0`, add `"{summary.updated} updated."` on the next line; if `summary.skipped > 0`, add `"{summary.skipped} skipped (missing name or duplicate)."` on the next line.
   - "Done" button: `router.back()` to return to `/(tabs)/more/`.
   - "Import Another File" button: resets phase to `'idle'`, clears `rows`, `headers`, `mapping`, `summary`.
 
-- [ ] 2.7: Implement the **importing phase** — show `<ActivityIndicator />` with text "Importing customers..." centered on screen. This phase is set immediately when the user taps "Import" and before the async `handleImport()` completes.
+- [x] 2.7: Implement the **importing phase** — show `<ActivityIndicator />` with text "Importing customers..." centered on screen. This phase is set immediately when the user taps "Import" and before the async `handleImport()` completes.
 
 ### Task 3: Add "Import Customers" Navigation Row to Settings Screen (AC: #1)
 
-- [ ] 3.1: Open `apps/mobile/app/(tabs)/more/index.tsx`. Add a new `"Customers"` section header and a navigation row between the existing navigation rows (Invoices, Quotes, Business Profile, Pricebook) and the existing `"Calendar"` section header. Exact insertion point — after the Pricebook row and before the `<Text style={styles.sectionHeader}>Calendar</Text>`:
+- [x] 3.1: Open `apps/mobile/app/(tabs)/more/index.tsx`. Add a new `"Customers"` section header and a navigation row between the existing navigation rows (Invoices, Quotes, Business Profile, Pricebook) and the existing `"Calendar"` section header. Exact insertion point — after the Pricebook row and before the `<Text style={styles.sectionHeader}>Calendar</Text>`:
 
   ```typescript
   <Text style={styles.sectionHeader}>Customers</Text>
@@ -282,11 +282,11 @@ so that I don't have to re-enter hundreds of customer records manually.
 
 ### Task 4: Tests for Import Logic (AC: #4, #5, #6)
 
-- [ ] 4.1: Create `apps/mobile/app/(tabs)/more/import-customers.test.ts` (co-located test file). Test the pure helper functions extracted from the screen. The `detectColumns` and the row-classification logic can be tested without rendering the screen.
+- [x] 4.1: Create `apps/mobile/app/(tabs)/more/import-customers.test.ts` (co-located test file). Test the pure helper functions extracted from the screen. The `detectColumns` and the row-classification logic can be tested without rendering the screen.
 
   Extract `detectColumns` as a named export from `import-customers.tsx` (or a co-located `import-customers-helpers.ts` file) so it is independently testable.
 
-- [ ] 4.2: Add tests for `detectColumns`:
+- [x] 4.2: Add tests for `detectColumns`:
 
   ```typescript
   describe('detectColumns', () => {
@@ -323,7 +323,7 @@ so that I don't have to re-enter hundreds of customer records manually.
   });
   ```
 
-- [ ] 4.3: Add tests for row classification (valid vs. skip logic) using a pure helper function `classifyRows(rows, mapping)` that returns `{ toCreate, toSkip }`:
+- [x] 4.3: Add tests for row classification (valid vs. skip logic) using a pure helper function `classifyRows(rows, mapping)` that returns `{ toCreate, toSkip }`:
 
   ```typescript
   describe('classifyRows', () => {
@@ -368,7 +368,7 @@ so that I don't have to re-enter hundreds of customer records manually.
 
   To make this testable, extract `classifyRows` as a named export alongside `detectColumns`.
 
-- [ ] 4.4: Add a WatermelonDB integration test using the existing `createTestDatabase()` pattern from `use-customers.test.ts` to verify that a batch `database.write()` creates the expected number of Customer records:
+- [x] 4.4: Add a WatermelonDB integration test using the existing `createTestDatabase()` pattern from `use-customers.test.ts` to verify that a batch `database.write()` creates the expected number of Customer records:
 
   ```typescript
   import { Database } from '@nozbe/watermelondb';
@@ -619,6 +619,21 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None.
+
 ### Completion Notes List
 
+- Pure helper functions (`detectColumns`, `classifyRows`) were extracted to `import-customers-helpers.ts` so they can be tested without importing React Native modules (which fail in the Node/Jest test environment). The screen re-exports these for API compatibility.
+- Jest config (`jest.config.js`) was updated to include `app/` in `roots` in addition to `src/` so that co-located test files next to screen files are discovered.
+- All 10 tests pass: 4 for `detectColumns`, 4 for `classifyRows`, 2 WatermelonDB integration tests.
+- Known limitation: if a CSV has many duplicates, sequential `Alert.alert` prompts per duplicate is poor UX but acceptable for MVP per AC as written.
+- `user.accountId` is available from `useAuth()` via `user_metadata.account_id` in the Supabase session, confirmed by reading `auth-context.tsx`.
+
 ### File List
+
+- `apps/mobile/app/(tabs)/more/import-customers.tsx` — New import screen (created)
+- `apps/mobile/app/(tabs)/more/import-customers-helpers.ts` — Extracted pure helper functions for testability (created)
+- `apps/mobile/app/(tabs)/more/import-customers.test.ts` — Co-located test file, 10 tests (created)
+- `apps/mobile/app/(tabs)/more/index.tsx` — Added "Customers" section header and "Import Customers" row (modified)
+- `apps/mobile/package.json` — Added `expo-document-picker ~13.0.0`, `papaparse ^5.4.1`, `@types/papaparse ^5.3.16` (modified)
+- `apps/mobile/jest.config.js` — Added `app/` to `roots` array for test discovery (modified)

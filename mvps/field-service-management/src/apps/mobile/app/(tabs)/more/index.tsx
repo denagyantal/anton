@@ -94,6 +94,17 @@ export default function MoreScreen() {
         <Text style={styles.rowArrow}>›</Text>
       </TouchableOpacity>
 
+      <Text style={styles.sectionHeader}>Customers</Text>
+
+      <TouchableOpacity
+        style={styles.row}
+        onPress={() => router.push('/(tabs)/more/import-customers')}
+        testID="import-customers-row"
+      >
+        <Text style={styles.rowText}>Import Customers</Text>
+        <Text style={styles.rowArrow}>›</Text>
+      </TouchableOpacity>
+
       <Text style={styles.sectionHeader}>Calendar</Text>
 
       <View style={styles.row}>
