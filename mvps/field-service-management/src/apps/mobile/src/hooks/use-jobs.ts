@@ -105,6 +105,39 @@ export function useTransitionJobStatus(): {
   return { transitionStatus };
 }
 
+export function useCustomerJobs(customerId: string): { jobs: Job[]; isLoading: boolean } {
+  const database = useDatabase();
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!customerId) {
+      setJobs([]);
+      setIsLoading(false);
+      return;
+    }
+
+    const subscription = database
+      .get<Job>('jobs')
+      .query(Q.where('customer_id', customerId))
+      .observe()
+      .subscribe((results) => {
+        // Sort in JS since WatermelonDB observe() ORDER BY is adapter-dependent
+        const sorted = [...results].sort((a, b) => {
+          const aTime = a.scheduledStart ? new Date(a.scheduledStart).getTime() : 0;
+          const bTime = b.scheduledStart ? new Date(b.scheduledStart).getTime() : 0;
+          return bTime - aTime;
+        });
+        setJobs(sorted);
+        setIsLoading(false);
+      });
+
+    return () => subscription.unsubscribe();
+  }, [database, customerId]);
+
+  return { jobs, isLoading };
+}
+
 export function useUpdateJobNotes(): {
   updateNotes: (jobId: string, notes: string) => Promise<void>;
 } {

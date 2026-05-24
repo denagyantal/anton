@@ -9,7 +9,7 @@ import { apiClient } from '../services/api-client';
 import { NetworkContext } from '../contexts/network-context';
 import Job from '../db/models/job';
 
-export function useJobInvoice(jobId: string) {
+export function useJobInvoice(jobId: string | null | undefined) {
   const [invoice, setInvoice] = useState<Invoice | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 

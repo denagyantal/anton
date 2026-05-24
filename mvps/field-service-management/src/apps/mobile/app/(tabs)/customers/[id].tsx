@@ -7,12 +7,13 @@ import {
   StyleSheet,
   Alert,
 } from 'react-native';
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter, router } from 'expo-router';
 import { useCustomer } from '../../../src/hooks/use-customers';
 import { useAuth } from '../../../src/contexts/auth-context';
 import { useDatabase } from '../../../src/contexts/database-context';
 import CustomerForm, { CustomerFormData } from '../../../src/components/customers/customer-form';
 import Customer from '../../../src/db/models/customer';
+import ServiceHistory from '../../../src/components/customers/service-history';
 
 export default function CustomerDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -22,6 +23,13 @@ export default function CustomerDetailScreen() {
   const isNew = id === 'new';
   const { customer, isLoading } = useCustomer(isNew ? '' : (id ?? ''));
   const [isEditing, setIsEditing] = useState(isNew);
+
+  const handleCreateQuote = useCallback(() => {
+    router.push({
+      pathname: '/(modals)/create-quote',
+      params: { customerId: id },
+    } as never);
+  }, [id]);
 
   const handleSave = useCallback(async (data: CustomerFormData) => {
     try {
@@ -156,6 +164,8 @@ export default function CustomerDetailScreen() {
             <Text style={styles.notesText}>{customer.notes}</Text>
           </View>
         ) : null}
+
+        <ServiceHistory customerId={id as string} onCreateQuote={handleCreateQuote} />
       </ScrollView>
 
       <View style={styles.footer}>
