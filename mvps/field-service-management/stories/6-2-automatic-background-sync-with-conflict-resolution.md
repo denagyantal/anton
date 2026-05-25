@@ -1,6 +1,6 @@
 # Story 6.2: Automatic Background Sync with Conflict Resolution
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -30,7 +30,7 @@ so that no data is ever lost and I don't have to manually fix sync issues.
 
 ### Task 1: Create mobile `sync-service.ts` (AC: #1, #2, #4, #5, #6)
 
-- [ ] 1.1: Create `apps/mobile/src/services/sync-service.ts`. This is the core sync implementation using WatermelonDB's `synchronize()` protocol:
+- [x] 1.1: Create `apps/mobile/src/services/sync-service.ts`. This is the core sync implementation using WatermelonDB's `synchronize()` protocol:
 
   ```typescript
   import { synchronize } from '@nozbe/watermelondb/sync';
@@ -115,11 +115,11 @@ so that no data is ever lost and I don't have to manually fix sync issues.
 
   **`sendCreatedAsUpdated: true`** instructs WatermelonDB to push locally-created records in the `updated` array (not `created`), so the server only needs to implement upserts, not separate insert and update logic.
 
-- [ ] 1.2: Install WatermelonDB sync module. The `synchronize` function is exported from `@nozbe/watermelondb/sync` — verify this import path works with the installed WatermelonDB version (0.27.x). Run `npm install` from `mvps/field-service-management/src/` if any dependency errors appear. No new packages are needed — `synchronize` is bundled in `@nozbe/watermelondb`.
+- [x] 1.2: Install WatermelonDB sync module. The `synchronize` function is exported from `@nozbe/watermelondb/sync` — verify this import path works with the installed WatermelonDB version (0.27.x). Run `npm install` from `mvps/field-service-management/src/` if any dependency errors appear. No new packages are needed — `synchronize` is bundled in `@nozbe/watermelondb`.
 
 ### Task 2: Update `sync-context.tsx` to wire up real sync state (AC: #1, #4, #6, #7)
 
-- [ ] 2.1: Open `apps/mobile/src/contexts/sync-context.tsx`. The file was created in story 6.1 with `isSyncing`, `lastSyncAt`, and `syncError` stubbed as `false`/`null`. Replace the `SyncProvider` implementation to wire up the real sync service:
+- [x] 2.1: Open `apps/mobile/src/contexts/sync-context.tsx`. The file was created in story 6.1 with `isSyncing`, `lastSyncAt`, and `syncError` stubbed as `false`/`null`. Replace the `SyncProvider` implementation to wire up the real sync service:
 
   ```typescript
   import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
@@ -252,7 +252,7 @@ so that no data is ever lost and I don't have to manually fix sync issues.
 
 ### Task 3: Create API sync service (AC: #2, #3, #5, #8)
 
-- [ ] 3.1: Create `apps/api/src/services/sync-service.ts`. This handles the server-side sync logic: pull (return changes since `lastPulledAt`) and push (apply client changes with conflict resolution):
+- [x] 3.1: Create `apps/api/src/services/sync-service.ts`. This handles the server-side sync logic: pull (return changes since `lastPulledAt`) and push (apply client changes with conflict resolution):
 
   ```typescript
   import { prisma } from '../config/prisma.js';
@@ -463,7 +463,7 @@ so that no data is ever lost and I don't have to manually fix sync issues.
   - **Last-write-wins for scalar fields**: Implemented by comparing `updated_at` timestamps. If client's `updated_at` ≤ server's `updated_at`, the update is skipped — the server already has equal or newer data.
   - **Collection merge for notes/photos**: The MVP stores `notes` as a single string field on `jobs`. True collection merge (append) isn't possible with a plain string field. For MVP, last-write-wins applies to `notes` as well (acceptable because the field is a string, not an array). Photo records (`job_photos`, `quote_photos`) are separate rows — each is a distinct record, so multiple devices adding photos creates multiple rows without conflict. This satisfies AC3 in practice for photos. If true notes merge is needed post-MVP, `notes` would need to be modeled as a `[]` relationship.
 
-- [ ] 3.2: Note that the `Decimal` type in Prisma (used for `line_items.quantity`) needs special handling. When WatermelonDB sends `quantity` as a number (e.g., `2`), Prisma's `Decimal` type requires it to be a `string` or `Prisma.Decimal` object. Add a type coercion step in `upsertRecord` for the `line_items` table:
+- [x] 3.2: Note that the `Decimal` type in Prisma (used for `line_items.quantity`) needs special handling. When WatermelonDB sends `quantity` as a number (e.g., `2`), Prisma's `Decimal` type requires it to be a `string` or `Prisma.Decimal` object. Add a type coercion step in `upsertRecord` for the `line_items` table:
   ```typescript
   if (table === 'line_items' && typeof prismaData.quantity === 'number') {
     prismaData.quantity = prismaData.quantity.toString();
@@ -472,7 +472,7 @@ so that no data is ever lost and I don't have to manually fix sync issues.
 
 ### Task 4: Create API sync routes (AC: #8)
 
-- [ ] 4.1: Create `apps/api/src/routes/sync.ts`:
+- [x] 4.1: Create `apps/api/src/routes/sync.ts`:
 
   ```typescript
   import { Router } from 'express';
@@ -526,7 +526,7 @@ so that no data is ever lost and I don't have to manually fix sync issues.
   });
   ```
 
-- [ ] 4.2: Register the sync router in `apps/api/src/index.ts`. Add after the `accounts` router import and registration:
+- [x] 4.2: Register the sync router in `apps/api/src/index.ts`. Add after the `accounts` router import and registration:
 
   ```typescript
   import { syncRouter } from './routes/sync.js';
@@ -538,7 +538,7 @@ so that no data is ever lost and I don't have to manually fix sync issues.
 
 ### Task 5: Handle `invoice_number` constraint in push upsert (AC: #5)
 
-- [ ] 5.1: The `Invoice` model in Prisma has a required `invoiceNumber` field with `@map("invoice_number")`. WatermelonDB's mobile `Invoice` model must also include `invoice_number` as a column in its schema. Verify `apps/mobile/src/db/schema.ts` includes `{ name: 'invoice_number', type: 'string' }` in the `invoices` table. If it's missing, this was an oversight in earlier stories — add it.
+- [x] 5.1: The `Invoice` model in Prisma has a required `invoiceNumber` field with `@map("invoice_number")`. WatermelonDB's mobile `Invoice` model must also include `invoice_number` as a column in its schema. Verify `apps/mobile/src/db/schema.ts` includes `{ name: 'invoice_number', type: 'string' }` in the `invoices` table. If it's missing, this was an oversight in earlier stories — add it.
 
   Check `apps/mobile/src/db/models/invoice.ts` for the field:
   ```typescript
@@ -550,7 +550,7 @@ so that no data is ever lost and I don't have to manually fix sync issues.
 
 ### Task 6: Write tests (AC: #1, #4, #5, #8)
 
-- [ ] 6.1: Create `apps/mobile/src/services/sync-service.test.ts`. Unit-test the sync service with mocked `apiClient` and WatermelonDB in-memory database. Key test cases:
+- [x] 6.1: Create `apps/mobile/src/services/sync-service.test.ts`. Unit-test the sync service with mocked `apiClient` and WatermelonDB in-memory database. Key test cases:
 
   ```typescript
   // Test: performSync calls pullChanges and pushChanges
@@ -574,7 +574,7 @@ so that no data is ever lost and I don't have to manually fix sync issues.
 
   Test exponential backoff by mocking `setTimeout` with `jest.useFakeTimers()`.
 
-- [ ] 6.2: Create `apps/api/src/routes/sync.test.ts`. Test the pull and push endpoints using `supertest`. Key test cases:
+- [x] 6.2: Create `apps/api/src/routes/sync.test.ts`. Test the pull and push endpoints using `supertest`. Key test cases:
 
   ```typescript
   // Test: POST /api/v1/sync/pull — requires auth, returns changes + timestamp
@@ -801,6 +801,25 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None.
+
 ### Completion Notes List
 
+- TypeScript type fix: `pullChanges` return type changed from `{ changes: object; timestamp: number }` to `SyncPullResult` (imported from `@nozbe/watermelondb/sync`) to satisfy WatermelonDB's `synchronize()` type constraints.
+- Backoff tests: Avoided `jest.useFakeTimers()` with LokiJS adapter (causes "infinite loop" error from LokiJS autosave interval). Used `jest.spyOn(global, 'setTimeout').mockImplementation(fn => { fn(); })` to make sleeps instant while still tracking delay values.
+- `invoice_number` field confirmed already present in both schema.ts (v10) and invoice.ts model. No migration needed.
+- API sync-service handles Prisma schema inconsistency: Quote and LineItem models use snake_case field names directly, while Customer/Job/ScheduleEvent/Invoice/Payment use camelCase. Separate `camelToSnake` conversion applied for Quote and LineItem push path.
+- Auth test approach: used a module-level `mockAuthShouldFail` flag (captured in closure by Jest mock) to simulate 401 without requiring `jest.resetModules()` mid-suite.
+
 ### File List
+
+Created:
+- `apps/mobile/src/services/sync-service.ts`
+- `apps/mobile/src/services/sync-service.test.ts`
+- `apps/api/src/services/sync-service.ts`
+- `apps/api/src/routes/sync.ts`
+- `apps/api/src/routes/sync.test.ts`
+
+Modified:
+- `apps/mobile/src/contexts/sync-context.tsx` (replaced stub implementation with real sync state)
+- `apps/api/src/index.ts` (registered syncRouter at /api/v1/sync)

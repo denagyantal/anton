@@ -1,12 +1,16 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { AppState, AppStateStatus } from 'react-native';
 import { Q } from '@nozbe/watermelondb';
 import { useDatabase } from './database-context';
+import { useNetwork } from '../hooks/use-network';
+import { performSyncWithRetry, SYNCED_TABLES } from '../services/sync-service';
 
 interface SyncContextValue {
   pendingCount: number;
   isSyncing: boolean;
   lastSyncAt: number | null;
   syncError: string | null;
+  triggerSync: () => void;
 }
 
 export const SyncContext = createContext<SyncContextValue>({
@@ -14,18 +18,21 @@ export const SyncContext = createContext<SyncContextValue>({
   isSyncing: false,
   lastSyncAt: null,
   syncError: null,
+  triggerSync: () => {},
 });
 
 const SYNCED_AT_NULL = Q.eq(null);
 
-const PENDING_TABLES = [
-  'customers', 'quotes', 'line_items', 'jobs',
-  'schedule_events', 'invoices', 'payments',
-] as const;
+const PENDING_TABLES = SYNCED_TABLES;
 
 export function SyncProvider({ children }: { children: React.ReactNode }) {
   const database = useDatabase();
+  const { isConnected } = useNetwork();
   const [pendingCount, setPendingCount] = useState(0);
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [lastSyncAt, setLastSyncAt] = useState<number | null>(null);
+  const [syncError, setSyncError] = useState<string | null>(null);
+  const isSyncingRef = useRef(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -58,8 +65,46 @@ export function SyncProvider({ children }: { children: React.ReactNode }) {
     };
   }, [database]);
 
+  const triggerSync = useCallback(async () => {
+    if (isSyncingRef.current || !isConnected) return;
+    isSyncingRef.current = true;
+    setIsSyncing(true);
+    setSyncError(null);
+
+    try {
+      await performSyncWithRetry(database);
+      setLastSyncAt(Date.now());
+      setSyncError(null);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Sync failed';
+      setSyncError(message);
+    } finally {
+      setIsSyncing(false);
+      isSyncingRef.current = false;
+    }
+  }, [database, isConnected]);
+
+  const prevConnectedRef = useRef<boolean | null>(null);
+  useEffect(() => {
+    if (prevConnectedRef.current === false && isConnected === true) {
+      triggerSync();
+    }
+    prevConnectedRef.current = isConnected;
+  }, [isConnected, triggerSync]);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (state: AppStateStatus) => {
+      if (state === 'active') {
+        triggerSync();
+      }
+    });
+    return () => subscription.remove();
+  }, [triggerSync]);
+
   return (
-    <SyncContext.Provider value={{ pendingCount, isSyncing: false, lastSyncAt: null, syncError: null }}>
+    <SyncContext.Provider
+      value={{ pendingCount, isSyncing, lastSyncAt, syncError, triggerSync }}
+    >
       {children}
     </SyncContext.Provider>
   );
