@@ -87,8 +87,8 @@ development_status:
   epic-6-retrospective: optional
 
   # Epic 7: QuickBooks Online Integration
-  epic-7: backlog
-  7-1-quickbooks-oauth-connection: backlog
+  epic-7: in-progress
+  7-1-quickbooks-oauth-connection: ready-for-dev
   7-2-automatic-customer-invoice-and-payment-sync: backlog
   7-3-sync-status-dashboard-and-manual-re-sync: backlog
   epic-7-retrospective: optional
