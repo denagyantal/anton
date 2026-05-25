@@ -1,6 +1,6 @@
 # Story 7.1: QuickBooks OAuth Connection
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -24,7 +24,7 @@ so that my financial data stays in sync without manual entry.
 
 ### Task 1: Prisma schema migration for QuickBooks OAuth fields (AC: #2, #4, #5)
 
-- [ ] 1.1: Add QuickBooks OAuth fields to the `accounts` table in `apps/api/prisma/schema.prisma`. The architecture already declares `quickbooks_connected` and `quickbooks_realm_id` — add the token fields needed for server-side storage:
+- [x] 1.1: Add QuickBooks OAuth fields to the `accounts` table in `apps/api/prisma/schema.prisma`. The architecture already declares `quickbooks_connected` and `quickbooks_realm_id` — add the token fields needed for server-side storage:
 
   ```prisma
   model accounts {
@@ -40,7 +40,7 @@ so that my financial data stays in sync without manual entry.
 
   Run migration: `npx prisma migrate dev --name add_quickbooks_oauth_fields` from `apps/api/`.
 
-- [ ] 1.2: Verify the existing `quickbooks_sync_log` table in schema.prisma matches the architecture data model (see Dev Notes). If not yet created, add it in this migration:
+- [x] 1.2: Verify the existing `quickbooks_sync_log` table in schema.prisma matches the architecture data model (see Dev Notes). If not yet created, add it in this migration:
 
   ```prisma
   model quickbooks_sync_log {
@@ -62,7 +62,7 @@ so that my financial data stays in sync without manual entry.
 
 ### Task 2: QuickBooks environment configuration (AC: #1, #2)
 
-- [ ] 2.1: Create `apps/api/src/config/quickbooks.ts`. This module exports a validated Intuit OAuth client config from environment variables:
+- [x] 2.1: Create `apps/api/src/config/quickbooks.ts`. This module exports a validated Intuit OAuth client config from environment variables:
 
   ```typescript
   import { z } from 'zod';
@@ -92,7 +92,7 @@ so that my financial data stays in sync without manual entry.
   } as const;
   ```
 
-- [ ] 2.2: Add QuickBooks env vars to `apps/api/.env.example`:
+- [x] 2.2: Add QuickBooks env vars to `apps/api/.env.example`:
   ```
   QUICKBOOKS_CLIENT_ID=your_client_id_here
   QUICKBOOKS_CLIENT_SECRET=your_client_secret_here
@@ -104,7 +104,7 @@ so that my financial data stays in sync without manual entry.
 
 ### Task 3: QuickBooks service — OAuth methods (AC: #1, #2, #3, #4, #5)
 
-- [ ] 3.1: Create `apps/api/src/services/quickbooks-service.ts` with the following functions. Install `node-fetch` or use Node 18+ built-in `fetch`. Do NOT install the `node-quickbooks` npm package — use the Intuit REST API directly for full control (per architecture: "Direct Intuit API (not unified API layer) for maximum sync accuracy control"):
+- [x] 3.1: Create `apps/api/src/services/quickbooks-service.ts` with the following functions. Install `node-fetch` or use Node 18+ built-in `fetch`. Do NOT install the `node-quickbooks` npm package — use the Intuit REST API directly for full control (per architecture: "Direct Intuit API (not unified API layer) for maximum sync accuracy control"):
 
   ```typescript
   import crypto from 'crypto';
@@ -350,11 +350,11 @@ so that my financial data stays in sync without manual entry.
   }
   ```
 
-- [ ] 3.2: Export `getValidAccessToken` from `quickbooks-service.ts` — this is the function future stories (7.2) will call before any Intuit API operation. It is the single entry point for QuickBooks API calls.
+- [x] 3.2: Export `getValidAccessToken` from `quickbooks-service.ts` — this is the function future stories (7.2) will call before any Intuit API operation. It is the single entry point for QuickBooks API calls.
 
 ### Task 4: QuickBooks API routes (AC: #1, #2, #3, #5)
 
-- [ ] 4.1: Create `apps/api/src/routes/quickbooks.ts`:
+- [x] 4.1: Create `apps/api/src/routes/quickbooks.ts`:
 
   ```typescript
   import { Router, Request, Response } from 'express';
@@ -434,7 +434,7 @@ so that my financial data stays in sync without manual entry.
   export default router;
   ```
 
-- [ ] 4.2: Register the QuickBooks router in `apps/api/src/index.ts`. Add alongside existing routes:
+- [x] 4.2: Register the QuickBooks router in `apps/api/src/index.ts`. Add alongside existing routes:
 
   ```typescript
   import quickbooksRouter from './routes/quickbooks';
@@ -442,7 +442,7 @@ so that my financial data stays in sync without manual entry.
   app.use('/api/v1/quickbooks', quickbooksRouter);
   ```
 
-- [ ] 4.3: Create the QuickBooks result page for the web app at `apps/web/src/app/(public)/quickbooks-result/page.tsx`. This is the page the OAuth callback redirects to — it shows success/failure and instructs the user to return to the app:
+- [x] 4.3: Create the QuickBooks result page for the web app at `apps/web/src/app/(public)/quickbooks-result/page.tsx`. This is the page the OAuth callback redirects to — it shows success/failure and instructs the user to return to the app:
 
   ```typescript
   'use client';
@@ -488,7 +488,7 @@ so that my financial data stays in sync without manual entry.
 
 ### Task 5: Mobile QuickBooks settings screen (AC: #1, #3, #5)
 
-- [ ] 5.1: Add QuickBooks API methods to `apps/mobile/src/services/api-client.ts` (or create a dedicated `quickbooks-api.ts` alongside it):
+- [x] 5.1: Add QuickBooks API methods to `apps/mobile/src/services/api-client.ts` (or create a dedicated `quickbooks-api.ts` alongside it):
 
   ```typescript
   export async function connectQuickBooks(): Promise<{ authorizationUrl: string }> {
@@ -514,7 +514,7 @@ so that my financial data stays in sync without manual entry.
 
   Follow the existing `apiClient` pattern already established in `api-client.ts` (same auth headers, same error handling).
 
-- [ ] 5.2: Create `apps/mobile/app/(tabs)/more/quickbooks.tsx`:
+- [x] 5.2: Create `apps/mobile/app/(tabs)/more/quickbooks.tsx`:
 
   ```typescript
   import React, { useEffect, useState, useCallback } from 'react';
@@ -725,13 +725,13 @@ so that my financial data stays in sync without manual entry.
   });
   ```
 
-- [ ] 5.3: Install `expo-web-browser` if not already present. Check `apps/mobile/package.json` for `"expo-web-browser"`. If absent, run from `mvps/field-service-management/src/apps/mobile/`:
+- [x] 5.3: Install `expo-web-browser` if not already present. Check `apps/mobile/package.json` for `"expo-web-browser"`. If absent, run from `mvps/field-service-management/src/apps/mobile/`:
   ```
   npx expo install expo-web-browser
   ```
   Always use `npx expo install` (not `npm install`) for Expo packages to get the SDK-compatible version.
 
-- [ ] 5.4: Add navigation row to `apps/mobile/app/(tabs)/more/index.tsx`. Add a "QuickBooks" row in the Settings section. Follow the existing `TouchableOpacity` row pattern:
+- [x] 5.4: Add navigation row to `apps/mobile/app/(tabs)/more/index.tsx`. Add a "QuickBooks" row in the Settings section. Follow the existing `TouchableOpacity` row pattern:
 
   ```tsx
   <TouchableOpacity
@@ -748,7 +748,7 @@ so that my financial data stays in sync without manual entry.
 
 ### Task 6: Tests (AC: #1, #2, #4, #5)
 
-- [ ] 6.1: Create `apps/api/src/services/quickbooks-service.test.ts`. Test OAuth URL generation, state management, and disconnect logic without hitting real Intuit APIs:
+- [x] 6.1: Create `apps/api/src/services/quickbooks-service.test.ts`. Test OAuth URL generation, state management, and disconnect logic without hitting real Intuit APIs:
 
   ```typescript
   import { generateAuthorizationUrl, consumeOAuthState } from './quickbooks-service';
@@ -792,7 +792,7 @@ so that my financial data stays in sync without manual entry.
   });
   ```
 
-- [ ] 6.2: Create `apps/api/tests/integration/quickbooks.test.ts`. Test the connect endpoint returns an auth URL and the status endpoint with mocked Prisma:
+- [x] 6.2: Create `apps/api/tests/integration/quickbooks.test.ts`. Test the connect endpoint returns an auth URL and the status endpoint with mocked Prisma:
 
   ```typescript
   import request from 'supertest';
@@ -1028,6 +1028,34 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None.
+
 ### Completion Notes List
 
+- Implemented all 5 acceptance criteria for QuickBooks OAuth 2.0 connection.
+- Adapted Prisma model field names from story spec (snake_case) to match existing Account model convention (camelCase with @map): `quickbooksAccessToken`, `quickbooksRefreshToken`, `quickbooksTokenExpiresAt`, `quickbooksCompanyName`.
+- Config module uses lazy getters (`get clientId()`) instead of zod module-level parse to allow test env vars to be set before module import without TypeScript temporal dead zone issues.
+- QB service uses `prisma.account` (not `prisma.accounts`) per Prisma model naming (`Account` → `account`).
+- In-app browser uses `expo-web-browser@~14.0.0` (Expo SDK 52 compatible) added to mobile `package.json`.
+- Migration SQL file created manually (no live database available); Prisma client regenerated with `npx prisma generate`.
+- 16 new tests added (7 unit, 9 integration), all passing. Full regression suite: 169/169 passing.
+
 ### File List
+
+**Created:**
+- `apps/api/src/config/quickbooks.ts`
+- `apps/api/src/services/quickbooks-service.ts`
+- `apps/api/src/routes/quickbooks.ts`
+- `apps/api/prisma/migrations/20260525000000_add_quickbooks_oauth_fields/migration.sql`
+- `apps/web/src/app/(public)/quickbooks-result/page.tsx`
+- `apps/mobile/app/(tabs)/more/quickbooks.tsx`
+- `apps/api/src/services/quickbooks-service.test.ts`
+- `apps/api/tests/integration/quickbooks.test.ts`
+
+**Modified:**
+- `apps/api/prisma/schema.prisma` (added QB OAuth fields to Account, added QuickbooksSyncLog model)
+- `apps/api/src/index.ts` (registered quickbooks router)
+- `apps/api/.env.example` (added WEB_BASE_URL and QUICKBOOKS_* vars)
+- `apps/mobile/src/services/api-client.ts` (added connectQuickBooks, getQuickBooksStatus, disconnectQuickBooks)
+- `apps/mobile/app/(tabs)/more/index.tsx` (added QuickBooks navigation row)
+- `apps/mobile/package.json` (added expo-web-browser ~14.0.0)

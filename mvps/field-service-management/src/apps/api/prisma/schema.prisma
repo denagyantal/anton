@@ -70,21 +70,26 @@ model Account {
   contactEmail       String?     @map("contact_email")
   contactPhone       String?     @map("contact_phone")
   tradeType          TradeType?  @map("trade_type")
-  quickbooksConnected Boolean    @default(false) @map("quickbooks_connected")
-  quickbooksRealmId  String?     @map("quickbooks_realm_id")
-  stripeAccountId    String?     @map("stripe_account_id")
+  quickbooksConnected      Boolean   @default(false) @map("quickbooks_connected")
+  quickbooksRealmId        String?   @map("quickbooks_realm_id")
+  quickbooksAccessToken    String?   @map("quickbooks_access_token")
+  quickbooksRefreshToken   String?   @map("quickbooks_refresh_token")
+  quickbooksTokenExpiresAt DateTime? @map("quickbooks_token_expires_at")
+  quickbooksCompanyName    String?   @map("quickbooks_company_name")
+  stripeAccountId          String?   @map("stripe_account_id")
   createdAt          DateTime    @default(now()) @map("created_at")
   updatedAt          DateTime    @updatedAt @map("updated_at")
   syncedAt           DateTime?   @map("synced_at")
 
-  teamMembers    TeamMember[]
-  pricebookItems PricebookItem[]
-  customers      Customer[]
-  quotes         Quote[]
-  jobs           Job[]
-  scheduleEvents ScheduleEvent[]
-  invoices       Invoice[]
-  payments       Payment[]
+  teamMembers         TeamMember[]
+  pricebookItems      PricebookItem[]
+  customers           Customer[]
+  quotes              Quote[]
+  jobs                Job[]
+  scheduleEvents      ScheduleEvent[]
+  invoices            Invoice[]
+  payments            Payment[]
+  quickbooksSyncLogs  QuickbooksSyncLog[]
 
   @@map("accounts")
 }
@@ -329,4 +334,22 @@ model Payment {
   @@index([accountId], name: "idx_payments_account_id")
   @@index([invoiceId], name: "idx_payments_invoice_id")
   @@map("payments")
+}
+
+model QuickbooksSyncLog {
+  id            String   @id @default(uuid())
+  accountId     String   @map("account_id")
+  entityType    String   @map("entity_type")
+  entityId      String   @map("entity_id")
+  direction     String   @default("PUSH") @map("direction")
+  status        String   @map("status")
+  errorMessage  String?  @map("error_message")
+  quickbooksId  String?  @map("quickbooks_id")
+  syncedAt      DateTime @default(now()) @map("synced_at")
+
+  account Account @relation(fields: [accountId], references: [id])
+
+  @@index([accountId], name: "idx_qb_sync_log_account_id")
+  @@index([entityId], name: "idx_qb_sync_log_entity_id")
+  @@map("quickbooks_sync_log")
 }

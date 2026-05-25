@@ -97,6 +97,15 @@ export default function MoreScreen() {
 
       <TouchableOpacity
         style={styles.row}
+        onPress={() => router.push('/(tabs)/more/quickbooks')}
+        testID="quickbooks-row"
+      >
+        <Text style={styles.rowText}>QuickBooks</Text>
+        <Text style={styles.rowArrow}>›</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.row}
         onPress={() => router.push('/(tabs)/more/pricebook')}
       >
         <Text style={styles.rowText}>Pricebook</Text>

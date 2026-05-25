@@ -10,6 +10,7 @@ import { paymentsRouter } from './routes/payments.js';
 import { authMiddleware } from './middleware/auth.js';
 import { startReminderJob } from './jobs/reminder-sender.js';
 import { syncRouter } from './routes/sync.js';
+import quickbooksRouter from './routes/quickbooks.js';
 
 export const app = express();
 
@@ -48,6 +49,9 @@ app.use('/api/v1/invoices', invoicesRouter);
 
 // Sync routes (protected)
 app.use('/api/v1/sync', syncRouter);
+
+// QuickBooks routes (mixed: connect/status/disconnect are protected; callback is public)
+app.use('/api/v1/quickbooks', quickbooksRouter);
 
 // Protected route: current user
 app.get('/api/v1/me', authMiddleware, (req, res) => {

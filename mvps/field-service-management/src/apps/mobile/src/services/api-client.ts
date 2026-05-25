@@ -130,3 +130,19 @@ export const apiClient = {
     return handleResponse<T>(response);
   },
 };
+
+export async function connectQuickBooks(): Promise<{ authorizationUrl: string }> {
+  return apiClient.post<{ authorizationUrl: string }>('/api/v1/quickbooks/connect', {});
+}
+
+export async function getQuickBooksStatus(): Promise<{
+  connected: boolean;
+  companyName: string | null;
+  realmId: string | null;
+}> {
+  return apiClient.get('/api/v1/quickbooks/status');
+}
+
+export async function disconnectQuickBooks(): Promise<void> {
+  await apiClient.post('/api/v1/quickbooks/disconnect', {});
+}
