@@ -5,13 +5,29 @@ import { useSync } from '../../contexts/sync-context';
 
 export function NetworkStatusBar() {
   const { isConnected } = useNetwork();
-  const { pendingCount } = useSync();
+  const { pendingCount, syncError } = useSync();
 
-  // AC #3: online with nothing pending → no indicator
-  if (isConnected && pendingCount === 0) return null;
+  // AC #2: online, nothing pending, no error → green "all synced"
+  if (isConnected && pendingCount === 0 && !syncError) {
+    return (
+      <View style={[styles.bar, { backgroundColor: '#22c55e22' }]}>
+        <View style={[styles.dot, { backgroundColor: '#22c55e' }]} />
+        <Text style={[styles.text, { color: '#16a34a' }]}>All synced</Text>
+      </View>
+    );
+  }
 
-  // AC #4: online but pending items → yellow dot with count
-  // AC #2: offline → yellow dot with pending count
+  // AC #4: sync error state
+  if (syncError) {
+    return (
+      <View style={[styles.bar, { backgroundColor: '#ef444422' }]}>
+        <View style={[styles.dot, { backgroundColor: '#ef4444' }]} />
+        <Text style={[styles.text, { color: '#dc2626' }]}>Sync error — tap a record to retry</Text>
+      </View>
+    );
+  }
+
+  // AC #3: online with pending, or offline
   const label = pendingCount > 0 ? `${pendingCount} pending` : 'offline';
   const color = isConnected ? '#fbbf24' : '#f59e0b';
 

@@ -2,8 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import Customer from '../../db/models/customer';
-import { getSyncStatus } from '../../hooks/use-sync-status';
-import { SyncIndicator } from '../ui/sync-indicator';
+import { SyncBadge } from '../ui/sync-badge';
 
 interface CustomerCardProps {
   customer: Customer;
@@ -31,7 +30,7 @@ export default function CustomerCard({ customer, onPress }: CustomerCardProps) {
       <View style={styles.content}>
         <View style={styles.nameRow}>
           <Text style={styles.name} numberOfLines={1}>{customer.name}</Text>
-          <SyncIndicator status={getSyncStatus(customer)} />
+          <SyncBadge record={customer} />
         </View>
         <Text style={styles.phone}>{customer.phone}</Text>
         {location ? <Text style={styles.location}>{location}</Text> : null}

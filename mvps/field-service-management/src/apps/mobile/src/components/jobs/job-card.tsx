@@ -2,8 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Job from '../../db/models/job';
 import JobStatusBadge from './job-status-badge';
-import { getSyncStatus } from '../../hooks/use-sync-status';
-import { SyncIndicator } from '../ui/sync-indicator';
+import { SyncBadge } from '../ui/sync-badge';
 
 function formatTimeRange(start: number | null, end: number | null): string {
   if (!start) return '';
@@ -55,7 +54,7 @@ export default function JobCard({ job, customerName, onPress, onTransition }: Jo
           <Text style={styles.title} numberOfLines={1}>
             {job.title}
           </Text>
-          <SyncIndicator status={getSyncStatus(job)} />
+          <SyncBadge record={job} />
         </View>
         <JobStatusBadge status={job.status} size="sm" />
       </View>

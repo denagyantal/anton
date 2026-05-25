@@ -88,6 +88,15 @@ export default function MoreScreen() {
 
       <TouchableOpacity
         style={styles.row}
+        onPress={() => router.push('/(tabs)/more/sync-status')}
+        testID="sync-status-row"
+      >
+        <Text style={styles.rowText}>Sync Status</Text>
+        <Text style={styles.rowArrow}>›</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.row}
         onPress={() => router.push('/(tabs)/more/pricebook')}
       >
         <Text style={styles.rowText}>Pricebook</Text>

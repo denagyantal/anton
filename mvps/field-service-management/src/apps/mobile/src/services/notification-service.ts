@@ -20,3 +20,17 @@ export async function registerPushToken(): Promise<void> {
     // Non-critical — app works fine without push
   }
 }
+
+export async function scheduleSyncErrorNotification(errorMessage: string): Promise<void> {
+  const { status } = await Notifications.getPermissionsAsync();
+  if (status !== 'granted') return;
+
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: 'Sync Error',
+      body: 'Some records failed to sync. Open the app and tap a record to retry.',
+      data: { type: 'sync_error', message: errorMessage },
+    },
+    trigger: null,
+  });
+}

@@ -83,7 +83,7 @@ development_status:
   epic-6: in-progress
   6-1-offline-core-workflow-and-network-detection: done
   6-2-automatic-background-sync-with-conflict-resolution: done
-  6-3-sync-status-display-and-error-reporting: ready-for-dev
+  6-3-sync-status-display-and-error-reporting: done
   epic-6-retrospective: optional
 
   # Epic 7: QuickBooks Online Integration

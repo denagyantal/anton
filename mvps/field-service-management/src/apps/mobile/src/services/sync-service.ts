@@ -15,17 +15,38 @@ async function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export async function performSync(database: Database): Promise<void> {
+export interface SyncStats {
+  recordsPushed: number;
+  recordsPulled: number;
+  conflictsResolved: number;
+}
+
+function countChanges(changes: Record<string, { created?: unknown[]; updated?: unknown[]; deleted?: string[] }>): number {
+  return Object.values(changes).reduce((acc, tableChanges) => {
+    return acc
+      + (tableChanges.created?.length ?? 0)
+      + (tableChanges.updated?.length ?? 0)
+      + (tableChanges.deleted?.length ?? 0);
+  }, 0);
+}
+
+export async function performSync(database: Database): Promise<SyncStats> {
+  let recordsPushed = 0;
+  let recordsPulled = 0;
+
   await synchronize({
     database,
     sendCreatedAsUpdated: true,
     pullChanges: async ({ lastPulledAt, schemaVersion, migration }) => {
-      return await apiClient.post<SyncPullResult>(
+      const result = await apiClient.post<SyncPullResult>(
         '/api/v1/sync/pull',
         { lastPulledAt, schemaVersion, migration },
       );
+      recordsPulled = countChanges((result as any).changes ?? {});
+      return result;
     },
     pushChanges: async ({ changes, lastPulledAt }) => {
+      recordsPushed = countChanges(changes as Record<string, { created?: unknown[]; updated?: unknown[]; deleted?: string[] }>);
       await apiClient.post('/api/v1/sync/push', { changes, lastPulledAt });
     },
   });
@@ -50,14 +71,15 @@ export async function performSync(database: Database): Promise<void> {
       await database.batch(...preparedUpdates);
     }
   });
+
+  return { recordsPushed, recordsPulled, conflictsResolved: 0 };
 }
 
-export async function performSyncWithRetry(database: Database): Promise<void> {
+export async function performSyncWithRetry(database: Database): Promise<SyncStats> {
   let lastError: unknown;
   for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
     try {
-      await performSync(database);
-      return;
+      return await performSync(database);
     } catch (err) {
       lastError = err;
       if (attempt < MAX_RETRIES - 1) {

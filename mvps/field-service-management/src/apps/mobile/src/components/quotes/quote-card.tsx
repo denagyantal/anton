@@ -4,8 +4,7 @@ import { centsToDollars } from '@field-service/shared';
 import { useDatabase } from '../../contexts/database-context';
 import Quote from '../../db/models/quote';
 import Customer from '../../db/models/customer';
-import { getSyncStatus } from '../../hooks/use-sync-status';
-import { SyncIndicator } from '../ui/sync-indicator';
+import { SyncBadge } from '../ui/sync-badge';
 
 const STATUS_COLORS: Record<string, { bg: string; text: string }> = {
   DRAFT: { bg: '#f3f4f6', text: '#6b7280' },
@@ -49,7 +48,7 @@ export default function QuoteCard({ quote, onPress }: QuoteCardProps) {
       <View style={styles.topRow}>
         <View style={styles.nameRow}>
           <Text style={styles.customerName} numberOfLines={1}>{customerName}</Text>
-          <SyncIndicator status={getSyncStatus(quote)} />
+          <SyncBadge record={quote} />
         </View>
         <View style={[styles.badge, { backgroundColor: statusStyle.bg }]}>
           <Text

@@ -3,7 +3,9 @@ import { AppState, AppStateStatus } from 'react-native';
 import { Q } from '@nozbe/watermelondb';
 import { useDatabase } from './database-context';
 import { useNetwork } from '../hooks/use-network';
-import { performSyncWithRetry, SYNCED_TABLES } from '../services/sync-service';
+import { performSyncWithRetry, SYNCED_TABLES, SyncStats } from '../services/sync-service';
+import { appendSyncLog, SyncLogEntry } from '../hooks/use-sync-log';
+import { scheduleSyncErrorNotification } from '../services/notification-service';
 
 interface SyncContextValue {
   pendingCount: number;
@@ -71,16 +73,40 @@ export function SyncProvider({ children }: { children: React.ReactNode }) {
     setIsSyncing(true);
     setSyncError(null);
 
+    let stats: SyncStats | null = null;
     try {
-      await performSyncWithRetry(database);
+      stats = await performSyncWithRetry(database);
       setLastSyncAt(Date.now());
       setSyncError(null);
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Sync failed';
       setSyncError(message);
+
+      const entry: SyncLogEntry = {
+        timestamp: Date.now(),
+        status: 'failed',
+        recordsPushed: 0,
+        recordsPulled: 0,
+        conflictsResolved: 0,
+        errorMessage: message,
+      };
+      appendSyncLog(entry).catch(() => {});
+
+      scheduleSyncErrorNotification(message).catch(() => {});
     } finally {
       setIsSyncing(false);
       isSyncingRef.current = false;
+    }
+
+    if (stats) {
+      const entry: SyncLogEntry = {
+        timestamp: Date.now(),
+        status: 'success',
+        recordsPushed: stats.recordsPushed,
+        recordsPulled: stats.recordsPulled,
+        conflictsResolved: stats.conflictsResolved,
+      };
+      appendSyncLog(entry).catch(() => {});
     }
   }, [database, isConnected]);
 

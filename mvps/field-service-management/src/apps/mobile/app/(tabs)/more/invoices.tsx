@@ -10,6 +10,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
 import { useAllInvoices, useInvoiceSummary } from '../../../src/hooks/use-invoices';
 import type Invoice from '../../../src/db/models/invoice';
+import { SyncBadge } from '../../../src/components/ui/sync-badge';
 
 const STATUS_CONFIG: Record<string, { badgeBg: string; badgeText: string; label: string }> = {
   DRAFT:          { badgeBg: '#f3f4f6', badgeText: '#374151', label: 'Draft' },
@@ -31,7 +32,10 @@ function InvoiceCard({ invoice }: { invoice: Invoice }) {
   return (
     <View style={styles.card}>
       <View style={styles.cardRow}>
-        <Text style={styles.invoiceNumber}>{invoice.invoiceNumber ?? 'Invoice'}</Text>
+        <View style={styles.invoiceNumberRow}>
+          <Text style={styles.invoiceNumber}>{invoice.invoiceNumber ?? 'Invoice'}</Text>
+          <SyncBadge record={invoice} />
+        </View>
         <View style={[styles.badge, { backgroundColor: cfg.badgeBg }]}>
           <Text style={[styles.badgeText, { color: cfg.badgeText }]}>{cfg.label}</Text>
         </View>
@@ -164,6 +168,10 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   invoiceNumber: { fontSize: 16, fontWeight: '600', color: '#111827' },
+  invoiceNumberRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   badge: { borderRadius: 12, paddingHorizontal: 10, paddingVertical: 2 },
   badgeText: { fontSize: 12, fontWeight: '600' },
   totalText: { fontSize: 14, color: '#6b7280' },

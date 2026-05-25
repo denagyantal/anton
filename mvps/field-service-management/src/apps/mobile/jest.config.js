@@ -5,6 +5,7 @@ module.exports = {
   moduleNameMapper: {
     '^@field-service/shared$': '<rootDir>/../../../packages/shared/src/index.ts',
     '^@/(.*)$': '<rootDir>/src/$1',
+    '^@react-native-async-storage/async-storage$': '<rootDir>/src/__mocks__/async-storage.ts',
   },
   transform: {
     '^.+\\.tsx?$': ['ts-jest', {
