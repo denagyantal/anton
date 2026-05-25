@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Job from '../../db/models/job';
 import JobStatusBadge from './job-status-badge';
+import { getSyncStatus } from '../../hooks/use-sync-status';
+import { SyncIndicator } from '../ui/sync-indicator';
 
 function formatTimeRange(start: number | null, end: number | null): string {
   if (!start) return '';
@@ -49,9 +51,12 @@ export default function JobCard({ job, customerName, onPress, onTransition }: Jo
   return (
     <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.7}>
       <View style={styles.header}>
-        <Text style={styles.title} numberOfLines={1}>
-          {job.title}
-        </Text>
+        <View style={styles.titleRow}>
+          <Text style={styles.title} numberOfLines={1}>
+            {job.title}
+          </Text>
+          <SyncIndicator status={getSyncStatus(job)} />
+        </View>
         <JobStatusBadge status={job.status} size="sm" />
       </View>
       <Text style={styles.customerName}>{customerName}</Text>
@@ -80,12 +85,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 4,
   },
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+    marginRight: 8,
+  },
   title: {
     fontSize: 16,
     fontWeight: '600',
     color: '#111',
     flex: 1,
-    marginRight: 8,
   },
   customerName: {
     fontSize: 14,

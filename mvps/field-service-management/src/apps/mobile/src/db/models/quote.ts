@@ -19,4 +19,5 @@ export default class Quote extends Model {
   @field('expires_at') expiresAt!: number | null;
   @readonly @date('created_at') createdAt!: Date;
   @date('updated_at') updatedAt!: Date;
+  @field('synced_at') syncedAt!: number | null;
 }

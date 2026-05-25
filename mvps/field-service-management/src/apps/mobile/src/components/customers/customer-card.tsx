@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import Customer from '../../db/models/customer';
+import { getSyncStatus } from '../../hooks/use-sync-status';
+import { SyncIndicator } from '../ui/sync-indicator';
 
 interface CustomerCardProps {
   customer: Customer;
@@ -27,7 +29,10 @@ export default function CustomerCard({ customer, onPress }: CustomerCardProps) {
   return (
     <TouchableOpacity style={styles.card} onPress={handlePress} testID={`customer-card-${customer.id}`}>
       <View style={styles.content}>
-        <Text style={styles.name} numberOfLines={1}>{customer.name}</Text>
+        <View style={styles.nameRow}>
+          <Text style={styles.name} numberOfLines={1}>{customer.name}</Text>
+          <SyncIndicator status={getSyncStatus(customer)} />
+        </View>
         <Text style={styles.phone}>{customer.phone}</Text>
         {location ? <Text style={styles.location}>{location}</Text> : null}
       </View>
@@ -48,10 +53,15 @@ const styles = StyleSheet.create({
   content: {
     gap: 4,
   },
+  nameRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   name: {
     fontSize: 16,
     fontWeight: '600',
     color: '#111',
+    flex: 1,
   },
   phone: {
     fontSize: 14,

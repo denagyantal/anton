@@ -4,6 +4,8 @@ import { centsToDollars } from '@field-service/shared';
 import { useDatabase } from '../../contexts/database-context';
 import Quote from '../../db/models/quote';
 import Customer from '../../db/models/customer';
+import { getSyncStatus } from '../../hooks/use-sync-status';
+import { SyncIndicator } from '../ui/sync-indicator';
 
 const STATUS_COLORS: Record<string, { bg: string; text: string }> = {
   DRAFT: { bg: '#f3f4f6', text: '#6b7280' },
@@ -45,7 +47,10 @@ export default function QuoteCard({ quote, onPress }: QuoteCardProps) {
   return (
     <TouchableOpacity style={styles.card} onPress={() => onPress(quote)}>
       <View style={styles.topRow}>
-        <Text style={styles.customerName} numberOfLines={1}>{customerName}</Text>
+        <View style={styles.nameRow}>
+          <Text style={styles.customerName} numberOfLines={1}>{customerName}</Text>
+          <SyncIndicator status={getSyncStatus(quote)} />
+        </View>
         <View style={[styles.badge, { backgroundColor: statusStyle.bg }]}>
           <Text
             style={[
@@ -82,12 +87,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 8,
   },
+  nameRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+    marginRight: 8,
+  },
   customerName: {
     fontSize: 16,
     fontWeight: '600',
     color: '#333',
     flex: 1,
-    marginRight: 8,
   },
   badge: {
     paddingHorizontal: 8,

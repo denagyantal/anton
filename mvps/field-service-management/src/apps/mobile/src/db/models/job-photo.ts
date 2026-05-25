@@ -11,4 +11,5 @@ export default class JobPhoto extends Model {
   @field('taken_at') takenAt!: number | null;
   @readonly @date('created_at') createdAt!: Date;
   @date('updated_at') updatedAt!: Date;
+  @field('synced_at') syncedAt!: number | null;
 }

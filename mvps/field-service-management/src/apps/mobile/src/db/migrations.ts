@@ -3,6 +3,51 @@ import { schemaMigrations, createTable, addColumns } from '@nozbe/watermelondb/S
 export const migrations = schemaMigrations({
   migrations: [
     {
+      toVersion: 10,
+      steps: [
+        addColumns({
+          table: 'pricebook_items',
+          columns: [{ name: 'synced_at', type: 'number', isOptional: true }],
+        }),
+        addColumns({
+          table: 'customers',
+          columns: [{ name: 'synced_at', type: 'number', isOptional: true }],
+        }),
+        addColumns({
+          table: 'quotes',
+          columns: [{ name: 'synced_at', type: 'number', isOptional: true }],
+        }),
+        addColumns({
+          table: 'quote_photos',
+          columns: [{ name: 'synced_at', type: 'number', isOptional: true }],
+        }),
+        addColumns({
+          table: 'line_items',
+          columns: [{ name: 'synced_at', type: 'number', isOptional: true }],
+        }),
+        addColumns({
+          table: 'jobs',
+          columns: [{ name: 'synced_at', type: 'number', isOptional: true }],
+        }),
+        addColumns({
+          table: 'job_photos',
+          columns: [{ name: 'synced_at', type: 'number', isOptional: true }],
+        }),
+        addColumns({
+          table: 'schedule_events',
+          columns: [{ name: 'synced_at', type: 'number', isOptional: true }],
+        }),
+        addColumns({
+          table: 'invoices',
+          columns: [{ name: 'synced_at', type: 'number', isOptional: true }],
+        }),
+        addColumns({
+          table: 'payments',
+          columns: [{ name: 'synced_at', type: 'number', isOptional: true }],
+        }),
+      ],
+    },
+    {
       toVersion: 9,
       steps: [
         createTable({

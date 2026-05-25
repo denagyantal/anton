@@ -14,4 +14,5 @@ export default class PricebookItem extends Model {
   @field('sort_order') sortOrder!: number;
   @readonly @date('created_at') createdAt!: Date;
   @date('updated_at') updatedAt!: Date;
+  @field('synced_at') syncedAt!: number | null;
 }

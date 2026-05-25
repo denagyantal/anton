@@ -17,4 +17,5 @@ export default class ScheduleEvent extends Model {
   @text('external_calendar_id') externalCalendarId!: string;
   @readonly @date('created_at') createdAt!: Date;
   @date('updated_at') updatedAt!: Date;
+  @field('synced_at') syncedAt!: number | null;
 }

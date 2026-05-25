@@ -1,6 +1,6 @@
 # Story 6.1: Offline Core Workflow and Network Detection
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -32,15 +32,15 @@ so that I never lose work or have to redo data entry because of a dead zone.
 
 ### Task 1: Install `@react-native-community/netinfo` (AC: #1, #2, #3, #4, #9)
 
-- [ ] 1.1: In `apps/mobile/package.json`, add `"@react-native-community/netinfo": "^11.4.1"` to `dependencies`. This is compatible with React Native 0.76.6 (Expo SDK 52). `@react-native-community/netinfo` v11.x does not require a custom Expo config plugin — it works with Expo Go for development and EAS Build for production.
+- [x] 1.1: In `apps/mobile/package.json`, add `"@react-native-community/netinfo": "^11.4.1"` to `dependencies`. This is compatible with React Native 0.76.6 (Expo SDK 52). `@react-native-community/netinfo` v11.x does not require a custom Expo config plugin — it works with Expo Go for development and EAS Build for production.
 
   Run `npm install` from `mvps/field-service-management/src/` after editing `package.json`.
 
-- [ ] 1.2: Verify that `apps/mobile/src/contexts/network-context.tsx` now compiles without errors after installing the dependency. The file is already correctly written — it imports `NetInfo` from `@react-native-community/netinfo`, calls `NetInfo.addEventListener()`, and exposes `isConnected: boolean`. No code changes needed in the file itself.
+- [x] 1.2: Verify that `apps/mobile/src/contexts/network-context.tsx` now compiles without errors after installing the dependency. The file is already correctly written — it imports `NetInfo` from `@react-native-community/netinfo`, calls `NetInfo.addEventListener()`, and exposes `isConnected: boolean`. No code changes needed in the file itself.
 
 ### Task 2: Add NetworkProvider to root layout (AC: #9)
 
-- [ ] 2.1: Open `apps/mobile/app/_layout.tsx`. Add `NetworkProvider` import from `'../src/contexts/network-context'`. Wrap `DatabaseProvider` with `NetworkProvider` so the tree is:
+- [x] 2.1: Open `apps/mobile/app/_layout.tsx`. Add `NetworkProvider` import from `'../src/contexts/network-context'`. Wrap `DatabaseProvider` with `NetworkProvider` so the tree is:
   ```tsx
   <StripeProvider ...>
     <AuthProvider>
@@ -56,7 +56,7 @@ so that I never lose work or have to redo data entry because of a dead zone.
 
 ### Task 3: Create `use-network` hook (AC: #2, #3, #4, #9)
 
-- [ ] 3.1: Create `apps/mobile/src/hooks/use-network.ts`:
+- [x] 3.1: Create `apps/mobile/src/hooks/use-network.ts`:
   ```typescript
   import { useContext } from 'react';
   import { NetworkContext } from '../contexts/network-context';
@@ -69,7 +69,7 @@ so that I never lose work or have to redo data entry because of a dead zone.
 
 ### Task 4: Schema migration — add `synced_at` to all operational tables (AC: #5, #6, #7)
 
-- [ ] 4.1: Open `apps/mobile/src/db/schema.ts`. Increment the schema version from `9` to `10`. Add `{ name: 'synced_at', type: 'number', isOptional: true }` as the last column in each of the following tables: `pricebook_items`, `customers`, `quotes`, `quote_photos`, `line_items`, `jobs`, `job_photos`, `schedule_events`, `invoices`, `payments`.
+- [x] 4.1: Open `apps/mobile/src/db/schema.ts`. Increment the schema version from `9` to `10`. Add `{ name: 'synced_at', type: 'number', isOptional: true }` as the last column in each of the following tables: `pricebook_items`, `customers`, `quotes`, `quote_photos`, `line_items`, `jobs`, `job_photos`, `schedule_events`, `invoices`, `payments`.
 
   Example for the `customers` table — add after `updated_at`:
   ```typescript
@@ -78,7 +78,7 @@ so that I never lose work or have to redo data entry because of a dead zone.
 
   Do this for all 10 tables. The column is `isOptional: true` so existing records default to null without breaking anything.
 
-- [ ] 4.2: Open `apps/mobile/src/db/migrations.ts`. Add a migration step for version 10. In WatermelonDB, adding an optional column to existing tables requires an `addColumns` migration step for each table:
+- [x] 4.2: Open `apps/mobile/src/db/migrations.ts`. Add a migration step for version 10. In WatermelonDB, adding an optional column to existing tables requires an `addColumns` migration step for each table:
   ```typescript
   import { schemaMigrations, addColumns } from '@nozbe/watermelondb/Schema/migrations';
 
@@ -132,7 +132,7 @@ so that I never lose work or have to redo data entry because of a dead zone.
 
   The migrations file already has steps for v2 through v9. Append the v10 step to the array. Verify that `schemaMigrations({ migrations: [...] })` is called with the full array including the new step.
 
-- [ ] 4.3: Update each of the 10 model files in `apps/mobile/src/db/models/` to add the `syncedAt` property. For each model class, add:
+- [x] 4.3: Update each of the 10 model files in `apps/mobile/src/db/models/` to add the `syncedAt` property. For each model class, add:
   ```typescript
   @field('synced_at') syncedAt!: number | null;
   ```
@@ -152,7 +152,7 @@ so that I never lose work or have to redo data entry because of a dead zone.
 
 ### Task 5: Create `SyncContext` with pending count (AC: #2, #3, #4, #5, #6)
 
-- [ ] 5.1: Create `apps/mobile/src/contexts/sync-context.tsx`. This context tracks how many records are pending sync (have `synced_at === null`). It observes the WatermelonDB database reactively so the count updates whenever a record is written.
+- [x] 5.1: Create `apps/mobile/src/contexts/sync-context.tsx`. This context tracks how many records are pending sync (have `synced_at === null`). It observes the WatermelonDB database reactively so the count updates whenever a record is written.
 
   ```typescript
   import React, { createContext, useContext, useEffect, useState } from 'react';
@@ -235,7 +235,7 @@ so that I never lose work or have to redo data entry because of a dead zone.
   - `database.withChangesForTables()` returns an RxJS Observable that emits whenever any of the listed tables are written. This is the correct WatermelonDB API for reactive table-level observation.
   - The pending count is recalculated with fresh queries after every table change — this is safe because WatermelonDB writes are batched and observable emissions are debounced.
 
-- [ ] 5.2: Add `SyncProvider` to `apps/mobile/app/_layout.tsx`, wrapping inside `DatabaseProvider` (since `SyncProvider` uses `useDatabase()`):
+- [x] 5.2: Add `SyncProvider` to `apps/mobile/app/_layout.tsx`, wrapping inside `DatabaseProvider` (since `SyncProvider` uses `useDatabase()`):
   ```tsx
   <DatabaseProvider>
     <SyncProvider>
@@ -247,7 +247,7 @@ so that I never lose work or have to redo data entry because of a dead zone.
 
 ### Task 6: Create `use-sync-status` hook (AC: #5, #6)
 
-- [ ] 6.1: Create `apps/mobile/src/hooks/use-sync-status.ts`:
+- [x] 6.1: Create `apps/mobile/src/hooks/use-sync-status.ts`:
   ```typescript
   import { Model } from '@nozbe/watermelondb';
 
@@ -265,7 +265,7 @@ so that I never lose work or have to redo data entry because of a dead zone.
 
 ### Task 7: Create `SyncIndicator` UI component (AC: #5, #6)
 
-- [ ] 7.1: Create `apps/mobile/src/components/ui/sync-indicator.tsx`:
+- [x] 7.1: Create `apps/mobile/src/components/ui/sync-indicator.tsx`:
   ```typescript
   import React from 'react';
   import { View, Text, StyleSheet } from 'react-native';
@@ -307,7 +307,7 @@ so that I never lose work or have to redo data entry because of a dead zone.
 
 ### Task 8: Create `NetworkStatusBar` component (AC: #2, #3, #4)
 
-- [ ] 8.1: Create `apps/mobile/src/components/ui/network-status-bar.tsx`:
+- [x] 8.1: Create `apps/mobile/src/components/ui/network-status-bar.tsx`:
   ```typescript
   import React from 'react';
   import { View, Text, StyleSheet } from 'react-native';
@@ -356,7 +356,7 @@ so that I never lose work or have to redo data entry because of a dead zone.
 
   The bar uses a semi-transparent background (hex color + `'22'` for ~13% opacity) to keep it subtle without obscuring content below.
 
-- [ ] 8.2: Open `apps/mobile/app/(tabs)/_layout.tsx`. Update the Jobs and More tab screens to render the `NetworkStatusBar` component in a custom header. Since `Tabs` uses React Navigation under the hood, use `headerTitle` or a header component wrapper.
+- [x] 8.2: Open `apps/mobile/app/(tabs)/_layout.tsx`. Update the Jobs and More tab screens to render the `NetworkStatusBar` component in a custom header. Since `Tabs` uses React Navigation under the hood, use `headerTitle` or a header component wrapper.
 
   The cleanest approach for Expo Router `<Tabs>` is to add the `NetworkStatusBar` at the top of each tab screen's content view rather than in the native header (to avoid complex header customization). Alternatively, use a sticky component at the root tab layout level.
 
@@ -382,7 +382,7 @@ so that I never lose work or have to redo data entry because of a dead zone.
 
 ### Task 9: Add `SyncIndicator` to list screens (AC: #5, #6)
 
-- [ ] 9.1: Open the Jobs list screen (`apps/mobile/app/(tabs)/index.tsx` or `jobs/index.tsx`). In the `JobCard` or job list item component, pass the job record to `getSyncStatus()` and render a `<SyncIndicator status={...} />` next to the job title. Follow the existing card layout — the badge should appear inline, right-aligned or after the title text, so it doesn't disrupt the existing layout.
+- [x] 9.1: Open the Jobs list screen (`apps/mobile/app/(tabs)/index.tsx` or `jobs/index.tsx`). In the `JobCard` or job list item component, pass the job record to `getSyncStatus()` and render a `<SyncIndicator status={...} />` next to the job title. Follow the existing card layout — the badge should appear inline, right-aligned or after the title text, so it doesn't disrupt the existing layout.
 
   Pattern to follow:
   ```tsx
@@ -396,11 +396,11 @@ so that I never lose work or have to redo data entry because of a dead zone.
   </View>
   ```
 
-- [ ] 9.2: Apply the same pattern to the Customers list screen (customer card) and Quotes list screen (quote card). The `getSyncStatus()` function works with any model that has a `syncedAt` field.
+- [x] 9.2: Apply the same pattern to the Customers list screen (customer card) and Quotes list screen (quote card). The `getSyncStatus()` function works with any model that has a `syncedAt` field.
 
 ### Task 10: Tests (AC: #5, #6, #7)
 
-- [ ] 10.1: Create `apps/mobile/src/hooks/use-sync-status.test.ts` (co-located test). Test the pure `getSyncStatus` function:
+- [x] 10.1: Create `apps/mobile/src/hooks/use-sync-status.test.ts` (co-located test). Test the pure `getSyncStatus` function:
   ```typescript
   import { getSyncStatus } from './use-sync-status';
 
@@ -431,7 +431,7 @@ so that I never lose work or have to redo data entry because of a dead zone.
 
   Note: `getSyncStatus` must use `== null` (loose equality, covers both `null` and `undefined`) rather than `=== null` (strict) or `!syncedAt` (falsy, incorrectly treats 0 as unsynced).
 
-- [ ] 10.2: Create a WatermelonDB integration test verifying schema v10 migration applies correctly. Use the existing `createTestDatabase()` pattern from `use-customers.test.ts` (LokiJS adapter without incremental IndexedDB). Create a record, verify `syncedAt` is null by default, then update it and verify it persists:
+- [x] 10.2: Create a WatermelonDB integration test verifying schema v10 migration applies correctly. Use the existing `createTestDatabase()` pattern from `use-customers.test.ts` (LokiJS adapter without incremental IndexedDB). Create a record, verify `syncedAt` is null by default, then update it and verify it persists:
   ```typescript
   // apps/mobile/src/db/schema.test.ts (new file)
   describe('schema v10 — synced_at column', () => {
@@ -649,6 +649,48 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+N/A
+
 ### Completion Notes List
 
+- Installed `@react-native-community/netinfo@^11.4.1` — resolves the runtime crash from the missing import in `network-context.tsx`.
+- Added `NetworkProvider` wrapping `DatabaseProvider` in `app/_layout.tsx`; added `SyncProvider` inside `DatabaseProvider` (requires database to be initialized first). Provider tree: StripeProvider > AuthProvider > NetworkProvider > DatabaseProvider > SyncProvider > AuthGate.
+- Created `use-network.ts` hook as a thin `useContext(NetworkContext)` wrapper.
+- Schema migrated v9 → v10: added `synced_at` optional number column to all 10 tables (`pricebook_items`, `customers`, `quotes`, `quote_photos`, `line_items`, `jobs`, `job_photos`, `schedule_events`, `invoices`, `payments`). Migration step prepended to `migrations.ts` array as `toVersion: 10`.
+- Added `@field('synced_at') syncedAt!: number | null` to all 10 model files.
+- Created `sync-context.tsx` with `SyncProvider` that reactively counts pending records using `database.withChangesForTables()` + per-table `Q.where('synced_at', Q.eq(null)).fetchCount()`. `isSyncing`, `lastSyncAt`, `syncError` stubbed for story 6.2.
+- Created `use-sync-status.ts` with pure `getSyncStatus()` function using `== null` (covers both null and undefined from LokiJS/SQLite adapters).
+- Created `SyncIndicator` UI component — renders yellow ↻ badge for pending records, null for synced.
+- Created `NetworkStatusBar` UI component — hidden when online+synced (AC#3), yellow dot + count when offline (AC#2) or online-with-pending (AC#4).
+- Updated `app/(tabs)/_layout.tsx` to wrap `<Tabs>` in `<View style={{ flex: 1 }}>` with `<NetworkStatusBar />` above.
+- Added `SyncIndicator` to `job-card.tsx`, `customer-card.tsx`, `quote-card.tsx` — each card now shows pending badge when `syncedAt == null`.
+- LokiJS adapter returns `undefined` (not `null`) for unset optional fields; test assertions updated to use `== null` semantics consistent with `getSyncStatus`. This is a test-adapter artifact — SQLite production returns `null`.
+- All 107 tests pass (97 pre-existing + 10 new), no regressions.
+
 ### File List
+
+- `apps/mobile/package.json` — Added `@react-native-community/netinfo@^11.4.1`
+- `apps/mobile/app/_layout.tsx` — Added NetworkProvider + SyncProvider to provider tree
+- `apps/mobile/app/(tabs)/_layout.tsx` — Added View wrapper + NetworkStatusBar
+- `apps/mobile/src/db/schema.ts` — Version 9 → 10; added synced_at to all 10 tables
+- `apps/mobile/src/db/migrations.ts` — Added toVersion: 10 migration step
+- `apps/mobile/src/db/models/pricebook-item.ts` — Added syncedAt field
+- `apps/mobile/src/db/models/customer.ts` — Added syncedAt field
+- `apps/mobile/src/db/models/quote.ts` — Added syncedAt field
+- `apps/mobile/src/db/models/quote-photo.ts` — Added syncedAt field
+- `apps/mobile/src/db/models/line-item.ts` — Added syncedAt field
+- `apps/mobile/src/db/models/job.ts` — Added syncedAt field
+- `apps/mobile/src/db/models/job-photo.ts` — Added syncedAt field
+- `apps/mobile/src/db/models/schedule-event.ts` — Added syncedAt field
+- `apps/mobile/src/db/models/invoice.ts` — Added syncedAt field
+- `apps/mobile/src/db/models/payment.ts` — Added syncedAt field
+- `apps/mobile/src/contexts/sync-context.tsx` — New: SyncProvider + useSync hook
+- `apps/mobile/src/hooks/use-network.ts` — New: useNetwork hook
+- `apps/mobile/src/hooks/use-sync-status.ts` — New: getSyncStatus pure function
+- `apps/mobile/src/hooks/use-sync-status.test.ts` — New: 4 unit tests for getSyncStatus
+- `apps/mobile/src/db/schema.test.ts` — New: 6 integration tests for schema v10 + synced_at
+- `apps/mobile/src/components/ui/sync-indicator.tsx` — New: SyncIndicator UI component
+- `apps/mobile/src/components/ui/network-status-bar.tsx` — New: NetworkStatusBar UI component
+- `apps/mobile/src/components/jobs/job-card.tsx` — Added SyncIndicator to title row
+- `apps/mobile/src/components/customers/customer-card.tsx` — Added SyncIndicator to name row
+- `apps/mobile/src/components/quotes/quote-card.tsx` — Added SyncIndicator to customer name row

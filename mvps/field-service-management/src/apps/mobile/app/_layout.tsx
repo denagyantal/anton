@@ -3,6 +3,8 @@ import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { StripeProvider } from '@stripe/stripe-react-native';
 import { DatabaseProvider } from '../src/contexts/database-context';
 import { AuthProvider, useAuth } from '../src/contexts/auth-context';
+import { NetworkProvider } from '../src/contexts/network-context';
+import { SyncProvider } from '../src/contexts/sync-context';
 
 function AuthGate() {
   const { isLoading, isAuthenticated, isOnboarded } = useAuth();
@@ -50,9 +52,13 @@ export default function RootLayout() {
   return (
     <StripeProvider publishableKey={process.env['EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY'] ?? ''}>
       <AuthProvider>
-        <DatabaseProvider>
-          <AuthGate />
-        </DatabaseProvider>
+        <NetworkProvider>
+          <DatabaseProvider>
+            <SyncProvider>
+              <AuthGate />
+            </SyncProvider>
+          </DatabaseProvider>
+        </NetworkProvider>
       </AuthProvider>
     </StripeProvider>
   );

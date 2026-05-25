@@ -18,4 +18,5 @@ export default class Job extends Model {
   @text('notes') notes!: string;
   @readonly @date('created_at') createdAt!: Date;
   @date('updated_at') updatedAt!: Date;
+  @field('synced_at') syncedAt!: number | null;
 }

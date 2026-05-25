@@ -1,7 +1,7 @@
 import { appSchema, tableSchema } from '@nozbe/watermelondb';
 
 export const schema = appSchema({
-  version: 9,
+  version: 10,
   tables: [
     tableSchema({
       name: 'pricebook_items',
@@ -16,6 +16,7 @@ export const schema = appSchema({
         { name: 'sort_order', type: 'number' },
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
+        { name: 'synced_at', type: 'number', isOptional: true },
       ],
     }),
     tableSchema({
@@ -34,6 +35,7 @@ export const schema = appSchema({
         { name: 'quickbooks_customer_id', type: 'string', isOptional: true },
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
+        { name: 'synced_at', type: 'number', isOptional: true },
       ],
     }),
     tableSchema({
@@ -54,6 +56,7 @@ export const schema = appSchema({
         { name: 'pdf_url', type: 'string', isOptional: true },
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
+        { name: 'synced_at', type: 'number', isOptional: true },
       ],
     }),
     tableSchema({
@@ -66,6 +69,7 @@ export const schema = appSchema({
         { name: 'taken_at', type: 'number', isOptional: true },
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
+        { name: 'synced_at', type: 'number', isOptional: true },
       ],
     }),
     tableSchema({
@@ -80,6 +84,7 @@ export const schema = appSchema({
         { name: 'sort_order', type: 'number' },
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
+        { name: 'synced_at', type: 'number', isOptional: true },
       ],
     }),
     tableSchema({
@@ -99,6 +104,7 @@ export const schema = appSchema({
         { name: 'notes', type: 'string', isOptional: true },
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
+        { name: 'synced_at', type: 'number', isOptional: true },
       ],
     }),
     tableSchema({
@@ -111,6 +117,7 @@ export const schema = appSchema({
         { name: 'taken_at', type: 'number', isOptional: true },
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
+        { name: 'synced_at', type: 'number', isOptional: true },
       ],
     }),
     tableSchema({
@@ -129,6 +136,7 @@ export const schema = appSchema({
         { name: 'external_calendar_id', type: 'string', isOptional: true },
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
+        { name: 'synced_at', type: 'number', isOptional: true },
       ],
     }),
     tableSchema({
@@ -151,6 +159,7 @@ export const schema = appSchema({
         { name: 'due_at', type: 'number', isOptional: true },
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
+        { name: 'synced_at', type: 'number', isOptional: true },
       ],
     }),
     tableSchema({
@@ -164,6 +173,7 @@ export const schema = appSchema({
         { name: 'status', type: 'string' },
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
+        { name: 'synced_at', type: 'number', isOptional: true },
       ],
     }),
   ],
