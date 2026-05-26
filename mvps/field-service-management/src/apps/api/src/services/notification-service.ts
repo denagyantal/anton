@@ -1,3 +1,5 @@
+import { prisma } from '../config/prisma.js';
+
 export async function sendPushNotification(
   pushToken: string | null | undefined,
   title: string,
@@ -17,5 +19,25 @@ export async function sendPushNotification(
   } catch (err) {
     console.error('[notification-service] push failed:', err);
     // Never throw — push failure must not break the HTTP response
+  }
+}
+
+export async function sendPushToAccount(
+  accountId: string,
+  notification: { title: string; body: string; data?: Record<string, unknown> },
+): Promise<void> {
+  try {
+    const members = await prisma.teamMember.findMany({
+      where: { accountId, pushToken: { not: null } },
+      select: { pushToken: true },
+    });
+
+    await Promise.all(
+      members
+        .filter((m): m is { pushToken: string } => m.pushToken !== null)
+        .map(m => sendPushNotification(m.pushToken, notification.title, notification.body)),
+    );
+  } catch (err) {
+    console.error('[notification-service] sendPushToAccount failed:', err);
   }
 }

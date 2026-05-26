@@ -14,7 +14,9 @@ import {
   connectQuickBooks,
   getQuickBooksStatus,
   disconnectQuickBooks,
+  retryQbSync,
 } from '../../../src/services/api-client';
+import type { QbSyncEntry } from '../../../src/services/api-client';
 
 interface QBStatus {
   connected: boolean;
@@ -27,13 +29,17 @@ export default function QuickBooksScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [isConnecting, setIsConnecting] = useState(false);
   const [isDisconnecting, setIsDisconnecting] = useState(false);
+  const [syncLog, setSyncLog] = useState<QbSyncEntry[]>([]);
+  const [retryingId, setRetryingId] = useState<string | null>(null);
 
   const loadStatus = useCallback(async () => {
     try {
       const data = await getQuickBooksStatus();
-      setStatus(data);
+      setStatus({ connected: data.connected, companyName: data.companyName, realmId: data.realmId });
+      setSyncLog(data.syncLog ?? []);
     } catch {
       setStatus({ connected: false, companyName: null, realmId: null });
+      setSyncLog([]);
     } finally {
       setIsLoading(false);
     }
@@ -88,6 +94,18 @@ export default function QuickBooksScreen() {
     );
   };
 
+  const handleRetry = async (entry: QbSyncEntry) => {
+    setRetryingId(entry.id);
+    try {
+      await retryQbSync(entry.entityType, entry.entityId);
+      await loadStatus();
+    } catch {
+      Alert.alert('Retry Failed', 'Could not retry sync. Please check your connection and try again.');
+    } finally {
+      setRetryingId(null);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container} edges={['bottom']}>
       <Stack.Screen options={{ title: 'QuickBooks', headerShown: true }} />
@@ -122,6 +140,20 @@ export default function QuickBooksScreen() {
               <Text style={styles.disconnectText}>Disconnect QuickBooks</Text>
             )}
           </TouchableOpacity>
+
+          {syncLog.length > 0 && (
+            <View style={styles.syncSection}>
+              <Text style={styles.syncSectionTitle}>Recent Sync Activity</Text>
+              {syncLog.slice(0, 20).map((entry) => (
+                <SyncEntryRow
+                  key={entry.id}
+                  entry={entry}
+                  isRetrying={retryingId === entry.id}
+                  onRetry={handleRetry}
+                />
+              ))}
+            </View>
+          )}
         </View>
       ) : (
         <View style={styles.content}>
@@ -147,6 +179,62 @@ export default function QuickBooksScreen() {
         </View>
       )}
     </SafeAreaView>
+  );
+}
+
+function SyncEntryRow({
+  entry,
+  isRetrying,
+  onRetry,
+}: {
+  entry: QbSyncEntry;
+  isRetrying: boolean;
+  onRetry: (entry: QbSyncEntry) => void;
+}) {
+  const statusColor =
+    entry.status === 'SUCCESS' ? '#16a34a' : entry.status === 'FAILED' ? '#dc2626' : '#d97706';
+  const statusLabel =
+    entry.status === 'SUCCESS' ? 'Synced' : entry.status === 'FAILED' ? 'Failed' : 'Duplicate';
+  const dateStr = new Date(entry.syncedAt).toLocaleDateString(undefined, {
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
+  return (
+    <View style={styles.syncEntry}>
+      <View style={styles.syncEntryMain}>
+        <View style={[styles.syncStatusDot, { backgroundColor: statusColor }]} />
+        <View style={styles.syncEntryInfo}>
+          <Text style={styles.syncEntityName} numberOfLines={1}>
+            {entry.entityDisplayName}
+          </Text>
+          <Text style={styles.syncEntityType}>
+            {entry.entityType} · {dateStr}
+          </Text>
+          {entry.status === 'FAILED' && entry.errorMessage && (
+            <Text style={styles.syncErrorMsg} numberOfLines={2}>
+              {entry.errorMessage}
+            </Text>
+          )}
+        </View>
+        <Text style={[styles.syncStatusLabel, { color: statusColor }]}>{statusLabel}</Text>
+      </View>
+      {entry.status === 'FAILED' && (
+        <TouchableOpacity
+          style={[styles.retryButton, isRetrying && styles.buttonDisabled]}
+          onPress={() => onRetry(entry)}
+          disabled={isRetrying}
+        >
+          {isRetrying ? (
+            <ActivityIndicator size="small" color="#2563eb" />
+          ) : (
+            <Text style={styles.retryButtonText}>Retry Sync</Text>
+          )}
+        </TouchableOpacity>
+      )}
+    </View>
   );
 }
 
@@ -199,4 +287,31 @@ const styles = StyleSheet.create({
   },
   disconnectText: { color: '#dc2626', fontWeight: '600', fontSize: 16 },
   buttonDisabled: { opacity: 0.5 },
+  syncSection: { marginTop: 8 },
+  syncSectionTitle: { fontSize: 14, fontWeight: '600', color: '#374151', marginBottom: 8, paddingHorizontal: 4 },
+  syncEntry: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 8,
+    borderWidth: 1,
+    borderColor: '#f3f4f6',
+  },
+  syncEntryMain: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  syncStatusDot: { width: 8, height: 8, borderRadius: 4, flexShrink: 0 },
+  syncEntryInfo: { flex: 1 },
+  syncEntityName: { fontSize: 14, fontWeight: '500', color: '#111827' },
+  syncEntityType: { fontSize: 12, color: '#9ca3af', marginTop: 2 },
+  syncErrorMsg: { fontSize: 12, color: '#dc2626', marginTop: 4 },
+  syncStatusLabel: { fontSize: 12, fontWeight: '600', flexShrink: 0 },
+  retryButton: {
+    marginTop: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: '#2563eb',
+    alignSelf: 'flex-start',
+  },
+  retryButtonText: { fontSize: 13, color: '#2563eb', fontWeight: '600' },
 });

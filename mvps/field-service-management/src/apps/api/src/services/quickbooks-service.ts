@@ -1,9 +1,25 @@
 import crypto from 'crypto';
 import { prisma } from '../config/prisma.js';
 import { quickbooksConfig } from '../config/quickbooks.js';
+import { sendPushToAccount } from './notification-service.js';
 
 // In-memory state store (sufficient for MVP — Railway single instance)
 const oauthStateStore = new Map<string, { accountId: string; expiresAt: number }>();
+
+// Throttle QB failure notifications — at most once per hour per account
+const qbAlertThrottle = new Map<string, number>(); // accountId → last alert timestamp ms
+
+export interface QbSyncEntry {
+  id: string;
+  entityType: 'CUSTOMER' | 'INVOICE' | 'PAYMENT';
+  entityId: string;
+  entityDisplayName: string;
+  direction: string;
+  status: 'SUCCESS' | 'FAILED' | 'DUPLICATE_PREVENTED';
+  errorMessage: string | null;
+  quickbooksId: string | null;
+  syncedAt: string; // ISO 8601 UTC
+}
 
 export function generateAuthorizationUrl(accountId: string): string {
   const state = crypto.randomBytes(16).toString('hex');
@@ -184,6 +200,178 @@ async function logQbSync(data: {
       errorMessage: data.errorMessage ?? null,
     },
   });
+
+  // Fire-and-forget failure rate check — never block sync response
+  if (data.status === 'FAILED') {
+    checkFailureRateAndNotify(data.accountId).catch(err => {
+      console.error('[QB] checkFailureRateAndNotify error:', err);
+    });
+  }
+}
+
+async function checkFailureRateAndNotify(accountId: string): Promise<void> {
+  const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
+
+  const [failedCount, totalCount] = await Promise.all([
+    prisma.quickbooksSyncLog.count({
+      where: { accountId, status: 'FAILED', syncedAt: { gte: since } },
+    }),
+    prisma.quickbooksSyncLog.count({
+      where: { accountId, syncedAt: { gte: since } },
+    }),
+  ]);
+
+  if (totalCount < 10) return;
+  if (failedCount / totalCount <= 0.001) return;
+
+  // Throttle: at most once per hour per account
+  const lastAlert = qbAlertThrottle.get(accountId) ?? 0;
+  if (Date.now() - lastAlert < 60 * 60 * 1000) return;
+  qbAlertThrottle.set(accountId, Date.now());
+
+  const pct = ((failedCount / totalCount) * 100).toFixed(1);
+  await sendPushToAccount(accountId, {
+    title: 'QuickBooks Sync Issue',
+    body: `${failedCount} of ${totalCount} syncs failed (${pct}%) in the last 24 hours. Open the app to retry.`,
+    data: { type: 'QB_SYNC_FAILURE', accountId },
+  });
+}
+
+export async function getQbSyncLog(
+  accountId: string,
+  limit = 50,
+): Promise<QbSyncEntry[]> {
+  const entries = await prisma.quickbooksSyncLog.findMany({
+    where: { accountId },
+    orderBy: { syncedAt: 'desc' },
+    take: limit,
+  });
+
+  const enriched = await Promise.all(
+    entries.map(async (entry) => {
+      let entityDisplayName = entry.entityId; // fallback to UUID
+      try {
+        if (entry.entityType === 'CUSTOMER') {
+          const customer = await prisma.customer.findUnique({
+            where: { id: entry.entityId },
+            select: { name: true },
+          });
+          if (customer) entityDisplayName = customer.name;
+        } else if (entry.entityType === 'INVOICE') {
+          const invoice = await prisma.invoice.findUnique({
+            where: { id: entry.entityId },
+            include: { customer: { select: { name: true } } },
+          });
+          if (invoice) entityDisplayName = `Invoice — ${invoice.customer.name}`;
+        } else if (entry.entityType === 'PAYMENT') {
+          const payment = await prisma.payment.findUnique({
+            where: { id: entry.entityId },
+            select: { amount: true },
+          });
+          if (payment)
+            entityDisplayName = `Payment ($${(payment.amount / 100).toFixed(2)})`;
+        }
+      } catch {
+        // Fallback to UUID if entity was deleted — log entry is still valid
+      }
+      return {
+        id: entry.id,
+        entityType: entry.entityType as QbSyncEntry['entityType'],
+        entityId: entry.entityId,
+        entityDisplayName,
+        direction: entry.direction,
+        status: entry.status as QbSyncEntry['status'],
+        errorMessage: entry.errorMessage,
+        quickbooksId: entry.quickbooksId,
+        syncedAt: entry.syncedAt.toISOString(),
+      };
+    }),
+  );
+
+  return enriched;
+}
+
+async function verifyEntityOwnership(
+  accountId: string,
+  entityType: string,
+  entityId: string,
+): Promise<boolean> {
+  switch (entityType) {
+    case 'CUSTOMER': {
+      const c = await prisma.customer.findUnique({
+        where: { id: entityId },
+        select: { accountId: true },
+      });
+      return c?.accountId === accountId;
+    }
+    case 'INVOICE': {
+      const inv = await prisma.invoice.findUnique({
+        where: { id: entityId },
+        select: { accountId: true },
+      });
+      return inv?.accountId === accountId;
+    }
+    case 'PAYMENT': {
+      const pay = await prisma.payment.findUnique({
+        where: { id: entityId },
+        select: { accountId: true },
+      });
+      return pay?.accountId === accountId;
+    }
+    default:
+      return false;
+  }
+}
+
+export async function retryEntitySync(
+  accountId: string,
+  entityType: string,
+  entityId: string,
+): Promise<{ attempted: boolean; status: string; message?: string }> {
+  const validTypes = ['CUSTOMER', 'INVOICE', 'PAYMENT'];
+  if (!validTypes.includes(entityType)) {
+    return {
+      attempted: false,
+      status: 'INVALID_ENTITY_TYPE',
+      message: `entityType must be one of: ${validTypes.join(', ')}`,
+    };
+  }
+
+  const owned = await verifyEntityOwnership(accountId, entityType, entityId);
+  if (!owned) {
+    return { attempted: false, status: 'NOT_FOUND', message: 'Entity not found in this account' };
+  }
+
+  const account = await prisma.account.findUnique({
+    where: { id: accountId },
+    select: { quickbooksConnected: true },
+  });
+  if (!account?.quickbooksConnected) {
+    return { attempted: false, status: 'QB_NOT_CONNECTED', message: 'QuickBooks is not connected' };
+  }
+
+  switch (entityType) {
+    case 'CUSTOMER':
+      await syncCustomerToQuickBooks(accountId, entityId);
+      break;
+    case 'INVOICE':
+      await syncInvoiceToQuickBooks(accountId, entityId);
+      break;
+    case 'PAYMENT':
+      await syncPaymentToQuickBooks(accountId, entityId);
+      break;
+  }
+
+  const latestLog = await prisma.quickbooksSyncLog.findFirst({
+    where: { accountId, entityId },
+    orderBy: { syncedAt: 'desc' },
+  });
+
+  return {
+    attempted: true,
+    status: latestLog?.status ?? 'UNKNOWN',
+    message: latestLog?.errorMessage ?? undefined,
+  };
 }
 
 export async function syncCustomerToQuickBooks(

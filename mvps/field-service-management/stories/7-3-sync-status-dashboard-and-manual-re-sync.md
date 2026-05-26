@@ -1,6 +1,6 @@
 # Story 7.3: Sync Status Dashboard and Manual Re-Sync
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -28,7 +28,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
 
 ### Task 1: Add getQbSyncLog to quickbooks-service.ts (AC: #1, #6)
 
-- [ ] 1.1: Add the `QbSyncEntry` interface in `apps/api/src/services/quickbooks-service.ts` (near the top, after imports):
+- [x] 1.1: Add the `QbSyncEntry` interface in `apps/api/src/services/quickbooks-service.ts` (near the top, after imports):
 
   ```typescript
   export interface QbSyncEntry {
@@ -44,7 +44,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
   }
   ```
 
-- [ ] 1.2: Add `getQbSyncLog(accountId: string, limit = 50): Promise<QbSyncEntry[]>` to `quickbooks-service.ts`:
+- [x] 1.2: Add `getQbSyncLog(accountId: string, limit = 50): Promise<QbSyncEntry[]>` to `quickbooks-service.ts`:
 
   ```typescript
   export async function getQbSyncLog(
@@ -106,7 +106,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
 
 ### Task 2: Add retryEntitySync to quickbooks-service.ts (AC: #3, #4, #7)
 
-- [ ] 2.1: Add a private `verifyEntityOwnership` helper below the new `getQbSyncLog` function:
+- [x] 2.1: Add a private `verifyEntityOwnership` helper below the new `getQbSyncLog` function:
 
   ```typescript
   async function verifyEntityOwnership(
@@ -142,7 +142,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
   }
   ```
 
-- [ ] 2.2: Add `retryEntitySync` below `verifyEntityOwnership`:
+- [x] 2.2: Add `retryEntitySync` below `verifyEntityOwnership`:
 
   ```typescript
   export async function retryEntitySync(
@@ -202,14 +202,14 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
 
 ### Task 3: Add failure rate monitoring (AC: #5)
 
-- [ ] 3.1: Add the throttle map at the top of `quickbooks-service.ts`, near the existing `oauthStateStore`:
+- [x] 3.1: Add the throttle map at the top of `quickbooks-service.ts`, near the existing `oauthStateStore`:
 
   ```typescript
   // Throttle QB failure notifications — at most once per hour per account
   const qbAlertThrottle = new Map<string, number>(); // accountId → last alert timestamp ms
   ```
 
-- [ ] 3.2: Add `checkFailureRateAndNotify` as a private function (not exported):
+- [x] 3.2: Add `checkFailureRateAndNotify` as a private function (not exported):
 
   ```typescript
   async function checkFailureRateAndNotify(accountId: string): Promise<void> {
@@ -241,7 +241,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
   }
   ```
 
-- [ ] 3.3: Add import for the push notification function at the top of `quickbooks-service.ts`:
+- [x] 3.3: Add import for the push notification function at the top of `quickbooks-service.ts`:
 
   ```typescript
   import { sendPushToAccount } from './notification-service.js';
@@ -249,7 +249,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
 
   Look at how `notification-service.ts` exposes its account-wide push function. The function name may differ (e.g., `sendPushNotificationToAccount`, `notifyAccount`). Match the actual exported name. If it does not have an account-wide variant, follow the same pattern used in Story 6.3 for sync error notifications.
 
-- [ ] 3.4: Hook into `logQbSync` — modify the existing private `logQbSync` function to call `checkFailureRateAndNotify` after logging a FAILED status. Add after the `prisma.quickbooksSyncLog.create(...)` call:
+- [x] 3.4: Hook into `logQbSync` — modify the existing private `logQbSync` function to call `checkFailureRateAndNotify` after logging a FAILED status. Add after the `prisma.quickbooksSyncLog.create(...)` call:
 
   ```typescript
   async function logQbSync(data: {
@@ -283,7 +283,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
 
 ### Task 4: Update GET /api/v1/quickbooks/status to include sync log (AC: #1, #6)
 
-- [ ] 4.1: In `apps/api/src/routes/quickbooks.ts`, add `getQbSyncLog` to the import from `quickbooks-service.js`:
+- [x] 4.1: In `apps/api/src/routes/quickbooks.ts`, add `getQbSyncLog` to the import from `quickbooks-service.js`:
 
   ```typescript
   import {
@@ -297,7 +297,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
   } from '../services/quickbooks-service.js';
   ```
 
-- [ ] 4.2: Update the existing `GET /status` route handler (replace the current single-function call):
+- [x] 4.2: Update the existing `GET /status` route handler (replace the current single-function call):
 
   ```typescript
   router.get('/status', authMiddleware, async (req: Request, res: Response) => {
@@ -314,7 +314,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
 
 ### Task 5: Add POST /api/v1/quickbooks/sync route (AC: #3, #4, #7)
 
-- [ ] 5.1: Add the route in `apps/api/src/routes/quickbooks.ts` after the existing `/disconnect` route:
+- [x] 5.1: Add the route in `apps/api/src/routes/quickbooks.ts` after the existing `/disconnect` route:
 
   ```typescript
   // POST /api/v1/quickbooks/sync
@@ -348,7 +348,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
 
 ### Task 6: Update mobile QuickBooks screen (AC: #1, #2, #3)
 
-- [ ] 6.1: Update `apps/mobile/src/services/api-client.ts` — update `getQuickBooksStatus` return type and add `retryQbSync`:
+- [x] 6.1: Update `apps/mobile/src/services/api-client.ts` — update `getQuickBooksStatus` return type and add `retryQbSync`:
 
   ```typescript
   export interface QbSyncEntry {
@@ -381,7 +381,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
   }
   ```
 
-- [ ] 6.2: Update `apps/mobile/app/(tabs)/more/quickbooks.tsx` — add sync activity state and UI. The existing file has the connected/disconnected card structure from Story 7.1. Add to the existing component:
+- [x] 6.2: Update `apps/mobile/app/(tabs)/more/quickbooks.tsx` — add sync activity state and UI. The existing file has the connected/disconnected card structure from Story 7.1. Add to the existing component:
 
   **State additions** (add alongside existing `status`, `isLoading`, etc. state):
   ```typescript
@@ -443,7 +443,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
   )}
   ```
 
-- [ ] 6.3: Add `SyncEntryRow` as an inline component at the bottom of `quickbooks.tsx` (before the `StyleSheet.create` call):
+- [x] 6.3: Add `SyncEntryRow` as an inline component at the bottom of `quickbooks.tsx` (before the `StyleSheet.create` call):
 
   ```typescript
   function SyncEntryRow({
@@ -503,7 +503,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
   }
   ```
 
-- [ ] 6.4: Add the following to the existing `StyleSheet.create` call in `quickbooks.tsx`:
+- [x] 6.4: Add the following to the existing `StyleSheet.create` call in `quickbooks.tsx`:
 
   ```typescript
   syncSection: { marginTop: 8 },
@@ -537,7 +537,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
 
 ### Task 7: Tests (AC: #1, #3, #4, #5, #6, #7)
 
-- [ ] 7.1: Add tests for `getQbSyncLog` in `apps/api/src/services/quickbooks-service.test.ts`:
+- [x] 7.1: Add tests for `getQbSyncLog` in `apps/api/src/services/quickbooks-service.test.ts`:
 
   ```typescript
   describe('getQbSyncLog', () => {
@@ -597,7 +597,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
   });
   ```
 
-- [ ] 7.2: Add tests for `retryEntitySync` in `apps/api/src/services/quickbooks-service.test.ts`:
+- [x] 7.2: Add tests for `retryEntitySync` in `apps/api/src/services/quickbooks-service.test.ts`:
 
   ```typescript
   describe('retryEntitySync', () => {
@@ -629,7 +629,7 @@ so that I can verify data accuracy and fix sync issues without contacting suppor
   });
   ```
 
-- [ ] 7.3: Add integration tests in `apps/api/tests/integration/quickbooks.test.ts`:
+- [x] 7.3: Add integration tests in `apps/api/tests/integration/quickbooks.test.ts`:
 
   ```typescript
   describe('GET /api/v1/quickbooks/status (extended with syncLog)', () => {
@@ -849,6 +849,25 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None.
+
 ### Completion Notes List
 
+- Added `sendPushToAccount` to `notification-service.ts` (imports prisma to query team members' push tokens; wraps multi-send with error catch so push failures never throw).
+- `notification-service.ts` now requires prisma import — integration test mock updated to include `sendPushToAccount`.
+- `qbAlertThrottle` is module-scope Map (same pattern as `oauthStateStore`) — in-memory throttle suitable for Railway single-instance MVP.
+- `logQbSync` calls `checkFailureRateAndNotify` fire-and-forget on FAILED status only; errors are caught and logged without blocking the sync response.
+- Integration test prisma mock extended with `findMany`, `findFirst`, `count` on `quickbooksSyncLog`, plus `invoice`, `payment`, and `teamMember` models for new code paths.
+- Unit test mock extended with `findMany`, `findFirst`, `count` on `quickbooksSyncLog`; notification-service mocked to prevent real fetch calls.
+- TypeScript strict-mode array index access in unit tests fixed with non-null assertion (`result[0]!`).
+- All 188 API tests pass; no new TypeScript errors in source files.
+
 ### File List
+
+- `apps/api/src/services/notification-service.ts` — added `sendPushToAccount`, added prisma import
+- `apps/api/src/services/quickbooks-service.ts` — added `QbSyncEntry` interface, `qbAlertThrottle`, `getQbSyncLog`, `verifyEntityOwnership`, `retryEntitySync`, `checkFailureRateAndNotify`; modified `logQbSync` to fire failure rate check; added notification-service import
+- `apps/api/src/routes/quickbooks.ts` — added `AppError` import, `getQbSyncLog`/`retryEntitySync` imports; updated `GET /status` to include syncLog; added `POST /sync` route
+- `apps/mobile/src/services/api-client.ts` — added `QbSyncEntry` interface; updated `getQuickBooksStatus` return type; added `retryQbSync`
+- `apps/mobile/app/(tabs)/more/quickbooks.tsx` — added syncLog state, retryingId state, updated loadStatus, added handleRetry, added sync activity section JSX, added `SyncEntryRow` component, added new styles
+- `apps/api/src/services/quickbooks-service.test.ts` — updated prisma mock, added notification-service mock, added `getQbSyncLog` and `retryEntitySync` test suites
+- `apps/api/tests/integration/quickbooks.test.ts` — updated prisma and notification-service mocks, added GET /status syncLog test, added POST /sync tests

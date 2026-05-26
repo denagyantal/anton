@@ -131,6 +131,18 @@ export const apiClient = {
   },
 };
 
+export interface QbSyncEntry {
+  id: string;
+  entityType: 'CUSTOMER' | 'INVOICE' | 'PAYMENT';
+  entityId: string;
+  entityDisplayName: string;
+  direction: string;
+  status: 'SUCCESS' | 'FAILED' | 'DUPLICATE_PREVENTED';
+  errorMessage: string | null;
+  quickbooksId: string | null;
+  syncedAt: string;
+}
+
 export async function connectQuickBooks(): Promise<{ authorizationUrl: string }> {
   return apiClient.post<{ authorizationUrl: string }>('/api/v1/quickbooks/connect', {});
 }
@@ -139,10 +151,18 @@ export async function getQuickBooksStatus(): Promise<{
   connected: boolean;
   companyName: string | null;
   realmId: string | null;
+  syncLog: QbSyncEntry[];
 }> {
   return apiClient.get('/api/v1/quickbooks/status');
 }
 
 export async function disconnectQuickBooks(): Promise<void> {
   await apiClient.post('/api/v1/quickbooks/disconnect', {});
+}
+
+export async function retryQbSync(
+  entityType: string,
+  entityId: string,
+): Promise<{ attempted: boolean; status: string; message?: string }> {
+  return apiClient.post('/api/v1/quickbooks/sync', { entityType, entityId });
 }

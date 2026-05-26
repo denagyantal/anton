@@ -32,8 +32,20 @@ jest.mock('../../src/config/prisma.js', () => ({
       upsert: jest.fn(),
       update: jest.fn(),
     },
+    invoice: {
+      findUnique: jest.fn(),
+    },
+    payment: {
+      findUnique: jest.fn(),
+    },
     quickbooksSyncLog: {
       create: jest.fn(),
+      findMany: jest.fn().mockResolvedValue([]),
+      findFirst: jest.fn().mockResolvedValue(null),
+      count: jest.fn().mockResolvedValue(0),
+    },
+    teamMember: {
+      findMany: jest.fn().mockResolvedValue([]),
     },
   },
 }));
@@ -56,6 +68,7 @@ jest.mock('../../src/services/sms-service.js', () => ({
 }));
 jest.mock('../../src/services/notification-service.js', () => ({
   sendPushNotification: jest.fn().mockResolvedValue(undefined),
+  sendPushToAccount: jest.fn().mockResolvedValue(undefined),
 }));
 jest.mock('../../src/utils/signed-url.js', () => ({
   generateToken: jest.fn().mockReturnValue('fake-token'),
@@ -250,5 +263,61 @@ describe('QB sync triggered on sync push', () => {
       expect.any(String),
       'cust-abc',
     );
+  });
+});
+
+describe('GET /api/v1/quickbooks/status (extended with syncLog)', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('includes syncLog array in response', async () => {
+    const { prisma } = require('../../src/config/prisma.js');
+    (prisma.account.findUnique as jest.Mock).mockResolvedValue({
+      quickbooksConnected: true,
+      quickbooksCompanyName: 'Acme HVAC',
+      quickbooksRealmId: 'realm-1',
+    });
+    (prisma.quickbooksSyncLog.findMany as jest.Mock).mockResolvedValue([]);
+
+    const res = await request(app)
+      .get('/api/v1/quickbooks/status')
+      .set('Authorization', 'Bearer test-token');
+
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body.data.syncLog)).toBe(true);
+  });
+});
+
+describe('POST /api/v1/quickbooks/sync', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('returns 422 when entityId is missing', async () => {
+    const res = await request(app)
+      .post('/api/v1/quickbooks/sync')
+      .set('Authorization', 'Bearer test-token')
+      .send({ entityType: 'CUSTOMER' });
+    expect(res.status).toBe(422);
+  });
+
+  it('returns 422 when entityType is invalid', async () => {
+    const res = await request(app)
+      .post('/api/v1/quickbooks/sync')
+      .set('Authorization', 'Bearer test-token')
+      .send({ entityType: 'WIDGET', entityId: 'some-id' });
+    expect(res.status).toBe(422);
+  });
+
+  it('returns 404 when entity does not belong to account', async () => {
+    const { prisma } = require('../../src/config/prisma.js');
+    (prisma.customer.findUnique as jest.Mock).mockResolvedValue({ accountId: 'other-account' });
+
+    const res = await request(app)
+      .post('/api/v1/quickbooks/sync')
+      .set('Authorization', 'Bearer test-token')
+      .send({ entityType: 'CUSTOMER', entityId: 'cust-other' });
+    expect(res.status).toBe(404);
   });
 });

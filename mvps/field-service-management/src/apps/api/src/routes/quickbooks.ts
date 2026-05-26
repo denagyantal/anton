@@ -1,11 +1,14 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { authMiddleware } from '../middleware/auth.js';
+import { AppError } from '../utils/error.js';
 import {
   generateAuthorizationUrl,
   consumeOAuthState,
   exchangeCodeForTokens,
   getConnectionStatus,
   disconnectQuickBooks,
+  getQbSyncLog,
+  retryEntitySync,
 } from '../services/quickbooks-service.js';
 
 const router = Router();
@@ -57,12 +60,15 @@ router.get('/callback', async (req: Request, res: Response) => {
 });
 
 // GET /api/v1/quickbooks/status
-// Returns current connection status and company name
+// Returns current connection status, company name, and recent sync log
 router.get('/status', authMiddleware, async (req: Request, res: Response, next: NextFunction) => {
   try {
     const accountId = req.user!.accountId;
-    const status = await getConnectionStatus(accountId);
-    res.json({ data: status });
+    const [connectionStatus, syncLog] = await Promise.all([
+      getConnectionStatus(accountId),
+      getQbSyncLog(accountId, 50),
+    ]);
+    res.json({ data: { ...connectionStatus, syncLog } });
   } catch (err) {
     next(err);
   }
@@ -74,6 +80,38 @@ router.post('/disconnect', authMiddleware, async (req: Request, res: Response, n
     const accountId = req.user!.accountId;
     await disconnectQuickBooks(accountId);
     res.json({ data: { disconnected: true } });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// POST /api/v1/quickbooks/sync
+// Manually re-sync a specific entity to QuickBooks
+router.post('/sync', authMiddleware, async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const accountId = req.user!.accountId;
+    const { entityType, entityId } = req.body as { entityType?: string; entityId?: string };
+
+    if (!entityType || !entityId) {
+      throw new AppError('VALIDATION_ERROR', 'entityType and entityId are required', 422);
+    }
+
+    const validTypes = ['CUSTOMER', 'INVOICE', 'PAYMENT'];
+    if (!validTypes.includes(entityType)) {
+      throw new AppError(
+        'VALIDATION_ERROR',
+        `entityType must be one of: ${validTypes.join(', ')}`,
+        422,
+      );
+    }
+
+    const result = await retryEntitySync(accountId, entityType, entityId);
+
+    if (result.status === 'NOT_FOUND') {
+      throw new AppError('NOT_FOUND', result.message ?? 'Entity not found', 404);
+    }
+
+    res.json({ data: result });
   } catch (err) {
     next(err);
   }

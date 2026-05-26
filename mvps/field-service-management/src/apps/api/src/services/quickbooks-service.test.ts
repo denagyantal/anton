@@ -11,8 +11,19 @@ jest.mock('../config/prisma.js', () => ({
     invoice: { findUnique: jest.fn(), update: jest.fn() },
     payment: { findUnique: jest.fn(), update: jest.fn() },
     lineItem: { findMany: jest.fn() },
-    quickbooksSyncLog: { create: jest.fn() },
+    quickbooksSyncLog: {
+      create: jest.fn(),
+      findMany: jest.fn(),
+      findFirst: jest.fn(),
+      count: jest.fn(),
+    },
+    teamMember: { findMany: jest.fn().mockResolvedValue([]) },
   },
+}));
+
+jest.mock('./notification-service.js', () => ({
+  sendPushNotification: jest.fn().mockResolvedValue(undefined),
+  sendPushToAccount: jest.fn().mockResolvedValue(undefined),
 }));
 
 import {
@@ -20,6 +31,8 @@ import {
   consumeOAuthState,
   syncCustomerToQuickBooks,
   syncPaymentToQuickBooks,
+  getQbSyncLog,
+  retryEntitySync,
 } from './quickbooks-service.js';
 import { quickbooksConfig } from '../config/quickbooks.js';
 import { prisma as mockPrisma } from '../config/prisma.js';
@@ -248,5 +261,108 @@ describe('syncPaymentToQuickBooks', () => {
         data: expect.objectContaining({ status: 'SUCCESS', quickbooksId: 'QB-PAY-999' }),
       }),
     );
+  });
+});
+
+describe('getQbSyncLog', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('returns enriched entries with customer display name', async () => {
+    (mockPrisma.quickbooksSyncLog.findMany as jest.Mock).mockResolvedValue([
+      {
+        id: 'log-1',
+        accountId: 'acct-1',
+        entityType: 'CUSTOMER',
+        entityId: 'cust-abc',
+        direction: 'PUSH',
+        status: 'SUCCESS',
+        errorMessage: null,
+        quickbooksId: 'QB-123',
+        syncedAt: new Date('2026-03-23T10:00:00Z'),
+      },
+    ]);
+    (mockPrisma.customer.findUnique as jest.Mock).mockResolvedValue({ name: 'John Smith' });
+
+    const result = await getQbSyncLog('acct-1', 50);
+    const first = result[0]!;
+
+    expect(result).toHaveLength(1);
+    expect(first.entityDisplayName).toBe('John Smith');
+    expect(first.status).toBe('SUCCESS');
+    expect(first.syncedAt).toBe('2026-03-23T10:00:00.000Z');
+  });
+
+  it('falls back to entityId as display name when entity lookup returns null', async () => {
+    (mockPrisma.quickbooksSyncLog.findMany as jest.Mock).mockResolvedValue([
+      {
+        id: 'log-2',
+        entityType: 'CUSTOMER',
+        entityId: 'cust-gone',
+        direction: 'PUSH',
+        status: 'FAILED',
+        errorMessage: 'QB error',
+        quickbooksId: null,
+        syncedAt: new Date(),
+      },
+    ]);
+    (mockPrisma.customer.findUnique as jest.Mock).mockResolvedValue(null);
+
+    const result = await getQbSyncLog('acct-1', 50);
+
+    expect(result[0]!.entityDisplayName).toBe('cust-gone');
+  });
+
+  it('formats invoice display name as "Invoice — <customer name>"', async () => {
+    (mockPrisma.quickbooksSyncLog.findMany as jest.Mock).mockResolvedValue([
+      {
+        id: 'log-3',
+        entityType: 'INVOICE',
+        entityId: 'inv-1',
+        direction: 'PUSH',
+        status: 'SUCCESS',
+        errorMessage: null,
+        quickbooksId: 'QB-INV-1',
+        syncedAt: new Date(),
+      },
+    ]);
+    (mockPrisma.invoice.findUnique as jest.Mock).mockResolvedValue({ customer: { name: 'Jane Doe' } });
+
+    const result = await getQbSyncLog('acct-1', 50);
+
+    expect(result[0]!.entityDisplayName).toBe('Invoice — Jane Doe');
+  });
+});
+
+describe('retryEntitySync', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('returns INVALID_ENTITY_TYPE for unknown type', async () => {
+    const result = await retryEntitySync('acct-1', 'WIDGET', 'id-1');
+    expect(result.attempted).toBe(false);
+    expect(result.status).toBe('INVALID_ENTITY_TYPE');
+  });
+
+  it('returns NOT_FOUND when entity belongs to a different account', async () => {
+    (mockPrisma.customer.findUnique as jest.Mock).mockResolvedValue({ accountId: 'other-acct' });
+    const result = await retryEntitySync('acct-1', 'CUSTOMER', 'cust-xyz');
+    expect(result.status).toBe('NOT_FOUND');
+    expect(result.attempted).toBe(false);
+  });
+
+  it('returns NOT_FOUND when entity does not exist', async () => {
+    (mockPrisma.customer.findUnique as jest.Mock).mockResolvedValue(null);
+    const result = await retryEntitySync('acct-1', 'CUSTOMER', 'cust-missing');
+    expect(result.status).toBe('NOT_FOUND');
+  });
+
+  it('returns QB_NOT_CONNECTED when account has QB disconnected', async () => {
+    (mockPrisma.customer.findUnique as jest.Mock).mockResolvedValue({ accountId: 'acct-1' });
+    (mockPrisma.account.findUnique as jest.Mock).mockResolvedValueOnce({ quickbooksConnected: false });
+    const result = await retryEntitySync('acct-1', 'CUSTOMER', 'cust-1');
+    expect(result.status).toBe('QB_NOT_CONNECTED');
   });
 });
