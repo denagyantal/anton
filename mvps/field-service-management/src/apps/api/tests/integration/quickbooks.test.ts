@@ -27,6 +27,14 @@ jest.mock('../../src/config/prisma.js', () => ({
       findUnique: jest.fn(),
       update: jest.fn(),
     },
+    customer: {
+      findUnique: jest.fn(),
+      upsert: jest.fn(),
+      update: jest.fn(),
+    },
+    quickbooksSyncLog: {
+      create: jest.fn(),
+    },
   },
 }));
 
@@ -58,6 +66,14 @@ jest.mock('../../src/jobs/reminder-sender.js', () => ({
 jest.mock('../../src/services/payment-service.js', () => ({
   createCheckoutSession: jest.fn(),
   handleCheckoutCompleted: jest.fn(),
+}));
+
+// Mock QB sync functions to isolate integration tests from real QB API calls
+jest.mock('../../src/services/quickbooks-service.js', () => ({
+  ...jest.requireActual('../../src/services/quickbooks-service.js'),
+  syncCustomerToQuickBooks: jest.fn().mockResolvedValue(undefined),
+  syncInvoiceToQuickBooks: jest.fn().mockResolvedValue(undefined),
+  syncPaymentToQuickBooks: jest.fn().mockResolvedValue(undefined),
 }));
 
 import request from 'supertest';
@@ -199,5 +215,40 @@ describe('GET /api/v1/quickbooks/callback', () => {
     expect(res.status).toBe(302);
     expect(res.headers['location']).toContain('status=error');
     expect(res.headers['location']).toContain('reason=missing_params');
+  });
+});
+
+describe('QB sync triggered on sync push', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('fires syncCustomerToQuickBooks after customer upsert', async () => {
+    const { prisma } = require('../../src/config/prisma.js');
+    const quickbooksService = require('../../src/services/quickbooks-service.js');
+
+    (prisma.customer.findUnique as jest.Mock).mockResolvedValue(null);
+    (prisma.customer.upsert as jest.Mock).mockResolvedValue({ id: 'cust-abc' });
+
+    await request(app)
+      .post('/api/v1/sync/push')
+      .set('Authorization', 'Bearer test-token')
+      .send({
+        changes: {
+          customers: {
+            created: [{ id: 'cust-abc', name: 'Alice', phone: '555-0001', updated_at: Date.now() }],
+            updated: [],
+            deleted: [],
+          },
+        },
+      });
+
+    // Fire-and-forget: give the microtask queue a tick to process
+    await new Promise(resolve => setImmediate(resolve));
+
+    expect(quickbooksService.syncCustomerToQuickBooks).toHaveBeenCalledWith(
+      expect.any(String),
+      'cust-abc',
+    );
   });
 });

@@ -1,4 +1,5 @@
 import { prisma } from '../config/prisma.js';
+import { syncCustomerToQuickBooks } from './quickbooks-service.js';
 
 // Tables included in sync, in dependency order
 // (parents before children to satisfy FK constraints on push)
@@ -226,6 +227,12 @@ async function upsertRecord(
     create: { id, ...dataWithoutId },
     update: dataWithoutId,
   });
+
+  if (table === 'customers') {
+    syncCustomerToQuickBooks(accountId, record.id).catch(err => {
+      console.error('[QB] fire-and-forget customer sync error:', err);
+    });
+  }
 }
 
 async function upsertWithTimestamps(

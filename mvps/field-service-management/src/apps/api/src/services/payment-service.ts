@@ -3,6 +3,7 @@ import { prisma } from '../config/prisma.js';
 import { AppError } from '../utils/error.js';
 import { sendPushNotification } from './notification-service.js';
 import { sendSms } from './sms-service.js';
+import { syncPaymentToQuickBooks } from './quickbooks-service.js';
 
 export async function createPaymentIntent(
   invoiceId: string,
@@ -128,6 +129,10 @@ export async function recordOnsitePayment(
     }),
   ]);
 
+  syncPaymentToQuickBooks(accountId, payment.id).catch(err => {
+    console.error('[QB] fire-and-forget on-site payment sync error:', err);
+  });
+
   return {
     alreadyProcessed: false,
     payment: { id: payment.id, amount: payment.amount },
@@ -227,7 +232,7 @@ export async function handleCheckoutCompleted(session: CheckoutSessionLike): Pro
   const newStatus = isFullyPaid ? 'PAID' : 'PARTIALLY_PAID';
   const paidAt = isFullyPaid ? new Date() : null;
 
-  await prisma.$transaction([
+  const [newPayment] = await prisma.$transaction([
     prisma.payment.create({
       data: {
         accountId,
@@ -247,6 +252,10 @@ export async function handleCheckoutCompleted(session: CheckoutSessionLike): Pro
       },
     }),
   ]);
+
+  syncPaymentToQuickBooks(accountId, newPayment.id).catch(err => {
+    console.error('[QB] fire-and-forget webhook payment sync error:', err);
+  });
 
   // Push notification — fires for both PAID and PARTIALLY_PAID (fire and forget)
   const formattedAmount = `$${(paymentAmount / 100).toFixed(2)}`;

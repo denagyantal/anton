@@ -49,6 +49,10 @@ jest.mock('./notification-service.js', () => ({
   sendPushNotification: jest.fn().mockResolvedValue(undefined),
 }));
 
+jest.mock('./quickbooks-service.js', () => ({
+  syncPaymentToQuickBooks: jest.fn().mockResolvedValue(undefined),
+}));
+
 jest.mock('./sms-service.js', () => ({
   sendSms: jest.fn().mockResolvedValue(undefined),
 }));
@@ -157,7 +161,7 @@ describe('handleCheckoutCompleted', () => {
 
     prisma.payment.findFirst.mockResolvedValue(null);
     prisma.invoice.findFirst.mockResolvedValue(mockInvoice);
-    prisma.$transaction.mockResolvedValue([]);
+    prisma.$transaction.mockResolvedValue([{ id: 'mock-payment-id', amount: 15000 }, {}]);
     prisma.teamMember.findFirst.mockResolvedValue(null);
     prisma.account.findUnique.mockResolvedValue({ businessName: 'ACME Plumbing' });
 
@@ -356,7 +360,7 @@ describe('handleCheckoutCompleted — partial payment', () => {
 
     prisma.payment.findFirst.mockResolvedValue(null);
     prisma.invoice.findFirst.mockResolvedValue(invoicePartial);
-    prisma.$transaction.mockResolvedValue([]);
+    prisma.$transaction.mockResolvedValue([{ id: 'mock-payment-partial', amount: 50000 }, {}]);
     prisma.teamMember.findFirst.mockResolvedValue({ pushToken: 'expo-token' });
     prisma.account.findUnique.mockResolvedValue({ businessName: 'ACME Plumbing' });
 
@@ -385,7 +389,7 @@ describe('handleCheckoutCompleted — partial payment', () => {
 
     prisma.payment.findFirst.mockResolvedValue(null);
     prisma.invoice.findFirst.mockResolvedValue({ ...invoicePartial, amountPaid: 50000 });
-    prisma.$transaction.mockResolvedValue([]);
+    prisma.$transaction.mockResolvedValue([{ id: 'mock-payment-full', amount: 100000 }, {}]);
     prisma.teamMember.findFirst.mockResolvedValue(null);
     prisma.account.findUnique.mockResolvedValue({ businessName: 'ACME Plumbing' });
 

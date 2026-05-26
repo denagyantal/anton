@@ -4,8 +4,25 @@ process.env['QUICKBOOKS_CLIENT_SECRET'] = 'test-client-secret';
 process.env['QUICKBOOKS_REDIRECT_URI'] = 'https://example.com/api/v1/quickbooks/callback';
 process.env['QUICKBOOKS_ENVIRONMENT'] = 'sandbox';
 
-import { generateAuthorizationUrl, consumeOAuthState } from './quickbooks-service.js';
+jest.mock('../config/prisma.js', () => ({
+  prisma: {
+    account: { findUnique: jest.fn() },
+    customer: { findUnique: jest.fn(), update: jest.fn() },
+    invoice: { findUnique: jest.fn(), update: jest.fn() },
+    payment: { findUnique: jest.fn(), update: jest.fn() },
+    lineItem: { findMany: jest.fn() },
+    quickbooksSyncLog: { create: jest.fn() },
+  },
+}));
+
+import {
+  generateAuthorizationUrl,
+  consumeOAuthState,
+  syncCustomerToQuickBooks,
+  syncPaymentToQuickBooks,
+} from './quickbooks-service.js';
 import { quickbooksConfig } from '../config/quickbooks.js';
+import { prisma as mockPrisma } from '../config/prisma.js';
 
 describe('generateAuthorizationUrl', () => {
   it('returns a URL starting with the Intuit authorization base URL', () => {
@@ -55,5 +72,181 @@ describe('consumeOAuthState', () => {
     const url = generateAuthorizationUrl('account-999');
     const state = new URL(url).searchParams.get('state')!;
     expect(consumeOAuthState(state)).toBe('account-999');
+  });
+});
+
+const connectedAccount = {
+  quickbooksConnected: true,
+  quickbooksRealmId: 'realm-1',
+  quickbooksAccessToken: 'test-access-token',
+  quickbooksTokenExpiresAt: new Date(Date.now() + 3600000),
+};
+
+describe('syncCustomerToQuickBooks', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('skips sync when QB not connected', async () => {
+    (mockPrisma.account.findUnique as jest.Mock).mockResolvedValue({
+      quickbooksConnected: false,
+      quickbooksRealmId: null,
+    });
+    global.fetch = jest.fn();
+
+    await syncCustomerToQuickBooks('acct-1', 'cust-1');
+
+    expect(global.fetch).not.toHaveBeenCalled();
+  });
+
+  it('logs DUPLICATE_PREVENTED when quickbooksCustomerId already set', async () => {
+    (mockPrisma.account.findUnique as jest.Mock).mockResolvedValue(connectedAccount);
+    (mockPrisma.customer.findUnique as jest.Mock).mockResolvedValue({
+      id: 'cust-1',
+      quickbooksCustomerId: 'QB-CUST-123',
+      name: 'John',
+    });
+    (mockPrisma.quickbooksSyncLog.create as jest.Mock).mockResolvedValue({});
+
+    await syncCustomerToQuickBooks('acct-1', 'cust-1');
+
+    expect(mockPrisma.quickbooksSyncLog.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({ status: 'DUPLICATE_PREVENTED' }),
+      }),
+    );
+  });
+
+  it('creates QB customer and stores ID on success', async () => {
+    (mockPrisma.account.findUnique as jest.Mock).mockResolvedValue(connectedAccount);
+    (mockPrisma.customer.findUnique as jest.Mock).mockResolvedValue({
+      id: 'cust-1',
+      quickbooksCustomerId: null,
+      name: 'Jane Doe',
+      email: 'jane@example.com',
+      phone: '555-1234',
+      addressLine1: null,
+    });
+    global.fetch = jest
+      .fn()
+      .mockResolvedValueOnce({ ok: true, json: async () => ({ Customer: { Id: 'QB-999' } }) });
+    (mockPrisma.customer.update as jest.Mock).mockResolvedValue({});
+    (mockPrisma.quickbooksSyncLog.create as jest.Mock).mockResolvedValue({});
+
+    await syncCustomerToQuickBooks('acct-1', 'cust-1');
+
+    expect(mockPrisma.customer.update).toHaveBeenCalledWith(
+      expect.objectContaining({ data: { quickbooksCustomerId: 'QB-999' } }),
+    );
+    expect(mockPrisma.quickbooksSyncLog.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({ status: 'SUCCESS', quickbooksId: 'QB-999' }),
+      }),
+    );
+  });
+
+  it('logs FAILED and does not throw on QB API error', async () => {
+    (mockPrisma.account.findUnique as jest.Mock).mockResolvedValue(connectedAccount);
+    (mockPrisma.customer.findUnique as jest.Mock).mockResolvedValue({
+      id: 'cust-1',
+      quickbooksCustomerId: null,
+      name: 'Jane',
+    });
+    global.fetch = jest
+      .fn()
+      .mockResolvedValueOnce({ ok: false, status: 400, text: async () => 'Bad Request' });
+    (mockPrisma.quickbooksSyncLog.create as jest.Mock).mockResolvedValue({});
+
+    await expect(syncCustomerToQuickBooks('acct-1', 'cust-1')).resolves.toBeUndefined();
+
+    expect(mockPrisma.quickbooksSyncLog.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({ status: 'FAILED' }),
+      }),
+    );
+  });
+});
+
+describe('syncPaymentToQuickBooks', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('logs DUPLICATE_PREVENTED when quickbooksPaymentId already set', async () => {
+    (mockPrisma.account.findUnique as jest.Mock).mockResolvedValue(connectedAccount);
+    (mockPrisma.payment.findUnique as jest.Mock).mockResolvedValue({
+      id: 'pay-1',
+      quickbooksPaymentId: 'QB-PAY-456',
+      amount: 15000,
+      invoice: {
+        id: 'inv-1',
+        quickbooksInvoiceId: 'QB-INV-789',
+        customer: { quickbooksCustomerId: 'QB-CUST-123' },
+      },
+    });
+    (mockPrisma.quickbooksSyncLog.create as jest.Mock).mockResolvedValue({});
+
+    await syncPaymentToQuickBooks('acct-1', 'pay-1');
+
+    expect(mockPrisma.quickbooksSyncLog.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({ status: 'DUPLICATE_PREVENTED' }),
+      }),
+    );
+  });
+
+  it('logs FAILED when invoice lacks quickbooksInvoiceId', async () => {
+    (mockPrisma.account.findUnique as jest.Mock).mockResolvedValue(connectedAccount);
+    (mockPrisma.payment.findUnique as jest.Mock).mockResolvedValue({
+      id: 'pay-2',
+      quickbooksPaymentId: null,
+      amount: 10000,
+      invoice: {
+        id: 'inv-2',
+        quickbooksInvoiceId: null,
+        customerId: 'cust-1',
+        customer: { quickbooksCustomerId: 'QB-CUST-1' },
+      },
+    });
+    (mockPrisma.quickbooksSyncLog.create as jest.Mock).mockResolvedValue({});
+
+    await expect(syncPaymentToQuickBooks('acct-1', 'pay-2')).resolves.toBeUndefined();
+
+    expect(mockPrisma.quickbooksSyncLog.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({ status: 'FAILED' }),
+      }),
+    );
+  });
+
+  it('records QB payment and stores ID on success', async () => {
+    (mockPrisma.account.findUnique as jest.Mock).mockResolvedValue(connectedAccount);
+    (mockPrisma.payment.findUnique as jest.Mock).mockResolvedValue({
+      id: 'pay-3',
+      quickbooksPaymentId: null,
+      amount: 20000,
+      invoice: {
+        id: 'inv-3',
+        quickbooksInvoiceId: 'QB-INV-555',
+        customerId: 'cust-1',
+        customer: { quickbooksCustomerId: 'QB-CUST-555' },
+      },
+    });
+    global.fetch = jest
+      .fn()
+      .mockResolvedValueOnce({ ok: true, json: async () => ({ Payment: { Id: 'QB-PAY-999' } }) });
+    (mockPrisma.payment.update as jest.Mock).mockResolvedValue({});
+    (mockPrisma.quickbooksSyncLog.create as jest.Mock).mockResolvedValue({});
+
+    await syncPaymentToQuickBooks('acct-1', 'pay-3');
+
+    expect(mockPrisma.payment.update).toHaveBeenCalledWith(
+      expect.objectContaining({ data: { quickbooksPaymentId: 'QB-PAY-999' } }),
+    );
+    expect(mockPrisma.quickbooksSyncLog.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({ status: 'SUCCESS', quickbooksId: 'QB-PAY-999' }),
+      }),
+    );
   });
 });

@@ -1,3 +1,7 @@
+jest.mock('./quickbooks-service.js', () => ({
+  syncInvoiceToQuickBooks: jest.fn().mockResolvedValue(undefined),
+}));
+
 // Mock Prisma with factory to avoid hoisting issues
 jest.mock('../config/prisma.js', () => ({
   prisma: {

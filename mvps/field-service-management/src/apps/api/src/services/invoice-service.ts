@@ -1,5 +1,6 @@
 import { prisma } from '../config/prisma.js';
 import { AppError } from '../utils/error.js';
+import { syncInvoiceToQuickBooks } from './quickbooks-service.js';
 
 export async function generateInvoiceFromJob(jobId: string, accountId: string) {
   const job = await prisma.job.findFirst({
@@ -50,6 +51,10 @@ export async function generateInvoiceFromJob(jobId: string, accountId: string) {
       data: { status: 'INVOICED' },
     }),
   ]);
+
+  syncInvoiceToQuickBooks(accountId, invoice.id).catch(err => {
+    console.error('[QB] fire-and-forget invoice sync error:', err);
+  });
 
   return invoice;
 }
