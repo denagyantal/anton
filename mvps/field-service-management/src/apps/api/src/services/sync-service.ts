@@ -4,6 +4,7 @@ import { syncCustomerToQuickBooks } from './quickbooks-service.js';
 // Tables included in sync, in dependency order
 // (parents before children to satisfy FK constraints on push)
 const SYNC_TABLES = [
+  'team_members',
   'customers',
   'quotes',
   'line_items',
@@ -17,6 +18,7 @@ type SyncTable = (typeof SYNC_TABLES)[number];
 
 // Map table names to Prisma delegate accessor keys
 const TABLE_TO_MODEL: Record<SyncTable, string> = {
+  team_members: 'teamMember',
   customers: 'customer',
   quotes: 'quote',
   line_items: 'lineItem',
@@ -60,7 +62,12 @@ export async function pullChanges({ lastPulledAt, accountId }: PullInput): Promi
 
     let records: Record<string, unknown>[] = [];
 
-    if (table === 'customers') {
+    if (table === 'team_members') {
+      // TeamMember uses camelCase fields
+      records = await delegate.findMany({
+        where: { accountId, updatedAt: { gt: since } },
+      });
+    } else if (table === 'customers') {
       // Customer uses camelCase field names
       records = await delegate.findMany({
         where: { accountId, updatedAt: { gt: since } },
@@ -130,6 +137,9 @@ interface PushInput {
 export async function pushChanges({ changes, accountId }: PushInput): Promise<void> {
   // Process in dependency order to avoid FK violations
   for (const table of SYNC_TABLES) {
+    // team_members is pull-only — mobile cannot push membership changes
+    if (table === 'team_members') continue;
+
     const tableChanges = changes[table];
     if (!tableChanges) continue;
 

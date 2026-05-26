@@ -4,6 +4,7 @@ import { supabaseAdmin } from '../config/supabase.js';
 import { prisma } from '../config/prisma.js';
 import { validate } from '../middleware/validate.js';
 import { AppError } from '../utils/error.js';
+import { authMiddleware } from '../middleware/auth.js';
 
 const router = Router();
 
@@ -180,6 +181,82 @@ router.post(
             refreshToken: data.session.refresh_token,
             expiresAt: data.session.expires_at,
           },
+        },
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
+);
+
+const registerMemberSchema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  phone: z.string().optional(),
+});
+
+// POST /api/v1/auth/register-member
+router.post(
+  '/register-member',
+  authMiddleware,
+  validate(registerMemberSchema),
+  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const { name, phone } = req.body as { name: string; phone?: string };
+      const authUserId = req.user!.id;
+      const accountId = req.user!.accountId;
+
+      if (!accountId) {
+        next(new AppError('VALIDATION_ERROR', 'No account associated with this user. Use /auth/signup instead.', 422));
+        return;
+      }
+
+      const account = await prisma.account.findUnique({ where: { id: accountId } });
+      if (!account) {
+        next(new AppError('NOT_FOUND', 'Account not found', 404));
+        return;
+      }
+
+      const existing = await prisma.teamMember.findUnique({ where: { authUserId } });
+      if (existing) {
+        res.status(200).json({
+          data: {
+            id: existing.id,
+            accountId: existing.accountId,
+            name: existing.name,
+            role: existing.role,
+          },
+        });
+        return;
+      }
+
+      const invite = await prisma.accountInvite.findFirst({
+        where: { accountId, email: req.user!.email, acceptedAt: null, expiresAt: { gt: new Date() } },
+      });
+
+      const teamMember = await prisma.teamMember.create({
+        data: {
+          accountId,
+          email: req.user!.email,
+          phone: phone ?? invite?.phone ?? null,
+          name: name || invite?.name || req.user!.email.split('@')[0]!,
+          role: 'MEMBER',
+          authUserId,
+        },
+      });
+
+      if (invite) {
+        await prisma.accountInvite.update({
+          where: { id: invite.id },
+          data: { acceptedAt: new Date() },
+        });
+      }
+
+      res.status(201).json({
+        data: {
+          id: teamMember.id,
+          accountId: teamMember.accountId,
+          name: teamMember.name,
+          role: teamMember.role,
         },
       });
     } catch (err) {

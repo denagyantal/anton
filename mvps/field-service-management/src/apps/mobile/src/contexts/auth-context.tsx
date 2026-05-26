@@ -19,11 +19,13 @@ interface AuthContextValue {
   isLoading: boolean;
   isAuthenticated: boolean;
   isOnboarded: boolean;
+  isInvitedMember: boolean;
   signUp: (email: string, phone: string, password: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
   refreshSession: () => Promise<void>;
   refreshAccount: () => Promise<void>;
+  registerMember: (name: string, phone?: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
@@ -41,14 +43,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [account, setAccount] = useState<AccountResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isInvitedMember, setIsInvitedMember] = useState(false);
 
-  const fetchAccount = useCallback(async () => {
+  const fetchAccount = useCallback(async (accountId?: string) => {
     try {
       const data = await apiClient.get<AccountResponse>('/api/v1/accounts/me');
       setAccount(data);
-    } catch {
-      // Account fetch may fail if not set up yet — that's expected
+      setIsInvitedMember(false);
+    } catch (error: unknown) {
       setAccount(null);
+      // 404 with a non-empty accountId means invited user who needs to complete registration
+      const status = (error as { status?: number })?.status;
+      if (status === 404 && accountId) {
+        setIsInvitedMember(true);
+      } else {
+        setIsInvitedMember(false);
+      }
     }
   }, []);
 
@@ -60,7 +70,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(mappedUser);
 
       if (mappedUser) {
-        await fetchAccount();
+        await fetchAccount(mappedUser.accountId);
         registerPushToken();
       }
 
@@ -74,10 +84,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(mappedUser);
 
       if (mappedUser) {
-        await fetchAccount();
+        await fetchAccount(mappedUser.accountId);
         registerPushToken();
       } else {
         setAccount(null);
+        setIsInvitedMember(false);
       }
     });
 
@@ -93,6 +104,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setSession(null);
           setUser(null);
           setAccount(null);
+          setIsInvitedMember(false);
         }
       }
     };
@@ -136,6 +148,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setSession(null);
     setUser(null);
     setAccount(null);
+    setIsInvitedMember(false);
   }, []);
 
   const refreshSession = useCallback(async () => {
@@ -144,6 +157,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setSession(null);
       setUser(null);
       setAccount(null);
+      setIsInvitedMember(false);
       return;
     }
     setSession(data.session);
@@ -151,8 +165,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const refreshAccount = useCallback(async () => {
-    await fetchAccount();
-  }, [fetchAccount]);
+    await fetchAccount(user?.accountId);
+  }, [fetchAccount, user?.accountId]);
+
+  const registerMember = useCallback(async (name: string, phone?: string) => {
+    const { registerMember: apiRegisterMember } = await import('../services/api-client');
+    await apiRegisterMember({ name, phone });
+    await fetchAccount(user?.accountId);
+  }, [fetchAccount, user?.accountId]);
 
   const isOnboarded = account?.tradeType != null;
 
@@ -165,11 +185,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isLoading,
         isAuthenticated: !!session && !!user,
         isOnboarded,
+        isInvitedMember,
         signUp,
         signIn,
         signOut,
         refreshSession,
         refreshAccount,
+        registerMember,
       }}
     >
       {children}

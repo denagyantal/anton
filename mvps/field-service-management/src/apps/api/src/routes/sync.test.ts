@@ -234,3 +234,54 @@ describe('POST /api/v1/sync/push', () => {
     expect(response.status).toBe(401);
   });
 });
+
+describe('team_members in sync pull response', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockAuthShouldFail = false;
+  });
+
+  it('includes team_members in pull response when present', async () => {
+    const pullResultWithTeamMembers = {
+      changes: {
+        team_members: {
+          created: [],
+          updated: [
+            {
+              id: 'tm-1',
+              account_id: 'account-1',
+              email: 'tech@test.com',
+              phone: null,
+              name: 'Tech',
+              role: 'MEMBER',
+              created_at: 1716912000000,
+              updated_at: 1716912000000,
+              synced_at: null,
+            },
+          ],
+          deleted: [],
+        },
+        customers: { created: [], updated: [], deleted: [] },
+        quotes: { created: [], updated: [], deleted: [] },
+        line_items: { created: [], updated: [], deleted: [] },
+        jobs: { created: [], updated: [], deleted: [] },
+        schedule_events: { created: [], updated: [], deleted: [] },
+        invoices: { created: [], updated: [], deleted: [] },
+        payments: { created: [], updated: [], deleted: [] },
+      },
+      timestamp: 1716912000000,
+    };
+
+    (pullChanges as jest.Mock).mockResolvedValue(pullResultWithTeamMembers);
+
+    const res = await request(app)
+      .post('/api/v1/sync/pull')
+      .set('Content-Type', 'application/json')
+      .send({ lastPulledAt: null });
+
+    expect(res.status).toBe(200);
+    expect(res.body.data.changes.team_members).toBeDefined();
+    expect(res.body.data.changes.team_members.updated).toHaveLength(1);
+    expect(res.body.data.changes.team_members.updated[0].name).toBe('Tech');
+  });
+});

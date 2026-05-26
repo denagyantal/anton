@@ -166,3 +166,47 @@ export async function retryQbSync(
 ): Promise<{ attempted: boolean; status: string; message?: string }> {
   return apiClient.post('/api/v1/quickbooks/sync', { entityType, entityId });
 }
+
+export interface TeamMemberResponse {
+  id: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  role: 'OWNER' | 'MEMBER';
+  createdAt: string;
+}
+
+export interface PendingInvite {
+  id: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  invitedAt: string;
+  expiresAt: string;
+}
+
+export async function getTeamMembers(): Promise<{
+  members: TeamMemberResponse[];
+  pendingInvites: PendingInvite[];
+}> {
+  return apiClient.get('/api/v1/team-members');
+}
+
+export async function inviteTeamMember(payload: {
+  name: string;
+  email: string;
+  phone?: string;
+}): Promise<{ invited: boolean; email: string; name: string }> {
+  return apiClient.post('/api/v1/team-members/invite', payload);
+}
+
+export async function removeTeamMember(id: string): Promise<{ removed: boolean; id: string }> {
+  return apiClient.delete(`/api/v1/team-members/${id}`);
+}
+
+export async function registerMember(payload: {
+  name: string;
+  phone?: string;
+}): Promise<{ id: string; accountId: string; name: string; role: string }> {
+  return apiClient.post('/api/v1/auth/register-member', payload);
+}

@@ -12,6 +12,7 @@ import JobPhoto from './models/job-photo';
 import ScheduleEvent from './models/schedule-event';
 import Invoice from './models/invoice';
 import Payment from './models/payment';
+import TeamMember from './models/team-member';
 
 const adapter = new LokiJSAdapter({
   schema,
@@ -22,5 +23,5 @@ const adapter = new LokiJSAdapter({
 
 export const database = new Database({
   adapter,
-  modelClasses: [PricebookItem, Customer, Quote, LineItem, QuotePhoto, Job, JobPhoto, ScheduleEvent, Invoice, Payment],
+  modelClasses: [PricebookItem, Customer, Quote, LineItem, QuotePhoto, Job, JobPhoto, ScheduleEvent, Invoice, Payment, TeamMember],
 });

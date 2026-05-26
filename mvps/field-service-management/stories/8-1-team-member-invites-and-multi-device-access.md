@@ -1,6 +1,6 @@
 # Story 8.1: Team Member Invites and Multi-Device Access
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -36,7 +36,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
 ### Task 1: Create Prisma AccountInvite model and migration (AC: #2, #4, #8)
 
-- [ ] 1.1: Create migration file `apps/api/prisma/migrations/20260526000000_add_account_invites/migration.sql`:
+- [x] 1.1: Create migration file `apps/api/prisma/migrations/20260526000000_add_account_invites/migration.sql`:
 
   ```sql
   CREATE TABLE account_invites (
@@ -56,7 +56,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
   CREATE INDEX idx_account_invites_email ON account_invites(email);
   ```
 
-- [ ] 1.2: Add `AccountInvite` model to `apps/api/prisma/schema.prisma` (insert after the `TeamMember` model):
+- [x] 1.2: Add `AccountInvite` model to `apps/api/prisma/schema.prisma` (insert after the `TeamMember` model):
 
   ```prisma
   model AccountInvite {
@@ -79,13 +79,13 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
   }
   ```
 
-- [ ] 1.3: Add `invites AccountInvite[]` to the `Account` model relation list in `schema.prisma` (after the `teamMembers` line).
+- [x] 1.3: Add `invites AccountInvite[]` to the `Account` model relation list in `schema.prisma` (after the `teamMembers` line).
 
-- [ ] 1.4: Run `npx prisma generate` in `apps/api/` to regenerate the Prisma client with the new model.
+- [x] 1.4: Run `npx prisma generate` in `apps/api/` to regenerate the Prisma client with the new model.
 
 ### Task 2: Create team-members API routes (AC: #1, #2, #3, #4, #7, #8, #9, #10)
 
-- [ ] 2.1: Create `apps/api/src/routes/team-members.ts`:
+- [x] 2.1: Create `apps/api/src/routes/team-members.ts`:
 
   ```typescript
   import { Router, Request, Response, NextFunction } from 'express';
@@ -246,7 +246,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
 ### Task 3: Add POST /api/v1/auth/register-member to auth.ts (AC: #5, #6)
 
-- [ ] 3.1: Add the `registerMemberSchema` and `register-member` route to `apps/api/src/routes/auth.ts` (add after the existing `POST /refresh` route, before the `export`):
+- [x] 3.1: Add the `registerMemberSchema` and `register-member` route to `apps/api/src/routes/auth.ts` (add after the existing `POST /refresh` route, before the `export`):
 
   ```typescript
   const registerMemberSchema = z.object({
@@ -331,7 +331,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
   );
   ```
 
-- [ ] 3.2: Add `authMiddleware` import to `auth.ts` — it is not currently imported. Add at the top:
+- [x] 3.2: Add `authMiddleware` import to `auth.ts` — it is not currently imported. Add at the top:
 
   ```typescript
   import { authMiddleware } from '../middleware/auth.js';
@@ -339,13 +339,13 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
 ### Task 4: Register team-members router in index.ts (AC: #1, #8, #9)
 
-- [ ] 4.1: In `apps/api/src/index.ts`, add the import after the existing route imports:
+- [x] 4.1: In `apps/api/src/index.ts`, add the import after the existing route imports:
 
   ```typescript
   import { teamMembersRouter } from './routes/team-members.js';
   ```
 
-- [ ] 4.2: Register the router after the accounts router:
+- [x] 4.2: Register the router after the accounts router:
 
   ```typescript
   // Team member routes (protected)
@@ -354,9 +354,9 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
 ### Task 5: Add team_members to WatermelonDB schema (AC: #11)
 
-- [ ] 5.1: In `apps/mobile/src/db/schema.ts`, update `version: 10` to `version: 11`.
+- [x] 5.1: In `apps/mobile/src/db/schema.ts`, update `version: 10` to `version: 11`.
 
-- [ ] 5.2: Add the `team_members` table schema to the tables array (after the `payments` table):
+- [x] 5.2: Add the `team_members` table schema to the tables array (after the `payments` table):
 
   ```typescript
   tableSchema({
@@ -374,7 +374,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
   }),
   ```
 
-- [ ] 5.3: In `apps/mobile/src/db/migrations.ts`, add the new migration at the **beginning** of the migrations array (before the `toVersion: 10` entry — WatermelonDB processes in ascending version order):
+- [x] 5.3: In `apps/mobile/src/db/migrations.ts`, add the new migration at the **beginning** of the migrations array (before the `toVersion: 10` entry — WatermelonDB processes in ascending version order):
 
   ```typescript
   {
@@ -401,7 +401,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
 ### Task 6: Create WatermelonDB TeamMember model (AC: #11)
 
-- [ ] 6.1: Create `apps/mobile/src/db/models/team-member.ts`:
+- [x] 6.1: Create `apps/mobile/src/db/models/team-member.ts`:
 
   ```typescript
   import { Model } from '@nozbe/watermelondb';
@@ -421,7 +421,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
   }
   ```
 
-- [ ] 6.2: Update `apps/mobile/src/db/index.ts` — add the `TeamMember` import and register it in `modelClasses`:
+- [x] 6.2: Update `apps/mobile/src/db/index.ts` — add the `TeamMember` import and register it in `modelClasses`:
 
   ```typescript
   import TeamMember from './models/team-member';
@@ -435,7 +435,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
 ### Task 7: Add team_members to sync pull (AC: #6, #11)
 
-- [ ] 7.1: In `apps/api/src/services/sync-service.ts`, add `'team_members'` to `SYNC_TABLES` (insert before `'customers'` since team_members has no FK dependencies on other sync tables):
+- [x] 7.1: In `apps/api/src/services/sync-service.ts`, add `'team_members'` to `SYNC_TABLES` (insert before `'customers'` since team_members has no FK dependencies on other sync tables):
 
   ```typescript
   const SYNC_TABLES = [
@@ -450,7 +450,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
   ] as const;
   ```
 
-- [ ] 7.2: Add `team_members` to the `TABLE_TO_MODEL` map:
+- [x] 7.2: Add `team_members` to the `TABLE_TO_MODEL` map:
 
   ```typescript
   const TABLE_TO_MODEL: Record<SyncTable, string> = {
@@ -465,7 +465,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
   };
   ```
 
-- [ ] 7.3: Add the `team_members` pull handler inside the `pullChanges` loop, after the `customers` block:
+- [x] 7.3: Add the `team_members` pull handler inside the `pullChanges` loop, after the `customers` block:
 
   ```typescript
   if (table === 'team_members') {
@@ -476,7 +476,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
   }
   ```
 
-- [ ] 7.4: In `pushChanges`, team_members must never be pushed from mobile (mobile is read-only for team membership). Add a guard at the top of the `for (const table of SYNC_TABLES)` loop in `pushChanges`:
+- [x] 7.4: In `pushChanges`, team_members must never be pushed from mobile (mobile is read-only for team membership). Add a guard at the top of the `for (const table of SYNC_TABLES)` loop in `pushChanges`:
 
   ```typescript
   // team_members is pull-only — mobile cannot push membership changes
@@ -485,7 +485,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
 ### Task 8: Update mobile API client with team member functions (AC: #1, #8, #9)
 
-- [ ] 8.1: In `apps/mobile/src/services/api-client.ts`, add the team member types and functions (add after the `retryQbSync` function at the end of the file):
+- [x] 8.1: In `apps/mobile/src/services/api-client.ts`, add the team member types and functions (add after the `retryQbSync` function at the end of the file):
 
   ```typescript
   export interface TeamMemberResponse {
@@ -533,7 +533,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
   }
   ```
 
-- [ ] 8.2: Check that `apiClient` exposes a `delete` method. Look at the existing `apiClient` object in `api-client.ts`. If there is no `delete` method, add one following the same pattern as `get` and `post`:
+- [x] 8.2: Check that `apiClient` exposes a `delete` method. Look at the existing `apiClient` object in `api-client.ts`. If there is no `delete` method, add one following the same pattern as `get` and `post`:
 
   ```typescript
   async delete<T>(path: string): Promise<T> {
@@ -548,7 +548,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
 ### Task 9: Create Team Management mobile screen (AC: #1, #8, #9)
 
-- [ ] 9.1: Create `apps/mobile/app/(tabs)/more/team.tsx`:
+- [x] 9.1: Create `apps/mobile/app/(tabs)/more/team.tsx`:
 
   ```typescript
   import { useState, useCallback } from 'react';
@@ -852,7 +852,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
 ### Task 10: Add Team row to Settings screen (AC: #1)
 
-- [ ] 10.1: In `apps/mobile/app/(tabs)/more/index.tsx`, add a `TeamSection` between the QuickBooks row and Pricebook row. Add a new section header and navigation row:
+- [x] 10.1: In `apps/mobile/app/(tabs)/more/index.tsx`, add a `TeamSection` between the QuickBooks row and Pricebook row. Add a new section header and navigation row:
 
   ```tsx
   <Text style={styles.sectionHeader}>Team</Text>
@@ -871,7 +871,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
 ### Task 11: Handle invited member "complete registration" state in auth (AC: #5, #6)
 
-- [ ] 11.1: Update `apps/mobile/src/contexts/auth-context.tsx` — add `isInvitedMember` state flag and `registerMember` function.
+- [x] 11.1: Update `apps/mobile/src/contexts/auth-context.tsx` — add `isInvitedMember` state flag and `registerMember` function.
 
   Add to `AuthContextValue` interface:
   ```typescript
@@ -942,7 +942,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
   Add `isInvitedMember` and `registerMember` to the context value.
 
-- [ ] 11.2: Update `apps/mobile/app/_layout.tsx` to handle the `isInvitedMember` state — redirect to a completion screen instead of the main tabs or onboarding:
+- [x] 11.2: Update `apps/mobile/app/_layout.tsx` to handle the `isInvitedMember` state — redirect to a completion screen instead of the main tabs or onboarding:
 
   Look for the existing routing logic (likely in the root `_layout.tsx` or a navigation guard). Find where `isOnboarded` is checked and add the `isInvitedMember` check before it:
 
@@ -959,7 +959,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
 ### Task 12: Create Complete Registration screen for invited members (AC: #5)
 
-- [ ] 12.1: Create `apps/mobile/app/(auth)/complete-registration.tsx`:
+- [x] 12.1: Create `apps/mobile/app/(auth)/complete-registration.tsx`:
 
   ```typescript
   import { useState } from 'react';
@@ -1049,7 +1049,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
 
 ### Task 13: Tests (AC: #1, #2, #3, #4, #5, #6, #8, #9, #10, #11)
 
-- [ ] 13.1: Create `apps/api/src/routes/team-members.test.ts`:
+- [x] 13.1: Create `apps/api/src/routes/team-members.test.ts`:
 
   ```typescript
   import request from 'supertest';
@@ -1251,7 +1251,7 @@ so that everyone on my team can access shared schedules, jobs, and customers fro
   });
   ```
 
-- [ ] 13.2: Add sync service test for `team_members` pull in `apps/api/src/routes/sync.test.ts` (or in a separate service test if it exists):
+- [x] 13.2: Add sync service test for `team_members` pull in `apps/api/src/routes/sync.test.ts` (or in a separate service test if it exists):
 
   ```typescript
   it('includes team_members in pull response', async () => {
@@ -1420,6 +1420,33 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None.
+
 ### Completion Notes List
 
+- Implemented all 13 tasks end-to-end: Prisma migration, API routes (GET/POST invite/DELETE), auth register-member endpoint, WatermelonDB schema v11 + migration, TeamMember model, sync service team_members pull (read-only, push-guarded), mobile API client helpers, Team management screen, Settings screen navigation row, auth-context isInvitedMember state, complete-registration screen.
+- Fixed Express TypeScript param typing by using `req.params['id'] as string` to satisfy Prisma's strict types.
+- All 206 API tests pass (17 new tests in team-members.test.ts + 1 new sync pull test). No regressions.
+- team_members is pull-only in sync: mobile cannot push membership changes (guard added in pushChanges loop).
+- isInvitedMember detection: authenticated user with accountId in JWT but no TeamMember record (404 on GET /accounts/me) triggers the complete-registration flow.
+
 ### File List
+
+- `apps/api/prisma/migrations/20260526000000_add_account_invites/migration.sql` (created)
+- `apps/api/prisma/schema.prisma` (modified — AccountInvite model + Account.invites relation)
+- `apps/api/src/routes/team-members.ts` (created)
+- `apps/api/src/routes/auth.ts` (modified — added register-member route + authMiddleware import)
+- `apps/api/src/index.ts` (modified — registered teamMembersRouter)
+- `apps/api/src/services/sync-service.ts` (modified — team_members in SYNC_TABLES, TABLE_TO_MODEL, pullChanges, pushChanges guard)
+- `apps/api/src/routes/team-members.test.ts` (created — 17 tests)
+- `apps/api/src/routes/sync.test.ts` (modified — team_members pull test added)
+- `apps/mobile/src/db/schema.ts` (modified — version 10→11, team_members table)
+- `apps/mobile/src/db/migrations.ts` (modified — toVersion: 11 migration step)
+- `apps/mobile/src/db/models/team-member.ts` (created)
+- `apps/mobile/src/db/index.ts` (modified — TeamMember in modelClasses)
+- `apps/mobile/src/services/api-client.ts` (modified — getTeamMembers, inviteTeamMember, removeTeamMember, registerMember functions)
+- `apps/mobile/app/(tabs)/more/team.tsx` (created)
+- `apps/mobile/app/(tabs)/more/index.tsx` (modified — Team Members row added)
+- `apps/mobile/src/contexts/auth-context.tsx` (modified — isInvitedMember state, registerMember function, fetchAccount(accountId) signature)
+- `apps/mobile/app/_layout.tsx` (modified — isInvitedMember routing to complete-registration)
+- `apps/mobile/app/(auth)/complete-registration.tsx` (created)

@@ -104,6 +104,17 @@ export default function MoreScreen() {
         <Text style={styles.rowArrow}>›</Text>
       </TouchableOpacity>
 
+      <Text style={styles.sectionHeader}>Team</Text>
+
+      <TouchableOpacity
+        style={styles.row}
+        onPress={() => router.push('/(tabs)/more/team')}
+        testID="team-row"
+      >
+        <Text style={styles.rowText}>Team Members</Text>
+        <Text style={styles.rowArrow}>›</Text>
+      </TouchableOpacity>
+
       <TouchableOpacity
         style={styles.row}
         onPress={() => router.push('/(tabs)/more/pricebook')}

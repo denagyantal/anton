@@ -3,6 +3,24 @@ import { schemaMigrations, createTable, addColumns } from '@nozbe/watermelondb/S
 export const migrations = schemaMigrations({
   migrations: [
     {
+      toVersion: 11,
+      steps: [
+        createTable({
+          name: 'team_members',
+          columns: [
+            { name: 'account_id', type: 'string' },
+            { name: 'email', type: 'string' },
+            { name: 'phone', type: 'string', isOptional: true },
+            { name: 'name', type: 'string' },
+            { name: 'role', type: 'string' },
+            { name: 'created_at', type: 'number' },
+            { name: 'updated_at', type: 'number' },
+            { name: 'synced_at', type: 'number', isOptional: true },
+          ],
+        }),
+      ],
+    },
+    {
       toVersion: 10,
       steps: [
         addColumns({

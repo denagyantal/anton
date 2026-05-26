@@ -7,7 +7,7 @@ import { NetworkProvider } from '../src/contexts/network-context';
 import { SyncProvider } from '../src/contexts/sync-context';
 
 function AuthGate() {
-  const { isLoading, isAuthenticated, isOnboarded } = useAuth();
+  const { isLoading, isAuthenticated, isOnboarded, isInvitedMember } = useAuth();
 
   if (isLoading) {
     return (
@@ -21,6 +21,15 @@ function AuthGate() {
     return (
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(auth)" />
+      </Stack>
+    );
+  }
+
+  if (isInvitedMember) {
+    return (
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(auth)" />
+        <Redirect href="/(auth)/complete-registration" />
       </Stack>
     );
   }

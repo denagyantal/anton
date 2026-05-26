@@ -95,7 +95,7 @@ development_status:
 
   # Epic 8: Team Collaboration & Web Dashboard
   epic-8: in-progress
-  8-1-team-member-invites-and-multi-device-access: ready-for-dev
+  8-1-team-member-invites-and-multi-device-access: done
   8-2-dispatch-board-and-job-assignment: backlog
   8-3-web-dashboard-for-office-partners: backlog
   epic-8-retrospective: optional

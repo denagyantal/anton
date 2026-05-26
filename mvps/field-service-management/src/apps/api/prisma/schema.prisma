@@ -90,6 +90,7 @@ model Account {
   invoices            Invoice[]
   payments            Payment[]
   quickbooksSyncLogs  QuickbooksSyncLog[]
+  invites             AccountInvite[]
 
   @@map("accounts")
 }
@@ -112,6 +113,25 @@ model TeamMember {
   assignedEvents ScheduleEvent[]  @relation("AssignedEvents")
 
   @@map("team_members")
+}
+
+model AccountInvite {
+  id          String    @id @default(uuid())
+  accountId   String    @map("account_id")
+  email       String
+  name        String
+  phone       String?
+  invitedAt   DateTime  @default(now()) @map("invited_at")
+  acceptedAt  DateTime? @map("accepted_at")
+  expiresAt   DateTime  @map("expires_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  account Account @relation(fields: [accountId], references: [id])
+
+  @@index([accountId], name: "idx_account_invites_account_id")
+  @@index([email], name: "idx_account_invites_email")
+  @@map("account_invites")
 }
 
 model PricebookItem {
