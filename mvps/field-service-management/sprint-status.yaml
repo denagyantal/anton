@@ -90,7 +90,7 @@ development_status:
   epic-7: in-progress
   7-1-quickbooks-oauth-connection: done
   7-2-automatic-customer-invoice-and-payment-sync: done
-  7-3-sync-status-dashboard-and-manual-re-sync: backlog
+  7-3-sync-status-dashboard-and-manual-re-sync: ready-for-dev
   epic-7-retrospective: optional
 
   # Epic 8: Team Collaboration & Web Dashboard
