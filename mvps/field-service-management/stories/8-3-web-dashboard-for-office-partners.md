@@ -1,6 +1,6 @@
 # Story 8.3: Web Dashboard for Office Partners
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -34,7 +34,7 @@ so that I can manage the office side without needing the mobile app.
 
 ### Task 1: Create API dashboard route (AC: #2, #3, #4, #5, #6, #10)
 
-- [ ] 1.1: Create `apps/api/src/routes/dashboard.ts`:
+- [x] 1.1: Create `apps/api/src/routes/dashboard.ts`:
 
 ```typescript
 import { Router, Request, Response, NextFunction } from 'express';
@@ -155,7 +155,7 @@ router.get('/sync-status', async (req: Request, res: Response, next: NextFunctio
 export { router as dashboardRouter };
 ```
 
-- [ ] 1.2: In `apps/api/src/index.ts`, add the dashboard router. Import it after the existing imports:
+- [x] 1.2: In `apps/api/src/index.ts`, add the dashboard router. Import it after the existing imports:
 
 ```typescript
 import { dashboardRouter } from './routes/dashboard.js';
@@ -170,7 +170,7 @@ app.use('/api/v1/dashboard', dashboardRouter);
 
 ### Task 2: Create API dashboard tests (AC: #10)
 
-- [ ] 2.1: Create `apps/api/src/routes/dashboard.test.ts`:
+- [x] 2.1: Create `apps/api/src/routes/dashboard.test.ts`:
 
 ```typescript
 import request from 'supertest';
@@ -249,7 +249,7 @@ describe('GET /api/v1/dashboard/sync-status', () => {
 
 ### Task 3: Create web auth utilities (AC: #1, #9)
 
-- [ ] 3.1: Create `apps/web/src/lib/auth.ts`:
+- [x] 3.1: Create `apps/web/src/lib/auth.ts`:
 
 ```typescript
 const TOKEN_KEY = 'fsm_token';
@@ -272,7 +272,7 @@ export function isLoggedIn(): boolean {
 }
 ```
 
-- [ ] 3.2: Create `apps/web/src/lib/api-client.ts`:
+- [x] 3.2: Create `apps/web/src/lib/api-client.ts`:
 
 ```typescript
 import { getToken } from './auth';
@@ -324,7 +324,7 @@ export async function apiPost<T>(endpoint: string, body: unknown): Promise<T> {
 
 ### Task 4: Replace login page (AC: #1)
 
-- [ ] 4.1: Replace `apps/web/src/app/page.tsx` with a login form. Read the file first (currently a placeholder), then replace it entirely:
+- [x] 4.1: Replace `apps/web/src/app/page.tsx` with a login form. Read the file first (currently a placeholder), then replace it entirely:
 
 ```typescript
 'use client';
@@ -425,7 +425,7 @@ export default function LoginPage() {
 
 ### Task 5: Create nav sidebar component (AC: #8, #9)
 
-- [ ] 5.1: Create `apps/web/src/components/nav-sidebar.tsx`:
+- [x] 5.1: Create `apps/web/src/components/nav-sidebar.tsx`:
 
 ```typescript
 'use client';
@@ -492,7 +492,7 @@ export default function NavSidebar() {
 
 ### Task 6: Create dashboard layout with auth guard (AC: #9)
 
-- [ ] 6.1: Create `apps/web/src/app/dashboard/layout.tsx`:
+- [x] 6.1: Create `apps/web/src/app/dashboard/layout.tsx`:
 
 ```typescript
 'use client';
@@ -522,7 +522,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
 ### Task 7: Create schedule display component and page (AC: #2, #3)
 
-- [ ] 7.1: Create `apps/web/src/components/schedule-calendar.tsx`:
+- [x] 7.1: Create `apps/web/src/components/schedule-calendar.tsx`:
 
 ```typescript
 'use client';
@@ -639,7 +639,7 @@ export default function ScheduleCalendar({ events, date }: ScheduleCalendarProps
 }
 ```
 
-- [ ] 7.2: Create `apps/web/src/app/dashboard/schedule/page.tsx`:
+- [x] 7.2: Create `apps/web/src/app/dashboard/schedule/page.tsx`:
 
 ```typescript
 'use client';
@@ -768,7 +768,7 @@ export default function SchedulePage() {
 
 ### Task 8: Create invoice table component and page (AC: #4, #5)
 
-- [ ] 8.1: Create `apps/web/src/components/invoice-table.tsx`:
+- [x] 8.1: Create `apps/web/src/components/invoice-table.tsx`:
 
 ```typescript
 'use client';
@@ -871,7 +871,7 @@ export default function InvoiceTable({ invoices }: InvoiceTableProps) {
 }
 ```
 
-- [ ] 8.2: Create `apps/web/src/app/dashboard/invoices/page.tsx`:
+- [x] 8.2: Create `apps/web/src/app/dashboard/invoices/page.tsx`:
 
 ```typescript
 'use client';
@@ -983,7 +983,7 @@ export default function InvoicesPage() {
 
 ### Task 9: Create sync status component and page (AC: #6, #7)
 
-- [ ] 9.1: Create `apps/web/src/components/sync-status-list.tsx`:
+- [x] 9.1: Create `apps/web/src/components/sync-status-list.tsx`:
 
 ```typescript
 'use client';
@@ -1116,7 +1116,7 @@ export default function SyncStatusList({ syncLog, onRetryComplete }: SyncStatusL
 }
 ```
 
-- [ ] 9.2: Create `apps/web/src/app/dashboard/sync/page.tsx`:
+- [x] 9.2: Create `apps/web/src/app/dashboard/sync/page.tsx`:
 
 ```typescript
 'use client';
@@ -1432,6 +1432,28 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None.
+
 ### Completion Notes List
 
+- Test file was rewritten from Vitest to Jest to match the project's test framework (jest.config.js, not vitest). Used `jest.mock()` throughout and mocked Stripe, Prisma, QB service, SMS, notification, storage, PDF services, and signed-url utility to avoid transitive import failures.
+- All 6 new dashboard tests pass. Full suite: 212 tests pass across 20 test files.
+- Web dashboard pages all use `'use client'` directive as required by Next.js 15 App Router for localStorage access.
+- `sync-status-list.tsx` imports from `../lib/api-client` (relative to components/) to handle the QB retry POST call inline.
+
 ### File List
+
+- `apps/api/src/routes/dashboard.ts` — Created: 3 dashboard API endpoints (schedule, invoices, sync-status)
+- `apps/api/src/routes/dashboard.test.ts` — Created: 6 Jest tests covering all 3 endpoints
+- `apps/api/src/index.ts` — Modified: added dashboardRouter import and registration
+- `apps/web/src/app/page.tsx` — Modified: replaced placeholder with login form
+- `apps/web/src/lib/auth.ts` — Created: localStorage token helpers (getToken, setToken, clearToken, isLoggedIn)
+- `apps/web/src/lib/api-client.ts` — Created: authenticated fetch wrapper (apiFetch, apiGet, apiPost, ApiError)
+- `apps/web/src/components/nav-sidebar.tsx` — Created: sidebar nav with Schedule/Invoices/QB Sync links and Sign Out
+- `apps/web/src/app/dashboard/layout.tsx` — Created: dashboard shell with auth guard + NavSidebar
+- `apps/web/src/components/schedule-calendar.tsx` — Created: schedule display grouped by technician
+- `apps/web/src/app/dashboard/schedule/page.tsx` — Created: schedule page with date navigation
+- `apps/web/src/components/invoice-table.tsx` — Created: invoice table with status badges
+- `apps/web/src/app/dashboard/invoices/page.tsx` — Created: invoice page with status filter tabs
+- `apps/web/src/components/sync-status-list.tsx` — Created: QB sync log table with Retry button
+- `apps/web/src/app/dashboard/sync/page.tsx` — Created: QB sync status page with connection header

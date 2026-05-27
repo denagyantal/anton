@@ -12,6 +12,7 @@ import { startReminderJob } from './jobs/reminder-sender.js';
 import { syncRouter } from './routes/sync.js';
 import quickbooksRouter from './routes/quickbooks.js';
 import { teamMembersRouter } from './routes/team-members.js';
+import { dashboardRouter } from './routes/dashboard.js';
 
 export const app = express();
 
@@ -56,6 +57,9 @@ app.use('/api/v1/team-members', teamMembersRouter);
 
 // QuickBooks routes (mixed: connect/status/disconnect are protected; callback is public)
 app.use('/api/v1/quickbooks', quickbooksRouter);
+
+// Dashboard routes (protected)
+app.use('/api/v1/dashboard', dashboardRouter);
 
 // Protected route: current user
 app.get('/api/v1/me', authMiddleware, (req, res) => {
