@@ -15,9 +15,11 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, Stack, router } from 'expo-router';
 import * as FileSystem from 'expo-file-system';
-import { useJob, useTransitionJobStatus, useUpdateJobNotes } from '../../../src/hooks/use-jobs';
+import { useJob, useTransitionJobStatus, useUpdateJobNotes, useAssignJob } from '../../../src/hooks/use-jobs';
 import { useJobInvoice, useGenerateInvoice, useSendInvoice, useCollectPayment } from '../../../src/hooks/use-invoices';
 import { NetworkContext } from '../../../src/contexts/network-context';
+import { useTeamMembers } from '../../../src/hooks/use-team-members';
+import TechnicianPicker from '../../../src/components/jobs/technician-picker';
 import { useCustomers } from '../../../src/hooks/use-customers';
 import {
   useJobPhotos,
@@ -64,9 +66,12 @@ export default function JobDetailScreen() {
   const { generateInvoice, isLoading: isGenerating } = useGenerateInvoice();
   const { sendInvoice, isSending } = useSendInvoice();
   const { isConnected } = useContext(NetworkContext);
+  const { teamMembers } = useTeamMembers();
+  const { assignJob } = useAssignJob();
 
   const [localNotes, setLocalNotes] = useState('');
   const [signatureVisible, setSignatureVisible] = useState(false);
+  const [showTechPicker, setShowTechPicker] = useState(false);
   const savedOpacity = useRef(new Animated.Value(0)).current;
   const signatureRef = useRef<SignatureViewRef>(null);
 
@@ -78,6 +83,10 @@ export default function JobDetailScreen() {
 
   const customerName =
     customers.find((c) => c.id === job?.customerId)?.name ?? 'Unknown Customer';
+
+  const assignedTechName = job?.assignedToId
+    ? (teamMembers.find((m) => m.id === job.assignedToId)?.name ?? 'Unknown')
+    : null;
 
   const handleBlur = useCallback(async () => {
     if (!job) return;
@@ -156,6 +165,14 @@ export default function JobDetailScreen() {
       },
     });
   }, [invoice, isConnected]);
+
+  const handleAssign = useCallback(
+    async (member: import('../../../src/db/models/team-member').default | null) => {
+      if (!job) return;
+      await assignJob(job.id, member?.id ?? null);
+    },
+    [job, assignJob],
+  );
 
   function renderActionButton() {
     if (!job) return null;
@@ -268,6 +285,25 @@ export default function JobDetailScreen() {
           {completedDate ? (
             <Text style={styles.completedAt}>Completed: {completedDate}</Text>
           ) : null}
+
+          {teamMembers.length > 0 && (
+            <View style={styles.assignmentRow}>
+              <View style={styles.assignmentInfo}>
+                <Text style={styles.assignmentLabel}>Assigned To</Text>
+                <Text style={styles.assignmentValue}>
+                  {assignedTechName ?? 'Unassigned'}
+                </Text>
+              </View>
+              <TouchableOpacity
+                style={styles.reassignButton}
+                onPress={() => setShowTechPicker(true)}
+              >
+                <Text style={styles.reassignButtonText}>
+                  {assignedTechName ? 'Reassign' : 'Assign'}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
 
         {/* Photos section */}
@@ -318,6 +354,14 @@ export default function JobDetailScreen() {
 
         <View style={styles.bottomPadding} />
       </ScrollView>
+
+      <TechnicianPicker
+        visible={showTechPicker}
+        teamMembers={teamMembers}
+        selectedId={job?.assignedToId ?? null}
+        onSelect={handleAssign}
+        onClose={() => setShowTechPicker(false)}
+      />
 
       <Modal
         visible={signatureVisible}
@@ -547,4 +591,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+  assignmentRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 12,
+    borderTopWidth: 1,
+    borderTopColor: '#f3f4f6',
+    marginTop: 8,
+  },
+  assignmentInfo: { flex: 1 },
+  assignmentLabel: { fontSize: 12, color: '#6b7280', fontWeight: '600', textTransform: 'uppercase', letterSpacing: 0.5 },
+  assignmentValue: { fontSize: 16, color: '#111827', marginTop: 2 },
+  reassignButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderWidth: 1,
+    borderColor: '#d1d5db',
+    borderRadius: 6,
+  },
+  reassignButtonText: { fontSize: 14, color: '#374151', fontWeight: '500' },
 });

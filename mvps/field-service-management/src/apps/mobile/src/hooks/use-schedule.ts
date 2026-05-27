@@ -54,6 +54,7 @@ export interface CreateJobParams {
   notes?: string;
   externalCalendarId?: string;
   initialStatus?: string;
+  assignedToId?: string;
 }
 
 export function useCreateJob(): { createJob: (params: CreateJobParams) => Promise<{ job: Job; event: ScheduleEvent }> } {
@@ -80,6 +81,7 @@ export function useCreateJob(): { createJob: (params: CreateJobParams) => Promis
           record.scheduledStart = params.startTime.getTime();
           record.scheduledEnd = params.endTime.getTime();
           record.notes = params.notes ?? '';
+          record.assignedToId = params.assignedToId ?? '';
         });
 
         createdEvent = await database.get<ScheduleEvent>('schedule_events').create((record) => {

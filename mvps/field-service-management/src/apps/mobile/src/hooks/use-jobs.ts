@@ -157,3 +157,23 @@ export function useUpdateJobNotes(): {
 
   return { updateNotes };
 }
+
+export function useAssignJob(): {
+  assignJob: (jobId: string, assignedToId: string | null) => Promise<void>;
+} {
+  const database = useDatabase();
+
+  const assignJob = useCallback(
+    async (jobId: string, assignedToId: string | null): Promise<void> => {
+      await database.write(async () => {
+        const job = await database.get<Job>('jobs').find(jobId);
+        await job.update((record) => {
+          record.assignedToId = assignedToId ?? '';
+        });
+      });
+    },
+    [database],
+  );
+
+  return { assignJob };
+}

@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useRouter, Stack } from 'expo-router';
 import { useScheduleEvents, useRescheduleJob } from '../../../src/hooks/use-schedule';
 import { useCustomers } from '../../../src/hooks/use-customers';
 import { CalendarView, CalendarEventShape } from '../../../src/components/schedule/calendar-view';
@@ -46,6 +46,18 @@ export default function ScheduleScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Stack.Screen
+        options={{
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => router.push('/(tabs)/schedule/dispatch')}
+              style={{ marginRight: 4 }}
+            >
+              <Text style={{ fontSize: 14, color: '#2563eb', fontWeight: '600' }}>Dispatch</Text>
+            </TouchableOpacity>
+          ),
+        }}
+      />
       <View style={styles.header}>
         <Text style={styles.title}>Schedule</Text>
         <TouchableOpacity

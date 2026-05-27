@@ -1,6 +1,6 @@
 # Story 8.2: Dispatch Board and Job Assignment
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -26,7 +26,7 @@ so that I can efficiently route my crew and balance workloads.
 
 ### Task 1: Create `useTeamMembers` hook (AC: #1, #2, #3, #4)
 
-- [ ] 1.1: Create `apps/mobile/src/hooks/use-team-members.ts`:
+- [x] 1.1: Create `apps/mobile/src/hooks/use-team-members.ts`:
 
   ```typescript
   import { useState, useEffect } from 'react';
@@ -69,7 +69,7 @@ so that I can efficiently route my crew and balance workloads.
 
 ### Task 2: Add `useAssignJob` hook to `use-jobs.ts` (AC: #3, #4)
 
-- [ ] 2.1: In `apps/mobile/src/hooks/use-jobs.ts`, add the `useAssignJob` hook at the end of the file (after `useUpdateJobNotes`):
+- [x] 2.1: In `apps/mobile/src/hooks/use-jobs.ts`, add the `useAssignJob` hook at the end of the file (after `useUpdateJobNotes`):
 
   ```typescript
   export function useAssignJob(): {
@@ -97,7 +97,7 @@ so that I can efficiently route my crew and balance workloads.
 
 ### Task 3: Create `TechnicianPicker` component (AC: #2, #3)
 
-- [ ] 3.1: Create `apps/mobile/src/components/jobs/technician-picker.tsx`:
+- [x] 3.1: Create `apps/mobile/src/components/jobs/technician-picker.tsx`:
 
   ```typescript
   import { useState } from 'react';
@@ -201,7 +201,7 @@ so that I can efficiently route my crew and balance workloads.
 
 ### Task 4: Create `DispatchBoard` component (AC: #1, #4, #5)
 
-- [ ] 4.1: Create `apps/mobile/src/components/jobs/dispatch-board.tsx`:
+- [x] 4.1: Create `apps/mobile/src/components/jobs/dispatch-board.tsx`:
 
   ```typescript
   import { View, Text, ScrollView, StyleSheet } from 'react-native';
@@ -377,7 +377,7 @@ so that I can efficiently route my crew and balance workloads.
 
 ### Task 5: Create Dispatch Screen route (AC: #1, #4, #5)
 
-- [ ] 5.1: Create `apps/mobile/app/(tabs)/schedule/dispatch.tsx`:
+- [x] 5.1: Create `apps/mobile/app/(tabs)/schedule/dispatch.tsx`:
 
   ```typescript
   import { useMemo } from 'react';
@@ -482,7 +482,7 @@ so that I can efficiently route my crew and balance workloads.
 
 ### Task 6: Add "Dispatch" button to Schedule screen (AC: #1)
 
-- [ ] 6.1: In `apps/mobile/app/(tabs)/schedule/index.tsx`, add a "Dispatch" navigation button to the screen header or as a floating action. Read the file first to determine the exact location.
+- [x] 6.1: In `apps/mobile/app/(tabs)/schedule/index.tsx`, add a "Dispatch" navigation button to the screen header or as a floating action. Read the file first to determine the exact location.
 
   The schedule screen uses `Stack.Screen` options or a custom header. Add a header right button that navigates to `/(tabs)/schedule/dispatch`:
 
@@ -511,7 +511,7 @@ so that I can efficiently route my crew and balance workloads.
 
 ### Task 7: Update `CreateJobParams` and `useCreateJob` to support tech assignment (AC: #2)
 
-- [ ] 7.1: In `apps/mobile/src/hooks/use-schedule.ts`, add `assignedToId` to the `CreateJobParams` interface:
+- [x] 7.1: In `apps/mobile/src/hooks/use-schedule.ts`, add `assignedToId` to the `CreateJobParams` interface:
 
   ```typescript
   export interface CreateJobParams {
@@ -528,7 +528,7 @@ so that I can efficiently route my crew and balance workloads.
   }
   ```
 
-- [ ] 7.2: In the `createJob` callback, update the job record creation to set `assignedToId` when provided. The existing job creation block (line ~74-83 in `use-schedule.ts`) currently ends with `record.notes = params.notes ?? '';`. Add one line after it:
+- [x] 7.2: In the `createJob` callback, update the job record creation to set `assignedToId` when provided. The existing job creation block (line ~74-83 in `use-schedule.ts`) currently ends with `record.notes = params.notes ?? '';`. Add one line after it:
 
   ```typescript
   createdJob = await database.get<Job>('jobs').create((record) => {
@@ -546,7 +546,7 @@ so that I can efficiently route my crew and balance workloads.
 
 ### Task 8: Update `create-job.tsx` modal to include tech assignment picker (AC: #2)
 
-- [ ] 8.1: In `apps/mobile/app/(modals)/create-job.tsx`, add the following imports at the top (after existing imports):
+- [x] 8.1: In `apps/mobile/app/(modals)/create-job.tsx`, add the following imports at the top (after existing imports):
 
   ```typescript
   import TechnicianPicker from '../../src/components/jobs/technician-picker';
@@ -554,7 +554,7 @@ so that I can efficiently route my crew and balance workloads.
   import TeamMember from '../../src/db/models/team-member';
   ```
 
-- [ ] 8.2: Add state variables for the tech assignment (after the existing `const [isSaving, setIsSaving] = useState(false);` line):
+- [x] 8.2: Add state variables for the tech assignment (after the existing `const [isSaving, setIsSaving] = useState(false);` line):
 
   ```typescript
   const { teamMembers } = useTeamMembers();
@@ -562,7 +562,7 @@ so that I can efficiently route my crew and balance workloads.
   const [showTechPicker, setShowTechPicker] = useState(false);
   ```
 
-- [ ] 8.3: Update the `handleSave` function to pass `assignedToId` to `createJob`. Change:
+- [x] 8.3: Update the `handleSave` function to pass `assignedToId` to `createJob`. Change:
 
   ```typescript
   const { event } = await createJob({
@@ -591,7 +591,7 @@ so that I can efficiently route my crew and balance workloads.
   });
   ```
 
-- [ ] 8.4: Add the Assign Technician field to the form's `ScrollView`. Insert it after the "Customer" field block (after the customer picker `TouchableOpacity` closing tag, before the Job Title label). Only show the picker if there are team members (solo operators with no team don't need it):
+- [x] 8.4: Add the Assign Technician field to the form's `ScrollView`. Insert it after the "Customer" field block (after the customer picker `TouchableOpacity` closing tag, before the Job Title label). Only show the picker if there are team members (solo operators with no team don't need it):
 
   ```tsx
   {teamMembers.length > 0 && (
@@ -609,7 +609,7 @@ so that I can efficiently route my crew and balance workloads.
   )}
   ```
 
-- [ ] 8.5: Add the `TechnicianPicker` modal at the bottom of the component (before the closing `</View>` tag, after the existing `<CustomerPicker ... />`):
+- [x] 8.5: Add the `TechnicianPicker` modal at the bottom of the component (before the closing `</View>` tag, after the existing `<CustomerPicker ... />`):
 
   ```tsx
   <TechnicianPicker
@@ -623,7 +623,7 @@ so that I can efficiently route my crew and balance workloads.
 
 ### Task 9: Add assignment display and reassignment to job detail screen (AC: #3, #6)
 
-- [ ] 9.1: In `apps/mobile/app/(tabs)/jobs/[id].tsx`, add the following imports (after the existing imports near the top of the file):
+- [x] 9.1: In `apps/mobile/app/(tabs)/jobs/[id].tsx`, add the following imports (after the existing imports near the top of the file):
 
   ```typescript
   import { useTeamMembers } from '../../../src/hooks/use-team-members';
@@ -631,7 +631,7 @@ so that I can efficiently route my crew and balance workloads.
   import TechnicianPicker from '../../../src/components/jobs/technician-picker';
   ```
 
-- [ ] 9.2: Inside the `JobDetailScreen` component, add hooks after the existing hook calls:
+- [x] 9.2: Inside the `JobDetailScreen` component, add hooks after the existing hook calls:
 
   ```typescript
   const { teamMembers } = useTeamMembers();
@@ -639,7 +639,7 @@ so that I can efficiently route my crew and balance workloads.
   const [showTechPicker, setShowTechPicker] = useState(false);
   ```
 
-- [ ] 9.3: Add a computed value for the current assignee name (after `const customerName = ...`):
+- [x] 9.3: Add a computed value for the current assignee name (after `const customerName = ...`):
 
   ```typescript
   const assignedTechName = job?.assignedToId
@@ -647,7 +647,7 @@ so that I can efficiently route my crew and balance workloads.
     : null;
   ```
 
-- [ ] 9.4: Read `apps/mobile/app/(tabs)/jobs/[id].tsx` to find the correct location to insert the "Assigned To" row. It should appear in the job details section, after the customer/time information and before photos/notes. Insert the following JSX block:
+- [x] 9.4: Read `apps/mobile/app/(tabs)/jobs/[id].tsx` to find the correct location to insert the "Assigned To" row. It should appear in the job details section, after the customer/time information and before photos/notes. Insert the following JSX block:
 
   ```tsx
   {/* Only show assignment row if account has team members */}
@@ -671,7 +671,7 @@ so that I can efficiently route my crew and balance workloads.
   )}
   ```
 
-- [ ] 9.5: Add the `TechnicianPicker` modal and `handleAssign` function to the component. Add the handler before the `return` statement:
+- [x] 9.5: Add the `TechnicianPicker` modal and `handleAssign` function to the component. Add the handler before the `return` statement:
 
   ```typescript
   const handleAssign = useCallback(
@@ -695,7 +695,7 @@ so that I can efficiently route my crew and balance workloads.
   />
   ```
 
-- [ ] 9.6: Add the new styles to the `StyleSheet.create({})` at the bottom of `[id].tsx`. Read the file to identify the correct location and avoid conflicts with existing style names:
+- [x] 9.6: Add the new styles to the `StyleSheet.create({})` at the bottom of `[id].tsx`. Read the file to identify the correct location and avoid conflicts with existing style names:
 
   ```typescript
   assignmentRow: {
@@ -721,7 +721,7 @@ so that I can efficiently route my crew and balance workloads.
 
 ### Task 10: Tests (AC: #1, #2, #3, #4)
 
-- [ ] 10.1: Create `apps/mobile/src/hooks/use-team-members.test.ts`:
+- [x] 10.1: Create `apps/mobile/src/hooks/use-team-members.test.ts`:
 
   ```typescript
   import { renderHook, act } from '@testing-library/react-native';
@@ -758,7 +758,7 @@ so that I can efficiently route my crew and balance workloads.
   });
   ```
 
-- [ ] 10.2: Create `apps/mobile/src/hooks/use-assign-job.test.ts`:
+- [x] 10.2: Create `apps/mobile/src/hooks/use-assign-job.test.ts`:
 
   ```typescript
   import { renderHook, act } from '@testing-library/react-native';
@@ -797,7 +797,7 @@ so that I can efficiently route my crew and balance workloads.
   });
   ```
 
-- [ ] 10.3: Create `apps/mobile/src/components/jobs/dispatch-board.test.tsx`:
+- [x] 10.3: Create `apps/mobile/src/components/jobs/dispatch-board.test.tsx`:
 
   ```typescript
   import React from 'react';
@@ -1009,4 +1009,24 @@ claude-sonnet-4-6
 
 ### Completion Notes List
 
+- Implemented all 10 tasks across 11 files (3 new hooks/components, 3 new screens/tests, 5 modified files).
+- Tests use WatermelonDB LokiJSAdapter directly (no @testing-library/react-native, matching existing test patterns). 14 new tests pass across 3 test files.
+- Pre-existing test failure in `schema.test.ts` (`schema is at version 10`, but v11 since Story 8.1) is unrelated to this story.
+- `useAssignJob` uses `''` (empty string) for null assignments per WatermelonDB text field convention — `!j.assignedToId` correctly filters unassigned jobs.
+- Reactive dispatch board: WatermelonDB observable queries in `useTeamMembers` and `useJobs` auto-update the board without manual refresh.
+- Tech picker shows conditionally (`teamMembers.length > 0`) so solo operators see a clean UI.
+
 ### File List
+
+- `apps/mobile/src/hooks/use-team-members.ts` (created)
+- `apps/mobile/src/hooks/use-jobs.ts` (modified — added `useAssignJob`)
+- `apps/mobile/src/hooks/use-schedule.ts` (modified — added `assignedToId` to `CreateJobParams` and job create)
+- `apps/mobile/src/components/jobs/technician-picker.tsx` (created)
+- `apps/mobile/src/components/jobs/dispatch-board.tsx` (created)
+- `apps/mobile/app/(tabs)/schedule/dispatch.tsx` (created)
+- `apps/mobile/app/(tabs)/schedule/index.tsx` (modified — added Dispatch header button)
+- `apps/mobile/app/(modals)/create-job.tsx` (modified — added tech assignment picker)
+- `apps/mobile/app/(tabs)/jobs/[id].tsx` (modified — added Assigned To row + reassign picker)
+- `apps/mobile/src/hooks/use-team-members.test.ts` (created)
+- `apps/mobile/src/hooks/use-assign-job.test.ts` (created)
+- `apps/mobile/src/components/jobs/dispatch-board.test.tsx` (created)

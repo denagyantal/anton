@@ -13,9 +13,12 @@ import { useRouter, useLocalSearchParams } from 'expo-router';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomerPicker from '../../src/components/customers/customer-picker';
+import TechnicianPicker from '../../src/components/jobs/technician-picker';
 import { useCreateJob, useRescheduleJob } from '../../src/hooks/use-schedule';
+import { useTeamMembers } from '../../src/hooks/use-team-members';
 import { createExternalCalendarEvent } from '../../src/services/calendar-service';
 import Customer from '../../src/db/models/customer';
+import TeamMember from '../../src/db/models/team-member';
 import ScheduleEvent from '../../src/db/models/schedule-event';
 
 function addHour(date: Date): Date {
@@ -42,6 +45,9 @@ export default function CreateJobModal() {
 
   const { createJob } = useCreateJob();
   const { rescheduleEvent } = useRescheduleJob();
+  const { teamMembers } = useTeamMembers();
+  const [selectedTech, setSelectedTech] = useState<TeamMember | null>(null);
+  const [showTechPicker, setShowTechPicker] = useState(false);
 
   async function handleSave() {
     if (!selectedCustomer) {
@@ -67,6 +73,7 @@ export default function CreateJobModal() {
         endTime,
         quoteId: quoteId.trim() || undefined,
         notes: notes.trim() || undefined,
+        assignedToId: selectedTech?.id ?? undefined,
       });
 
       await syncToExternalCalendar(event, title.trim());
@@ -136,6 +143,20 @@ export default function CreateJobModal() {
             {selectedCustomer ? selectedCustomer.name : 'Select a customer…'}
           </Text>
         </TouchableOpacity>
+
+        {teamMembers.length > 0 && (
+          <>
+            <Text style={styles.label}>Assign Technician (optional)</Text>
+            <TouchableOpacity
+              style={styles.pickerButton}
+              onPress={() => setShowTechPicker(true)}
+            >
+              <Text style={selectedTech ? styles.pickerValue : styles.pickerPlaceholder}>
+                {selectedTech ? selectedTech.name : 'Unassigned'}
+              </Text>
+            </TouchableOpacity>
+          </>
+        )}
 
         <Text style={styles.label}>Job Title *</Text>
         <TextInput
@@ -222,6 +243,14 @@ export default function CreateJobModal() {
         visible={showCustomerPicker}
         onSelect={(customer) => setSelectedCustomer(customer)}
         onClose={() => setShowCustomerPicker(false)}
+      />
+
+      <TechnicianPicker
+        visible={showTechPicker}
+        teamMembers={teamMembers}
+        selectedId={selectedTech?.id ?? null}
+        onSelect={(member) => setSelectedTech(member)}
+        onClose={() => setShowTechPicker(false)}
       />
     </View>
   );
