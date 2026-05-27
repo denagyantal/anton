@@ -1,0 +1,144 @@
+# generated: 2026-05-27
+# project: ShopFlow — Auto Repair Shop Management
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: /home/anton/research-team/mvps/auto-repair-shop-management
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-05-27
+project: ShopFlow — Auto Repair Shop Management
+project_key: NOKEY
+tracking_system: file-system
+story_location: /home/anton/research-team/mvps/auto-repair-shop-management
+
+development_status:
+  # ─────────────────────────────────────────────────────────────────────────
+  # Epic 1: Foundation — Auth, Shop Setup & User Roles
+  # FRs: FR63–FR70 | NFRs: NFR6, NFR7, NFR9, NFR29, NFR30
+  # ─────────────────────────────────────────────────────────────────────────
+  epic-1: backlog
+  1-1-project-initialization-and-infrastructure-setup: backlog
+  1-2-shop-owner-registration-and-authentication: backlog
+  1-3-business-profile-and-shop-settings-configuration: backlog
+  1-4-user-roles-and-team-management: backlog
+  1-5-data-export-and-account-management-ccpa: backlog
+  epic-1-retrospective: optional
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Epic 2: Work Orders — The Core Shop Workflow
+  # FRs: FR1–FR11 | NFRs: NFR1, NFR5, NFR12, NFR15, NFR32
+  # ─────────────────────────────────────────────────────────────────────────
+  epic-2: backlog
+  2-1-create-repair-order-with-line-items: backlog
+  2-2-repair-order-status-lifecycle-and-filtering: backlog
+  2-3-pdf-invoice-generation-and-delivery: backlog
+  2-4-estimate-templates: backlog
+  epic-2-retrospective: optional
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Epic 3: Customer & Vehicle Management
+  # FRs: FR46–FR51 | NFRs: NFR7, NFR25, NFR29
+  # ─────────────────────────────────────────────────────────────────────────
+  epic-3: backlog
+  3-1-customer-records-and-service-history: backlog
+  3-2-vehicle-records-and-mileage-tracking: backlog
+  3-3-customer-search: backlog
+  3-4-csv-customer-import: backlog
+  epic-3-retrospective: optional
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Epic 4: Digital Vehicle Inspection (DVI)
+  # FRs: FR12–FR22 | NFRs: NFR2, NFR10, NFR11, NFR15, NFR26, NFR27, NFR28, NFR31
+  # ─────────────────────────────────────────────────────────────────────────
+  epic-4: backlog
+  4-1-dvi-creation-and-photo-capture-on-mobile: backlog
+  4-2-dvi-pricing-and-share-link: backlog
+  4-3-customer-dvi-approval: backlog
+  4-4-dvi-owner-notifications-and-audit-access: backlog
+  epic-4-retrospective: optional
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Epic 5: Two-Way Customer Texting
+  # FRs: FR23–FR30 | NFRs: NFR17, NFR23
+  # ─────────────────────────────────────────────────────────────────────────
+  epic-5: backlog
+  5-1-sms-sending-and-receiving-from-ro: backlog
+  5-2-sms-templates-and-dvi-link-integration: backlog
+  5-3-sms-credit-management: backlog
+  epic-5-retrospective: optional
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Epic 6: QuickBooks Online Sync
+  # FRs: FR31–FR39 | NFRs: NFR4, NFR16, NFR19, NFR21
+  # ─────────────────────────────────────────────────────────────────────────
+  epic-6: backlog
+  6-1-quickbooks-oauth-connection: backlog
+  6-2-automated-invoice-and-customer-sync: backlog
+  6-3-sync-dashboard-payment-sync-and-failure-alerts: backlog
+  epic-6-retrospective: optional
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Epic 7: Parts Catalog Lookup
+  # FRs: FR40–FR45 | NFRs: NFR3, NFR22
+  # ─────────────────────────────────────────────────────────────────────────
+  epic-7: backlog
+  7-1-parts-catalog-search-with-dual-source-results: backlog
+  7-2-parts-markup-rules-and-add-to-ro: backlog
+  epic-7-retrospective: optional
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Epic 8: AP Reconciliation Alerts
+  # FRs: FR53–FR57 | NFRs: NFR15
+  # ─────────────────────────────────────────────────────────────────────────
+  epic-8: backlog
+  8-1-vendor-invoice-entry: backlog
+  8-2-discrepancy-detection-and-alert-surfacing: backlog
+  8-3-reconciliation-report-export: backlog
+  epic-8-retrospective: optional
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Epic 9: Reports & Analytics
+  # FRs: FR58–FR62 | NFRs: NFR1, NFR18
+  # ─────────────────────────────────────────────────────────────────────────
+  epic-9: backlog
+  9-1-revenue-summary-dashboard: backlog
+  9-2-operational-reports-aging-top-services-technician-summary: backlog
+  9-3-invoice-history-search-and-csv-export: backlog
+  epic-9-retrospective: optional
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Epic 10: Shopmonkey Migration & Onboarding Wizard
+  # FRs: FR52 + onboarding | NFRs: NFR24
+  # ─────────────────────────────────────────────────────────────────────────
+  epic-10: backlog
+  10-1-guided-onboarding-wizard: backlog
+  10-2-shopmonkey-one-click-data-migration: backlog
+  epic-10-retrospective: optional
