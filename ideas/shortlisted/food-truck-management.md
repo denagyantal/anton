@@ -83,3 +83,4 @@ The only food-truck-native ops platform (not a POS) — public location schedule
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-05-27 | 82/105 | competitor-analysis | New entry — detailed analysis of 15 food truck tools confirms zero permit tracking in any product; no route management in any platform; operators use 4–6 disconnected tools; "TruckStack" concept at $49/mo; 35K+ US food trucks; strong Facebook community channels; AppSumo potential for 1,000+ unit LTD sales |
+| 2026-05-28 | 83/105 | reddit-2026-05-28 | ↑1: SINGLE-source — Reddit: multi-jurisdiction permit tracking gap confirmed — 30–50 permit filings/year per truck; TruckComply concept independently validates permit management sub-category; no food truck tool (Square, Toast, TruckAdvisor) handles permit tracking; $49/mo with permit tracker + route planner + health inspection log = confirmed whitespace above generic POS tools |
