@@ -1,6 +1,6 @@
 # Gun Shop POS with ATF Bound Book Compliance
 
-**Score**: 80/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-05-03
+**Score**: 87/105 | **Tier**: 1 | **Verdict**: EXPLORE FURTHER → BUILD | **Evaluation Date**: 2026-05-30
 
 ## One-Line Pitch
 The first modern cloud POS for FFL dealers — ATF-compliant A&D record keeping, 4473 storage, and serialized inventory at $49/mo vs. $200+/mo legacy tools.
@@ -79,3 +79,4 @@ The first modern cloud POS for FFL dealers — ATF-compliant A&D record keeping,
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-05-03 | 80/105 | trends-2026-05-03 | First identified: Trends-2026-05-03 specialty inventory section; 60K+ FFL dealers; ATF compliance = non-discretionary; FastBound only cloud option with dated UI; regulatory moat from day 1; 6–8 week MVP |
+| 2026-05-30 | 87/105 ↑7 | reddit-2026-05-30 | NEW combined pawn+FFL angle: Bravo/PawnMaster acquisition = documented exodus of 4,000+ pawn shop customers; combined pawn+gun shops (rural market backbone) need single tool for loan tracking + police property reporting + ATF 4473 + A&D bound book + POS; no affordable (<$100/mo) all-in-one exists; FastBound compliance-only ($29–149/mo); Orchid $99+/mo compliance-only; "FFLDesk Pro" concept at $69/mo with dual compliance stack; LTD $149 |
