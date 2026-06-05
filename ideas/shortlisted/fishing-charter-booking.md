@@ -90,3 +90,4 @@ Current workarounds: FareHarbor (wrong UX), paper ledgers, spreadsheets + person
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-05-09 | 86/105 | hn-indiehackers-2026-05-09 | First identified — Superframeworks "pure founder blind spot"; FareHarbor wrong UX; catch log as viral loop |
+| 2026-06-05 | 87/105 | hn-indiehackers-2026-06-05 | ↑1: FareHarbor 6% per booking fee confirmed (flat $79/mo ROI story = easy math for captains charging $500–2K/trip); NOAA API weather + tide integration = unaddressed safety-critical feature; Coast Guard passenger manifest compliance = legal requirement no generic tool handles; tight-knit coastal captain community = organic word-of-mouth distribution; Sources: hn-indiehackers-2026-06-05 |
