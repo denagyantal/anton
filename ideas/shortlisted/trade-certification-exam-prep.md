@@ -28,83 +28,69 @@ The gap: A mobile-first, spaced-repetition quiz app with state-specific question
 - HVAC EPA 608 alone: hundreds of thousands of technicians must certify or recertify; no dominant SaaS prep tool
 - Pest control applicator license: required in all 50 states; state-specific question banks = high defensibility
 - Electrician journeyman/master exam: NEC code questions change with each edition (2020, 2023 NEC) — content must update = subscription stickiness
-- Trades hiring boom: HVAC, electrical, plumbing facing labor shortages → employers actively recruiting and onboarding at scale → B2B bulk licensing is natural
+- HN signal (2026-06-17): founder confirmed passing pest control licensing exam in 13 days using custom GPT — "company record"; "no reliable test/quiz prep tool available online, just some free ones with errors"
+- Every trade requires licensing + CEUs; companies pay for tech training; no purpose-built AI study platform exists
+- B2B angle: license management for trade companies to track which techs need renewals
 
 ## Scoring Breakdown
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 4/5 | 3x | 12 | Trades certification mandatory; large candidate volumes annually; employer hiring boom |
-| Competitor Weakness | 3/5 | 2x | 6 | Some trade exam prep exists (e.g., Pocket Prep app) but limited to few trades; state-specific coverage thin |
-| LTD Viability | 4/5 | 2x | 8 | $49-79 LTD per trade or $199 all-trades; content update model limits pure LTD but per-trade works |
-| No Free Tier | 4/5 | 1x | 4 | Anki is free but no trade-specific content; YouTube is free but unstructured — no real free alternative |
-| Channel Access | 4/5 | 2x | 8 | r/hvacr, r/electricians, r/pestcontrol, r/Plumbing; trade school partnerships; employer HR channels |
-| Content Potential | 3/5 | 1x | 3 | "HVAC EPA 608 practice exam", "pest control license study guide" — solid search volume |
-| AppSumo Fit | 3/5 | 2x | 6 | AppSumo audience = software buyers not necessarily trade workers; employer B2B angle works better |
-| Review Potential | 4/5 | 1x | 4 | Pass/fail outcomes = strong testimonial hooks; "passed first try" reviews = viral in trades communities |
-| MRR Path | 4/5 | 3x | 12 | Employer bulk licensing $199-499/yr = strong MRR; B2C $29/exam one-time but high volume |
-| Build Feasibility | 3/5 | 2x | 6 | Question bank content creation = most work; spaced repetition algorithm = well-understood; 8-10 weeks |
-| Boring Business Bonus | 4/5 | 2x | 8 | Trade certification = blue-collar adjacent; practical, unglamorous, high demand |
+| Market Validation | 3/5 | 3x | 9 | Every trade requires licensing; companies pay for tech training; no dominant SaaS prep tool confirmed |
+| Competitor Weakness | 4/5 | 2x | 8 | No purpose-built AI study platform; free tools with errors; Pocket Prep has only partial coverage |
+| LTD Viability | 5/5 | 2x | 10 | $49–99 per exam; one-time purchase before exam = strongest LTD use case |
+| No Free Tier | 4/5 | 1x | 4 | Free tools exist but have errors; no quality free tier |
+| Channel Access | 3/5 | 2x | 6 | Trade schools, ACCA/NPMA forums, pest control/HVAC FB groups |
+| Content Potential | 4/5 | 1x | 4 | "HVAC EPA 608 exam prep", "pest control license study", "journeyman electrical exam" |
+| AppSumo Fit | 4/5 | 2x | 8 | Clear one-time purchase use case; employer bulk licensing = strong B2B AppSumo story |
+| Review Potential | 4/5 | 1x | 4 | "Passed on first try" = viral testimonials; high review motivation |
+| MRR Path | 3/5 | 3x | 9 | B2C LTD + B2B employer bulk licensing ($199/yr) = path to MRR |
+| Build Feasibility | 4/5 | 2x | 8 | 3–4 weeks: RAG over state exam materials + quiz engine + spaced repetition + weak-area tracking |
+| Boring Business Bonus | 4/5 | 2x | 8 | Trade licensing infrastructure = boring but essential regulatory requirement |
 
-**Total: 77/105** (weighted sum: 12+6+8+4+8+3+6+4+12+6+8 = 77)
+**Total: 78/105**
 
-Adjusted with framework normalization: **80/105**
+## Must-Have Filters Checklist
 
-## Must-Have Filters
-- [x] Problem is real (trade certification mandatory; low pass rates; employer onboarding bottleneck documented)
-- [x] Can build without deep domain expertise (content = public exam syllabi; spaced repetition = known algorithm)
-- [x] Market not dominated by unbeatable player (Pocket Prep has some trades but coverage thin)
-- [x] Revenue potential > $10K MRR within 12 months (employer bulk licensing + B2C volume achievable)
+- [x] Does the idea already exist with paying customers? Pocket Prep has partial coverage; in-person courses $200–800 prove WTP
+- [x] Can we study competitors and build what customers want most? Yes — Pocket Prep gaps + HN practitioner confirmation
+- [x] Is it viable for a Lifetime Deal ($59–100)? Yes — $49–99 per exam is ideal LTD use case
+- [x] Can we find customers on Reddit, Facebook Groups, X? Yes — HVAC/pest control forums + trade school communities
+- [x] Can LTD revenue fund content creation? Yes — "HVAC exam prep" and "pest control license exam" have real search demand
+- [x] Is there AppSumo launch potential? Yes — employer bulk licensing angle = strong B2B AppSumo story
+- [x] Can we get G2/Trustpilot reviews from early users? Yes — "passed on first try" creates strong testimonial motivation
+- [x] Is there a clear path to MRR transition? Yes — employer bulk licensing ($199/yr per employer) + CEU tracking subscription
 
 ## Boring Business Fit Check
-- [x] VC-ignored market (No VC-backed trade certification prep SaaS with meaningful traction)
-- [x] Non-technical buyers (HVAC techs, pest control applicants, electrical apprentices)
-- [x] Existing software outdated/overpriced (PDF study guides; generic flashcard apps with no trade content)
-- [x] Real business budgets (employers pay $200-800/person for in-person courses; $199/yr bulk licensing = obvious savings)
-- [x] Low churn once adopted (NEC code updates every 3 years; state exam changes = ongoing content subscription justification)
 
-## Core Features (MVP — 8-10 weeks, start with ONE trade + ONE state)
-1. **State-specific question bank**: 500+ questions per trade per state, sourced from official syllabi and past exam content
-2. **Spaced repetition quiz mode**: Anki-style algorithm — questions resurface based on difficulty and last-correct date
-3. **Practice exam simulator**: Timed full exam simulation with pass/fail result and score breakdown by topic
-4. **Weak area dashboard**: Shows which categories the user needs most work on (e.g., "Refrigerant handling: 58% correct")
-5. **Progress tracking**: Daily streak, total questions answered, predicted pass probability
-6. **Employer bulk licensing**: Admin portal for employers to buy seats and monitor team progress
-7. **Mobile-first**: iOS + Android; offline question access for field techs with spotty connectivity
+- Industry: Trade licensing and continuing education
+- Recurring revenue: Employer bulk licensing ($199/yr); CEU tracking subscription
+- Non-discretionary need: Trade licenses are legally required to work in most states
+- Regulatory forcing function: License renewals with CEU requirements = annual recurring need
+- B2B employer angle: Company pays for techs' licensing = business expense, not personal expense
 
-## Go-to-Market Strategy (Start Narrow)
-1. **Start with HVAC EPA 608** — federal requirement, all states, high volume, no dominant app
-2. **Add one state's HVAC license** (e.g., Texas or Florida — large HVAC markets)
-3. **Validate employer bulk licensing** with 5-10 HVAC companies before expanding
-4. **Expand trade by trade**: pest control → journeyman electrical → plumbing
-5. **Each new state = defensible moat**: state-specific question banks competitors must also build
+## Key Differentiators
 
-## Positioning
-**"Pass your trade exam the first time — or your money back."**
-
-Core differentiation:
-- **State-specific**: Not generic — question banks matched to your exact state's exam syllabus
-- **Employer B2B**: Bulk licensing + progress monitoring = HR tool, not just a study app
-- **Pass guarantee**: Money-back if you fail after completing the course — high-confidence positioning
-- **Trade-native UX**: Not a generic quiz app adapted for trades — built for mobile use by field workers
-
-## Target Customer
-- **B2C**: HVAC apprentices, pest control applicants, electrical apprentices, plumbing apprentices preparing for state exams
-- **B2B**: HVAC companies, pest control businesses, electrical contractors onboarding new hires; trade schools as institutional licensees
-- Employers in states with mandatory continuing education requirements (recertification = recurring use)
-
-## Pricing Model
-- **B2C**: $29/trade/state (one-time exam prep purchase per exam type) or $49/yr all-trades access
-- **B2B Employer**: $199/yr for up to 10 seats; $499/yr unlimited seats — per-company licensing
-- **Trade School**: $999/yr institutional license for course integration
-- **LTD**: $79/trade (lifetime access to one trade's question bank — limited by content scope)
+1. **State-specific question banks** — each state has different exam questions for pest control, electrical, HVAC
+2. **AI-powered spaced repetition** — weak-area targeting; surfaces questions you're most likely to fail
+3. **Pass guarantee** positioning — quantified "13 days to pass" benchmark from HN founder's real experience
+4. **Employer B2B portal** — track which techs are licensed, when renewals are due, CEU completion rates
+5. **CEU tracking** — continuing education unit logging for license renewals (ongoing subscription driver)
 
 ## Target Channels
-- r/hvacr, r/electricians, r/pestcontrol, r/Plumbing, r/HVAC
-- Trade school partnerships (HVAC technical schools, vocational programs)
-- HVAC distributor networks (Ferguson, Johnstone Supply — they serve techs directly)
-- Employer HR channels: ACCA (Air Conditioning Contractors of America), NPMA (pest management)
-- AppSumo at $79 LTD (per-trade positioning)
+
+- Trade schools and vocational programs (partnership channel)
+- ACCA (Air Conditioning Contractors of America) member community
+- NPMA (National Pest Management Association) member forums
+- Facebook: "HVAC Business Owners", "Pest Control Business Owners"
+- r/HVAC, r/hvacr, r/pestcontrol
+- YouTube: HVAC training channels (HVAC School, AC Service Tech)
+
+## LTD Pricing
+
+- $49 LTD — 1 exam, 1 state, unlimited attempts until passed
+- $99 LTD — all exams in 1 trade vertical (e.g., all HVAC: EPA 608 + state license)
+- Employer bulk: $199/yr per employer (up to 10 techs), $499/yr (unlimited techs)
 
 ## Top Risks
 1. Content creation burden — building accurate, state-specific question banks requires significant upfront research + legal review (can't use copyrighted exam questions)
@@ -119,9 +105,12 @@ Core differentiation:
 - https://www.acca.org/ (ACCA — employer channel)
 - https://npmapestworld.org/ (NPMA — pest control employer channel)
 - https://www.reddit.com/r/hvacr/ (primary community channel)
+- https://news.ycombinator.com/item?id=47509571 (HN practitioner validation)
+- https://eurekalabs.ai/
 
 ## Signal History
 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-06-12 | 80/105 | hn-indiehackers-2026-06-12 | First identified — Trade Certification Exam Prep AI; HN/IH scan flagged employer bulk onboarding angle as B2B recurring revenue; HVAC EPA 608 + pest control + electrical journeyman = large mandatory certification market; Pocket Prep has partial coverage; start narrow (one trade + one state); pass guarantee positioning; employer bulk licensing ($199-499/yr) as MRR path |
+| 2026-06-17 | 78/105 | hn-indiehackers-2026-06-17 | Stable: SINGLE-source — HN: founder confirmed passing pest control licensing exam in 13 days using custom GPT (company record); "no reliable test/quiz prep tool available online, just some free ones with errors"; every trade requires licensing + CEUs; companies pay for tech training; RAG over state licensing exam materials + quiz engine + weak-area identification + CEU tracking; B2B angle: license management for trade companies to track which techs need renewals; start with pest control, expand to HVAC/electrical/plumbing; LTD: $49–99 per exam; Sources: news.ycombinator.com/item?id=47509571, eurekalabs.ai |

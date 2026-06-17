@@ -1,6 +1,6 @@
 # Local Service Marketing Automation
 
-**Score**: 84/105
+**Score**: 87/105
 **Verdict**: EXPLORE FURTHER
 **LTD Price**: $199
 
@@ -60,3 +60,4 @@ Pre-built marketing campaign templates for local service businesses — spring r
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-05-23 | 84/105 | reddit-2026-05-23 | New — pre-built campaign templates (spring reactivation, review request, seasonal reminders) + Jobber/HCP/ServiceTitan webhooks; Topline Pro $27M Series B validates market; zero-marketing-knowledge setup = core value prop; $39/mo or $199 LTD |
+| 2026-06-17 | 87/105 | hn-indiehackers-2026-06-17, trends-2026-06-17 | ↑3: DUAL-source AVOCA VALIDATION — Trends: Avoca raised $125M at $1B valuation (Kleiner Perkins, Meritech, General Catalyst); 74% of contractor calls go unanswered; each missed emergency call costs $500–900; on track to book $1B in jobs in 2026; 800+ customers; HN: HVAC contractors pay $600/closed lead; "online home services search is totally broken and a tax on buyers and operators"; AI inbound agent for HVAC/plumbing: handles after-hours calls, qualifies jobs (emergency vs. routine), books into existing schedule (Jobber/ServiceTitan integration), sends appointment confirmations = worth $500–1,000/mo to a 3-truck HVAC shop; White space: Avoca targets mid-to-large operators (Sila Services scale); sub-$10M/yr contractors with 1–3 techs cannot afford enterprise pricing; simpler cheaper "voice AI + basic scheduling" for solo operators unserved; LeadTruffle, Retell AI entering; LTD: $99–199 (trades dislike subscriptions); Sources: fortune.com/2026/04/27/avoca-ai-agents-missed-calls-hvac-plumbing-roofing-kleiner-perkins, retellai.com/blog/best-voice-ai-solutions-for-home-service-contractors, leadtruffle.co/blog/best-ai-answering-services-contractors-2026 |
