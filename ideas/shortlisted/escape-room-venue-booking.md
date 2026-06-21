@@ -118,3 +118,4 @@ The result: overbookings, groups showing up without waivers, wrong rooms assigne
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-04-19 | 84/105 | hn-indiehackers-2026-04-19 | First identified — IH analysis confirms escape room $1.2B industry; generic tools force workarounds; dog groomers + music studios as adjacent verticals; 5K-20K operators; $199 LTD compelling; 2-3 week MVP |
+| 2026-06-21 | 75/105 | hn-indiehackers-2026-06-21 | ↓9: SINGLE-source — HN/IH: escape room venue management reconfirmed as bootstrapped niche; EscapeDesk concept — online booking + waiver + gift cards + capacity management; generic tools (Fareharbor, Xola) force workarounds and expensive; 5K–20K operators worldwide; score ↓9 vs initial (weaker signal today, SINGLE-source); Sources: hn-indiehackers-2026-06-21 |
