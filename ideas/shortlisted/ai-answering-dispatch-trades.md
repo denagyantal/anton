@@ -4,9 +4,9 @@ description: AI phone system that natively integrates with FSM platforms (Jobber
 type: project
 ---
 
-# AI Answering & Dispatch for Trades — Score: 79/105
+# AI Answering & Dispatch for Trades — Score: 82/105
 
-**Evaluation Date**: 2026-06-15
+**Evaluation Date**: 2026-06-22 (updated)
 **Verdict**: EXPLORE FURTHER
 **Tier**: 1 (Strong Opportunity)
 
@@ -90,3 +90,4 @@ No existing product does all five. Rosie/Allo/LeadTruffle do 1 + partial 5. Serv
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-06-15 | 79/105 | trends-2026-06-15 | First identified — Trends: HVAC/plumbing miss 30–40% of inbound calls; Rosie AI $49/mo, Allo, LeadTruffle, AgentZap, MyAI Frontdesk all launched 2024–2025; ServiceTitan Max showing 50% ticket increase + 18%→30% EBITDA improvement from AI deployment; true gap = FSM-integrated AI dispatcher (auto-create jobs + update dispatch board); 6+ comparison articles already published 2026 = market forming but not yet saturated; 2–3 week MVP via VAPI + webhooks; $300–500 LTD; Sources: leadtruffle.co, agentzap.ai, withallo.com, getaira.io |
+| 2026-06-22 | 82/105 | hn-indiehackers-2026-06-22 | ↑3: SINGLE-source MAJOR TRACTION CONFIRMATION — HN: (1) ServiceAgent: 7,600+ active business users, 350,000+ calls handled; pricing $39–279/month; gap = lacks deep trade-specific CRM integration (Jobber, ServiceTitan, HCP); Australia/international market not yet served; (2) Breezy: 80,000+ active users, 35 employees, $3.8M+ payouts to contractors — launched early 2025; "laser-focused on 3 trades" (residential HVAC, plumbing, electrical) = landscaping, pest control, cleaning, roofing, appliance repair explicitly unserved; (3) Avoca AI: deployed across 9 brands at Granite Comfort in late 2025; enterprise end confirmed; SMB (1–5 van) gap remains open; (4) AI Dispatcher for Emergency Plumbers (local-lift.onrender.com): early-stage Show HN validates emergency-specific dispatch angle — "missed emergency plumbing call = $500–900 in lost revenue"; score upgraded to 82/105 — traction data (7,600 businesses + 80K users) dramatically upgrades Market Validation; gap now confirmed = FSM-native auto-dispatch layer + non-HVAC/plumbing/electrical verticals; Sources: news.ycombinator.com/item?id=43544601 (ServiceAgent), getbreezyapp.com, avoca.ai, news.ycombinator.com/item?id=46461785 (AI Dispatcher) |
