@@ -101,3 +101,4 @@ Current "solution": a spreadsheet that nobody updates, calendar reminders that g
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-07-14 | 88/105 | reddit-2026-07-14 | First identified — IdeaFast 84/100; vendor self-upload portal as key differentiator; $19–49/mo vs. Procore $500+/mo; "VendorVault" concept; 2-week MVP build |
+| 2026-08-02 | 88/105 | reddit-2026-08-01, reddit-2026-08-02 | Stable: DUAL-source — r/smallbusiness thread "How are you tracking vendor compliance documents and renewal dates?" is a DIRECT PRODUCT REQUEST (not just pain expression) = strong buying intent signal; r/smallbusiness HR compliance cluster 84/100 IdeaFast; r/Construction and r/estimators threads on subcontractor COI tracking confirm construction angle; GDPR compliance for EU customers as adjacent expansion angle; Sources: reddit.com/r/smallbusiness/comments/1tzmqql, reddit.com/r/smallbusiness/comments/1tzjzvl |

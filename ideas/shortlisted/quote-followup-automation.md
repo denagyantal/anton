@@ -102,3 +102,4 @@ When a quote is sent:
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-08-01 | 95/105 | reddit (r/smallbusiness via IdeaFast), competitor-analysis | First identified; 92/100 IdeaFast signal; distinct from invoice follow-up (post-sale) |
+| 2026-08-02 | 95/105 | reddit-2026-08-02, hn-indiehackers-2026-08-02 | Stable: DUAL-source — same 92/100 IdeaFast signal confirmed from today's Reddit scan; HN/IH confirms: "Get paid faster" is one of the top-5 pain points for all trades; Jobber's Grow tier ($349/mo) gates quote follow-up; no standalone affordable quote follow-up tool confirmed for any trade; Sources: reddit.com/r/smallbusiness/comments/1u03y94, medium.com/@e2larsen/saas-for-home-services |
