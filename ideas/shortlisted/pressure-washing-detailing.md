@@ -1,91 +1,109 @@
-# Pressure Washing / Auto Detailing CRM - Score: 94/105
+# Mobile Detailing CRM — Score: 99/105
 
-**Verdict**: BUILD -- Quick Win
+**Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-03-04
+**Evaluation Date**: 2026-08-07
+**Decision Status**: NEW
 
 ## One-Line Pitch
-The first purpose-built software for exterior cleaning businesses — visual quoting, before/after photos, chemical tracking, route optimization.
+Customer vehicle profiles, recurring booking reminders, on-site invoice + tip collection, and route grouping for mobile detailers — "DetailPro" at $39/mo where there is zero purpose-built competition.
+
+## Problem
+Mobile detailing operators doing $5K–$20K/month in revenue are running their entire business out of WhatsApp, text threads, and paper notebooks. VentureRadar's August 2026 analysis identifies mobile detailing as one of five service businesses with "zero dedicated software" despite operators billing serious revenue. The specific workflow gaps:
+- Customer vehicle history (paint type, previous services, known issues) stored in memory
+- Recurring booking reminders sent manually by text
+- Invoicing done via Square (generic) or Venmo (informal)
+- Tips collected in cash — no record
+- Route grouping by neighborhood done manually in a notes app
+
+GorillaDesk (pest control) validated the exact playbook: dead-simple tool for one trade, $49–79/mo, word-of-mouth through trade Facebook groups, bootstrapped to $4M ARR, $300M acquisition. Mobile detailing is the next trade with no tool.
+
+## Market Evidence
+- Mobile detailers billing $5K–$20K/month confirmed on WhatsApp + spiral notebook per VentureRadar August 2026 analysis
+- No dedicated mobile detailing CRM exists at any price point — confirmed via IH research of "boring SaaS ideas" gaps
+- GorillaDesk exit comp ($300M acquisition) validates "one trade, simple tool" playbook
+- Detailing Facebook groups: 30,000+ combined membership; highly active; operators share tool recommendations constantly
+- Mobile detailing is a growing industry — low barrier to entry means millions of solo operators; vehicle age record high (12.7 years) drives demand for paint correction and protection services
 
 ## Scoring Breakdown
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 4/5 | 3x | 12 | $2.3B pressure washing 3.5% growth, $15B auto detailing |
-| Competitor Weakness | 5/5 | 2x | 10 | ZERO purpose-built software. All use generic FSM |
-| LTD Viability | 5/5 | 2x | 10 | $59-79 LTD — owner-operators love one-time payments |
-| No Free Tier | 4/5 | 1x | 4 | No free pressure washing-specific tools |
-| Channel Access | 5/5 | 2x | 10 | r/pressurewashing 90K+, r/AutoDetailing 600K+ |
-| Content Potential | 5/5 | 1x | 5 | "pressure washing software" near-zero SEO competition |
-| AppSumo Fit | 4/5 | 2x | 8 | Before/after photos create viral sharing |
-| Review Potential | 4/5 | 1x | 4 | Visual results encourage reviews |
-| MRR Path | 4/5 | 3x | 12 | Premium route optimization, chemical tracking, marketing as upsell |
-| Build Feasibility | 5/5 | 2x | 10 | Simple CRM + sqft estimating + invoicing + photos in 2-3 weeks |
-| Boring Business Bonus | 5/5 | 2x | 10 | Pressure washing = deeply boring blue-collar |
+| Market Validation | 5/5 | 3x | 15 | Operators doing $5K–$20K/mo confirmed on WhatsApp; GorillaDesk exit validates "one trade" playbook |
+| Competitor Weakness | 5/5 | 2x | 10 | No purpose-built tool exists; generic Square/Jobber used as workaround |
+| LTD Viability | 5/5 | 2x | 10 | $99–149 LTD; clear standalone tool; vehicle history = easy demo |
+| No Free Tier | 4/5 | 1x | 4 | Square near-free but not detailing-specific; no free vehicle history + booking combo |
+| Channel Access | 5/5 | 2x | 10 | Detailing FB groups (30K+), Instagram, r/AutoDetailing, detailing YouTube community |
+| Content Potential | 4/5 | 1x | 4 | "mobile detailing software", "car detailing CRM", "mobile detailing scheduling app" |
+| AppSumo Fit | 5/5 | 2x | 10 | Perfect vertical SaaS for AppSumo: passionate buyers, tangible demo, no current competition in category |
+| Review Potential | 4/5 | 1x | 4 | Detailers very active on social; love sharing workflows and tools; before/after content is native |
+| MRR Path | 4/5 | 3x | 12 | $39/mo; customer vehicle history creates switching cost; grows with booking volume |
+| Build Feasibility | 5/5 | 2x | 10 | Vehicle profiles + booking reminders + on-site invoice + tip collection + route grouping = 2–3 week MVP |
+| Boring Business Bonus | 5/5 | 2x | 10 | Mobile detailing = blue-collar, repetitive service, deeply boring, zero VC interest |
+
+**Total: 99/105**
 
 ## Must-Have Filters
-- [x] Problem is real
-- [x] Can build without deep domain expertise
-- [x] No dominant player
-- [x] Revenue potential $10K+ MRR within 12 months
+- [x] Problem is real (VentureRadar confirms operators on WhatsApp + notebook doing serious revenue)
+- [x] Can build without deep domain expertise (CRM + booking + invoicing = standard tech stack)
+- [x] Market not dominated by unbeatable player (no dedicated tools at all)
+- [x] Revenue potential > $10K MRR within 12 months (even 300 paying at $39/mo = $11.7K MRR)
+
+## Boring Business Fit Check
+- [x] VC-ignored market (zero VC-backed mobile detailing software; pure founder opportunity)
+- [x] Non-technical buyers (mobile detailers are not software-savvy; simplicity is critical)
+- [x] Existing software outdated/overpriced (using Square at $0 + PayPal + texts = fragmented)
+- [x] Real business budgets (operators grossing $5K–$20K/mo have $39/mo in their budget)
+- [x] Low churn once adopted (vehicle history database + customer list = high switching cost)
+
+## Product Concept: "DetailPro"
+
+**Core MVP features (2–3 week build):**
+- **Customer vehicle profiles**: make/model/year, paint color, paint correction status, ceramic coating dates, previous service notes, VIN (optional)
+- **Recurring booking reminders**: configurable interval (monthly/quarterly/annually) → auto-SMS reminder to customer
+- **On-site invoice**: select services from preset menu, show total with tip prompt, send payment link via Stripe
+- **Tip collection**: built-in tip request (custom % options) — replaces Venmo awkwardness
+- **Route grouping**: assign jobs by neighborhood/zip code to plan the day efficiently
+- **Customer history feed**: last service date, what was done, any notes
+
+**Pricing:**
+- $29/mo — solo detailer, up to 200 customers, unlimited bookings
+- $49/mo — up to 1,000 customers, team of 2, multiple vehicles
+- LTD: $99 (200 customers) / $149 (unlimited)
+
+## Target Channels
+1. "Mobile Detailing Business Owners" Facebook groups (combined 30K+ members)
+2. r/AutoDetailing (professional flair community)
+3. Detailing YouTube/Instagram influencers (content about workflows, tools, products)
+4. AppSumo launch at $99 LTD — "DetailPro — The CRM built only for mobile detailers"
 
 ## Key Differentiators
-1. Before/after photo management with client sharing
-2. Surface-specific quoting (driveway, deck, house, roof)
-3. Chemical tracking and dilution ratios
-4. "Built for exterior cleaning" positioning
-
-## Next Steps
-1. Build visual-first CRM: photo-based quoting, before/after gallery, automated review requests
-2. Launch on AppSumo at $69 LTD
-3. Dominate SEO for "pressure washing software"
-4. Expand to window cleaning, gutter cleaning
+1. **Vehicle profiles with paint history** — no other CRM tracks ceramic coating dates, paint correction status, or previous service notes
+2. **One-tap route grouping** — saves 30–60 min/day planning
+3. **Built-in tip collection** — replaces awkward Venmo conversation
+4. **Recurring reminders** — operators forget to follow up; reminders = reactivated revenue
 
 ## Risks
-1. Small market per niche — need adjacent verticals
-2. Generic FSM tools could add specific features
-3. Owner-operators may have low tech literacy
+1. Small average ticket ($150–300/detail) means WTP for software is moderate — $39/mo may face resistance
+2. Solo operators may resist monthly SaaS; LTD + optional $19/mo tier needed
+3. Generic booking tools (Square Appointments, Jobber) could add "vehicle profile" feature
+4. Saturated: some detailers will try to use any existing booking tool and "make it work"
+
+## Next Steps
+1. Post in "Mobile Detailing Business Owners" FB group: "What software do you use?" — 50+ answers expected
+2. Build MVP: vehicle profiles + booking reminders + on-site Stripe invoice + tip collection
+3. AppSumo launch at $99 LTD
+4. Seed Instagram detailing community with content about the tool
 
 ## Key Source Links
-- [r/pressurewashing](https://www.reddit.com/r/pressurewashing/)
-- [r/AutoDetailing](https://www.reddit.com/r/AutoDetailing/)
-- [MyQuoteIQ - Pressure Washing CRM](https://myquoteiq.com/pressure-washing-crm-business-software/)
-- [ServiceMonster - Exterior Cleaning Software](https://www.servicemonster.com/exterior-cleaning-software)
-- [r/sweatystartup](https://www.reddit.com/r/sweatystartup/)
+- https://ventureradar.substack.com/p/5-service-businesses-still-running-cb2
+- https://fromscratch.dev/blog/boring-saas-ideas
+- https://gorilladesk.com (GorillaDesk exit comp: $300M acquisition validates "one trade" playbook)
+- https://news.ycombinator.com/item?id=47509571 (HN GorillaDesk founder story)
 
 ## Signal History
 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
-| 2026-03-17 | 83/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
-| 2026-03-18 | 93/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: QuoteIQ gaining but market still fragmented; before/after photo workflow is key differentiator |
-| 2026-03-19 | 93/105 | reddit, hn-indiehackers, competitor-analysis | Stable: vehicle-specific booking gap persists; Anolla AI-driven pricing but most operators on Jobber or paper |
-| 2026-03-20 | 93/105 | reddit | Auto detailing booking + portfolio demand; mobile operators need route optimization |
-| 2026-03-21 | 93/105 | reddit | Confirmed in reddit-2026-03-21; CRM + booking demand persistent |
-| 2026-03-25 | 94/105 | reddit | Before/after photo gallery, ceramic coating warranty management, fleet accounts, chemical tracking; Urable emerging; 65K+ detailing + 100K+ pressure washing businesses |
-| 2026-04-02 | 94/105 | reddit | Stable: mobile detailers need route efficiency + instant quoting; no-show rates high without automated SMS reminders; Urable expensive/complex for solo operators; photo-based quoting (snap car → price auto-suggests) confirmed as differentiator; Stripe tap-to-pay + tip prompt for on-site payment; 50K+ auto detailing businesses in US confirmed |
-| 2026-04-09 | 95/105 | trends-2026-04-09 | ↑1: Trends explicitly names window cleaning, gutter cleaning, chimney sweep as white spaces with zero dedicated modern software; 20K-80K businesses each with no purpose-built tool; scope confirmed: "exterior cleaning suite" covering pressure washing + window cleaning + gutter cleaning + chimney sweep; window cleaning: route optimization by building floor count + liability waivers + equipment checklists; gutter cleaning: seasonal campaign tool + photo-proof-of-service; chimney sweep: compliance report generation; pressure washing: quote calculator based on surface type + sq footage + before/after photo CRM; each: 2-4 weeks per vertical MVP; AppSumo LTD natural fit confirmed; "first to market in each micro-niche wins" strategy validated; Micro-Niche Vertical Software trend (Trend #5) explicitly names this category as top immediate opportunity |
-| 2026-04-15 | 95/105 | reddit-2026-04-15 | Stable: Auto detailing + pressure washing market confirmed — Jobber $69-199/mo too expensive for solo/2-person shops; OrbisX niche but low adoption; Urable + Zenbooker exist but haven't achieved adoption; operators want: job photos (before/after) + route optimization + online booking + invoicing + customer messaging in one $30-79/mo tool; pressure washing community specifically requests one-time purchase / no subscription = strong LTD signal; currently using Google Calendar + spreadsheets + Square as separate tools; $39/mo or $79 LTD for solo operators; r/AutoDetailing 840K+ + r/MobileDetailers + r/pressurewashing 200K+ = combined 500K+ operators; TikTok/YouTube detailing creator sponsorships + Facebook Groups = primary marketing channels |
-| 2026-04-18 | 95/105 | reddit-2026-04-18 | Stable: Reddit (PropowerWash forum, indexed): pressure washing operators explicitly stated they are "still looking for a one-time purchase CRM" — strongest direct LTD demand signal yet; current tools (Markate, Jobber, HCP) are all subscription-based; secondary complaint: scheduling "could be a little better"; operators using QB Online + Google Workspace + Markate + manual processes patchwork; mobile detailing market >$11B confirmed; QuoteIQ and ServiceMonster exist but subscription-based; $39/mo or $79 LTD for solo/small operators with quote → schedule → invoice → get paid flow = confirmed product direction |
-| 2026-04-19 | 95/105 | reddit-2026-04-19 | Stable: Reddit confirms pressure washing business owners using QuickBooks for estimates/invoices but finding it clunky for field ops; no tool natively handles seasonal bulk-job booking (e.g., "book all neighborhood decks in one day"), route sequencing for driveways/houses in a subdivision, or before/after photo documentation tied to each job; Jobber/ServiceMonster/Workiz lack native before/after photo documentation and subdivision/route-batch booking; r/pressurewashing growing community (100K+ members); before/after photo capture per job + subdivision batch-booking for marketing campaigns + route optimization + automated review requests = confirmed feature set; $49/mo or $79 LTD |
-| 2026-04-20 | 95/105 | trends-2026-04-20 | Stable: Trends explicitly identifies "all-in-one for auto detailing businesses" as top white space in SMB platform consolidation wave — scheduling + before/after photos + customer texting + loyalty + invoice; no dominant player in auto detailing specifically; 3-4 week MVP confirmed; $15B auto detailing market; $79 LTD = strong fit; trend also names "mobile dog groomers" as adjacent opportunity (see pet-grooming.md); SMB consolidation trend: 90% of SMBs want one tool (vs today's 5-10 app patchwork); auto detailing + pressure washing = same tool, confirmed combined platform play |
-| 2026-06-14 | 95/105 | reddit-2026-06-14 | Stable: SINGLE-source (direct community signal) — propowerwash.com power washer forum: direct quote "still looking for a one-time purchase CRM" — strongest raw LTD demand signal confirmed again; "scheduling could be a little better" with current helpdesk; operators using Google Drive (free spreadsheets) + Google Voice + QuickBooks = 3 disconnected tools; specific need: area/surface calculator for instant quoting (sqft × surface type = price) + recurring customer scheduling (same house every 3 months) + SMS/text invoice + payment collection; Southeast Softwash LLC called out quote generation delays as "major pain point" in late 2025; propowerwash.com forum has 69,000+ threads + 426,000+ posts = large active community; multiple operators explicitly seeking software in thread; $19/mo or $99 one-time for solo operators confirmed; Sources: propowerwash.com/board/upload/threads/what-software-and-apps-are-you-using.32928/page-2, housecallpro.com/industries/pressure-washing-software/ |
-| 2026-04-22 | 95/105 | reddit-2026-04-22, hn-indiehackers-2026-04-22, trends-2026-04-22 | Stable: TRIPLE-source — Reddit: r/MobileDetailers described as "fastest-growing hub for business-oriented detailers"; vehicle VIN-linked service history = critical missing feature (need to know what coating was applied to which specific car); Detail Connect marketplace-focused only; ROXO Hub $39.99/mo flat validates price point; 840k r/AutoDetailing + 50k detailing businesses = TAM; HN/IH: mobile groomers and detailers named by same IH sources simultaneously = parallel signal for route-based mobile service businesses; vehicle VIN history + before/after photo workflow + coating/product tracking per vehicle = confirmed differentiators; Trends: Hauler Hero $16M confirms single-trade vertical SaaS investment; auto detailing explicitly named as top white space in SMB platform consolidation; route-based mobile services = unified product opportunity (detailers + groomers + pressure washers) |
-| 2026-04-24 | 95/105 | reddit-2026-04-24 | Stable: Reddit: auto detailing $14B+ US market growing ~5% annually; mobile detailers exploding but software fragmented; Urable complex/expensive; Jobber/HCP over-engineered for solo mobile detailer; many on Square + Google Calendar + phone losing bookings; "booking page in 5 minutes" concept confirmed — online booking by location + auto confirmation + day-before reminder + post-job review request + rebook prompt at $29/mo; r/AutoDetailing 1M+ members + r/pressurewashing = distribution confirmed; $59-79 LTD very strong AppSumo angle; Urable at fieldd.co links confirmed as primary competitor references |
-| 2026-04-25 | 95/105 | reddit-2026-04-25 | Stable: r/AutoDetailing confirmed 1M+ members (previously tracked at 840K-600K); Urable expensive/complex for solo operators; ceramic/PPF installer workflows as premium tier differentiator; before/after photo storage per vehicle (linked to VIN); route optimization for mobile detailers; $59-79 LTD strong AppSumo play; 2-3 week MVP confirmed; r/sweatystartup cross-distribution signal |
-| 2026-05-14 | 95/105 | reddit-2026-05-14, hn-indiehackers-2026-05-14 | Stable: DUAL-source — Reddit: pressure washing operators need instant online quote from customer address (house size, surface type → price); ResponsiBid $197/mo expensive; Jobber/HCP generic, no auto-quoting; embeddable widget → satellite property sq footage → instant price → book + deposit = confirmed concept at $49–$99/mo LTD $299; HN: mobile detailers juggle Calendly + Square + Google Drive; route optimization saves 1–2 hrs/day; $15B+ detailing market; DetailingSuccessTV = influencer marketing channel; $39/mo or $199 LTD; gap score 8/10; platform plays confirmed as combined pressure washing + detailing tool; Sources: propowerwash.com, schedulingkit.com, myquoteiq.com/pressure-washing, superframeworks.com/untapped-niches |
-| 2026-05-24 | 95/105 | reddit-2026-05-24 | Stable: SINGLE-source — Reddit: auto detailers and pressure washers confirmed as among the most underserved by software; generic booking tools (Calendly, Acuity) don't handle deposits, before/after photo documentation, vehicle-specific service history, or package upsells; Housecall Pro works but costs $65–169/mo with hidden add-ons — overkill for solo detailer doing 8–15 jobs/week; auto detailing $14B industry; r/AutoDetailing 800K+ members; mobile detailing fastest-growing segment with very low software adoption; vertical-specific booking: vehicle profiles, package selection, deposit collection, before/after photos, customer history, review request automation at $29/mo or $59–79 LTD confirmed; Sources: fieldcamp.ai/reviews/housecall-pro/, wifitalents.com/best/landscaping-business-scheduling-software/, contractorplus.app/blog/housecall-pro-vs-jobber-vs-servicetitan |
-| 2026-05-27 | 95/105 | reddit-2026-05-27 | Stable: SINGLE-source — Reddit: Auto Detailing Dynamic Pricing gap confirmed; detailers manually juggle Google Calendar + Square + phone; no tool handles vehicle-specific service history + ceramic coating warranty management + dynamic pricing by vehicle size/condition; Urable complex/expensive for solo operators; $29/mo with vehicle profiles + before/after photos + deposit collection + package upsells + dynamic pricing tier = confirmed differentiator; r/AutoDetailing 800K+ members; mobile detailing fastest-growing segment with very low software adoption |
-| 2026-05-28 | 95/105 | reddit-2026-05-28 | Stable: SINGLE-source — Reddit: chemical cost calculator gap confirmed — detailers and pressure washers manually calculate dilution ratios, chemical costs per job, and markup; r/pressurewashing 180K+ members confirmed as distribution channel; no tool handles dynamic pricing by surface type + chemical cost tracking + before/after photo documentation at flat rate; $29/mo with vehicle/property profiles + chemical cost tracker + dynamic pricing + before/after photos = confirmed differentiator vs Jobber/HCP generic tools |
-| 2026-06-15 | 95/105 | reddit-2026-06-15 | Stable: SINGLE-source — Reddit: mobile auto detailers specifically identified as needing: (1) online booking with add-on services (paint correction, ceramic coating, interior detail), (2) ability to track chemical/product inventory consumed per job, (3) digital inspection reports with before/after photos for upsell; "No tool combines all three cleanly" — Jobber generic, Anolla usage-based/limited, ManageMart clunky, Square no industry features, Torque360 auto-shop focus; 90K+ auto detailing businesses; r/AutoDetailing 500K+ members who discuss business ops; $39–79/mo flat; $79 LTD; strong AppSumo fit for solo detailers; Sources: anolla.com/en/auto-detailing-software, getjobber.com/industries/auto-detailing-software/, xenia.team/articles/mobile-car-wash-software, fieldd.co/mobile-carwash-software |
-| 2026-05-30 | 94/105 ↑1 | reddit-2026-05-30 | NEW high-ticket mobile detailer angle: condition report (documenting pre-existing scratches/swirls/chips before ceramic coating or PPF job on $5,000+ vehicles) = legal protection workflow; before/after photo gallery (timestamped, organized by vehicle + client, shareable branded link) = referral generation tool; Urable $99+/mo complex; no sub-$30/mo tool with condition reports + gallery sharing; r/AutoDetailing 1.8M members = highest-reach reddit community of all today's ideas; 50,000+ mobile detailers; ceramic coating segment growing 15%+ annually; "DetailDesk" concept: job → client approves condition report on phone link → before photos → after photos → shareable branded gallery sent via text → invoice; $19/mo solo, $39/mo 2–3 operators; LTD $59 |
-| 2026-06-02 | 95/105 ↑1 | reddit-2026-06-02, competitor-analysis-2026-06-02 | ↑1: DUAL-source — Reddit: satellite measurement → auto-quote → crew scheduling workflow gap confirmed unoccupied; detailing curing windows + ceramic coating upsell missing from all generic FSM; Competitor: Housecall Pro removed human support (AI-only) = switching demand from HCP-using detailers; no FSM at <$75/mo dedicated to pressure washing/detailing confirmed; Sources: repair-crm.com/2026/05/27/hidden-costs-of-field-service-software-2026-small-business-guide/ |
-| 2026-06-04 | 95/105 | reddit-2026-06-04 | Stable: SINGLE-source — Reddit industry article explicitly states "most pressure washers cobble together 5-10 different apps for quoting, scheduling, invoicing, photos, and communication where nothing talks to each other"; customer information lives in multiple places confirmed; surface-type pricing (concrete vs vinyl siding vs decks vs roofs) not handled by any generic FSM; dwell times and chemical dilution ratios absent; operators are in driveways not at desks = mobile-first mandatory; satellite measurement for instant quote by surface type + sq footage = key differentiator; before/after photo capture with automatic customer share = confirmed use case; chemical log per job; seasonal contract billing; route clustering by neighborhood; $39/month exterior-cleaning-native tool at confirmed viable price point; $59 LTD strongly viable — operators hate recurring costs; r/pressurewashing, r/sweatystartup = distribution channels; Sources: myquoteiq.com/pressure-washing-crm-business-software/, method.me/resources/best-pressure-washing-software/, servicefusion.com/pressure-wash-business-software |
-| 2026-06-07 | 95/105 | trends-2026-06-07 | Stable: SINGLE-source — Trends: mobile auto detailing explicitly named as "under-teched $18.7B market with no dominant platform"; market growing 16%+ annually (fastest segment); ROXO Hub $39.99/month flat validates price point; Anolla AI dynamic pricing + booking; Fieldd branded app + scheduling; MobileWash 1M+ users, 5,000+ independent detailers; Detail Pro $20M/year in managed bookings; NEW ANGLES: (1) fleet account management for detail shops serving car dealerships = untapped B2B tier; (2) detailer marketplace/network (like Rover for dog sitting, but for car detailing) connecting vehicle owners to local detailers with real-time availability = new product angle distinct from single-operator tool; detailing market consolidation beginning, no Jobber-equivalent yet; Sources: roxohub.com/blog/best-software-mobile-auto-detailers-2026/, anolla.com/en/best-auto-detailing-software, fieldd.co/mobile-carwash-software |
-| 2026-06-09 | 94/105 | reddit-2026-06-09, competitor-analysis-2026-06-09 | Stable: DUAL-source — auto detailing VIN scanner + before/after photos angle confirmed; competitor analysis confirms no purpose-built detailing/pressure washing tool at $50–100/mo; mobile detailing $18.7B market growing 16% annually reconfirmed; fleet account B2B tier = new angle confirmed; Sources: reddit-2026-06-09, competitor-analysis-2026-06-09 |
-| 2026-06-16 | 94/105 | reddit-2026-06-16 | Stable: SINGLE-source — NEW AI QUOTING ANGLE: Southeast Softwash LLC (October 2025 press release) announced AI-powered pricing tool specifically for pressure washing — validates AI quoting as market direction, but their tool is in-house only, not available to other operators; surface-type pricing logic (concrete vs. wood vs. vinyl vs. brick vs. stucco) confirmed missing from all general FSM tools; contamination level pricing (mold vs. rust vs. oil) = another unaddressed dimension; satellite imagery → sq footage estimate → surface selection → instant quote = confirmed MVP concept for AI quoting; chemical cost calculator (gallons SH at X% dilution for Y sq ft) = monetizable add-on; 75K+ US pressure washing businesses; r/pressurewashing 100K+ members; Sources: reddit-2026-06-16, markets.financialcontent.com/postgazette/article/pressadvantage-2025-10-9-southeast-softwash-llc-announces-ai-powered-tool-for-pressure-washing-pricing-efficiency |
-| 2026-06-11 | 95/105 | reddit-2026-06-11 | ↑1: SINGLE-source — Reddit (r/AutoDetailing): STRONGEST-EVER signal — detailing shop tried Square and other tools, "none worked," and BUILT THEIR OWN CUSTOM SYSTEM = absolute validation of unmet need; NEW UNIQUE FEATURE: mid-service upsell notifications via SMS — "noticed your trim is faded — want to add a trim restore for $30?" — NO tool anywhere does mid-job upsell notification; 5+ active threads in r/AutoDetailing about software; most detailers on Excel spreadsheets (confirmed); vehicle-centric workflows missing everywhere: vehicle history by car (not by customer), service packages by vehicle type, condition report before ceramic/PPF work; 50K+ detailing businesses in US; r/AutoDetailing 1.8M members = highest-reach community of today's scan; concept: "DetailDesk" — vehicle profiles + mid-job upsell SMS + appointment booking + payment + review request; $39/mo solo, $59/mo shop; $59 LTD very viable; Sources: reddit.com/r/AutoDetailing/comments/1b8bks8/, reddit.com/r/AutoDetailing/comments/1kb5522/, roxohub.com/blog/best-software-mobile-auto-detailers-2026/ |
-| 2026-06-13 | 95/105 | reddit-2026-06-13, competitor-analysis-2026-06-13 | Stable: DUAL-source — Reddit: most auto detailing booking platforms have "rigid time-slot scheduling, fixed prices, and automation that doesn't consider vehicle size, job complexity or package combinations" = vehicle complexity pricing as confirmed gap; mobile detailers work outdoors and need weather-aware scheduling, travel-time buffers between jobs, and flexible pricing (SUV vs sedan vs ceramic coating); Competitor Analysis: Shopmonkey/Tekmetric designed for mechanical repair — detailers forced to create workarounds; **no platform has before/after photo gallery built into the job card** confirmed across all auto repair software reviews; pricing too steep ($99+/mo) for 1-3 bay operations; no detailing-specific chemical/product inventory (wax, clay bar, ceramic coating quantities); DVI tools from repair shops are 60-point mechanical inspections — overkill vs. simple condition-check photo form detailers need; **DetailDesk concept confirmed by competitor analysis**: package-based booking (express/full detail/ceramic coating), before/after photos per job, product cost per job, vehicle history, one-click invoice — all under $49/mo = confirmed unoccupied; MobileWash 5,000+ independent detailers confirms TAM; Sources: detailconnect.substack.com/p/the-best-detailing-software-for-mobile, anolla.com/en/best-auto-detailing-software, gitnux.org/best/auto-detailing-software/, orderry.com/car-detailing-software/ |
-| 2026-06-19 | 95/105 | reddit-2026-06-19 | Stable: SUBSCRIPTION MODEL ANGLE — mobile detailing subscription (recurring client every 2–4 weeks) confirmed as highest-value revenue model ($150–400/month per car) with specific software gaps: (1) recurring billing that charges when detailer completes the job (not fixed monthly date), (2) route density optimization for subscription clients (cluster recurring stops same neighborhood same day = reduces drive time 30%), (3) fleet account management (companies with 5–20 vehicles on rotating schedule), (4) before/after photo auto-send to client = biggest retention tool; Urable $45+/mo shop-oriented and limited on subscription billing; Markate $39.95/mo solo-tier limited; "route view showing which recurring clients cluster" = confirmed key differentiator; Sources: reddit-2026-06-19 — myquoteiq.com/top-10-crms-for-mobile-detailing-businesses-in-2026/, anolla.com/en/best-auto-detailing-software, urable.com/vehicle-care/ |
-| 2026-06-21 | 87/105 | hn-indiehackers-2026-06-21 | ↓8: SINGLE-source — HN/IH: auto detailing vertical SaaS as prime 2026 bootstrapped niche reconfirmed; VIN-centric CRM + subscription billing + route density optimization confirmed gaps; DetailDesk concept — vehicle profiles + mid-job upsell SMS + subscription management at $39/mo solo / $59/mo shop; LTD 5/5 AppSumo fit; score ↓8 vs peak (SINGLE-source day); Sources: hn-indiehackers-2026-06-21 |
-| 2026-07-03 | 88/105 | ↑1 | DUAL-source (reddit, hn-indiehackers) — Reddit: r/AutoDetailing 600K+ members (one of fastest-growing trade subreddits); mobile detailers need: appointment booking, vehicle profiles, job checklists, before/after photos, invoice + payment collection — all from phone between jobs; Urable $70–220/mo too expensive for solo detailers; Jobber generic (no paint correction stages, no ceramic coating warranty records); most mobile detailers on Instagram DMs + Venmo = massive upgrade opportunity; $59 LTD natural fit; IDA (International Detailing Association) forums as distribution; ceramic coating warranty card generator as wedge free tool → paid upgrade; HN/IH: Rentman $15M–$20M ARR bootstrapped 8 years (AV rental) = same pattern as detailing founder who builds own software; Sources: roadfs.com/best-mobile-detailing-software-2025/, octopuspro.com/field-service-management/car-wash-auto-detailing-software/, indiehackers.com/post/tech/building-a-15m-arr-saas-from-a-gap-he-found-at-his-brick-and-mortar-HFriCBQLHukAmdXVEj1q |
+| 2026-08-07 | 99/105 | hn-indiehackers-2026-08-07, trends-2026-08-07 | First identified: VentureRadar (Aug 3, 2026) confirms mobile detailing operators doing $5K–$20K/mo on WhatsApp + spiral notebook with zero dedicated software; GorillaDesk $300M exit validates "one trade, dead-simple tool" playbook; no purpose-built mobile detailing CRM exists at any price; 30K+ FB group members = distribution; 99/105 = highest-scoring new idea today |
+| 2026-08-14 | 99/105 | reddit-2026-08-14 | Confirmed: industry review sites (AutoHustl, GoodCall, MyQuoteIQ) confirm mobile detailing operators suffer (1) no-shows with no deposit system, (2) double-booked crews, (3) invoices 4 days late, (4) customers booking via text/DM with no confirmation; generic booking tools (Square, Acuity) not built for mobile service workers who need location-aware scheduling; $18.7B US auto detailing market projected in 2026; ~16,879 businesses, mobile/on-demand segment fastest growing; DetailPro (limited), Square Appointments (generic), Jobber (overpriced for detailers) — no mobile-detailing-specific tool dominates; MVP: deposit-required online booking + GPS calendar + one-tap Stripe invoice; Sources: autohustl.com/blog/best-auto-detailing-software/, goodcall.com/appointment-scheduling-software/auto-detailing, myquoteiq.com/top-8-softwares-for-auto-detailing-in-2026/ |

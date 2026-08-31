@@ -1,94 +1,102 @@
-# Dental Patient Communication Platform
+---
+name: Dental Payroll / Production Reconciliation
+description: Auto-calculates provider production splits, hygienist pay percentages, and associate compensation from Open Dental/Dentrix/Eaglesoft exports — eliminating the monthly manual reconciliation spreadsheet at $99-149/mo
+type: shortlisted
+---
 
-**Score**: 93/105 | **Tier**: 1 | **Verdict**: BUILD | **Evaluation Date**: 2026-03-23
+# Dental Payroll / Production Reconciliation — Score: 92/105
+
+**Verdict**: BUILD
+**Tier**: 1 (Strong Opportunity)
+**Evaluation Date**: 2026-08-18
+**Decision Status**: NEW
 
 ## One-Line Pitch
-Appointment confirmations, recall campaigns, and review requests for dental practices at $49-99/mo vs Weave's $399+/mo.
+
+Auto-calculate dentist associate production splits, hygienist compensation, and provider pay percentages directly from Open Dental/Dentrix/Eaglesoft — eliminating the monthly reconciliation spreadsheet that every dental office manager dreads.
 
 ## Problem
-Dental practices need patient communication (appointment confirmations, recall/recare campaigns, review requests, two-way texting) but Weave charges $399+/mo. Dentrix "feels like Windows 95" and can't display images while charting. Tab 32 is "glitchy." The wedge: don't replace the PMS — add a communication layer on top.
+
+Dental offices deal with complex provider-based payroll that general payroll tools (Gusto, ADP) can't handle:
+
+- **Hygienist production splits**: hygienists typically earn 25–35% of their collected production — calculated differently than salaried staff
+- **Associate dentist pay**: new associates often earn 25–30% of their personal production + adjustments for lab fees
+- **Multi-provider schedules**: 3 providers working different days, different pay rates, different adjustments
+- **Lab fee deductions**: lab costs deducted from production before calculating associate compensation
+- **Billing adjustments**: write-offs, insurance adjustments, patient portions all affect net production
+
+Every dental practice does this calculation manually in Excel today. Office managers spend 4–8 hours per pay period pulling reports, adjusting for write-offs, calculating splits, and manually entering into Gusto/ADP. A single calculation error creates conflict and trust issues with staff.
+
+**Current cost**: $12,000–$35,000 MRR potential at $99–199/office, with near-zero ongoing infrastructure costs.
 
 ## Market Evidence
-- Weave: $399+/mo, hundreds of millions in ARR — proves massive market
-- RevenueWell, Lighthouse 360, Solutionreach — multiple competitors validate demand
-- Massive pricing headroom: $49-99/mo vs $399+/mo
-- r/Dentistry sentiment shifted toward open solutions
-- Two-way SMS shows 8x response rates vs email for patient communication
-- Dental recall AI validation: EUR 45K MRR from EU founder (HN Mar 6)
+
+- ~100,000 dental practices in the US; majority independent single-location or 2-location practices
+- Open Dental (open-source, published data model) + Dentrix + Eaglesoft cover 80%+ of market
+- No competing product exists in this exact category — verified via software review sites
+- Dental office managers are the top-searched LinkedIn job in dental practices — they own this pain
+- SumoTrends 2026 "boring SaaS niches printing money" explicitly calls this out as unoccupied
+- Estimated MRR potential: $12K–35K at $99–199/office (validated by analysis)
 
 ## Scoring Breakdown
 
-| Criterion | Score | Weighted | Notes |
-|-----------|-------|----------|-------|
-| Market Validation | 5/5 | 15 | Weave $399+/mo proves massive market |
-| Competitor Weakness | 5/5 | 10 | Massive pricing gap |
-| LTD Viability | 3/5 | 6 | SMS costs ongoing, needs usage caps |
-| No Free Tier | 5/5 | 5 | No free dental comms platforms |
-| Channel Access | 3/5 | 6 | Dental forums smaller, trade shows expensive |
-| Content Potential | 4/5 | 4 | Weave alternative content |
-| AppSumo Fit | 2/5 | 4 | Dentists rarely browse AppSumo |
-| Review Potential | 4/5 | 4 | Dental practices review on G2 |
-| MRR Path | 5/5 | 15 | SMS costs create natural MRR |
-| Build Feasibility | 4/5 | 8 | Two-way SMS, reminders, review requests |
-| Boring Business Bonus | 4/5 | 8 | Unglamorous professional service |
+| Criterion | Score | Weight | Weighted | Notes |
+|-----------|-------|--------|----------|-------|
+| Market Validation | 4/5 | 3x | 12 | 100K+ dental practices; production compensation is universal; all major PMS lack this module |
+| Competitor Weakness | 5/5 | 2x | 10 | No dedicated tool — pure white space |
+| LTD Viability | 4/5 | 2x | 8 | $99–149 LTD for tool eliminating monthly payroll headache = compelling |
+| No Free Tier | 5/5 | 1x | 5 | No free dental payroll reconciliation tool exists |
+| Channel Access | 4/5 | 2x | 8 | DentistryIQ, ADA conferences, dental office manager forums, r/Dentistry |
+| Content Potential | 4/5 | 1x | 4 | "dental hygienist payroll software", "dental production reconciliation", "Open Dental payroll" |
+| AppSumo Fit | 4/5 | 2x | 8 | Dental tools sell well on AppSumo; clear monthly ROI story |
+| Review Potential | 4/5 | 1x | 4 | Office managers are active reviewers |
+| MRR Path | 5/5 | 3x | 15 | Monthly payroll = monthly recurring need; expansion to multi-provider group practices |
+| Build Feasibility | 4/5 | 2x | 8 | 4–6 weeks: Open Dental open-source data model + Eaglesoft/Dentrix CSV export + calculation engine + Gusto/ADP output |
+| Boring Business Bonus | 5/5 | 2x | 10 | Dental office payroll reconciliation = deeply boring |
 
-## MVP Scope (4-6 weeks)
-1. Appointment confirmation/reminder campaigns (SMS + email)
-2. Recall/recare campaign automation
-3. Two-way patient texting
-4. Automated review requests (post-appointment)
-5. Basic analytics (response rates, no-show reduction)
-6. Works alongside ANY PMS (not a replacement)
+**Total: 92/105**
 
-## Go-to-Market
-1. Direct outreach to dental practices (NOT AppSumo)
-2. Dental practice manager FB groups
-3. Content: "Weave alternative for dental practices" landing pages
-4. Dental conferences and trade shows
-5. Referral program (dental practices refer each other)
+## Must-Have Filters
 
-## Risks
-1. Hard to reach dental practices at scale without trade shows
-2. SMS costs eat into margins on LTD deals
-3. Weave could introduce lower-tier plans
+- [x] Problem is real (every dental office manager does this manually)
+- [x] Can build without deep domain expertise (Open Dental data model is public; payroll math is straightforward)
+- [x] No dominant player in this specific niche
+- [x] Revenue potential > $10K MRR within 12 months
+
+## Boring Business Fit Check
+
+- VCs ignore dental office payroll software — ✓
+- Customers (office managers) are non-technical — ✓
+- Existing software (Dentrix, Eaglesoft, Open Dental) doesn't do this — ✓
+- Dental practices have real budgets and pay for software — ✓
+- Churn likely low once calculation workflow is trusted — ✓
+
+## Team Fit Check
+
+- Front-end: Simple data entry form + calculation preview dashboard
+- Back-end: File parser (CSV/XML from 3 PMS systems) + calculation engine + Gusto/ADP export format
+- Designer: Standard financial dashboard UI patterns
+- Generalist: Dental office manager communities, DentistryIQ ads, ADA conference booth
+
+## MVP Scope (4–6 weeks)
+
+1. CSV/export import from Open Dental, Dentrix, Eaglesoft
+2. Provider roster setup (name, compensation type: % of production, flat, or hybrid)
+3. Calculation engine: gross production → adjustments → net production → provider pay
+4. Period comparison (this month vs last month)
+5. Gusto/ADP-ready CSV output
+6. Pay stub preview per provider
 
 ## Key Source Links
-- r/dentistry: Weave pricing complaints, Dentrix frustrations
-- Weave competitor analysis: $399+/mo for communication layer
-- Tab 32: "Good but glitchy. Frustrating at times."
-- CareStack: slow support cited in multiple threads
-- Dental recall AI: EUR 45K MRR from EU founder (HN Mar 6)
+
+- https://sumotrends.com/ideas/boring-saas-niches-printing-money-2026/
+- https://medium.com/write-a-catalyst/6-boring-micro-saas-niches-that-could-quietly-make-5-000-month-87b80da395db
+- https://redwerk.com/blog/micro-saas-ideas-that-print-money/
+- https://www.certifyhealth.com/blog/top-10-dental-practice-management-software-2026/
+- https://medixdental.com/best-dental-pms/
 
 ## Signal History
 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
-| 2026-03-17 | 79/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
-| 2026-03-18 | 83/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: DentBase concept at $129/mo; Dentrix/Eaglesoft duopoly entrenched; communication layer (anti-Weave) may be better wedge |
-| 2026-03-19 | 84/105 | reddit, competitor-analysis, trends | Planet DDS AI Agents launched Mar 2026; Dentrix/Eaglesoft duopoly: $400-500+/mo with 2005 UI; AI overlay opportunity strongest wedge |
-| 2026-03-20 | 85/105 | reddit, competitor-analysis | Anti-Dentrix movement; ChiroTouch parallel validates dental pricing gap |
-| 2026-03-21 | 86/105 | reddit, trends | Score +1; front-desk automation angle in reddit-2026-03-21; dental PMS in trends-2026-03-21 |
-| 2026-03-22 | 87/105 | trends | ↑1: Market $1.97B→$4.16B by 2035 (8.64% CAGR); SaaS captured 60.53% market share; AI-powered claims accuracy 95%+; cloud growing at 13.85% CAGR |
-| 2026-03-23 | 88/105 | trends | ↑1: Legacy vs cloud sharp divide confirmed; Curve Dental cloud-native gaining; Pabau expanding into US; AI treatment planning + patient communication as white spaces; dental-specific marketing automation gap |
-| 2026-03-24 | 90/105 | reddit, competitor-analysis, trends | ↑2: TRIPLE signal — Reddit: patient recall + insurance verification top time-wasters, 2-3 hours daily; Trends: $4.16B market by 2035, AI treatment planning white space; Competitor analysis: Dentrix $250/mo dated, Eaglesoft server-based, CareStack $300/mo enterprise |
-| 2026-03-25 | 92/105 | hn-indiehackers, competitor-analysis, trends | TRIPLE: $1.97B market 9.54% CAGR; Dentrix $500-800/mo, Eaglesoft outdated, Open Dental needs server; DentistryOS $129/mo flat concept; insurance verification = killer app |
-| 2026-04-01 | 93/105 | reddit | ↑1: Insurance verification automation saves 15-30 min/patient — confirmed #1 front desk burnout; treatment plan follow-up automation = "money left on the table"; patient reactivation for 18+ month lapsed patients; Patterson $3,600 data conversion + training fee confirmed; new angle: front-office automation layer on top of existing PMS |
-| 2026-04-03 | 93/105 | hn-indiehackers, trends | Stable: HN/IH STRONG CASE STUDY for dental compliance angle — $280 CAC, 0.9% monthly churn, $30-50K MRR with 100+ dental clients, $84M addressable ceiling; clinical PM (Dentrix/Eaglesoft) ignores OSHA/HIPAA/DEA/sterilization log compliance entirely; no focused compliance SaaS exists at accessible price; reach via dental associations (ADA) and CE platforms; Trends: Overjet, Adit, Curve Dental Flo AI, CareStack all adding AI workflows confirming vertical AI investment thesis; dental compliance tool = separate angle from patient comms — $97-197 LTD for compliance binder in the cloud |
-| 2026-04-05 | 94/105 | reddit, hn-indiehackers | ↑1: DUAL-source — Reddit: Dentrix 32% above market price; Eaglesoft "feels outdated, old icons, 2005 UI" (2024 review); both server-based requiring on-premise hardware; 130K+ private practices confirmed; IT MSPs on r/msp complain about supporting these legacy server installs; 200K dentists in US = massive captive audience; cloud dental PMS at $199-349/mo flat with free migration from Dentrix/Eaglesoft = clear pitch; HN: Apex Dental (59 practices) building internal software = DSO sophistication rising, independent practices left behind; "front-desk OS" framing — patient scheduling + insurance claim submission + SMS reminders without full PMS replacement = validated wedge angle |
-| 2026-04-06 | 95/105 | trends | ↑1: Multi-player attack on legacy dental confirmed simultaneously — Pearl AI (FDA-cleared radiologic AI, 37% more disease detected), Overjet (dental AI for providers + payers), Curve Dental FLO (cloud PMS + AI insurance verification), Adit (all-in-one dental communication AI), CareStack (cloud PMS + marketing automation); ALL moving at once; solo/small group practices (1-5 chairs) underserved by every new entrant simultaneously; $99-149/mo flat-rate dental practice OS for solo practitioners: AI scheduling + patient texting + basic billing + insurance check = unoccupied position; "something modern that doesn't need an IT person" = confirmed value prop |
-| 2026-04-12 | 96/105 | trends-2026-04-12 | Stable: Dental PMS market $1.66B (2026) → $2.90B (2032) at 9.54% CAGR; cloud-based at 65% of new installs growing 14.25%/yr; Archy $20M Series B (TCV + Bessemer) = latest round confirms investor interest; AI front desk add-on (auto-answering calls + scheduling + insurance eligibility checks) as PMS-agnostic standalone layer = 4-6 week buildable MVP at $99-149/mo; avoids "rip and replace" barrier entirely; "founding practice" annual deal $999-$1,499 positioning vs pure LTD; Tab32, Remedico, Adit = mid-market challengers creating awareness of cloud-native category |
-| 2026-04-13 | 96/105 | reddit-2026-04-13, hn-indiehackers-2026-04-13, trends-2026-04-13 | Stable: TRIPLE-source — Reddit: Dentrix $400-700/mo cloud + $2K-8K implementation; "learning curve brutal", "6 weeks for team to feel comfortable"; staff turnover = constant retraining overhead; small practices (1-2 dentists) pay enterprise pricing designed for DSO 50-chair groups; Open Dental at $179/mo requires IT self-management; 125,000 US dentist offices, majority solo/small group; solo dentists making purchasing decisions alone + high income = ideal LTD buyer ($799-1,499 LTD for solo practice justified); HN/IH: dental recall automation gap confirmed — 200K+ practices losing 30-40% recall revenue to missed appointments; Dentrix/Eaglesoft recall module "clunky, doesn't integrate with modern comms"; no bootstrapped indie owns recall; EUR 45K MRR from EU founder validates price point; Trends: $2.64B → $5.33B dental PMS market (7.2% CAGR); AI front desk (auto-answering, scheduling, insurance eligibility) as PMS-agnostic standalone = clear fastest path to market |
-| 2026-04-15 | 96/105 | reddit-2026-04-15, trends-2026-04-15 | Stable: DUAL-source — Reddit: Dentrix "32% more expensive than average dental software" + $14K+ multi-user setup + multi-year contracts; Eaglesoft "scaling expensively + crashes + slow"; Open Dental praised as affordable but requires technical savvy = gap for affordable AND user-friendly AND cloud-based; 200,000 dentists in US; cloud dental PMS at $179/mo flat (vs $14K setup) = clear pitch; explicit data security guarantees + local backup option + 30-day free trial as trust-builders; Trends: Archy 300% YoY growth + $47M total + $100M+ payments = replacement cycle underway; Planet DDS AI Agents launched March 2026 = major players adding AI front-office; specialty dental (orthodontic, oral surgery, pediatric) workflows NOT served by general dental PMS = additional niche; AI-assisted insurance pre-authorization + real-time eligibility = still manually across all platforms |
-| 2026-04-17 | 96/105 | competitor-analysis-2026-04-17, trends-2026-04-17 | Stable: DUAL-source — Competitor: dental PMS gap detailed — Dentrix/Eaglesoft $500-$1,000+/mo estimated; not cloud-native; Eaglesoft adds training + maintenance + upfront fees; missing mobile app support; Open Dental $169-249/mo but steeper setup/IT requirements; Curve Dental $300-500/mo with limited customization; "DentDesk" concept: self-serve cloud-native at $99/mo flat + zero setup fee + works from any browser + insurance claim submission (Availity/Change Healthcare API) + patient portal; target: new dental graduates opening solo practices + small DSO breakaways; Trends: dental PMS market $1.53B→$1.66B (2026)→$2.90B by 2032 (9.54% CAGR); Archy disrupted with "supremely easy to use, requiring almost no training" — reducing 10-click workflows to one click; AI front desk (call intelligence, automated scheduling) now table stakes; new system rollouts cause ~15% more claim denials = migration friction = moat for incumbents AND opportunity for smoother migrations |
-| 2026-04-11 | 96/105 | reddit-2026-04-11, trends-2026-04-11 | ↑1: DUAL-source MAJOR VALIDATION — Reddit: Dentrix $400-700/mo + "6-week learning curve for team" + $2K-$8K implementation confirmed; Eaglesoft server-based "remote access cumbersome" (direct quote); Open Dental older interface; cloud-native dental PMS for 1-5 chairs at $149-299/mo with days-not-months setup = full PMS replacement angle (distinct from communication wedge); 200K+ dental practices in US, majority small independent offices; Trends: Archy $20M Series B (TCV + Bessemer) — 300% YoY growth, $100M+ payments, 2.5M patients — enterprise/DSO focus confirmed; Overjet, Pearl, VideaHealth all adding AI diagnostics simultaneously; dental market $1.91B → $4.87B by 2034 at 11.7% CAGR; TWO confirmed product angles: (1) patient comms wedge on top of existing PMS ($49-99/mo), (2) full cloud PMS replacement for 1-5 chairs ($149-299/mo, "setup in days not months"); solo practices simultaneously underserved by every new AI entrant |
-| 2026-04-20 | 96/105 | reddit-2026-04-20, competitor-analysis-2026-04-20 | Stable: DUAL-source — Reddit: Dentrix "32% more expensive than average dental practice management software"; Eaglesoft "feels old, doesn't work well with modern integrations or cloud access"; both desktop-only requiring expensive in-office servers; "expensive mistake to undo — not quick to implement or easy to switch away from"; Open Dental ~$169/mo for support but lacks modern UI and patient comms; no incumbent offers cloud-native + affordable + built-in insurance verification + patient messaging; 200K+ dentists in US; $299/mo transparent cloud-native dental PMS with Stripe patient payments = confirmed white space; Competitor: Clio competitor analysis highlights same "feature gating" problem pattern in dental (Dentrix/Eaglesoft lock-in + pricing complexity); cloud dental wedge validated — HIPAA compliance cost = key risk before building |
-| 2026-04-21 | 96/105 | reddit-scanner-2026-04-21, reddit-2026-04-21, hn-indiehackers-2026-04-21 | Stable: TRIPLE-source — Reddit-scanner + reddit-2026-04-21: Dentrix Ascend "workflows clunky, can't view images while charting, support isn't what it used to be"; CareStack "great concept but glitchy and support takes forever"; practices use PMS at 30% capacity and pay for 70%; CRITICAL unmet need: automated insurance eligibility check before appointment (currently manual, 15-30 min per patient) — no tool does this affordably; recall automation (6-month cleaning reminders) either missing or poorly implemented; existing dental PMS $200-3,000+/month + months of setup; best angle: "dental front desk automation" add-on layer (works alongside existing PMS): (1) automated 6-month recall texts/emails, (2) insurance eligibility via Availity/Change Healthcare API, (3) patient intake forms (e-sign, HIPAA-compliant), (4) scheduling with Google Calendar sync; $99/mo per location; LTD marginal (HIPAA + ongoing insurance API costs); HN/IH: Dental Recall Automation validated — founder built dental patient follow-up/insurance SaaS, reached €45K MRR; 200K+ US dental practices × $99-199/mo = $20M+ TAM for solo product; 30-40% recall revenue lost to missed appointments = high ROI for practices; "plug-in recall engine" connecting to any major dental PMS via read-only integration; ~70 practices = $10K MRR |
-| 2026-04-22 | 96/105 | reddit-2026-04-22, hn-indiehackers-2026-04-22, trends-2026-04-22 | Stable: TRIPLE-source — Reddit: Dentrix "Windows 95 but it works" + simultaneous imaging+charting impossible + data export restrictions; Dentrix Ascend expensive; Covetrus Pulse data migration "came over in all wrong categories"; Open Dental requires IT server; HN/IH: dental practice scheduling explicitly named by multiple IH sources (millipixels.com, entrepreneurloop.com) as prime 2026 boring-business opportunity; AI case acceptance tool (help dentists present treatment plans to get patients to say yes) = killer feature — treatment plan acceptance averages only 60%; Trends: AI SOAP notes for healthcare practices emerging as table stakes; Adit dental AI + Overjet dental radiology = supporting AI tools validating market; cloud-native dental PMS at $249/mo with 1-day onboarding = confirmed positioning; dental practice scheduling + AI case acceptance + insurance eligibility = confirmed MVP feature set |
-| 2026-04-24 | 96/105 | reddit-2026-04-24, hn-indiehackers-2026-04-24, trends-2026-04-24 | Stable: TRIPLE-source — Reddit: Shepherd had 6+ multi-hour outages in February 2026 = ACTIVE LIVE CHURN EVENT; Dentrix/Eaglesoft $5K-12K upfront + $300-500/mo; Open Dental "requires dental IT consultant" not accessible for small practices; Covetrus Pulse "too many clicks in clinical workflows, slow load times"; HN/IH: DentalRx on IH (Stripe-verified product) = broader dental clinical toolkit validated; dental professionals high WTP ($50-150/mo); Trends: Pearl FDA-cleared dental AI 50K+ clinicians; solo-dentist front-office AI (scheduling + insurance pre-verification + SMS reminders) = wide open gap vs diagnostic enterprise tools; 200K+ dental practices in US; $149/mo for ≤2 dentists + 99.9% SLA (fixing Shepherd) + 1-hour support = confirmed positioning |
-| 2026-04-25 | 96/105 | hn-indiehackers-2026-04-25, trends-2026-04-25 | Stable: DUAL-source — HN/IH: Auxpanel model case study confirmed — dental compliance SaaS reached profitability in Year 2 with ZERO marketing spend (purely word-of-mouth); estimated $30-50K MRR from 100+ dental practices × $300-500/mo; 85% margins; 200K dental practices in US = 1% penetration at $350/mo = $700K MRR ceiling; OSHA/HIPAA/DEA compliance logs legally required = regulatory moat; Archy $20M Series B (TCV + Bessemer) = institutional investors confirm market; Trends: Dental PMS market $1.53B→$2.90B by 2032 (9.54% CAGR); Archy disrupting with "supremely easy to use" workflows; new entrants: CareStack, Curve Dental, Remedico; specialty dental (orthodontic, oral surgery, pediatric) NOT served by general dental PMS = additional sub-niche; AI-powered treatment plan presentation = killer differentiator for case acceptance; solo dentist ("hates tech") UX gap = confirmed by all new entrants failing to crack solo market |
-| 2026-04-26 | 96/105 | trends-2026-04-26 | Stable: Dental PM software market $1.35B by 2032 confirmed (OpenPR); DSOs now own 39% of US dental offices = forced modernization wave; new system rollouts cause ~15% more claim denials = migration friction opportunity (moat for incumbents AND chance for smoother migrators); AI billing optimizer (catches claim errors before submission, 95%+ clean claim rate vs industry ~80%) = standalone white space at $199-299 LTD; Planet DDS AI Agents launched March 2026 = major players entering AI front-office; Curve Dental/NexHealth/Weave confirm two-product angle: (1) patient comms layer on top of existing PMS ($49-99/mo), (2) full cloud PMS replacement ($149-299/mo "setup in days not months"); specialty dental still unserved by general PMS = additional sub-niche |
-| 2026-04-30 | 96/105 | competitor-analysis-2026-04-30, trends-2026-04-30 | Stable: DUAL-source — Competitor: DentalOS concept — Dentrix $500-1,000+/mo + $15-25K setup + server-based; Eaglesoft moving to subscription-only 2026 (forcing migration); Dentrix Ascend can't view images while charting; cloud-native $299/mo transparent flat pricing + zero setup fee + free data import + modern simultaneous chart+image view = confirmed gap for solo/small practices; Trends: Archy $20M Series B (TCV/Bessemer) 300% YoY growth confirms replacement cycle underway; dental PMS $2B→$4.94B by 2032 (10.7% CAGR); AI front desk agents (Planet DDS March 2026) entering; specialty dental (mobile dentistry, pediatric) still underserved by all general PMS |
-| 2026-05-14 | 93/105 | reddit-2026-05-14, trends-2026-05-14 | Stable: DUAL-source — Reddit: "Dentrix feels like Windows 95 but it works" = encapsulates market; Curve Dental reliability outages (AWS down = zero fallback); solo/1–3 chair practices locked into bloated software; offline-capable PWA as reliability differentiator; Trends: dental market $1.53B→$2.90B by 2032 at 9.54% CAGR; 50% of dental assistants considering leaving = staff retention crisis driving urgent upgrades; AI patient reactivation (identify overdue patients + personalized outreach) at $297–$497 LTD = fastest standalone product; dental insurance verification automation = second standalone angle; Sources: globenewswire.com/dental-pms-2026, curvedental.com/staff-turnover-2026, pact-one.com/cloud-dental-pms-2026, solutionreach.com/dental-pms-features-2026 |
-| 2026-05-29 | 95/105 | competitor-analysis-2026-05-29, trends-2026-05-29 | ↑2: Full cloud PMS angle deep-dive — Dentrix/Eaglesoft at $500–$800+/mo + $2,000–$5,000 setup; Windows-only (no Mac); module add-ons for e-claims/patient comms/imaging all sold separately; "PearlChart" concept: $199/mo flat for solo/1–3 dentist practices — everything included (scheduling, clinical charting, billing, SMS/email reminders, real-time insurance eligibility, patient self-scheduling portal); free migration from Dentrix/Eaglesoft; 73% of US dentists in independent practices; 35K+ Dentrix users alone = addressable market; NOTE: full PMS is a 4–6 month build (HIPAA, clinical charting, insurance verification = complex); revised recommendation: continue patient comms layer ($49–99/mo) as MVP, full PMS as moat; AI dental billing denial prevention = standalone angle (15% claim denial rate from incorrect codes); Trends: Shepherd 6+ multi-hour outages + Digitail gaining; AI documentation (notes, diagnoses, prescriptions) = top differentiator; Sources: firststopdental.com/dental-practice-management-software-comparison, wiredforthefuture.com/how-much-does-dentrix-cost, capterra.com/Dentrix/reviews, capterra.com/EagleSoft/reviews, opendental.com/site/fees.html |
-| 2026-06-03 | 95/105 | reddit, hn-indiehackers, trends | Stable: TRIPLE-source — Reddit: Dentrix $5K–15K upfront + ongoing $300–700/mo confirmed; Eaglesoft 0.90% payment surcharge + $1,500/mo for 10 users = hidden cost confirmed; 6-hour cloud outages in 2025 = reliability as differentiator; 200K+ independent dental practices in US; HN/IH: dental recall automation reconfirmed (EU founder €45K MRR validates pricing); AI dental front desk automation wave underway (Planet DDS AI Agents, Adit); solo/1–3 chair practices underserved by all new AI entrants simultaneously; cloud-native dental PMS at $199/mo flat = confirmed white space; Trends: AI practice management for small healthcare (dental/vet/chiro) wave confirmed; dental PMS market $1.66B→$2.90B by 2032 (9.54% CAGR); Eaglesoft moving to subscription-only 2026 (forced migration event); $49–99/mo patient comms layer (anti-Weave) as MVP; full PMS replacement as moat; Sources: reddit-2026-06-03, hn-indiehackers-2026-06-03, trends-2026-06-03 |
-| 2026-06-21 | 95/105 | reddit-2026-06-21, trends-2026-06-21 | Stable: DUAL-source — Reddit: Curve Dental cloud outages 6+ hours confirmed (complete practice stoppage); Eaglesoft subscription-only migration 2026 = active forced migration event; Trends: Dental AI insurance automation wave (Toothy.ai, Planet DDS AI Agents, Adit); 15% insurance claim denial rate from incorrect codes = AI billing denial prevention angle; cloud-native dental PMS at $199/mo flat vs $500–800+/mo Dentrix/Eaglesoft = confirmed white space; 200K+ independent dental practices = TAM; Sources: reddit-2026-06-21, trends-2026-06-21 |
+| 2026-08-18 | 92/105 | trends-2026-08-18 | First identified — Trend Spotter: pure white space confirmed; $12K–35K MRR potential at $99–199/office; Open Dental open-source data model = fast build path; SumoTrends 2026 names this as unoccupied boring niche; no competitor found on any software review site |
