@@ -36,8 +36,8 @@ Generic tools require significant prompt engineering by non-technical trade shop
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 4/5 | 3x | 12 | Trillet/ServiceAgent/LeadTruffle have paying customers; 40%+ missed call rate = clear ROI |
-| Competitor Weakness | 3/5 | 2x | 6 | Multiple players exist; white space is niche-specific tuning + FSM integration (no one has this) |
+| Market Validation | 5/5 | 3x | 15 | Avoca AI = $1B VALUATION on $125M funding April 2026 = strongest market validation in this idea's history; Trillet/ServiceAgent/LeadTruffle all paying; 40%+ missed call rate = clear ROI |
+| Competitor Weakness | 4/5 | 2x | 8 | Generic AI receptionists miss trade-specific qualification + FSM booking integration; Conduit AI (Show HN) has low traction; indie opportunity = narrow to one trade, integrate deeply with one FSM, turn call capture into booked appointment (not just email) |
 | LTD Viability | 3/5 | 2x | 6 | $99-199 LTD possible but ongoing voice API costs (Retell/Twilio + LLM) hurt margins |
 | No Free Tier | 4/5 | 1x | 4 | No free AI answering for trades |
 | Channel Access | 4/5 | 2x | 8 | r/HVAC, HVAC-Talk forum, HVAC School community, trade Facebook groups |
