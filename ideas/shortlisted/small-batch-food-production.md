@@ -57,6 +57,7 @@ Commercial SaaS for micro-bakeries, cottage food, and small-batch producers — 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-17 | 75/105 | reddit, hn-indiehackers, competitor-analysis, trends | Full re-evaluation across all raw data (Feb 21 - Mar 17) |
+| 2026-09-27 | 82/105 | competitor-analysis-2026-09-27, hn-indiehackers-2026-09-27 | ↑7: MAJOR upgrade — FSMA Rule 204 deadline (July 2028) creates hard regulatory urgency; 50K+ small US food manufacturers have no compliant lot-tracking tool; Craftybase confirmed as "relational database feel" with no FDA compliance features; mock recall report in 5 minutes = unique wedge no affordable tool can match; $199 LTD with compliance-urgency positioning; competitor Craftplan (1,000+ GitHub stars) confirms market appetite for open-source alternative; hosted SaaS of Craftplan-type functionality at $49/mo = clear gap |
 | 2026-03-18 | 75/105 | reddit, hn-indiehackers, competitor-analysis, trends | Re-evaluation with Mar 17-18 data: Craftplan gaining traction; Carbon ERP at $90/mo; YC RFS backing the category |
 | 2026-03-19 | 75/105 | reddit | Stable: no significant new data |
 | 2026-03-21 | 75/105 | hn-indiehackers | Craftplan continued traction in hn-indiehackers-2026-03-21 |

@@ -106,3 +106,4 @@ Small sign shops (2–10 employees, $300K–$2M revenue) do all of this manually
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-06-19 | 87/105 | reddit-2026-06-19 | First identified — ShopVOX 70%+ price increase creates active migration window; substrate pricing calculator is key wedge feature; Printavo is wrong niche; Signs101.com forum confirms community actively seeking alternatives; time-sensitive BUILD opportunity |
+| 2026-09-27 | 88/105 | competitor-analysis-2026-09-27 | ↑1: Competitor analysis confirms ShopVOX price hike now reported as 350% for some users (stronger than June 70% figure); Signs101 forum still actively hunting alternatives; PrinterFlo and Sign Tracker confirmed as weak alternatives; gap between $0 and $99+/mo with no mid-tier confirmed; time pressure increasing |
