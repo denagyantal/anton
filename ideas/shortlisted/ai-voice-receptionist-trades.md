@@ -1,8 +1,8 @@
-# AI Voice Receptionist for Trades (Sub-5-Tech Shops) — Score: 87/105
+# AI Voice Receptionist for Trades (Sub-5-Tech Shops) — Score: 88/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-09-23
+**Evaluation Date**: 2026-10-01
 **Decision Status**: NEW
 
 ## One-Line Pitch
@@ -91,3 +91,4 @@ Current workaround: voicemail (lose the job), hire a $15/hr part-time receptioni
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-09-23 | 87/105 | trends-2026-09-23, hn-indiehackers-2026-09-23 | First identified: Avoca AI $1B/$125M validates market at enterprise level; sub-5-tech segment at $99/mo open; Rebar $14M for commercial trades AI OS; Simpro Lightning AI-first platform; trades miss 30–40% of inbound calls; Vapi/Twilio + scheduling webhook = 3–4 week MVP; Jobber/HCP integration as key distribution; $99/mo or $299–499 LTD team license |
+| 2026-10-01 | 88/105 | reddit-2026-10-01, hn-indiehackers-2026-10-01, trends-2026-10-01 | ↑1: TRIPLE-source — Reddit: Two independent builders found beta customers using AI SMS receptionist for trades (missed-call → auto-SMS → AI qualification → booking); solo tradespeople miss calls constantly while on-site; HN/IH: Avoca AI $1B valuation (Kleiner Perkins) + 800+ operators + Sila Services 90%+ call automation + +35% booking rate; Sameday AI, Goodcall ($79/mo), Smith.ai all entering mid-market; sub-$99/mo for solo/micro shops wide open; multilingual voice (Hispanic-owned trades) unserved; maintenance plan upsell during call = unique feature no competitor has; Trends: $149 LTD "first 500 calls/mo included" confirmed AppSumo-ready; $40M Probook + $1B Avoca = $1.04B into home service AI validates sector; Sources: reddit.com/r/sweatystartup/comments/14xpnmg, idlen.io/news/avoca-ai-1-billion-valuation-kleiner-perkins, contractortoolstack.com/software/avoca-ai, justcall.io/blog/best-ai-receptionist-for-hvac, leapingai.com/blog/voice-ai-platforms-compared-leaping-ai-vs-avoca |

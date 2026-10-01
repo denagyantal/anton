@@ -4,11 +4,11 @@ description: Month-to-month auto shop management for 1–3 bay independent shops
 type: project
 ---
 
-# Auto Repair Shop Management (No-Contract) — Score: 90/105
+# Auto Repair Shop Management (No-Contract) — Score: 91/105
 
 **Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-09-24
+**Evaluation Date**: 2026-10-01
 
 ## One-Line Pitch
 
@@ -116,3 +116,4 @@ The gap: a true contract-free, month-to-month shop management platform under $10
 | Date | Score | Sources | Notes |
 |---|---|---|---|
 | 2026-09-24 | 90/105 | competitor-analysis | New entry — Competitor deep-dive: Tekmetric "$1,000+/mo with add-ons" + Shop4D $1,100/mo predatory contracts + annual lock-in documented; Shopmonkey proprietary payment processing (higher rates); AutoLeap missing text-to-pay; no auto shop software on AppSumo = category gap; 160K+ independent US shops; "BayOS" concept: $89/mo flat, unlimited users, month-to-month, digital inspection + MOTOR labor guide + PartsTech + text-to-pay; Sources: capterra.com/Tekmetric/reviews, diag.net/msg/m79uf4yb3eb9qotjcphts1hcdr, nextcarhub.com/auto-repair-shop-software-cost |
+| 2026-10-01 | 91/105 | competitor-analysis-2026-10-01 | ↑1: SINGLE-source — Competitor: Full 6-player matrix with new specifics — Mitchell 1 "feels dated compared to newer tools" + requires multiple separate Mitchell products for full coverage (inspections, billing, communication = multi-product dependency); ShopMonkey inventory tracking too basic (shops tracking parts manually outside app); AutoLeap complex setup weeks to get comfortable = lost revenue for small shops; Tekmetric $199+/mo "priced for established shops, overkill for 1-bay independent"; Shop4D "$1,100/mo + large setup fee + mandatory 1-year contract + system down daily in first 3 months" (BBB documented); lag/performance issues plague multiple platforms; zero auto shop software on AppSumo = first-mover confirmed; 160K+ independent US shops; LTD at $99–129 kills monthly anxiety that is top objection; Sources: g2.com/categories/auto-shop-management, capterra.com/auto-repair-software, dealr.cloud/blog/best-auto-repair-shop-management-software, garage360.io/blog/best-auto-repair-shop-software, softwareadvice.com/auto-repair, blog.csiaccounting.com/top-shop-management-software-auto-repair-reviews-breakdown |
