@@ -1,12 +1,12 @@
 ---
 name: Contractor Rebate & Permit Automation (Rebate Robot)
-description: AI tool that finds and files manufacturer/utility/federal rebates for HVAC contractors — one successful claim ($500–$2,000) pays for the product in its first use
+description: AI tool that finds and files manufacturer/utility/federal rebates for HVAC contractors — VC-validated by WorkHero $5M seed + Faraday 300% growth; indie wedge is the $49-99/mo standalone tool they can't price accessibly
 type: project
 ---
 
 # Contractor Rebate & Permit Automation ("Rebate Robot")
 
-**Score**: 85/105
+**Score**: 93/105
 **Verdict**: BUILD
 **LTD Price**: $99 (software layer) OR 15% of rebate value (success-fee)
 
@@ -33,9 +33,9 @@ The back-office burden also extends to **permits** (vary by municipality, requir
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 4/5 | 3x | 12 | Faraday doing this at enterprise; $600B market; IRA rebates = government mandate |
+| Market Validation | 5/5 | 3x | 15 | **WorkHero raised $5M seed** (Navitas Capital, Oct 2025) + **Faraday at 300% growth in 9 months** — two funded companies attacking the same HVAC back-office rebate problem = highest-confidence market validation |
 | Competitor Weakness | 5/5 | 2x | 10 | No affordable tool exists; Faraday is enterprise B2B only |
-| LTD Viability | 3/5 | 2x | 6 | Success-fee more natural; but $99 LTD for software layer viable as wedge |
+| LTD Viability | 4/5 | 2x | 8 | $99 LTD software layer; "pays for itself on first $500+ rebate recovered" = undeniable ROI pitch; WorkHero pricing confirms indie can win at $49-99/mo |
 | No Free Tier | 5/5 | 1x | 5 | No free rebate tracking tool for individual contractors |
 | Channel Access | 4/5 | 2x | 8 | ACCA, PHCC, HVAC contractor Facebook groups, r/HVAC, supply house networks |
 | Content Potential | 4/5 | 1x | 4 | "HVAC rebate finder", "IRA rebate contractor", "utility rebate software" |
@@ -45,7 +45,7 @@ The back-office burden also extends to **permits** (vary by municipality, requir
 | Build Feasibility | 4/5 | 2x | 8 | Rebate database + form generation + install record tracking = 4–6 weeks |
 | Boring Business Bonus | 5/5 | 2x | 10 | HVAC contractor back-office = definitional boring business |
 
-**Total: 85/105**
+**Total: 93/105**
 
 ## Key Differentiators
 1. **Auto-identify eligibility** — connect equipment install records, system surfaces all eligible programs (IRA, state, utility, manufacturer)
@@ -94,3 +94,4 @@ The back-office burden also extends to **permits** (vary by municipality, requir
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-05-21 | 85/105 | hn-indiehackers-2026-05-21, trends-2026-05-21 | First identified: Faraday.so hiring signal (HN "Who is Hiring" Feb 2026) + Elyos AI $13M confirms AI for trades back-office; enterprise-only gap = indie opportunity for 1–10 truck HVAC shops; IRA rebates add $9B+ new eligibility; success-fee pricing most natural |
+| 2026-10-05 | 93/105 | hn-indiehackers-2026-10-05, trends-2026-10-05 | ↑8: MAJOR UPGRADE — WorkHero raised **$5M seed** (Navitas Capital, Oct 2025) specifically for HVAC back-office including rebate processing; Faraday at **300% growth in 9 months** (hiring senior engineers at $160–200K); BOTH are enterprise-only → indie $49–99/mo standalone is wide open; Market Validation upgraded to 5/5; LTD Viability upgraded to 4/5 (WorkHero pricing confirms willingness to pay); window to own the small contractor rebate tool is NOW before they scale down; Sources: accessnewswire.com/newsroom/en/.../workhero-raises-5m-seed-round, workhero.pro, faraday.so, hnhiring.com/technologies/typescript/months/february-2026 |

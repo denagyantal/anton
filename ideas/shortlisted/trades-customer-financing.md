@@ -87,3 +87,4 @@ Optional: Branded financing widget embeddable on the shop's website for estimate
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-04-12 | 84/105 | reddit-2026-04-12 | First identified: HVAC/plumbing shops losing $3K–$12K jobs for lack of financing; Wisetack SDK enables 3–4 week MVP; no standalone tool at this level |
+| 2026-10-05 | 87/105 | hn-indiehackers-2026-10-05, trends-2026-10-05 | ↑3: DUAL-source — HN/IH: Kanda (UK) + TradePay (UK) = trades-specific homeowner financing platforms proven in UK market; YC W21 HN thread confirms US equivalent gap is wide open (no direct funded US competitor); Trends: HVAC/plumbing shops losing $3K-$12K jobs for lack of homeowner financing confirmed; "good/better/best" tier estimate with inline financing calculator = natural product shape; Wisetack SDK enables 3-4 week MVP; $49-99/mo or $299 LTD viable once Wisetack handles compliance; Sources: hn-indiehackers-2026-10-05, trends-2026-10-05 |
