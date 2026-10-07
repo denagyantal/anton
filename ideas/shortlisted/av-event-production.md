@@ -1,4 +1,4 @@
-# AV / Event Production Operations Platform — Score: 74/105
+# AV / Event Production Operations Platform — Score: 77/105
 
 **Verdict**: EXPLORE FURTHER
 **Tier**: 2 (Worth Exploring)
@@ -66,3 +66,4 @@ Rentman solved this at $15–20M ARR, but serves the mid-to-large segment ($500K
 |------|-------|---------|-------|
 | 2026-05-28 | 74/105 | hn-indiehackers-2026-05-28 | First identified — Rentman $15–20M ARR bootstrapped from 16-year-old AV operator (IH featured); US small-to-mid 1–15 crew production companies below Rentman's target = gap confirmed; "biggest moats being built in AV, HVAC, dental, restoration" per IH investor comment |
 | 2026-06-17 | 74/105 | hn-indiehackers-2026-06-17 | Stable: SINGLE-source — IH: Rentman featured case study — $15-20M ARR, bootstrapped first 8 years, now taking outside capital, 70+ countries; small/mid AV rental shops (1–10 employees) below Rentman's target = gap confirmed; freelance-crew flywheel (techs who use it at one company ask next employer to adopt) under-exploited; AI-generated project estimates and auto-crew assignment not done well; "lightweight Rentman for 1-10 person AV/staging shops" concept; AI auto-quote from job brief (venue, crew count, equipment list); Sources: indiehackers.com/post/tech/building-a-15m-arr-saas-from-a-gap-he-found-at-his-brick-and-mortar-HFriCBQLHukAmdXVEj1q |
+| 2026-10-07 | 77/105 | hn-indiehackers-2026-10-07 | ↑3: SINGLE-source — HN/IH: Rentman $15-20M ARR IH interview re-surfaced (107 upvotes); Stagetimer solo founder at $20K MRR + Rundown Studio growing = $20K+ MRR validated for live events tooling adjacent to AV production; one-time pricing precedent set by Stagetimer ($149 LTD) confirms AppSumo fit for event ops tools; US small AV shops (1–15 crew) still unserved by Rentman (EU-focused, enterprise-priced); score 74→77 on strength of Stagetimer ARR as adjacent proof; Sources: hn-indiehackers-2026-10-07 |

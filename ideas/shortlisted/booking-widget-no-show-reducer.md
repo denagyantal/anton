@@ -60,3 +60,4 @@ Local service businesses lose 10-30% of revenue to no-shows. Plumbers, dentists,
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-03-20 | 83/105 | reddit, hn-indiehackers | First identified; fast 2-3 week build; universal pain point |
+| 2026-10-07 | 83/105 | reddit-2026-10-07 | Stable: SINGLE-source — Reddit: launchsaas.org + saasniche.com aggregators confirm no-show prevention in top micro-SaaS ideas for 2026; Instagram DM → booking flow = new unserved channel (mobile detailers/groomers/tutors share booking link in DMs but can't collect deposits); $200-300/no-show loss quantified; Acuity/Calendly/Square exist but not mobile-service-specific with deposits for informal channel bookings; $59 LTD confirmed; Sources: launchsaas.org/blog/micro-saas-ideas-validated-reddit-2026, saasniche.com/blog/50-micro-saas-opportunities-from-reddit-in-2026 |
