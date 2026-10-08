@@ -95,3 +95,4 @@ HR managers at 50–500 person companies spend 2–3 hours per hire customizing 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-08-14 | 89/105 | hn-indiehackers | New signal: #1 severity in IH 39K complaint dataset; 6 HRIS vendors all broken |
+| 2026-10-08 | 89/105 | hn-indiehackers-2026-10-08 | Stable: SINGLE-source — HN/IH: BigIdeasDB 39K-complaint analysis reconfirmed; HR/payroll template builder at 4.5/5 pain severity (highest in dataset); Upwork frequency score 6 for "HR document drafter" = real ongoing freelancer spend; $149/mo per company; drag-drop HR document builder + smart employee fields + state-specific compliance library = confirmed product direction; BambooHR/Gusto/Rippling integration v2; SHRM forums + LinkedIn HR groups = primary distribution |
