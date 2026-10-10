@@ -1,131 +1,114 @@
 ---
-name: QuickBooks Alternative — Honest Bookkeeping for Micro-Businesses
-description: Price-lock bookkeeping for SMBs under $500K revenue — QB/Wave/FreshBooks refugee market at $79-99 LTD
+name: Bookkeeper CSV Data Cleaner
+description: Automated CSV format conversion and invoice data cleaning for bookkeepers/accountants — $750 MRR IH proof, trivially simple, near-zero infra; first identified 2026-10-10 at 78/105
 type: shortlisted
 ---
 
-# QuickBooks Alternative — Honest Bookkeeping for Micro-Businesses — Score: 91/105
+# Bookkeeper CSV Data Cleaner — Score: 78/105
 
-**Verdict**: BUILD
+**Verdict**: BUILD (small MVP first, validate before investing deeply)
 **Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-06-12
+**Evaluation Date**: 2026-10-10
+**Decision Status**: NEW — first identification today
 
 ## One-Line Pitch
-The "no surprise price hikes" accounting tool for small businesses priced off Wave's gutted free tier and FreshBooks' doubled prices — bank sync, invoicing, P&L, and human support at $29/mo forever.
+
+Automates the 15-30 minutes of weekly spreadsheet drudgery bookkeepers do to clean invoice data and reformat bank statements — validated at $750 MRR by an IH founder.
 
 ## Problem
-The SMB bookkeeping market is undergoing a pricing betrayal crisis:
-- **QuickBooks Desktop**: $530 (2023) → $999 (2025) — 400% increase in 3 years; FTC complaints filed; BBB complaints mounting; 85% market share behaving like a monopoly
-- **FreshBooks**: Multiple price increases in 2026 alone (Feb, Aug, Jan); has "doubled in price"; high payment processing fees
-- **Wave**: Bank transaction auto-imports moved from free to $16/mo Pro in 2025 causing mass exodus; no audit trails; community forums shut down in 2022; human support unavailable for free users
-- **Xero**: Multi-currency requires $75/mo Premium even for simple needs; support difficult; server reliability issues
 
-One 20-year QuickBooks customer: "I use Check, online banking, 2 banks, 2 credit cards — that's it. Why am I paying $1,000/year?"
+Bookkeepers and virtual assistants spend 15-30 minutes per week (or per client) reformatting exported data:
+- Bank statement CSV formats vary by bank (date format, description field, debit/credit columns all differ)
+- Invoice data from QuickBooks/Wave/FreshBooks exports in formats incompatible with accounting ledgers
+- Expense report CSVs from Expensify/Concur need column remapping for bookkeeping workflows
+- Payroll data exports need format conversion before entering accounting software
 
-The gap: A tool for micro-businesses ($50K–$500K revenue) who use <10% of QuickBooks features but need bank sync + invoicing + basic P&L + tax reports + audit trails + human support at $25-35/mo flat forever.
+Excel macros solve this technically but require setup per client and break when bank formats change. No dedicated tool exists specifically for bookkeeper CSV workflows.
+
+An IH founder built exactly this and reached $750 MRR in months ("While everyone chases the next AI unicorn, there are thousands of small workflow problems businesses deal with every day").
 
 ## Market Evidence
-- QuickBooks controls ~85% of small business accounting market
-- Wave's gutted free tier created a mass exodus of freelancers and micro-businesses actively seeking alternatives
-- FreshBooks 2026 price changes triggered user revolt (freshbooks.com/2026-faq-price-change is actively discussed)
-- Reddit viral complaint threads with hundreds of replies on QB pricing posts
-- AppSumo validation: Fynlo + Smart Clerk (AI bookkeeping add-ons) actively selling on AppSumo = QB-alternative demand confirmed
-- Multiple CPAs and coaches publishing "why QBO fails restaurants/freelancers/trades" content = distribution channel
+
+- IH post: $750 MRR from CSV automation tool for bookkeepers/accountants — confirmed paying customers in this niche
+- Bookkeepers typically manage 5-20 clients each; automation that saves 15-30 min/client/week = 2-10 hours saved weekly
+- r/bookkeeping, r/accounting, r/QuickBooks = active communities with "how do I automate this?" threads
+- No dedicated bookkeeper CSV tool on AppSumo (category first-mover opportunity)
+- Build feasibility 5/5: CSV parsing + format conversion + cleaning rules = 1-week build, near-zero infra cost
 
 ## Scoring Breakdown
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 5/5 | 3x | 15 | QB 85% market share; FTC complaints; viral complaint threads; multiple price-hike news cycles |
-| Competitor Weakness | 4/5 | 2x | 8 | FreshBooks doubled in 2026; Wave moved bank imports behind paywall causing mass exodus; Xero complex |
-| LTD Viability | 5/5 | 2x | 10 | $79-99 LTD; Fynlo + Smart Clerk already selling on AppSumo validates QB-alternative demand |
-| No Free Tier | 4/5 | 1x | 4 | Wave free tier gutted; real free alternatives non-existent for business use |
-| Channel Access | 5/5 | 2x | 10 | r/smallbusiness, r/Bookkeeping, r/freelance, FB "Small Business Owners" — massive reachable audiences |
-| Content Potential | 4/5 | 1x | 4 | "QuickBooks alternative", "Wave alternative", "FreshBooks alternative 2026" — active high-volume search |
-| AppSumo Fit | 5/5 | 2x | 10 | AI bookkeeping tools active on AppSumo; QB refugee narrative = perfect audience |
-| Review Potential | 4/5 | 1x | 4 | Small biz owners vocal on G2/Capterra; frustrated QB users actively seek platforms to vent |
-| MRR Path | 4/5 | 3x | 12 | $9-29/mo after LTD; "no price hike" pledge as retention + differentiation |
-| Build Feasibility | 4/5 | 2x | 8 | Bank sync + invoicing + P&L + basic reports = well-understood stack; 4-6 weeks |
-| Boring Business Bonus | 3/5 | 2x | 6 | SMB bookkeeping is professional but not deeply blue-collar trades |
+| Market Validation | 3/5 | 3x | 9 | IH $750 MRR proof — small but real; adjacent to every accounting workflow |
+| Competitor Weakness | 4/5 | 2x | 8 | No dedicated bookkeeper CSV converter; Excel is the competitor |
+| LTD Viability | 5/5 | 2x | 10 | Near-zero infra; $49-79 LTD natural for utility tool |
+| No Free Tier | 4/5 | 1x | 4 | Excel does this manually; no dedicated free tool |
+| Channel Access | 3/5 | 2x | 6 | Bookkeeper FB groups, r/bookkeeping, VA communities |
+| Content Potential | 3/5 | 1x | 3 | "bookkeeper CSV converter", "bank statement reformatter", "invoice data cleaner" |
+| AppSumo Fit | 4/5 | 2x | 8 | Simple utility; clear ROI (saves time immediately) |
+| Review Potential | 3/5 | 1x | 3 | Bookkeepers review tools in communities |
+| MRR Path | 3/5 | 3x | 9 | $15-25/mo natural; limited ceiling for narrow tool |
+| Build Feasibility | 5/5 | 2x | 10 | CSV parsing + format conversion + cleaning rules = 1-week build |
+| Boring Business Bonus | 4/5 | 2x | 8 | Bookkeepers = boring professional service |
 
-**Total: 91/105**
+**Total Weighted Score: 78/105**
 
 ## Must-Have Filters
-- [x] Problem is real (QB/FreshBooks/Wave pricing betrayal documented with FTC complaints + viral threads)
-- [x] Can build without deep domain expertise (bank sync + invoicing + P&L is well-understood)
-- [x] Market not dominated by unbeatable player (QB dominant but pricing behavior creating massive switching intent)
-- [x] Revenue potential > $10K MRR within 12 months (r/smallbusiness 1M+ members, r/Bookkeeping 100K+)
+- [x] Problem is real ($750 MRR IH proof; weekly time waste documented)
+- [x] Can build without deep domain expertise (CSV parsing + format conversion)
+- [x] No dominant player (no dedicated bookkeeper CSV tool exists)
+- [ ] Revenue potential > $10K MRR within 12 months — **MARGINAL** — $750 IH MRR is small; this may cap at $3-5K MRR unless expanded
 
 ## Boring Business Fit Check
-- [x] VC-ignored market (No VC-backed QB alternative with meaningful traction below $50/mo)
-- [x] Non-technical buyers (micro-business owners, not developers)
-- [x] Existing software outdated/overpriced (QB $999/yr, FreshBooks doubled, Wave gutted)
-- [x] Real business budgets (micro-businesses spend $100-999/yr on bookkeeping software today)
-- [x] Low churn once adopted (bookkeeping = core daily/monthly workflow)
+- ✅ VCs ignore bookkeeper tooling entirely
+- ✅ Bookkeepers are non-technical (won't build their own)
+- ✅ No decent existing tool; Excel macros = the workaround
+- ✅ Bookkeepers have real weekly time cost (15-30 min × 10 clients = 150-300 min/week)
+- ⚠️ Churn risk: AI tools like ChatGPT can now reformat CSVs for free — moat is integration + templates
 
-## Core Features (MVP — 4-6 weeks)
-1. **Bank sync**: Connect 2-3 business bank accounts + credit cards (via Plaid)
-2. **Transaction categorization**: AI-assisted auto-categorization with override
-3. **Invoicing**: Create, send, track invoices with payment link
-4. **P&L report**: Monthly income vs. expenses, category breakdown
-5. **Basic tax categories**: Schedule C / Schedule E / business expense categories
-6. **Audit trail**: Full change history (missing from Wave)
-7. **Human support**: Chat support with real humans (vs. AI-only or multi-day waits)
+## Product Concept
 
-## Positioning
-**"The last bookkeeping tool you'll ever buy — and we mean that literally."**
+**"BookClean"** (or "LedgerCSV") — CSV format conversion and data cleaning tool for bookkeepers
 
-Core differentiation:
-- **Price-lock pledge**: Public commitment to never raise prices without 12-month notice
-- **Audit trails included**: Missing from Wave at any tier
-- **Human support**: At a price point where competitors use AI-only chatbots
-- **No betrayal features**: Every feature available at base tier; no bait-and-switch feature paywalls
+**Core MVP features (1 week):**
+- Drag-and-drop CSV upload
+- Bank statement normalizer: auto-detects date format, maps debit/credit columns, cleans merchant name descriptions
+- Invoice data reformatter: export from QuickBooks/Wave/FreshBooks → clean flat file for bookkeeping ledger
+- Custom column mapping templates (save once, reuse per client)
+- Download cleaned CSV or send directly to QuickBooks via API
 
-## Target Customer
-- Freelancers and consultants priced off Wave free tier
-- Solo trades contractors (plumbers, electricians, HVAC) who use <10% of QB features
-- Micro-businesses under $500K revenue: cleaning companies, lawn care, restaurants, retail shops
-- QB Desktop users refusing to migrate to $999/yr Online
+**Phase 2:**
+- Bank-specific templates (Chase, BofA, Wells Fargo, Amex, Stripe — each exports differently)
+- Payroll data conversion (Gusto, ADP → bookkeeping format)
+- AI-assisted column detection and cleaning rules
 
-## Pricing Model
-- **Free trial**: 30 days, full features
-- **Monthly**: $29/mo (all features, up to 2 connected bank accounts)
-- **Annual**: $249/yr (~$21/mo)
-- **LTD**: $79-99 (up to 3 bank accounts, no expiry, public price-lock pledge)
+**Pricing:**
+- $15/mo — unlimited files, up to 3 clients
+- $25/mo — unlimited files, unlimited clients
+- LTD: $49-79 (unlimited, lifetime)
+
+## Key Differentiators
+1. **Bookkeeper-specific templates** — pre-built mappings for the 20 most common bank/accounting export formats
+2. **One-click clean** — no Excel macro setup; works in browser
+3. **Client workspace** — separate settings per client (their bank, their accounting software format)
 
 ## Target Channels
-- r/smallbusiness, r/Bookkeeping, r/freelance
-- Facebook "Small Business Owners" groups (millions of members)
-- QuickBooks community forums (Reddit, QB's own forums — users actively asking for alternatives)
-- Product Hunt for launch
-- AppSumo at $79-99 LTD
+- r/bookkeeping, r/accounting, r/QuickBooks
+- Facebook: "Bookkeepers & Accountants" groups (200K+ combined)
+- IH post targeting VA/bookkeeper freelancers specifically
+- AppSumo (first in category)
+- Content: "bank statement CSV converter for bookkeepers", "QuickBooks import cleaner"
 
-## Top Risks
-1. QB accountant ecosystem is sticky — CPA/bookkeeper dependency keeps QB users locked in even when unhappy
-2. Wave could reverse course, restore free features, and reclaim displaced users
-3. Zoho Books ($10-40/mo) and Xero have marketing budgets and distribution; hard to win on SEO
-4. Bank sync API costs (Plaid) add per-user cost pressure at low price points
+## Top 3 Risks
+1. **AI erosion**: ChatGPT/Claude can reformat CSVs for free — moat must be convenience and templates, not complexity
+2. **MRR ceiling**: narrow tool may cap at $3-5K MRR; expand to bookkeeper bundle to grow
+3. **Market validation is small**: $750 IH MRR is proof-of-concept, not proof-of-scale
 
 ## Key Source Links
-- https://quickbooks.intuit.com/learn-support/en-us/other-questions/price-increase-2025/00/1546802
-- https://jamietrull.com/2025/04/20/quickbooks-pricing/
-- https://www.nerdwallet.com/business/software/reviews/wave-accounting
-- https://www.freshbooks.com/2026-faq-price-change
-- https://www.nerdwallet.com/best/small-business/quickbooks-online-alternatives
-- https://www.capterra.com/p/120109/Xero/reviews/
-- https://appsumo.com/products/fynlo/ (AppSumo validation)
-- https://appsumo.com/products/smart-clerk/
-- https://www.capterra.com/accounting-software/
+- https://www.indiehackers.com/post/how-a-simple-csv-converter-reached-750-mrr-in-just-months-d3ff74cbad
 
 ## Signal History
 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
-| 2026-06-12 | 91/105 | reddit-2026-06-12, competitor-analysis-2026-06-12 | First identified — DUAL-source convergence; QB $999/yr (400% increase in 3 years); FreshBooks doubled in 2026; Wave bank imports moved behind paywall causing mass exodus; Fynlo + Smart Clerk on AppSumo validates demand; "price-lock accounting" positioning confirmed; $79-99 LTD on AppSumo; r/smallbusiness + r/Bookkeeping as distribution; human support as differentiator vs AI-only competitors |
-| 2026-06-15 | 91/105 | reddit-2026-06-15, hn-indiehackers-2026-06-15 | Stable: DUAL-source — Reddit: NEW ANGLE — specialty contractors (electrical, plumbing, HVAC, concrete) need job costing (tracking labor + materials per job to know profit per project); QuickBooks clunky for this; Knowify $99–249/mo overpriced for 1–5 person shops; Buildertrend $499/mo overkill; month-end close 2–3 weeks when data in 3+ disconnected systems; standalone $49/mo lightweight job costing tool that doesn't require QuickBooks = confirmed gap; 3.7M specialty trade contractor businesses in US; HN: Bench bankruptcy (Dec 2024) left thousands without bookkeeping; many were trades businesses; "QuickBooks but for independent truckers" concept validated (IFTA calc + load profitability + driver settlements + fuel card integration); Deskera estimated $1.2M/year from AppSumo LTD at $149 = proof of concept for trades-specific ERP; "post-Bench" positioning: "we will never shut down without migrating your data" = acute angle for contractor market; SumoTrends explicitly recommends "Build a Micro-ERP for dental practices or independent logistics companies"; Sources: workmax.com/resources/blog/best-construction-accounting-software/, redhammer.io/blog/best-construction-accounting-software-for-contractors, sumotrends.com/ideas/boring-saas-niches-printing-money-2026/, news.ycombinator.com/item?id=42726988 |
-| 2026-06-20 | 91/105 | reddit-2026-06-20 | Stable: SINGLE-source — Reddit: Bookkeeping for service businesses — NEW SERVICE ANGLE: job costing for specialty contractors (electrical, plumbing, HVAC, concrete) tracking labor + materials per job for per-project profit visibility; QuickBooks too clunky for trades job costing; Knowify $99–249/mo overpriced for 1-5 person shops; 3.7M specialty trade contractor businesses in US; flat $49/mo lightweight job costing that doesn't require QB = confirmed gap; Sources: reddit-2026-06-20 |
-| 2026-07-04 | 100/105 | ↑9 | COMPETITOR ANALYSIS MAJOR UPGRADE — "TradeBooks" concept fully spec'd; QB Desktop discontinued Sept 2027 = forced migration event for millions of desktop users (bank sync + security fixes stop); QB 52% price increase since 2020 (Simple Start $25→$38/mo); fully loaded QB setup runs $500-800/mo with payroll + add-ons; "The difference between an HVAC company that nets 12% and one that nets 4% is rarely about pricing — it's about whether the owner can see which jobs are profitable" — key insight confirming trade-specific job costing gap; TradeBooks differentiators: pre-built trade job categories (HVAC service call, install, maintenance contract, materials run), job-level P&L by job type (not just total revenue), CPA export button (clean report vs QB mess); target the QB Desktop migration audience with urgent 2027 deadline; AppSumo LTD at $99 = extremely compelling vs $456-2,820/yr ongoing QB; r/HVAC, r/Plumbing, r/Electricians + QB Desktop migration forums as distribution; Sources: nerdwallet.com/business/software/reviews/quickbooks-online, dualentry.com/blog/quickbooks-alternatives, sdocpa.com/quickbooks-desktop-discontinued/, stephsbooks.com/blog/hvac-bookkeeping-guide, remotebooksonline.com/blog/bookkeeping-for-hvac-plumbing-electricians |
-| 2026-09-29 | 100/105 | hn-indiehackers-2026-09-29 | Stable at max: SINGLE-source — HN/IH: new accountant-distribution angle confirmed — bookkeepers pay $30–50/mo per contractor client to license specialized tools; Hardhat Ledger identified as early-stage AI competitor to monitor; QB Desktop 2027 migration urgency still confirmed; TradeBooks job costing + QB Desktop migration positioning unchanged |
-| 2026-10-04 | 100/105 | reddit-2026-10-04 | Stable at max: SINGLE-source — Reddit (r/Bookkeeping): QB Online prices increased every summer 3 straight years (Aug 2023→Aug 2024→July 2025); QB Plus ($115/mo) required for job costing features trades need; forced Desktop→Online migration = features lost + audience disrupted; for trades: QBO doesn't integrate cleanly with FSM tools, Projects module for job costing only on expensive tiers, doesn't understand trade-specific workflows (materials, subcontractor 1099s, change orders); Xero/Wave cheaper but equally generic — none are trades-specific; 6.5M trade businesses in US = massive migration audience; "bookkeeping that speaks HVAC" at $25/mo = confirmed positioning; QB Desktop 2027 sunset deadline = live urgency; Sources: reddit.com/r/Bookkeeping/comments/1hq3a2m, nerdwallet.com/article/small-business/quickbooks-pricing, nerdwallet.com/article/small-business/quickbooks-alternatives-signs |
-| 2026-10-05 | 100/105 | hn-indiehackers-2026-10-05, trends-2026-10-05 | Stable at max: DUAL-source — HN/IH: QB Desktop EOL Sep 2027 migration urgency reconfirmed; QB Plus ($115/mo) required for job costing = trades paying top tier just for basics; "TradeBooks" concept: trades-specific job costing at $25/mo = confirmed unoccupied; $99 LTD vs $456-2,820/yr QB = AppSumo natural fit; Trends: 6.5M trade businesses in US = massive forced migration audience with live 2027 deadline; "bookkeeping that speaks HVAC" positioning unchanged; trades-specific P&L by job type (HVAC service call vs install vs maintenance contract) = defensible moat; Sources: hn-indiehackers-2026-10-05, trends-2026-10-05 |
-| 2026-10-07 | 100/105 | reddit-2026-10-07 | Stable at max: SINGLE-source — Reddit: r/Accounting thread confirms trade-specific job costing gap; job-level accounting (every expense auto-tags to a job, "top 10 profitable jobs" report) = specific differentiator unaddressed by QB/Wave/Xero; QB 400% price hike driving active refugee audience; QB Desktop 2027 EOL urgency unchanged; TradeBooks $25/mo positioning confirmed; Sources: reddit-2026-10-07 |
+| 2026-10-10 | 78/105 | hn-indiehackers-2026-10-10 | First identified: IH post confirms $750 MRR from CSV automation tool for bookkeepers/accountants; "thousands of small workflow problems businesses deal with every day" — same pattern applies to bank statement reconciliation, expense report formatting, payroll data conversion; near-zero infra; $49-79 LTD; 1-week build; target bookkeeper FB groups + r/bookkeeping + VA communities; AppSumo category-first; risk: AI tools may erode moat over time |
