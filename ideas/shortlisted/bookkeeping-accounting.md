@@ -1,114 +1,90 @@
 ---
-name: Bookkeeper CSV Data Cleaner
-description: Automated CSV format conversion and invoice data cleaning for bookkeepers/accountants — $750 MRR IH proof, trivially simple, near-zero infra; first identified 2026-10-10 at 78/105
+name: Contractor Bookkeeping & 1099 Tool
+description: Job invoicing + subcontractor payment log + 1099-NEC PDF generation + Schedule C summary for independent residential contractors at $59 LTD
 type: shortlisted
 ---
 
-# Bookkeeper CSV Data Cleaner — Score: 78/105
+# Contractor Bookkeeping & 1099 Tool — Score: 90/105
 
-**Verdict**: BUILD (small MVP first, validate before investing deeply)
+**Verdict**: BUILD
 **Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-10-10
-**Decision Status**: NEW — first identification today
+**Evaluation Date**: 2026-10-13
 
 ## One-Line Pitch
-
-Automates the 15-30 minutes of weekly spreadsheet drudgery bookkeepers do to clean invoice data and reformat bank statements — validated at $750 MRR by an IH founder.
+Job invoicing + subcontractor payment log + 1099-NEC PDF generation + Schedule C summary — purpose-built for independent residential contractors at $59 LTD who find QuickBooks too complex and Wave missing 1099.
 
 ## Problem
+700K+ non-employer residential contractors (handymen, painters, drywall, tile) need four things every year: invoice customers, track payments to subs, generate 1099-NEC PDFs, summarize deductions for Schedule C. Wave doesn't generate 1099s. QuickBooks Online is $25-40/mo and requires 3-hour setup for simple trades. FreshBooks and Bonsai are freelancer-first (no 1099 workflow). The result: contractors manually fill IRS Form 1099-NEC in PDF editors and hope the numbers match.
 
-Bookkeepers and virtual assistants spend 15-30 minutes per week (or per client) reformatting exported data:
-- Bank statement CSV formats vary by bank (date format, description field, debit/credit columns all differ)
-- Invoice data from QuickBooks/Wave/FreshBooks exports in formats incompatible with accounting ledgers
-- Expense report CSVs from Expensify/Concur need column remapping for bookkeeping workflows
-- Payroll data exports need format conversion before entering accounting software
-
-Excel macros solve this technically but require setup per client and break when bank formats change. No dedicated tool exists specifically for bookkeeper CSV workflows.
-
-An IH founder built exactly this and reached $750 MRR in months ("While everyone chases the next AI unicorn, there are thousands of small workflow problems businesses deal with every day").
+The gap: A simple tool where a contractor can log jobs (customer, amount, date), track payments to subs, auto-flag anyone who crossed $600/year, print 1099-NEC PDFs, and print a Schedule C summary — all without accounting knowledge.
 
 ## Market Evidence
-
-- IH post: $750 MRR from CSV automation tool for bookkeepers/accountants — confirmed paying customers in this niche
-- Bookkeepers typically manage 5-20 clients each; automation that saves 15-30 min/client/week = 2-10 hours saved weekly
-- r/bookkeeping, r/accounting, r/QuickBooks = active communities with "how do I automate this?" threads
-- No dedicated bookkeeper CSV tool on AppSumo (category first-mover opportunity)
-- Build feasibility 5/5: CSV parsing + format conversion + cleaning rules = 1-week build, near-zero infra cost
+- Reddit (r/Contractor, r/handyman, r/smallbusiness): "Wave doesn't do 1099s"; "QuickBooks is overkill for what I do"; annual tax season complaint spikes
+- IRS data: 42M+ 1099-NEC filings annually; growing with gig economy
+- Wave acquired by H&R Block (2019) — no 1099-NEC generation ever added despite 10 years of requests
+- QuickBooks Self-Employed at $15/mo: tracks income/expenses but sub-payment tracking and 1099 generation requires manual workarounds
+- AppSumo: no dedicated contractor 1099 tool active; generic bookkeeping tools dominate but miss 1099
 
 ## Scoring Breakdown
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 3/5 | 3x | 9 | IH $750 MRR proof — small but real; adjacent to every accounting workflow |
-| Competitor Weakness | 4/5 | 2x | 8 | No dedicated bookkeeper CSV converter; Excel is the competitor |
-| LTD Viability | 5/5 | 2x | 10 | Near-zero infra; $49-79 LTD natural for utility tool |
-| No Free Tier | 4/5 | 1x | 4 | Excel does this manually; no dedicated free tool |
-| Channel Access | 3/5 | 2x | 6 | Bookkeeper FB groups, r/bookkeeping, VA communities |
-| Content Potential | 3/5 | 1x | 3 | "bookkeeper CSV converter", "bank statement reformatter", "invoice data cleaner" |
-| AppSumo Fit | 4/5 | 2x | 8 | Simple utility; clear ROI (saves time immediately) |
-| Review Potential | 3/5 | 1x | 3 | Bookkeepers review tools in communities |
-| MRR Path | 3/5 | 3x | 9 | $15-25/mo natural; limited ceiling for narrow tool |
-| Build Feasibility | 5/5 | 2x | 10 | CSV parsing + format conversion + cleaning rules = 1-week build |
-| Boring Business Bonus | 4/5 | 2x | 8 | Bookkeepers = boring professional service |
+| Market Validation | 4/5 | 3x | 12 | 700K non-employer contractors; Wave 1099 gap = known complaint for years; 42M+ 1099-NEC filings annually |
+| Competitor Weakness | 5/5 | 2x | 10 | Wave = no 1099; QBO = too complex; no AppSumo competitor for contractor-specific 1099 |
+| LTD Viability | 5/5 | 2x | 10 | $59 LTD = pure software, no compliance exposure, no payment processing, no ongoing data costs |
+| No Free Tier | 4/5 | 1x | 4 | Wave is free but missing 1099; creates natural upgrade path |
+| Channel Access | 4/5 | 2x | 8 | r/Contractor, r/handyman, r/smallbusiness, Facebook contractor groups, AppSumo |
+| Content Potential | 4/5 | 1x | 4 | "1099 for contractors", "Wave alternative 1099", "contractor tax software" — recurring annual search volume |
+| AppSumo Fit | 4/5 | 2x | 8 | Simple, clear problem, annual value prop; "never miss a 1099 again" = strong AppSumo headline |
+| Review Potential | 4/5 | 1x | 4 | Tax-season problem = emotional reviews; G2/Capterra "accounting" category |
+| MRR Path | 4/5 | 3x | 12 | Annual renewal for updated IRS forms + eFiling add-on ($2-3/per 1099 eFiled) + state 1099 forms = natural MRR |
+| Build Feasibility | 5/5 | 2x | 10 | Job/invoice log + sub payment tracker + 1099-NEC PDF generation + Schedule C summary = 2-3 week MVP |
+| Boring Business Bonus | 4/5 | 2x | 8 | Residential contractors = blue-collar trades; bookkeeping is deeply boring |
 
-**Total Weighted Score: 78/105**
+**Total: 90/105**
 
 ## Must-Have Filters
-- [x] Problem is real ($750 MRR IH proof; weekly time waste documented)
-- [x] Can build without deep domain expertise (CSV parsing + format conversion)
-- [x] No dominant player (no dedicated bookkeeper CSV tool exists)
-- [ ] Revenue potential > $10K MRR within 12 months — **MARGINAL** — $750 IH MRR is small; this may cap at $3-5K MRR unless expanded
+- [x] Problem is real (Wave 1099 gap documented for 10+ years)
+- [x] Can build without deep domain expertise (IRS 1099-NEC form is public; Schedule C categories are fixed)
+- [x] No dominant player (Wave = missing feature; QBO = too complex; no AppSumo 1099 tool)
+- [x] Revenue potential $10K+ MRR within 12 months (700K contractors × $59 LTD → eFiling add-on at scale)
 
-## Boring Business Fit Check
-- ✅ VCs ignore bookkeeper tooling entirely
-- ✅ Bookkeepers are non-technical (won't build their own)
-- ✅ No decent existing tool; Excel macros = the workaround
-- ✅ Bookkeepers have real weekly time cost (15-30 min × 10 clients = 150-300 min/week)
-- ⚠️ Churn risk: AI tools like ChatGPT can now reformat CSVs for free — moat is integration + templates
+## Product Concept: TradeBooks
 
-## Product Concept
+**Core features (MVP):**
+1. **Job log** — add customer, job description, amount, date; auto-totals annual revenue
+2. **Sub payment tracker** — add subcontractor name, EIN/SSN, payments per job; flags anyone crossing $600/year
+3. **1099-NEC PDF generator** — fills IRS Form 1099-NEC with contractor data; print-ready + Copy B/C for recipient
+4. **Schedule C summary** — categorizes deductions (materials, mileage, tools, phone) into Schedule C line items; one-page export for accountant or self-filing
+5. **Simple invoice** — send to customers via email or PDF; track paid/unpaid
 
-**"BookClean"** (or "LedgerCSV") — CSV format conversion and data cleaning tool for bookkeepers
-
-**Core MVP features (1 week):**
-- Drag-and-drop CSV upload
-- Bank statement normalizer: auto-detects date format, maps debit/credit columns, cleans merchant name descriptions
-- Invoice data reformatter: export from QuickBooks/Wave/FreshBooks → clean flat file for bookkeeping ledger
-- Custom column mapping templates (save once, reuse per client)
-- Download cleaned CSV or send directly to QuickBooks via API
-
-**Phase 2:**
-- Bank-specific templates (Chase, BofA, Wells Fargo, Amex, Stripe — each exports differently)
-- Payroll data conversion (Gusto, ADP → bookkeeping format)
-- AI-assisted column detection and cleaning rules
-
-**Pricing:**
-- $15/mo — unlimited files, up to 3 clients
-- $25/mo — unlimited files, unlimited clients
-- LTD: $49-79 (unlimited, lifetime)
+**Pricing:** $59 one-time LTD → $29/year renewal for updated IRS forms → eFiling add-on $2.50/1099
 
 ## Key Differentiators
-1. **Bookkeeper-specific templates** — pre-built mappings for the 20 most common bank/accounting export formats
-2. **One-click clean** — no Excel macro setup; works in browser
-3. **Client workspace** — separate settings per client (their bank, their accounting software format)
+1. Only tool combining job tracking + sub payments + 1099-NEC at $59 (vs Wave $0 but missing 1099; QBO $360/yr)
+2. Built for contractors who've never touched accounting software — no chart of accounts, no journal entries
+3. "Does your accountant charge you $150 to generate 1099s? Do it yourself in 5 minutes"
+4. Seasonal pain point = annual LTD purchases spike in Q4/Q1
 
-## Target Channels
-- r/bookkeeping, r/accounting, r/QuickBooks
-- Facebook: "Bookkeepers & Accountants" groups (200K+ combined)
-- IH post targeting VA/bookkeeper freelancers specifically
-- AppSumo (first in category)
-- Content: "bank statement CSV converter for bookkeepers", "QuickBooks import cleaner"
+## Target Market
+- 700K non-employer US residential contractors (handymen, painters, drywall, tile, flooring)
+- Revenue: $50K-$300K/yr, with 1-5 regular subs
+- Not using QBO (too complex) or using Wave (missing 1099)
+- Tax season = highest motivation to buy
 
 ## Top 3 Risks
-1. **AI erosion**: ChatGPT/Claude can reformat CSVs for free — moat must be convenience and templates, not complexity
-2. **MRR ceiling**: narrow tool may cap at $3-5K MRR; expand to bookkeeper bundle to grow
-3. **Market validation is small**: $750 IH MRR is proof-of-concept, not proof-of-scale
+1. IRS form changes require annual updates — mitigate with eFiling subscription MRR
+2. QBO simplifying their Simple Start product could close the gap
+3. Tax prep services (TurboTax, H&R Block) could add contractor-specific workflow
 
 ## Key Source Links
-- https://www.indiehackers.com/post/how-a-simple-csv-converter-reached-750-mrr-in-just-months-d3ff74cbad
+- r/Contractor 1099 pain threads
+- r/handyman "what software do you use for taxes"
+- Wave community: "1099-NEC generation request" (open since 2019)
+- QBO Self-Employed reviews: "too complicated for one-person shop"
 
 ## Signal History
 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
-| 2026-10-10 | 78/105 | hn-indiehackers-2026-10-10 | First identified: IH post confirms $750 MRR from CSV automation tool for bookkeepers/accountants; "thousands of small workflow problems businesses deal with every day" — same pattern applies to bank statement reconciliation, expense report formatting, payroll data conversion; near-zero infra; $49-79 LTD; 1-week build; target bookkeeper FB groups + r/bookkeeping + VA communities; AppSumo category-first; risk: AI tools may erode moat over time |
+| 2026-10-13 | 90/105 | reddit-2026-10-13, competitor-analysis-2026-10-13 | First identified — DUAL-source: Competitor: "TradeBooks" concept confirmed — job invoicing + sub-contractor payment log + 1099-NEC PDF generation + Schedule C summary; Wave no 1099-NEC (documented gap 10+ years); QBO too complex for independent contractors; $59 LTD confirmed; 700K non-employer residential contractors as primary ICP; eFiling add-on at $2.50/1099 = natural MRR path; Reddit: contractor bookkeeping pain confirmed across r/Contractor + r/handyman; annual tax season search spikes = recurring demand; AppSumo "never miss a 1099 again" = confirmed hook; Sources: reddit-2026-10-13, competitor-analysis-2026-10-13 |
