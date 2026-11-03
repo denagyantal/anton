@@ -1,95 +1,113 @@
 ---
-name: Contractor Bookkeeping & 1099 Tool
-description: Job invoicing + subcontractor payment log + 1099-NEC PDF generation + Schedule C summary for independent residential contractors at $59 LTD
-type: shortlisted
+name: MTD-Compliant Bookkeeping for UK Tradespeople
+description: Mobile-first, voice-enabled Making Tax Digital bookkeeping for UK sole-trader tradespeople (plumbers, electricians, HVAC techs) — compliance-forced buying with April 2026 enforcement
+score: 81/105
+tier: 1
+verdict: BUILD
+date: 2026-11-03
 ---
 
-# Contractor Bookkeeping & 1099 Tool — Score: 90/105
+# MTD-Compliant Bookkeeping for UK Tradespeople — Score: 81/105
 
 **Verdict**: BUILD
-**Tier**: 1 (Strong Opportunity)
-**Evaluation Date**: 2026-10-13
+**Decision Status**: NEW
+**LTD Price**: $99-149 (or £79-99)
 
 ## One-Line Pitch
-Job invoicing + subcontractor payment log + 1099-NEC PDF generation + Schedule C summary — purpose-built for independent residential contractors at $59 LTD who find QuickBooks too complex and Wave missing 1099.
+The easiest MTD-compliant bookkeeping app for UK tradies — voice-note your expenses, snap receipts, submit your quarterly digital returns to HMRC, stay compliant.
 
 ## Problem
-700K+ non-employer residential contractors (handymen, painters, drywall, tile) need four things every year: invoice customers, track payments to subs, generate 1099-NEC PDFs, summarize deductions for Schedule C. Wave doesn't generate 1099s. QuickBooks Online is $25-40/mo and requires 3-hour setup for simple trades. FreshBooks and Bonsai are freelancer-first (no 1099 workflow). The result: contractors manually fill IRS Form 1099-NEC in PDF editors and hope the numbers match.
+The UK's Making Tax Digital (MTD) for Income Tax mandate is a regulatory forcing function that guarantees software adoption:
+- **April 2026**: MTD enforcement for sole traders and landlords with income >£50K
+- **April 2027**: Extends to £30K-50K income bracket
+- **Eventually**: All self-employed
 
-The gap: A simple tool where a contractor can log jobs (customer, amount, date), track payments to subs, auto-flag anyone who crossed $600/year, print 1099-NEC PDFs, and print a Schedule C summary — all without accounting knowledge.
+This means tens of thousands of UK tradespeople who have been doing paper bookkeeping or using spreadsheets must adopt compliant digital software by law. The fine for non-compliance: up to £3,000.
+
+What's missing: MTD-compliant software designed for a tradesperson (not an accountant). Current options:
+- **FreeAgent** (MTD-certified): £14.40/mo; good but generic, not trades-native
+- **QuickBooks** (MTD-certified): £12-30/mo; overbuilt, desktop-first
+- **Xero** (MTD-certified): £15-40/mo; overbuilt, accountant-facing
+
+None of these are mobile-first. None support voice-note expense capture. None have the job-card mental model a tradesperson uses ("I did a job, here's what I charged, here's what I spent on materials"). A plumber doing their books shouldn't have to understand "chart of accounts."
+
+White space: MTD-compliant, mobile-first, voice-enabled bookkeeping at £9/mo or £79 LTD with a job-card UX rather than an accounting UX. The regulatory deadline is the GTM hook — "avoid the £3,000 MTD fine" sells itself.
 
 ## Market Evidence
-- Reddit (r/Contractor, r/handyman, r/smallbusiness): "Wave doesn't do 1099s"; "QuickBooks is overkill for what I do"; annual tax season complaint spikes
-- IRS data: 42M+ 1099-NEC filings annually; growing with gig economy
-- Wave acquired by H&R Block (2019) — no 1099-NEC generation ever added despite 10 years of requests
-- QuickBooks Self-Employed at $15/mo: tracks income/expenses but sub-payment tracking and 1099 generation requires manual workarounds
-- AppSumo: no dedicated contractor 1099 tool active; generic bookkeeping tools dominate but miss 1099
+- 34% of small businesses received regulatory penalties in 2026 (median cost £14,000)
+- UK Making Tax Digital enforcement April 2026 (>£50K) and April 2027 (£30K-50K)
+- 2M+ sole trader tradespeople in the UK (plumbers, electricians, HVAC, builders)
+- FreeAgent, QuickBooks, Xero are all MTD-certified but none are trades-native or mobile-first
+- Compliance tech trend: "MTD-compliant bookkeeping built specifically for UK tradespeople (simple, mobile, voice-first)" confirmed as white space in trends scan
+- "Making Tax Digital for tradesmen UK" = high-intent SEO keyword with no dominant content yet
 
 ## Scoring Breakdown
 
 | Criterion | Score | Weight | Weighted | Notes |
 |-----------|-------|--------|----------|-------|
-| Market Validation | 4/5 | 3x | 12 | 700K non-employer contractors; Wave 1099 gap = known complaint for years; 42M+ 1099-NEC filings annually |
-| Competitor Weakness | 5/5 | 2x | 10 | Wave = no 1099; QBO = too complex; no AppSumo competitor for contractor-specific 1099 |
-| LTD Viability | 5/5 | 2x | 10 | $59 LTD = pure software, no compliance exposure, no payment processing, no ongoing data costs |
-| No Free Tier | 4/5 | 1x | 4 | Wave is free but missing 1099; creates natural upgrade path |
-| Channel Access | 4/5 | 2x | 8 | r/Contractor, r/handyman, r/smallbusiness, Facebook contractor groups, AppSumo |
-| Content Potential | 4/5 | 1x | 4 | "1099 for contractors", "Wave alternative 1099", "contractor tax software" — recurring annual search volume |
-| AppSumo Fit | 4/5 | 2x | 8 | Simple, clear problem, annual value prop; "never miss a 1099 again" = strong AppSumo headline |
-| Review Potential | 4/5 | 1x | 4 | Tax-season problem = emotional reviews; G2/Capterra "accounting" category |
-| MRR Path | 4/5 | 3x | 12 | Annual renewal for updated IRS forms + eFiling add-on ($2-3/per 1099 eFiled) + state 1099 forms = natural MRR |
-| Build Feasibility | 5/5 | 2x | 10 | Job/invoice log + sub payment tracker + 1099-NEC PDF generation + Schedule C summary = 2-3 week MVP |
-| Boring Business Bonus | 4/5 | 2x | 8 | Residential contractors = blue-collar trades; bookkeeping is deeply boring |
+| Market Validation | 4/5 | 3x | 12 | UK MTD enforcement April 2026; 34% of small businesses penalized in 2026; 2M+ sole trader tradespeople |
+| Competitor Weakness | 4/5 | 2x | 8 | No MTD-for-trades product; FreeAgent/QB are generic; no mobile-first, voice-first MTD option |
+| LTD Viability | 4/5 | 2x | 8 | "Avoid the £3,000 MTD fine" = strong buying anxiety; £79-99 LTD viability |
+| No Free Tier | 4/5 | 1x | 4 | No free MTD-compliant trades bookkeeping |
+| Channel Access | 3/5 | 2x | 6 | UK-specific channels; Facebook "UK Tradespeople Groups," Checkatrade community; less familiar territory |
+| Content Potential | 4/5 | 1x | 4 | "Making Tax Digital for tradesmen UK," "MTD software for sole traders," "MTD bookkeeping for plumbers" |
+| AppSumo Fit | 3/5 | 2x | 6 | UK-focused has lower AppSumo reach; but no UK-focused bookkeeping on AppSumo = first-mover |
+| Review Potential | 3/5 | 1x | 3 | Compliance tools get reviews when they prevent actual fines |
+| MRR Path | 4/5 | 3x | 12 | Quarterly MTD submissions = sticky; accounting is the stickiest SaaS category |
+| Build Feasibility | 4/5 | 2x | 8 | HMRC MTD API integration + digital records + quarterly submission = 3-4 weeks |
+| Boring Business Bonus | 5/5 | 2x | 10 | UK trades bookkeeping = deeply boring; regulatory-forced = maximum unsexy |
 
-**Total: 90/105**
+**Total: 81/105**
 
 ## Must-Have Filters
-- [x] Problem is real (Wave 1099 gap documented for 10+ years)
-- [x] Can build without deep domain expertise (IRS 1099-NEC form is public; Schedule C categories are fixed)
-- [x] No dominant player (Wave = missing feature; QBO = too complex; no AppSumo 1099 tool)
-- [x] Revenue potential $10K+ MRR within 12 months (700K contractors × $59 LTD → eFiling add-on at scale)
+- [x] Problem is real (HMRC enforcement = legal obligation; fines documented)
+- [x] Can build without deep domain expertise (HMRC MTD API is documented; standard bank import + invoice)
+- [x] No dominant trades-native player (FreeAgent/QB are generic, not trades-specific)
+- [x] Revenue potential > $10K MRR within 12 months (1,000 UK tradespeople × £9/mo = £9K; 2,000 = £18K)
 
-## Product Concept: TradeBooks
+## Product Concept
 
-**Core features (MVP):**
-1. **Job log** — add customer, job description, amount, date; auto-totals annual revenue
-2. **Sub payment tracker** — add subcontractor name, EIN/SSN, payments per job; flags anyone crossing $600/year
-3. **1099-NEC PDF generator** — fills IRS Form 1099-NEC with contractor data; print-ready + Copy B/C for recipient
-4. **Schedule C summary** — categorizes deductions (materials, mileage, tools, phone) into Schedule C line items; one-page export for accountant or self-filing
-5. **Simple invoice** — send to customers via email or PDF; track paid/unpaid
+**"TradieBooks UK"** — MTD-compliant bookkeeping for UK sole trader tradespeople.
 
-**Pricing:** $59 one-time LTD → $29/year renewal for updated IRS forms → eFiling add-on $2.50/1099
+**Core features:**
+- Job card: create job → log hours + materials → invoice customer → see margin
+- Voice-note expense capture: "I spent £40 on pipe fittings today" → categorized + logged
+- Receipt scan: photo → auto-extracted amount + category
+- HMRC MTD integration: quarterly digital submissions directly to HMRC (no spreadsheet)
+- VAT tracking: standard and flat-rate VAT schemes
+- Schedule E equivalent: income summary for self-assessment tax return
+- Accountant sharing: read-only access for your accountant
 
-## Key Differentiators
-1. Only tool combining job tracking + sub payments + 1099-NEC at $59 (vs Wave $0 but missing 1099; QBO $360/yr)
-2. Built for contractors who've never touched accounting software — no chart of accounts, no journal entries
-3. "Does your accountant charge you $150 to generate 1099s? Do it yourself in 5 minutes"
-4. Seasonal pain point = annual LTD purchases spike in Q4/Q1
+**Differentiation from FreeAgent/QB:**
+- Job-card UX instead of chart-of-accounts UX ("did I make money on this job?" not "what's my journal entry?")
+- Voice-note expense capture (field-first, not desk-first)
+- Cheaper (£9/mo vs £14.40+ for FreeAgent)
+- MTD-first (not MTD as a bolt-on)
 
-## Target Market
-- 700K non-employer US residential contractors (handymen, painters, drywall, tile, flooring)
-- Revenue: $50K-$300K/yr, with 1-5 regular subs
-- Not using QBO (too complex) or using Wave (missing 1099)
-- Tax season = highest motivation to buy
+**Pricing:**
+- £9/mo — unlimited jobs, 1 user
+- £79 LTD (AppSumo UK or direct)
 
-## Top 3 Risks
-1. IRS form changes require annual updates — mitigate with eFiling subscription MRR
-2. QBO simplifying their Simple Start product could close the gap
-3. Tax prep services (TurboTax, H&R Block) could add contractor-specific workflow
+## Go-to-Market
+1. Checkatrade, MyBuilder, TrustATrader forums — direct response to MTD compliance threads
+2. Facebook "UK Plumbers," "UK Electricians," "Self Employed UK Tradesman" groups
+3. SEO: "Making Tax Digital for tradesmen UK," "MTD software for sole traders"
+4. Content: "Are you ready for MTD? Here's what HMRC actually requires from sole trader tradespeople"
+5. Google Ads: "MTD bookkeeping for tradespeople" (compliance deadline = urgency)
+
+## Risks
+1. HMRC MTD API integration has regulatory complexity and testing requirements
+2. UK-specific audience limits AppSumo reach; may need direct sales/SEO instead
+3. FreeAgent (used by millions of UK freelancers) has strong brand and accountant relationships
+4. April 2026 enforcement deadline may have passed some window; urgency decreases for those already compliant
 
 ## Key Source Links
-- r/Contractor 1099 pain threads
-- r/handyman "what software do you use for taxes"
-- Wave community: "1099-NEC generation request" (open since 2019)
-- QBO Self-Employed reviews: "too complicated for one-person shop"
+- https://grahamwood.co.uk/making-tax-digital-a-small-business-guide-to-compliance-in-2026/
+- https://medium.com/@nexzensoftware/the-small-business-compliance-crunch-why-regulation-is-breaking-smbs-in-2026-and-what-actually-a5eb83f096bd
+- https://www.bbsi.com/business-owner-resources/new-laws-regulations-small-business-owners-2026
+- https://globalinkit.com/blog/small-business-compliance-automation-2026-avoiding-regulatory-fines-with-proactive-technology
 
 ## Signal History
-
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
-| 2026-10-13 | 90/105 | reddit-2026-10-13, competitor-analysis-2026-10-13 | First identified — DUAL-source: Competitor: "TradeBooks" concept confirmed — job invoicing + sub-contractor payment log + 1099-NEC PDF generation + Schedule C summary; Wave no 1099-NEC (documented gap 10+ years); QBO too complex for independent contractors; $59 LTD confirmed; 700K non-employer residential contractors as primary ICP; eFiling add-on at $2.50/1099 = natural MRR path; Reddit: contractor bookkeeping pain confirmed across r/Contractor + r/handyman; annual tax season search spikes = recurring demand; AppSumo "never miss a 1099 again" = confirmed hook; Sources: reddit-2026-10-13, competitor-analysis-2026-10-13 |
-| 2026-10-18 | 90/105 | reddit-2026-10-18 | Stable: SINGLE-source — Reddit: QBO MELTDOWN ANGLE NEW — rare dual-displacement window: QuickBooks Online crashing on mobile + forcing unwanted UI redesigns + auto-categorization silently mis-booking transactions; FreshBooks payroll bugs blaming third-party connectors; BOTH major bookkeeping tools degrading simultaneously; 62-upvote thread (r/QuickBooks Aug 2025) "is the entirety of QBO just broken?"; r/QuickBooksHacks community exists purely for workarounds = extreme frustration; multiple threads 2025-2026 with bookkeepers switching; broader angle beyond 1099: simple reliable bookkeeping for service businesses ($50K–$500K/yr) with flat pricing + bank reconciliation that works + auto-categorization that stays put; "Pay once, stop the QBO subscription forever" LTD story; Intuit ~7M QBO subscribers = 1% switching = 70K businesses; FreshBooks simultaneously declining = dual displacement window; note: this file covers contractor 1099 specifically; QBO meltdown angle is a broader service business bookkeeping play — consider separate product or expanded scope; Sources: reddit.com/r/quickbooksonline/comments/1wqajq5, reddit.com/r/QuickBooks/comments/1mots0u, reddit.com/r/smallbusiness/comments/1ol676q, reddit.com/r/freshbooks/comments/1t17txx/ |
-| 2026-10-19 | 91/105 | reddit-2026-10-19, reddit-scanner-2026-10-19 | ↑1: DUAL-source — Reddit/Scanner: Bench Accounting shutdown displaced 12K businesses overnight (hard data: $65M debts, March 2025 hard data export deadline); QB $50→$222/mo price hike over 2 years documented; QB Desktop discontinued = forced migration; commercial cleaning operator 6 months old burning out on HubSpot + GSuite + manual invoicing combo; field service operators specifically need job costing per ticket + recurring billing with variable pricing = not generic accounting; Bench lesson: "data portability" now top-3 purchase criterion for small business software; multi-tool burnout (QB + CRM + scheduling + invoicing in 3-5 separate apps) = universal confirmed pain; Zoho Books free tier gaining traction = field-service-specific accounting still unbuilt; scope note: this file covers contractor 1099; broader service business bookkeeping play may warrant separate file; Sources: alternativeto.net/news/2024/12/bench-accounting-unexpectedly-shuts-down, reddit.com/r/QuickBooks/comments/1liimpp, reddit.com/r/sweatystartup/comments/18xy4o3 |
-| 2026-10-20 | 91/105 | reddit-scanner-2026-10-20, hn-indiehackers-2026-10-20 | Stable: DUAL-source — Reddit/Scanner: "Contractor Invoicing (QBO companion)" surfaced as distinct idea in today's raw scan — independent residential contractors need job invoicing + QBO sync without paying for full QBO subscription; "paper invoices or email them days after the job" = invoicing-on-site gap = directly confirms TradeBooks concept; multi-tool burnout (5-app stack for $200+/mo) reconfirmed as universal service business pain; HN/IH: Trayd $10M Series A (construction payroll + bookkeeping for blue-collar crews) = boring vertical fintech investment confirmed; ZenMaid $3M/yr = boring-vertical SaaS playbook applies to contractor bookkeeping; 1099 gap + job costing = still unbuilt in affordable contractor-specific tool; Sources: reddit-scanner-2026-10-20, hn-indiehackers-2026-10-20 |
-| 2026-10-27 | 94/105 | reddit-2026-10-27 | ↑3: SINGLE-source STRONGEST LTD ANCHOR TO DATE — Reddit: QBO $40/mo basic plan confirmed; FreshBooks $410/yr ($34/mo) confirmed; both via active Reddit threads with switching behavior; "I need to find a serious alternative" confirmed; KEY: "accountants force clients to stay on QBO" = distribution moat to understand, not fight; "generate QBO-formatted export so CPA doesn't revolt" = smart integration positioning; bank statement parsing to eliminate manual entry = specific feature gap; $99 LTD vs $480/yr QBO = $380/yr savings = under 3-month payback = STRONGEST LTD VALUE ANCHOR IN PORTFOLIO; ICP confirmed: solo service businesses (<50 transactions/month) — freelancers, 1-person trades, cleaning services, consultants; score 91→94 driven by QBO price confirmation + FreshBooks exodus + sharpest LTD anchor in current portfolio; Sources: reddit-2026-10-27 |
-| 2026-11-02 | 94/105 | reddit-2026-11-02 | Stable: SINGLE-source — Reddit: QBO price range confirmed at $80–200/mo (recurring threads, multiple subreddits); ~30% annual price increases across 14-year QBO tenure documented ("For 14 years I used QB Desktop. The price is just too much now."); broken bank feeds and AI miscalculating state payroll taxes confirmed; forced migration from QB Desktop to QBO at $976/yr; constant upsells, canned support; users explicitly want: reliable bank sync + simple expense categorization + mileage tracking + basic P&L + export-to-accountant WITHOUT AI features; Xero/FreshBooks not filling gap (<$50/mo) — no clean winner; "They've been raising prices ~30% per year and justifying it with AI garbage" (r/Bookkeeping); QB Alternative positioning "We will never raise your price 30% per year" = confirmed differentiator; Sources: reddit.com/r/smallbusiness/comments/1usxd7g, reddit.com/r/Bookkeeping/comments/1jt94fa, reddit.com/r/Bookkeeping_Business/comments/1t04f3o, reddit.com/r/TheTechStack/comments/1sysfo2 |
+| 2026-11-03 | 81/105 | trends-2026-11-03 | First identified — trends scan: UK MTD enforcement April 2026 (>£50K income) + April 2027 (£30K-50K) = regulatory forcing function guaranteeing software adoption; 34% of small businesses received regulatory penalties 2026 median £14K; "MTD-compliant bookkeeping built specifically for UK tradespeople (simple, mobile, voice-first)" confirmed as white space in trends report; no dominant trades-native MTD product identified; FreeAgent/QB/Xero all generic; "TradieBooks UK" concept: job-card UX + voice-note expenses + HMRC MTD API + quarterly digital submissions; £9/mo or £79 LTD; "avoid the £3,000 MTD fine" = headline; Sources: grahamwood.co.uk/making-tax-digital, nexzensoftware.medium.com/small-business-compliance-crunch-2026 |
