@@ -58,3 +58,8 @@ LTD phase → team plan (per-seat) → enterprise features for growing teams →
 2. Add visual pipeline + AI follow-up suggestions (2 weeks)
 3. Beta test with 20 real estate agents from r/realestate
 4. Launch on AppSumo with "anti-Salesforce" positioning
+
+## Signal History
+| Date | Score | Sources | Notes |
+|------|-------|---------|-------|
+| 2026-11-03 | 81/105 | trends-2026-11-03 | Stable: SINGLE-source — Trends: Cohesive (YC P2025) confirmed building "agentic CRM for blue-collar businesses" targeting janitorial, pressure washing, landscaping, HVAC, pest control = direct category validation with YC backing; Netic raised $23M Series B at $450M valuation (Founders Fund) to equip contractors (electricians, roofers, repairmen, pest control) with AI tools = institutional capital confirming PMF; core insight confirmed: "these businesses don't have dedicated salespeople — the owner IS the salesperson, and AI should handle the pipeline for them"; key white space: outbound AI sales for businesses under $1M revenue; automated seasonal re-engagement ("HVAC tune-up season is coming — book your regular customers"); neighborhood-radius AI marketing (auto-send offers to homes near completed jobs); blue-collar CRM category is crystallizing = move fast; Sources: ycombinator.com/companies/industry/saas/new-york (Cohesive YC P2025), insurancejournal.com/netic-founders-fund-23m |
