@@ -28,6 +28,8 @@ CraftBoop launched in April 2026 at $29/mo with paying users — confirming this
 
 ## Market Evidence
 - CraftBoop (craftboop.com): live product, $29/mo, 14-day free trial, paying users confirmed as of April 2026
+- OnToolsAI: 7 trades, free-to-try, March 2026 launch on IH — dual-builder validation confirms demand
+- Both builders lack SMS-first workflow and FSM webhook integration = exact gap to fill
 - ZenMaid: $3M/yr bootstrapped (11 years) on cleaning industry SaaS — validates single-vertical focus
 - Ops Badger: $8K MRR from a roofing-specific diagnostic, proving owner-operators pay for business improvement tools
 - r/sweatystartup tree service owner's reaction to diagnostic tool: "I've been doing a lot of things wrong" = validation of the "help me get more reviews/referrals" category
@@ -105,3 +107,4 @@ CraftBoop launched in April 2026 at $29/mo with paying users — confirming this
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-11-03 | 97/105 | hn-indiehackers-2026-11-03, reddit-2026-11-03 | First identified — CraftBoop (craftboop.com) live at $29/mo with paying users (April 2026 IH launch) = direct competitor validation; ZenMaid $3M/yr proves cleaning industry SaaS scales = market size validation; Ops Badger $8K MRR from roofing-specific tool = adjacent validation; "ReviewPilot" concept: job completion → 5-step automated sequence (thank you, review request, check-in, rebooking, referral) → SMS-first differentiator; $79-99 LTD; Google Business Profile integration as key differentiator vs CraftBoop email-only; 1-2 week build = fastest to market of all Tier 1 ideas today |
+| 2026-11-07 | 97/105 | hn-indiehackers-2026-11-07 | Stable: SINGLE-source — HN/IH: CraftBoop AND OnToolsAI (7 trades, free-to-try) both validating simultaneously (March 2026 IH post) = TWO indie builders attacking market simultaneously confirms timing; neither has SMS-first nor FSM webhook integration (both are email-only or manual trigger); "SMS-first follow-up sequences that trigger from job completion inside Jobber/HCP/ServiceTitan via webhooks" = confirmed unbuilt differentiator; white-label for trade associations confirmed as upsell path; "people who run a trades business don't follow up — they don't know what to say and it doesn't happen manually" = core insight; Sources: indiehackers.com/post/craftboop-built-automated-follow-ups-for-service-businesses-just-launched-looking-for-feedback-5aa58e1c39, indiehackers.com/post/3-days-live-built-for-the-tradespeople-nobody-builds-for-cvMhopGD1uRgpZ1AVTcD |
