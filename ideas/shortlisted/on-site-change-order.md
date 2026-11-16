@@ -107,3 +107,4 @@ There is no standalone mobile-first change order tool at $19-29/month that does 
 | Date | Score | Sources | Notes |
 |------|-------|---------|-------|
 | 2026-11-13 | 85/105 | reddit-2026-11-13 | First identified — micro-SaaS builder validated $49 in 48 hours with React prototype; multiple contractor threads confirm pain; no standalone mobile-first tool at $19-29/mo; 30-sec flow + customer signature + PDF = 1-2 week MVP; $59 LTD AppSumo fit; 1-20 person contractor/handyman/remodeler ICP |
+| 2026-11-16 | 86/105 | reddit-2026-11-16 | ↑1: SINGLE-source — Reddit: Construction threads confirm unbilled work is ongoing pain; Procore/Buildertrend overkill at $400-1000+/mo reconfirmed; original validated builder ($49 in 48 hours) precedent still the strongest validation; "mobile-first 30-second change order" confirmed as unoccupied at $19-29/mo; scope creep + billing disputes = active pain thread; score bumped 85→86; Sources: reddit-2026-11-16 |
